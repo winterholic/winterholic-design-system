@@ -2,20 +2,22 @@
   <title id="title">winterholic 로고</title>
   <desc id="desc">입체 프리즘 얼음 결정과 winterholic 워드마크의 가로 조합</desc>
   <defs>
-    <filter id="depth" x="-15%" y="-15%" width="130%" height="130%"><feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#1D2F6F" flood-opacity=".13"/></filter>
-    <g id="arm">
-      <path fill="#D8F2FE" d="M256 256 194 170 256 18 318 170Z"/>
-      <path fill="#BCE0FE" d="m256 18-62 152 41 1Z"/><path fill="#F7F9F9" d="m256 18-21 153 21-67Z"/>
-      <path fill="#63D2FF" d="m256 18 22 153-22-67Z"/><path fill="#90C9F9" d="m256 18 62 152-40 1Z"/>
-      <path fill="#55B3D9" d="m256 256-62-86 41 1Z"/><path fill="#0A5E93" d="m256 256-21-85 21-67Z"/>
-      <path fill="#2081C3" d="m256 256 22-85-22-67Z"/><path fill="#AFE4FC" d="m256 256 62-86-40 1Z"/>
-      <path fill="none" stroke="#D8F2FE" stroke-width="2" stroke-linejoin="round" d="M256 256 194 170 256 18 318 170Z"/>
+    <linearGradient id="snow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#D8F2FE"/></linearGradient>
+    <linearGradient id="ice" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#AFE4FC"/><stop offset="1" stop-color="#63D2FF"/></linearGradient>
+    <linearGradient id="lake" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#69ADE5"/><stop offset="1" stop-color="#2081C3"/></linearGradient>
+    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2081C3"/><stop offset="1" stop-color="#0E476F"/></linearGradient>
+    <filter id="depth" x="-16%" y="-16%" width="132%" height="132%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1D2F6F" flood-opacity=".16"/></filter>
+    <g id="crystal" stroke-linejoin="round">
+      <path fill="url(#ice)" d="m256 256-42-82 42-156 54 147Z"/><path fill="url(#snow)" d="m214 174 42-156-15 157Z"/><path fill="#63D2FF" d="m256 18 54 147-38 15Z"/><path fill="#2F6075" d="m256 256-15-81 31 5Z"/><path fill="#90C9F9" d="m241 175 15-157 16 162Z" opacity=".82"/>
+      <path fill="url(#lake)" d="m256 256 54-91 162-49-113 114Z"/><path fill="url(#snow)" d="m310 165 162-49-126 81Z"/><path fill="#78D5D7" d="m472 116-113 114-13-33Z" opacity=".86"/><path fill="#0A5E93" d="m256 256 90-59 13 33Z"/><path fill="#90C9F9" d="m256 256 54-91 36 32Z" opacity=".84"/>
+      <path fill="url(#ice)" d="m256 256 103-26 99 174-154-59Z"/><path fill="#D8F2FE" d="m359 230 99 174-112-105Z"/><path fill="#63D2FF" d="m458 404-154-59 42-46Z" opacity=".76"/><path fill="url(#deep)" d="m256 256 90 43-42 46Z"/><path fill="#BCE0FE" d="m256 256 103-26-13 69Z" opacity=".9"/>
+      <path fill="url(#lake)" d="m256 256 48 89-48 149-49-147Z"/><path fill="url(#snow)" d="m304 345-48 149 15-151Z"/><path fill="#63D2FF" d="m256 494-49-147 34-8Z" opacity=".85"/><path fill="#0E476F" d="m256 256 15 87-30-4Z"/><path fill="#90C9F9" d="m241 339 15 155 15-151Z" opacity=".72"/>
+      <path fill="url(#deep)" d="m256 256-49 91-155 55 99-172Z"/><path fill="#BCE0FE" d="M207 347 52 402l112-106Z"/><path fill="#55B3D9" d="m52 402 99-172 13 66Z" opacity=".82"/><path fill="#0A5E93" d="m256 256-92 40-13-66Z"/><path fill="#90C9F9" d="m256 256-49 91-43-51Z" opacity=".78"/>
+      <path fill="url(#ice)" d="m256 256-105-26L42 120l172 54Z"/><path fill="url(#snow)" d="M151 230 42 120l137 72Z"/><path fill="#63D2FF" d="m42 120 172 54-35 18Z" opacity=".68"/><path fill="#2081C3" d="m256 256-77-64-28 38Z"/><path fill="#BCE0FE" d="m256 256-42-82-35 18Z" opacity=".88"/>
+      <path fill="#F7F9F9" d="m256 244 11 6 1 12-11 7-11-6-1-12Z" opacity=".94"/><path fill="#63D2FF" d="m256 249 6 4-1 7-6 3-5-4 1-7Z" opacity=".72"/>
+      <path fill="none" stroke="#BCE0FE" stroke-width="1.5" opacity=".72" d="m256 18 54 147 162-49-113 114 99 174-154-59-48 149-49-147-155 55 99-172L42 120l172 54Z"/>
     </g>
   </defs>
-  <g transform="translate(4 6) scale(.4)" filter="url(#depth)">
-    <use href="#arm"/><use href="#arm" transform="translate(256 256) rotate(60) scale(.89) translate(-256 -256)"/>
-    <use href="#arm" transform="translate(256 256) rotate(120) scale(.89) translate(-256 -256)"/><use href="#arm" transform="rotate(180 256 256)"/>
-    <use href="#arm" transform="translate(256 256) rotate(240) scale(.89) translate(-256 -256)"/><use href="#arm" transform="translate(256 256) rotate(300) scale(.89) translate(-256 -256)"/>
-  </g>
+  <g transform="translate(2 2) scale(.42)" filter="url(#depth)"><use href="#crystal"/></g>
   <text x="246" y="143" fill="#2B3139" font-family="Pretendard Variable, Pretendard, Inter, sans-serif" font-size="84" font-weight="700" letter-spacing="-1.8">winterholic</text>
 </svg>

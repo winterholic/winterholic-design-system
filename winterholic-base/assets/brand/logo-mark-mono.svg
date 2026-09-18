@@ -1,13 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">winterholic 단색 얼음 결정 로고</title>
   <desc id="desc">단색 인쇄와 마스킹에 쓰는 세로축이 긴 여섯 갈래 결정</desc>
-  <defs><path id="arm" d="M256 256 194 170 256 18 318 170Z"/></defs>
-  <g fill="currentColor">
-    <use href="#arm"/>
-    <use href="#arm" transform="translate(256 256) rotate(60) scale(.89) translate(-256 -256)"/>
-    <use href="#arm" transform="translate(256 256) rotate(120) scale(.89) translate(-256 -256)"/>
-    <use href="#arm" transform="rotate(180 256 256)"/>
-    <use href="#arm" transform="translate(256 256) rotate(240) scale(.89) translate(-256 -256)"/>
-    <use href="#arm" transform="translate(256 256) rotate(300) scale(.89) translate(-256 -256)"/>
-  </g>
+  <path fill="currentColor" d="m256 18 54 147 162-49-113 114 99 174-154-59-48 149-49-147-155 55 99-172L42 120l172 54Z"/>
 </svg>
