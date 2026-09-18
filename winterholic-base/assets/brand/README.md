@@ -1,6 +1,6 @@
 # winterholic 브랜드 자산
 
-사용 규칙은 [`../../docs/14-brand-assets.md`](../../docs/14-brand-assets.md), 한 화면 미리보기는 [`../../examples/brand-assets.html`](../../examples/brand-assets.html)을 본다.
+사용 규칙은 [`../../docs/14-brand-assets.md`](../../docs/14-brand-assets.md), 통합 미리보기는 [`../../examples/preview.html`](../../examples/preview.html)의 브랜드 자산 섹션을 본다.
 
 ## 이미지 생성 방식
 

@@ -8,16 +8,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="../dist/tokens.css" />
 <link rel="stylesheet" href="../dist/typography.css" />
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
 <style>
   /* 이 페이지의 모든 값은 토큰이다. hex·px 리터럴이 있으면 버그. */
   *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; }
+  body { margin: 0; overflow-x: hidden; }
   .page { max-width: var(--wh-size-container-xl); margin-inline: auto; padding: var(--wh-space-8) var(--wh-size-layout-page-gutter) var(--wh-space-24); }
   @media (min-width: 768px) { .page { padding-inline: var(--wh-size-layout-page-gutter-md); } }
   @media (min-width: 1024px) { .page { padding-inline: var(--wh-size-layout-page-gutter-lg); } }
 
   header.top { position: sticky; top: 0; z-index: var(--wh-z-index-sticky); display: flex; align-items: center; justify-content: space-between; height: var(--wh-size-layout-header-lg); padding-inline: var(--wh-size-layout-page-gutter-lg); background: color-mix(in srgb, var(--wh-color-surface-default) 90%, transparent); backdrop-filter: blur(var(--wh-blur-md)); border-bottom: 1px solid var(--wh-color-border-subtle); }
-  .logo { font-weight: var(--wh-font-weight-bold); letter-spacing: var(--wh-font-letter-spacing-tight); font-size: var(--wh-font-size-xl); background: var(--wh-gradient-aurora); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .logo { display: block; width: calc(var(--wh-space-24) * 2); height: auto; }
   nav.toc { display: flex; gap: var(--wh-space-4); flex-wrap: wrap; }
   nav.toc a { color: var(--wh-color-text-secondary); text-decoration: none; }
   nav.toc a:hover { color: var(--wh-color-text-primary); }
@@ -26,8 +27,28 @@
   section > h2 { margin: 0 0 var(--wh-space-2); }
   section > p.lead { margin: 0 0 var(--wh-space-6); color: var(--wh-color-text-secondary); }
   h3.sub { margin: var(--wh-space-8) 0 var(--wh-space-4); }
-  .hero { background: var(--wh-gradient-brand); color: var(--wh-color-text-on-brand); border-radius: var(--wh-radius-2xl); padding: var(--wh-space-16) var(--wh-space-8); text-align: center; }
-  .hero p { color: var(--wh-color-text-on-brand); opacity: .85; max-width: var(--wh-size-container-prose); margin: var(--wh-space-4) auto 0; }
+  .hero { position: relative; min-height: calc(var(--wh-space-24) * 5); display: flex; align-items: center; overflow: hidden; background: var(--wh-gradient-scrim-bottom), url('../assets/brand/brand-hero.webp') 65% center / cover no-repeat; color: var(--wh-color-text-on-brand); border-radius: var(--wh-radius-2xl); padding: var(--wh-space-16) var(--wh-space-8); text-align: left; }
+  .hero__content { position: relative; max-width: calc(var(--wh-size-container-prose) / 2); }
+  .hero p { color: var(--wh-color-text-on-brand); opacity: .85; margin: var(--wh-space-4) 0 0; }
+  .hero .row { justify-content: flex-start; }
+
+  .brand-assets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--wh-space-6); }
+  .brand-stage { min-height: calc(var(--wh-space-24) * 3); display: grid; place-items: center; overflow: hidden; padding: var(--wh-space-8); border-radius: var(--wh-radius-xl); border: var(--wh-border-width-hairline) solid var(--wh-color-border-default); background: var(--wh-gradient-frost); }
+  .brand-stage--dark { background: var(--wh-gradient-brand); }
+  .brand-stage--pattern { background: url('../assets/brand/pattern-frost.svg') center / calc(var(--wh-space-24) * 5), var(--wh-color-surface-default); }
+  .brand-stage img { max-width: 100%; max-height: calc(var(--wh-space-24) * 2.5); }
+  .brand-stage .mascot { max-height: calc(var(--wh-space-24) * 3); filter: drop-shadow(var(--wh-shadow-brand)); }
+  .favicon-row { display: flex; align-items: end; gap: var(--wh-space-6); }
+  .favicon-row img:nth-child(1) { width: var(--wh-size-icon-xl); }
+  .favicon-row img:nth-child(2) { width: var(--wh-size-avatar-lg); }
+  .favicon-row img:nth-child(3) { width: var(--wh-size-avatar-2xl); }
+  @media (max-width: 767px) {
+    header.top { padding-inline: var(--wh-size-layout-page-gutter); }
+    header.top nav.toc, header.top > .row { display: none; }
+    header.top .logo { width: calc(var(--wh-space-16) * 2); }
+    .hero { min-height: calc(var(--wh-space-24) * 6); align-items: flex-end; background-position: 70% center; padding-inline: var(--wh-space-5); }
+    .brand-assets { grid-template-columns: 1fr; }
+  }
 
   .row { display: flex; gap: var(--wh-space-3); flex-wrap: wrap; align-items: center; }
   .grid { display: grid; gap: var(--wh-space-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
@@ -227,9 +248,9 @@
 </head>
 <body>
 <header class="top">
-  <span class="logo">winterholic-base</span>
+  <img class="logo" src="../assets/brand/logo-lockup.svg" alt="winterholic" />
   <nav class="toc wh-label-md">
-    <a href="#color">색</a><a href="#type">글자</a><a href="#space">간격</a><a href="#shape">모양</a><a href="#comp">컴포넌트</a><a href="#state">상태</a><a href="#viz">차트</a>
+    <a href="#brand">브랜드</a><a href="#color">색</a><a href="#type">글자</a><a href="#space">간격</a><a href="#shape">모양</a><a href="#comp">컴포넌트</a><a href="#state">상태</a><a href="#viz">차트</a>
   </nav>
   <div class="row">
     <span class="wh-caption" id="themeLabel">시스템</span>
@@ -243,14 +264,40 @@
 
 <main class="page">
   <div class="hero">
-    <div class="wh-overline" style="opacity:.8">design tokens · v1.0.0</div>
-    <h1 class="wh-display-md" style="margin: var(--wh-space-4) 0 0">winterholic-base</h1>
-    <p class="wh-body-lg">이 페이지의 모든 값은 토큰이다. 위 토글로 다크를 켜면 컴포넌트 코드 수정 없이 전부 바뀐다.</p>
-    <div class="row" style="justify-content:center; margin-top: var(--wh-space-8)">
-      <button class="btn btn--primary btn--xl btn--pill glow" style="background: var(--wh-base-white); color: var(--wh-brand-twilight)">시작하기</button>
-      <button class="btn btn--ghost btn--xl btn--pill" style="color: var(--wh-base-white)">문서 보기</button>
+    <div class="hero__content">
+      <div class="wh-overline" style="opacity:.8">design tokens · v1.1.1</div>
+      <h1 class="wh-display-md" style="margin: var(--wh-space-4) 0 0">차갑지 않고<br />맑은 기술</h1>
+      <p class="wh-body-lg">얼음 결정의 정밀함과 겨울 호수의 여백을 하나의 제품 경험으로 옮긴다.</p>
+      <div class="row" style="margin-top: var(--wh-space-8)">
+        <button class="btn btn--primary btn--xl btn--pill glow" style="background: var(--wh-base-white); color: var(--wh-brand-twilight)">시작하기</button>
+        <button class="btn btn--ghost btn--xl btn--pill" style="color: var(--wh-base-white)">문서 보기</button>
+      </div>
     </div>
   </div>
+
+  <!-- ===== 브랜드 자산 ===== -->
+  <section id="brand">
+    <h2 class="wh-heading-2">브랜드 자산</h2>
+    <p class="lead wh-body-sm">히어로의 길고 투명한 여섯 갈래 결정을 심볼로 축약했다. 윈티는 도움말·온보딩·빈 상태처럼 제품이 먼저 말을 거는 순간에만 쓴다.</p>
+    <div class="brand-assets">
+      <article>
+        <h3 class="sub wh-heading-4">기본 심볼</h3>
+        <div class="brand-stage"><img src="../assets/brand/logo-mark.svg" alt="winterholic 얼음 결정 심볼" /></div>
+      </article>
+      <article>
+        <h3 class="sub wh-heading-4">반전 락업</h3>
+        <div class="brand-stage brand-stage--dark"><img src="../assets/brand/logo-lockup-inverse.svg" alt="winterholic 반전 로고" /></div>
+      </article>
+      <article>
+        <h3 class="sub wh-heading-4">윈티</h3>
+        <div class="brand-stage brand-stage--pattern"><img class="mascot" src="../assets/brand/mascot-winty.webp" alt="winterholic 캐릭터 윈티" /></div>
+      </article>
+      <article>
+        <h3 class="sub wh-heading-4">파비콘</h3>
+        <div class="brand-stage"><div class="favicon-row"><img src="../assets/brand/favicon.svg" alt="작은 파비콘" /><img src="../assets/brand/favicon.svg" alt="중간 파비콘" /><img src="../assets/brand/favicon.svg" alt="큰 파비콘" /></div></div>
+      </article>
+    </div>
+  </section>
 
   <!-- ===== 색 ===== -->
   <section id="color">
@@ -516,7 +563,7 @@
   </section>
 
   <footer class="dark-aware">
-    <div class="wh-heading-3">winterholic-base v1.0.0</div>
+    <div class="wh-heading-3">winterholic-base v1.1.1</div>
     <p class="wh-body-sm" style="opacity:.8; margin: var(--wh-space-2) 0 0">토큰을 바꾸려면 <code>tokens/src</code> 를 고치고 <code>node tokens/build.mjs</code>. 문서는 <a href="../docs/00-decision-guide.md">docs/00-decision-guide.md</a> 부터.</p>
   </footer>
 </main>

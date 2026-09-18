@@ -18,7 +18,7 @@ winterholic 의 기본 디자인 시스템. 개인 프로젝트 대부분이 이
 | 다크모드 | 시맨틱 토큰이 자동 전환. 컴포넌트에 `dark:` 분기 없음 |
 | 접근성 | 텍스트 4.5:1, 비텍스트 3:1 을 빌드가 86쌍 자동 검사 |
 
-라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 전 토큰과 컴포넌트 예시가 라이트·다크로 보인다. 로고·캐릭터·파비콘·히어로 이미지는 [`examples/brand-assets.html`](examples/brand-assets.html)에서 한 번에 확인한다.
+라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 브랜드 자산부터 전 토큰과 컴포넌트 예시까지 라이트·다크로 한 번에 보인다.
 
 ## 설치
 
