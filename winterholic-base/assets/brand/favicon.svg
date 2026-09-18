@@ -1,10 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">winterholic favicon</title>
-  <desc id="desc">Three crisp ice prisms on Twilight Indigo.</desc>
+  <desc id="desc">The luminous aurora crystal on Twilight Indigo.</desc>
   <rect width="64" height="64" rx="14" fill="#1D2F6F"/>
-  <g stroke="#F7F9F9" stroke-opacity=".18" stroke-width=".35" stroke-linejoin="round">
-    <path fill="#69ADE5" d="m14 27 9-10 7 35H9Z"/><path fill="#D8F2FE" d="m23 17-4 22-5-12Z"/><path fill="#2081C3" d="m23 17 7 35-11-13Z"/>
-    <path fill="#63D2FF" d="m34 5 10 21-8 31-13-31Z"/><path fill="#F7F9F9" d="m34 5-11 21 9 7Z"/><path fill="#2081C3" d="m32 33 12-7-8 31Z"/>
-    <path fill="#55B3D9" d="m49 19 8 14-5 19H36l4-24Z"/><path fill="#D8F2FE" d="m49 19-9 9 8 6Z"/><path fill="#0A5E93" d="m48 34 9-1-5 19H36Z" opacity=".72"/>
-  </g>
+  <image href="logo-mark.png" x="5" y="5" width="54" height="54"/>
 </svg>

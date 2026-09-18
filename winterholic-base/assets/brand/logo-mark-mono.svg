@@ -1,9 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="winterholic ice cluster monochrome mark">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="864 80 640 640" role="img" aria-label="winterholic crystal monochrome mark">
   <g fill="currentColor">
-    <path d="m126 126 91 91 18 230-59 20-100-20 22-229Z"/>
-    <path d="m378 91 79 120-50 236-70 19-66-19 28-222Z"/>
-    <path d="m257 19 71 178-31 250-47 36-48-36-49-246Z"/>
-    <path d="m177 286 73 197-69-16-70-20Z"/>
-    <path d="m334 264 82 183-79 19-87 17Z"/>
+    <path d="M1183 125 1231 230 1228 337 1184 421 1134 338 1136 229Z"/>
+    <path d="M1184 421 1228 337 1315 295 1425 282 1357 351 1271 407Z"/>
+    <path d="M1184 421 1271 407 1352 461 1414 558 1301 533 1223 474Z"/>
+    <path d="M1184 421 1223 474 1224 593 1184 678 1138 594 1137 475Z"/>
+    <path d="M1184 421 1137 475 1064 532 950 558 1015 464 1096 408Z"/>
+    <path d="M1184 421 1096 408 1018 356 941 285 1051 297 1134 338Z"/>
   </g>
 </svg>
