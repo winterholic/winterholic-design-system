@@ -14,7 +14,7 @@ winterholic의 브랜드 모티프는 **오로라 아래 떠 있는 투명한 �
 | 파일 | 용도 |
 |---|---|
 | `assets/brand/logo-mark.svg` | 기본 컬러 심볼 |
-| `assets/brand/logo-mark.png` | 락업·파비콘용 투명 고해상도 심볼 원본 |
+| `assets/brand/logo-mark.png` | self-contained SVG와 래스터 파생 파일을 만드는 투명 심볼 원본 |
 | `assets/brand/logo-mark-mono.svg` | 단색 인쇄, 마스크, 작은 UI |
 | `assets/brand/logo-lockup.svg` | 밝은 면의 가로 로고 |
 | `assets/brand/logo-lockup-inverse.svg` | 어두운 브랜드 면의 가로 로고 |
