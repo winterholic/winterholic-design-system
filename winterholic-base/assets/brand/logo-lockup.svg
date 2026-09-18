@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">winterholic 로고</title>
+  <desc id="desc">얼음 결정 W 심볼과 winterholic 워드마크의 가로 조합</desc>
+  <defs>
+    <linearGradient id="ice" x1="18" y1="12" x2="166" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63D2FF"/>
+      <stop offset="0.52" stop-color="#2081C3"/>
+      <stop offset="1" stop-color="#1D2F6F"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10 8) scale(.64)" stroke="#F7F9F9" stroke-width="4" stroke-linejoin="round">
+    <path fill="url(#ice)" d="M128 10 153 76 128 106 103 76Z"/>
+    <path fill="#78D5D7" d="m246 60-69 11-37 31 42 8Z"/>
+    <path fill="url(#ice)" d="m246 196-64-50-42 8 37 31Z"/>
+    <path fill="#78D5D7" d="m128 246 25-66-25-30-25 30Z"/>
+    <path fill="url(#ice)" d="m10 196 69-11 37-31-42-8Z"/>
+    <path fill="#78D5D7" d="m10 60 64 50 42-8-37-31Z"/>
+    <path fill="#1D2F6F" d="m128 78 43 25v50l-43 25-43-25v-50Z"/>
+    <path d="m98 113 14 35 16-23 16 23 14-35" fill="none" stroke="#F7F9F9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="196" y="116" fill="#2B3139" font-family="Pretendard Variable, Pretendard, Inter, sans-serif" font-size="74" font-weight="700" letter-spacing="-1.5">winterholic</text>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">winterholic 얼음 결정 로고</title>
+  <desc id="desc">여섯 갈래 얼음 결정 안에 소문자 브랜드의 W 구조를 넣은 심볼</desc>
+  <defs>
+    <linearGradient id="ice" x1="48" y1="32" x2="208" y2="224" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#63D2FF"/>
+      <stop offset="0.52" stop-color="#2081C3"/>
+      <stop offset="1" stop-color="#1D2F6F"/>
+    </linearGradient>
+    <linearGradient id="aqua" x1="24" y1="52" x2="220" y2="204" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#78D5D7"/>
+      <stop offset="1" stop-color="#2081C3"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#F7F9F9" stroke-width="4" stroke-linejoin="round">
+    <path fill="url(#ice)" d="M128 10 153 76 128 106 103 76Z"/>
+    <path fill="url(#aqua)" d="m246 60-69 11-37 31 42 8Z"/>
+    <path fill="url(#ice)" d="m246 196-64-50-42 8 37 31Z"/>
+    <path fill="url(#aqua)" d="m128 246 25-66-25-30-25 30Z"/>
+    <path fill="url(#ice)" d="m10 196 69-11 37-31-42-8Z"/>
+    <path fill="url(#aqua)" d="m10 60 64 50 42-8-37-31Z"/>
+    <path fill="#1D2F6F" d="m128 78 43 25v50l-43 25-43-25v-50Z"/>
+  </g>
+  <path d="m98 113 14 35 16-23 16 23 14-35" fill="none" stroke="#F7F9F9" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

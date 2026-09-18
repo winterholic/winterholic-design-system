@@ -75,11 +75,12 @@ Lucide 에 없는 아이콘은 같은 규격(24 그리드, 2px 선, round cap/jo
 
 ## 6. 로고
 
-- 워드마크 `winterholic` 는 Pretendard 700, 자간 -0.02em, 소문자.
-- 색: 라이트 `text.primary` 또는 `text.brand`(blue.700), 다크 `text.primary`(neutral.50) 또는 cyan.300. 브랜드 면 위에서는 white.
-- 심볼이 필요하면 `gradient.aurora` 채움의 눈송이·얼음 결정 모티브. 단색 버전은 `brand.steel`.
-- 최소 높이 24(헤더), 좌우 여백은 로고 높이의 1/2 이상 비운다.
-- 파비콘: `brand.steel` 배경 `radius.md`(32 기준 7px) + 흰 심볼 또는 'w'.
+- 정본 파일은 `assets/brand/`에 있다. 새로 그리지 말고 `logo-mark.svg`, `logo-lockup.svg`, `logo-lockup-inverse.svg` 중 상황에 맞는 것을 쓴다.
+- 워드마크 `winterholic`은 Pretendard 700, 자간 -0.02em, 소문자다.
+- 기본 심볼은 여섯 갈래 얼음 결정과 `W` 결합부다. 컬러 버전의 팔레트와 면 배치를 임의로 바꾸지 않는다.
+- 최소 높이 24(헤더), 심볼 단독은 20. 좌우 여백은 로고 높이의 1/2 이상 비운다.
+- 파비콘은 `assets/brand/favicon.svg`를 우선하고, PNG 폴백은 16·32·48px을 제공한다.
+- 캐릭터·히어로·장식까지 포함한 전체 규칙은 [14 브랜드 자산](14-brand-assets.md)을 따른다.
 
 ## 7. 이미지
 

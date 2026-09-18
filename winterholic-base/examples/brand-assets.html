@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>winterholic 브랜드 자산</title>
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/typography.css" />
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--wh-color-surface-canvas); color: var(--wh-color-text-primary); }
+    main { width: min(1180px, calc(100% - var(--wh-space-8))); margin: 0 auto; padding: var(--wh-space-12) 0 var(--wh-space-20); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: var(--wh-space-6); margin-bottom: var(--wh-space-10); }
+    header img { width: min(360px, 65vw); height: auto; }
+    .eyebrow { color: var(--wh-color-text-brand); margin: 0 0 var(--wh-space-2); }
+    h1, h2, p { margin-top: 0; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--wh-space-6); }
+    .card { overflow: hidden; background: var(--wh-color-surface-default); border: var(--wh-border-width-hairline) solid var(--wh-color-border-default); border-radius: var(--wh-radius-xl); box-shadow: var(--wh-shadow-sm); }
+    .card__head { padding: var(--wh-space-5) var(--wh-space-5) 0; }
+    .stage { min-height: 310px; display: grid; place-items: center; padding: var(--wh-space-8); background: var(--wh-gradient-frost); }
+    .stage--dark { background: var(--wh-gradient-brand); }
+    .stage--pattern { background: url('../assets/brand/pattern-frost.svg') center / 512px, var(--wh-color-surface-default); }
+    .stage img { max-width: 100%; max-height: 250px; }
+    .mark { width: 190px; }
+    .hero { position: relative; grid-column: 1 / -1; min-height: 460px; background: #1D2F6F url('../assets/brand/brand-hero.png') 65% center / cover no-repeat; }
+    .hero__copy { position: absolute; inset: 0 52% 0 0; display: flex; flex-direction: column; justify-content: center; padding: var(--wh-space-10); color: var(--wh-color-text-on-brand); background: linear-gradient(90deg, rgba(29,47,111,.94), rgba(29,47,111,.54), transparent); }
+    .hero__copy p { max-width: 33ch; color: inherit; opacity: .88; }
+    .mascot { width: 260px; filter: drop-shadow(0 18px 28px rgba(29,47,111,.18)); }
+    .favicon-row { display: flex; align-items: end; gap: var(--wh-space-6); }
+    .favicon-row img:nth-child(1) { width: 32px; }
+    .favicon-row img:nth-child(2) { width: 64px; }
+    .favicon-row img:nth-child(3) { width: 128px; }
+    code { color: var(--wh-color-text-brand); }
+    @media (max-width: 760px) {
+      main { width: min(100% - var(--wh-space-6), 1180px); padding-top: var(--wh-space-8); }
+      header { flex-direction: column; align-items: flex-start; }
+      header img { width: min(100%, 320px); }
+      .grid { grid-template-columns: 1fr; }
+      .hero { grid-column: auto; min-height: 560px; background-position: 70% center; }
+      .hero__copy { inset: auto 0 0; padding: var(--wh-space-8) var(--wh-space-5); background: linear-gradient(0deg, rgba(29,47,111,.96), rgba(29,47,111,.68), transparent); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="wh-overline eyebrow">BRAND ASSETS · BASE 1.1</p>
+        <h1 class="wh-heading-1">겨울을 하나의 표정으로</h1>
+      </div>
+      <img src="../assets/brand/logo-lockup.svg" alt="winterholic" />
+    </header>
+    <section class="grid" aria-label="브랜드 자산 미리보기">
+      <article class="card hero">
+        <div class="hero__copy">
+          <p class="wh-overline">CALM · PRECISE · CLEAR</p>
+          <h2 class="wh-display-md">차갑지 않고<br />맑은 기술</h2>
+          <p class="wh-body-md">얼음 결정의 정밀함과 겨울 호수의 여백을 제품 경험으로 옮깁니다.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="card__head"><h2 class="wh-heading-3">기본 심볼</h2><p class="wh-body-sm">여섯 갈래 결정 + W 결합부</p></div>
+        <div class="stage"><img class="mark" src="../assets/brand/logo-mark.svg" alt="winterholic 얼음 결정 심볼" /></div>
+      </article>
+      <article class="card">
+        <div class="card__head"><h2 class="wh-heading-3">반전 로고</h2><p class="wh-body-sm">히어로·푸터·어두운 브랜드 면</p></div>
+        <div class="stage stage--dark"><img src="../assets/brand/logo-lockup-inverse.svg" alt="winterholic 반전 로고" /></div>
+      </article>
+      <article class="card">
+        <div class="card__head"><h2 class="wh-heading-3">윈티</h2><p class="wh-body-sm">도움말·온보딩·빈 상태용 얼음 정령</p></div>
+        <div class="stage stage--pattern"><img class="mascot" src="../assets/brand/mascot-winty.png" alt="winterholic 캐릭터 윈티" /></div>
+      </article>
+      <article class="card">
+        <div class="card__head"><h2 class="wh-heading-3">파비콘</h2><p class="wh-body-sm">16px에서도 남는 단순한 실루엣</p></div>
+        <div class="stage"><div class="favicon-row"><img src="../assets/brand/favicon.svg" alt="32px 파비콘" /><img src="../assets/brand/favicon.svg" alt="64px 파비콘" /><img src="../assets/brand/favicon.svg" alt="128px 파비콘" /></div></div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

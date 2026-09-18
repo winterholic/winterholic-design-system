@@ -18,7 +18,7 @@ winterholic 의 기본 디자인 시스템. 개인 프로젝트 대부분이 이
 | 다크모드 | 시맨틱 토큰이 자동 전환. 컴포넌트에 `dark:` 분기 없음 |
 | 접근성 | 텍스트 4.5:1, 비텍스트 3:1 을 빌드가 86쌍 자동 검사 |
 
-라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 전 토큰과 컴포넌트 예시가 라이트·다크로 보인다.
+라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 전 토큰과 컴포넌트 예시가 라이트·다크로 보인다. 로고·캐릭터·파비콘·히어로 이미지는 [`examples/brand-assets.html`](examples/brand-assets.html)에서 한 번에 확인한다.
 
 ## 설치
 
@@ -76,6 +76,7 @@ tokens.typography['heading-1'].value  // { fontFamily, fontSize, fontWeight, lin
 | [11 데이터 시각화](docs/11-data-viz.md) | 차트 색·종류·규격·KPI 타일 | 차트·대시보드 |
 | [12 페이지 패턴](docs/12-page-patterns.md) | 로그인·대시보드·목록·상세·폼·설정·랜딩 골격 | 새 화면 시작 |
 | [13 운영](docs/13-governance.md) | 파일 구조, 토큰 변경 절차, 이름 규칙, 버전, 채택 기준 | 토큰 추가·수정 |
+| [14 브랜드 자산](docs/14-brand-assets.md) | 로고·파비콘·얼음 결정·윈티 캐릭터·브랜드 이미지 | 브랜딩·메타 이미지 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트용 규칙 요약 | Claude 로 UI 만들 때 |
 
 ## 토큰 수정

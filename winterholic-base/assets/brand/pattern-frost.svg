@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">winterholic 서리 패턴</title>
+  <desc id="desc">배경 장식에 반복해서 쓰는 옅은 얼음 결정 패턴</desc>
+  <rect width="512" height="512" fill="#F7F9F9"/>
+  <g fill="none" stroke="#2081C3" stroke-width="3" opacity=".12" stroke-linecap="round">
+    <path d="M96 36v120M44 66l104 60M44 126l104-60M96 36l-13 18m13-18 13 18M44 66l22 2m-22-2 9 20M44 126l9-20m-9 20 22-2M148 126l-22-2m22 2-9-20M148 66l-9 20m9-20-22 2"/>
+    <path d="M396 284v168m-73-132 146 84m-146 0 146-84m-73-36-18 25m18-25 18 25m-91 11 31 3m-31-3 13 28m-13 56 13-28m-13 28 31-3m115 3-31-3m31 3-13-28m13-56-13 28m13-28-31 3"/>
+    <path d="M70 324v92m-40-69 80 46m-80 0 80-46"/>
+    <path d="M350 54v82m-36-61 72 41m-72 0 72-41"/>
+  </g>
+  <circle cx="238" cy="248" r="4" fill="#78D5D7" opacity=".22"/>
+  <circle cx="460" cy="92" r="6" fill="#63D2FF" opacity=".18"/>
+  <circle cx="196" cy="448" r="5" fill="#1D2F6F" opacity=".12"/>
+</svg>

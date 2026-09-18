@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">winterholic 장식용 얼음 결정</title>
+  <desc id="desc">브랜드 히어로와 빈 상태에 쓰는 여섯 갈래 기하학 얼음 결정</desc>
+  <defs>
+    <linearGradient id="g" x1="90" y1="64" x2="422" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F9F9"/>
+      <stop offset="0.28" stop-color="#63D2FF"/>
+      <stop offset="0.68" stop-color="#2081C3"/>
+      <stop offset="1" stop-color="#1D2F6F"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)" stroke="#F7F9F9" stroke-width="7" stroke-linejoin="round">
+    <path d="m256 20 48 151-48 58-48-58Z"/>
+    <path d="m492 138-154 30-58 48 92 11Z"/>
+    <path d="m492 374-120-89-92 11 58 48Z"/>
+    <path d="m256 492-48-151 48-58 48 58Z"/>
+    <path d="m20 374 154-30 58-48-92-11Z"/>
+    <path d="m20 138 120 89 92-11-58-48Z"/>
+    <path d="m256 164 80 46v92l-80 46-80-46v-92Z"/>
+  </g>
+</svg>
