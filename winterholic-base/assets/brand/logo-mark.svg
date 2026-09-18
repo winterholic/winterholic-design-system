@@ -1,72 +1,65 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">winterholic 프리즘 얼음 결정 로고</title>
-  <desc id="desc">서로 다른 깊이와 방향의 푸른 결정면 여섯 갈래가 밝은 중심으로 모이는 얼음 결정</desc>
+  <title id="title">winterholic ice cluster</title>
+  <desc id="desc">An elegant cluster of naturally varied translucent ice prisms growing upward.</desc>
   <defs>
-    <linearGradient id="snow" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#D8F2FE"/>
+    <linearGradient id="snow" x1=".08" y1=".05" x2=".9" y2=".96">
+      <stop stop-color="#FFFFFF"/><stop offset=".48" stop-color="#D8F2FE"/><stop offset="1" stop-color="#90C9F9"/>
     </linearGradient>
-    <linearGradient id="ice" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#AFE4FC"/><stop offset="1" stop-color="#63D2FF"/>
+    <linearGradient id="ice" x1=".12" y1=".04" x2=".86" y2=".96">
+      <stop stop-color="#BCE0FE"/><stop offset=".48" stop-color="#63D2FF"/><stop offset="1" stop-color="#2081C3"/>
     </linearGradient>
-    <linearGradient id="lake" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#69ADE5"/><stop offset="1" stop-color="#2081C3"/>
+    <linearGradient id="lake" x1=".12" y1=".04" x2=".88" y2=".96">
+      <stop stop-color="#69ADE5"/><stop offset=".54" stop-color="#2081C3"/><stop offset="1" stop-color="#0A5E93"/>
     </linearGradient>
-    <linearGradient id="deep" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="deep" x1=".12" y1=".06" x2=".9" y2=".96">
       <stop stop-color="#2081C3"/><stop offset="1" stop-color="#0E476F"/>
     </linearGradient>
-    <filter id="depth" x="-16%" y="-16%" width="132%" height="132%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1D2F6F" flood-opacity=".16"/>
+    <filter id="depth" x="-18%" y="-18%" width="136%" height="142%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1D2F6F" flood-opacity=".14"/>
     </filter>
   </defs>
 
-  <g filter="url(#depth)" stroke-linejoin="round">
-    <!-- north: tallest, cold highlight on the left -->
-    <path fill="url(#ice)" d="m256 256-42-82 42-156 54 147Z"/>
-    <path fill="url(#snow)" d="m214 174 42-156-15 157Z"/>
-    <path fill="#63D2FF" d="m256 18 54 147-38 15Z"/>
-    <path fill="#2F6075" d="m256 256-15-81 31 5Z"/>
-    <path fill="#90C9F9" d="m241 175 15-157 16 162Z" opacity=".82"/>
+  <g filter="url(#depth)" stroke="#F7F9F9" stroke-opacity=".22" stroke-width="1" stroke-linejoin="round">
+    <!-- left prism -->
+    <path fill="url(#ice)" d="m126 126 91 91 18 230-59 20-100-20 22-229Z"/>
+    <path fill="url(#snow)" d="m126 126-28 92 57 53Z"/>
+    <path fill="#63D2FF" d="m126 126 91 91-62 54Z" opacity=".7"/>
+    <path fill="#69ADE5" d="m98 218 57 53 21 196-100-20Z" opacity=".72"/>
+    <path fill="url(#deep)" d="m155 271 62-54 18 230-59 20Z" opacity=".76"/>
+    <path fill="#BCE0FE" d="m98 218 57 53-22 92Z" opacity=".38"/>
+    <path fill="#FFFFFF" d="m126 126 29 145-57-53Z" opacity=".3"/>
 
-    <!-- north-east: broader, layered like the hero crystal -->
-    <path fill="url(#lake)" d="m256 256 54-91 162-49-113 114Z"/>
-    <path fill="url(#snow)" d="m310 165 162-49-126 81Z"/>
-    <path fill="#78D5D7" d="m472 116-113 114-13-33Z" opacity=".86"/>
-    <path fill="#0A5E93" d="m256 256 90-59 13 33Z"/>
-    <path fill="#90C9F9" d="m256 256 54-91 36 32Z" opacity=".84"/>
+    <!-- right prism, lower and wider -->
+    <path fill="url(#lake)" d="m378 91 79 120-50 236-70 19-66-19 28-222Z"/>
+    <path fill="url(#snow)" d="m378 91-79 134 72 45Z"/>
+    <path fill="#78D5D7" d="m378 91 79 120-86 59Z" opacity=".72"/>
+    <path fill="#0E476F" d="m299 225 72 45-34 196-66-19Z" opacity=".72"/>
+    <path fill="#63D2FF" d="m371 270 86-59-50 236-70 19Z" opacity=".58"/>
+    <path fill="#AFE4FC" d="m371 270 45 65-79 131Z" opacity=".26"/>
+    <path fill="#FFFFFF" d="m378 91-7 179-25-107Z" opacity=".28"/>
 
-    <!-- south-east: translucent edge, deep inner plane -->
-    <path fill="url(#ice)" d="m256 256 103-26 99 174-154-59Z"/>
-    <path fill="#D8F2FE" d="m359 230 99 174-112-105Z"/>
-    <path fill="#63D2FF" d="m458 404-154-59 42-46Z" opacity=".76"/>
-    <path fill="url(#deep)" d="m256 256 90 43-42 46Z"/>
-    <path fill="#BCE0FE" d="m256 256 103-26-13 69Z" opacity=".9"/>
+    <!-- central hero prism overlaps both rear crystals -->
+    <path fill="url(#ice)" d="m257 19 71 178-31 250-47 36-48-36-49-246Z"/>
+    <path fill="url(#snow)" d="m257 19-84 182 73 53Z"/>
+    <path fill="#63D2FF" d="m257 19 71 178-82 57Z" opacity=".74"/>
+    <path fill="#69ADE5" d="m173 201 73 53 4 229-48-36Z" opacity=".68"/>
+    <path fill="url(#deep)" d="m246 254 82-57-31 250-47 36Z" opacity=".68"/>
+    <path fill="#AFE4FC" d="m173 201 73 53-26 103Z" opacity=".42"/>
+    <path fill="#63D2FF" d="m246 254 82-57-31 112Z" opacity=".34"/>
+    <path fill="#90C9F9" d="m220 357 26-103 4 229Z" opacity=".48"/>
+    <path fill="#0A5E93" d="m246 254 51 55-47 174Z" opacity=".38"/>
+    <path fill="#FFFFFF" d="m257 19-11 235-24-124Z" opacity=".34"/>
 
-    <!-- south: long clear keel -->
-    <path fill="url(#lake)" d="m256 256 48 89-48 149-49-147Z"/>
-    <path fill="url(#snow)" d="m304 345-48 149 15-151Z"/>
-    <path fill="#63D2FF" d="m256 494-49-147 34-8Z" opacity=".85"/>
-    <path fill="#0E476F" d="m256 256 15 87-30-4Z"/>
-    <path fill="#90C9F9" d="m241 339 15 155 15-151Z" opacity=".72"/>
+    <!-- front shards make the cluster feel grown, not assembled -->
+    <path fill="url(#snow)" d="m177 286 73 197-69-16-70-20Z"/>
+    <path fill="#69ADE5" d="m177 286 73 197-69-16Z" opacity=".68"/>
+    <path fill="#D8F2FE" d="m177 286 4 181-70-20Z" opacity=".78"/>
 
-    <!-- south-west: darker base for directional lighting -->
-    <path fill="url(#deep)" d="m256 256-49 91-155 55 99-172Z"/>
-    <path fill="#BCE0FE" d="M207 347 52 402l112-106Z"/>
-    <path fill="#55B3D9" d="m52 402 99-172 13 66Z" opacity=".82"/>
-    <path fill="#0A5E93" d="m256 256-92 40-13-66Z"/>
-    <path fill="#90C9F9" d="m256 256-49 91-43-51Z" opacity=".78"/>
+    <path fill="url(#ice)" d="m334 264 82 183-79 19-87 17Z"/>
+    <path fill="#63D2FF" d="m334 264 82 183-79 19Z" opacity=".62"/>
+    <path fill="#0A5E93" d="m334 264 3 202-87 17Z" opacity=".66"/>
+    <path fill="#D8F2FE" d="m334 264 27 61-24 141Z" opacity=".34"/>
 
-    <!-- north-west: brightest rim balances the dark south-west -->
-    <path fill="url(#ice)" d="m256 256-105-26L42 120l172 54Z"/>
-    <path fill="url(#snow)" d="M151 230 42 120l137 72Z"/>
-    <path fill="#63D2FF" d="m42 120 172 54-35 18Z" opacity=".68"/>
-    <path fill="#2081C3" d="m256 256-77-64-28 38Z"/>
-    <path fill="#BCE0FE" d="m256 256-42-82-35 18Z" opacity=".88"/>
-
-    <!-- small luminous core hides no detail but joins the six crystals -->
-    <path fill="#F7F9F9" d="m256 244 11 6 1 12-11 7-11-6-1-12Z" opacity=".94"/>
-    <path fill="#63D2FF" d="m256 249 6 4-1 7-6 3-5-4 1-7Z" opacity=".72"/>
-
-    <!-- restrained outer edge, never a white cartoon outline -->
-    <path fill="none" stroke="#BCE0FE" stroke-width="1.5" opacity=".72" d="m256 18 54 147 162-49-113 114 99 174-154-59-48 149-49-147-155 55 99-172L42 120l172 54Z"/>
+    <path fill="none" stroke="#FFFFFF" stroke-opacity=".48" stroke-width="1.4" d="m257 19-11 235m132-163-7 179M126 126l29 145m22 15 4 161m153-183 3 183"/>
   </g>
 </svg>

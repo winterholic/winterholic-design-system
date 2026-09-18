@@ -1,14 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">winterholic 파비콘</title>
-  <desc id="desc">Twilight Indigo 바탕 위의 입체 여섯 갈래 얼음 결정</desc>
+  <title id="title">winterholic favicon</title>
+  <desc id="desc">Three crisp ice prisms on Twilight Indigo.</desc>
   <rect width="64" height="64" rx="14" fill="#1D2F6F"/>
-  <g transform="translate(6 6) scale(.102)" stroke-linejoin="round">
-    <path fill="#BCE0FE" d="m256 256-42-82 42-156 54 147Z"/><path fill="#F7F9F9" d="m214 174 42-156-15 157Z"/><path fill="#63D2FF" d="m256 18 54 147-38 15Z"/><path fill="#2F6075" d="m256 256-15-81 31 5Z"/>
-    <path fill="#69ADE5" d="m256 256 54-91 162-49-113 114Z"/><path fill="#F7F9F9" d="m310 165 162-49-126 81Z"/><path fill="#78D5D7" d="m472 116-113 114-13-33Z"/><path fill="#0A5E93" d="m256 256 90-59 13 33Z"/>
-    <path fill="#AFE4FC" d="m256 256 103-26 99 174-154-59Z"/><path fill="#D8F2FE" d="m359 230 99 174-112-105Z"/><path fill="#2081C3" d="m256 256 90 43-42 46Z"/>
-    <path fill="#69ADE5" d="m256 256 48 89-48 149-49-147Z"/><path fill="#F7F9F9" d="m304 345-48 149 15-151Z"/><path fill="#0E476F" d="m256 256 15 87-30-4Z"/>
-    <path fill="#2081C3" d="m256 256-49 91-155 55 99-172Z"/><path fill="#BCE0FE" d="M207 347 52 402l112-106Z"/><path fill="#0A5E93" d="m256 256-92 40-13-66Z"/>
-    <path fill="#AFE4FC" d="m256 256-105-26L42 120l172 54Z"/><path fill="#F7F9F9" d="M151 230 42 120l137 72Z"/><path fill="#2081C3" d="m256 256-77-64-28 38Z"/>
-    <path fill="#F7F9F9" d="m256 244 11 6 1 12-11 7-11-6-1-12Z"/>
+  <g stroke="#F7F9F9" stroke-opacity=".18" stroke-width=".35" stroke-linejoin="round">
+    <path fill="#69ADE5" d="m14 27 9-10 7 35H9Z"/><path fill="#D8F2FE" d="m23 17-4 22-5-12Z"/><path fill="#2081C3" d="m23 17 7 35-11-13Z"/>
+    <path fill="#63D2FF" d="m34 5 10 21-8 31-13-31Z"/><path fill="#F7F9F9" d="m34 5-11 21 9 7Z"/><path fill="#2081C3" d="m32 33 12-7-8 31Z"/>
+    <path fill="#55B3D9" d="m49 19 8 14-5 19H36l4-24Z"/><path fill="#D8F2FE" d="m49 19-9 9 8 6Z"/><path fill="#0A5E93" d="m48 34 9-1-5 19H36Z" opacity=".72"/>
   </g>
 </svg>

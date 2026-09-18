@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">winterholic 단색 얼음 결정 로고</title>
-  <desc id="desc">단색 인쇄와 마스킹에 쓰는 세로축이 긴 여섯 갈래 결정</desc>
-  <path fill="currentColor" d="m256 18 54 147 162-49-113 114 99 174-154-59-48 149-49-147-155 55 99-172L42 120l172 54Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="winterholic ice cluster monochrome mark">
+  <g fill="currentColor">
+    <path d="m126 126 91 91 18 230-59 20-100-20 22-229Z"/>
+    <path d="m378 91 79 120-50 236-70 19-66-19 28-222Z"/>
+    <path d="m257 19 71 178-31 250-47 36-48-36-49-246Z"/>
+    <path d="m177 286 73 197-69-16-70-20Z"/>
+    <path d="m334 264 82 183-79 19-87 17Z"/>
+  </g>
 </svg>

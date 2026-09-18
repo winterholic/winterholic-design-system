@@ -4,7 +4,7 @@ winterholic 의 디자인 시스템 모음. 시스템 하나가 디렉터리 하
 
 | 디렉터리 | 용도 | 상태 |
 |---|---|---|
-| [`winterholic-base/`](winterholic-base/) | 기본. 개인 프로젝트 대부분이 쓰는 시스템 | v1.1.3 |
+| [`winterholic-base/`](winterholic-base/) | 기본. 개인 프로젝트 대부분이 쓰는 시스템 | v1.1.4 |
 
 새 시스템을 파생하는 법: [`winterholic-base/docs/13-governance.md`](winterholic-base/docs/13-governance.md) §6.
 
