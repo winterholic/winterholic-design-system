@@ -1,23 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 220" role="img" aria-labelledby="title desc">
   <title id="title">winterholic 반전 로고</title>
-  <desc id="desc">어두운 브랜드 면 위에 쓰는 얼음 결정과 흰색 워드마크</desc>
+  <desc id="desc">어두운 브랜드 면 위에 쓰는 입체 얼음 결정과 흰색 워드마크</desc>
   <defs>
-    <g id="arm" stroke="#BCE0FE" stroke-width="2" stroke-linejoin="round">
-      <path fill="#90C9F9" d="m128 128-31-47 31-73 31 73Z"/>
-      <path fill="#F7F9F9" d="m128 128-31-47 31-73-12 75Z"/>
-      <path fill="#63D2FF" d="m128 128-12-45 12-75 10 75Z"/>
-      <path fill="#2081C3" d="m128 128 10-45 21-2Z"/>
-      <path fill="#78D5D7" d="m128 128-31-47 19 2Z"/>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#63D2FF" flood-opacity=".2"/></filter>
+    <g id="arm">
+      <path fill="#D8F2FE" d="M256 256 194 170 256 18 318 170Z"/>
+      <path fill="#BCE0FE" d="m256 18-62 152 41 1Z"/><path fill="#F7F9F9" d="m256 18-21 153 21-67Z"/>
+      <path fill="#63D2FF" d="m256 18 22 153-22-67Z"/><path fill="#90C9F9" d="m256 18 62 152-40 1Z"/>
+      <path fill="#55B3D9" d="m256 256-62-86 41 1Z"/><path fill="#0A5E93" d="m256 256-21-85 21-67Z"/>
+      <path fill="#2081C3" d="m256 256 22-85-22-67Z"/><path fill="#AFE4FC" d="m256 256 62-86-40 1Z"/>
+      <path fill="none" stroke="#D8F2FE" stroke-width="2" stroke-linejoin="round" d="M256 256 194 170 256 18 318 170Z"/>
     </g>
   </defs>
-  <g transform="translate(6 8) scale(.64)">
-    <use href="#arm"/>
-    <use href="#arm" transform="rotate(60 128 128)"/>
-    <use href="#arm" transform="rotate(120 128 128)"/>
-    <use href="#arm" transform="rotate(180 128 128)"/>
-    <use href="#arm" transform="rotate(240 128 128)"/>
-    <use href="#arm" transform="rotate(300 128 128)"/>
-    <circle cx="128" cy="128" r="3" fill="#F7F9F9"/>
+  <g transform="translate(4 6) scale(.4)" filter="url(#glow)">
+    <use href="#arm"/><use href="#arm" transform="translate(256 256) rotate(60) scale(.89) translate(-256 -256)"/>
+    <use href="#arm" transform="translate(256 256) rotate(120) scale(.89) translate(-256 -256)"/><use href="#arm" transform="rotate(180 256 256)"/>
+    <use href="#arm" transform="translate(256 256) rotate(240) scale(.89) translate(-256 -256)"/><use href="#arm" transform="translate(256 256) rotate(300) scale(.89) translate(-256 -256)"/>
   </g>
-  <text x="196" y="116" fill="#F7F9F9" font-family="Pretendard Variable, Pretendard, Inter, sans-serif" font-size="74" font-weight="700" letter-spacing="-1.5">winterholic</text>
+  <text x="246" y="143" fill="#F7F9F9" font-family="Pretendard Variable, Pretendard, Inter, sans-serif" font-size="84" font-weight="700" letter-spacing="-1.8">winterholic</text>
 </svg>
