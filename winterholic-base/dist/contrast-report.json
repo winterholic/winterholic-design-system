@@ -1,0 +1,690 @@
+[
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 12.41,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 13.12,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 6.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 6.98,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 4.5,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 4.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 4.5,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 4.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 4.63,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 4.89,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 6.55,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 6.92,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.canvas",
+    "ratio": 6.25,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.default",
+    "ratio": 6.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.canvas",
+    "ratio": 6.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.default",
+    "ratio": 7.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 7.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 7.67,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.canvas",
+    "ratio": 6.55,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.default",
+    "ratio": 6.92,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 4.89,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 5.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 9.82,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.ghost.text",
+    "bg": "color.surface.default",
+    "ratio": 6.92,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 12.44,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 13.12,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 6.23,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 4.63,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 4.37,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 6.55,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 8.32,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 3.29,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 7.13,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 5.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 4.74,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 6.45,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 4.89,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 4.56,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 5.92,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 4.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 4.04,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.default",
+    "ratio": 4.21,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.border.input-strict",
+    "bg": "color.surface.default",
+    "ratio": 3.49,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 15.22,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 12.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 9.23,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 7.39,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 6.73,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 5.39,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 6.73,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 5.39,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 9.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 7.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 9.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 7.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.canvas",
+    "ratio": 9.63,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.default",
+    "ratio": 7.72,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.canvas",
+    "ratio": 9.14,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.default",
+    "ratio": 7.32,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 8.85,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 7.09,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.canvas",
+    "ratio": 9.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.default",
+    "ratio": 7.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 6.79,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 6.28,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 11.14,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.ghost.text",
+    "bg": "color.surface.default",
+    "ratio": 7.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 10,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 12.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 9.53,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 7.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 7.03,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 9.22,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 10.39,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 9.22,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 9.12,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 6.28,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 6.48,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 9.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 6.79,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 6.83,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 7.05,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 6.73,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 5.53,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.default",
+    "ratio": 7.62,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.border.input-strict",
+    "bg": "color.surface.default",
+    "ratio": 3.75,
+    "min": 3,
+    "pass": true
+  }
+]

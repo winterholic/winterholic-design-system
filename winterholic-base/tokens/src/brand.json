@@ -1,0 +1,18 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "coolors.co 에서 고른 원본 5색 + 심색 1색. 램프(palette.json)의 앵커이자 브랜드 문서에서 부르는 이름. 사용처 코드는 이 토큰을 직접 참조하지 않고 시맨틱 토큰을 거친다.",
+    "snow":     { "$value": "#F7F9F9", "$description": "Bright Snow · 캔버스 배경(라이트)" },
+    "mist":     { "$value": "#BED8D4", "$description": "Ash Grey · 부드러운 장식 톤, 일러스트·빈 상태 배경" },
+    "aqua":     { "$value": "#78D5D7", "$description": "Pearl Aqua · 보조 강조, 그라데이션 중간" },
+    "ice":      { "$value": "#63D2FF", "$description": "Frozen Lake · 강조, 그라데이션 끝, 다크모드 주색" },
+    "steel":    { "$value": "#2081C3", "$description": "Steel Blue · 브랜드 주색(= blue.500)" },
+    "twilight": { "$value": "#1D2F6F", "$description": "Twilight Indigo · 브랜드 심색(= indigo.900), 히어로·다크 표면" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

@@ -1,0 +1,413 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(다크). 라이트와 경로가 1:1 로 같다 — 빠진 토큰이 있으면 빌드가 실패한다. 다크는 밝기 반전이 아니라 의미 재매핑이다: 위로 올라올수록 밝아진다(canvas 950 < default 900 < raised 800).",
+    "surface": {
+      "canvas": {
+        "$value": "{neutral.950}"
+      },
+      "default": {
+        "$value": "{neutral.900}"
+      },
+      "raised": {
+        "$value": "{neutral.800}"
+      },
+      "sunken": {
+        "$value": "#12161B",
+        "$description": "neutral.950 보다 한 단계 더 어두운 값. 램프 밖이라 리터럴로 둔다."
+      },
+      "overlay": {
+        "$value": "#00000099",
+        "$description": "black 60%"
+      },
+      "inverse": {
+        "$value": "{neutral.50}"
+      },
+      "brand": {
+        "$value": "{indigo.800}"
+      },
+      "brand-subtle": {
+        "$value": "{blue.950}"
+      },
+      "disabled": {
+        "$value": "{neutral.800}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{neutral.50}",
+        "$description": "canvas(#1B2027) 대비 15:1 이상"
+      },
+      "secondary": {
+        "$value": "{neutral.300}"
+      },
+      "tertiary": {
+        "$value": "{neutral.400}",
+        "$description": "canvas 대비 약 6.7:1"
+      },
+      "placeholder": {
+        "$value": "{neutral.400}"
+      },
+      "disabled": {
+        "$value": "{neutral.600}"
+      },
+      "inverse": {
+        "$value": "{neutral.900}"
+      },
+      "on-brand": {
+        "$value": "{base.white}",
+        "$description": "surface.brand(indigo.800) 위 글자. action.primary 위 글자는 action.primary.text 를 쓴다."
+      },
+      "brand": {
+        "$value": "{cyan.300}",
+        "$description": "= Frozen Lake. 다크에서는 ice 가 브랜드 글자색을 맡는다"
+      },
+      "link": {
+        "$value": "{cyan.300}"
+      },
+      "link-hover": {
+        "$value": "{cyan.200}"
+      },
+      "success": {
+        "$value": "{green.300}"
+      },
+      "warning": {
+        "$value": "{amber.300}"
+      },
+      "danger": {
+        "$value": "{red.300}"
+      },
+      "info": {
+        "$value": "{cyan.300}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{neutral.900}"
+      },
+      "default": {
+        "$value": "{neutral.800}"
+      },
+      "strong": {
+        "$value": "{neutral.700}"
+      },
+      "input-strict": {
+        "$value": "{neutral.500}"
+      },
+      "brand": {
+        "$value": "{cyan.300}"
+      },
+      "focus": {
+        "$value": "{cyan.300}"
+      },
+      "danger": {
+        "$value": "{red.400}"
+      },
+      "inverse": {
+        "$value": "#1B202733"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{blue.400}",
+          "$description": "다크에서 primary 는 밝은 파랑 + 어두운 글자. neutral.950 글자 대비 약 6.8:1"
+        },
+        "bg-hover": {
+          "$value": "{blue.300}"
+        },
+        "bg-active": {
+          "$value": "{blue.200}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{neutral.900}"
+        },
+        "bg-hover": {
+          "$value": "{neutral.800}"
+        },
+        "bg-active": {
+          "$value": "{neutral.700}"
+        },
+        "border": {
+          "$value": "{neutral.700}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "#69ADE51F",
+          "$description": "blue.400 12%"
+        },
+        "bg-active": {
+          "$value": "#69ADE533",
+          "$description": "blue.400 20%"
+        },
+        "text": {
+          "$value": "{cyan.300}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.400}",
+          "$description": "neutral.950 글자 대비 약 6.3:1. red.600 + 흰 글자는 다크 캔버스에서 뭉개진다"
+        },
+        "bg-hover": {
+          "$value": "{red.300}"
+        },
+        "bg-active": {
+          "$value": "{red.200}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "danger-ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "#F67A871F"
+        },
+        "text": {
+          "$value": "{red.300}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.600}"
+        },
+        "border": {
+          "$value": "{neutral.800}"
+        }
+      }
+    },
+    "status": {
+      "success": {
+        "bg": {
+          "$value": "{green.950}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "text": {
+          "$value": "{green.300}"
+        },
+        "icon": {
+          "$value": "{green.400}"
+        },
+        "solid": {
+          "$value": "{green.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{amber.950}"
+        },
+        "border": {
+          "$value": "{amber.800}"
+        },
+        "text": {
+          "$value": "{amber.300}"
+        },
+        "icon": {
+          "$value": "{amber.300}"
+        },
+        "solid": {
+          "$value": "{amber.200}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.950}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{red.300}"
+        },
+        "icon": {
+          "$value": "{red.400}"
+        },
+        "solid": {
+          "$value": "{red.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{blue.950}"
+        },
+        "border": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{cyan.300}"
+        },
+        "icon": {
+          "$value": "{blue.400}"
+        },
+        "solid": {
+          "$value": "{blue.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "border": {
+          "$value": "{neutral.700}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        },
+        "icon": {
+          "$value": "{neutral.300}"
+        },
+        "solid": {
+          "$value": "{neutral.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{cyan.300}"
+      },
+      "selected-bg": {
+        "$value": "{blue.950}"
+      },
+      "selected-border": {
+        "$value": "{blue.400}"
+      },
+      "selected-text": {
+        "$value": "{blue.200}"
+      },
+      "hover-overlay": {
+        "$value": "#FFFFFF14",
+        "$description": "white 8%"
+      },
+      "pressed-overlay": {
+        "$value": "#FFFFFF1F",
+        "$description": "white 12%"
+      }
+    },
+    "accent": {
+      "ice": {
+        "$value": "{brand.ice}"
+      },
+      "aqua": {
+        "$value": "{brand.aqua}"
+      },
+      "mist": {
+        "$value": "{brand.mist}"
+      },
+      "steel": {
+        "$value": "{blue.400}"
+      },
+      "twilight": {
+        "$value": "{indigo.700}"
+      }
+    },
+    "chart": {
+      "categorical": {
+        "1": {
+          "$value": "{blue.400}"
+        },
+        "2": {
+          "$value": "{teal.300}"
+        },
+        "3": {
+          "$value": "{indigo.400}"
+        },
+        "4": {
+          "$value": "{amber.300}"
+        },
+        "5": {
+          "$value": "{purple.400}"
+        },
+        "6": {
+          "$value": "{pink.300}"
+        },
+        "7": {
+          "$value": "{red.400}"
+        },
+        "8": {
+          "$value": "{green.400}"
+        }
+      },
+      "sequential": {
+        "1": {
+          "$value": "{blue.900}"
+        },
+        "2": {
+          "$value": "{blue.800}"
+        },
+        "3": {
+          "$value": "{blue.700}"
+        },
+        "4": {
+          "$value": "{blue.600}"
+        },
+        "5": {
+          "$value": "{blue.500}"
+        },
+        "6": {
+          "$value": "{blue.400}"
+        },
+        "7": {
+          "$value": "{blue.300}"
+        },
+        "8": {
+          "$value": "{blue.200}"
+        }
+      },
+      "diverging": {
+        "negative": {
+          "$value": "{red.400}"
+        },
+        "mid": {
+          "$value": "{neutral.700}"
+        },
+        "positive": {
+          "$value": "{blue.400}"
+        }
+      },
+      "grid": {
+        "$value": "{neutral.800}"
+      },
+      "axis": {
+        "$value": "{neutral.400}"
+      },
+      "label": {
+        "$value": "{neutral.300}"
+      }
+    }
+  }
+}

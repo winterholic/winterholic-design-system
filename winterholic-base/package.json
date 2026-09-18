@@ -1,0 +1,21 @@
+{
+  "name": "winterholic-base",
+  "version": "1.0.0",
+  "description": "winterholic 기본 디자인 시스템 — DTCG 토큰, CSS 변수, Tailwind 프리셋, 문서",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node tokens/build.mjs",
+    "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs"
+  },
+  "exports": {
+    ".": "./dist/tokens.js",
+    "./tokens.css": "./dist/tokens.css",
+    "./typography.css": "./dist/typography.css",
+    "./tailwind": "./dist/tailwind.preset.cjs",
+    "./tokens.json": "./tokens/tokens.json"
+  },
+  "files": ["dist", "tokens/tokens.json", "tokens/tokens.dark.json"],
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}

@@ -1,0 +1,183 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(라이트). 사용처 코드는 이 그룹만 참조한다. 값은 palette.json / brand.json 의 원시 토큰을 가리킨다.",
+
+    "surface": {
+      "$description": "면. 무엇 위에 무엇이 올라가는가를 결정한다 — canvas < default < raised 순으로 밝거나 떠 보인다.",
+      "canvas":       { "$value": "{brand.snow}",   "$description": "페이지 최하단 배경. body 에 딱 한 번." },
+      "default":      { "$value": "{base.white}",   "$description": "카드·패널·인풋 배경. canvas 위에 놓이는 기본 면." },
+      "raised":       { "$value": "{base.white}",   "$description": "떠 있는 면(모달·팝오버·드롭다운). default 와 같은 색이지만 shadow 로 구분한다." },
+      "sunken":       { "$value": "{neutral.100}",  "$description": "안으로 들어간 면(코드블록 배경·테이블 헤더·비활성 영역·탭 트랙)." },
+      "overlay":      { "$value": "#1B202780",      "$description": "모달 뒤 스크림. neutral.950 50%." },
+      "inverse":      { "$value": "{neutral.900}",  "$description": "반전 면(툴팁·토스트·다크 헤더)." },
+      "brand":        { "$value": "{brand.twilight}", "$description": "브랜드 강조 면(히어로·프로모션 배너·로그인 사이드)." },
+      "brand-subtle": { "$value": "{blue.50}",      "$description": "브랜드 기운만 있는 옅은 면(선택된 행·활성 탭 배경·안내 카드)." },
+      "disabled":     { "$value": "{neutral.100}",  "$description": "비활성 컨트롤 배경." }
+    },
+
+    "text": {
+      "$description": "글자색. surface.default(흰색) 위 대비를 기준으로 정했고 canvas(#F7F9F9) 위에서도 같은 등급이 유지된다.",
+      "primary":     { "$value": "{neutral.900}", "$description": "본문·제목. 흰 배경 대비 13.12:1" },
+      "secondary":   { "$value": "{neutral.700}", "$description": "보조 설명·메타 정보. 6.98:1" },
+      "tertiary":    { "$value": "{neutral.600}", "$description": "캡션·타임스탬프·아이콘 라벨. 4.76:1 (AA 하한)" },
+      "placeholder": { "$value": "{neutral.600}", "$description": "인풋 플레이스홀더. tertiary 와 같은 값 — 이보다 옅게 쓰면 AA 미달" },
+      "disabled":    { "$value": "{neutral.400}", "$description": "비활성 글자. WCAG 대비 예외 대상." },
+      "inverse":     { "$value": "{base.white}",  "$description": "inverse·brand 면 위 글자." },
+      "on-brand":    { "$value": "{base.white}",  "$description": "surface.brand·action.primary 위 글자. blue.600 위 4.89:1, twilight 위 12.44:1" },
+      "brand":       { "$value": "{blue.700}",    "$description": "브랜드 색 글자(강조 숫자·키워드). 6.92:1. blue.500 은 4.21:1 로 글자에 못 쓴다." },
+      "link":        { "$value": "{blue.600}",    "$description": "링크 기본. 4.89:1" },
+      "link-hover":  { "$value": "{blue.700}" },
+      "success":     { "$value": "{green.700}",   "$description": "6.60:1" },
+      "warning":     { "$value": "{amber.700}",   "$description": "7.04:1 — amber 는 700 이하로 내려야 글자로 읽힌다" },
+      "danger":      { "$value": "{red.700}",     "$description": "7.67:1" },
+      "info":        { "$value": "{blue.700}" }
+    },
+
+    "border": {
+      "$description": "테두리. 기본은 옅게, 사용자가 만지는 컨트롤은 한 단계 진하게.",
+      "subtle":  { "$value": "{neutral.100}", "$description": "구획 구분선(리스트 아이템 사이, 카드 내부 섹션)." },
+      "default": { "$value": "{neutral.200}", "$description": "카드·패널 외곽선, 테이블 선." },
+      "strong":  { "$value": "{neutral.400}", "$description": "인풋·셀렉트 등 입력 컨트롤 외곽선. 흰 배경 대비 2.43:1 — WCAG 1.4.11 (3:1) 엄격 적용 시 border.input-strict 사용" },
+      "input-strict": { "$value": "{neutral.500}", "$description": "비텍스트 대비 3:1 을 반드시 맞춰야 하는 폼용. 3.49:1" },
+      "brand":   { "$value": "{blue.500}",    "$description": "선택·활성 표시 테두리." },
+      "focus":   { "$value": "{blue.500}",    "$description": "포커스 링 색. 두께·오프셋은 focus 토큰 참조." },
+      "danger":  { "$value": "{red.500}",     "$description": "유효성 오류 인풋 테두리." },
+      "inverse": { "$value": "#FFFFFF33",     "$description": "inverse·brand 면 위 구분선. white 20%" }
+    },
+
+    "action": {
+      "$description": "버튼·클릭 가능한 것. 각 variant 는 bg/text/border + hover/active 를 세트로 갖는다.",
+      "primary": {
+        "bg":        { "$value": "{blue.600}", "$description": "흰 글자 4.89:1. 브랜드 원색 blue.500 은 4.21:1 로 미달이라 한 단계 내렸다." },
+        "bg-hover":  { "$value": "{blue.700}" },
+        "bg-active": { "$value": "{blue.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "secondary": {
+        "bg":        { "$value": "{base.white}" },
+        "bg-hover":  { "$value": "{neutral.50}" },
+        "bg-active": { "$value": "{neutral.100}" },
+        "border":    { "$value": "{neutral.300}" },
+        "text":      { "$value": "{neutral.800}" }
+      },
+      "ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{blue.50}" },
+        "bg-active": { "$value": "{blue.100}" },
+        "text":      { "$value": "{blue.700}" }
+      },
+      "danger": {
+        "bg":        { "$value": "{red.600}", "$description": "흰 글자 5.11:1" },
+        "bg-hover":  { "$value": "{red.700}" },
+        "bg-active": { "$value": "{red.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "danger-ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{red.50}" },
+        "text":      { "$value": "{red.700}" }
+      },
+      "disabled": {
+        "bg":     { "$value": "{neutral.200}" },
+        "text":   { "$value": "{neutral.500}" },
+        "border": { "$value": "{neutral.200}" }
+      }
+    },
+
+    "status": {
+      "$description": "상태 피드백 4종 + neutral. bg/border/text 는 배너·인라인 메시지, solid 는 배지·도트·프로그레스 채움.",
+      "success": {
+        "bg":     { "$value": "{green.50}" },
+        "border": { "$value": "{green.200}" },
+        "text":   { "$value": "{green.700}" },
+        "icon":   { "$value": "{green.600}" },
+        "solid":  { "$value": "{green.600}", "$description": "흰 글자 4.63:1" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "warning": {
+        "bg":     { "$value": "{amber.50}" },
+        "border": { "$value": "{amber.200}" },
+        "text":   { "$value": "{amber.700}" },
+        "icon":   { "$value": "{amber.500}", "$description": "아이콘(비텍스트) 3:1 기준 3.53:1 통과" },
+        "solid":  { "$value": "{amber.200}", "$description": "= Tuscan Sun #FAC748. 검은 글자를 얹는다 — 흰 글자 금지" },
+        "on-solid": { "$value": "{neutral.900}" }
+      },
+      "danger": {
+        "bg":     { "$value": "{red.50}" },
+        "border": { "$value": "{red.200}" },
+        "text":   { "$value": "{red.700}" },
+        "icon":   { "$value": "{red.600}" },
+        "solid":  { "$value": "{red.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "info": {
+        "bg":     { "$value": "{blue.50}" },
+        "border": { "$value": "{blue.200}" },
+        "text":   { "$value": "{blue.700}" },
+        "icon":   { "$value": "{blue.600}" },
+        "solid":  { "$value": "{blue.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "neutral": {
+        "bg":     { "$value": "{neutral.100}" },
+        "border": { "$value": "{neutral.200}" },
+        "text":   { "$value": "{neutral.700}" },
+        "icon":   { "$value": "{neutral.600}" },
+        "solid":  { "$value": "{neutral.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      }
+    },
+
+    "interactive": {
+      "$description": "선택·호버·포커스 같은 상호작용 표시.",
+      "focus-ring":      { "$value": "{blue.500}" },
+      "selected-bg":     { "$value": "{blue.50}" },
+      "selected-border": { "$value": "{blue.500}" },
+      "selected-text":   { "$value": "{blue.800}" },
+      "hover-overlay":   { "$value": "#2B31390F", "$description": "어떤 면 위에도 얹는 호버 덧칠. neutral.900 6%" },
+      "pressed-overlay": { "$value": "#2B31391A", "$description": "neutral.900 10%" }
+    },
+
+    "accent": {
+      "$description": "장식·브랜드 표현 전용. 글자색·상태색으로 쓰지 않는다. 그라데이션·일러스트·아이콘 배경·구분 장식에만.",
+      "ice":      { "$value": "{brand.ice}" },
+      "aqua":     { "$value": "{brand.aqua}" },
+      "mist":     { "$value": "{brand.mist}" },
+      "steel":    { "$value": "{brand.steel}" },
+      "twilight": { "$value": "{brand.twilight}" }
+    },
+
+    "chart": {
+      "$description": "데이터 시각화. categorical 은 순서대로 쓴다(1→8). 3개 이하 시리즈면 1·2·4 를 쓴다(청록 계열이 몰리지 않게).",
+      "categorical": {
+        "1": { "$value": "{blue.500}" },
+        "2": { "$value": "{teal.400}" },
+        "3": { "$value": "{indigo.700}" },
+        "4": { "$value": "{amber.300}" },
+        "5": { "$value": "{purple.500}" },
+        "6": { "$value": "{pink.400}" },
+        "7": { "$value": "{red.500}" },
+        "8": { "$value": "{green.500}" }
+      },
+      "sequential": {
+        "1": { "$value": "{blue.100}" },
+        "2": { "$value": "{blue.200}" },
+        "3": { "$value": "{blue.300}" },
+        "4": { "$value": "{blue.400}" },
+        "5": { "$value": "{blue.500}" },
+        "6": { "$value": "{blue.600}" },
+        "7": { "$value": "{blue.700}" },
+        "8": { "$value": "{blue.800}" }
+      },
+      "diverging": {
+        "negative": { "$value": "{red.500}" },
+        "mid":      { "$value": "{neutral.200}" },
+        "positive": { "$value": "{blue.500}" }
+      },
+      "grid":  { "$value": "{neutral.200}" },
+      "axis":  { "$value": "{neutral.600}" },
+      "label": { "$value": "{neutral.700}" }
+    }
+  }
+}

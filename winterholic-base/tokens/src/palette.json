@@ -1,0 +1,1022 @@
+{
+  "blue": {
+    "50": {
+      "$value": "#F0F8FF",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.58
+        }
+      }
+    },
+    "100": {
+      "$value": "#DFEFFD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.9
+        }
+      }
+    },
+    "200": {
+      "$value": "#BCE0FE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.38,
+          "onBlack": 15.23
+        }
+      }
+    },
+    "300": {
+      "$value": "#90C9F9",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.76,
+          "onBlack": 11.91
+        }
+      }
+    },
+    "400": {
+      "$value": "#69ADE5",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.41,
+          "onBlack": 8.71
+        }
+      }
+    },
+    "500": {
+      "$value": "#2081C3",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.21,
+          "onBlack": 4.99
+        }
+      }
+    },
+    "600": {
+      "$value": "#1A76B4",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.89,
+          "onBlack": 4.29
+        }
+      }
+    },
+    "700": {
+      "$value": "#0A5E93",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 6.92,
+          "onBlack": 3.04
+        }
+      }
+    },
+    "800": {
+      "$value": "#0E476F",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.77,
+          "onBlack": 2.15
+        }
+      }
+    },
+    "900": {
+      "$value": "#023353",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.12,
+          "onBlack": 1.6
+        }
+      }
+    },
+    "950": {
+      "$value": "#012138",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.46,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Steel Blue · 브랜드 주색·액션 · 앵커 #2081C3 @500"
+  },
+  "indigo": {
+    "50": {
+      "$value": "#F3F7FE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.55
+        }
+      }
+    },
+    "100": {
+      "$value": "#E7EDFB",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.9
+        }
+      }
+    },
+    "200": {
+      "$value": "#D3DBEE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.14
+        }
+      }
+    },
+    "300": {
+      "$value": "#B7C2DD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.78,
+          "onBlack": 11.77
+        }
+      }
+    },
+    "400": {
+      "$value": "#98A6C8",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.44,
+          "onBlack": 8.62
+        }
+      }
+    },
+    "500": {
+      "$value": "#7788B3",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.53,
+          "onBlack": 5.96
+        }
+      }
+    },
+    "600": {
+      "$value": "#5C6EA0",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 5.01,
+          "onBlack": 4.19
+        }
+      }
+    },
+    "700": {
+      "$value": "#43568D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 7.11,
+          "onBlack": 2.95
+        }
+      }
+    },
+    "800": {
+      "$value": "#2B3F7B",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 10,
+          "onBlack": 2.1
+        }
+      }
+    },
+    "900": {
+      "$value": "#1D2F6F",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 12.44,
+          "onBlack": 1.69
+        }
+      }
+    },
+    "950": {
+      "$value": "#0C184D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.75,
+          "onBlack": 1.25
+        }
+      }
+    },
+    "$description": "Twilight Indigo · 브랜드 심색·다크 표면·히어로 · 앵커 #1D2F6F @900"
+  },
+  "cyan": {
+    "50": {
+      "$value": "#EDF9FF",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.6
+        }
+      }
+    },
+    "100": {
+      "$value": "#D8F2FE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.16,
+          "onBlack": 18.05
+        }
+      }
+    },
+    "200": {
+      "$value": "#AFE4FC",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.37,
+          "onBlack": 15.33
+        }
+      }
+    },
+    "300": {
+      "$value": "#63D2FF",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.72,
+          "onBlack": 12.19
+        }
+      }
+    },
+    "400": {
+      "$value": "#55B3D9",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.38,
+          "onBlack": 8.84
+        }
+      }
+    },
+    "500": {
+      "$value": "#4794B3",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.41,
+          "onBlack": 6.15
+        }
+      }
+    },
+    "600": {
+      "$value": "#3A7993",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.84,
+          "onBlack": 4.34
+        }
+      }
+    },
+    "700": {
+      "$value": "#2F6075",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 6.88,
+          "onBlack": 3.05
+        }
+      }
+    },
+    "800": {
+      "$value": "#244959",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.67,
+          "onBlack": 2.17
+        }
+      }
+    },
+    "900": {
+      "$value": "#1A343F",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.07,
+          "onBlack": 1.61
+        }
+      }
+    },
+    "950": {
+      "$value": "#112229",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.35,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Frozen Lake · 강조·그라데이션 끝·다크모드 주색 · 앵커 #63D2FF @300"
+  },
+  "teal": {
+    "50": {
+      "$value": "#DCFFFF",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.06,
+          "onBlack": 19.79
+        }
+      }
+    },
+    "100": {
+      "$value": "#BEFAFB",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.15,
+          "onBlack": 18.26
+        }
+      }
+    },
+    "200": {
+      "$value": "#99ECED",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.35,
+          "onBlack": 15.58
+        }
+      }
+    },
+    "300": {
+      "$value": "#78D5D7",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.71,
+          "onBlack": 12.3
+        }
+      }
+    },
+    "400": {
+      "$value": "#67B6B7",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.35,
+          "onBlack": 8.95
+        }
+      }
+    },
+    "500": {
+      "$value": "#559697",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.39,
+          "onBlack": 6.2
+        }
+      }
+    },
+    "600": {
+      "$value": "#467A7C",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.84,
+          "onBlack": 4.34
+        }
+      }
+    },
+    "700": {
+      "$value": "#386263",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 6.78,
+          "onBlack": 3.1
+        }
+      }
+    },
+    "800": {
+      "$value": "#2B4A4B",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.62,
+          "onBlack": 2.18
+        }
+      }
+    },
+    "900": {
+      "$value": "#1F3535",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 12.97,
+          "onBlack": 1.62
+        }
+      }
+    },
+    "950": {
+      "$value": "#142222",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.39,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Pearl Aqua · 보조 강조·정보 배경 · 앵커 #78D5D7 @300"
+  },
+  "neutral": {
+    "50": {
+      "$value": "#F2F7FF",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.52
+        }
+      }
+    },
+    "100": {
+      "$value": "#E6EDF8",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.83
+        }
+      }
+    },
+    "200": {
+      "$value": "#D4DBE6",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.07
+        }
+      }
+    },
+    "300": {
+      "$value": "#BCC3CE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.77,
+          "onBlack": 11.84
+        }
+      }
+    },
+    "400": {
+      "$value": "#9FA7B1",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.43,
+          "onBlack": 8.64
+        }
+      }
+    },
+    "500": {
+      "$value": "#828A94",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.49,
+          "onBlack": 6.01
+        }
+      }
+    },
+    "600": {
+      "$value": "#64748B",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.76,
+          "onBlack": 4.41
+        }
+      }
+    },
+    "700": {
+      "$value": "#535A63",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 6.98,
+          "onBlack": 3.01
+        }
+      }
+    },
+    "800": {
+      "$value": "#3E444D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.82,
+          "onBlack": 2.14
+        }
+      }
+    },
+    "900": {
+      "$value": "#2B3139",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.12,
+          "onBlack": 1.6
+        }
+      }
+    },
+    "950": {
+      "$value": "#1B2027",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.37,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Cool Slate · 텍스트·테두리·표면 (쿨 그레이) · 앵커 #64748B @600"
+  },
+  "green": {
+    "50": {
+      "$value": "#E5FFE9",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.06,
+          "onBlack": 19.81
+        }
+      }
+    },
+    "100": {
+      "$value": "#D2F9D7",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.15,
+          "onBlack": 18.27
+        }
+      }
+    },
+    "200": {
+      "$value": "#A7EFB3",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.34,
+          "onBlack": 15.64
+        }
+      }
+    },
+    "300": {
+      "$value": "#85D995",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.7,
+          "onBlack": 12.36
+        }
+      }
+    },
+    "400": {
+      "$value": "#59BF71",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.3,
+          "onBlack": 9.12
+        }
+      }
+    },
+    "500": {
+      "$value": "#16A34A",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.3,
+          "onBlack": 6.37
+        }
+      }
+    },
+    "600": {
+      "$value": "#06873A",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.63,
+          "onBlack": 4.53
+        }
+      }
+    },
+    "700": {
+      "$value": "#166B31",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 6.6,
+          "onBlack": 3.18
+        }
+      }
+    },
+    "800": {
+      "$value": "#085222",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.37,
+          "onBlack": 2.24
+        }
+      }
+    },
+    "900": {
+      "$value": "#093B19",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 12.72,
+          "onBlack": 1.65
+        }
+      }
+    },
+    "950": {
+      "$value": "#01270C",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.19,
+          "onBlack": 1.3
+        }
+      }
+    },
+    "$description": "Success Green · 성공 · 앵커 #16A34A @500"
+  },
+  "amber": {
+    "50": {
+      "$value": "#FFF6E4",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.55
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFEBC0",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.9
+        }
+      }
+    },
+    "200": {
+      "$value": "#FAC748",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.58,
+          "onBlack": 13.33
+        }
+      }
+    },
+    "300": {
+      "$value": "#EBBB45",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.79,
+          "onBlack": 11.73
+        }
+      }
+    },
+    "400": {
+      "$value": "#C8A03D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.46,
+          "onBlack": 8.55
+        }
+      }
+    },
+    "500": {
+      "$value": "#A58435",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.53,
+          "onBlack": 5.95
+        }
+      }
+    },
+    "600": {
+      "$value": "#876C2D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 4.98,
+          "onBlack": 4.21
+        }
+      }
+    },
+    "700": {
+      "$value": "#6B5626",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 7.04,
+          "onBlack": 2.98
+        }
+      }
+    },
+    "800": {
+      "$value": "#51421F",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 9.77,
+          "onBlack": 2.15
+        }
+      }
+    },
+    "900": {
+      "$value": "#392F18",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.18,
+          "onBlack": 1.59
+        }
+      }
+    },
+    "950": {
+      "$value": "#251E10",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.51,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Tuscan Sun · 경고 · 앵커 #FAC748 @200"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFF4F4",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.5
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE6E7",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.69
+        }
+      }
+    },
+    "200": {
+      "$value": "#FFCCCE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.78
+        }
+      }
+    },
+    "300": {
+      "$value": "#FEA7AD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.35
+        }
+      }
+    },
+    "400": {
+      "$value": "#F67A87",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.61,
+          "onBlack": 8.05
+        }
+      }
+    },
+    "500": {
+      "$value": "#DF5066",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.83,
+          "onBlack": 5.48
+        }
+      }
+    },
+    "600": {
+      "$value": "#CE2D4F",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 5.11,
+          "onBlack": 4.11
+        }
+      }
+    },
+    "700": {
+      "$value": "#A2193A",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 7.67,
+          "onBlack": 2.74
+        }
+      }
+    },
+    "800": {
+      "$value": "#800729",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 10.6,
+          "onBlack": 1.98
+        }
+      }
+    },
+    "900": {
+      "$value": "#5D071D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.87,
+          "onBlack": 1.51
+        }
+      }
+    },
+    "950": {
+      "$value": "#400411",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.89,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Raspberry Red · 위험·오류·파괴적 동작 · 앵커 #CE2D4F @600"
+  },
+  "purple": {
+    "50": {
+      "$value": "#F7F5FE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.45
+        }
+      }
+    },
+    "100": {
+      "$value": "#EEE9FE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.72
+        }
+      }
+    },
+    "200": {
+      "$value": "#DED4FD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.41,
+          "onBlack": 14.94
+        }
+      }
+    },
+    "300": {
+      "$value": "#C8B5FC",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.83,
+          "onBlack": 11.47
+        }
+      }
+    },
+    "400": {
+      "$value": "#AE94ED",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.54,
+          "onBlack": 8.26
+        }
+      }
+    },
+    "500": {
+      "$value": "#9B7EDE",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.26,
+          "onBlack": 6.43
+        }
+      }
+    },
+    "600": {
+      "$value": "#7760AD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 5.17,
+          "onBlack": 4.06
+        }
+      }
+    },
+    "700": {
+      "$value": "#5F4B8C",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 7.31,
+          "onBlack": 2.87
+        }
+      }
+    },
+    "800": {
+      "$value": "#49386D",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 10.15,
+          "onBlack": 2.07
+        }
+      }
+    },
+    "900": {
+      "$value": "#342751",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.5,
+          "onBlack": 1.56
+        }
+      }
+    },
+    "950": {
+      "$value": "#221838",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.72,
+          "onBlack": 1.26
+        }
+      }
+    },
+    "$description": "Soft Periwinkle · 차트·장식 · 앵커 #9B7EDE @500"
+  },
+  "pink": {
+    "50": {
+      "$value": "#FFF3F6",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.4
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFE5EB",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.66
+        }
+      }
+    },
+    "200": {
+      "$value": "#FECBD8",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.75
+        }
+      }
+    },
+    "300": {
+      "$value": "#FFA3BD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 1.87,
+          "onBlack": 11.23
+        }
+      }
+    },
+    "400": {
+      "$value": "#F88DAD",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 2.23,
+          "onBlack": 9.4
+        }
+      }
+    },
+    "500": {
+      "$value": "#BF6C84",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 3.69,
+          "onBlack": 5.69
+        }
+      }
+    },
+    "600": {
+      "$value": "#9D586C",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 5.19,
+          "onBlack": 4.05
+        }
+      }
+    },
+    "700": {
+      "$value": "#7E4656",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 7.25,
+          "onBlack": 2.9
+        }
+      }
+    },
+    "800": {
+      "$value": "#603441",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 10.17,
+          "onBlack": 2.06
+        }
+      }
+    },
+    "900": {
+      "$value": "#46252E",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 13.42,
+          "onBlack": 1.56
+        }
+      }
+    },
+    "950": {
+      "$value": "#2E171E",
+      "$extensions": {
+        "wh.contrast": {
+          "onWhite": 16.7,
+          "onBlack": 1.26
+        }
+      }
+    },
+    "$description": "Bubblegum Tint · 차트·장식 · 앵커 #F88DAD @400"
+  }
+}
