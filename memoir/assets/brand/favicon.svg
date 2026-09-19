@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="title">
   <title id="title">memoir 파비콘</title>
-  <defs>
+  <rect width="64" height="64" rx="14" fill="#FFF0F3"/>
+  <g transform="translate(3 3) scale(.90625)">  <defs>
     <linearGradient id="petal" x1="8" y1="3" x2="58" y2="61" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFC1D1"/><stop offset=".5" stop-color="#FF82A9"/><stop offset="1" stop-color="#F45E93"/>
     </linearGradient>
   </defs>
   <path d="M32 27.1C24.6 17.5 30.1 7.8 38.3 9.5C44.7 10.8 46.1 18.8 41.1 24.7C49.4 20.7 57.2 25.4 55.2 32.8C53.5 39.3 45.7 40.5 39.8 35.4C43.8 43.8 39.1 51.6 31.6 49.6C25.2 47.9 24 40.2 29.1 34.2C20.8 38.2 13 33.5 15 26C16.7 19.7 24.5 18.3 30.5 23.4C26.9 16.5 28.6 10.8 33.5 8.5" fill="url(#petal)"/>
-  <path d="M10.7 51.8C11.8 43.9 15 37.6 21.5 32.2" stroke="#A1385E" stroke-width="4" stroke-linecap="round"/>
+  <path d="M10.7 51.8C11.8 43.9 15 37.6 21.5 32.2" stroke="#A1385E" stroke-width="4" stroke-linecap="round"/></g>
 </svg>

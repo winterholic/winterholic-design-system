@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>stock-gosu design system preview</title>
 <script>try{const t=localStorage.getItem('sg-theme');if(t)document.documentElement.dataset.theme=t;const m=localStorage.getItem('sg-market');if(m)document.documentElement.dataset.market=m;}catch{}</script>
-<link rel="icon" href="../assets/brand/favicon.svg?v=1.2.0" type="image/svg+xml" />
-<link rel="icon" href="../assets/brand/favicon-32.png?v=1.2.0" sizes="32x32" />
+<link rel="icon" href="../assets/brand/favicon.svg?v=1.2.1" type="image/svg+xml" />
+<link rel="icon" href="../assets/brand/favicon-32.png?v=1.2.1" sizes="32x32" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="../dist/tokens.css" />
 <link rel="stylesheet" href="../dist/typography.css" />
@@ -48,6 +48,18 @@
   .hero { min-height: calc(var(--sg-space-24) * 4); background: url('../assets/brand/brand-hero.webp') 65% center / cover no-repeat; color: var(--sg-base-white); border-radius: var(--sg-radius-3xl); padding: var(--sg-space-12) var(--sg-space-8); display: flex; align-items: center; }
   .hero > div { max-width: 52ch; }
   .hero p { margin: var(--sg-space-2) 0 0; opacity: .9; }
+  .brand-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sg-space-4); }
+  .brand-card { min-height: calc(var(--sg-space-16) * 3); display: grid; place-items: center; gap: var(--sg-space-4); padding: var(--sg-space-6); border-radius: var(--sg-radius-2xl); background: var(--sg-color-surface-brand-subtle); overflow: hidden; }
+  .brand-card--inverse { background: var(--sg-color-surface-inverse); }
+  .brand-card > img { display: block; max-width: 100%; }
+  .brand-mark { width: calc(var(--sg-space-16) * 1.5); height: calc(var(--sg-space-16) * 1.5); object-fit: contain; }
+  .brand-lockup-preview { width: calc(var(--sg-space-16) * 3); }
+  .brand-icons { display: flex; align-items: flex-end; gap: var(--sg-space-4); }
+  .brand-icons img { display: block; image-rendering: auto; }
+  .brand-icon--16 { width: var(--sg-size-icon-sm); height: var(--sg-size-icon-sm); }
+  .brand-icon--32 { width: var(--sg-size-icon-xl); height: var(--sg-size-icon-xl); }
+  .brand-icon--48 { width: var(--sg-size-icon-2xl); height: var(--sg-size-icon-2xl); }
+  .brand-app-icon { width: var(--sg-space-16); height: var(--sg-space-16); border-radius: var(--sg-radius-xl); }
 
   .ramp { display: grid; grid-template-columns: 80px repeat(11, 1fr); align-items: center; gap: var(--sg-space-1); margin-bottom: var(--sg-space-2); }
   .swatch { height: 40px; border-radius: var(--sg-radius-sm); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--sg-space-1); font-size: var(--sg-font-size-2xs); font-family: var(--sg-font-family-mono); }
@@ -209,8 +221,8 @@
 </head>
 <body>
 <header class="top">
-  <span class="logo"><img class="logo--default" src="../assets/brand/logo-lockup.svg?v=1.2.0" alt="stock-gosu" /><img class="logo--inverse" src="../assets/brand/logo-lockup-inverse.svg?v=1.2.0" alt="stock-gosu" /></span>
-  <nav class="toc sg-label-sm"><a href="#fin">등락</a><a href="#color">색</a><a href="#type">글자</a><a href="#comp">컴포넌트</a><a href="#viz">차트</a><a href="#state">상태</a></nav>
+  <span class="logo"><img class="logo--default" src="../assets/brand/logo-lockup.svg?v=1.2.1" alt="stock-gosu" /><img class="logo--inverse" src="../assets/brand/logo-lockup-inverse.svg?v=1.2.1" alt="stock-gosu" /></span>
+  <nav class="toc sg-label-sm"><a href="#brand">브랜드</a><a href="#fin">등락</a><a href="#color">색</a><a href="#type">글자</a><a href="#comp">컴포넌트</a><a href="#viz">차트</a><a href="#state">상태</a></nav>
   <div class="row">
     <div class="seg" role="tablist" aria-label="등락색"><button data-market="" aria-selected="true">한국식</button><button data-market="us" aria-selected="false">미국식</button></div>
     <div class="seg" role="tablist" aria-label="테마"><button data-theme="" aria-selected="true">시스템</button><button data-theme="light" aria-selected="false">라이트</button><button data-theme="dark" aria-selected="false">다크</button></div>
@@ -220,11 +232,29 @@
 <main class="page">
   <div class="hero">
     <div>
-      <div class="sg-micro" style="opacity:.8">design tokens · v1.2.0</div>
+      <div class="sg-micro" style="opacity:.8">design tokens · v1.2.1</div>
       <h1 class="sg-display" style="margin: var(--sg-space-1) 0 0">stock-gosu</h1>
       <p class="sg-body-2">투자 대시보드 디자인 시스템. 위 토글로 다크와 미국식 등락색을 켜면 컴포넌트 코드 수정 없이 바뀐다.</p>
     </div>
   </div>
+
+  <section id="brand">
+    <h2 class="sg-title-2">브랜드 자산</h2>
+    <p class="lead sg-body-3">파랑새 심볼, 로고 조합, 단색형, 브라우저 파비콘과 앱 아이콘의 실제 크기 미리보기.</p>
+    <div class="brand-grid">
+      <div class="brand-card"><img class="brand-mark" src="../assets/brand/logo-mark.svg?v=1.2.1" alt="stock-gosu 파랑새 심볼" /></div>
+      <div class="brand-card brand-card--inverse"><img class="brand-lockup-preview" src="../assets/brand/logo-lockup-inverse.svg?v=1.2.1" alt="stock-gosu 반전 로고" /></div>
+      <div class="brand-card"><img class="brand-mark" src="../assets/brand/logo-mark-mono.svg?v=1.2.1" alt="stock-gosu 단색 심볼" /></div>
+      <div class="brand-card">
+        <div class="brand-icons" aria-label="16, 32, 48 픽셀 파비콘과 앱 아이콘">
+          <img class="brand-icon--16" src="../assets/brand/favicon-16.png?v=1.2.1" alt="16px 파비콘" />
+          <img class="brand-icon--32" src="../assets/brand/favicon-32.png?v=1.2.1" alt="32px 파비콘" />
+          <img class="brand-icon--48" src="../assets/brand/favicon-48.png?v=1.2.1" alt="48px 파비콘" />
+          <img class="brand-app-icon" src="../assets/brand/app-icon-512.png?v=1.2.1" alt="앱 아이콘" />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 등락 -->
   <section id="fin">

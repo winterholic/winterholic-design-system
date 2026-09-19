@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { basename, join } from "node:path";
+import { spawnSync } from "node:child_process";
 import test from "node:test";
 
 const root = process.cwd();
@@ -33,6 +34,21 @@ function readPngSize(path) {
   return { width: png.readUInt32BE(16), height: png.readUInt32BE(20) };
 }
 
+function readAlphaOccupancy(path) {
+  const script = [
+    "from PIL import Image",
+    "import json, sys",
+    "im=Image.open(sys.argv[1]).convert('RGBA')",
+    "box=im.getchannel('A').getbbox()",
+    "w=(box[2]-box[0])/im.width if box else 0",
+    "h=(box[3]-box[1])/im.height if box else 0",
+    "print(json.dumps({'width':w,'height':h}))",
+  ].join(";");
+  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  return JSON.parse(result.stdout);
+}
+
 test(`${system}: base와 같은 브랜드 자산 묶음을 제공한다`, () => {
   const missing = requiredAssets.filter((file) => !existsSync(join(brandDir, file)));
   assert.deepEqual(missing, [], `누락된 브랜드 자산: ${missing.join(", ")}`);
@@ -55,6 +71,15 @@ test(`${system}: 파비콘과 앱 아이콘 크기가 선언과 일치한다`, (
   assert.deepEqual(readPngSize(join(brandDir, "brand-hero.png")), { width: 1600, height: 900 });
 });
 
+test(`${system}: 파비콘과 앱 아이콘은 base처럼 캔버스를 충분히 채운다`, () => {
+  for (const name of ["favicon-16.png", "favicon-32.png", "favicon-48.png", "app-icon-512.png"]) {
+    const occupancy = readAlphaOccupancy(join(brandDir, name));
+    assert.ok(occupancy.width >= 0.95 && occupancy.height >= 0.95, `${name} 점유율이 작습니다: ${JSON.stringify(occupancy)}`);
+  }
+  const mark = readAlphaOccupancy(join(brandDir, "logo-mark.png"));
+  assert.ok(mark.width >= 0.65 && mark.height >= 0.55, `logo-mark.png 점유율이 작습니다: ${JSON.stringify(mark)}`);
+});
+
 test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연결한다`, () => {
   const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");
   const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
@@ -65,6 +90,10 @@ test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연
   }
   assert.ok(preview.includes("logo-lockup.svg"), "preview가 새 로크업을 사용하지 않습니다.");
   assert.ok(preview.includes("brand-hero.webp"), "preview가 브랜드 히어로를 사용하지 않습니다.");
+  assert.ok(preview.includes('id="brand"'), "preview에 브랜드 자산 전용 섹션이 없습니다.");
+  for (const name of ["logo-mark.svg", "logo-mark-mono.svg", "logo-lockup-inverse.svg", "favicon-16.png", "favicon-32.png", "favicon-48.png", "app-icon-512.png"]) {
+    assert.ok(preview.includes(name), `preview가 ${name}을 보여주지 않습니다.`);
+  }
   assert.match(brandReadme, /원본|source/i);
   assert.doesNotMatch(doc, /보완 필요/);
 });

@@ -14,32 +14,56 @@ ROOT = Path(__file__).resolve().parents[1]
 RESAMPLING = Image.Resampling.LANCZOS
 
 
-def png_data_uri(image: Image.Image, size: int) -> str:
-    canvas = fit_mark(image, size, 0)
+def png_data_uri(image: Image.Image, size: int, alpha_threshold: int = 1) -> str:
+    canvas = fit_mark(image, size, 0, alpha_threshold)
     output = io.BytesIO()
     canvas.save(output, "PNG", optimize=True)
     return "data:image/png;base64," + base64.b64encode(output.getvalue()).decode("ascii")
 
 
-def fit_mark(image: Image.Image, size: int, padding: int) -> Image.Image:
+def fit_mark(image: Image.Image, size: int, padding: int, alpha_threshold: int = 1) -> Image.Image:
     source = image.convert("RGBA")
-    alpha_box = source.getchannel("A").getbbox()
+    alpha = source.getchannel("A").point(lambda value: 255 if value >= alpha_threshold else 0)
+    alpha_box = alpha.getbbox()
     if alpha_box:
         source = source.crop(alpha_box)
     target = max(1, size - padding * 2)
-    source.thumbnail((target, target), RESAMPLING)
+    scale = min(target / source.width, target / source.height)
+    source = source.resize(
+        (max(1, round(source.width * scale)), max(1, round(source.height * scale))),
+        RESAMPLING,
+    )
     canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
     canvas.alpha_composite(source, ((size - source.width) // 2, (size - source.height) // 2))
     return canvas
 
 
-def save_icon_set(source: Image.Image, directory: Path, padding_ratio: float) -> None:
-    mark = fit_mark(source, 1024, round(1024 * padding_ratio))
+def tile_icon(
+    source: Image.Image,
+    size: int,
+    background: tuple[int, int, int, int],
+    padding_ratio: float,
+    alpha_threshold: int,
+) -> Image.Image:
+    canvas = Image.new("RGBA", (size, size), background)
+    mark = fit_mark(source, size, max(1, round(size * padding_ratio)), alpha_threshold)
+    canvas.alpha_composite(mark)
+    return canvas
+
+
+def save_icon_set(
+    source: Image.Image,
+    directory: Path,
+    padding_ratio: float,
+    background: tuple[int, int, int, int],
+    alpha_threshold: int = 1,
+) -> None:
+    mark = fit_mark(source, 1024, round(1024 * padding_ratio), alpha_threshold)
     mark.save(directory / "logo-mark.png", optimize=True)
     for size in (16, 32, 48):
-        icon = fit_mark(source, size, max(1, round(size * padding_ratio)))
+        icon = tile_icon(source, size, background, padding_ratio, alpha_threshold)
         icon.save(directory / f"favicon-{size}.png", optimize=True)
-    app = fit_mark(source, 512, round(512 * padding_ratio))
+    app = tile_icon(source, 512, background, padding_ratio, alpha_threshold)
     app.save(directory / "app-icon-512.png", optimize=True)
     app.save(directory / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
 
@@ -53,10 +77,12 @@ def svg_document(body: str, view_box: str, title: str, width: int | None = None,
 
 
 def stock_svgs(source: Image.Image, directory: Path) -> None:
-    mark_uri = png_data_uri(source, 512)
-    favicon_uri = png_data_uri(source, 128)
+    mark_uri = png_data_uri(source, 512, 4)
+    favicon_uri = png_data_uri(source, 128, 4)
     mark = svg_document(f'  <image width="512" height="512" href="{mark_uri}"/>', "0 0 512 512", "stock-gosu 파랑새 심볼")
-    favicon = svg_document(f'  <image width="64" height="64" href="{favicon_uri}"/>', "0 0 64 64", "stock-gosu 파비콘", 64, 64)
+    favicon_body = f'''  <rect width="64" height="64" rx="14" fill="#E8F3FF"/>
+  <image x="4" y="4" width="56" height="56" href="{favicon_uri}"/>'''
+    favicon = svg_document(favicon_body, "0 0 64 64", "stock-gosu 파비콘", 64, 64)
     mono_body = '''  <path fill="currentColor" d="M14 36c-4-14 4-26 18-28 11-2 21 3 26 12l6 1-6 5c0 17-12 30-29 30-10 0-19-4-25-11 8 0 15-3 20-8-4 1-7 1-10-1Z"/>
   <path fill="currentColor" d="M20 17c4 8 11 13 22 17-7 7-15 11-25 12 5-7 6-17 3-29Z" opacity=".72"/>
   <circle cx="45" cy="20" r="2.4" fill="white"/>'''
@@ -94,7 +120,9 @@ def memoir_svgs(directory: Path) -> None:
         (directory / filename).write_text(svg_document(body, "0 0 198 64", "memoir 로고"), encoding="utf-8")
     (directory / "logo-mark.svg").write_text(mark, encoding="utf-8")
     (directory / "logo-mark-mono.svg").write_text(mono, encoding="utf-8")
-    (directory / "favicon.svg").write_text(mark.replace("memoir 꽃잎 심볼", "memoir 파비콘"), encoding="utf-8")
+    favicon_body = f'''  <rect width="64" height="64" rx="14" fill="#FFF0F3"/>
+  <g transform="translate(3 3) scale(.90625)">{MEMOIR_MARK}</g>'''
+    (directory / "favicon.svg").write_text(svg_document(favicon_body, "0 0 64 64", "memoir 파비콘", 64, 64), encoding="utf-8")
     shutil.copyfile(directory / "logo-mark.svg", directory / "icon.svg")
 
 
@@ -157,14 +185,14 @@ def save_hero(image: Image.Image, directory: Path) -> None:
 def main() -> None:
     stock_dir = ROOT / "stock-gosu" / "assets" / "brand"
     stock_source = Image.open(stock_dir / "stock-gosu.png").convert("RGBA")
-    save_icon_set(stock_source, stock_dir, 0.06)
+    save_icon_set(stock_source, stock_dir, 0.06, (232, 243, 255, 255), 4)
     stock_svgs(stock_source, stock_dir)
     save_hero(stock_hero(stock_source), stock_dir)
     shutil.copyfile(stock_dir / "favicon.ico", stock_dir / "stock-gosu.ico")
 
     memoir_dir = ROOT / "memoir" / "assets" / "brand"
     memoir_source = Image.open(memoir_dir / "apple-icon.png").convert("RGBA")
-    save_icon_set(memoir_source, memoir_dir, 0.08)
+    save_icon_set(memoir_source, memoir_dir, 0.08, (255, 240, 243, 255))
     memoir_svgs(memoir_dir)
     mascot = Image.open(memoir_dir / "mascot.png")
     save_hero(memoir_hero(mascot), memoir_dir)
