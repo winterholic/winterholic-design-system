@@ -4,7 +4,7 @@
 ```
 memoir/
 ├─ README.md · CLAUDE.md · CHANGELOG.md · package.json
-├─ assets/brand/            icon.svg · apple-icon.png · favicon.ico · mascot.png (memoir-frontend 에서 복사)
+├─ assets/brand/            memoir-symbol.png 정본 · 파생 로고/아이콘 · mascot.png · 레거시 apple-icon.png
 ├─ tokens/
 │  ├─ src/                  ★ 단일 진실
 │  │  ├─ palette.json       생성물. 앵커 pink·blue·neutral·red·green·amber, fixed 로 기존 값 고정

@@ -45,11 +45,17 @@ def tile_icon(
     padding_ratio: float,
     alpha_threshold: int,
     allow_zero_padding: bool = False,
+    corner_radius_ratio: float = 0,
 ) -> Image.Image:
     canvas = Image.new("RGBA", (size, size), background)
     minimum_padding = 0 if allow_zero_padding else 1
     mark = fit_mark(source, size, max(minimum_padding, round(size * padding_ratio)), alpha_threshold)
     canvas.alpha_composite(mark)
+    if corner_radius_ratio:
+        mask = Image.new("L", (size, size), 0)
+        radius = max(1, round(size * corner_radius_ratio))
+        ImageDraw.Draw(mask).rounded_rectangle((0, 0, size - 1, size - 1), radius=radius, fill=255)
+        canvas.putalpha(mask)
     return canvas
 
 
@@ -60,16 +66,33 @@ def save_icon_set(
     background: tuple[int, int, int, int],
     alpha_threshold: int = 1,
     favicon_padding_ratio: float | None = None,
+    corner_radius_ratio: float = 0,
 ) -> None:
     mark = fit_mark(source, 1024, round(1024 * padding_ratio), alpha_threshold)
     mark.save(directory / "logo-mark.png", optimize=True)
     favicon_padding = padding_ratio if favicon_padding_ratio is None else favicon_padding_ratio
     for size in (16, 32, 48):
-        icon = tile_icon(source, size, background, favicon_padding, alpha_threshold, favicon_padding == 0)
+        icon = tile_icon(
+            source,
+            size,
+            background,
+            favicon_padding,
+            alpha_threshold,
+            favicon_padding == 0,
+            corner_radius_ratio,
+        )
         icon.save(directory / f"favicon-{size}.png", optimize=True)
-    app = tile_icon(source, 512, background, padding_ratio, alpha_threshold)
+    app = tile_icon(source, 512, background, padding_ratio, alpha_threshold, corner_radius_ratio=corner_radius_ratio)
     app.save(directory / "app-icon-512.png", optimize=True)
-    ico_source = tile_icon(source, 512, background, favicon_padding, alpha_threshold, favicon_padding == 0)
+    ico_source = tile_icon(
+        source,
+        512,
+        background,
+        favicon_padding,
+        alpha_threshold,
+        favicon_padding == 0,
+        corner_radius_ratio,
+    )
     ico_source.save(directory / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
 
 
@@ -116,31 +139,38 @@ def stock_svgs(source: Image.Image, directory: Path) -> None:
     shutil.copyfile(directory / "logo-mark.svg", directory / "stock-gosu.svg")
 
 
-MEMOIR_MARK = '''  <defs>
-    <linearGradient id="petal" x1="8" y1="3" x2="58" y2="61" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFC1D1"/><stop offset=".5" stop-color="#FF82A9"/><stop offset="1" stop-color="#F45E93"/>
-    </linearGradient>
+def memoir_svgs(source: Image.Image, directory: Path) -> None:
+    mark_uri = png_data_uri(source, 512, 3)
+    favicon_uri = png_data_uri(source, 128, 3)
+    mark_body = f'  <image width="512" height="512" href="{mark_uri}"/>'
+    mark = svg_document(mark_body, "0 0 512 512", "memoir 벚꽃 클로버 심볼")
+    mono_body = f'''  <defs>
+    <filter id="mono" color-interpolation-filters="sRGB">
+      <feFlood flood-color="currentColor" result="color"/>
+      <feComposite in="color" in2="SourceAlpha" operator="in"/>
+    </filter>
   </defs>
-  <path d="M32 27.1C24.6 17.5 30.1 7.8 38.3 9.5C44.7 10.8 46.1 18.8 41.1 24.7C49.4 20.7 57.2 25.4 55.2 32.8C53.5 39.3 45.7 40.5 39.8 35.4C43.8 43.8 39.1 51.6 31.6 49.6C25.2 47.9 24 40.2 29.1 34.2C20.8 38.2 13 33.5 15 26C16.7 19.7 24.5 18.3 30.5 23.4C26.9 16.5 28.6 10.8 33.5 8.5" fill="url(#petal)"/>
-  <path d="M10.7 51.8C11.8 43.9 15 37.6 21.5 32.2" stroke="#A1385E" stroke-width="4" stroke-linecap="round"/>'''
-
-
-def memoir_svgs(directory: Path) -> None:
-    mark = svg_document(MEMOIR_MARK, "0 0 64 64", "memoir 꽃잎 심볼", 64, 64)
-    mono_body = '''  <path fill="currentColor" d="M32 27.1C24.6 17.5 30.1 7.8 38.3 9.5C44.7 10.8 46.1 18.8 41.1 24.7C49.4 20.7 57.2 25.4 55.2 32.8C53.5 39.3 45.7 40.5 39.8 35.4C43.8 43.8 39.1 51.6 31.6 49.6C25.2 47.9 24 40.2 29.1 34.2C20.8 38.2 13 33.5 15 26C16.7 19.7 24.5 18.3 30.5 23.4C26.9 16.5 28.6 10.8 33.5 8.5"/>
-  <path d="M10.7 51.8C11.8 43.9 15 37.6 21.5 32.2" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>'''
-    mono = svg_document(mono_body, "0 0 64 64", "memoir 단색 꽃잎 심볼", 64, 64)
+  <image width="512" height="512" href="{mark_uri}" filter="url(#mono)"/>'''
+    mono = svg_document(
+        mono_body,
+        "0 0 512 512",
+        "memoir 단색 벚꽃 클로버 심볼",
+        attributes='color="#A1385E"',
+    )
     for inverse, filename in ((False, "logo-lockup.svg"), (True, "logo-lockup-inverse.svg")):
         first = "#FF9DBB" if inverse else "#A1385E"
         rest = "#FFF9F8" if inverse else "#231917"
-        body = f'''  <g transform="translate(0 0)">{MEMOIR_MARK}</g>
+        body = f'''  <image x="0" y="0" width="64" height="64" href="{favicon_uri}"/>
   <text x="76" y="43" font-family="Plus Jakarta Sans, Pretendard, system-ui, sans-serif" font-size="32" font-weight="800" letter-spacing="-1"><tspan fill="{first}">m</tspan><tspan fill="{rest}">emoir</tspan></text>'''
         (directory / filename).write_text(svg_document(body, "0 0 198 64", "memoir 로고"), encoding="utf-8")
     (directory / "logo-mark.svg").write_text(mark, encoding="utf-8")
     (directory / "logo-mark-mono.svg").write_text(mono, encoding="utf-8")
     favicon_body = f'''  <rect width="64" height="64" rx="14" fill="#FFF0F3"/>
-  <g transform="translate(3 3) scale(.90625)">{MEMOIR_MARK}</g>'''
-    (directory / "favicon.svg").write_text(svg_document(favicon_body, "0 0 64 64", "memoir 파비콘", 64, 64), encoding="utf-8")
+  <image x="1" y="1" width="62" height="62" href="{favicon_uri}"/>'''
+    (directory / "favicon.svg").write_text(
+        svg_document(favicon_body, "0 0 64 64", "memoir 벚꽃 클로버 파비콘", 64, 64),
+        encoding="utf-8",
+    )
     shutil.copyfile(directory / "logo-mark.svg", directory / "icon.svg")
 
 
@@ -209,9 +239,17 @@ def main() -> None:
     shutil.copyfile(stock_dir / "favicon.ico", stock_dir / "stock-gosu.ico")
 
     memoir_dir = ROOT / "memoir" / "assets" / "brand"
-    memoir_source = Image.open(memoir_dir / "apple-icon.png").convert("RGBA")
-    save_icon_set(memoir_source, memoir_dir, 0.08, (255, 240, 243, 255))
-    memoir_svgs(memoir_dir)
+    memoir_source = Image.open(memoir_dir / "memoir-symbol.png").convert("RGBA")
+    save_icon_set(
+        memoir_source,
+        memoir_dir,
+        0.06,
+        (255, 240, 243, 255),
+        3,
+        favicon_padding_ratio=0.02,
+        corner_radius_ratio=0.22,
+    )
+    memoir_svgs(memoir_source, memoir_dir)
     mascot = Image.open(memoir_dir / "mascot.png")
     save_hero(memoir_hero(mascot), memoir_dir)
 

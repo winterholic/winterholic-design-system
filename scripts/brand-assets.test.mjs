@@ -49,6 +49,19 @@ function readAlphaOccupancy(path) {
   return JSON.parse(result.stdout);
 }
 
+function readCornerAlpha(path) {
+  const script = [
+    "from PIL import Image",
+    "import json, sys",
+    "im=Image.open(sys.argv[1]).convert('RGBA')",
+    "points=((0,0),(im.width-1,0),(0,im.height-1),(im.width-1,im.height-1))",
+    "print(json.dumps([im.getpixel(point)[3] for point in points]))",
+  ].join(";");
+  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  return JSON.parse(result.stdout);
+}
+
 function readEmbeddedSvgOccupancy(path) {
   const script = [
     "from PIL import Image",
@@ -139,6 +152,25 @@ if (system === "stock-gosu") {
     const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
     assert.match(preview, /<img[^>]+logo-mark-mono\.svg/, "preview가 단색 심볼을 표시하지 않습니다.");
     assert.doesNotMatch(preview, /mask:[^;]*logo-mark-mono\.svg/, "중첩 이미지를 포함한 SVG는 Chromium 외부 마스크로 표시되지 않습니다.");
+  });
+}
+
+if (system === "memoir") {
+  test("memoir: 컬러와 단색 심볼은 같은 투명 마스터 윤곽을 사용한다", () => {
+    const color = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
+    const mono = readFileSync(join(brandDir, "logo-mark-mono.svg"), "utf8");
+    const colorSource = color.match(/href="(data:image\/png;base64,[^"]+)"/)?.[1];
+    const monoSource = mono.match(/href="(data:image\/png;base64,[^"]+)"/)?.[1];
+    assert.ok(colorSource, "컬러 심볼이 memoir 투명 마스터를 포함하지 않습니다.");
+    assert.equal(monoSource, colorSource, "단색 심볼이 컬러 심볼과 다른 윤곽을 사용합니다.");
+    assert.match(mono, /flood-color="currentColor"/, "단색 심볼의 color 지정이 동작하지 않습니다.");
+    assert.match(mono, /<svg[^>]+color="#A1385E"/, "외부 이미지로 표시할 때 사용할 기본 브랜드 색이 없습니다.");
+  });
+
+  test("memoir: 파비콘과 앱 아이콘은 둥근 타일 밖 모서리가 투명하다", () => {
+    for (const name of ["favicon-16.png", "favicon-32.png", "favicon-48.png", "app-icon-512.png"]) {
+      assert.deepEqual(readCornerAlpha(join(brandDir, name)), [0, 0, 0, 0], `${name} 모서리가 투명하지 않습니다.`);
+    }
   });
 }
 

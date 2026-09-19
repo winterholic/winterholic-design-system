@@ -1,6 +1,6 @@
 {
   "name": "memoir-design-system",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "memoir 개인 메모 서비스 디자인 시스템 — DTCG 토큰, CSS 변수, Tailwind 프리셋(기존 클래스명 별칭 포함), 문서",
   "type": "module",
   "private": true,
