@@ -1,0 +1,88 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "기존 FDS elevation 1~4 를 이름으로 옮겼다(1=sm, 2=md, 3=lg, 4=xl). 그림자 색 #001B37(남색)로 차가운 톤 유지. 금융 화면은 그림자를 결코 진하게 쓰지 않는다.",
+    "xs": { "$value": [{ "color": "#001B370A", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }], "$description": "세그먼트 활성 항목·토글 손잡이" },
+    "sm": { "$value": [
+      { "color": "#001B370F", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" },
+      { "color": "#001B370A", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }
+    ], "$description": "카드 기본(기존 shadow-1)" },
+    "md": { "$value": [{ "color": "#001B3714", "offsetX": "0px", "offsetY": "4px", "blur": "16px", "spread": "0px" }], "$description": "카드 hover·드롭다운·차트 툴팁(기존 shadow-2)" },
+    "lg": { "$value": [{ "color": "#001B371F", "offsetX": "0px", "offsetY": "8px", "blur": "28px", "spread": "0px" }], "$description": "토스트·바텀시트·검색 결과 패널(기존 shadow-3)" },
+    "xl": { "$value": [{ "color": "#001B3729", "offsetX": "0px", "offsetY": "16px", "blur": "48px", "spread": "0px" }], "$description": "모달(기존 shadow-4)" },
+    "inner": { "$value": [{ "color": "#001B3714", "offsetX": "0px", "offsetY": "2px", "blur": "4px", "spread": "0px", "inset": true }], "$description": "눌린 세그먼트·sunken 인풋" },
+    "sticky": { "$value": [{ "color": "#001B370F", "offsetX": "0px", "offsetY": "2px", "blur": "8px", "spread": "0px" }], "$description": "스크롤 시 sticky 헤더·하단 탭바 위쪽" }
+  },
+
+  "shadow-dark": {
+    "$type": "shadow",
+    "xs": { "$value": [{ "color": "#00000033", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }] },
+    "sm": { "$value": [{ "color": "#0000004D", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" }] },
+    "md": { "$value": [{ "color": "#00000066", "offsetX": "0px", "offsetY": "4px", "blur": "16px", "spread": "0px" }] },
+    "lg": { "$value": [{ "color": "#00000080", "offsetX": "0px", "offsetY": "8px", "blur": "28px", "spread": "0px" }] },
+    "xl": { "$value": [{ "color": "#00000099", "offsetX": "0px", "offsetY": "16px", "blur": "48px", "spread": "0px" }] },
+    "inner": { "$value": [{ "color": "#00000066", "offsetX": "0px", "offsetY": "2px", "blur": "4px", "spread": "0px", "inset": true }] },
+    "sticky": { "$value": [{ "color": "#00000059", "offsetX": "0px", "offsetY": "2px", "blur": "8px", "spread": "0px" }] }
+  },
+
+  "gradient": {
+    "$type": "gradient",
+    "$description": "금융 화면에서 그라데이션은 거의 쓰지 않는다. 온보딩·프로모션·스파크라인 채움·이미지 스크림 4곳뿐.",
+    "brand": {
+      "$value": [ { "color": "{blue.700}", "position": 0 }, { "color": "{blue.500}", "position": 0.6 }, { "color": "{blue.300}", "position": 1 } ],
+      "$description": "온보딩 헤더·프로모션 카드. 위 글자 white. 135deg"
+    },
+    "sky": {
+      "$value": [ { "color": "{blue.50}", "position": 0 }, { "color": "{base.white}", "position": 1 } ],
+      "$description": "홈 상단 요약 카드 배경(거의 안 보임). 180deg"
+    },
+    "sparkline-up": {
+      "$value": [ { "color": "#F0445233", "position": 0 }, { "color": "#F0445200", "position": 1 } ],
+      "$description": "상승 스파크라인 영역 채움. 180deg"
+    },
+    "sparkline-down": {
+      "$value": [ { "color": "#3182F633", "position": 0 }, { "color": "#3182F600", "position": 1 } ],
+      "$description": "하락 스파크라인 영역 채움. 180deg"
+    },
+    "scrim-bottom": {
+      "$value": [ { "color": "#191F2800", "position": 0 }, { "color": "#191F28B3", "position": 1 } ],
+      "$description": "뉴스 썸네일 위 제목. 180deg"
+    },
+    "fade-right": {
+      "$value": [ { "color": "#FFFFFF00", "position": 0 }, { "color": "{base.white}", "position": 1 } ],
+      "$description": "가로 스크롤 칩·탭 오른쪽 끝 페이드. 90deg. 다크에서는 surface.default 로 교체(09)" }
+  },
+  "gradient-angle": {
+    "$type": "number",
+    "default": { "$value": 135 },
+    "vertical": { "$value": 180 },
+    "horizontal": { "$value": 90 }
+  },
+
+  "opacity": {
+    "$type": "number",
+    "disabled": { "$value": 0.4 },
+    "hover":    { "$value": 0.04 },
+    "pressed":  { "$value": 0.08 },
+    "scrim":    { "$value": 0.5 },
+    "skeleton": { "$value": 0.6 },
+    "stale":    { "$value": 0.6, "$description": "장 마감·지연 시세 등 낡은 데이터 표시" },
+    "chart-inactive-series": { "$value": 0.25, "$description": "범례에서 다른 시리즈 hover 시 나머지" }
+  },
+
+  "blur": {
+    "$type": "dimension",
+    "sm": { "$value": "4px" },
+    "md": { "$value": "12px", "$description": "글래스 헤더·하단 탭바 backdrop-filter" },
+    "lg": { "$value": "24px" }
+  },
+
+  "z-index": {
+    "$type": "number",
+    "hide": { "$value": -1 }, "base": { "$value": 0 }, "raised": { "$value": 10 },
+    "sticky-panel": { "$value": 20, "$description": "종목 검색 결과·분석 패널(기존 z-index 20)" },
+    "dropdown": { "$value": 1000 }, "sticky": { "$value": 1100, "$description": "상단 탐색·하단 탭바" },
+    "overlay": { "$value": 1200 }, "sheet": { "$value": 1250, "$description": "바텀시트" }, "modal": { "$value": 1300 },
+    "popover": { "$value": 1400 }, "toast": { "$value": 1500 }, "tooltip": { "$value": 1600 }
+  }
+}

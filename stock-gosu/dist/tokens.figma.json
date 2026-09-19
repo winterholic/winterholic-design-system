@@ -1,0 +1,4223 @@
+{
+  "wh/light": {
+    "blue": {
+      "50": {
+        "$value": "#E8F3FF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.12,
+            "onBlack": 18.7
+          }
+        }
+      },
+      "100": {
+        "$value": "#C9E2FF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.33,
+            "onBlack": 15.81
+          }
+        }
+      },
+      "200": {
+        "$value": "#90C2FF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.85,
+            "onBlack": 11.35
+          }
+        }
+      },
+      "300": {
+        "$value": "#64A8FF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.45,
+            "onBlack": 8.59
+          }
+        }
+      },
+      "400": {
+        "$value": "#4593FC",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.07,
+            "onBlack": 6.83
+          }
+        }
+      },
+      "500": {
+        "$value": "#3182F6",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.71,
+            "onBlack": 5.65
+          }
+        }
+      },
+      "600": {
+        "$value": "#216FE8",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 4.66,
+            "onBlack": 4.5
+          }
+        }
+      },
+      "700": {
+        "$value": "#1B64DA",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 5.41,
+            "onBlack": 3.88
+          }
+        }
+      },
+      "800": {
+        "$value": "#1957C2",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 6.6,
+            "onBlack": 3.18
+          }
+        }
+      },
+      "900": {
+        "$value": "#194AA6",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 8.17,
+            "onBlack": 2.57
+          }
+        }
+      },
+      "950": {
+        "$value": "#021D46",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.58,
+            "onBlack": 1.27
+          }
+        }
+      },
+      "$description": "Toss Blue · 브랜드·액션·하락 · 앵커 #3182F6 @500 · 고정 단계 50/100/200/300/400/500/600/700/800/900"
+    },
+    "gray": {
+      "50": {
+        "$value": "#F9FAFB",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.05,
+            "onBlack": 20.1
+          }
+        }
+      },
+      "100": {
+        "$value": "#F2F4F6",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.1,
+            "onBlack": 19.05
+          }
+        }
+      },
+      "200": {
+        "$value": "#E5E8EB",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.23,
+            "onBlack": 17.07
+          }
+        }
+      },
+      "300": {
+        "$value": "#D1D6DB",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.46,
+            "onBlack": 14.35
+          }
+        }
+      },
+      "400": {
+        "$value": "#B0B8C1",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.01,
+            "onBlack": 10.47
+          }
+        }
+      },
+      "500": {
+        "$value": "#8B95A1",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.04,
+            "onBlack": 6.91
+          }
+        }
+      },
+      "600": {
+        "$value": "#6B7684",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 4.62,
+            "onBlack": 4.55
+          }
+        }
+      },
+      "700": {
+        "$value": "#4E5968",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 7.11,
+            "onBlack": 2.95
+          }
+        }
+      },
+      "800": {
+        "$value": "#333D4B",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 11,
+            "onBlack": 1.91
+          }
+        }
+      },
+      "900": {
+        "$value": "#191F28",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.56,
+            "onBlack": 1.27
+          }
+        }
+      },
+      "950": {
+        "$value": "#111418",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 18.47,
+            "onBlack": 1.14
+          }
+        }
+      },
+      "$description": "Toss Gray · 텍스트·면·테두리 · 앵커 #8B95A1 @500 · 고정 단계 50/100/200/300/400/500/600/700/800/900/950"
+    },
+    "red": {
+      "50": {
+        "$value": "#FFEEEE",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.12,
+            "onBlack": 18.72
+          }
+        }
+      },
+      "100": {
+        "$value": "#FEE6E5",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.19,
+            "onBlack": 17.66
+          }
+        }
+      },
+      "200": {
+        "$value": "#FCCECC",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.42,
+            "onBlack": 14.84
+          }
+        }
+      },
+      "300": {
+        "$value": "#FFA7A5",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.85,
+            "onBlack": 11.32
+          }
+        }
+      },
+      "400": {
+        "$value": "#FD7678",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.61,
+            "onBlack": 8.04
+          }
+        }
+      },
+      "500": {
+        "$value": "#F04452",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.71,
+            "onBlack": 5.65
+          }
+        }
+      },
+      "600": {
+        "$value": "#E0263A",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 4.66,
+            "onBlack": 4.51
+          }
+        }
+      },
+      "700": {
+        "$value": "#9F2430",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 7.58,
+            "onBlack": 2.77
+          }
+        }
+      },
+      "800": {
+        "$value": "#7C1622",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 10.53,
+            "onBlack": 1.99
+          }
+        }
+      },
+      "900": {
+        "$value": "#5D0915",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 13.86,
+            "onBlack": 1.52
+          }
+        }
+      },
+      "950": {
+        "$value": "#420109",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.94,
+            "onBlack": 1.24
+          }
+        }
+      },
+      "$description": "Rise Red · 상승(한국 관례)·오류 · 앵커 #F04452 @500 · 고정 단계 50/500/600"
+    },
+    "green": {
+      "50": {
+        "$value": "#E7F8F3",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.1,
+            "onBlack": 19.12
+          }
+        }
+      },
+      "100": {
+        "$value": "#C6FBE7",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.14,
+            "onBlack": 18.35
+          }
+        }
+      },
+      "200": {
+        "$value": "#8AF3D0",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.33,
+            "onBlack": 15.81
+          }
+        }
+      },
+      "300": {
+        "$value": "#60DCB7",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.69,
+            "onBlack": 12.42
+          }
+        }
+      },
+      "400": {
+        "$value": "#15C39A",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.26,
+            "onBlack": 9.3
+          }
+        }
+      },
+      "500": {
+        "$value": "#03B488",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.66,
+            "onBlack": 7.89
+          }
+        }
+      },
+      "600": {
+        "$value": "#088467",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 4.66,
+            "onBlack": 4.51
+          }
+        }
+      },
+      "700": {
+        "$value": "#046952",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 6.67,
+            "onBlack": 3.15
+          }
+        }
+      },
+      "800": {
+        "$value": "#01503E",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 9.47,
+            "onBlack": 2.22
+          }
+        }
+      },
+      "900": {
+        "$value": "#003A2C",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 12.79,
+            "onBlack": 1.64
+          }
+        }
+      },
+      "950": {
+        "$value": "#04261C",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.16,
+            "onBlack": 1.3
+          }
+        }
+      },
+      "$description": "Mint Green · 성공·긍정 신호 · 앵커 #15C39A @400 · 고정 단계 50/400/500"
+    },
+    "yellow": {
+      "50": {
+        "$value": "#FFF7E6",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.07,
+            "onBlack": 19.7
+          }
+        }
+      },
+      "100": {
+        "$value": "#FEEACD",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.18,
+            "onBlack": 17.86
+          }
+        }
+      },
+      "200": {
+        "$value": "#FDD496",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.4,
+            "onBlack": 15.03
+          }
+        }
+      },
+      "300": {
+        "$value": "#FFB200",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.81,
+            "onBlack": 11.62
+          }
+        }
+      },
+      "400": {
+        "$value": "#F59B00",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.19,
+            "onBlack": 9.57
+          }
+        }
+      },
+      "500": {
+        "$value": "#B37D10",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.59,
+            "onBlack": 5.86
+          }
+        }
+      },
+      "600": {
+        "$value": "#936712",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 5.01,
+            "onBlack": 4.19
+          }
+        }
+      },
+      "700": {
+        "$value": "#755211",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 7.07,
+            "onBlack": 2.97
+          }
+        }
+      },
+      "800": {
+        "$value": "#593E0F",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 9.9,
+            "onBlack": 2.12
+          }
+        }
+      },
+      "900": {
+        "$value": "#3F2C0C",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 13.32,
+            "onBlack": 1.58
+          }
+        }
+      },
+      "950": {
+        "$value": "#291D09",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.48,
+            "onBlack": 1.27
+          }
+        }
+      },
+      "$description": "Signal Amber · 경고·주의 신호 · 앵커 #FFB200 @300 · 고정 단계 50/300/400"
+    },
+    "orange": {
+      "50": {
+        "$value": "#FFF4F1",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.46
+          }
+        }
+      },
+      "100": {
+        "$value": "#FFE7DF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.18,
+            "onBlack": 17.75
+          }
+        }
+      },
+      "200": {
+        "$value": "#FECFBE",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.41,
+            "onBlack": 14.88
+          }
+        }
+      },
+      "300": {
+        "$value": "#FCAC8F",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.84,
+            "onBlack": 11.44
+          }
+        }
+      },
+      "400": {
+        "$value": "#F97E50",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.58,
+            "onBlack": 8.13
+          }
+        }
+      },
+      "500": {
+        "$value": "#EB6834",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.2,
+            "onBlack": 6.56
+          }
+        }
+      },
+      "600": {
+        "$value": "#B34C22",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 5.28,
+            "onBlack": 3.97
+          }
+        }
+      },
+      "700": {
+        "$value": "#913B17",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 7.39,
+            "onBlack": 2.84
+          }
+        }
+      },
+      "800": {
+        "$value": "#712A0D",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 10.3,
+            "onBlack": 2.04
+          }
+        }
+      },
+      "900": {
+        "$value": "#541C04",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 13.59,
+            "onBlack": 1.54
+          }
+        }
+      },
+      "950": {
+        "$value": "#3A0F00",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.82,
+            "onBlack": 1.25
+          }
+        }
+      },
+      "$description": "Series Orange · 차트 2 · 앵커 #EB6834 @500"
+    },
+    "violet": {
+      "50": {
+        "$value": "#F5F6FF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.51
+          }
+        }
+      },
+      "100": {
+        "$value": "#EAEBFD",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.18,
+            "onBlack": 17.8
+          }
+        }
+      },
+      "200": {
+        "$value": "#D6D7FD",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.4,
+            "onBlack": 15
+          }
+        }
+      },
+      "300": {
+        "$value": "#BBBCF6",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.8,
+            "onBlack": 11.64
+          }
+        }
+      },
+      "400": {
+        "$value": "#9E9EE4",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.48,
+            "onBlack": 8.46
+          }
+        }
+      },
+      "500": {
+        "$value": "#807ED0",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.61,
+            "onBlack": 5.81
+          }
+        }
+      },
+      "600": {
+        "$value": "#6761BF",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 5.2,
+            "onBlack": 4.04
+          }
+        }
+      },
+      "700": {
+        "$value": "#4A3AA7",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 8.56,
+            "onBlack": 2.45
+          }
+        }
+      },
+      "800": {
+        "$value": "#3E2E92",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 10.44,
+            "onBlack": 2.01
+          }
+        }
+      },
+      "900": {
+        "$value": "#2C1C72",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 13.85,
+            "onBlack": 1.52
+          }
+        }
+      },
+      "950": {
+        "$value": "#1D0A56",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 17.07,
+            "onBlack": 1.23
+          }
+        }
+      },
+      "$description": "Series Violet · 차트 7 · 앵커 #4A3AA7 @700"
+    },
+    "magenta": {
+      "50": {
+        "$value": "#FFF3F7",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.42
+          }
+        }
+      },
+      "100": {
+        "$value": "#FEE5ED",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.19,
+            "onBlack": 17.64
+          }
+        }
+      },
+      "200": {
+        "$value": "#FFCADB",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.43,
+            "onBlack": 14.72
+          }
+        }
+      },
+      "300": {
+        "$value": "#FCA4C3",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 1.87,
+            "onBlack": 11.24
+          }
+        }
+      },
+      "400": {
+        "$value": "#E87BA4",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 2.69,
+            "onBlack": 7.8
+          }
+        }
+      },
+      "500": {
+        "$value": "#C4668A",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 3.74,
+            "onBlack": 5.61
+          }
+        }
+      },
+      "600": {
+        "$value": "#A15370",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 5.27,
+            "onBlack": 3.99
+          }
+        }
+      },
+      "700": {
+        "$value": "#82415A",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 7.36,
+            "onBlack": 2.85
+          }
+        }
+      },
+      "800": {
+        "$value": "#643044",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 10.25,
+            "onBlack": 2.05
+          }
+        }
+      },
+      "900": {
+        "$value": "#492130",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 13.61,
+            "onBlack": 1.54
+          }
+        }
+      },
+      "950": {
+        "$value": "#32141F",
+        "$extensions": {
+          "sg.contrast": {
+            "onWhite": 16.73,
+            "onBlack": 1.26
+          }
+        }
+      },
+      "$description": "Series Magenta · 차트 5 · 앵커 #E87BA4 @400"
+    },
+    "brand": {
+      "$type": "color",
+      "$description": "stock-gosu 브랜드 색. 파랑새 로고(assets/brand/stock-gosu.svg)의 색 그대로. 사용처 코드는 시맨틱 토큰을 거친다.",
+      "blue": {
+        "$value": "#3182F6",
+        "$description": "Toss Blue · 브랜드 주색 (= blue.500). 로고 몸통"
+      },
+      "sky": {
+        "$value": "#64A8FF",
+        "$description": "로고 날개 하이라이트 (= blue.300)"
+      },
+      "deep": {
+        "$value": "#194AA6",
+        "$description": "로고 눈 · 심색 (= blue.900)"
+      },
+      "canvas": {
+        "$value": "#F2F4F6",
+        "$description": "페이지 배경 (= gray.100). 카드가 흰색이라 배경은 한 단계 회색"
+      }
+    },
+    "base": {
+      "$type": "color",
+      "white": {
+        "$value": "#FFFFFF"
+      },
+      "black": {
+        "$value": "#000000"
+      },
+      "transparent": {
+        "$value": "transparent"
+      }
+    },
+    "space": {
+      "0": {
+        "$value": "0px"
+      },
+      "1": {
+        "$value": "4px",
+        "$description": "배지 내부, 등락 화살표↔숫자, 종목명↔시장 태그"
+      },
+      "2": {
+        "$value": "8px",
+        "$description": "밀접한 요소 사이, 리스트 행 안 세로 간격"
+      },
+      "3": {
+        "$value": "12px",
+        "$description": "카드 안 요소 사이, 셀 좌우 패딩"
+      },
+      "4": {
+        "$value": "16px",
+        "$description": "기본 단위. 컴포넌트 내부 패딩, 컴포넌트 사이, 모바일 좌우 여백 대안"
+      },
+      "5": {
+        "$value": "20px",
+        "$description": "카드 패딩 기본, 모바일 좌우 여백"
+      },
+      "6": {
+        "$value": "24px",
+        "$description": "카드 묶음 사이, 태블릿 좌우 여백, 페이지 섹션 gap"
+      },
+      "7": {
+        "$value": "28px"
+      },
+      "8": {
+        "$value": "32px",
+        "$description": "섹션 사이, 데스크톱 좌우 여백"
+      },
+      "10": {
+        "$value": "40px"
+      },
+      "12": {
+        "$value": "48px",
+        "$description": "섹션 사이(큰 구획)"
+      },
+      "16": {
+        "$value": "64px",
+        "$description": "온보딩·빈 화면 상하"
+      },
+      "$type": "dimension",
+      "$description": "4px 그리드. 이름은 4px 배수(space.4 = 16px). 기존 global.css 의 --space-16 같은 px 이름은 legacy-aliases.css 가 이어 준다. 정보 밀도가 높은 화면이라 base 보다 촘촘한 단계(6·10·14)를 유지한다.",
+      "px": {
+        "$value": "1px"
+      },
+      "0-5": {
+        "$value": "2px",
+        "$description": "세그먼트 트랙 안쪽, 아이콘 미세 조정"
+      },
+      "1-5": {
+        "$value": "6px",
+        "$description": "라벨↔인풋, 버튼 아이콘↔라벨"
+      },
+      "2-5": {
+        "$value": "10px",
+        "$description": "리스트 행 상하 패딩(밀도 높음)"
+      },
+      "3-5": {
+        "$value": "14px"
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "control": {
+        "$description": "기존 .btn 이 44 였다(터치 최소). sm 36, lg 52.",
+        "xs": {
+          "$value": "28px",
+          "$description": "표 셀 안 아이콘 버튼·칩"
+        },
+        "sm": {
+          "$value": "36px",
+          "$description": "툴바·필터·세그먼트 항목·btn-sm"
+        },
+        "md": {
+          "$value": "44px",
+          "$description": "기본. 버튼·인풋. 터치 최소 44 를 그대로 만족"
+        },
+        "lg": {
+          "$value": "52px",
+          "$description": "하단 고정 CTA·로그인·btn-lg"
+        },
+        "xl": {
+          "$value": "56px",
+          "$description": "온보딩 CTA"
+        }
+      },
+      "icon": {
+        "xs": {
+          "$value": "12px"
+        },
+        "sm": {
+          "$value": "16px"
+        },
+        "md": {
+          "$value": "20px"
+        },
+        "lg": {
+          "$value": "24px"
+        },
+        "xl": {
+          "$value": "32px"
+        },
+        "2xl": {
+          "$value": "48px"
+        }
+      },
+      "avatar": {
+        "$description": "종목 로고·사용자 아바타",
+        "xs": {
+          "$value": "24px"
+        },
+        "sm": {
+          "$value": "32px"
+        },
+        "md": {
+          "$value": "40px"
+        },
+        "lg": {
+          "$value": "56px"
+        },
+        "xl": {
+          "$value": "80px"
+        }
+      },
+      "touch-target-min": {
+        "$value": "44px"
+      },
+      "container": {
+        "sm": {
+          "$value": "560px",
+          "$description": "로그인·계정·단일 폼"
+        },
+        "md": {
+          "$value": "768px",
+          "$description": "읽기 화면(뉴스·리서치 본문)"
+        },
+        "lg": {
+          "$value": "1024px",
+          "$description": "종목 상세"
+        },
+        "xl": {
+          "$value": "1180px",
+          "$description": "앱 기본 최대폭. 기존 --content-max. (finance-design-system.html 의 1080 은 낡은 값이라 1180 으로 통일)"
+        },
+        "2xl": {
+          "$value": "1440px",
+          "$description": "기술 차트 워크스페이스·와이드 표"
+        },
+        "prose": {
+          "$value": "680px",
+          "$description": "본문 글 한 줄 폭"
+        }
+      },
+      "layout": {
+        "header": {
+          "$value": "56px",
+          "$description": "모바일 문맥 헤더"
+        },
+        "header-lg": {
+          "$value": "64px",
+          "$description": "데스크톱 sticky 상단 탐색"
+        },
+        "subnav": {
+          "$value": "48px",
+          "$description": "영역별 보조 탐색 줄"
+        },
+        "tabbar": {
+          "$value": "56px",
+          "$description": "모바일 하단 5탭. safe-area-inset-bottom 을 더한다"
+        },
+        "sidebar": {
+          "$value": "240px"
+        },
+        "page-gutter": {
+          "$value": "20px",
+          "$description": "모바일(375 기준). 기존 FDS 20"
+        },
+        "page-gutter-md": {
+          "$value": "24px",
+          "$description": "태블릿 768 이상"
+        },
+        "page-gutter-lg": {
+          "$value": "32px",
+          "$description": "데스크톱 1024 이상. 기존 --container-pad"
+        },
+        "grid-gap": {
+          "$value": "16px"
+        },
+        "grid-gap-md": {
+          "$value": "20px"
+        },
+        "grid-gap-lg": {
+          "$value": "24px"
+        },
+        "sticky-offset": {
+          "$value": "128px",
+          "$description": "데스크톱 헤더 64 + 보조탐색 48 + 여유 16. sticky 패널 top 값"
+        },
+        "bottom-cta-pad": {
+          "$value": "16px",
+          "$description": "하단 고정 CTA 패딩. + env(safe-area-inset-bottom)"
+        }
+      }
+    },
+    "breakpoint": {
+      "$type": "dimension",
+      "$description": "모바일 퍼스트. 375 는 가장 좁은 실기기 기준(가로 스크롤·잘림 0 이어야 한다), 768 이 모바일↔태블릿 전환점.",
+      "xs": {
+        "$value": "375px"
+      },
+      "sm": {
+        "$value": "640px"
+      },
+      "md": {
+        "$value": "768px"
+      },
+      "lg": {
+        "$value": "1024px"
+      },
+      "xl": {
+        "$value": "1280px"
+      },
+      "2xl": {
+        "$value": "1536px"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "기존 FDS 8/12/16/20 유지 + 4·6 추가. 금융 앱은 base 보다 한 단계 더 둥글다(안전한 인상).",
+      "none": {
+        "$value": "0px"
+      },
+      "xs": {
+        "$value": "4px",
+        "$description": "체크박스·인라인 코드·미니 태그"
+      },
+      "sm": {
+        "$value": "6px",
+        "$description": "세그먼트 활성 항목·툴팁"
+      },
+      "md": {
+        "$value": "8px",
+        "$description": "sm 컨트롤·칩·작은 카드 안 요소"
+      },
+      "lg": {
+        "$value": "12px",
+        "$description": "버튼·인풋·드롭다운. 기본"
+      },
+      "xl": {
+        "$value": "16px",
+        "$description": "카드(밀도 높은)·리스트 컨테이너·바텀시트 항목"
+      },
+      "2xl": {
+        "$value": "20px",
+        "$description": "카드 기본(기존 .card)·모달·바텀시트"
+      },
+      "3xl": {
+        "$value": "24px",
+        "$description": "온보딩 히어로 카드"
+      },
+      "full": {
+        "$value": "9999px"
+      }
+    },
+    "border-width": {
+      "$type": "dimension",
+      "hairline": {
+        "$value": "1px"
+      },
+      "medium": {
+        "$value": "1.5px",
+        "$description": "아웃라인 버튼(기존 btn-outline)"
+      },
+      "focus": {
+        "$value": "2px"
+      },
+      "accent": {
+        "$value": "3px",
+        "$description": "선택된 탭 인디케이터·등락 좌측 바"
+      }
+    },
+    "focus": {
+      "ring-width": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
+      "ring-offset": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
+      "ring-inset": {
+        "$value": "3px",
+        "$type": "dimension",
+        "$description": "인풋 안쪽 soft 링(focus-ring-soft)"
+      }
+    },
+    "font": {
+      "family": {
+        "$type": "fontFamily",
+        "sans": {
+          "$value": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "$description": "기존 --font-sans 그대로"
+        },
+        "mono": {
+          "$value": [
+            "JetBrains Mono",
+            "D2Coding",
+            "SFMono-Regular",
+            "Menlo",
+            "Consolas",
+            "monospace"
+          ],
+          "$description": "코드·API 응답 표시. 금액·가격은 mono 가 아니라 sans + tabular-nums 를 쓴다(Pretendard 숫자가 더 읽기 좋다)"
+        }
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "$description": "기존 FDS 는 400/500/600/800 + 700 이 섞여 있었다. 5단계로 정리: 700 은 제목, 800 은 가격·큰 숫자 전용.",
+        "regular": {
+          "$value": 400
+        },
+        "medium": {
+          "$value": 500,
+          "$description": "라벨·표 헤더"
+        },
+        "semibold": {
+          "$value": 600,
+          "$description": "버튼·title-3·강조"
+        },
+        "bold": {
+          "$value": 700,
+          "$description": "title-1·title-2·등락 숫자"
+        },
+        "extrabold": {
+          "$value": 800,
+          "$description": "display·큰 가격. 다른 데는 쓰지 않는다"
+        }
+      },
+      "size": {
+        "$type": "dimension",
+        "$description": "1rem = 16px. 기존 FDS 스케일(13/15/17/18/20/24/32)에 12·28·40 을 더했다. 보조정보도 12 아래로 내리지 않는다(기존 규칙 유지).",
+        "2xs": {
+          "$value": "0.6875rem",
+          "$description": "11px · 하단 탭 라벨만 예외적으로 허용"
+        },
+        "xs": {
+          "$value": "0.75rem",
+          "$description": "12px · 배지·표 헤더·메타. 하한"
+        },
+        "sm": {
+          "$value": "0.8125rem",
+          "$description": "13px · 캡션·보조 설명·표 셀 보조"
+        },
+        "md": {
+          "$value": "0.9375rem",
+          "$description": "15px · 본문 기본·버튼·리스트 행 제목·표 셀"
+        },
+        "lg": {
+          "$value": "1.0625rem",
+          "$description": "17px · 강조 본문·안내 문장"
+        },
+        "xl": {
+          "$value": "1.125rem",
+          "$description": "18px · title-3·카드 제목"
+        },
+        "2xl": {
+          "$value": "1.25rem",
+          "$description": "20px · title-2·섹션 제목·가격(md)"
+        },
+        "3xl": {
+          "$value": "1.5rem",
+          "$description": "24px · title-1·페이지 제목"
+        },
+        "4xl": {
+          "$value": "1.75rem",
+          "$description": "28px · 가격(lg)·종목 상세 현재가"
+        },
+        "5xl": {
+          "$value": "2rem",
+          "$description": "32px · display·총자산"
+        },
+        "6xl": {
+          "$value": "2.5rem",
+          "$description": "40px · 온보딩 히어로"
+        }
+      },
+      "line-height": {
+        "$type": "number",
+        "none": {
+          "$value": 1,
+          "$description": "가격·KPI 숫자"
+        },
+        "tight": {
+          "$value": 1.2,
+          "$description": "display"
+        },
+        "snug": {
+          "$value": 1.35,
+          "$description": "title"
+        },
+        "normal": {
+          "$value": 1.45,
+          "$description": "라벨·버튼·리스트 행"
+        },
+        "relaxed": {
+          "$value": 1.6,
+          "$description": "본문·안내 문장"
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "tighter": {
+          "$value": "-0.03em",
+          "$description": "display·큰 가격"
+        },
+        "tight": {
+          "$value": "-0.02em",
+          "$description": "title-1·2, 가격 md"
+        },
+        "snug": {
+          "$value": "-0.01em",
+          "$description": "본문 기본(기존 body letter-spacing)"
+        },
+        "normal": {
+          "$value": "0em",
+          "$description": "캡션·배지·숫자 sm"
+        }
+      }
+    },
+    "typography": {
+      "$type": "typography",
+      "$description": "역할별 완성 스타일. 화면에는 이 이름으로만. 숫자 스타일(price-*·change·numeric)은 font-variant-numeric: tabular-nums 가 자동으로 붙는다(typography.css).",
+      "display": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.5xl}",
+          "fontWeight": "{font.weight.extrabold}",
+          "lineHeight": "{font.line-height.tight}",
+          "letterSpacing": "{font.letter-spacing.tighter}"
+        },
+        "$description": "총자산·온보딩 한 줄. 32/800"
+      },
+      "display-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.6xl}",
+          "fontWeight": "{font.weight.extrabold}",
+          "lineHeight": "{font.line-height.tight}",
+          "letterSpacing": "{font.letter-spacing.tighter}"
+        },
+        "$description": "온보딩 히어로 40/800. 모바일 32"
+      },
+      "title-1": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.3xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "페이지 제목 24/700. 페이지당 1개"
+      },
+      "title-2": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.2xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "섹션·모달·바텀시트 제목 20/700"
+      },
+      "title-3": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xl}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "카드 제목·패널 헤더 18/600"
+      },
+      "title-4": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "리스트 그룹 제목·작은 카드 제목 15/600"
+      },
+      "body-1": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.lg}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "안내 문장·리서치 본문 17/400"
+      },
+      "body-2": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "본문 기본·리스트 행·표 셀 15/400"
+      },
+      "body-3": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "보조 설명 13/400"
+      },
+      "caption": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "라벨(기존 .label)·메타 13/500 + text.tertiary"
+      },
+      "micro": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xs}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "표 헤더·타임스탬프·시장 태그 12/500"
+      },
+      "label-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.lg}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "lg 버튼·하단 CTA 17/600"
+      },
+      "label-md": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "md 버튼·탭·세그먼트 15/600. 기본"
+      },
+      "label-sm": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "sm 버튼·필터 칩 13/600"
+      },
+      "badge": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xs}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "배지·시장 태그(KOSPI) 12/700"
+      },
+      "price-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.4xl}",
+          "fontWeight": "{font.weight.extrabold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.tighter}"
+        },
+        "$description": "종목 상세 현재가·총자산 28/800 tabular"
+      },
+      "price-md": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.2xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "KPI 타일·카드 안 가격 20/700"
+      },
+      "price-sm": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "리스트 행·표 셀 가격 15/700"
+      },
+      "change": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "등락률 13/700 + finance.<dir>.text"
+      },
+      "numeric": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "표의 일반 수치(거래량·PER) 15/500"
+      },
+      "code": {
+        "$value": {
+          "fontFamily": "{font.family.mono}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "코드·티커 심볼(AAPL)"
+      }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$description": "기존 FDS elevation 1~4 를 이름으로 옮겼다(1=sm, 2=md, 3=lg, 4=xl). 그림자 색 #001B37(남색)로 차가운 톤 유지. 금융 화면은 그림자를 결코 진하게 쓰지 않는다.",
+      "xs": {
+        "$value": [
+          {
+            "color": "#001B370A",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "2px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "세그먼트 활성 항목·토글 손잡이"
+      },
+      "sm": {
+        "$value": [
+          {
+            "color": "#001B370F",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "3px",
+            "spread": "0px"
+          },
+          {
+            "color": "#001B370A",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "2px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "카드 기본(기존 shadow-1)"
+      },
+      "md": {
+        "$value": [
+          {
+            "color": "#001B3714",
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "16px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "카드 hover·드롭다운·차트 툴팁(기존 shadow-2)"
+      },
+      "lg": {
+        "$value": [
+          {
+            "color": "#001B371F",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "28px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "토스트·바텀시트·검색 결과 패널(기존 shadow-3)"
+      },
+      "xl": {
+        "$value": [
+          {
+            "color": "#001B3729",
+            "offsetX": "0px",
+            "offsetY": "16px",
+            "blur": "48px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "모달(기존 shadow-4)"
+      },
+      "inner": {
+        "$value": [
+          {
+            "color": "#001B3714",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "4px",
+            "spread": "0px",
+            "inset": true
+          }
+        ],
+        "$description": "눌린 세그먼트·sunken 인풋"
+      },
+      "sticky": {
+        "$value": [
+          {
+            "color": "#001B370F",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "8px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "스크롤 시 sticky 헤더·하단 탭바 위쪽"
+      }
+    },
+    "shadow-dark": {
+      "$type": "shadow",
+      "xs": {
+        "$value": [
+          {
+            "color": "#00000033",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "2px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "sm": {
+        "$value": [
+          {
+            "color": "#0000004D",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "3px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "md": {
+        "$value": [
+          {
+            "color": "#00000066",
+            "offsetX": "0px",
+            "offsetY": "4px",
+            "blur": "16px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "lg": {
+        "$value": [
+          {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "8px",
+            "blur": "28px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "xl": {
+        "$value": [
+          {
+            "color": "#00000099",
+            "offsetX": "0px",
+            "offsetY": "16px",
+            "blur": "48px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "inner": {
+        "$value": [
+          {
+            "color": "#00000066",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "4px",
+            "spread": "0px",
+            "inset": true
+          }
+        ]
+      },
+      "sticky": {
+        "$value": [
+          {
+            "color": "#00000059",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "8px",
+            "spread": "0px"
+          }
+        ]
+      }
+    },
+    "gradient": {
+      "$type": "gradient",
+      "$description": "금융 화면에서 그라데이션은 거의 쓰지 않는다. 온보딩·프로모션·스파크라인 채움·이미지 스크림 4곳뿐.",
+      "brand": {
+        "$value": [
+          {
+            "color": "{blue.700}",
+            "position": 0
+          },
+          {
+            "color": "{blue.500}",
+            "position": 0.6
+          },
+          {
+            "color": "{blue.300}",
+            "position": 1
+          }
+        ],
+        "$description": "온보딩 헤더·프로모션 카드. 위 글자 white. 135deg"
+      },
+      "sky": {
+        "$value": [
+          {
+            "color": "{blue.50}",
+            "position": 0
+          },
+          {
+            "color": "{base.white}",
+            "position": 1
+          }
+        ],
+        "$description": "홈 상단 요약 카드 배경(거의 안 보임). 180deg"
+      },
+      "sparkline-up": {
+        "$value": [
+          {
+            "color": "#F0445233",
+            "position": 0
+          },
+          {
+            "color": "#F0445200",
+            "position": 1
+          }
+        ],
+        "$description": "상승 스파크라인 영역 채움. 180deg"
+      },
+      "sparkline-down": {
+        "$value": [
+          {
+            "color": "#3182F633",
+            "position": 0
+          },
+          {
+            "color": "#3182F600",
+            "position": 1
+          }
+        ],
+        "$description": "하락 스파크라인 영역 채움. 180deg"
+      },
+      "scrim-bottom": {
+        "$value": [
+          {
+            "color": "#191F2800",
+            "position": 0
+          },
+          {
+            "color": "#191F28B3",
+            "position": 1
+          }
+        ],
+        "$description": "뉴스 썸네일 위 제목. 180deg"
+      },
+      "fade-right": {
+        "$value": [
+          {
+            "color": "#FFFFFF00",
+            "position": 0
+          },
+          {
+            "color": "{base.white}",
+            "position": 1
+          }
+        ],
+        "$description": "가로 스크롤 칩·탭 오른쪽 끝 페이드. 90deg. 다크에서는 surface.default 로 교체(09)"
+      }
+    },
+    "gradient-angle": {
+      "$type": "number",
+      "default": {
+        "$value": 135
+      },
+      "vertical": {
+        "$value": 180
+      },
+      "horizontal": {
+        "$value": 90
+      }
+    },
+    "opacity": {
+      "$type": "number",
+      "disabled": {
+        "$value": 0.4
+      },
+      "hover": {
+        "$value": 0.04
+      },
+      "pressed": {
+        "$value": 0.08
+      },
+      "scrim": {
+        "$value": 0.5
+      },
+      "skeleton": {
+        "$value": 0.6
+      },
+      "stale": {
+        "$value": 0.6,
+        "$description": "장 마감·지연 시세 등 낡은 데이터 표시"
+      },
+      "chart-inactive-series": {
+        "$value": 0.25,
+        "$description": "범례에서 다른 시리즈 hover 시 나머지"
+      }
+    },
+    "blur": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "4px"
+      },
+      "md": {
+        "$value": "12px",
+        "$description": "글래스 헤더·하단 탭바 backdrop-filter"
+      },
+      "lg": {
+        "$value": "24px"
+      }
+    },
+    "z-index": {
+      "$type": "number",
+      "hide": {
+        "$value": -1
+      },
+      "base": {
+        "$value": 0
+      },
+      "raised": {
+        "$value": 10
+      },
+      "sticky-panel": {
+        "$value": 20,
+        "$description": "종목 검색 결과·분석 패널(기존 z-index 20)"
+      },
+      "dropdown": {
+        "$value": 1000
+      },
+      "sticky": {
+        "$value": 1100,
+        "$description": "상단 탐색·하단 탭바"
+      },
+      "overlay": {
+        "$value": 1200
+      },
+      "sheet": {
+        "$value": 1250,
+        "$description": "바텀시트"
+      },
+      "modal": {
+        "$value": 1300
+      },
+      "popover": {
+        "$value": 1400
+      },
+      "toast": {
+        "$value": 1500
+      },
+      "tooltip": {
+        "$value": 1600
+      }
+    },
+    "motion": {
+      "$description": "기존 FDS: fast 150 / base 250 / slow 400, ease-out·ease-in-out. 여기에 시세 플래시와 차트용을 더했다. 핵심 숫자(잔액·수익률)는 과하게 움직이지 않는다 — 깜빡임은 불안이다.",
+      "duration": {
+        "$type": "duration",
+        "instant": {
+          "$value": "0ms"
+        },
+        "fast": {
+          "$value": "150ms",
+          "$description": "hover 색·세그먼트 이동·토글"
+        },
+        "normal": {
+          "$value": "250ms",
+          "$description": "기본. 드롭다운·아코디언·탭 인디케이터 (기존 base)"
+        },
+        "slow": {
+          "$value": "400ms",
+          "$description": "바텀시트·모달·페이지 전환"
+        },
+        "flash": {
+          "$value": "600ms",
+          "$description": "실시간 틱 셀 배경 플래시(finance.flash-*) 후 원복"
+        },
+        "chart": {
+          "$value": "300ms",
+          "$description": "차트 그려짐·데이터 갱신. recharts animationDuration"
+        },
+        "skeleton-cycle": {
+          "$value": "1400ms"
+        },
+        "toast": {
+          "$value": "3000ms",
+          "$description": "정보 토스트 유지"
+        },
+        "toast-long": {
+          "$value": "6000ms",
+          "$description": "오류·액션 있는 토스트"
+        }
+      },
+      "easing": {
+        "$type": "cubicBezier",
+        "out": {
+          "$value": [
+            0.22,
+            1,
+            0.36,
+            1
+          ],
+          "$description": "등장·이동 전부 (기존 --ease-out)"
+        },
+        "in-out": {
+          "$value": [
+            0.4,
+            0,
+            0.2,
+            1
+          ],
+          "$description": "상태 전환·색 (기존 --ease-in-out)"
+        },
+        "in": {
+          "$value": [
+            0.4,
+            0,
+            1,
+            1
+          ],
+          "$description": "사라짐"
+        },
+        "linear": {
+          "$value": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "$description": "스피너·shimmer"
+        }
+      },
+      "distance": {
+        "$type": "dimension",
+        "sm": {
+          "$value": "4px",
+          "$description": "툴팁·드롭다운"
+        },
+        "md": {
+          "$value": "8px",
+          "$description": "토스트·팝오버"
+        },
+        "lg": {
+          "$value": "16px",
+          "$description": "모달·페이지"
+        },
+        "sheet": {
+          "$value": "100%",
+          "$description": "바텀시트 translateY"
+        }
+      },
+      "scale": {
+        "$type": "number",
+        "enter": {
+          "$value": 0.97
+        },
+        "press": {
+          "$value": 0.97,
+          "$description": "기존 .btn:active"
+        }
+      }
+    },
+    "color": {
+      "$type": "color",
+      "$description": "시맨틱 색(라이트). 금융 화면이라 90% 는 회색조, 색은 정보(등락·상태·액션)에만 쓴다. 한국 증시 관례: 상승=빨강, 하락=파랑, 보합=회색.",
+      "surface": {
+        "canvas": {
+          "$value": "{brand.canvas}",
+          "$description": "페이지 배경 gray.100. 흰 카드가 떠 보이게 한다"
+        },
+        "default": {
+          "$value": "{base.white}",
+          "$description": "카드·리스트·인풋"
+        },
+        "raised": {
+          "$value": "{base.white}",
+          "$description": "모달·바텀시트·드롭다운. 그림자로 구분"
+        },
+        "sunken": {
+          "$value": "{gray.50}",
+          "$description": "표 헤더·세그먼트 트랙·카드 안 구획(card-flat)"
+        },
+        "sunken-strong": {
+          "$value": "{gray.100}",
+          "$description": "탭 트랙·코드·비활성 영역. 흰 카드 안에서 sunken 이 안 보일 때"
+        },
+        "overlay": {
+          "$value": "#191F2880",
+          "$description": "스크림 gray.900 50%"
+        },
+        "inverse": {
+          "$value": "{gray.900}",
+          "$description": "툴팁·토스트"
+        },
+        "brand": {
+          "$value": "{blue.600}",
+          "$description": "브랜드 면. 흰 글자 4.66:1. blue.500 은 3.71 이라 면으로 쓸 때는 600"
+        },
+        "brand-subtle": {
+          "$value": "{blue.50}",
+          "$description": "선택된 행·활성 항목·안내 카드"
+        },
+        "disabled": {
+          "$value": "{gray.100}"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{gray.900}",
+          "$description": "16.56:1"
+        },
+        "secondary": {
+          "$value": "{gray.700}",
+          "$description": "7.11:1"
+        },
+        "tertiary": {
+          "$value": "{gray.600}",
+          "$description": "4.62:1(흰 카드 위). canvas(#F2F4F6) 위에서는 4.19 라 캔버스에 직접 놓는 글자는 primary·secondary 만 쓴다. 기존 FDS 의 gray.500(3.04)은 AA 미달이라 한 단계 내렸다"
+        },
+        "placeholder": {
+          "$value": "{gray.600}"
+        },
+        "disabled": {
+          "$value": "{gray.400}"
+        },
+        "inverse": {
+          "$value": "{base.white}"
+        },
+        "on-brand": {
+          "$value": "{base.white}"
+        },
+        "brand": {
+          "$value": "{blue.700}",
+          "$description": "5.41:1. 기존 text-brand=blue.500(3.71)은 AA 미달"
+        },
+        "link": {
+          "$value": "{blue.700}"
+        },
+        "link-hover": {
+          "$value": "{blue.800}"
+        },
+        "success": {
+          "$value": "{green.600}",
+          "$description": "4.66:1"
+        },
+        "warning": {
+          "$value": "{yellow.600}",
+          "$description": "5.01:1"
+        },
+        "danger": {
+          "$value": "{red.600}",
+          "$description": "4.66:1. 금융에서 빨강은 상승이므로 오류 문구는 아이콘·문맥으로 구분"
+        },
+        "info": {
+          "$value": "{blue.700}"
+        }
+      },
+      "border": {
+        "subtle": {
+          "$value": "{gray.100}"
+        },
+        "default": {
+          "$value": "{gray.200}"
+        },
+        "strong": {
+          "$value": "{gray.300}",
+          "$description": "인풋·아웃라인 버튼"
+        },
+        "input-strict": {
+          "$value": "{gray.500}",
+          "$description": "체크박스·라디오. 3.04:1"
+        },
+        "brand": {
+          "$value": "{blue.500}"
+        },
+        "focus": {
+          "$value": "{blue.500}"
+        },
+        "danger": {
+          "$value": "{red.500}"
+        },
+        "inverse": {
+          "$value": "#FFFFFF33"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "$value": "{blue.500}",
+            "$description": "흰 글자 3.71:1 — 버튼 라벨은 15px/600 이라 AA 미달. 기존 제품과 동일하게 두되, 글자 크기를 15 아래로 내리지 않는다. 엄격 화면은 primary-strict"
+          },
+          "bg-hover": {
+            "$value": "{blue.600}"
+          },
+          "bg-active": {
+            "$value": "{blue.700}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "primary-strict": {
+          "bg": {
+            "$value": "{blue.600}",
+            "$description": "4.66:1. 접근성 기준을 반드시 맞춰야 하는 화면(계정·결제)"
+          },
+          "bg-hover": {
+            "$value": "{blue.700}"
+          },
+          "bg-active": {
+            "$value": "{blue.800}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "secondary": {
+          "bg": {
+            "$value": "{blue.50}",
+            "$description": "기존 btn-secondary: 연파랑 배경 + 파랑 글자"
+          },
+          "bg-hover": {
+            "$value": "{blue.100}"
+          },
+          "bg-active": {
+            "$value": "{blue.200}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          },
+          "text": {
+            "$value": "{blue.700}"
+          }
+        },
+        "outline": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{gray.50}"
+          },
+          "bg-active": {
+            "$value": "{gray.100}"
+          },
+          "border": {
+            "$value": "{gray.300}"
+          },
+          "border-hover": {
+            "$value": "{blue.400}"
+          },
+          "text": {
+            "$value": "{gray.700}"
+          },
+          "text-hover": {
+            "$value": "{blue.700}"
+          }
+        },
+        "ghost": {
+          "bg": {
+            "$value": "{gray.100}",
+            "$description": "기존 btn-ghost 는 회색 배경형"
+          },
+          "bg-hover": {
+            "$value": "{gray.200}"
+          },
+          "bg-active": {
+            "$value": "{gray.300}"
+          },
+          "text": {
+            "$value": "{gray.800}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.600}",
+            "$description": "4.66:1. 매도·삭제·탈퇴"
+          },
+          "bg-hover": {
+            "$value": "{red.700}"
+          },
+          "bg-active": {
+            "$value": "{red.800}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "disabled": {
+          "bg": {
+            "$value": "{gray.200}"
+          },
+          "text": {
+            "$value": "{gray.400}"
+          },
+          "border": {
+            "$value": "{gray.200}"
+          }
+        }
+      },
+      "finance": {
+        "$description": "등락 색. 한국 관례(상승 빨강·하락 파랑). 글자 14px 이하는 text, 큰 숫자(19px bold 이상)와 배지·차트는 solid. 미국식 반전은 [data-market=us] 스코프가 처리한다(build.mjs).",
+        "up": {
+          "text": {
+            "$value": "{red.600}",
+            "$description": "4.66:1. 작은 등락 글자"
+          },
+          "solid": {
+            "$value": "{red.500}",
+            "$description": "#F04452. 큰 가격 숫자·배지 채움·캔들·화살표"
+          },
+          "bg": {
+            "$value": "{red.50}",
+            "$description": "상승 배지 배경·행 강조"
+          },
+          "border": {
+            "$value": "{red.200}"
+          },
+          "muted": {
+            "$value": "{red.300}",
+            "$description": "히트맵 약한 상승·스파크라인 채움"
+          },
+          "on-bg": {
+            "$value": "{red.700}",
+            "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+          }
+        },
+        "down": {
+          "text": {
+            "$value": "{blue.600}"
+          },
+          "solid": {
+            "$value": "{blue.500}"
+          },
+          "bg": {
+            "$value": "{blue.50}"
+          },
+          "border": {
+            "$value": "{blue.200}"
+          },
+          "muted": {
+            "$value": "{blue.300}"
+          },
+          "on-bg": {
+            "$value": "{blue.700}",
+            "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+          }
+        },
+        "flat": {
+          "text": {
+            "$value": "{gray.600}"
+          },
+          "solid": {
+            "$value": "{gray.500}"
+          },
+          "bg": {
+            "$value": "{gray.100}"
+          },
+          "border": {
+            "$value": "{gray.200}"
+          },
+          "muted": {
+            "$value": "{gray.300}"
+          },
+          "on-bg": {
+            "$value": "{gray.700}",
+            "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+          }
+        },
+        "flash-up": {
+          "$value": "#F0445226",
+          "$description": "실시간 틱 상승 시 셀 배경 플래시. red.500 15%"
+        },
+        "flash-down": {
+          "$value": "#3182F626",
+          "$description": "blue.500 15%"
+        },
+        "us-up": {
+          "text": {
+            "$value": "{green.600}"
+          },
+          "solid": {
+            "$value": "{green.600}",
+            "$description": "#088467. 3:1 을 넘는 첫 단계 (500 은 2.66)"
+          },
+          "bg": {
+            "$value": "{green.50}"
+          },
+          "border": {
+            "$value": "{green.200}"
+          },
+          "muted": {
+            "$value": "{green.300}"
+          },
+          "$description": "미국식 반전용(상승 초록). [data-market=us] 스코프에서 up 으로 치환된다",
+          "on-bg": {
+            "$value": "{green.700}",
+            "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+          }
+        },
+        "us-down": {
+          "text": {
+            "$value": "{red.600}"
+          },
+          "solid": {
+            "$value": "{red.500}"
+          },
+          "bg": {
+            "$value": "{red.50}"
+          },
+          "border": {
+            "$value": "{red.200}"
+          },
+          "muted": {
+            "$value": "{red.300}"
+          },
+          "on-bg": {
+            "$value": "{red.700}",
+            "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+          }
+        },
+        "us-flash-up": {
+          "$value": "#03B48826"
+        },
+        "us-flash-down": {
+          "$value": "#F0445226"
+        }
+      },
+      "status": {
+        "$description": "등락이 아닌 상태. 오류(danger)는 빨강이 상승과 겹치므로 배너에 아이콘·제목을 반드시 붙인다.",
+        "success": {
+          "bg": {
+            "$value": "{green.50}"
+          },
+          "border": {
+            "$value": "{green.200}"
+          },
+          "text": {
+            "$value": "{green.700}"
+          },
+          "icon": {
+            "$value": "{green.600}"
+          },
+          "solid": {
+            "$value": "{green.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "warning": {
+          "bg": {
+            "$value": "{yellow.50}"
+          },
+          "border": {
+            "$value": "{yellow.200}"
+          },
+          "text": {
+            "$value": "{yellow.600}"
+          },
+          "icon": {
+            "$value": "{yellow.500}"
+          },
+          "solid": {
+            "$value": "{yellow.300}",
+            "$description": "#FFB200 + 검은 글자"
+          },
+          "on-solid": {
+            "$value": "{gray.900}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.50}"
+          },
+          "border": {
+            "$value": "{red.200}"
+          },
+          "text": {
+            "$value": "{red.700}"
+          },
+          "icon": {
+            "$value": "{red.600}"
+          },
+          "solid": {
+            "$value": "{red.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "info": {
+          "bg": {
+            "$value": "{blue.50}"
+          },
+          "border": {
+            "$value": "{blue.200}"
+          },
+          "text": {
+            "$value": "{blue.700}"
+          },
+          "icon": {
+            "$value": "{blue.500}"
+          },
+          "solid": {
+            "$value": "{blue.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "neutral": {
+          "bg": {
+            "$value": "{gray.100}"
+          },
+          "border": {
+            "$value": "{gray.200}"
+          },
+          "text": {
+            "$value": "{gray.700}"
+          },
+          "icon": {
+            "$value": "{gray.600}"
+          },
+          "solid": {
+            "$value": "{gray.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        }
+      },
+      "interactive": {
+        "focus-ring": {
+          "$value": "{blue.500}"
+        },
+        "focus-ring-soft": {
+          "$value": "#3182F647",
+          "$description": "기존 --focus-ring rgba(49,130,246,.28). 인풋 안쪽 3px 링"
+        },
+        "selected-bg": {
+          "$value": "{blue.50}"
+        },
+        "selected-border": {
+          "$value": "{blue.300}"
+        },
+        "selected-text": {
+          "$value": "{blue.700}"
+        },
+        "hover-overlay": {
+          "$value": "#191F280A",
+          "$description": "gray.900 4%"
+        },
+        "pressed-overlay": {
+          "$value": "#191F2814",
+          "$description": "gray.900 8%"
+        },
+        "row-hover": {
+          "$value": "{blue.50}",
+          "$description": "종목 리스트·표 행 hover. 기존 movers-row:hover"
+        }
+      },
+      "chart": {
+        "$description": "recharts 는 SVG 속성에 var() 를 못 쓰므로 dist/chart-theme.ts 가 raw 값을 내보낸다. 이 토큰이 그 소스다.",
+        "series": {
+          "1": {
+            "$value": "{blue.500}"
+          },
+          "2": {
+            "$value": "{orange.500}"
+          },
+          "3": {
+            "$value": "#1BAF7A",
+            "$description": "aqua. green 램프와 겹치지 않게 별도 값"
+          },
+          "4": {
+            "$value": "#EDA100"
+          },
+          "5": {
+            "$value": "{magenta.400}"
+          },
+          "6": {
+            "$value": "#008300"
+          },
+          "7": {
+            "$value": "{violet.700}"
+          },
+          "8": {
+            "$value": "#E34948"
+          },
+          "$description": "카테고리 시리즈 8색. 고정 순서·순환 금지(CVD 인접 분리 검증 2026-08-26). 9번째부터는 '기타' 로 접는다",
+          "other": {
+            "$value": "{gray.600}"
+          }
+        },
+        "overlay": {
+          "$description": "기술 차트 이동평균선. 기간이 길수록 진하게",
+          "ma5": {
+            "$value": "{yellow.400}"
+          },
+          "ma20": {
+            "$value": "{orange.500}"
+          },
+          "ma60": {
+            "$value": "{violet.500}"
+          },
+          "ma120": {
+            "$value": "{gray.700}"
+          },
+          "bollinger": {
+            "$value": "{blue.300}"
+          },
+          "bollinger-fill": {
+            "$value": "#64A8FF14"
+          }
+        },
+        "candle": {
+          "up": {
+            "$value": "{red.500}"
+          },
+          "down": {
+            "$value": "{blue.500}"
+          },
+          "up-wick": {
+            "$value": "{red.600}"
+          },
+          "down-wick": {
+            "$value": "{blue.600}"
+          },
+          "volume-up": {
+            "$value": "#F0445280"
+          },
+          "volume-down": {
+            "$value": "#3182F680"
+          }
+        },
+        "sparkline": {
+          "up": {
+            "$value": "{red.500}"
+          },
+          "down": {
+            "$value": "{blue.500}"
+          },
+          "flat": {
+            "$value": "{gray.500}"
+          },
+          "fill-opacity": {
+            "$value": "0.12",
+            "$type": "number"
+          }
+        },
+        "heat": {
+          "$description": "등락률 히트맵 5단계. 한국 관례라 양수가 빨강",
+          "up-3": {
+            "$value": "{red.600}"
+          },
+          "up-2": {
+            "$value": "{red.500}"
+          },
+          "up-1": {
+            "$value": "{red.300}"
+          },
+          "zero": {
+            "$value": "{gray.200}"
+          },
+          "down-1": {
+            "$value": "{blue.300}"
+          },
+          "down-2": {
+            "$value": "{blue.500}"
+          },
+          "down-3": {
+            "$value": "{blue.600}"
+          }
+        },
+        "grid": {
+          "$value": "{gray.200}",
+          "$description": "gray.100 은 너무 옅어 격자가 안 보였다(실측)"
+        },
+        "axis": {
+          "$value": "{gray.500}"
+        },
+        "label": {
+          "$value": "{gray.700}"
+        },
+        "reference": {
+          "$value": "{gray.400}",
+          "$description": "기준선(0, 매수가)"
+        },
+        "crosshair": {
+          "$value": "{gray.600}"
+        },
+        "tooltip-bg": {
+          "$value": "#FFFFFFF5"
+        }
+      }
+    },
+    "component": {
+      "$description": "컴포넌트 토큰. 기존 global.css 의 .btn/.card/.badge/.input/.segmented/.tabbar 값을 토큰으로 옮기고, 금융 전용(price-cell·stock-row·kpi·sheet)을 더했다.",
+      "button": {
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension",
+          "$description": "12. 기존 .btn"
+        },
+        "gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "min-width": {
+          "$value": "64px",
+          "$type": "dimension"
+        },
+        "xs": {
+          "height": {
+            "$value": "{size.control.xs}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.2}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.xs}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-sm}",
+            "$type": "typography"
+          },
+          "radius": {
+            "$value": "{radius.md}",
+            "$type": "dimension"
+          }
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.sm}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.3}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-sm}",
+            "$type": "typography"
+          },
+          "radius": {
+            "$value": "{radius.md}",
+            "$type": "dimension"
+          }
+        },
+        "md": {
+          "height": {
+            "$value": "{size.control.md}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "18px",
+            "$type": "dimension",
+            "$description": "기존 .btn 패딩 18. 4 그리드 밖이지만 44 높이와 비례가 맞아 유지"
+          },
+          "icon": {
+            "$value": "{size.icon.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-md}",
+            "$type": "typography"
+          },
+          "radius": {
+            "$value": "{radius.lg}",
+            "$type": "dimension"
+          }
+        },
+        "lg": {
+          "height": {
+            "$value": "{size.control.lg}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.6}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-lg}",
+            "$type": "typography"
+          },
+          "radius": {
+            "$value": "{radius.xl}",
+            "$type": "dimension"
+          }
+        }
+      },
+      "input": {
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "bg-filled": {
+          "$value": "{color.surface.sunken-strong}",
+          "$type": "color",
+          "$description": "검색창처럼 테두리 없이 채운 형태"
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$type": "color"
+        },
+        "border-hover": {
+          "$value": "{gray.400}",
+          "$type": "color"
+        },
+        "border-focus": {
+          "$value": "{color.border.focus}",
+          "$type": "color"
+        },
+        "border-error": {
+          "$value": "{color.border.danger}",
+          "$type": "color"
+        },
+        "label-gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "help-gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "field-gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.sm}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.3}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.body-3}",
+            "$type": "typography"
+          }
+        },
+        "md": {
+          "height": {
+            "$value": "{size.control.md}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.4}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.body-2}",
+            "$type": "typography"
+          }
+        },
+        "lg": {
+          "height": {
+            "$value": "{size.control.lg}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.4}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.body-1}",
+            "$type": "typography"
+          }
+        },
+        "amount-typography": {
+          "$value": "{typography.price-lg}",
+          "$type": "typography",
+          "$description": "금액 입력. 숫자만 크게, 단위 '원' 은 body-2"
+        },
+        "font-size-mobile": {
+          "$value": "1rem",
+          "$type": "dimension",
+          "$description": "16px. iOS Safari 는 인풋 글자가 16px 미만이면 포커스 시 자동 확대한다. 767px 이하에서 인풋 font-size 는 이 값으로 올린다(body-2 15 대신)"
+        }
+      },
+      "card": {
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.2xl}",
+          "$type": "dimension",
+          "$description": "20. 기존 .card"
+        },
+        "radius-dense": {
+          "$value": "{radius.xl}",
+          "$type": "dimension",
+          "$description": "16. 표·리스트를 감싸는 카드"
+        },
+        "shadow": {
+          "$value": "{shadow.sm}",
+          "$type": "shadow"
+        },
+        "shadow-hover": {
+          "$value": "{shadow.md}",
+          "$type": "shadow"
+        },
+        "hover-lift": {
+          "$value": "-2px",
+          "$type": "dimension",
+          "$description": "기존 .card-tap translateY"
+        },
+        "padding-sm": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "padding-md": {
+          "$value": "{space.5}",
+          "$type": "dimension",
+          "$description": "20. 기본"
+        },
+        "padding-lg": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "flat-bg": {
+          "$value": "{color.surface.sunken}",
+          "$type": "color",
+          "$description": "기존 .card-flat: 그림자·테두리 없이 회색 면"
+        },
+        "header-gap": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        }
+      },
+      "stock-row": {
+        "$description": "종목 리스트 한 행: [로고/순위] [종목명 + 시장태그 / 보조] [가격 / 등락]. 기존 movers-row 규격.",
+        "height": {
+          "$value": "68px",
+          "$type": "dimension",
+          "$description": "2줄(종목명 + 메타). 데스크톱"
+        },
+        "height-compact": {
+          "$value": "52px",
+          "$type": "dimension",
+          "$description": "1줄. 검색 결과·관심종목"
+        },
+        "height-mobile": {
+          "$value": "78px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "padding-x-mobile": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{space.2-5}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "logo": {
+          "$value": "{size.avatar.sm}",
+          "$type": "dimension"
+        },
+        "name-typography": {
+          "$value": "{typography.title-4}",
+          "$type": "typography"
+        },
+        "meta-typography": {
+          "$value": "{typography.micro}",
+          "$type": "typography"
+        },
+        "price-typography": {
+          "$value": "{typography.price-sm}",
+          "$type": "typography"
+        },
+        "change-typography": {
+          "$value": "{typography.change}",
+          "$type": "typography"
+        },
+        "hover-bg": {
+          "$value": "{color.interactive.row-hover}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "rank-typography": {
+          "$value": "{typography.price-sm}",
+          "$type": "typography"
+        },
+        "rank-width": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "rank-width-mobile": {
+          "$value": "32px",
+          "$type": "dimension"
+        }
+      },
+      "price-cell": {
+        "$description": "가격 + 등락을 세로로 쌓은 셀. 우측 정렬, 줄바꿈 금지.",
+        "gap": {
+          "$value": "{space.0-5}",
+          "$type": "dimension"
+        },
+        "arrow-size": {
+          "$value": "{size.icon.xs}",
+          "$type": "dimension",
+          "$description": "▲▼ 12"
+        },
+        "arrow-gap": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "flash-duration": {
+          "$value": "{motion.duration.flash}",
+          "$type": "duration"
+        }
+      },
+      "market-tag": {
+        "$description": "KOSPI·KOSDAQ·NASDAQ 같은 시장 태그. 기존 movers-identity em",
+        "height": {
+          "$value": "18px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.brand-subtle}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.brand}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.badge}",
+          "$type": "typography"
+        }
+      },
+      "badge": {
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "height-sm": {
+          "$value": "20px",
+          "$type": "dimension"
+        },
+        "height-md": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "기존 .badge 4px 10px 패딩 ≈ 24"
+        },
+        "padding-x-sm": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "padding-x-md": {
+          "$value": "{space.2-5}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.badge}",
+          "$type": "typography"
+        },
+        "dot-size": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        }
+      },
+      "kpi": {
+        "$description": "요약 타일(총자산·수익률·시장 지수). 기존 technical-chart-summary article",
+        "min-height": {
+          "$value": "116px",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "label-typography": {
+          "$value": "{typography.caption}",
+          "$type": "typography"
+        },
+        "value-typography": {
+          "$value": "{typography.price-md}",
+          "$type": "typography"
+        },
+        "value-typography-lg": {
+          "$value": "{typography.price-lg}",
+          "$type": "typography"
+        },
+        "delta-typography": {
+          "$value": "{typography.change}",
+          "$type": "typography"
+        },
+        "note-typography": {
+          "$value": "{typography.micro}",
+          "$type": "typography"
+        },
+        "label-gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "note-gap": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "sparkline-height": {
+          "$value": "40px",
+          "$type": "dimension"
+        }
+      },
+      "segmented": {
+        "$description": "기간·지표·보기 방식 전환. 기존 .segmented / technical-chart-ranges / movers-metric-tabs 세 가지를 하나로.",
+        "track-bg": {
+          "$value": "{color.surface.sunken-strong}",
+          "$type": "color"
+        },
+        "track-radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "track-padding": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension",
+          "$description": "36. 터치 위주 화면은 44"
+        },
+        "item-height-touch": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "item-min-width": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "item-padding-x": {
+          "$value": "{space.2-5}",
+          "$type": "dimension"
+        },
+        "item-radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "item-typography": {
+          "$value": "{typography.label-sm}",
+          "$type": "typography"
+        },
+        "item-text": {
+          "$value": "{color.text.secondary}",
+          "$type": "color"
+        },
+        "active-bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "active-text": {
+          "$value": "{color.text.brand}",
+          "$type": "color"
+        },
+        "active-shadow": {
+          "$value": "{shadow.xs}",
+          "$type": "shadow"
+        },
+        "gap": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        }
+      },
+      "tabs": {
+        "height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "indicator-height": {
+          "$value": "{border-width.accent}",
+          "$type": "dimension"
+        },
+        "indicator-color": {
+          "$value": "{color.border.brand}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.secondary}",
+          "$type": "color"
+        },
+        "text-active": {
+          "$value": "{color.text.primary}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        }
+      },
+      "tabbar": {
+        "$description": "모바일 하단 5탭. 기존 .tabbar",
+        "height": {
+          "$value": "{size.layout.tabbar}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{size.icon.lg}",
+          "$type": "dimension"
+        },
+        "label-size": {
+          "$value": "{font.size.2xs}",
+          "$type": "dimension",
+          "$description": "11. 유일한 11px 허용처"
+        },
+        "text": {
+          "$value": "{color.text.tertiary}",
+          "$type": "color"
+        },
+        "text-active": {
+          "$value": "{color.text.brand}",
+          "$type": "color"
+        },
+        "icon-label-gap": {
+          "$value": "{space.0-5}",
+          "$type": "dimension"
+        },
+        "max-items": {
+          "$value": 5,
+          "$type": "number"
+        }
+      },
+      "sheet": {
+        "$description": "바텀시트(모바일 기본 오버레이). 데스크톱에서는 modal 로 전환",
+        "bg": {
+          "$value": "{color.surface.raised}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.2xl}",
+          "$type": "dimension",
+          "$description": "상단만"
+        },
+        "shadow": {
+          "$value": "{shadow.lg}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "handle-width": {
+          "$value": "36px",
+          "$type": "dimension"
+        },
+        "handle-height": {
+          "$value": "4px",
+          "$type": "dimension"
+        },
+        "handle-color": {
+          "$value": "{gray.300}",
+          "$type": "color"
+        },
+        "max-height": {
+          "$value": "90vh",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension",
+          "$description": "더보기 메뉴 항목 52"
+        }
+      },
+      "modal": {
+        "bg": {
+          "$value": "{color.surface.raised}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.2xl}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.xl}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "width-sm": {
+          "$value": "400px",
+          "$type": "dimension"
+        },
+        "width-md": {
+          "$value": "520px",
+          "$type": "dimension"
+        },
+        "width-lg": {
+          "$value": "760px",
+          "$type": "dimension"
+        },
+        "footer-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "section-gap": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        }
+      },
+      "tooltip": {
+        "bg": {
+          "$value": "{color.surface.inverse}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.inverse}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.sm}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "max-width": {
+          "$value": "240px",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.body-3}",
+          "$type": "typography"
+        }
+      },
+      "chart-tooltip": {
+        "$description": "recharts 툴팁 DOM. 기존 chartTooltipStyle / technical-chart-tooltip",
+        "bg": {
+          "$value": "{color.chart.tooltip-bg}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.md}",
+          "$type": "shadow"
+        },
+        "padding-y": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2-5}",
+          "$type": "dimension"
+        },
+        "min-width": {
+          "$value": "160px",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.body-3}",
+          "$type": "typography"
+        },
+        "title-typography": {
+          "$value": "{typography.caption}",
+          "$type": "typography"
+        }
+      },
+      "toast": {
+        "bg": {
+          "$value": "{color.surface.inverse}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.inverse}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.lg}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "360px",
+          "$type": "dimension"
+        },
+        "bottom-offset-mobile": {
+          "$value": "72px",
+          "$type": "dimension",
+          "$description": "하단 탭바 56 + 16 위"
+        }
+      },
+      "table": {
+        "header-bg": {
+          "$value": "{color.surface.sunken}",
+          "$type": "color"
+        },
+        "header-height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "header-typography": {
+          "$value": "{typography.micro}",
+          "$type": "typography"
+        },
+        "header-text": {
+          "$value": "{color.text.tertiary}",
+          "$type": "color"
+        },
+        "cell-typography": {
+          "$value": "{typography.body-2}",
+          "$type": "typography"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "row-hover": {
+          "$value": "{color.interactive.row-hover}",
+          "$type": "color"
+        },
+        "row-selected": {
+          "$value": "{color.interactive.selected-bg}",
+          "$type": "color"
+        },
+        "row-height-compact": {
+          "$value": "40px",
+          "$type": "dimension"
+        },
+        "row-height-default": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "row-height-relaxed": {
+          "$value": "68px",
+          "$type": "dimension"
+        },
+        "cell-padding-x": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "cell-padding-x-first": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "sticky-first-col-width": {
+          "$value": "160px",
+          "$type": "dimension",
+          "$description": "가로 스크롤 표에서 종목명 열 고정"
+        }
+      },
+      "checkbox": {
+        "size": {
+          "$value": "{size.icon.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xs}",
+          "$type": "dimension"
+        },
+        "border": {
+          "$value": "{color.border.input-strict}",
+          "$type": "color"
+        },
+        "bg-checked": {
+          "$value": "{color.action.primary.bg}",
+          "$type": "color"
+        },
+        "check-color": {
+          "$value": "{color.action.primary.text}",
+          "$type": "color"
+        },
+        "label-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        }
+      },
+      "switch": {
+        "width": {
+          "$value": "36px",
+          "$type": "dimension",
+          "$description": "기존 overlay toggle 36×22"
+        },
+        "height": {
+          "$value": "22px",
+          "$type": "dimension"
+        },
+        "thumb": {
+          "$value": "16px",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "3px",
+          "$type": "dimension"
+        },
+        "track-off": {
+          "$value": "{gray.300}",
+          "$type": "color"
+        },
+        "track-on": {
+          "$value": "{color.action.primary.bg}",
+          "$type": "color"
+        },
+        "thumb-color": {
+          "$value": "{base.white}",
+          "$type": "color"
+        }
+      },
+      "search": {
+        "$description": "종목 검색. 기존 technical-stock-finder",
+        "height": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension",
+          "$description": "48"
+        },
+        "bg": {
+          "$value": "{color.surface.sunken-strong}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.md}",
+          "$type": "dimension"
+        },
+        "results-width": {
+          "$value": "480px",
+          "$type": "dimension"
+        },
+        "results-max-height": {
+          "$value": "420px",
+          "$type": "dimension"
+        },
+        "results-radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "results-shadow": {
+          "$value": "{shadow.lg}",
+          "$type": "shadow"
+        },
+        "result-height": {
+          "$value": "{component.stock-row.height-compact}",
+          "$type": "dimension"
+        }
+      },
+      "skeleton": {
+        "bg": {
+          "$value": "{color.surface.sunken-strong}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "text-height": {
+          "$value": "0.75em",
+          "$type": "dimension"
+        },
+        "row-height": {
+          "$value": "{component.stock-row.height}",
+          "$type": "dimension"
+        }
+      },
+      "dropdown": {
+        "bg": {
+          "$value": "{color.surface.raised}",
+          "$type": "color"
+        },
+        "border": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.md}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension"
+        },
+        "item-padding-x": {
+          "$value": "{space.2-5}",
+          "$type": "dimension"
+        },
+        "item-radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "min-width": {
+          "$value": "160px",
+          "$type": "dimension"
+        },
+        "max-height": {
+          "$value": "320px",
+          "$type": "dimension"
+        }
+      },
+      "divider": {
+        "color": {
+          "$value": "{color.border.subtle}",
+          "$type": "color"
+        },
+        "color-strong": {
+          "$value": "{color.border.default}",
+          "$type": "color"
+        },
+        "margin-y": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        }
+      },
+      "page-header": {
+        "$description": "기존 .page-header: 제목 + 설명 + 우측 액션",
+        "title-typography": {
+          "$value": "{typography.title-1}",
+          "$type": "typography"
+        },
+        "desc-typography": {
+          "$value": "{typography.body-3}",
+          "$type": "typography"
+        },
+        "desc-gap": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "margin-bottom": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        }
+      }
+    }
+  },
+  "wh/dark": {
+    "color": {
+      "$type": "color",
+      "$description": "시맨틱 색(다크). 기존 stock-gosu 에는 다크가 없었다 — 장 마감 후·야간 사용이 많은 투자 앱이라 추가. 라이트와 경로 1:1.",
+      "surface": {
+        "canvas": {
+          "$value": "{gray.950}"
+        },
+        "default": {
+          "$value": "{gray.900}"
+        },
+        "raised": {
+          "$value": "{gray.800}"
+        },
+        "sunken": {
+          "$value": "#14181D"
+        },
+        "sunken-strong": {
+          "$value": "{gray.950}"
+        },
+        "overlay": {
+          "$value": "#00000099"
+        },
+        "inverse": {
+          "$value": "{gray.50}"
+        },
+        "brand": {
+          "$value": "{blue.800}"
+        },
+        "brand-subtle": {
+          "$value": "{blue.950}"
+        },
+        "disabled": {
+          "$value": "{gray.800}"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{gray.50}"
+        },
+        "secondary": {
+          "$value": "{gray.300}"
+        },
+        "tertiary": {
+          "$value": "{gray.400}"
+        },
+        "placeholder": {
+          "$value": "{gray.400}"
+        },
+        "disabled": {
+          "$value": "{gray.600}"
+        },
+        "inverse": {
+          "$value": "{gray.900}"
+        },
+        "on-brand": {
+          "$value": "{base.white}"
+        },
+        "brand": {
+          "$value": "{blue.300}"
+        },
+        "link": {
+          "$value": "{blue.300}"
+        },
+        "link-hover": {
+          "$value": "{blue.200}"
+        },
+        "success": {
+          "$value": "{green.400}"
+        },
+        "warning": {
+          "$value": "{yellow.300}"
+        },
+        "danger": {
+          "$value": "{red.400}"
+        },
+        "info": {
+          "$value": "{blue.300}"
+        }
+      },
+      "border": {
+        "subtle": {
+          "$value": "{gray.900}"
+        },
+        "default": {
+          "$value": "{gray.800}"
+        },
+        "strong": {
+          "$value": "{gray.700}"
+        },
+        "input-strict": {
+          "$value": "{gray.500}"
+        },
+        "brand": {
+          "$value": "{blue.300}"
+        },
+        "focus": {
+          "$value": "{blue.300}"
+        },
+        "danger": {
+          "$value": "{red.400}"
+        },
+        "inverse": {
+          "$value": "#191F2833"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "$value": "{blue.400}",
+            "$description": "다크는 밝은 파랑 + 어두운 글자. 흰 글자는 blue.500 위에서도 3.71 이라 방향을 바꿨다"
+          },
+          "bg-hover": {
+            "$value": "{blue.300}"
+          },
+          "bg-active": {
+            "$value": "{blue.200}"
+          },
+          "text": {
+            "$value": "{gray.950}"
+          }
+        },
+        "primary-strict": {
+          "bg": {
+            "$value": "{blue.400}",
+            "$description": "다크는 밝은 파랑 + 어두운 글자. 흰 글자는 blue.500 위에서도 3.71 이라 방향을 바꿨다"
+          },
+          "bg-hover": {
+            "$value": "{blue.300}"
+          },
+          "bg-active": {
+            "$value": "{blue.200}"
+          },
+          "text": {
+            "$value": "{gray.950}"
+          }
+        },
+        "secondary": {
+          "bg": {
+            "$value": "{blue.950}"
+          },
+          "bg-hover": {
+            "$value": "{blue.900}"
+          },
+          "bg-active": {
+            "$value": "{blue.800}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          },
+          "text": {
+            "$value": "{blue.300}"
+          }
+        },
+        "outline": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{gray.800}"
+          },
+          "bg-active": {
+            "$value": "{gray.700}"
+          },
+          "border": {
+            "$value": "{gray.700}"
+          },
+          "border-hover": {
+            "$value": "{blue.400}"
+          },
+          "text": {
+            "$value": "{gray.200}"
+          },
+          "text-hover": {
+            "$value": "{blue.300}"
+          }
+        },
+        "ghost": {
+          "bg": {
+            "$value": "{gray.800}"
+          },
+          "bg-hover": {
+            "$value": "{gray.700}"
+          },
+          "bg-active": {
+            "$value": "{gray.600}"
+          },
+          "text": {
+            "$value": "{gray.100}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.400}"
+          },
+          "bg-hover": {
+            "$value": "{red.300}"
+          },
+          "bg-active": {
+            "$value": "{red.200}"
+          },
+          "text": {
+            "$value": "{gray.950}"
+          }
+        },
+        "disabled": {
+          "bg": {
+            "$value": "{gray.800}"
+          },
+          "text": {
+            "$value": "{gray.600}"
+          },
+          "border": {
+            "$value": "{gray.800}"
+          }
+        }
+      },
+      "finance": {
+        "up": {
+          "text": {
+            "$value": "{red.400}",
+            "$description": "#FD7678. 어두운 면에서 밝은 빨강이 읽힌다"
+          },
+          "solid": {
+            "$value": "{red.400}"
+          },
+          "bg": {
+            "$value": "{red.950}"
+          },
+          "border": {
+            "$value": "{red.800}"
+          },
+          "muted": {
+            "$value": "{red.700}"
+          },
+          "on-bg": {
+            "$value": "{red.300}"
+          }
+        },
+        "down": {
+          "text": {
+            "$value": "{blue.300}"
+          },
+          "solid": {
+            "$value": "{blue.300}"
+          },
+          "bg": {
+            "$value": "{blue.950}"
+          },
+          "border": {
+            "$value": "{blue.800}"
+          },
+          "muted": {
+            "$value": "{blue.700}"
+          },
+          "on-bg": {
+            "$value": "{blue.200}"
+          }
+        },
+        "flat": {
+          "text": {
+            "$value": "{gray.400}"
+          },
+          "solid": {
+            "$value": "{gray.500}"
+          },
+          "bg": {
+            "$value": "{gray.800}"
+          },
+          "border": {
+            "$value": "{gray.700}"
+          },
+          "muted": {
+            "$value": "{gray.600}"
+          },
+          "on-bg": {
+            "$value": "{gray.300}"
+          }
+        },
+        "flash-up": {
+          "$value": "#FD767833"
+        },
+        "flash-down": {
+          "$value": "#64A8FF33"
+        },
+        "us-up": {
+          "text": {
+            "$value": "{green.400}"
+          },
+          "solid": {
+            "$value": "{green.400}"
+          },
+          "bg": {
+            "$value": "{green.950}"
+          },
+          "border": {
+            "$value": "{green.800}"
+          },
+          "muted": {
+            "$value": "{green.700}"
+          },
+          "$description": "미국식 반전용(상승 초록). [data-market=us] 스코프에서 up 으로 치환된다",
+          "on-bg": {
+            "$value": "{green.300}"
+          }
+        },
+        "us-down": {
+          "text": {
+            "$value": "{red.400}"
+          },
+          "solid": {
+            "$value": "{red.400}"
+          },
+          "bg": {
+            "$value": "{red.950}"
+          },
+          "border": {
+            "$value": "{red.800}"
+          },
+          "muted": {
+            "$value": "{red.700}"
+          },
+          "on-bg": {
+            "$value": "{red.300}"
+          }
+        },
+        "us-flash-up": {
+          "$value": "#15C39A33"
+        },
+        "us-flash-down": {
+          "$value": "#FD767833"
+        }
+      },
+      "status": {
+        "success": {
+          "bg": {
+            "$value": "{green.950}"
+          },
+          "border": {
+            "$value": "{green.800}"
+          },
+          "text": {
+            "$value": "{green.400}"
+          },
+          "icon": {
+            "$value": "{green.400}"
+          },
+          "solid": {
+            "$value": "{green.500}"
+          },
+          "on-solid": {
+            "$value": "{gray.950}"
+          }
+        },
+        "warning": {
+          "bg": {
+            "$value": "{yellow.950}"
+          },
+          "border": {
+            "$value": "{yellow.800}"
+          },
+          "text": {
+            "$value": "{yellow.300}"
+          },
+          "icon": {
+            "$value": "{yellow.300}"
+          },
+          "solid": {
+            "$value": "{yellow.300}"
+          },
+          "on-solid": {
+            "$value": "{gray.950}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.950}"
+          },
+          "border": {
+            "$value": "{red.800}"
+          },
+          "text": {
+            "$value": "{red.400}"
+          },
+          "icon": {
+            "$value": "{red.400}"
+          },
+          "solid": {
+            "$value": "{red.400}"
+          },
+          "on-solid": {
+            "$value": "{gray.950}"
+          }
+        },
+        "info": {
+          "bg": {
+            "$value": "{blue.950}"
+          },
+          "border": {
+            "$value": "{blue.800}"
+          },
+          "text": {
+            "$value": "{blue.300}"
+          },
+          "icon": {
+            "$value": "{blue.300}"
+          },
+          "solid": {
+            "$value": "{blue.400}"
+          },
+          "on-solid": {
+            "$value": "{gray.950}"
+          }
+        },
+        "neutral": {
+          "bg": {
+            "$value": "{gray.800}"
+          },
+          "border": {
+            "$value": "{gray.700}"
+          },
+          "text": {
+            "$value": "{gray.200}"
+          },
+          "icon": {
+            "$value": "{gray.300}"
+          },
+          "solid": {
+            "$value": "{gray.500}"
+          },
+          "on-solid": {
+            "$value": "{gray.950}"
+          }
+        }
+      },
+      "interactive": {
+        "focus-ring": {
+          "$value": "{blue.300}"
+        },
+        "focus-ring-soft": {
+          "$value": "#64A8FF47"
+        },
+        "selected-bg": {
+          "$value": "{blue.950}"
+        },
+        "selected-border": {
+          "$value": "{blue.500}"
+        },
+        "selected-text": {
+          "$value": "{blue.200}"
+        },
+        "hover-overlay": {
+          "$value": "#FFFFFF0F"
+        },
+        "pressed-overlay": {
+          "$value": "#FFFFFF1A"
+        },
+        "row-hover": {
+          "$value": "{blue.950}"
+        }
+      },
+      "chart": {
+        "series": {
+          "1": {
+            "$value": "{blue.300}"
+          },
+          "2": {
+            "$value": "{orange.400}"
+          },
+          "3": {
+            "$value": "#4FD1A5"
+          },
+          "4": {
+            "$value": "#F5C24B"
+          },
+          "5": {
+            "$value": "{magenta.300}"
+          },
+          "6": {
+            "$value": "#4CBF4C"
+          },
+          "7": {
+            "$value": "{violet.400}"
+          },
+          "8": {
+            "$value": "#F07A79"
+          },
+          "other": {
+            "$value": "{gray.500}"
+          }
+        },
+        "overlay": {
+          "ma5": {
+            "$value": "{yellow.300}"
+          },
+          "ma20": {
+            "$value": "{orange.400}"
+          },
+          "ma60": {
+            "$value": "{violet.400}"
+          },
+          "ma120": {
+            "$value": "{gray.300}"
+          },
+          "bollinger": {
+            "$value": "{blue.400}"
+          },
+          "bollinger-fill": {
+            "$value": "#64A8FF1F"
+          }
+        },
+        "candle": {
+          "up": {
+            "$value": "{red.400}"
+          },
+          "down": {
+            "$value": "{blue.300}"
+          },
+          "up-wick": {
+            "$value": "{red.300}"
+          },
+          "down-wick": {
+            "$value": "{blue.200}"
+          },
+          "volume-up": {
+            "$value": "#FD767880"
+          },
+          "volume-down": {
+            "$value": "#64A8FF80"
+          }
+        },
+        "sparkline": {
+          "up": {
+            "$value": "{red.400}"
+          },
+          "down": {
+            "$value": "{blue.300}"
+          },
+          "flat": {
+            "$value": "{gray.500}"
+          },
+          "fill-opacity": {
+            "$value": "0.16",
+            "$type": "number"
+          }
+        },
+        "heat": {
+          "up-3": {
+            "$value": "{red.400}"
+          },
+          "up-2": {
+            "$value": "{red.600}"
+          },
+          "up-1": {
+            "$value": "{red.800}"
+          },
+          "zero": {
+            "$value": "{gray.800}"
+          },
+          "down-1": {
+            "$value": "{blue.800}"
+          },
+          "down-2": {
+            "$value": "{blue.600}"
+          },
+          "down-3": {
+            "$value": "{blue.300}"
+          }
+        },
+        "grid": {
+          "$value": "{gray.800}"
+        },
+        "axis": {
+          "$value": "{gray.500}"
+        },
+        "label": {
+          "$value": "{gray.300}"
+        },
+        "reference": {
+          "$value": "{gray.600}"
+        },
+        "crosshair": {
+          "$value": "{gray.400}"
+        },
+        "tooltip-bg": {
+          "$value": "#191F28F5"
+        }
+      }
+    }
+  },
+  "$metadata": {
+    "tokenSetOrder": [
+      "wh/light",
+      "wh/dark"
+    ]
+  }
+}

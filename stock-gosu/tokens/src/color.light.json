@@ -1,0 +1,636 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색(라이트). 금융 화면이라 90% 는 회색조, 색은 정보(등락·상태·액션)에만 쓴다. 한국 증시 관례: 상승=빨강, 하락=파랑, 보합=회색.",
+    "surface": {
+      "canvas": {
+        "$value": "{brand.canvas}",
+        "$description": "페이지 배경 gray.100. 흰 카드가 떠 보이게 한다"
+      },
+      "default": {
+        "$value": "{base.white}",
+        "$description": "카드·리스트·인풋"
+      },
+      "raised": {
+        "$value": "{base.white}",
+        "$description": "모달·바텀시트·드롭다운. 그림자로 구분"
+      },
+      "sunken": {
+        "$value": "{gray.50}",
+        "$description": "표 헤더·세그먼트 트랙·카드 안 구획(card-flat)"
+      },
+      "sunken-strong": {
+        "$value": "{gray.100}",
+        "$description": "탭 트랙·코드·비활성 영역. 흰 카드 안에서 sunken 이 안 보일 때"
+      },
+      "overlay": {
+        "$value": "#191F2880",
+        "$description": "스크림 gray.900 50%"
+      },
+      "inverse": {
+        "$value": "{gray.900}",
+        "$description": "툴팁·토스트"
+      },
+      "brand": {
+        "$value": "{blue.600}",
+        "$description": "브랜드 면. 흰 글자 4.66:1. blue.500 은 3.71 이라 면으로 쓸 때는 600"
+      },
+      "brand-subtle": {
+        "$value": "{blue.50}",
+        "$description": "선택된 행·활성 항목·안내 카드"
+      },
+      "disabled": {
+        "$value": "{gray.100}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{gray.900}",
+        "$description": "16.56:1"
+      },
+      "secondary": {
+        "$value": "{gray.700}",
+        "$description": "7.11:1"
+      },
+      "tertiary": {
+        "$value": "{gray.600}",
+        "$description": "4.62:1(흰 카드 위). canvas(#F2F4F6) 위에서는 4.19 라 캔버스에 직접 놓는 글자는 primary·secondary 만 쓴다. 기존 FDS 의 gray.500(3.04)은 AA 미달이라 한 단계 내렸다"
+      },
+      "placeholder": {
+        "$value": "{gray.600}"
+      },
+      "disabled": {
+        "$value": "{gray.400}"
+      },
+      "inverse": {
+        "$value": "{base.white}"
+      },
+      "on-brand": {
+        "$value": "{base.white}"
+      },
+      "brand": {
+        "$value": "{blue.700}",
+        "$description": "5.41:1. 기존 text-brand=blue.500(3.71)은 AA 미달"
+      },
+      "link": {
+        "$value": "{blue.700}"
+      },
+      "link-hover": {
+        "$value": "{blue.800}"
+      },
+      "success": {
+        "$value": "{green.600}",
+        "$description": "4.66:1"
+      },
+      "warning": {
+        "$value": "{yellow.600}",
+        "$description": "5.01:1"
+      },
+      "danger": {
+        "$value": "{red.600}",
+        "$description": "4.66:1. 금융에서 빨강은 상승이므로 오류 문구는 아이콘·문맥으로 구분"
+      },
+      "info": {
+        "$value": "{blue.700}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{gray.100}"
+      },
+      "default": {
+        "$value": "{gray.200}"
+      },
+      "strong": {
+        "$value": "{gray.300}",
+        "$description": "인풋·아웃라인 버튼"
+      },
+      "input-strict": {
+        "$value": "{gray.500}",
+        "$description": "체크박스·라디오. 3.04:1"
+      },
+      "brand": {
+        "$value": "{blue.500}"
+      },
+      "focus": {
+        "$value": "{blue.500}"
+      },
+      "danger": {
+        "$value": "{red.500}"
+      },
+      "inverse": {
+        "$value": "#FFFFFF33"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{blue.500}",
+          "$description": "흰 글자 3.71:1 — 버튼 라벨은 15px/600 이라 AA 미달. 기존 제품과 동일하게 두되, 글자 크기를 15 아래로 내리지 않는다. 엄격 화면은 primary-strict"
+        },
+        "bg-hover": {
+          "$value": "{blue.600}"
+        },
+        "bg-active": {
+          "$value": "{blue.700}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "primary-strict": {
+        "bg": {
+          "$value": "{blue.600}",
+          "$description": "4.66:1. 접근성 기준을 반드시 맞춰야 하는 화면(계정·결제)"
+        },
+        "bg-hover": {
+          "$value": "{blue.700}"
+        },
+        "bg-active": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{blue.50}",
+          "$description": "기존 btn-secondary: 연파랑 배경 + 파랑 글자"
+        },
+        "bg-hover": {
+          "$value": "{blue.100}"
+        },
+        "bg-active": {
+          "$value": "{blue.200}"
+        },
+        "border": {
+          "$value": "{base.transparent}"
+        },
+        "text": {
+          "$value": "{blue.700}"
+        }
+      },
+      "outline": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "{gray.50}"
+        },
+        "bg-active": {
+          "$value": "{gray.100}"
+        },
+        "border": {
+          "$value": "{gray.300}"
+        },
+        "border-hover": {
+          "$value": "{blue.400}"
+        },
+        "text": {
+          "$value": "{gray.700}"
+        },
+        "text-hover": {
+          "$value": "{blue.700}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{gray.100}",
+          "$description": "기존 btn-ghost 는 회색 배경형"
+        },
+        "bg-hover": {
+          "$value": "{gray.200}"
+        },
+        "bg-active": {
+          "$value": "{gray.300}"
+        },
+        "text": {
+          "$value": "{gray.800}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.600}",
+          "$description": "4.66:1. 매도·삭제·탈퇴"
+        },
+        "bg-hover": {
+          "$value": "{red.700}"
+        },
+        "bg-active": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{gray.200}"
+        },
+        "text": {
+          "$value": "{gray.400}"
+        },
+        "border": {
+          "$value": "{gray.200}"
+        }
+      }
+    },
+    "finance": {
+      "$description": "등락 색. 한국 관례(상승 빨강·하락 파랑). 글자 14px 이하는 text, 큰 숫자(19px bold 이상)와 배지·차트는 solid. 미국식 반전은 [data-market=us] 스코프가 처리한다(build.mjs).",
+      "up": {
+        "text": {
+          "$value": "{red.600}",
+          "$description": "4.66:1. 작은 등락 글자"
+        },
+        "solid": {
+          "$value": "{red.500}",
+          "$description": "#F04452. 큰 가격 숫자·배지 채움·캔들·화살표"
+        },
+        "bg": {
+          "$value": "{red.50}",
+          "$description": "상승 배지 배경·행 강조"
+        },
+        "border": {
+          "$value": "{red.200}"
+        },
+        "muted": {
+          "$value": "{red.300}",
+          "$description": "히트맵 약한 상승·스파크라인 채움"
+        },
+        "on-bg": {
+          "$value": "{red.700}",
+          "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+        }
+      },
+      "down": {
+        "text": {
+          "$value": "{blue.600}"
+        },
+        "solid": {
+          "$value": "{blue.500}"
+        },
+        "bg": {
+          "$value": "{blue.50}"
+        },
+        "border": {
+          "$value": "{blue.200}"
+        },
+        "muted": {
+          "$value": "{blue.300}"
+        },
+        "on-bg": {
+          "$value": "{blue.700}",
+          "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+        }
+      },
+      "flat": {
+        "text": {
+          "$value": "{gray.600}"
+        },
+        "solid": {
+          "$value": "{gray.500}"
+        },
+        "bg": {
+          "$value": "{gray.100}"
+        },
+        "border": {
+          "$value": "{gray.200}"
+        },
+        "muted": {
+          "$value": "{gray.300}"
+        },
+        "on-bg": {
+          "$value": "{gray.700}",
+          "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+        }
+      },
+      "flash-up": {
+        "$value": "#F0445226",
+        "$description": "실시간 틱 상승 시 셀 배경 플래시. red.500 15%"
+      },
+      "flash-down": {
+        "$value": "#3182F626",
+        "$description": "blue.500 15%"
+      },
+      "us-up": {
+        "text": {
+          "$value": "{green.600}"
+        },
+        "solid": {
+          "$value": "{green.600}",
+          "$description": "#088467. 3:1 을 넘는 첫 단계 (500 은 2.66)"
+        },
+        "bg": {
+          "$value": "{green.50}"
+        },
+        "border": {
+          "$value": "{green.200}"
+        },
+        "muted": {
+          "$value": "{green.300}"
+        },
+        "$description": "미국식 반전용(상승 초록). [data-market=us] 스코프에서 up 으로 치환된다",
+        "on-bg": {
+          "$value": "{green.700}",
+          "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+        }
+      },
+      "us-down": {
+        "text": {
+          "$value": "{red.600}"
+        },
+        "solid": {
+          "$value": "{red.500}"
+        },
+        "bg": {
+          "$value": "{red.50}"
+        },
+        "border": {
+          "$value": "{red.200}"
+        },
+        "muted": {
+          "$value": "{red.300}"
+        },
+        "on-bg": {
+          "$value": "{red.700}",
+          "$description": "같은 방향의 bg(옅은 면) 위 글자. 배지·행 강조 안에서"
+        }
+      },
+      "us-flash-up": {
+        "$value": "#03B48826"
+      },
+      "us-flash-down": {
+        "$value": "#F0445226"
+      }
+    },
+    "status": {
+      "$description": "등락이 아닌 상태. 오류(danger)는 빨강이 상승과 겹치므로 배너에 아이콘·제목을 반드시 붙인다.",
+      "success": {
+        "bg": {
+          "$value": "{green.50}"
+        },
+        "border": {
+          "$value": "{green.200}"
+        },
+        "text": {
+          "$value": "{green.700}"
+        },
+        "icon": {
+          "$value": "{green.600}"
+        },
+        "solid": {
+          "$value": "{green.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{yellow.50}"
+        },
+        "border": {
+          "$value": "{yellow.200}"
+        },
+        "text": {
+          "$value": "{yellow.600}"
+        },
+        "icon": {
+          "$value": "{yellow.500}"
+        },
+        "solid": {
+          "$value": "{yellow.300}",
+          "$description": "#FFB200 + 검은 글자"
+        },
+        "on-solid": {
+          "$value": "{gray.900}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.50}"
+        },
+        "border": {
+          "$value": "{red.200}"
+        },
+        "text": {
+          "$value": "{red.700}"
+        },
+        "icon": {
+          "$value": "{red.600}"
+        },
+        "solid": {
+          "$value": "{red.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{blue.50}"
+        },
+        "border": {
+          "$value": "{blue.200}"
+        },
+        "text": {
+          "$value": "{blue.700}"
+        },
+        "icon": {
+          "$value": "{blue.500}"
+        },
+        "solid": {
+          "$value": "{blue.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{gray.100}"
+        },
+        "border": {
+          "$value": "{gray.200}"
+        },
+        "text": {
+          "$value": "{gray.700}"
+        },
+        "icon": {
+          "$value": "{gray.600}"
+        },
+        "solid": {
+          "$value": "{gray.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{blue.500}"
+      },
+      "focus-ring-soft": {
+        "$value": "#3182F647",
+        "$description": "기존 --focus-ring rgba(49,130,246,.28). 인풋 안쪽 3px 링"
+      },
+      "selected-bg": {
+        "$value": "{blue.50}"
+      },
+      "selected-border": {
+        "$value": "{blue.300}"
+      },
+      "selected-text": {
+        "$value": "{blue.700}"
+      },
+      "hover-overlay": {
+        "$value": "#191F280A",
+        "$description": "gray.900 4%"
+      },
+      "pressed-overlay": {
+        "$value": "#191F2814",
+        "$description": "gray.900 8%"
+      },
+      "row-hover": {
+        "$value": "{blue.50}",
+        "$description": "종목 리스트·표 행 hover. 기존 movers-row:hover"
+      }
+    },
+    "chart": {
+      "$description": "recharts 는 SVG 속성에 var() 를 못 쓰므로 dist/chart-theme.ts 가 raw 값을 내보낸다. 이 토큰이 그 소스다.",
+      "series": {
+        "$description": "카테고리 시리즈 8색. 고정 순서·순환 금지(CVD 인접 분리 검증 2026-08-26). 9번째부터는 '기타' 로 접는다",
+        "1": {
+          "$value": "{blue.500}"
+        },
+        "2": {
+          "$value": "{orange.500}"
+        },
+        "3": {
+          "$value": "#1BAF7A",
+          "$description": "aqua. green 램프와 겹치지 않게 별도 값"
+        },
+        "4": {
+          "$value": "#EDA100"
+        },
+        "5": {
+          "$value": "{magenta.400}"
+        },
+        "6": {
+          "$value": "#008300"
+        },
+        "7": {
+          "$value": "{violet.700}"
+        },
+        "8": {
+          "$value": "#E34948"
+        },
+        "other": {
+          "$value": "{gray.600}"
+        }
+      },
+      "overlay": {
+        "$description": "기술 차트 이동평균선. 기간이 길수록 진하게",
+        "ma5": {
+          "$value": "{yellow.400}"
+        },
+        "ma20": {
+          "$value": "{orange.500}"
+        },
+        "ma60": {
+          "$value": "{violet.500}"
+        },
+        "ma120": {
+          "$value": "{gray.700}"
+        },
+        "bollinger": {
+          "$value": "{blue.300}"
+        },
+        "bollinger-fill": {
+          "$value": "#64A8FF14"
+        }
+      },
+      "candle": {
+        "up": {
+          "$value": "{red.500}"
+        },
+        "down": {
+          "$value": "{blue.500}"
+        },
+        "up-wick": {
+          "$value": "{red.600}"
+        },
+        "down-wick": {
+          "$value": "{blue.600}"
+        },
+        "volume-up": {
+          "$value": "#F0445280"
+        },
+        "volume-down": {
+          "$value": "#3182F680"
+        }
+      },
+      "sparkline": {
+        "up": {
+          "$value": "{red.500}"
+        },
+        "down": {
+          "$value": "{blue.500}"
+        },
+        "flat": {
+          "$value": "{gray.500}"
+        },
+        "fill-opacity": {
+          "$value": "0.12",
+          "$type": "number"
+        }
+      },
+      "heat": {
+        "$description": "등락률 히트맵 5단계. 한국 관례라 양수가 빨강",
+        "up-3": {
+          "$value": "{red.600}"
+        },
+        "up-2": {
+          "$value": "{red.500}"
+        },
+        "up-1": {
+          "$value": "{red.300}"
+        },
+        "zero": {
+          "$value": "{gray.200}"
+        },
+        "down-1": {
+          "$value": "{blue.300}"
+        },
+        "down-2": {
+          "$value": "{blue.500}"
+        },
+        "down-3": {
+          "$value": "{blue.600}"
+        }
+      },
+      "grid": {
+        "$value": "{gray.200}",
+        "$description": "gray.100 은 너무 옅어 격자가 안 보였다(실측)"
+      },
+      "axis": {
+        "$value": "{gray.500}"
+      },
+      "label": {
+        "$value": "{gray.700}"
+      },
+      "reference": {
+        "$value": "{gray.400}",
+        "$description": "기준선(0, 매수가)"
+      },
+      "crosshair": {
+        "$value": "{gray.600}"
+      },
+      "tooltip-bg": {
+        "$value": "#FFFFFFF5"
+      }
+    }
+  }
+}

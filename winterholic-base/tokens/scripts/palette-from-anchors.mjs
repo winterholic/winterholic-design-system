@@ -23,7 +23,9 @@ export function generatePalette() {
   const out = {};
   for (const [key, a] of Object.entries(ANCHORS)) {
     const { ramp } = buildRamp(a.hex, { anchorStep: a.step, chromaCurve: a.neutral ? 'neutral' : 'brand' });
-    out[key] = { $description: `${a.name} · ${a.role} · 앵커 ${a.hex} @${a.step}` };
+    // fixed: 이미 제품에서 쓰이는 손조정 값이 있으면 그 단계만 생성값 대신 고정한다(기존 화면과의 호환).
+    Object.assign(ramp, a.fixed ?? {});
+    out[key] = { $description: `${a.name} · ${a.role} · 앵커 ${a.hex} @${a.step}${a.fixed ? ' · 고정 단계 ' + Object.keys(a.fixed).join('/') : ''}` };
     for (const [step, hex] of Object.entries(ramp)) {
       out[key][step] = {
         $value: hex,

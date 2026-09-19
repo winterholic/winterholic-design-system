@@ -1,0 +1,84 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Malgun Gothic", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
+        "$description": "기존 --font-sans 그대로"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "D2Coding", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        "$description": "코드·API 응답 표시. 금액·가격은 mono 가 아니라 sans + tabular-nums 를 쓴다(Pretendard 숫자가 더 읽기 좋다)"
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "$description": "기존 FDS 는 400/500/600/800 + 700 이 섞여 있었다. 5단계로 정리: 700 은 제목, 800 은 가격·큰 숫자 전용.",
+      "regular":   { "$value": 400 },
+      "medium":    { "$value": 500, "$description": "라벨·표 헤더" },
+      "semibold":  { "$value": 600, "$description": "버튼·title-3·강조" },
+      "bold":      { "$value": 700, "$description": "title-1·title-2·등락 숫자" },
+      "extrabold": { "$value": 800, "$description": "display·큰 가격. 다른 데는 쓰지 않는다" }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "1rem = 16px. 기존 FDS 스케일(13/15/17/18/20/24/32)에 12·28·40 을 더했다. 보조정보도 12 아래로 내리지 않는다(기존 규칙 유지).",
+      "2xs": { "$value": "0.6875rem", "$description": "11px · 하단 탭 라벨만 예외적으로 허용" },
+      "xs":  { "$value": "0.75rem",   "$description": "12px · 배지·표 헤더·메타. 하한" },
+      "sm":  { "$value": "0.8125rem", "$description": "13px · 캡션·보조 설명·표 셀 보조" },
+      "md":  { "$value": "0.9375rem", "$description": "15px · 본문 기본·버튼·리스트 행 제목·표 셀" },
+      "lg":  { "$value": "1.0625rem", "$description": "17px · 강조 본문·안내 문장" },
+      "xl":  { "$value": "1.125rem",  "$description": "18px · title-3·카드 제목" },
+      "2xl": { "$value": "1.25rem",   "$description": "20px · title-2·섹션 제목·가격(md)" },
+      "3xl": { "$value": "1.5rem",    "$description": "24px · title-1·페이지 제목" },
+      "4xl": { "$value": "1.75rem",   "$description": "28px · 가격(lg)·종목 상세 현재가" },
+      "5xl": { "$value": "2rem",      "$description": "32px · display·총자산" },
+      "6xl": { "$value": "2.5rem",    "$description": "40px · 온보딩 히어로" }
+    },
+    "line-height": {
+      "$type": "number",
+      "none":    { "$value": 1,    "$description": "가격·KPI 숫자" },
+      "tight":   { "$value": 1.2,  "$description": "display" },
+      "snug":    { "$value": 1.35, "$description": "title" },
+      "normal":  { "$value": 1.45, "$description": "라벨·버튼·리스트 행" },
+      "relaxed": { "$value": 1.6,  "$description": "본문·안내 문장" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tighter": { "$value": "-0.03em", "$description": "display·큰 가격" },
+      "tight":   { "$value": "-0.02em", "$description": "title-1·2, 가격 md" },
+      "snug":    { "$value": "-0.01em", "$description": "본문 기본(기존 body letter-spacing)" },
+      "normal":  { "$value": "0em",     "$description": "캡션·배지·숫자 sm" }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+    "$description": "역할별 완성 스타일. 화면에는 이 이름으로만. 숫자 스타일(price-*·change·numeric)은 font-variant-numeric: tabular-nums 가 자동으로 붙는다(typography.css).",
+
+    "display":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.5xl}", "fontWeight": "{font.weight.extrabold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "총자산·온보딩 한 줄. 32/800" },
+    "display-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.6xl}", "fontWeight": "{font.weight.extrabold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "온보딩 히어로 40/800. 모바일 32" },
+    "title-1":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.3xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "페이지 제목 24/700. 페이지당 1개" },
+    "title-2":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "섹션·모달·바텀시트 제목 20/700" },
+    "title-3":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "카드 제목·패널 헤더 18/600" },
+    "title-4":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "리스트 그룹 제목·작은 카드 제목 15/600" },
+
+    "body-1":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "안내 문장·리서치 본문 17/400" },
+    "body-2":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "본문 기본·리스트 행·표 셀 15/400" },
+    "body-3":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "보조 설명 13/400" },
+    "caption":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "라벨(기존 .label)·메타 13/500 + text.tertiary" },
+    "micro":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "표 헤더·타임스탬프·시장 태그 12/500" },
+
+    "label-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "lg 버튼·하단 CTA 17/600" },
+    "label-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "md 버튼·탭·세그먼트 15/600. 기본" },
+    "label-sm": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "sm 버튼·필터 칩 13/600" },
+    "badge":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "배지·시장 태그(KOSPI) 12/700" },
+
+    "price-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.extrabold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "종목 상세 현재가·총자산 28/800 tabular" },
+    "price-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "KPI 타일·카드 안 가격 20/700" },
+    "price-sm": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "리스트 행·표 셀 가격 15/700" },
+    "change":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "등락률 13/700 + finance.<dir>.text" },
+    "numeric":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "표의 일반 수치(거래량·PER) 15/500" },
+    "code":     { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "코드·티커 심볼(AAPL)" }
+  }
+}

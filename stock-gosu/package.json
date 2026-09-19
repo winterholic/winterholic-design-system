@@ -1,0 +1,31 @@
+{
+  "name": "stock-gosu-design-system",
+  "version": "1.0.0",
+  "description": "stock-gosu 투자 대시보드 디자인 시스템 — DTCG 토큰, CSS 변수, recharts 테마, 레거시 별칭, 문서",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node tokens/build.mjs",
+    "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs"
+  },
+  "exports": {
+    ".": "./dist/tokens.js",
+    "./tokens.css": "./dist/tokens.css",
+    "./typography.css": "./dist/typography.css",
+    "./tailwind": "./dist/tailwind.preset.cjs",
+    "./tokens.json": "./tokens/tokens.json",
+    "./brand/*": "./assets/brand/*",
+    "./chart-theme": "./dist/chart-theme.ts",
+    "./legacy-aliases.css": "./dist/legacy-aliases.css"
+  },
+  "files": [
+    "dist",
+    "tokens/tokens.json",
+    "tokens/tokens.dark.json",
+    "assets/brand"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,590 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색(다크). 기존 stock-gosu 에는 다크가 없었다 — 장 마감 후·야간 사용이 많은 투자 앱이라 추가. 라이트와 경로 1:1.",
+    "surface": {
+      "canvas": {
+        "$value": "{gray.950}"
+      },
+      "default": {
+        "$value": "{gray.900}"
+      },
+      "raised": {
+        "$value": "{gray.800}"
+      },
+      "sunken": {
+        "$value": "#14181D"
+      },
+      "sunken-strong": {
+        "$value": "{gray.950}"
+      },
+      "overlay": {
+        "$value": "#00000099"
+      },
+      "inverse": {
+        "$value": "{gray.50}"
+      },
+      "brand": {
+        "$value": "{blue.800}"
+      },
+      "brand-subtle": {
+        "$value": "{blue.950}"
+      },
+      "disabled": {
+        "$value": "{gray.800}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{gray.50}"
+      },
+      "secondary": {
+        "$value": "{gray.300}"
+      },
+      "tertiary": {
+        "$value": "{gray.400}"
+      },
+      "placeholder": {
+        "$value": "{gray.400}"
+      },
+      "disabled": {
+        "$value": "{gray.600}"
+      },
+      "inverse": {
+        "$value": "{gray.900}"
+      },
+      "on-brand": {
+        "$value": "{base.white}"
+      },
+      "brand": {
+        "$value": "{blue.300}"
+      },
+      "link": {
+        "$value": "{blue.300}"
+      },
+      "link-hover": {
+        "$value": "{blue.200}"
+      },
+      "success": {
+        "$value": "{green.400}"
+      },
+      "warning": {
+        "$value": "{yellow.300}"
+      },
+      "danger": {
+        "$value": "{red.400}"
+      },
+      "info": {
+        "$value": "{blue.300}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{gray.900}"
+      },
+      "default": {
+        "$value": "{gray.800}"
+      },
+      "strong": {
+        "$value": "{gray.700}"
+      },
+      "input-strict": {
+        "$value": "{gray.500}"
+      },
+      "brand": {
+        "$value": "{blue.300}"
+      },
+      "focus": {
+        "$value": "{blue.300}"
+      },
+      "danger": {
+        "$value": "{red.400}"
+      },
+      "inverse": {
+        "$value": "#191F2833"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{blue.400}",
+          "$description": "다크는 밝은 파랑 + 어두운 글자. 흰 글자는 blue.500 위에서도 3.71 이라 방향을 바꿨다"
+        },
+        "bg-hover": {
+          "$value": "{blue.300}"
+        },
+        "bg-active": {
+          "$value": "{blue.200}"
+        },
+        "text": {
+          "$value": "{gray.950}"
+        }
+      },
+      "primary-strict": {
+        "bg": {
+          "$value": "{blue.400}",
+          "$description": "다크는 밝은 파랑 + 어두운 글자. 흰 글자는 blue.500 위에서도 3.71 이라 방향을 바꿨다"
+        },
+        "bg-hover": {
+          "$value": "{blue.300}"
+        },
+        "bg-active": {
+          "$value": "{blue.200}"
+        },
+        "text": {
+          "$value": "{gray.950}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{blue.950}"
+        },
+        "bg-hover": {
+          "$value": "{blue.900}"
+        },
+        "bg-active": {
+          "$value": "{blue.800}"
+        },
+        "border": {
+          "$value": "{base.transparent}"
+        },
+        "text": {
+          "$value": "{blue.300}"
+        }
+      },
+      "outline": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "{gray.800}"
+        },
+        "bg-active": {
+          "$value": "{gray.700}"
+        },
+        "border": {
+          "$value": "{gray.700}"
+        },
+        "border-hover": {
+          "$value": "{blue.400}"
+        },
+        "text": {
+          "$value": "{gray.200}"
+        },
+        "text-hover": {
+          "$value": "{blue.300}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{gray.800}"
+        },
+        "bg-hover": {
+          "$value": "{gray.700}"
+        },
+        "bg-active": {
+          "$value": "{gray.600}"
+        },
+        "text": {
+          "$value": "{gray.100}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.400}"
+        },
+        "bg-hover": {
+          "$value": "{red.300}"
+        },
+        "bg-active": {
+          "$value": "{red.200}"
+        },
+        "text": {
+          "$value": "{gray.950}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{gray.800}"
+        },
+        "text": {
+          "$value": "{gray.600}"
+        },
+        "border": {
+          "$value": "{gray.800}"
+        }
+      }
+    },
+    "finance": {
+      "up": {
+        "text": {
+          "$value": "{red.400}",
+          "$description": "#FD7678. 어두운 면에서 밝은 빨강이 읽힌다"
+        },
+        "solid": {
+          "$value": "{red.400}"
+        },
+        "bg": {
+          "$value": "{red.950}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "muted": {
+          "$value": "{red.700}"
+        },
+        "on-bg": {
+          "$value": "{red.300}"
+        }
+      },
+      "down": {
+        "text": {
+          "$value": "{blue.300}"
+        },
+        "solid": {
+          "$value": "{blue.300}"
+        },
+        "bg": {
+          "$value": "{blue.950}"
+        },
+        "border": {
+          "$value": "{blue.800}"
+        },
+        "muted": {
+          "$value": "{blue.700}"
+        },
+        "on-bg": {
+          "$value": "{blue.200}"
+        }
+      },
+      "flat": {
+        "text": {
+          "$value": "{gray.400}"
+        },
+        "solid": {
+          "$value": "{gray.500}"
+        },
+        "bg": {
+          "$value": "{gray.800}"
+        },
+        "border": {
+          "$value": "{gray.700}"
+        },
+        "muted": {
+          "$value": "{gray.600}"
+        },
+        "on-bg": {
+          "$value": "{gray.300}"
+        }
+      },
+      "flash-up": {
+        "$value": "#FD767833"
+      },
+      "flash-down": {
+        "$value": "#64A8FF33"
+      },
+      "us-up": {
+        "text": {
+          "$value": "{green.400}"
+        },
+        "solid": {
+          "$value": "{green.400}"
+        },
+        "bg": {
+          "$value": "{green.950}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "muted": {
+          "$value": "{green.700}"
+        },
+        "$description": "미국식 반전용(상승 초록). [data-market=us] 스코프에서 up 으로 치환된다",
+        "on-bg": {
+          "$value": "{green.300}"
+        }
+      },
+      "us-down": {
+        "text": {
+          "$value": "{red.400}"
+        },
+        "solid": {
+          "$value": "{red.400}"
+        },
+        "bg": {
+          "$value": "{red.950}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "muted": {
+          "$value": "{red.700}"
+        },
+        "on-bg": {
+          "$value": "{red.300}"
+        }
+      },
+      "us-flash-up": {
+        "$value": "#15C39A33"
+      },
+      "us-flash-down": {
+        "$value": "#FD767833"
+      }
+    },
+    "status": {
+      "success": {
+        "bg": {
+          "$value": "{green.950}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "text": {
+          "$value": "{green.400}"
+        },
+        "icon": {
+          "$value": "{green.400}"
+        },
+        "solid": {
+          "$value": "{green.500}"
+        },
+        "on-solid": {
+          "$value": "{gray.950}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{yellow.950}"
+        },
+        "border": {
+          "$value": "{yellow.800}"
+        },
+        "text": {
+          "$value": "{yellow.300}"
+        },
+        "icon": {
+          "$value": "{yellow.300}"
+        },
+        "solid": {
+          "$value": "{yellow.300}"
+        },
+        "on-solid": {
+          "$value": "{gray.950}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.950}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{red.400}"
+        },
+        "icon": {
+          "$value": "{red.400}"
+        },
+        "solid": {
+          "$value": "{red.400}"
+        },
+        "on-solid": {
+          "$value": "{gray.950}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{blue.950}"
+        },
+        "border": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{blue.300}"
+        },
+        "icon": {
+          "$value": "{blue.300}"
+        },
+        "solid": {
+          "$value": "{blue.400}"
+        },
+        "on-solid": {
+          "$value": "{gray.950}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{gray.800}"
+        },
+        "border": {
+          "$value": "{gray.700}"
+        },
+        "text": {
+          "$value": "{gray.200}"
+        },
+        "icon": {
+          "$value": "{gray.300}"
+        },
+        "solid": {
+          "$value": "{gray.500}"
+        },
+        "on-solid": {
+          "$value": "{gray.950}"
+        }
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{blue.300}"
+      },
+      "focus-ring-soft": {
+        "$value": "#64A8FF47"
+      },
+      "selected-bg": {
+        "$value": "{blue.950}"
+      },
+      "selected-border": {
+        "$value": "{blue.500}"
+      },
+      "selected-text": {
+        "$value": "{blue.200}"
+      },
+      "hover-overlay": {
+        "$value": "#FFFFFF0F"
+      },
+      "pressed-overlay": {
+        "$value": "#FFFFFF1A"
+      },
+      "row-hover": {
+        "$value": "{blue.950}"
+      }
+    },
+    "chart": {
+      "series": {
+        "1": {
+          "$value": "{blue.300}"
+        },
+        "2": {
+          "$value": "{orange.400}"
+        },
+        "3": {
+          "$value": "#4FD1A5"
+        },
+        "4": {
+          "$value": "#F5C24B"
+        },
+        "5": {
+          "$value": "{magenta.300}"
+        },
+        "6": {
+          "$value": "#4CBF4C"
+        },
+        "7": {
+          "$value": "{violet.400}"
+        },
+        "8": {
+          "$value": "#F07A79"
+        },
+        "other": {
+          "$value": "{gray.500}"
+        }
+      },
+      "overlay": {
+        "ma5": {
+          "$value": "{yellow.300}"
+        },
+        "ma20": {
+          "$value": "{orange.400}"
+        },
+        "ma60": {
+          "$value": "{violet.400}"
+        },
+        "ma120": {
+          "$value": "{gray.300}"
+        },
+        "bollinger": {
+          "$value": "{blue.400}"
+        },
+        "bollinger-fill": {
+          "$value": "#64A8FF1F"
+        }
+      },
+      "candle": {
+        "up": {
+          "$value": "{red.400}"
+        },
+        "down": {
+          "$value": "{blue.300}"
+        },
+        "up-wick": {
+          "$value": "{red.300}"
+        },
+        "down-wick": {
+          "$value": "{blue.200}"
+        },
+        "volume-up": {
+          "$value": "#FD767880"
+        },
+        "volume-down": {
+          "$value": "#64A8FF80"
+        }
+      },
+      "sparkline": {
+        "up": {
+          "$value": "{red.400}"
+        },
+        "down": {
+          "$value": "{blue.300}"
+        },
+        "flat": {
+          "$value": "{gray.500}"
+        },
+        "fill-opacity": {
+          "$value": "0.16",
+          "$type": "number"
+        }
+      },
+      "heat": {
+        "up-3": {
+          "$value": "{red.400}"
+        },
+        "up-2": {
+          "$value": "{red.600}"
+        },
+        "up-1": {
+          "$value": "{red.800}"
+        },
+        "zero": {
+          "$value": "{gray.800}"
+        },
+        "down-1": {
+          "$value": "{blue.800}"
+        },
+        "down-2": {
+          "$value": "{blue.600}"
+        },
+        "down-3": {
+          "$value": "{blue.300}"
+        }
+      },
+      "grid": {
+        "$value": "{gray.800}"
+      },
+      "axis": {
+        "$value": "{gray.500}"
+      },
+      "label": {
+        "$value": "{gray.300}"
+      },
+      "reference": {
+        "$value": "{gray.600}"
+      },
+      "crosshair": {
+        "$value": "{gray.400}"
+      },
+      "tooltip-bg": {
+        "$value": "#191F28F5"
+      }
+    }
+  }
+}

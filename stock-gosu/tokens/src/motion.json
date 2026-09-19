@@ -1,0 +1,36 @@
+{
+  "motion": {
+    "$description": "기존 FDS: fast 150 / base 250 / slow 400, ease-out·ease-in-out. 여기에 시세 플래시와 차트용을 더했다. 핵심 숫자(잔액·수익률)는 과하게 움직이지 않는다 — 깜빡임은 불안이다.",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "0ms" },
+      "fast":    { "$value": "150ms", "$description": "hover 색·세그먼트 이동·토글" },
+      "normal":  { "$value": "250ms", "$description": "기본. 드롭다운·아코디언·탭 인디케이터 (기존 base)" },
+      "slow":    { "$value": "400ms", "$description": "바텀시트·모달·페이지 전환" },
+      "flash":   { "$value": "600ms", "$description": "실시간 틱 셀 배경 플래시(finance.flash-*) 후 원복" },
+      "chart":   { "$value": "300ms", "$description": "차트 그려짐·데이터 갱신. recharts animationDuration" },
+      "skeleton-cycle": { "$value": "1400ms" },
+      "toast":   { "$value": "3000ms", "$description": "정보 토스트 유지" },
+      "toast-long": { "$value": "6000ms", "$description": "오류·액션 있는 토스트" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "out":     { "$value": [0.22, 1, 0.36, 1], "$description": "등장·이동 전부 (기존 --ease-out)" },
+      "in-out":  { "$value": [0.4, 0, 0.2, 1],  "$description": "상태 전환·색 (기존 --ease-in-out)" },
+      "in":      { "$value": [0.4, 0, 1, 1],    "$description": "사라짐" },
+      "linear":  { "$value": [0, 0, 1, 1],      "$description": "스피너·shimmer" }
+    },
+    "distance": {
+      "$type": "dimension",
+      "sm": { "$value": "4px", "$description": "툴팁·드롭다운" },
+      "md": { "$value": "8px", "$description": "토스트·팝오버" },
+      "lg": { "$value": "16px", "$description": "모달·페이지" },
+      "sheet": { "$value": "100%", "$description": "바텀시트 translateY" }
+    },
+    "scale": {
+      "$type": "number",
+      "enter": { "$value": 0.97 },
+      "press": { "$value": 0.97, "$description": "기존 .btn:active" }
+    }
+  }
+}

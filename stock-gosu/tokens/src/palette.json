@@ -1,0 +1,818 @@
+{
+  "blue": {
+    "50": {
+      "$value": "#E8F3FF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.12,
+          "onBlack": 18.7
+        }
+      }
+    },
+    "100": {
+      "$value": "#C9E2FF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.33,
+          "onBlack": 15.81
+        }
+      }
+    },
+    "200": {
+      "$value": "#90C2FF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.35
+        }
+      }
+    },
+    "300": {
+      "$value": "#64A8FF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.45,
+          "onBlack": 8.59
+        }
+      }
+    },
+    "400": {
+      "$value": "#4593FC",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.07,
+          "onBlack": 6.83
+        }
+      }
+    },
+    "500": {
+      "$value": "#3182F6",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.71,
+          "onBlack": 5.65
+        }
+      }
+    },
+    "600": {
+      "$value": "#216FE8",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 4.66,
+          "onBlack": 4.5
+        }
+      }
+    },
+    "700": {
+      "$value": "#1B64DA",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 5.41,
+          "onBlack": 3.88
+        }
+      }
+    },
+    "800": {
+      "$value": "#1957C2",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 6.6,
+          "onBlack": 3.18
+        }
+      }
+    },
+    "900": {
+      "$value": "#194AA6",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 8.17,
+          "onBlack": 2.57
+        }
+      }
+    },
+    "950": {
+      "$value": "#021D46",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.58,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Toss Blue · 브랜드·액션·하락 · 앵커 #3182F6 @500 · 고정 단계 50/100/200/300/400/500/600/700/800/900"
+  },
+  "gray": {
+    "50": {
+      "$value": "#F9FAFB",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.05,
+          "onBlack": 20.1
+        }
+      }
+    },
+    "100": {
+      "$value": "#F2F4F6",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.1,
+          "onBlack": 19.05
+        }
+      }
+    },
+    "200": {
+      "$value": "#E5E8EB",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.23,
+          "onBlack": 17.07
+        }
+      }
+    },
+    "300": {
+      "$value": "#D1D6DB",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.46,
+          "onBlack": 14.35
+        }
+      }
+    },
+    "400": {
+      "$value": "#B0B8C1",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.01,
+          "onBlack": 10.47
+        }
+      }
+    },
+    "500": {
+      "$value": "#8B95A1",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.04,
+          "onBlack": 6.91
+        }
+      }
+    },
+    "600": {
+      "$value": "#6B7684",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 4.62,
+          "onBlack": 4.55
+        }
+      }
+    },
+    "700": {
+      "$value": "#4E5968",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 7.11,
+          "onBlack": 2.95
+        }
+      }
+    },
+    "800": {
+      "$value": "#333D4B",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 11,
+          "onBlack": 1.91
+        }
+      }
+    },
+    "900": {
+      "$value": "#191F28",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.56,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "950": {
+      "$value": "#111418",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 18.47,
+          "onBlack": 1.14
+        }
+      }
+    },
+    "$description": "Toss Gray · 텍스트·면·테두리 · 앵커 #8B95A1 @500 · 고정 단계 50/100/200/300/400/500/600/700/800/900/950"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFEEEE",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.12,
+          "onBlack": 18.72
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE6E5",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.66
+        }
+      }
+    },
+    "200": {
+      "$value": "#FCCECC",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.84
+        }
+      }
+    },
+    "300": {
+      "$value": "#FFA7A5",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.32
+        }
+      }
+    },
+    "400": {
+      "$value": "#FD7678",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.61,
+          "onBlack": 8.04
+        }
+      }
+    },
+    "500": {
+      "$value": "#F04452",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.71,
+          "onBlack": 5.65
+        }
+      }
+    },
+    "600": {
+      "$value": "#E0263A",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 4.66,
+          "onBlack": 4.51
+        }
+      }
+    },
+    "700": {
+      "$value": "#9F2430",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 7.58,
+          "onBlack": 2.77
+        }
+      }
+    },
+    "800": {
+      "$value": "#7C1622",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 10.53,
+          "onBlack": 1.99
+        }
+      }
+    },
+    "900": {
+      "$value": "#5D0915",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 13.86,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#420109",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.94,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Rise Red · 상승(한국 관례)·오류 · 앵커 #F04452 @500 · 고정 단계 50/500/600"
+  },
+  "green": {
+    "50": {
+      "$value": "#E7F8F3",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.1,
+          "onBlack": 19.12
+        }
+      }
+    },
+    "100": {
+      "$value": "#C6FBE7",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.14,
+          "onBlack": 18.35
+        }
+      }
+    },
+    "200": {
+      "$value": "#8AF3D0",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.33,
+          "onBlack": 15.81
+        }
+      }
+    },
+    "300": {
+      "$value": "#60DCB7",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.69,
+          "onBlack": 12.42
+        }
+      }
+    },
+    "400": {
+      "$value": "#15C39A",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.26,
+          "onBlack": 9.3
+        }
+      }
+    },
+    "500": {
+      "$value": "#03B488",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.66,
+          "onBlack": 7.89
+        }
+      }
+    },
+    "600": {
+      "$value": "#088467",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 4.66,
+          "onBlack": 4.51
+        }
+      }
+    },
+    "700": {
+      "$value": "#046952",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 6.67,
+          "onBlack": 3.15
+        }
+      }
+    },
+    "800": {
+      "$value": "#01503E",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 9.47,
+          "onBlack": 2.22
+        }
+      }
+    },
+    "900": {
+      "$value": "#003A2C",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 12.79,
+          "onBlack": 1.64
+        }
+      }
+    },
+    "950": {
+      "$value": "#04261C",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.16,
+          "onBlack": 1.3
+        }
+      }
+    },
+    "$description": "Mint Green · 성공·긍정 신호 · 앵커 #15C39A @400 · 고정 단계 50/400/500"
+  },
+  "yellow": {
+    "50": {
+      "$value": "#FFF7E6",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.7
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEEACD",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.86
+        }
+      }
+    },
+    "200": {
+      "$value": "#FDD496",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15.03
+        }
+      }
+    },
+    "300": {
+      "$value": "#FFB200",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.81,
+          "onBlack": 11.62
+        }
+      }
+    },
+    "400": {
+      "$value": "#F59B00",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.19,
+          "onBlack": 9.57
+        }
+      }
+    },
+    "500": {
+      "$value": "#B37D10",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.59,
+          "onBlack": 5.86
+        }
+      }
+    },
+    "600": {
+      "$value": "#936712",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 5.01,
+          "onBlack": 4.19
+        }
+      }
+    },
+    "700": {
+      "$value": "#755211",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 7.07,
+          "onBlack": 2.97
+        }
+      }
+    },
+    "800": {
+      "$value": "#593E0F",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 9.9,
+          "onBlack": 2.12
+        }
+      }
+    },
+    "900": {
+      "$value": "#3F2C0C",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 13.32,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "950": {
+      "$value": "#291D09",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.48,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Signal Amber · 경고·주의 신호 · 앵커 #FFB200 @300 · 고정 단계 50/300/400"
+  },
+  "orange": {
+    "50": {
+      "$value": "#FFF4F1",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.46
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFE7DF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.75
+        }
+      }
+    },
+    "200": {
+      "$value": "#FECFBE",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.41,
+          "onBlack": 14.88
+        }
+      }
+    },
+    "300": {
+      "$value": "#FCAC8F",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.84,
+          "onBlack": 11.44
+        }
+      }
+    },
+    "400": {
+      "$value": "#F97E50",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.58,
+          "onBlack": 8.13
+        }
+      }
+    },
+    "500": {
+      "$value": "#EB6834",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.2,
+          "onBlack": 6.56
+        }
+      }
+    },
+    "600": {
+      "$value": "#B34C22",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 5.28,
+          "onBlack": 3.97
+        }
+      }
+    },
+    "700": {
+      "$value": "#913B17",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 7.39,
+          "onBlack": 2.84
+        }
+      }
+    },
+    "800": {
+      "$value": "#712A0D",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 10.3,
+          "onBlack": 2.04
+        }
+      }
+    },
+    "900": {
+      "$value": "#541C04",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 13.59,
+          "onBlack": 1.54
+        }
+      }
+    },
+    "950": {
+      "$value": "#3A0F00",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.82,
+          "onBlack": 1.25
+        }
+      }
+    },
+    "$description": "Series Orange · 차트 2 · 앵커 #EB6834 @500"
+  },
+  "violet": {
+    "50": {
+      "$value": "#F5F6FF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.51
+        }
+      }
+    },
+    "100": {
+      "$value": "#EAEBFD",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.8
+        }
+      }
+    },
+    "200": {
+      "$value": "#D6D7FD",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15
+        }
+      }
+    },
+    "300": {
+      "$value": "#BBBCF6",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.8,
+          "onBlack": 11.64
+        }
+      }
+    },
+    "400": {
+      "$value": "#9E9EE4",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.48,
+          "onBlack": 8.46
+        }
+      }
+    },
+    "500": {
+      "$value": "#807ED0",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.61,
+          "onBlack": 5.81
+        }
+      }
+    },
+    "600": {
+      "$value": "#6761BF",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 5.2,
+          "onBlack": 4.04
+        }
+      }
+    },
+    "700": {
+      "$value": "#4A3AA7",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 8.56,
+          "onBlack": 2.45
+        }
+      }
+    },
+    "800": {
+      "$value": "#3E2E92",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 10.44,
+          "onBlack": 2.01
+        }
+      }
+    },
+    "900": {
+      "$value": "#2C1C72",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 13.85,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#1D0A56",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 17.07,
+          "onBlack": 1.23
+        }
+      }
+    },
+    "$description": "Series Violet · 차트 7 · 앵커 #4A3AA7 @700"
+  },
+  "magenta": {
+    "50": {
+      "$value": "#FFF3F7",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.42
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE5ED",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.64
+        }
+      }
+    },
+    "200": {
+      "$value": "#FFCADB",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.43,
+          "onBlack": 14.72
+        }
+      }
+    },
+    "300": {
+      "$value": "#FCA4C3",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 1.87,
+          "onBlack": 11.24
+        }
+      }
+    },
+    "400": {
+      "$value": "#E87BA4",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 2.69,
+          "onBlack": 7.8
+        }
+      }
+    },
+    "500": {
+      "$value": "#C4668A",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 3.74,
+          "onBlack": 5.61
+        }
+      }
+    },
+    "600": {
+      "$value": "#A15370",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 5.27,
+          "onBlack": 3.99
+        }
+      }
+    },
+    "700": {
+      "$value": "#82415A",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 7.36,
+          "onBlack": 2.85
+        }
+      }
+    },
+    "800": {
+      "$value": "#643044",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 10.25,
+          "onBlack": 2.05
+        }
+      }
+    },
+    "900": {
+      "$value": "#492130",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 13.61,
+          "onBlack": 1.54
+        }
+      }
+    },
+    "950": {
+      "$value": "#32141F",
+      "$extensions": {
+        "sg.contrast": {
+          "onWhite": 16.73,
+          "onBlack": 1.26
+        }
+      }
+    },
+    "$description": "Series Magenta · 차트 5 · 앵커 #E87BA4 @400"
+  }
+}

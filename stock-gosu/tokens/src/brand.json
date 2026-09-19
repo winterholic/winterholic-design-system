@@ -1,0 +1,16 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "stock-gosu 브랜드 색. 파랑새 로고(assets/brand/stock-gosu.svg)의 색 그대로. 사용처 코드는 시맨틱 토큰을 거친다.",
+    "blue":      { "$value": "#3182F6", "$description": "Toss Blue · 브랜드 주색 (= blue.500). 로고 몸통" },
+    "sky":       { "$value": "#64A8FF", "$description": "로고 날개 하이라이트 (= blue.300)" },
+    "deep":      { "$value": "#194AA6", "$description": "로고 눈 · 심색 (= blue.900)" },
+    "canvas":    { "$value": "#F2F4F6", "$description": "페이지 배경 (= gray.100). 카드가 흰색이라 배경은 한 단계 회색" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

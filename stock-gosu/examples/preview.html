@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>stock-gosu design system preview</title>
+<script>try{const t=localStorage.getItem('sg-theme');if(t)document.documentElement.dataset.theme=t;const m=localStorage.getItem('sg-market');if(m)document.documentElement.dataset.market=m;}catch{}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="../dist/tokens.css" />
+<link rel="stylesheet" href="../dist/typography.css" />
+<style>
+  /* 모든 값은 토큰. hex·px 리터럴이 있으면 버그. */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; padding-bottom: calc(var(--sg-size-layout-tabbar) + var(--sg-space-6)); }
+  .page { max-width: var(--sg-size-container-xl); margin-inline: auto; padding: var(--sg-space-6) var(--sg-size-layout-page-gutter) var(--sg-space-16); }
+  @media (min-width: 768px) { .page { padding-inline: var(--sg-size-layout-page-gutter-md); } }
+  @media (min-width: 1024px) { .page { padding-inline: var(--sg-size-layout-page-gutter-lg); } }
+
+  header.top { position: sticky; top: 0; z-index: var(--sg-z-index-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--sg-space-4); height: var(--sg-size-layout-header-lg); padding-inline: var(--sg-size-layout-page-gutter-lg); background: color-mix(in srgb, var(--sg-color-surface-default) 90%, transparent); backdrop-filter: blur(var(--sg-blur-md)); border-bottom: 1px solid var(--sg-color-border-default); }
+  .logo { display: flex; align-items: center; gap: var(--sg-space-2); font-weight: var(--sg-font-weight-bold); letter-spacing: var(--sg-font-letter-spacing-tight); font-size: var(--sg-font-size-xl); color: var(--sg-color-text-primary); }
+  .logo img { width: 28px; height: 28px; border-radius: var(--sg-radius-full); object-fit: cover; }
+  nav.toc { display: flex; gap: var(--sg-space-4); flex-wrap: wrap; }
+  nav.toc a { color: var(--sg-color-text-secondary); text-decoration: none; }
+  nav.toc a:hover { color: var(--sg-color-text-primary); }
+  section { margin-top: var(--sg-space-12); }
+  section > h2 { margin: 0 0 var(--sg-space-1); }
+  section > p.lead { margin: 0 0 var(--sg-space-5); color: var(--sg-color-text-secondary); }
+  h3.sub { margin: var(--sg-space-8) 0 var(--sg-space-3); }
+  .row { display: flex; gap: var(--sg-space-3); flex-wrap: wrap; align-items: center; }
+  .grid { display: grid; gap: var(--sg-space-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .grid-2 { display: grid; gap: var(--sg-space-6); grid-template-columns: 1fr; } .grid-2 > *, .grid > * { min-width: 0; }
+  @media (min-width: 1024px) { .grid-2 { grid-template-columns: 2fr 1fr; } .grid { gap: var(--sg-space-6); } }
+
+  .seg { display: inline-flex; background: var(--sg-component-segmented-track-bg); border-radius: var(--sg-component-segmented-track-radius); padding: var(--sg-component-segmented-track-padding); gap: var(--sg-component-segmented-gap); }
+  .seg button { height: 28px; min-width: var(--sg-component-segmented-item-min-width); padding-inline: var(--sg-component-segmented-item-padding-x); border: 0; border-radius: var(--sg-component-segmented-item-radius); background: transparent; font: inherit; font-size: var(--sg-font-size-sm); font-weight: var(--sg-font-weight-semibold); color: var(--sg-component-segmented-item-text); cursor: pointer; transition: background-color var(--sg-motion-duration-fast) var(--sg-motion-easing-out); }
+  .seg.tall button { height: var(--sg-component-segmented-item-height); }
+  .seg button[aria-selected="true"] { background: var(--sg-component-segmented-active-bg); color: var(--sg-component-segmented-active-text); box-shadow: var(--sg-component-segmented-active-shadow); }
+
+  .hero { background: var(--sg-gradient-brand); color: var(--sg-color-text-on-brand); border-radius: var(--sg-radius-3xl); padding: var(--sg-space-12) var(--sg-space-8); display: flex; gap: var(--sg-space-8); align-items: center; }
+  .hero img { width: 96px; height: 96px; border-radius: var(--sg-radius-full); object-fit: cover; border: 3px solid var(--sg-color-border-inverse); flex: none; }
+  .hero p { margin: var(--sg-space-2) 0 0; opacity: .9; }
+
+  .ramp { display: grid; grid-template-columns: 80px repeat(11, 1fr); align-items: center; gap: var(--sg-space-1); margin-bottom: var(--sg-space-2); }
+  .swatch { height: 40px; border-radius: var(--sg-radius-sm); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--sg-space-1); font-size: var(--sg-font-size-2xs); font-family: var(--sg-font-family-mono); }
+  .swatch.fixed { outline: 2px solid var(--sg-color-interactive-focus-ring); outline-offset: 1px; }
+
+  .card { background: var(--sg-component-card-bg); border: 1px solid var(--sg-component-card-border); border-radius: var(--sg-component-card-radius); padding: var(--sg-component-card-padding-md); box-shadow: var(--sg-component-card-shadow); }
+  .card.dense { border-radius: var(--sg-component-card-radius-dense); padding: 0; overflow: hidden; }
+  .card.flat { background: var(--sg-component-card-flat-bg); border-color: transparent; box-shadow: none; }
+  .card.tap { cursor: pointer; transition: box-shadow var(--sg-motion-duration-fast) var(--sg-motion-easing-out), transform var(--sg-motion-duration-fast) var(--sg-motion-easing-out); }
+  .card.tap:hover { box-shadow: var(--sg-component-card-shadow-hover); transform: translateY(var(--sg-component-card-hover-lift)); }
+  .card h4 { margin: 0 0 var(--sg-component-card-header-gap); }
+
+  /* 등락 */
+  .price-cell { display: inline-grid; justify-items: end; gap: var(--sg-component-price-cell-gap); }
+  .arrow { font-size: var(--sg-component-price-cell-arrow-size); margin-right: var(--sg-component-price-cell-arrow-gap); }
+  .fin-badge { display: inline-flex; align-items: center; gap: var(--sg-space-1); height: var(--sg-component-badge-height-md); padding-inline: var(--sg-component-badge-padding-x-md); border-radius: var(--sg-component-badge-radius); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-bold); line-height: 1; }
+  .fin-badge.up { background: var(--sg-color-finance-up-bg); color: var(--sg-color-finance-up-on-bg); }
+  .fin-badge.down { background: var(--sg-color-finance-down-bg); color: var(--sg-color-finance-down-on-bg); }
+  .fin-badge.flat { background: var(--sg-color-finance-flat-bg); color: var(--sg-color-finance-flat-on-bg); }
+  .flash-up { animation: sg-flash-up var(--sg-motion-duration-flash) var(--sg-motion-easing-in-out); }
+  .flash-down { animation: sg-flash-down var(--sg-motion-duration-flash) var(--sg-motion-easing-in-out); }
+  @keyframes sg-flash-up { from { background: var(--sg-color-finance-flash-up); } to { background: transparent; } }
+  @keyframes sg-flash-down { from { background: var(--sg-color-finance-flash-down); } to { background: transparent; } }
+  .heat { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--sg-space-1); }
+  .heat div { height: 56px; border-radius: var(--sg-radius-md); display: grid; place-items: center; font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-bold); font-variant-numeric: tabular-nums; }
+
+  /* 버튼 */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--sg-component-button-gap); height: var(--sg-component-button-md-height); padding-inline: var(--sg-component-button-md-padding-x); min-width: var(--sg-component-button-min-width); border-radius: var(--sg-component-button-md-radius); font-family: var(--sg-font-family-sans); font-size: var(--sg-font-size-md); font-weight: var(--sg-font-weight-semibold); line-height: 1.45; white-space: nowrap; border: 1px solid transparent; cursor: pointer; transition: background-color var(--sg-motion-duration-fast) var(--sg-motion-easing-out), border-color var(--sg-motion-duration-fast), transform var(--sg-motion-duration-fast) var(--sg-motion-easing-out); }
+  .btn:active { transform: scale(var(--sg-motion-scale-press)); }
+  .btn--sm { height: var(--sg-component-button-sm-height); padding-inline: var(--sg-component-button-sm-padding-x); font-size: var(--sg-font-size-sm); border-radius: var(--sg-component-button-sm-radius); min-width: 0; }
+  .btn--xs { height: var(--sg-component-button-xs-height); padding-inline: var(--sg-component-button-xs-padding-x); font-size: var(--sg-font-size-sm); border-radius: var(--sg-component-button-xs-radius); min-width: 0; }
+  .btn--lg { height: var(--sg-component-button-lg-height); padding-inline: var(--sg-component-button-lg-padding-x); font-size: var(--sg-font-size-lg); border-radius: var(--sg-component-button-lg-radius); }
+  .btn--block { width: 100%; }
+  .btn--primary { background: var(--sg-color-action-primary-bg); color: var(--sg-color-action-primary-text); }
+  .btn--primary:hover { background: var(--sg-color-action-primary-bg-hover); }
+  .btn--strict { background: var(--sg-color-action-primary-strict-bg); color: var(--sg-color-action-primary-strict-text); }
+  .btn--secondary { background: var(--sg-color-action-secondary-bg); color: var(--sg-color-action-secondary-text); }
+  .btn--secondary:hover { background: var(--sg-color-action-secondary-bg-hover); }
+  .btn--outline { background: var(--sg-color-action-outline-bg); color: var(--sg-color-action-outline-text); border: var(--sg-border-width-medium) solid var(--sg-color-action-outline-border); }
+  .btn--outline:hover { border-color: var(--sg-color-action-outline-border-hover); color: var(--sg-color-action-outline-text-hover); }
+  .btn--ghost { background: var(--sg-color-action-ghost-bg); color: var(--sg-color-action-ghost-text); }
+  .btn--ghost:hover { background: var(--sg-color-action-ghost-bg-hover); }
+  .btn--danger { background: var(--sg-color-action-danger-bg); color: var(--sg-color-action-danger-text); }
+  .btn--danger:hover { background: var(--sg-color-action-danger-bg-hover); }
+  .btn:disabled { background: var(--sg-color-action-disabled-bg); color: var(--sg-color-action-disabled-text); border-color: var(--sg-color-action-disabled-border); cursor: not-allowed; transform: none; }
+  .spinner { width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: var(--sg-radius-full); animation: spin 600ms var(--sg-motion-easing-linear) infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* 인풋·검색·금액 */
+  .field { display: flex; flex-direction: column; gap: var(--sg-component-input-label-gap); max-width: 360px; }
+  .field label { font-size: var(--sg-font-size-sm); font-weight: var(--sg-font-weight-medium); color: var(--sg-color-text-secondary); }
+  .input { height: var(--sg-component-input-md-height); padding-inline: var(--sg-component-input-md-padding-x); border-radius: var(--sg-component-input-radius); border: 1px solid var(--sg-component-input-border); background: var(--sg-component-input-bg); color: var(--sg-color-text-primary); font: inherit; font-size: var(--sg-font-size-md); width: 100%; }
+  .input::placeholder { color: var(--sg-color-text-placeholder); }
+  .input:focus-visible { outline: none; border-color: var(--sg-component-input-border-focus); box-shadow: 0 0 0 var(--sg-focus-ring-inset) var(--sg-color-interactive-focus-ring-soft); }
+  .input[aria-invalid="true"] { border-color: var(--sg-component-input-border-error); }
+  .help { font-size: var(--sg-font-size-sm); color: var(--sg-color-text-tertiary); }
+  .help.err { color: var(--sg-color-text-danger); }
+  @media (max-width: 767px) { .input { font-size: var(--sg-component-input-font-size-mobile); } }
+  .search { display: flex; align-items: center; gap: var(--sg-space-2); height: var(--sg-component-search-height); padding-inline: var(--sg-space-3); border-radius: var(--sg-component-search-radius); background: var(--sg-component-search-bg); color: var(--sg-color-text-placeholder); font-size: var(--sg-font-size-md); }
+  .search svg { width: var(--sg-component-search-icon); height: var(--sg-component-search-icon); stroke: currentColor; fill: none; stroke-width: 2; }
+  .amount { display: flex; align-items: baseline; justify-content: flex-end; gap: var(--sg-space-1); }
+  .chips { display: flex; gap: var(--sg-space-2); flex-wrap: wrap; }
+  .chip { height: var(--sg-size-control-sm); padding-inline: var(--sg-space-3); border-radius: var(--sg-radius-full); border: 1px solid var(--sg-color-border-strong); background: transparent; color: var(--sg-color-text-secondary); font: inherit; font-size: var(--sg-font-size-sm); font-weight: var(--sg-font-weight-semibold); cursor: pointer; }
+  .chip.on { background: var(--sg-color-interactive-selected-bg); border-color: var(--sg-color-interactive-selected-border); color: var(--sg-color-interactive-selected-text); }
+
+  /* 종목 행 */
+  .stock-row { display: grid; grid-template-columns: var(--sg-component-stock-row-rank-width) minmax(0, 1fr) minmax(100px, .5fr) minmax(90px, .4fr); align-items: center; gap: var(--sg-component-stock-row-gap); min-height: var(--sg-component-stock-row-height); padding: var(--sg-component-stock-row-padding-y) var(--sg-component-stock-row-padding-x); border-bottom: 1px solid var(--sg-component-stock-row-border); text-decoration: none; color: inherit; transition: background-color var(--sg-motion-duration-fast); }
+  .stock-row:last-child { border-bottom: 0; }
+  .stock-row:hover { background: var(--sg-component-stock-row-hover-bg); }
+  .stock-row.compact { grid-template-columns: minmax(0, 1fr) auto; min-height: var(--sg-component-stock-row-height-compact); }
+  .rank { color: var(--sg-color-text-tertiary); font-size: var(--sg-font-size-md); font-weight: var(--sg-font-weight-bold); font-variant-numeric: tabular-nums; }
+  .rank.top { color: var(--sg-color-text-primary); }
+  .identity { display: flex; align-items: center; gap: var(--sg-space-2-5); min-width: 0; }
+  .identity .txt { display: grid; min-width: 0; gap: var(--sg-space-0-5); }
+  .identity strong { display: flex; align-items: center; gap: var(--sg-space-1); font-size: var(--sg-font-size-md); font-weight: var(--sg-font-weight-semibold); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .identity small { color: var(--sg-color-text-tertiary); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-medium); }
+  .mtag { display: inline-flex; align-items: center; height: var(--sg-component-market-tag-height); padding-inline: var(--sg-component-market-tag-padding-x); border-radius: var(--sg-component-market-tag-radius); background: var(--sg-component-market-tag-bg); color: var(--sg-component-market-tag-text); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-bold); }
+  .logo-sm { width: var(--sg-component-stock-row-logo); height: var(--sg-component-stock-row-logo); border-radius: var(--sg-radius-full); background: var(--sg-color-surface-brand-subtle); color: var(--sg-color-text-brand); display: grid; place-items: center; font-size: var(--sg-font-size-sm); font-weight: var(--sg-font-weight-semibold); border: 1px solid var(--sg-color-border-subtle); flex: none; }
+  .metric { text-align: right; }
+  .metric b { display: block; font-size: var(--sg-font-size-md); font-weight: var(--sg-font-weight-bold); font-variant-numeric: tabular-nums; }
+  .metric small { color: var(--sg-color-text-tertiary); font-size: var(--sg-font-size-xs); }
+  .stock-head { display: grid; grid-template-columns: var(--sg-component-stock-row-rank-width) minmax(0, 1fr) minmax(100px, .5fr) minmax(90px, .4fr); gap: var(--sg-space-4); min-height: var(--sg-component-table-header-height); align-items: center; padding-inline: var(--sg-component-stock-row-padding-x); background: var(--sg-component-table-header-bg); color: var(--sg-component-table-header-text); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-medium); border-bottom: 1px solid var(--sg-component-table-border); }
+  .stock-head > :nth-child(n+3) { text-align: right; }
+  @media (max-width: 767px) { .stock-head { display: none; } .stock-row { grid-template-areas: "rank identity price" "rank metric change"; grid-template-columns: var(--sg-component-stock-row-rank-width-mobile) minmax(0, 1fr) auto; min-height: var(--sg-component-stock-row-height-mobile); padding-inline: var(--sg-component-stock-row-padding-x-mobile); gap: var(--sg-space-1) var(--sg-space-2-5); } .stock-row > .rank { grid-area: rank; } .stock-row > .identity { grid-area: identity; } .stock-row > .metric { grid-area: metric; text-align: left; } .stock-row > .price-cell { grid-area: price; } }
+
+  /* KPI */
+  .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--sg-space-4); }
+  .kpi .card { min-height: var(--sg-component-kpi-min-height); padding: var(--sg-component-kpi-padding); display: grid; align-content: start; gap: var(--sg-component-kpi-label-gap); }
+  .kpi .lab { font-size: var(--sg-font-size-sm); font-weight: var(--sg-font-weight-medium); color: var(--sg-color-text-secondary); }
+  .kpi .note { font-size: var(--sg-font-size-xs); color: var(--sg-color-text-tertiary); }
+  .spark { height: var(--sg-component-kpi-sparkline-height); margin-top: var(--sg-space-2); }
+
+  /* 배지·상태 */
+  .badge { display: inline-flex; align-items: center; gap: var(--sg-space-1); height: var(--sg-component-badge-height-md); padding-inline: var(--sg-component-badge-padding-x-md); border-radius: var(--sg-component-badge-radius); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-bold); line-height: 1; }
+  .b-success { background: var(--sg-color-status-success-bg); color: var(--sg-color-status-success-text); } .b-warning { background: var(--sg-color-status-warning-bg); color: var(--sg-color-status-warning-text); } .b-danger { background: var(--sg-color-status-danger-bg); color: var(--sg-color-status-danger-text); } .b-info { background: var(--sg-color-status-info-bg); color: var(--sg-color-status-info-text); } .b-neutral { background: var(--sg-color-status-neutral-bg); color: var(--sg-color-status-neutral-text); }
+  .bs-success { background: var(--sg-color-status-success-solid); color: var(--sg-color-status-success-on-solid); } .bs-warning { background: var(--sg-color-status-warning-solid); color: var(--sg-color-status-warning-on-solid); } .bs-danger { background: var(--sg-color-status-danger-solid); color: var(--sg-color-status-danger-on-solid); } .bs-info { background: var(--sg-color-status-info-solid); color: var(--sg-color-status-info-on-solid); }
+  .alert { display: flex; gap: var(--sg-space-3); padding: var(--sg-space-4); border-radius: var(--sg-radius-xl); border: 1px solid; font-size: var(--sg-font-size-sm); align-items: flex-start; }
+  .alert svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; flex: none; }
+  .alert strong { display: block; font-weight: var(--sg-font-weight-semibold); margin-bottom: var(--sg-space-0-5); }
+  .a-success { background: var(--sg-color-status-success-bg); border-color: var(--sg-color-status-success-border); color: var(--sg-color-status-success-text); } .a-success svg { color: var(--sg-color-status-success-icon); }
+  .a-warning { background: var(--sg-color-status-warning-bg); border-color: var(--sg-color-status-warning-border); color: var(--sg-color-status-warning-text); } .a-warning svg { color: var(--sg-color-status-warning-icon); }
+  .a-danger { background: var(--sg-color-status-danger-bg); border-color: var(--sg-color-status-danger-border); color: var(--sg-color-status-danger-text); } .a-danger svg { color: var(--sg-color-status-danger-icon); }
+  .a-neutral { background: var(--sg-color-status-neutral-bg); border-color: var(--sg-color-status-neutral-border); color: var(--sg-color-status-neutral-text); } .a-neutral svg { color: var(--sg-color-status-neutral-icon); }
+  .toast { display: inline-flex; align-items: center; gap: var(--sg-space-3); width: min(var(--sg-component-toast-width), 100%); padding: var(--sg-component-toast-padding); border-radius: var(--sg-component-toast-radius); background: var(--sg-component-toast-bg); color: var(--sg-component-toast-text); box-shadow: var(--sg-component-toast-shadow); font-size: var(--sg-font-size-sm); }
+  .toast .grow { flex: 1; }
+  .empty { text-align: center; padding: var(--sg-space-12) var(--sg-space-6); }
+  .empty .ic { width: 80px; height: 80px; border-radius: var(--sg-radius-full); background: var(--sg-color-surface-brand-subtle); color: var(--sg-color-text-brand); display: grid; place-items: center; margin: 0 auto var(--sg-space-4); }
+  .empty .ic svg { width: 32px; height: 32px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+  .empty p { margin: var(--sg-space-2) 0 var(--sg-space-6); color: var(--sg-color-text-secondary); font-size: var(--sg-font-size-sm); }
+  .skel { background: var(--sg-component-skeleton-bg); border-radius: var(--sg-component-skeleton-radius); height: 12px; position: relative; overflow: hidden; }
+  .skel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--sg-color-interactive-hover-overlay), transparent); animation: shimmer var(--sg-motion-duration-skeleton-cycle) var(--sg-motion-easing-linear) infinite; }
+  @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+
+  /* 시트·탭바 */
+  .sheet-demo { position: relative; height: 360px; background: var(--sg-color-surface-overlay); border-radius: var(--sg-radius-xl); overflow: hidden; }
+  .sheet { position: absolute; left: 0; right: 0; bottom: 0; background: var(--sg-component-sheet-bg); border-radius: var(--sg-component-sheet-radius) var(--sg-component-sheet-radius) 0 0; box-shadow: var(--sg-component-sheet-shadow); padding: var(--sg-space-2) var(--sg-component-sheet-padding) var(--sg-component-sheet-padding); }
+  .sheet .handle { width: var(--sg-component-sheet-handle-width); height: var(--sg-component-sheet-handle-height); border-radius: var(--sg-radius-full); background: var(--sg-component-sheet-handle-color); margin: 0 auto var(--sg-space-4); }
+  .sheet h3 { margin: 0 0 var(--sg-space-2); }
+  .sheet p { margin: 0 0 var(--sg-space-5); color: var(--sg-color-text-secondary); font-size: var(--sg-font-size-sm); }
+  .summary { display: grid; gap: var(--sg-space-2); padding: var(--sg-space-4); border-radius: var(--sg-radius-lg); background: var(--sg-color-surface-sunken); font-size: var(--sg-font-size-sm); margin-bottom: var(--sg-space-5); }
+  .summary div { display: flex; justify-content: space-between; }
+  .summary span { color: var(--sg-color-text-secondary); }
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--sg-z-index-sticky); display: grid; grid-template-columns: repeat(5, 1fr); height: calc(var(--sg-component-tabbar-height) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom); background: color-mix(in srgb, var(--sg-component-tabbar-bg) 92%, transparent); backdrop-filter: blur(var(--sg-blur-md)); border-top: 1px solid var(--sg-component-tabbar-border); box-shadow: var(--sg-shadow-sticky); }
+  .tabbar a { display: grid; place-items: center; gap: var(--sg-component-tabbar-icon-label-gap); color: var(--sg-component-tabbar-text); text-decoration: none; font-size: var(--sg-component-tabbar-label-size); font-weight: var(--sg-font-weight-medium); }
+  .tabbar a[aria-current="page"] { color: var(--sg-component-tabbar-text-active); }
+  .tabbar svg { width: var(--sg-component-tabbar-icon); height: var(--sg-component-tabbar-icon); stroke: currentColor; fill: none; stroke-width: 2; }
+  @media (min-width: 768px) { .tabbar { display: none; } body { padding-bottom: 0; } }
+
+  /* 표·차트 */
+  .tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.data { width: 100%; min-width: 560px; border-collapse: collapse; font-size: var(--sg-font-size-md); }
+  table.data th:first-child, table.data td:first-child { position: sticky; left: 0; background: inherit; }
+  table.data tbody tr { background: var(--sg-color-surface-default); }
+  table.data th { height: var(--sg-component-table-header-height); background: var(--sg-component-table-header-bg); color: var(--sg-component-table-header-text); font-size: var(--sg-font-size-xs); font-weight: var(--sg-font-weight-medium); text-align: left; padding: 0 var(--sg-component-table-cell-padding-x); border-bottom: 1px solid var(--sg-component-table-border); }
+  table.data td { height: var(--sg-component-table-row-height-default); padding: 0 var(--sg-component-table-cell-padding-x); border-bottom: 1px solid var(--sg-component-table-border); }
+  table.data th:first-child, table.data td:first-child { padding-left: var(--sg-component-table-cell-padding-x-first); }
+  table.data tbody tr:hover { background: var(--sg-component-table-row-hover); }
+  table.data .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .chart-pal { display: flex; gap: var(--sg-space-2); }
+  .chart-pal div { flex: 1; height: 32px; border-radius: var(--sg-radius-sm); display: grid; place-items: center; font-size: var(--sg-font-size-2xs); font-family: var(--sg-font-family-mono); }
+  .candles { display: flex; align-items: flex-end; gap: 6px; height: 160px; padding: var(--sg-space-2) 0; border-bottom: 1px dashed var(--sg-color-chart-grid); position: relative; }
+  .candle { flex: 1; position: relative; display: flex; justify-content: center; }
+  .candle i { display: block; width: 1px; position: absolute; top: 0; bottom: 0; left: 50%; }
+  .candle b { display: block; width: 100%; max-width: 12px; border-radius: 2px; position: relative; }
+  .vol { display: flex; align-items: flex-end; gap: 6px; height: 48px; margin-top: var(--sg-space-2); }
+  .vol div { flex: 1; max-width: 12px; margin: 0 auto; border-radius: 2px 2px 0 0; }
+  .legend { display: flex; gap: var(--sg-space-4); font-size: var(--sg-font-size-xs); color: var(--sg-color-chart-label); }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+  .type-row { display: grid; grid-template-columns: 120px 1fr 180px; gap: var(--sg-space-4); align-items: baseline; padding: var(--sg-space-2-5) 0; border-bottom: 1px solid var(--sg-color-border-subtle); }
+  .type-row code, .type-row .spec { font-size: var(--sg-font-size-xs); color: var(--sg-color-text-tertiary); font-family: var(--sg-font-family-mono); }
+  @media (max-width: 767px) { .type-row { grid-template-columns: 1fr; gap: var(--sg-space-1); } }
+  .radius-row div, .shadow-row div { width: 96px; height: 64px; display: grid; place-items: center; font-size: var(--sg-font-size-2xs); font-family: var(--sg-font-family-mono); }
+  .radius-row { display: flex; gap: var(--sg-space-3); flex-wrap: wrap; } .radius-row div { background: var(--sg-color-surface-brand-subtle); border: 1px solid var(--sg-color-border-brand); color: var(--sg-color-text-brand); }
+  .shadow-row { display: flex; gap: var(--sg-space-8); flex-wrap: wrap; padding: var(--sg-space-6); background: var(--sg-color-surface-canvas); border-radius: var(--sg-radius-xl); } .shadow-row div { background: var(--sg-color-surface-default); border-radius: var(--sg-radius-xl); color: var(--sg-color-text-tertiary); }
+  .surfaces { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sg-space-3); }
+  .surfaces div { height: 64px; border-radius: var(--sg-radius-md); border: 1px solid var(--sg-color-border-default); display: grid; place-items: end start; padding: var(--sg-space-2); font-size: var(--sg-font-size-2xs); font-family: var(--sg-font-family-mono); }
+  .disclaimer { margin-top: var(--sg-space-12); text-align: center; font-size: var(--sg-font-size-xs); color: var(--sg-color-text-secondary); }
+</style>
+</head>
+<body>
+<header class="top">
+  <span class="logo"><img src="../assets/brand/stock-gosu.png" alt="" /> stock-gosu</span>
+  <nav class="toc sg-label-sm"><a href="#fin">등락</a><a href="#color">색</a><a href="#type">글자</a><a href="#comp">컴포넌트</a><a href="#viz">차트</a><a href="#state">상태</a></nav>
+  <div class="row">
+    <div class="seg" role="tablist" aria-label="등락색"><button data-market="" aria-selected="true">한국식</button><button data-market="us" aria-selected="false">미국식</button></div>
+    <div class="seg" role="tablist" aria-label="테마"><button data-theme="" aria-selected="true">시스템</button><button data-theme="light" aria-selected="false">라이트</button><button data-theme="dark" aria-selected="false">다크</button></div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="hero">
+    <img src="../assets/brand/stock-gosu.png" alt="stock-gosu 파랑새 로고" />
+    <div>
+      <div class="sg-micro" style="opacity:.8">design tokens · v1.0.0</div>
+      <h1 class="sg-display" style="margin: var(--sg-space-1) 0 0">stock-gosu</h1>
+      <p class="sg-body-2">투자 대시보드 디자인 시스템. 위 토글로 다크와 미국식 등락색을 켜면 컴포넌트 코드 수정 없이 바뀐다.</p>
+    </div>
+  </div>
+
+  <!-- 등락 -->
+  <section id="fin">
+    <h2 class="sg-title-2">등락 (finance)</h2>
+    <p class="lead sg-body-3">글자 13~15px 는 <code>text</code>(600), 큰 숫자·배지·차트는 <code>solid</code>(500). 부호·화살표를 항상 같이. 미국식은 <code>data-market="us"</code> 스코프.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="sg-caption" style="color: var(--sg-color-text-secondary)">삼성전자 <span class="mtag">KOSPI</span></div>
+        <div class="row" style="align-items: baseline; gap: var(--sg-space-2); margin-top: var(--sg-space-1-5)">
+          <span class="sg-price-lg" id="bigPrice">72,400</span><span class="sg-body-2" style="color: var(--sg-color-text-secondary)">원</span>
+        </div>
+        <div class="row" style="margin-top: var(--sg-space-2); gap: var(--sg-space-2)">
+          <span class="sg-change sg-up"><span class="arrow sg-up-solid">▲</span>1,200 (+1.68%)</span>
+          <span class="sg-micro" style="color: var(--sg-color-text-tertiary)">15:30 기준</span>
+        </div>
+        <div class="row" style="margin-top: var(--sg-space-4)"><button class="btn btn--sm btn--outline" onclick="tick('up')">틱 상승</button><button class="btn btn--sm btn--outline" onclick="tick('down')">틱 하락</button></div>
+      </div>
+      <div class="card">
+        <h4 class="sg-title-4">가격 셀 · 배지</h4>
+        <div class="row" style="justify-content: space-between">
+          <div class="price-cell" id="cellUp"><span class="sg-price-sm">72,400</span><span class="sg-change sg-up">+1.68%</span></div>
+          <div class="price-cell" id="cellDown"><span class="sg-price-sm">142,800</span><span class="sg-change sg-down">−3.80%</span></div>
+          <div class="price-cell"><span class="sg-price-sm">51,300</span><span class="sg-change sg-flat">0.00%</span></div>
+        </div>
+        <div class="row" style="margin-top: var(--sg-space-4)">
+          <span class="fin-badge up">▲ 1.68%</span><span class="fin-badge down">▼ 3.80%</span><span class="fin-badge flat">0.00%</span>
+        </div>
+        <div class="row" style="margin-top: var(--sg-space-3)">
+          <span class="sg-change sg-up-solid" style="font-size: var(--sg-font-size-2xl)">+12.4%</span>
+          <span class="sg-micro" style="color: var(--sg-color-text-tertiary)">20px 이상은 solid 허용</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 class="sg-title-4">히트맵 (chart.heat)</h4>
+        <div class="heat" id="heat"></div>
+        <div class="sg-micro" style="color: var(--sg-color-text-tertiary); margin-top: var(--sg-space-2)">셀 안에 숫자. 색만으로 말하지 않는다.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 색 -->
+  <section id="color">
+    <h2 class="sg-title-2">색</h2>
+    <p class="lead sg-body-3">테두리가 있는 스와치는 기존 global.css 값 그대로. 나머지는 OKLCH 로 생성.</p>
+    <div id="ramps"></div>
+    <h3 class="sub sg-title-4">면</h3>
+    <div class="surfaces" id="surfaces"></div>
+    <h3 class="sub sg-title-4">글자 (흰 카드 위)</h3>
+    <div class="card">
+      <div class="sg-body-2" style="color:var(--sg-color-text-primary)">text.primary — 본문·제목·가격</div>
+      <div class="sg-body-2" style="color:var(--sg-color-text-secondary)">text.secondary — 설명·메타. 캔버스 위에 놓을 수 있는 마지막 단계</div>
+      <div class="sg-body-2" style="color:var(--sg-color-text-tertiary)">text.tertiary — 캡션·라벨 (기존 gray.500 → gray.600)</div>
+      <div class="sg-body-2"><a href="#" style="color:var(--sg-color-text-link)">text.link — 링크 (기존 blue.500 → blue.700)</a></div>
+      <div class="sg-body-2" style="color:var(--sg-color-text-success)">text.success</div>
+      <div class="sg-body-2" style="color:var(--sg-color-text-warning)">text.warning</div>
+      <div class="sg-body-2" style="color:var(--sg-color-text-danger)">text.danger — 오류. 상승 빨강과 구분하려면 아이콘·제목 동반</div>
+    </div>
+    <h3 class="sub sg-title-4">radius · 그림자</h3>
+    <div class="radius-row">
+      <div style="border-radius:var(--sg-radius-xs)">xs 4</div><div style="border-radius:var(--sg-radius-sm)">sm 6</div><div style="border-radius:var(--sg-radius-md)">md 8</div><div style="border-radius:var(--sg-radius-lg)">lg 12</div><div style="border-radius:var(--sg-radius-xl)">xl 16</div><div style="border-radius:var(--sg-radius-2xl)">2xl 20</div><div style="border-radius:var(--sg-radius-3xl)">3xl 24</div>
+    </div>
+    <div class="shadow-row" style="margin-top: var(--sg-space-4)">
+      <div style="box-shadow:var(--sg-shadow-xs)">xs</div><div style="box-shadow:var(--sg-shadow-sm)">sm · 카드</div><div style="box-shadow:var(--sg-shadow-md)">md · 툴팁</div><div style="box-shadow:var(--sg-shadow-lg)">lg · 시트</div><div style="box-shadow:var(--sg-shadow-xl)">xl · 모달</div>
+    </div>
+  </section>
+
+  <!-- 글자 -->
+  <section id="type">
+    <h2 class="sg-title-2">타이포그래피</h2>
+    <p class="lead sg-body-3">Pretendard. 가격·등락·수치는 tabular-nums 자동.</p>
+    <div id="types"></div>
+  </section>
+
+  <!-- 컴포넌트 -->
+  <section id="comp">
+    <h2 class="sg-title-2">컴포넌트</h2>
+    <p class="lead sg-body-3">docs/06 규격. 기존 .btn/.card/.segmented/.movers-row 와 대응.</p>
+    <h3 class="sub sg-title-4">Button</h3>
+    <div class="row">
+      <button class="btn btn--primary">매수</button><button class="btn btn--strict">로그인 (strict)</button><button class="btn btn--secondary">관심 추가</button><button class="btn btn--outline">필터</button><button class="btn btn--ghost">더보기</button><button class="btn btn--danger">매도</button><button class="btn btn--primary" disabled>장 마감</button><button class="btn btn--primary" aria-busy="true"><span class="spinner"></span>주문 중</button>
+    </div>
+    <div class="row" style="margin-top: var(--sg-space-3); align-items: flex-end"><button class="btn btn--xs btn--outline">xs 28</button><button class="btn btn--sm btn--outline">sm 36</button><button class="btn btn--outline">md 44</button><button class="btn btn--lg btn--primary">lg 52 · 하단 CTA</button></div>
+
+    <h3 class="sub sg-title-4">Search · Input · Amount · Segmented · Chips</h3>
+    <div class="grid">
+      <div class="field" style="max-width:none">
+        <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>종목명·코드·티커 검색</div>
+        <div class="card dense" style="margin-top: var(--sg-space-2)">
+          <a class="stock-row compact" href="#"><span class="identity"><span class="logo-sm">삼</span><span class="txt"><strong>삼성전자 <span class="mtag">KOSPI</span></strong><small>005930 · 반도체</small></span></span><span class="price-cell"><span class="sg-price-sm">72,400</span><span class="sg-change sg-up">+1.68%</span></span></a>
+          <a class="stock-row compact" href="#"><span class="identity"><span class="logo-sm">S</span><span class="txt"><strong>삼성SDI <span class="mtag">KOSPI</span></strong><small>006400 · 2차전지</small></span></span><span class="price-cell"><span class="sg-price-sm">312,000</span><span class="sg-change sg-down">−2.19%</span></span></a>
+        </div>
+      </div>
+      <div class="field">
+        <label for="q">수량</label>
+        <input id="q" class="input" value="10" inputmode="numeric" />
+        <div class="help">주문 가능 17주</div>
+        <label for="e" style="margin-top: var(--sg-space-2)">비밀번호</label>
+        <input id="e" class="input" type="password" value="12" aria-invalid="true" />
+        <div class="help err">8자 이상이어야 해요</div>
+      </div>
+      <div class="card">
+        <div class="sg-caption" style="color: var(--sg-color-text-secondary)">주문 금액</div>
+        <div class="amount"><span class="sg-price-lg">724,000</span><span class="sg-body-2" style="color: var(--sg-color-text-secondary)">원</span></div>
+        <div class="chips" style="margin-top: var(--sg-space-3)"><button class="chip">+1만</button><button class="chip on">+10만</button><button class="chip">+100만</button><button class="chip">최대</button></div>
+        <div class="sg-micro" style="color: var(--sg-color-text-tertiary); margin-top: var(--sg-space-3)">주문 가능 1,284,500원</div>
+        <div class="row" style="margin-top: var(--sg-space-4)">
+          <div class="seg tall" role="tablist"><button aria-selected="true">1D</button><button aria-selected="false">1W</button><button aria-selected="false">1M</button><button aria-selected="false">3M</button><button aria-selected="false">1Y</button></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub sg-title-4">Stock row · 종목 리스트</h3>
+    <div class="card dense">
+      <div class="stock-head"><span>순위</span><span>종목</span><span>거래대금</span><span>현재가 · 등락</span></div>
+      <a class="stock-row" href="#"><span class="rank top">1</span><span class="identity"><span class="logo-sm">삼</span><span class="txt"><strong>삼성전자 <span class="mtag">KOSPI</span></strong><small>005930 · 반도체</small></span></span><span class="metric"><b>1조 2,480억</b><small>거래대금</small></span><span class="price-cell"><span class="sg-price-sm">72,400</span><span class="sg-change sg-up">+1.68%</span></span></a>
+      <a class="stock-row" href="#"><span class="rank top">2</span><span class="identity"><span class="logo-sm">하</span><span class="txt"><strong>SK하이닉스 <span class="mtag">KOSPI</span></strong><small>000660 · 반도체</small></span></span><span class="metric"><b>8,120억</b><small>거래대금</small></span><span class="price-cell"><span class="sg-price-sm">198,500</span><span class="sg-change sg-up">+3.12%</span></span></a>
+      <a class="stock-row" href="#"><span class="rank top">3</span><span class="identity"><span class="logo-sm">에</span><span class="txt"><strong>에코프로비엠 <span class="mtag">KOSDAQ</span></strong><small>247540 · 2차전지</small></span></span><span class="metric"><b>3,410억</b><small>거래대금</small></span><span class="price-cell"><span class="sg-price-sm">142,800</span><span class="sg-change sg-down">−3.80%</span></span></a>
+      <a class="stock-row" href="#"><span class="rank">4</span><span class="identity"><span class="logo-sm">현</span><span class="txt"><strong>현대차 <span class="mtag">KOSPI</span></strong><small>005380 · 자동차</small></span></span><span class="metric"><b>2,905억</b><small>거래대금</small></span><span class="price-cell"><span class="sg-price-sm">251,000</span><span class="sg-change sg-flat">0.00%</span></span></a>
+    </div>
+
+    <h3 class="sub sg-title-4">KPI</h3>
+    <div class="kpi">
+      <div class="card"><span class="lab">총 평가금액</span><span class="sg-price-md">12,840,000원</span><span class="sg-change sg-up">▲ 240,000 (+1.9%)</span><span class="note">모의투자 · 15:30</span></div>
+      <div class="card"><span class="lab">KOSPI</span><span class="sg-price-md">2,684.12</span><span class="sg-change sg-down">▼ 12.40 (−0.46%)</span><svg class="spark" viewBox="0 0 100 40" preserveAspectRatio="none"><defs><linearGradient id="gd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sg-color-chart-sparkline-down)" stop-opacity=".25"/><stop offset="1" stop-color="var(--sg-color-chart-sparkline-down)" stop-opacity="0"/></linearGradient></defs><path d="M0 10 L15 14 L30 8 L45 18 L60 16 L75 26 L100 30 V40 H0Z" fill="url(#gd)"/><path d="M0 10 L15 14 L30 8 L45 18 L60 16 L75 26 L100 30" fill="none" stroke="var(--sg-color-chart-sparkline-down)" stroke-width="2"/></svg></div>
+      <div class="card"><span class="lab">외국인 순매수</span><span class="sg-price-md">+3,210억</span><span class="sg-change sg-up">▲ 5일 연속</span><span class="note">15:30 기준</span></div>
+      <div class="card"><span class="lab">PER</span><span class="sg-price-md">—</span><span class="note">집계 전</span></div>
+    </div>
+
+    <h3 class="sub sg-title-4">Table · Badge</h3>
+    <div class="card dense tbl-scroll">
+      <table class="data">
+        <thead><tr><th>종목</th><th>신호</th><th class="num">현재가</th><th class="num">등락률</th><th class="num">거래량</th></tr></thead>
+        <tbody>
+          <tr><td>삼성전자</td><td><span class="badge b-info">골든크로스 감지</span></td><td class="num sg-price-sm">72,400</td><td class="num"><span class="sg-change sg-up">+1.68%</span></td><td class="num sg-numeric">12,041,200</td></tr>
+          <tr><td>에코프로비엠</td><td><span class="badge b-warning">거래량 급증</span></td><td class="num sg-price-sm">142,800</td><td class="num"><span class="sg-change sg-down">−3.80%</span></td><td class="num sg-numeric">4,210,880</td></tr>
+          <tr><td>현대차</td><td><span class="badge b-neutral">보합</span></td><td class="num sg-price-sm">251,000</td><td class="num"><span class="sg-change sg-flat">0.00%</span></td><td class="num sg-numeric">802,110</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row" style="margin-top: var(--sg-space-3)"><span class="badge b-success">체결</span><span class="badge b-warning">지연 시세</span><span class="badge b-danger">주문 실패</span><span class="badge b-info">신규</span><span class="badge b-neutral">초안</span><span class="badge bs-success">체결</span><span class="badge bs-warning">지연</span><span class="badge bs-danger">실패</span><span class="badge bs-info">NEW</span></div>
+
+    <h3 class="sub sg-title-4">Bottom sheet · 주문 확인</h3>
+    <div class="sheet-demo">
+      <div class="sheet" role="dialog" aria-modal="true">
+        <div class="handle"></div>
+        <h3 class="sg-title-2">삼성전자 10주 매수할까요?</h3>
+        <p>체결 후에는 취소할 수 없어요.</p>
+        <div class="summary"><div><span>주문 금액</span><b class="sg-numeric">724,000원</b></div><div><span>수수료</span><b class="sg-numeric">0원</b></div><div><span>주문 가능</span><b class="sg-numeric">1,284,500원</b></div></div>
+        <button class="btn btn--lg btn--primary btn--block">매수</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 차트 -->
+  <section id="viz">
+    <h2 class="sg-title-2">데이터 시각화</h2>
+    <p class="lead sg-body-3">시리즈 8색 고정 순서. 캔들·거래량·MA 는 <code>chart.*</code>. recharts 는 <code>dist/chart-theme.ts</code>.</p>
+    <div class="chart-pal" id="chartpal"></div>
+    <div class="grid-2" style="margin-top: var(--sg-space-4)">
+      <div class="card">
+        <div class="row" style="justify-content: space-between"><h4 class="sg-title-4" style="margin:0">삼성전자 · 일봉</h4><div class="legend"><span><i style="background: var(--sg-color-chart-overlay-ma5)"></i>MA5</span><span><i style="background: var(--sg-color-chart-overlay-ma20)"></i>MA20</span><span><i style="background: var(--sg-color-chart-overlay-ma60)"></i>MA60</span></div></div>
+        <div class="candles" id="candles"></div>
+        <div class="vol" id="vol"></div>
+      </div>
+      <div class="card">
+        <h4 class="sg-title-4">수급 (누적)</h4>
+        <div class="candles" style="height: 140px" id="bars"></div>
+        <div class="legend" style="margin-top: var(--sg-space-2)"><span><i style="background: var(--sg-color-chart-series-1)"></i>외국인</span><span><i style="background: var(--sg-color-chart-series-3)"></i>기관</span><span><i style="background: var(--sg-color-chart-series-2)"></i>개인</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 상태 -->
+  <section id="state">
+    <h2 class="sg-title-2">상태 · 피드백</h2>
+    <p class="lead sg-body-3">오류 배너는 아이콘 + 제목 필수(빨강=상승 충돌). 시장 상태는 neutral.</p>
+    <div class="grid-2">
+      <div style="display:flex; flex-direction:column; gap: var(--sg-space-3)">
+        <div class="alert a-neutral"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div>장 마감 · 15:30 종가 기준이에요.</div></div>
+        <div class="alert a-warning"><svg viewBox="0 0 24 24"><path d="m21.7 18-8-14a2 2 0 0 0-3.4 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.7-3"/><path d="M12 9v4M12 17h.01"/></svg><div><strong>시세가 5분 지연되고 있어요</strong>수집기가 복구되면 자동으로 따라잡아요.</div></div>
+        <div class="alert a-danger"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg><div><strong>주문에 실패했어요</strong>주문 가능 금액이 부족해요. 1,284,500원 이하로 입력해 주세요.</div></div>
+        <div class="alert a-success"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div><strong>삼성전자 10주를 매수했어요</strong>체결가 72,400원</div></div>
+        <div class="toast" role="status"><span class="grow">관심종목에서 삭제했어요</span><button class="btn btn--sm btn--ghost">되돌리기</button></div>
+        <div class="card"><div class="skel" style="width:40%; margin-bottom: var(--sg-space-2)"></div><div class="skel" style="margin-bottom: var(--sg-space-2)"></div><div class="skel" style="width:60%"></div></div>
+      </div>
+      <div class="card">
+        <div class="empty">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.3 5.9 20.7l1.4-6.8L2.2 9.1l6.9-.8z"/></svg></div>
+          <h4 class="sg-title-3" style="margin:0">관심종목이 아직 없어요</h4>
+          <p>종목 상세에서 ★ 을 누르면 여기에 모여요.</p>
+          <button class="btn btn--primary">종목 찾기</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <p class="disclaimer sg-micro">투자 판단의 책임은 본인에게 있어요. 이 화면의 수치는 예시예요.</p>
+</main>
+
+<nav class="tabbar" aria-label="주 메뉴">
+  <a href="#" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>홈</a>
+  <a href="#"><svg viewBox="0 0 24 24"><path d="M9 5v4M9 15v4M15 3v4M15 17v4"/><rect x="7" y="9" width="4" height="6" rx="1"/><rect x="13" y="7" width="4" height="10" rx="1"/></svg>시장</a>
+  <a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>섹터</a>
+  <a href="#"><svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2M2 12h20"/></svg>자산</a>
+  <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>더보기</a>
+</nav>
+
+<script>
+  const root = document.documentElement;
+  const segs = document.querySelectorAll('header .seg');
+  const applyTheme = (t) => { if (t) root.dataset.theme = t; else delete root.dataset.theme; try { t ? localStorage.setItem('sg-theme', t) : localStorage.removeItem('sg-theme'); } catch {} segs[1].querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.theme === (t || '')))); };
+  const applyMarket = (m) => { if (m) root.dataset.market = m; else delete root.dataset.market; try { m ? localStorage.setItem('sg-market', m) : localStorage.removeItem('sg-market'); } catch {} segs[0].querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.market === (m || '')))); };
+  segs[1].addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) applyTheme(b.dataset.theme); });
+  segs[0].addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) applyMarket(b.dataset.market); });
+  applyTheme(root.dataset.theme || ''); applyMarket(root.dataset.market || '');
+
+  const cs = getComputedStyle(root); const v = (n) => cs.getPropertyValue(n).trim();
+  const ramps = { blue: [50,100,200,300,400,500,600,700,800,900], gray: [50,100,200,300,400,500,600,700,800,900,950], red: [50,500,600], green: [50,400,500], yellow: [50,300,400], orange: [], violet: [], magenta: [] };
+  const steps = [50,100,200,300,400,500,600,700,800,900,950];
+  document.getElementById('ramps').innerHTML = Object.entries(ramps).map(([name, fixed]) => `<div class="ramp"><span class="sg-label-sm">${name}</span>${steps.map(s => `<div class="swatch ${fixed.includes(s) ? 'fixed' : ''}" style="background:var(--sg-${name}-${s}); color:${s >= 500 ? 'var(--sg-base-white)' : 'var(--sg-gray-900)'}" title="${name}.${s} ${v(`--sg-${name}-${s}`)}">${s}</div>`).join('')}</div>`).join('');
+  const surf = ['canvas','default','raised','sunken','sunken-strong','inverse','brand','brand-subtle','disabled'];
+  document.getElementById('surfaces').innerHTML = surf.map(s => `<div style="background:var(--sg-color-surface-${s}); color:${['inverse','brand'].includes(s) ? 'var(--sg-color-text-on-brand)' : 'var(--sg-color-text-secondary)'}; ${s==='raised' ? 'box-shadow:var(--sg-shadow-md)' : ''}">surface.${s}</div>`).join('');
+
+  const types = ['display-lg','display','title-1','title-2','title-3','title-4','body-1','body-2','body-3','caption','micro','label-lg','label-md','label-sm','badge','price-lg','price-md','price-sm','change','numeric','code'];
+  const sample = (t) => t.startsWith('price') || t === 'numeric' ? '12,840,000' : t === 'change' ? '+1.68%' : t === 'code' ? 'AAPL · 005930' : t === 'badge' ? 'KOSPI' : t.startsWith('display') ? '오늘의 시장' : t.startsWith('title') ? '보유 종목 현황' : '수수료 무료 · 실시간 시세는 15:30 기준이에요.';
+  document.getElementById('types').innerHTML = types.map(t => { const el = document.createElement('span'); el.className = `sg-${t}`; document.body.appendChild(el); const s = getComputedStyle(el); const spec = `${parseFloat(s.fontSize)}px / ${s.fontWeight} / ${(parseFloat(s.lineHeight)/parseFloat(s.fontSize)).toFixed(2)}`; el.remove(); return `<div class="type-row"><code>${t}</code><span class="sg-${t} ${t==='change' ? 'sg-up' : ''}">${sample(t)}</span><span class="spec">${spec}</span></div>`; }).join('');
+
+  document.getElementById('chartpal').innerHTML = [1,2,3,4,5,6,7,8].map(i => `<div style="background:var(--sg-color-chart-series-${i}); color: var(--sg-base-white)">${i}</div>`).join('') + `<div style="background:var(--sg-color-chart-series-other); color: var(--sg-base-white)">기타</div>`;
+
+  const heatVals = [4.2, 2.1, 0.8, 0, -0.6, -2.4, -5.1, 3.3, 1.2, 0.3, -0.1, -1.5, -3.2, 6.0];
+  const heatKey = (x) => x >= 3 ? 'up-3' : x >= 1 ? 'up-2' : x > 0 ? 'up-1' : x === 0 ? 'zero' : x > -1 ? 'down-1' : x > -3 ? 'down-2' : 'down-3';
+  document.getElementById('heat').innerHTML = heatVals.map(x => { const k = heatKey(x); const dark = ['up-3','up-2','down-2','down-3'].includes(k); return `<div style="background: var(--sg-color-chart-heat-${k}); color: ${dark ? 'var(--sg-base-white)' : 'var(--sg-gray-900)'}">${x > 0 ? '+' : x < 0 ? '−' : ''}${Math.abs(x).toFixed(1)}%</div>`; }).join('');
+
+  // 캔들 (값은 예시)
+  const c = [[60,72,55,68],[68,80,64,78],[78,82,70,72],[72,76,60,62],[62,70,58,69],[69,88,66,86],[86,90,80,84],[84,86,74,76],[76,84,72,82],[82,92,80,90],[90,94,84,86],[86,88,78,80]];
+  document.getElementById('candles').innerHTML = c.map(([o,h,l,cl]) => { const up = cl >= o; const col = up ? 'var(--sg-color-chart-candle-up)' : 'var(--sg-color-chart-candle-down)'; const wick = up ? 'var(--sg-color-chart-candle-up-wick)' : 'var(--sg-color-chart-candle-down-wick)'; const top = Math.max(o, cl), bot = Math.min(o, cl); return `<div class="candle" style="height:100%"><i style="background:${wick}; top:${100-h}%; bottom:${l}%"></i><b style="background:${col}; position:absolute; top:${100-top}%; height:${Math.max(2, top-bot)}%"></b></div>`; }).join('');
+  document.getElementById('vol').innerHTML = c.map(([o,,,cl], i) => `<div style="height:${30 + (i*37)%70}%; background:${cl >= o ? 'var(--sg-color-chart-candle-volume-up)' : 'var(--sg-color-chart-candle-volume-down)'}"></div>`).join('');
+  const bars = [[40,30,20],[55,20,35],[30,45,15],[60,25,10],[45,30,30],[70,20,15],[35,40,25]];
+  document.getElementById('bars').innerHTML = bars.map(([a,b,d]) => `<div class="candle" style="height:100%; flex-direction:column; justify-content:flex-end; gap:1px"><b style="height:${d}%; max-width:20px; background:var(--sg-color-chart-series-2)"></b><b style="height:${b}%; max-width:20px; background:var(--sg-color-chart-series-3)"></b><b style="height:${a}%; max-width:20px; background:var(--sg-color-chart-series-1)"></b></div>`).join('');
+
+  window.tick = (dir) => { const el = document.getElementById(dir === 'up' ? 'cellUp' : 'cellDown'); el.classList.remove('flash-up','flash-down'); void el.offsetWidth; el.classList.add(dir === 'up' ? 'flash-up' : 'flash-down'); };
+</script>
+</body>
+</html>
