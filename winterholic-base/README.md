@@ -77,6 +77,7 @@ tokens.typography['heading-1'].value  // { fontFamily, fontSize, fontWeight, lin
 | [12 페이지 패턴](docs/12-page-patterns.md) | 로그인·대시보드·목록·상세·폼·설정·랜딩 골격 | 새 화면 시작 |
 | [13 운영](docs/13-governance.md) | 파일 구조, 토큰 변경 절차, 이름 규칙, 버전, 채택 기준 | 토큰 추가·수정 |
 | [14 브랜드 자산](docs/14-brand-assets.md) | 로고·파비콘·얼음 결정·윈티 캐릭터·브랜드 이미지 | 브랜딩·메타 이미지 |
+| [16 상황 사전](docs/16-situations.md) | "이럴 땐 이렇게" — 글자·색·레이아웃·모양·조합·상태·다크·폼·접근성·성능 10축 | 토큰은 아는데 상황이 애매할 때 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트용 규칙 요약 | Claude 로 UI 만들 때 |
 
 ## 토큰 수정

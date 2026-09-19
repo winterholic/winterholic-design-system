@@ -1,5 +1,9 @@
 # Changelog
 
+## stock-gosu-v1.1.0 — 2026-09-19
+
+완성도 보강(base 수준). 06 컴포넌트 22절로 확장(스텝퍼·아코디언·페이지네이션·브레드크럼·알림·설정 행·필터 바 토큰 추가), 04·05·08·09·10·13 을 base 참조 없이 자립화, 12 에 설정·오류·알림·검색·비교·관리자·온보딩 골격 추가, **16 상황 사전** 신설. 버튼 md 좌우 패딩 18→16.
+
 ## stock-gosu-v1.0.0 — 2026-09-19
 
 첫 버전. 기존 FDS(`front/src/styles/global.css`, `finance-design-system.html`, `chartTheme.ts`)를 winterholic-base 구조로 옮기고 보완.

@@ -2797,7 +2797,7 @@ export const tokens = {
         },
         "padding-x": {
           "var": "var(--sg-component-button-md-padding-x)",
-          "value": "18px"
+          "value": "16px"
         },
         "icon": {
           "var": "var(--sg-component-button-md-icon)",
@@ -4296,6 +4296,354 @@ export const tokens = {
       "margin-bottom": {
         "var": "var(--sg-component-page-header-margin-bottom)",
         "value": "24px"
+      }
+    },
+    "stepper": {
+      "height": {
+        "var": "var(--sg-component-stepper-height)",
+        "value": "44px"
+      },
+      "button-width": {
+        "var": "var(--sg-component-stepper-button-width)",
+        "value": "44px"
+      },
+      "input-width": {
+        "var": "var(--sg-component-stepper-input-width)",
+        "value": "80px"
+      },
+      "radius": {
+        "var": "var(--sg-component-stepper-radius)",
+        "value": "12px"
+      },
+      "border": {
+        "var": "var(--sg-component-stepper-border)",
+        "value": "#D1D6DB",
+        "dark": "#4E5968"
+      },
+      "typography": {
+        "var": "var(--sg-component-stepper-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.9375rem",
+          "fontWeight": 700,
+          "lineHeight": 1,
+          "letterSpacing": "0em"
+        }
+      }
+    },
+    "accordion": {
+      "header-height": {
+        "var": "var(--sg-component-accordion-header-height)",
+        "value": "52px"
+      },
+      "header-typography": {
+        "var": "var(--sg-component-accordion-header-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.9375rem",
+          "fontWeight": 600,
+          "lineHeight": 1.45,
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "body-padding": {
+        "var": "var(--sg-component-accordion-body-padding)",
+        "value": "16px"
+      },
+      "icon": {
+        "var": "var(--sg-component-accordion-icon)",
+        "value": "16px"
+      },
+      "divider": {
+        "var": "var(--sg-component-accordion-divider)",
+        "value": "#F2F4F6",
+        "dark": "#191F28"
+      }
+    },
+    "pagination": {
+      "item-size": {
+        "var": "var(--sg-component-pagination-item-size)",
+        "value": "36px"
+      },
+      "gap": {
+        "var": "var(--sg-component-pagination-gap)",
+        "value": "4px"
+      },
+      "radius": {
+        "var": "var(--sg-component-pagination-radius)",
+        "value": "8px"
+      },
+      "active-bg": {
+        "var": "var(--sg-component-pagination-active-bg)",
+        "value": "#E8F3FF",
+        "dark": "#021D46"
+      },
+      "active-text": {
+        "var": "var(--sg-component-pagination-active-text)",
+        "value": "#1B64DA",
+        "dark": "#90C2FF"
+      },
+      "typography": {
+        "var": "var(--sg-component-pagination-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.8125rem",
+          "fontWeight": 600,
+          "lineHeight": 1.45,
+          "letterSpacing": "0em"
+        }
+      }
+    },
+    "breadcrumb": {
+      "typography": {
+        "var": "var(--sg-component-breadcrumb-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.8125rem",
+          "fontWeight": 400,
+          "lineHeight": 1.6,
+          "letterSpacing": "0em"
+        }
+      },
+      "separator-icon": {
+        "var": "var(--sg-component-breadcrumb-separator-icon)",
+        "value": "16px"
+      },
+      "separator-color": {
+        "var": "var(--sg-component-breadcrumb-separator-color)",
+        "value": "#6B7684",
+        "dark": "#B0B8C1"
+      },
+      "text": {
+        "var": "var(--sg-component-breadcrumb-text)",
+        "value": "#4E5968",
+        "dark": "#D1D6DB"
+      },
+      "current-text": {
+        "var": "var(--sg-component-breadcrumb-current-text)",
+        "value": "#191F28",
+        "dark": "#F9FAFB"
+      },
+      "gap": {
+        "var": "var(--sg-component-breadcrumb-gap)",
+        "value": "6px"
+      },
+      "margin-bottom": {
+        "var": "var(--sg-component-breadcrumb-margin-bottom)",
+        "value": "8px"
+      }
+    },
+    "notification-item": {
+      "height": {
+        "var": "var(--sg-component-notification-item-height)",
+        "value": "68px"
+      },
+      "padding-x": {
+        "var": "var(--sg-component-notification-item-padding-x)",
+        "value": "16px"
+      },
+      "icon-circle": {
+        "var": "var(--sg-component-notification-item-icon-circle)",
+        "value": "32px"
+      },
+      "gap": {
+        "var": "var(--sg-component-notification-item-gap)",
+        "value": "12px"
+      },
+      "unread-bg": {
+        "var": "var(--sg-component-notification-item-unread-bg)",
+        "value": "#E8F3FF",
+        "dark": "#021D46"
+      },
+      "title-typography": {
+        "var": "var(--sg-component-notification-item-title-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.9375rem",
+          "fontWeight": 600,
+          "lineHeight": 1.45,
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "body-typography": {
+        "var": "var(--sg-component-notification-item-body-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.8125rem",
+          "fontWeight": 400,
+          "lineHeight": 1.6,
+          "letterSpacing": "0em"
+        }
+      },
+      "time-typography": {
+        "var": "var(--sg-component-notification-item-time-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.75rem",
+          "fontWeight": 500,
+          "lineHeight": 1.45,
+          "letterSpacing": "0em"
+        }
+      }
+    },
+    "settings-row": {
+      "min-height": {
+        "var": "var(--sg-component-settings-row-min-height)",
+        "value": "56px"
+      },
+      "padding-x": {
+        "var": "var(--sg-component-settings-row-padding-x)",
+        "value": "20px"
+      },
+      "label-typography": {
+        "var": "var(--sg-component-settings-row-label-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.9375rem",
+          "fontWeight": 600,
+          "lineHeight": 1.45,
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "desc-typography": {
+        "var": "var(--sg-component-settings-row-desc-typography)",
+        "value": {
+          "fontFamily": [
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Malgun Gothic",
+            "system-ui",
+            "Segoe UI",
+            "Roboto",
+            "sans-serif"
+          ],
+          "fontSize": "0.8125rem",
+          "fontWeight": 500,
+          "lineHeight": 1.45,
+          "letterSpacing": "0em"
+        }
+      },
+      "divider": {
+        "var": "var(--sg-component-settings-row-divider)",
+        "value": "#F2F4F6",
+        "dark": "#191F28"
+      },
+      "gap": {
+        "var": "var(--sg-component-settings-row-gap)",
+        "value": "16px"
+      }
+    },
+    "filter-bar": {
+      "padding-y": {
+        "var": "var(--sg-component-filter-bar-padding-y)",
+        "value": "20px"
+      },
+      "padding-x": {
+        "var": "var(--sg-component-filter-bar-padding-x)",
+        "value": "24px"
+      },
+      "control-height": {
+        "var": "var(--sg-component-filter-bar-control-height)",
+        "value": "36px"
+      },
+      "gap": {
+        "var": "var(--sg-component-filter-bar-gap)",
+        "value": "8px"
+      },
+      "search-width": {
+        "var": "var(--sg-component-filter-bar-search-width)",
+        "value": "280px"
       }
     }
   }

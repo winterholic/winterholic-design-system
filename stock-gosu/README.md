@@ -1,7 +1,7 @@
 # stock-gosu design system
 
 `C:\stock-gosu\front` 투자 대시보드의 디자인 시스템. 기존 FDS(`global.css` 토큰 + `finance-design-system.html`)를 winterholic-base 와 같은 구조로 옮기고, 빠져 있던 것(다크 모드·대비 검사·차트 색 단일 소스·금융 전용 토큰)을 보완했다.
-**막히면 [`docs/00-decision-guide.md`](docs/00-decision-guide.md)**, 기존 시스템과 무엇이 달라졌는지는 [`docs/15-audit-and-migration.md`](docs/15-audit-and-migration.md).
+**막히면 [`docs/00-decision-guide.md`](docs/00-decision-guide.md)(토큰) → [`docs/16-situations.md`](docs/16-situations.md)(상황)**, 기존 시스템과 무엇이 달라졌는지는 [`docs/15-audit-and-migration.md`](docs/15-audit-and-migration.md).
 
 ## 한눈에
 | | |
@@ -48,6 +48,7 @@ Tailwind 프리셋·JS 토큰·SCSS·Figma 는 base README 와 같은 방식(`di
 | [13 운영](docs/13-governance.md) | 변경 절차, 채택 기준, 결정 기록 |
 | [14 브랜드 자산](docs/14-brand-assets.md) | 파랑새 로고 규칙, 보완 목록 |
 | [15 점검·이관](docs/15-audit-and-migration.md) | 기존 FDS 점검 27항목, 5단계 이관, 변수 대응표 |
+| [16 상황 사전](docs/16-situations.md) | "이럴 땐 이렇게" — 글자·등락·레이아웃·조합·상태·다크·폼·성능 8축 100여 상황 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트 규칙 |
 
 ## 토큰 수정

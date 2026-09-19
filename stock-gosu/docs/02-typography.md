@@ -3,7 +3,7 @@
 ## 1. 서체
 - 본문·제목·숫자 전부 **Pretendard Variable**(`font.family.sans`, 기존 `--font-sans` 그대로).
 - 코드·티커 심볼만 `font.family.mono`. **금액·가격은 mono 가 아니다.** Pretendard + `font-variant-numeric: tabular-nums` 가 자릿수 정렬과 가독성을 모두 준다.
-- 로드: `pretendardvariable-dynamic-subset.min.css`(base 02 §1 과 같다).
+- 로드(소비 앱): `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />`. `dynamic-subset` 은 쓰인 글자만 받는다. 셀프 호스팅이면 woff2 + `font-display: swap`. 모노는 코드가 있는 화면에서만 로드.
 
 ## 2. 스케일
 기존 FDS(13/15/17/18/20/24/32)를 유지하고 12·28·40 을 더했다.

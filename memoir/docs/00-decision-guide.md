@@ -87,6 +87,11 @@
 | FAB | `component.fab.size` | 56 |
 | 캘린더 사이드 패널 | `size.layout.panel` | 320 |
 | 카테고리 드롭다운 | `size.layout.dropdown-width` | 280 |
+| 밑줄 탭 / 세그먼트 항목 | `component.tabs.height` / `segmented.item-height` | 44 / 28 |
+| 설정 행 | `component.settings-row.min-height` | 56 |
+| 표(드묾) 헤더/행 | `component.table.header-height` / `row-height` | 40 / 48 |
+| 잔디 셀 | `component.activity-grid.cell` | 12 gap 3 |
+| 더 보기 단위 | `component.load-more.page-size` | 20 |
 
 ## 5. 모양·깊이
 
@@ -121,4 +126,5 @@
 `fab` 900 · `dropdown` 1000 · `sticky` 1100(두 헤더) · `overlay` 1200 · `modal` 1300 · `popover` 1400 · `toast` 1500 · `tooltip` 1600
 
 ## 8. 없으면
-가장 비슷한 행의 토큰을 쓴다. 정말 없으면 `docs/13` 절차로 추가하고 여기 행을 넣는다. 급하면 `/* TODO(ds): 이유 */`.
+0. **상황이 문제면 `docs/16-situations.md`** — "리스트에 선을 긋고 싶다", "핑크 버튼을 쓰고 싶다", "칩이 넘친다" 같은 A~J 상황 사전.
+1. 가장 비슷한 행의 토큰을 쓴다. 정말 없으면 `docs/13` 절차로 추가하고 여기 행을 넣는다. 급하면 `/* TODO(ds): 이유 */`.

@@ -1,287 +1,1301 @@
 {
   "component": {
     "$description": "컴포넌트 토큰. 기존 components/ui(Button·Chip·Input·Modal·WideModal·PromptModal·SearchBar·CustomSelect·MemoirLogo)와 layout(MainHeader·SubHeader·CategoryDropdown)을 토큰으로, 카테고리별 메모 카드 규격을 더했다.",
-
     "button": {
-      "radius": { "$value": "{radius.md}", "$type": "dimension", "$description": "8 (design-guide)" },
-      "radius-pill": { "$value": "{radius.full}", "$type": "dimension", "$description": "헤더 New 버튼·랜딩 CTA" },
-      "gap": { "$value": "{space.2}", "$type": "dimension" },
-      "min-width": { "$value": "72px", "$type": "dimension" },
-      "xs": { "height": { "$value": "{size.control.xs}", "$type": "dimension" }, "padding-x": { "$value": "{space.2}", "$type": "dimension" }, "icon": { "$value": "{size.icon.sm}", "$type": "dimension" }, "typography": { "$value": "{typography.caption}", "$type": "typography" } },
-      "sm": { "height": { "$value": "{size.control.sm}", "$type": "dimension" }, "padding-x": { "$value": "{space.3}", "$type": "dimension" }, "icon": { "$value": "{size.icon.sm}", "$type": "dimension" }, "typography": { "$value": "{typography.label-md}", "$type": "typography" } },
-      "md": { "height": { "$value": "{size.control.md}", "$type": "dimension" }, "padding-x": { "$value": "{space.5}", "$type": "dimension" }, "icon": { "$value": "{size.icon.md}", "$type": "dimension" }, "typography": { "$value": "{typography.label-md}", "$type": "typography" } },
-      "lg": { "height": { "$value": "{size.control.lg}", "$type": "dimension" }, "padding-x": { "$value": "{space.6}", "$type": "dimension" }, "icon": { "$value": "{size.icon.md}", "$type": "dimension" }, "typography": { "$value": "{typography.label-lg}", "$type": "typography" } }
+      "radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension",
+        "$description": "8 (design-guide)"
+      },
+      "radius-pill": {
+        "$value": "{radius.full}",
+        "$type": "dimension",
+        "$description": "헤더 New 버튼·랜딩 CTA"
+      },
+      "gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "min-width": {
+        "$value": "72px",
+        "$type": "dimension"
+      },
+      "xs": {
+        "height": {
+          "$value": "{size.control.xs}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.sm}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.caption}",
+          "$type": "typography"
+        }
+      },
+      "sm": {
+        "height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.sm}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        }
+      },
+      "md": {
+        "height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.md}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        }
+      },
+      "lg": {
+        "height": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.md}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.label-lg}",
+          "$type": "typography"
+        }
+      }
     },
-
     "fab": {
-      "size": { "$value": "{size.control.xl}", "$type": "dimension" },
-      "radius": { "$value": "{radius.full}", "$type": "dimension" },
-      "bg": { "$value": "{color.action.primary.bg}", "$type": "color" },
-      "text": { "$value": "{color.action.primary.text}", "$type": "color" },
-      "shadow": { "$value": "{shadow.ambient}", "$type": "shadow" },
-      "icon": { "$value": "{size.icon.lg}", "$type": "dimension" },
-      "offset": { "$value": "{size.layout.fab-offset}", "$type": "dimension" }
+      "size": {
+        "$value": "{size.control.xl}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.action.primary.bg}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.action.primary.text}",
+        "$type": "color"
+      },
+      "shadow": {
+        "$value": "{shadow.ambient}",
+        "$type": "shadow"
+      },
+      "icon": {
+        "$value": "{size.icon.lg}",
+        "$type": "dimension"
+      },
+      "offset": {
+        "$value": "{size.layout.fab-offset}",
+        "$type": "dimension"
+      }
     },
-
     "input": {
       "$description": "두 형태: underline(에디토리얼, 폼)과 filled(검색·필터). 테두리 상자형은 쓰지 않는다.",
-      "height": { "$value": "{size.control.md}", "$type": "dimension" },
-      "height-lg": { "$value": "{size.control.lg}", "$type": "dimension" },
-      "radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "bg-filled": { "$value": "{color.surface.zone-deep}", "$type": "color", "$description": "filled 형 배경(design-guide surface-container-highest)" },
-      "bg-focus": { "$value": "{color.surface.default}", "$type": "color", "$description": "포커스 시 흰 면으로" },
-      "underline": { "$value": "{color.border.strong}", "$type": "color", "$description": "underline 형 기본 밑줄 1px" },
-      "underline-focus": { "$value": "{color.border.interactive}", "$type": "color", "$description": "포커스 밑줄 2px indigo" },
-      "underline-error": { "$value": "{color.border.danger}", "$type": "color" },
-      "padding-x": { "$value": "{space.3}", "$type": "dimension" },
-      "label-gap": { "$value": "{space.2}", "$type": "dimension" },
-      "help-gap": { "$value": "{space.1-5}", "$type": "dimension" },
-      "field-gap": { "$value": "{space.6}", "$type": "dimension", "$description": "필드 사이 24 (여백이 구분선)" },
-      "typography": { "$value": "{typography.body}", "$type": "typography" },
-      "label-typography": { "$value": "{typography.label}", "$type": "typography", "$description": "라벨은 대문자 메타 스타일" }
+      "height": {
+        "$value": "{size.control.md}",
+        "$type": "dimension"
+      },
+      "height-lg": {
+        "$value": "{size.control.lg}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "bg-filled": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color",
+        "$description": "filled 형 배경(design-guide surface-container-highest)"
+      },
+      "bg-focus": {
+        "$value": "{color.surface.default}",
+        "$type": "color",
+        "$description": "포커스 시 흰 면으로"
+      },
+      "underline": {
+        "$value": "{color.border.strong}",
+        "$type": "color",
+        "$description": "underline 형 기본 밑줄 1px"
+      },
+      "underline-focus": {
+        "$value": "{color.border.interactive}",
+        "$type": "color",
+        "$description": "포커스 밑줄 2px indigo"
+      },
+      "underline-error": {
+        "$value": "{color.border.danger}",
+        "$type": "color"
+      },
+      "padding-x": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "label-gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "help-gap": {
+        "$value": "{space.1-5}",
+        "$type": "dimension"
+      },
+      "field-gap": {
+        "$value": "{space.6}",
+        "$type": "dimension",
+        "$description": "필드 사이 24 (여백이 구분선)"
+      },
+      "typography": {
+        "$value": "{typography.body}",
+        "$type": "typography"
+      },
+      "label-typography": {
+        "$value": "{typography.label}",
+        "$type": "typography",
+        "$description": "라벨은 대문자 메타 스타일"
+      }
     },
-
     "search": {
       "$description": "메인 헤더 검색(SearchBar). 필 형태, 채움면.",
-      "height": { "$value": "{size.control.md}", "$type": "dimension" },
-      "radius": { "$value": "{radius.full}", "$type": "dimension" },
-      "bg": { "$value": "{color.surface.zone-deep}", "$type": "color" },
-      "bg-focus": { "$value": "{color.surface.default}", "$type": "color" },
-      "focus-shadow": { "$value": "{shadow.focus}", "$type": "shadow" },
-      "icon": { "$value": "{size.icon.sm}", "$type": "dimension" },
-      "padding-x": { "$value": "{space.4}", "$type": "dimension" },
-      "max-width": { "$value": "400px", "$type": "dimension" },
-      "typography": { "$value": "{typography.body-sm}", "$type": "typography" }
+      "height": {
+        "$value": "{size.control.md}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "bg-focus": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "focus-shadow": {
+        "$value": "{shadow.focus}",
+        "$type": "shadow"
+      },
+      "icon": {
+        "$value": "{size.icon.sm}",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "max-width": {
+        "$value": "400px",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{typography.body-sm}",
+        "$type": "typography"
+      }
     },
-
     "pin": {
       "$description": "2FA·PIN 6자리 입력(보안 메모 진입).",
-      "cell-size": { "$value": "{size.control.lg}", "$type": "dimension" },
-      "cell-gap": { "$value": "{space.2}", "$type": "dimension" },
-      "cell-radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "cell-bg": { "$value": "{color.surface.zone-deep}", "$type": "color" },
-      "cell-bg-filled": { "$value": "{color.surface.default}", "$type": "color" },
-      "cell-underline-active": { "$value": "{color.border.interactive}", "$type": "color" },
-      "cell-error": { "$value": "{color.border.danger}", "$type": "color" },
-      "typography": { "$value": "{typography.pin}", "$type": "typography" }
+      "cell-size": {
+        "$value": "{size.control.lg}",
+        "$type": "dimension"
+      },
+      "cell-gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "cell-radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "cell-bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "cell-bg-filled": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "cell-underline-active": {
+        "$value": "{color.border.interactive}",
+        "$type": "color"
+      },
+      "cell-error": {
+        "$value": "{color.border.danger}",
+        "$type": "color"
+      },
+      "typography": {
+        "$value": "{typography.pin}",
+        "$type": "typography"
+      }
     },
-
     "chip": {
       "$description": "서브 헤더 필터 칩(Chip). 필 형태. v4 시안: ALL 은 ink 채움, 나머지 옅은 면, 활성 핑크.",
-      "height": { "$value": "{size.control.xs}", "$type": "dimension", "$description": "28. 터치 위주 화면은 36" },
-      "height-touch": { "$value": "{size.control.sm}", "$type": "dimension" },
-      "padding-x": { "$value": "{space.3}", "$type": "dimension" },
-      "radius": { "$value": "{radius.full}", "$type": "dimension" },
-      "gap": { "$value": "{space.2}", "$type": "dimension", "$description": "칩 사이" },
-      "typography": { "$value": "{typography.label}", "$type": "typography", "$description": "12/600 대문자 자간(언어·플랫폼 필터)" },
-      "bg": { "$value": "{color.chip.bg}", "$type": "color" },
-      "text": { "$value": "{color.chip.text}", "$type": "color" },
-      "bg-active": { "$value": "{color.chip.bg-active}", "$type": "color" },
-      "text-active": { "$value": "{color.chip.text-active}", "$type": "color" },
-      "bg-all": { "$value": "{color.chip.all-bg}", "$type": "color" },
-      "text-all": { "$value": "{color.chip.all-text}", "$type": "color" }
+      "height": {
+        "$value": "{size.control.xs}",
+        "$type": "dimension",
+        "$description": "28. 터치 위주 화면은 36"
+      },
+      "height-touch": {
+        "$value": "{size.control.sm}",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.2}",
+        "$type": "dimension",
+        "$description": "칩 사이"
+      },
+      "typography": {
+        "$value": "{typography.label}",
+        "$type": "typography",
+        "$description": "12/600 대문자 자간(언어·플랫폼 필터)"
+      },
+      "bg": {
+        "$value": "{color.chip.bg}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.chip.text}",
+        "$type": "color"
+      },
+      "bg-active": {
+        "$value": "{color.chip.bg-active}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$value": "{color.chip.text-active}",
+        "$type": "color"
+      },
+      "bg-all": {
+        "$value": "{color.chip.all-bg}",
+        "$type": "color"
+      },
+      "text-all": {
+        "$value": "{color.chip.all-text}",
+        "$type": "color"
+      }
     },
-
     "tag": {
       "$description": "#태그 배지(메모 하단).",
-      "height": { "$value": "24px", "$type": "dimension" },
-      "padding-x": { "$value": "{space.2}", "$type": "dimension" },
-      "radius": { "$value": "{radius.full}", "$type": "dimension" },
-      "bg": { "$value": "{color.chip.tag-bg}", "$type": "color" },
-      "text": { "$value": "{color.chip.tag-text}", "$type": "color" },
-      "typography": { "$value": "{typography.tag}", "$type": "typography" },
-      "gap": { "$value": "{space.1-5}", "$type": "dimension" }
+      "height": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.chip.tag-bg}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.chip.tag-text}",
+        "$type": "color"
+      },
+      "typography": {
+        "$value": "{typography.tag}",
+        "$type": "typography"
+      },
+      "gap": {
+        "$value": "{space.1-5}",
+        "$type": "dimension"
+      }
     },
-
     "lang-badge": {
       "$description": "코드 스니펫 언어 배지(JAVASCRIPT·JAVA). 각진 사각, 언어별 옅은 색.",
-      "height": { "$value": "22px", "$type": "dimension" },
-      "padding-x": { "$value": "{space.2}", "$type": "dimension" },
-      "radius": { "$value": "{radius.xs}", "$type": "dimension" },
-      "typography": { "$value": "{typography.label}", "$type": "typography" },
-      "bg": { "$value": "{color.surface.zone-deep}", "$type": "color" },
-      "text": { "$value": "{color.text.secondary}", "$type": "color" }
+      "height": {
+        "$value": "22px",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xs}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{typography.label}",
+        "$type": "typography"
+      },
+      "bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.secondary}",
+        "$type": "color"
+      }
     },
-
     "card": {
       "$description": "메모 카드 공통. 테두리·그림자 없이 zone 위 흰 면.",
-      "bg": { "$value": "{color.surface.default}", "$type": "color" },
-      "bg-zone": { "$value": "{color.surface.zone}", "$type": "color", "$description": "카드가 놓이는 바닥" },
-      "radius": { "$value": "{radius.lg}", "$type": "dimension", "$description": "12. 미리보기 카드는 md 8" },
-      "radius-preview": { "$value": "{radius.md}", "$type": "dimension" },
-      "shadow": { "$value": "{shadow.none}", "$type": "shadow" },
-      "shadow-hover": { "$value": "{shadow.soft}", "$type": "shadow", "$description": "클릭 가능한 카드 hover 만" },
-      "padding": { "$value": "{space.6}", "$type": "dimension", "$description": "24 (v4 시안)" },
-      "padding-sm": { "$value": "{space.3}", "$type": "dimension", "$description": "12 미리보기 카드(design-guide)" },
-      "gap": { "$value": "{space.6}", "$type": "dimension", "$description": "카드 사이 24 (구분선 대신 여백)" },
-      "header-gap": { "$value": "{space.4}", "$type": "dimension" },
-      "meta-gap": { "$value": "{space.4}", "$type": "dimension", "$description": "본문↔태그·날짜 줄" }
+      "bg": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "bg-zone": {
+        "$value": "{color.surface.zone}",
+        "$type": "color",
+        "$description": "카드가 놓이는 바닥"
+      },
+      "radius": {
+        "$value": "{radius.lg}",
+        "$type": "dimension",
+        "$description": "12. 미리보기 카드는 md 8"
+      },
+      "radius-preview": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{shadow.none}",
+        "$type": "shadow"
+      },
+      "shadow-hover": {
+        "$value": "{shadow.soft}",
+        "$type": "shadow",
+        "$description": "클릭 가능한 카드 hover 만"
+      },
+      "padding": {
+        "$value": "{space.6}",
+        "$type": "dimension",
+        "$description": "24 (v4 시안)"
+      },
+      "padding-sm": {
+        "$value": "{space.3}",
+        "$type": "dimension",
+        "$description": "12 미리보기 카드(design-guide)"
+      },
+      "gap": {
+        "$value": "{space.6}",
+        "$type": "dimension",
+        "$description": "카드 사이 24 (구분선 대신 여백)"
+      },
+      "header-gap": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "meta-gap": {
+        "$value": "{space.4}",
+        "$type": "dimension",
+        "$description": "본문↔태그·날짜 줄"
+      }
     },
-
     "code-block": {
-      "bg": { "$value": "{color.code.bg}", "$type": "color" },
-      "text": { "$value": "{color.code.text}", "$type": "color" },
-      "radius": { "$value": "{radius.lg}", "$type": "dimension" },
-      "padding": { "$value": "{space.5}", "$type": "dimension" },
-      "typography": { "$value": "{typography.code}", "$type": "typography" },
-      "gutter-width": { "$value": "40px", "$type": "dimension" },
-      "max-height-collapsed": { "$value": "240px", "$type": "dimension", "$description": "아코디언 접힘 높이" },
-      "toolbar-height": { "$value": "{size.control.sm}", "$type": "dimension", "$description": "언어·복사 버튼 줄" }
+      "bg": {
+        "$value": "{color.code.bg}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.code.text}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.lg}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{space.5}",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{typography.code}",
+        "$type": "typography"
+      },
+      "gutter-width": {
+        "$value": "40px",
+        "$type": "dimension"
+      },
+      "max-height-collapsed": {
+        "$value": "240px",
+        "$type": "dimension",
+        "$description": "아코디언 접힘 높이"
+      },
+      "toolbar-height": {
+        "$value": "{size.control.sm}",
+        "$type": "dimension",
+        "$description": "언어·복사 버튼 줄"
+      }
     },
-
     "command-row": {
       "$description": "명령어 메모 한 줄(와이드 뷰). [플랫폼 배지] [명령어 mono] [설명] [복사]",
-      "height": { "$value": "52px", "$type": "dimension" },
-      "padding-x": { "$value": "{space.5}", "$type": "dimension" },
-      "gap": { "$value": "{space.4}", "$type": "dimension" },
-      "bg": { "$value": "{color.surface.default}", "$type": "color" },
-      "bg-hover": { "$value": "{color.surface.zone-deep}", "$type": "color" },
-      "radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "row-gap": { "$value": "{space.2}", "$type": "dimension", "$description": "행 사이 8 (촘촘한 카테고리 예외)" },
-      "cmd-typography": { "$value": "{typography.command}", "$type": "typography" },
-      "cmd-bg": { "$value": "{color.code.inline-bg}", "$type": "color" }
+      "height": {
+        "$value": "52px",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.5}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "row-gap": {
+        "$value": "{space.2}",
+        "$type": "dimension",
+        "$description": "행 사이 8 (촘촘한 카테고리 예외)"
+      },
+      "cmd-typography": {
+        "$value": "{typography.command}",
+        "$type": "typography"
+      },
+      "cmd-bg": {
+        "$value": "{color.code.inline-bg}",
+        "$type": "color"
+      }
     },
-
     "bookmark-card": {
       "$description": "URL 북마크 가로 슬림 카드. [OG 이미지 96×64] [제목 / 도메인 / 설명 1줄] [태그]",
-      "height": { "$value": "96px", "$type": "dimension" },
-      "image-width": { "$value": "96px", "$type": "dimension" },
-      "image-radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "padding": { "$value": "{space.4}", "$type": "dimension" },
-      "gap": { "$value": "{space.4}", "$type": "dimension" },
-      "domain-typography": { "$value": "{typography.label}", "$type": "typography" }
+      "height": {
+        "$value": "96px",
+        "$type": "dimension"
+      },
+      "image-width": {
+        "$value": "96px",
+        "$type": "dimension"
+      },
+      "image-radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "domain-typography": {
+        "$value": "{typography.label}",
+        "$type": "typography"
+      }
     },
-
     "video-card": {
       "$description": "영상 메모 썸네일 갤러리. 16:9 썸네일 + 제목 2줄 + 채널·길이",
-      "thumb-ratio": { "$value": "16 / 9", "$type": "string" },
-      "thumb-radius": { "$value": "{radius.xl}", "$type": "dimension" },
-      "gap": { "$value": "{space.3}", "$type": "dimension" },
-      "duration-bg": { "$value": "{color.surface.inverse}", "$type": "color" },
-      "duration-text": { "$value": "{color.text.inverse}", "$type": "color" },
-      "columns-lg": { "$value": 3, "$type": "number" },
-      "columns-md": { "$value": 2, "$type": "number" }
+      "thumb-ratio": {
+        "$value": "16 / 9",
+        "$type": "string"
+      },
+      "thumb-radius": {
+        "$value": "{radius.xl}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "duration-bg": {
+        "$value": "{color.surface.inverse}",
+        "$type": "color"
+      },
+      "duration-text": {
+        "$value": "{color.text.inverse}",
+        "$type": "color"
+      },
+      "columns-lg": {
+        "$value": 3,
+        "$type": "number"
+      },
+      "columns-md": {
+        "$value": 2,
+        "$type": "number"
+      }
     },
-
     "secure-row": {
       "$description": "보안 메모 가로 컴팩트 카드. 잠금 상태면 본문 블러 + 자물쇠. 왼쪽 4px 핑크 띠.",
-      "height": { "$value": "72px", "$type": "dimension" },
-      "padding-x": { "$value": "{space.5}", "$type": "dimension" },
-      "accent": { "$value": "{color.status.secure.solid}", "$type": "color" },
-      "accent-width": { "$value": "{border-width.accent}", "$type": "dimension" },
-      "locked-blur": { "$value": "{blur.locked}", "$type": "dimension" },
-      "locked-opacity": { "$value": "{opacity.locked}", "$type": "number" },
-      "countdown-typography": { "$value": "{typography.label}", "$type": "typography" },
-      "countdown-color": { "$value": "{color.status.secure.text}", "$type": "color" }
+      "height": {
+        "$value": "72px",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.5}",
+        "$type": "dimension"
+      },
+      "accent": {
+        "$value": "{color.status.secure.solid}",
+        "$type": "color"
+      },
+      "accent-width": {
+        "$value": "{border-width.accent}",
+        "$type": "dimension"
+      },
+      "locked-blur": {
+        "$value": "{blur.locked}",
+        "$type": "dimension"
+      },
+      "locked-opacity": {
+        "$value": "{opacity.locked}",
+        "$type": "number"
+      },
+      "countdown-typography": {
+        "$value": "{typography.label}",
+        "$type": "typography"
+      },
+      "countdown-color": {
+        "$value": "{color.status.secure.text}",
+        "$type": "color"
+      }
     },
-
     "folder": {
       "$description": "프라이빗 폴더 그리드 타일",
-      "size": { "$value": "160px", "$type": "dimension" },
-      "radius": { "$value": "{radius.xl}", "$type": "dimension" },
-      "bg": { "$value": "{color.surface.cream}", "$type": "color" },
-      "bg-hover": { "$value": "{color.surface.blush}", "$type": "color" },
-      "icon": { "$value": "{size.icon.xl}", "$type": "dimension" },
-      "gap": { "$value": "{space.4}", "$type": "dimension" }
+      "size": {
+        "$value": "160px",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xl}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.cream}",
+        "$type": "color"
+      },
+      "bg-hover": {
+        "$value": "{color.surface.blush}",
+        "$type": "color"
+      },
+      "icon": {
+        "$value": "{size.icon.xl}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      }
     },
-
     "calendar": {
-      "cell-min-height": { "$value": "96px", "$type": "dimension" },
-      "cell-min-height-mobile": { "$value": "48px", "$type": "dimension" },
-      "cell-padding": { "$value": "{space.2}", "$type": "dimension" },
-      "grid-line": { "$value": "{color.border.default}", "$type": "color", "$description": "선이 정보인 유일한 곳" },
-      "today-bg": { "$value": "{color.surface.brand-subtle}", "$type": "color" },
-      "today-marker": { "$value": "{color.action.primary.bg}", "$type": "color", "$description": "오늘 날짜 숫자 원형 채움 + 흰 글자" },
-      "selected-ring": { "$value": "{color.border.interactive}", "$type": "color" },
-      "event-dot": { "$value": "{brand.periwinkle}", "$type": "color" },
-      "weekend-text": { "$value": "{color.text.tertiary}", "$type": "color" },
-      "day-typography": { "$value": "{typography.label-md}", "$type": "typography" },
-      "panel-width": { "$value": "{size.layout.panel}", "$type": "dimension" }
+      "cell-min-height": {
+        "$value": "96px",
+        "$type": "dimension"
+      },
+      "cell-min-height-mobile": {
+        "$value": "48px",
+        "$type": "dimension"
+      },
+      "cell-padding": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "grid-line": {
+        "$value": "{color.border.default}",
+        "$type": "color",
+        "$description": "선이 정보인 유일한 곳"
+      },
+      "today-bg": {
+        "$value": "{color.surface.brand-subtle}",
+        "$type": "color"
+      },
+      "today-marker": {
+        "$value": "{color.action.primary.bg}",
+        "$type": "color",
+        "$description": "오늘 날짜 숫자 원형 채움 + 흰 글자"
+      },
+      "selected-ring": {
+        "$value": "{color.border.interactive}",
+        "$type": "color"
+      },
+      "event-dot": {
+        "$value": "{brand.periwinkle}",
+        "$type": "color"
+      },
+      "weekend-text": {
+        "$value": "{color.text.tertiary}",
+        "$type": "color"
+      },
+      "day-typography": {
+        "$value": "{typography.label-md}",
+        "$type": "typography"
+      },
+      "panel-width": {
+        "$value": "{size.layout.panel}",
+        "$type": "dimension"
+      }
     },
-
     "header": {
       "$description": "메인 헤더(MainHeader) 60 + 서브 헤더(SubHeader) 44. 둘 다 sticky. 사이드바 없음.",
-      "height": { "$value": "{size.layout.header}", "$type": "dimension" },
-      "sub-height": { "$value": "{size.layout.subheader}", "$type": "dimension" },
-      "bg": { "$value": "{color.surface.default}", "$type": "color" },
-      "bg-scrolled": { "$value": "{glass.bg-modal}", "$type": "color", "$description": "스크롤 시 white 80% + blur" },
-      "sub-bg": { "$value": "{color.surface.canvas}", "$type": "color" },
-      "padding-x": { "$value": "{size.layout.page-gutter-md}", "$type": "dimension" },
-      "logo-height": { "$value": "24px", "$type": "dimension" },
-      "gap": { "$value": "{space.6}", "$type": "dimension" },
-      "action-gap": { "$value": "{space.2}", "$type": "dimension" },
-      "divider": { "$value": "{color.border.subtle}", "$type": "color", "$description": "서브 헤더 아래 면 단차(선 아님)" }
+      "height": {
+        "$value": "{size.layout.header}",
+        "$type": "dimension"
+      },
+      "sub-height": {
+        "$value": "{size.layout.subheader}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "bg-scrolled": {
+        "$value": "{glass.bg-modal}",
+        "$type": "color",
+        "$description": "스크롤 시 white 80% + blur"
+      },
+      "sub-bg": {
+        "$value": "{color.surface.canvas}",
+        "$type": "color"
+      },
+      "padding-x": {
+        "$value": "{size.layout.page-gutter-md}",
+        "$type": "dimension"
+      },
+      "logo-height": {
+        "$value": "24px",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.6}",
+        "$type": "dimension"
+      },
+      "action-gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "divider": {
+        "$value": "{color.border.subtle}",
+        "$type": "color",
+        "$description": "서브 헤더 아래 면 단차(선 아님)"
+      }
     },
-
     "category-dropdown": {
-      "width": { "$value": "{size.layout.dropdown-width}", "$type": "dimension" },
-      "bg": { "$value": "{color.surface.raised}", "$type": "color" },
-      "blur": { "$value": "{glass.blur}", "$type": "dimension" },
-      "radius": { "$value": "{radius.xl}", "$type": "dimension" },
-      "shadow": { "$value": "{shadow.ambient}", "$type": "shadow" },
-      "padding": { "$value": "{space.2}", "$type": "dimension" },
-      "item-height": { "$value": "{size.control.md}", "$type": "dimension" },
-      "item-radius": { "$value": "{radius.md}", "$type": "dimension" },
-      "item-icon-size": { "$value": "{size.control.xs}", "$type": "dimension", "$description": "카테고리 색 원 28 + 이모지·아이콘" },
-      "item-active-bg": { "$value": "{color.action.interactive.bg}", "$type": "color" },
-      "item-active-text": { "$value": "{color.action.interactive.text}", "$type": "color" },
-      "item-hover-bg": { "$value": "{color.surface.zone}", "$type": "color" },
-      "trigger-typography": { "$value": "{typography.label-lg}", "$type": "typography" }
+      "width": {
+        "$value": "{size.layout.dropdown-width}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.raised}",
+        "$type": "color"
+      },
+      "blur": {
+        "$value": "{glass.blur}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xl}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{shadow.ambient}",
+        "$type": "shadow"
+      },
+      "padding": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "item-height": {
+        "$value": "{size.control.md}",
+        "$type": "dimension"
+      },
+      "item-radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "item-icon-size": {
+        "$value": "{size.control.xs}",
+        "$type": "dimension",
+        "$description": "카테고리 색 원 28 + 이모지·아이콘"
+      },
+      "item-active-bg": {
+        "$value": "{color.action.interactive.bg}",
+        "$type": "color"
+      },
+      "item-active-text": {
+        "$value": "{color.action.interactive.text}",
+        "$type": "color"
+      },
+      "item-hover-bg": {
+        "$value": "{color.surface.zone}",
+        "$type": "color"
+      },
+      "trigger-typography": {
+        "$value": "{typography.label-lg}",
+        "$type": "typography"
+      }
     },
-
     "modal": {
       "$description": "Modal(sm) · PromptModal(sm) · WideModal(lg). 글래스 면.",
-      "bg": { "$value": "{glass.bg-modal}", "$type": "color" },
-      "blur": { "$value": "{glass.blur}", "$type": "dimension" },
-      "radius": { "$value": "{radius.xl}", "$type": "dimension" },
-      "shadow": { "$value": "{shadow.modal}", "$type": "shadow" },
-      "padding": { "$value": "{space.8}", "$type": "dimension" },
-      "padding-mobile": { "$value": "{space.5}", "$type": "dimension" },
-      "width-sm": { "$value": "{size.container.sm}", "$type": "dimension", "$description": "480 확인·프롬프트" },
-      "width-md": { "$value": "640px", "$type": "dimension" },
-      "width-lg": { "$value": "{size.container.lg}", "$type": "dimension", "$description": "960 WideModal(메모 편집)" },
-      "footer-gap": { "$value": "{space.3}", "$type": "dimension" },
-      "section-gap": { "$value": "{space.6}", "$type": "dimension" },
-      "enter-duration": { "$value": "{motion.duration.slow}", "$type": "duration" }
+      "bg": {
+        "$value": "{glass.bg-modal}",
+        "$type": "color"
+      },
+      "blur": {
+        "$value": "{glass.blur}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xl}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{shadow.modal}",
+        "$type": "shadow"
+      },
+      "padding": {
+        "$value": "{space.8}",
+        "$type": "dimension"
+      },
+      "padding-mobile": {
+        "$value": "{space.5}",
+        "$type": "dimension"
+      },
+      "width-sm": {
+        "$value": "{size.container.sm}",
+        "$type": "dimension",
+        "$description": "480 확인·프롬프트"
+      },
+      "width-md": {
+        "$value": "640px",
+        "$type": "dimension"
+      },
+      "width-lg": {
+        "$value": "{size.container.lg}",
+        "$type": "dimension",
+        "$description": "960 WideModal(메모 편집)"
+      },
+      "footer-gap": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "section-gap": {
+        "$value": "{space.6}",
+        "$type": "dimension"
+      },
+      "enter-duration": {
+        "$value": "{motion.duration.slow}",
+        "$type": "duration"
+      }
     },
-
     "bento": {
       "$description": "대시보드 벤토 박스(글래스)",
-      "bg": { "$value": "{glass.bg-floating}", "$type": "color" },
-      "blur": { "$value": "{glass.blur-strong}", "$type": "dimension" },
-      "radius": { "$value": "{radius.xl}", "$type": "dimension" },
-      "padding": { "$value": "{space.6}", "$type": "dimension" },
-      "gap": { "$value": "{space.6}", "$type": "dimension" },
-      "title-typography": { "$value": "{typography.title}", "$type": "typography" },
-      "min-height": { "$value": "240px", "$type": "dimension" }
+      "bg": {
+        "$value": "{glass.bg-floating}",
+        "$type": "color"
+      },
+      "blur": {
+        "$value": "{glass.blur-strong}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xl}",
+        "$type": "dimension"
+      },
+      "padding": {
+        "$value": "{space.6}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.6}",
+        "$type": "dimension"
+      },
+      "title-typography": {
+        "$value": "{typography.title}",
+        "$type": "typography"
+      },
+      "min-height": {
+        "$value": "240px",
+        "$type": "dimension"
+      }
     },
-
     "tooltip": {
-      "bg": { "$value": "{color.surface.inverse}", "$type": "color" }, "text": { "$value": "{color.text.inverse}", "$type": "color" },
-      "radius": { "$value": "{radius.sm}", "$type": "dimension" }, "padding-y": { "$value": "{space.1-5}", "$type": "dimension" }, "padding-x": { "$value": "{space.2}", "$type": "dimension" },
-      "max-width": { "$value": "240px", "$type": "dimension" }, "typography": { "$value": "{typography.caption}", "$type": "typography" }
+      "bg": {
+        "$value": "{color.surface.inverse}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.inverse}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.sm}",
+        "$type": "dimension"
+      },
+      "padding-y": {
+        "$value": "{space.1-5}",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "max-width": {
+        "$value": "240px",
+        "$type": "dimension"
+      },
+      "typography": {
+        "$value": "{typography.caption}",
+        "$type": "typography"
+      }
     },
     "toast": {
-      "bg": { "$value": "{color.surface.inverse}", "$type": "color" }, "text": { "$value": "{color.text.inverse}", "$type": "color" },
-      "radius": { "$value": "{radius.lg}", "$type": "dimension" }, "shadow": { "$value": "{shadow.ambient}", "$type": "shadow" },
-      "padding": { "$value": "{space.4}", "$type": "dimension" }, "width": { "$value": "360px", "$type": "dimension" }
+      "bg": {
+        "$value": "{color.surface.inverse}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.inverse}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.lg}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{shadow.ambient}",
+        "$type": "shadow"
+      },
+      "padding": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "width": {
+        "$value": "360px",
+        "$type": "dimension"
+      }
     },
     "dropdown": {
-      "bg": { "$value": "{color.surface.raised}", "$type": "color" }, "radius": { "$value": "{radius.lg}", "$type": "dimension" }, "shadow": { "$value": "{shadow.ambient}", "$type": "shadow" },
-      "padding": { "$value": "{space.2}", "$type": "dimension" }, "item-height": { "$value": "{size.control.sm}", "$type": "dimension" }, "item-padding-x": { "$value": "{space.3}", "$type": "dimension" },
-      "item-radius": { "$value": "{radius.sm}", "$type": "dimension" }, "min-width": { "$value": "180px", "$type": "dimension" }, "max-height": { "$value": "320px", "$type": "dimension" }
+      "bg": {
+        "$value": "{color.surface.raised}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.lg}",
+        "$type": "dimension"
+      },
+      "shadow": {
+        "$value": "{shadow.ambient}",
+        "$type": "shadow"
+      },
+      "padding": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "item-height": {
+        "$value": "{size.control.sm}",
+        "$type": "dimension"
+      },
+      "item-padding-x": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "item-radius": {
+        "$value": "{radius.sm}",
+        "$type": "dimension"
+      },
+      "min-width": {
+        "$value": "180px",
+        "$type": "dimension"
+      },
+      "max-height": {
+        "$value": "320px",
+        "$type": "dimension"
+      }
     },
     "checkbox": {
-      "size": { "$value": "{size.icon.md}", "$type": "dimension" }, "radius": { "$value": "{radius.xs}", "$type": "dimension" },
-      "border": { "$value": "{color.border.input-strict}", "$type": "color" }, "bg-checked": { "$value": "{color.action.primary.bg}", "$type": "color" }, "check-color": { "$value": "{color.action.primary.text}", "$type": "color" },
-      "label-gap": { "$value": "{space.2}", "$type": "dimension" },
-      "todo-done-text": { "$value": "{color.text.tertiary}", "$type": "color", "$description": "대시보드 할일 완료: 취소선 + tertiary" }
+      "size": {
+        "$value": "{size.icon.md}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.xs}",
+        "$type": "dimension"
+      },
+      "border": {
+        "$value": "{color.border.input-strict}",
+        "$type": "color"
+      },
+      "bg-checked": {
+        "$value": "{color.action.primary.bg}",
+        "$type": "color"
+      },
+      "check-color": {
+        "$value": "{color.action.primary.text}",
+        "$type": "color"
+      },
+      "label-gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "todo-done-text": {
+        "$value": "{color.text.tertiary}",
+        "$type": "color",
+        "$description": "대시보드 할일 완료: 취소선 + tertiary"
+      }
     },
     "skeleton": {
-      "bg": { "$value": "{color.surface.zone-deep}", "$type": "color" }, "radius": { "$value": "{radius.md}", "$type": "dimension" }, "text-height": { "$value": "0.75em", "$type": "dimension" }
+      "bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "radius": {
+        "$value": "{radius.md}",
+        "$type": "dimension"
+      },
+      "text-height": {
+        "$value": "0.75em",
+        "$type": "dimension"
+      }
     },
     "avatar": {
-      "radius": { "$value": "{radius.full}", "$type": "dimension" }, "fallback-bg": { "$value": "{color.surface.blush}", "$type": "color" }, "fallback-text": { "$value": "{color.text.on-pink}", "$type": "color" }
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "fallback-bg": {
+        "$value": "{color.surface.blush}",
+        "$type": "color"
+      },
+      "fallback-text": {
+        "$value": "{color.text.on-pink}",
+        "$type": "color"
+      }
+    },
+    "tabs": {
+      "$description": "밑줄 탭(마이페이지·설정). 인디케이터 indigo = 클릭 가능",
+      "height": {
+        "$value": "{size.control.md}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.6}",
+        "$type": "dimension"
+      },
+      "indicator-height": {
+        "$value": "{border-width.focus}",
+        "$type": "dimension"
+      },
+      "indicator-color": {
+        "$value": "{color.border.interactive}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.secondary}",
+        "$type": "color"
+      },
+      "text-active": {
+        "$value": "{color.text.primary}",
+        "$type": "color"
+      },
+      "typography": {
+        "$value": "{typography.label-md}",
+        "$type": "typography"
+      },
+      "vertical-width": {
+        "$value": "200px",
+        "$type": "dimension"
+      }
+    },
+    "segmented": {
+      "$description": "뷰 전환·정렬. 필 트랙",
+      "track-bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "track-radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "track-padding": {
+        "$value": "3px",
+        "$type": "dimension"
+      },
+      "item-height": {
+        "$value": "{size.control.xs}",
+        "$type": "dimension"
+      },
+      "item-padding-x": {
+        "$value": "{space.3}",
+        "$type": "dimension"
+      },
+      "item-radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "item-typography": {
+        "$value": "{typography.label}",
+        "$type": "typography"
+      },
+      "item-text": {
+        "$value": "{color.text.secondary}",
+        "$type": "color"
+      },
+      "active-bg": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "active-text": {
+        "$value": "{color.text.primary}",
+        "$type": "color"
+      },
+      "active-shadow": {
+        "$value": "{shadow.soft}",
+        "$type": "shadow"
+      }
+    },
+    "tag-input": {
+      "$description": "태그 입력 칩(에디터·모달)",
+      "chip-height": {
+        "$value": "{size.control.xs}",
+        "$type": "dimension"
+      },
+      "chip-padding-x": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "remove-icon": {
+        "$value": "{size.icon.sm}",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "{space.2}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.chip.tag-bg}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.chip.tag-text}",
+        "$type": "color"
+      }
+    },
+    "table": {
+      "$description": "드문 표. 선 없이 zebra",
+      "header-height": {
+        "$value": "40px",
+        "$type": "dimension"
+      },
+      "header-typography": {
+        "$value": "{typography.label}",
+        "$type": "typography"
+      },
+      "header-text": {
+        "$value": "{color.text.tertiary}",
+        "$type": "color"
+      },
+      "header-bg": {
+        "$value": "{color.surface.zone}",
+        "$type": "color"
+      },
+      "row-height": {
+        "$value": "48px",
+        "$type": "dimension"
+      },
+      "row-typography": {
+        "$value": "{typography.body-sm}",
+        "$type": "typography"
+      },
+      "zebra-bg": {
+        "$value": "{color.surface.zone}",
+        "$type": "color"
+      },
+      "row-hover": {
+        "$value": "{color.interactive.row-hover}",
+        "$type": "color"
+      },
+      "cell-padding-x": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      }
+    },
+    "breadcrumb": {
+      "typography": {
+        "$value": "{typography.body-sm}",
+        "$type": "typography"
+      },
+      "separator-icon": {
+        "$value": "{size.icon.sm}",
+        "$type": "dimension"
+      },
+      "separator-color": {
+        "$value": "{color.text.tertiary}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.secondary}",
+        "$type": "color"
+      },
+      "current-text": {
+        "$value": "{color.text.primary}",
+        "$type": "color"
+      },
+      "gap": {
+        "$value": "{space.1-5}",
+        "$type": "dimension"
+      }
+    },
+    "load-more": {
+      "$description": "페이지네이션 대신",
+      "page-size": {
+        "$value": 20,
+        "$type": "number"
+      },
+      "button-variant": {
+        "$value": "secondary",
+        "$type": "string"
+      },
+      "margin-top": {
+        "$value": "{space.8}",
+        "$type": "dimension"
+      }
+    },
+    "settings-row": {
+      "min-height": {
+        "$value": "56px",
+        "$type": "dimension"
+      },
+      "label-typography": {
+        "$value": "{typography.label-md}",
+        "$type": "typography"
+      },
+      "desc-typography": {
+        "$value": "{typography.caption}",
+        "$type": "typography"
+      },
+      "gap": {
+        "$value": "{space.4}",
+        "$type": "dimension"
+      },
+      "section-gap": {
+        "$value": "{space.8}",
+        "$type": "dimension",
+        "$description": "섹션 사이 32, 선 없음"
+      }
+    },
+    "share-bar": {
+      "$description": "/share 상단 바",
+      "height": {
+        "$value": "{size.layout.header}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.default}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.tertiary}",
+        "$type": "color"
+      },
+      "typography": {
+        "$value": "{typography.caption}",
+        "$type": "typography"
+      }
+    },
+    "count-badge": {
+      "height": {
+        "$value": "20px",
+        "$type": "dimension"
+      },
+      "padding-x": {
+        "$value": "{space.1-5}",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "{radius.full}",
+        "$type": "dimension"
+      },
+      "bg": {
+        "$value": "{color.surface.zone-deep}",
+        "$type": "color"
+      },
+      "text": {
+        "$value": "{color.text.secondary}",
+        "$type": "color"
+      },
+      "typography": {
+        "$value": "{typography.caption}",
+        "$type": "typography"
+      },
+      "new-bg": {
+        "$value": "{color.action.primary.bg}",
+        "$type": "color"
+      },
+      "new-text": {
+        "$value": "{color.action.primary.text}",
+        "$type": "color"
+      }
+    },
+    "activity-grid": {
+      "$description": "잔디 히트맵",
+      "cell": {
+        "$value": "12px",
+        "$type": "dimension"
+      },
+      "gap": {
+        "$value": "3px",
+        "$type": "dimension"
+      },
+      "radius": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
+      "today-ring": {
+        "$value": "{color.border.interactive}",
+        "$type": "color"
+      },
+      "future-bg": {
+        "$value": "{color.surface.zone}",
+        "$type": "color"
+      }
     }
   }
 }

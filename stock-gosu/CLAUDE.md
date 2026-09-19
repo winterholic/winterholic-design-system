@@ -3,7 +3,7 @@
 `C:\stock-gosu\front` 의 UI 를 만들거나 고칠 때 따른다. 구조는 `winterholic-base/CLAUDE.md` 와 같고, 아래는 금융 화면 전용 규칙이다.
 
 ## 시작할 때
-1. `docs/00-decision-guide.md` §1(등락)부터 본다.
+1. `docs/00-decision-guide.md` §1(등락)부터 본다. 상황이 애매하면 `docs/16-situations.md`.
 2. 화면 유형은 `docs/12-page-patterns.md`, 컴포넌트는 `docs/06-components.md`.
 3. 기존 `global.css` 클래스를 고칠 때는 `docs/15-audit-and-migration.md` 의 대응표로 토큰을 고른다.
 

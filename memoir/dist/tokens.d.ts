@@ -839,6 +839,91 @@ export declare const tokens: {
       "fallback-bg": { var: string; value: string; dark?: unknown };
       "fallback-text": { var: string; value: string; dark?: unknown };
     };
+    tabs: {
+      height: { var: string; value: string; dark?: unknown };
+      gap: { var: string; value: string; dark?: unknown };
+      "indicator-height": { var: string; value: string; dark?: unknown };
+      "indicator-color": { var: string; value: string; dark?: unknown };
+      text: { var: string; value: string; dark?: unknown };
+      "text-active": { var: string; value: string; dark?: unknown };
+      typography: { var: string; value: unknown; dark?: unknown };
+      "vertical-width": { var: string; value: string; dark?: unknown };
+    };
+    segmented: {
+      "track-bg": { var: string; value: string; dark?: unknown };
+      "track-radius": { var: string; value: string; dark?: unknown };
+      "track-padding": { var: string; value: string; dark?: unknown };
+      "item-height": { var: string; value: string; dark?: unknown };
+      "item-padding-x": { var: string; value: string; dark?: unknown };
+      "item-radius": { var: string; value: string; dark?: unknown };
+      "item-typography": { var: string; value: unknown; dark?: unknown };
+      "item-text": { var: string; value: string; dark?: unknown };
+      "active-bg": { var: string; value: string; dark?: unknown };
+      "active-text": { var: string; value: string; dark?: unknown };
+      "active-shadow": { var: string; value: unknown; dark?: unknown };
+    };
+    "tag-input": {
+      "chip-height": { var: string; value: string; dark?: unknown };
+      "chip-padding-x": { var: string; value: string; dark?: unknown };
+      "remove-icon": { var: string; value: string; dark?: unknown };
+      gap: { var: string; value: string; dark?: unknown };
+      bg: { var: string; value: string; dark?: unknown };
+      text: { var: string; value: string; dark?: unknown };
+    };
+    table: {
+      "header-height": { var: string; value: string; dark?: unknown };
+      "header-typography": { var: string; value: unknown; dark?: unknown };
+      "header-text": { var: string; value: string; dark?: unknown };
+      "header-bg": { var: string; value: string; dark?: unknown };
+      "row-height": { var: string; value: string; dark?: unknown };
+      "row-typography": { var: string; value: unknown; dark?: unknown };
+      "zebra-bg": { var: string; value: string; dark?: unknown };
+      "row-hover": { var: string; value: string; dark?: unknown };
+      "cell-padding-x": { var: string; value: string; dark?: unknown };
+    };
+    breadcrumb: {
+      typography: { var: string; value: unknown; dark?: unknown };
+      "separator-icon": { var: string; value: string; dark?: unknown };
+      "separator-color": { var: string; value: string; dark?: unknown };
+      text: { var: string; value: string; dark?: unknown };
+      "current-text": { var: string; value: string; dark?: unknown };
+      gap: { var: string; value: string; dark?: unknown };
+    };
+    "load-more": {
+      "page-size": { var: string; value: number; dark?: unknown };
+      "button-variant": { var: string; value: string; dark?: unknown };
+      "margin-top": { var: string; value: string; dark?: unknown };
+    };
+    "settings-row": {
+      "min-height": { var: string; value: string; dark?: unknown };
+      "label-typography": { var: string; value: unknown; dark?: unknown };
+      "desc-typography": { var: string; value: unknown; dark?: unknown };
+      gap: { var: string; value: string; dark?: unknown };
+      "section-gap": { var: string; value: string; dark?: unknown };
+    };
+    "share-bar": {
+      height: { var: string; value: string; dark?: unknown };
+      bg: { var: string; value: string; dark?: unknown };
+      text: { var: string; value: string; dark?: unknown };
+      typography: { var: string; value: unknown; dark?: unknown };
+    };
+    "count-badge": {
+      height: { var: string; value: string; dark?: unknown };
+      "padding-x": { var: string; value: string; dark?: unknown };
+      radius: { var: string; value: string; dark?: unknown };
+      bg: { var: string; value: string; dark?: unknown };
+      text: { var: string; value: string; dark?: unknown };
+      typography: { var: string; value: unknown; dark?: unknown };
+      "new-bg": { var: string; value: string; dark?: unknown };
+      "new-text": { var: string; value: string; dark?: unknown };
+    };
+    "activity-grid": {
+      cell: { var: string; value: string; dark?: unknown };
+      gap: { var: string; value: string; dark?: unknown };
+      radius: { var: string; value: string; dark?: unknown };
+      "today-ring": { var: string; value: string; dark?: unknown };
+      "future-bg": { var: string; value: string; dark?: unknown };
+    };
   };
 };
 export default tokens;

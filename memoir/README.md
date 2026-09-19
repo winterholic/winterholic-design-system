@@ -1,7 +1,7 @@
 # memoir design system
 
 `C:\mydevelop\memoir\memoir-frontend`(Next.js 14 + Tailwind) 개인 메모·보안 관리 서비스의 디자인 시스템. 기획서 §5, `design-guide.md`(Digital Editorial), `tailwind.config.ts` 세 곳에 흩어진 규칙을 winterholic-base 구조로 합치고, 어긋난 것(핑크 버튼 대비·테두리·그림자·순백 캔버스)을 바로잡고, 없던 것(다크·컴포넌트 규격·카테고리별 카드·보안 상태)을 채웠다.
-**막히면 [`docs/00-decision-guide.md`](docs/00-decision-guide.md)**, 기존과 뭐가 다른지는 [`docs/15-audit-and-migration.md`](docs/15-audit-and-migration.md).
+**막히면 [`docs/00-decision-guide.md`](docs/00-decision-guide.md)(토큰) → [`docs/16-situations.md`](docs/16-situations.md)(상황)**, 기존과 뭐가 다른지는 [`docs/15-audit-and-migration.md`](docs/15-audit-and-migration.md).
 
 ## 한눈에
 | | |
@@ -45,7 +45,7 @@ export default { presets: [preset], content: [...] };
 | [03 간격·레이아웃](docs/03-spacing-layout.md) | 여백이 구조, 헤더 의존 셸, 카테고리별 골격, 벤토 |
 | [04 모양·깊이](docs/04-shape-elevation.md) | radius, 테두리 예외, 그림자 4단계, 글래스, 블롭 |
 | [05 모션](docs/05-motion.md) | slide·fade·shake·lock |
-| [06 컴포넌트](docs/06-components.md) | 버튼·FAB·인풋·검색·PIN·칩·카드·카테고리별 본문·헤더·드롭다운·캘린더·벤토·모달·에디터 |
+| [06 컴포넌트](docs/06-components.md) | 24절 — 버튼·FAB·인풋·검색·PIN·칩·카드·카테고리별 본문·헤더·드롭다운·캘린더·벤토·메뉴·모달·토스트·체크·에디터·탭·표·진행·브레드크럼·공유 바 + 조립 규칙 |
 | [07 상태·피드백](docs/07-states-feedback.md) | 잠김·인증 만료·저장 상태·빈 상태 문구·보이스 |
 | [08 접근성](docs/08-accessibility.md) | No-Line 함정, 글래스, 핑크 위 글자, 시맨틱 |
 | [09 다크모드](docs/09-dark-mode.md) | 따뜻한 다크 매핑 |
@@ -55,6 +55,7 @@ export default { presets: [preset], content: [...] };
 | [13 운영](docs/13-governance.md) | 변경 절차, 채택 기준, 결정 기록 |
 | [14 브랜드 자산](docs/14-brand-assets.md) | 로고 규격(세리프 워드마크 교체), 마스코트, OG |
 | [15 점검·이관](docs/15-audit-and-migration.md) | 기존 가이드 점검 24항목, 5단계 이관, 클래스 대응표 |
+| [16 상황 사전](docs/16-situations.md) | "이럴 땐 이렇게" — 면·색·글자·레이아웃·조합·상태·다크·폼·보안·성능 10축 120여 상황 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트 규칙 |
 
 ## 토큰 수정

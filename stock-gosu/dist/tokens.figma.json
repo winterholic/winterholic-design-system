@@ -2672,9 +2672,9 @@
             "$type": "dimension"
           },
           "padding-x": {
-            "$value": "18px",
+            "$value": "{space.4}",
             "$type": "dimension",
-            "$description": "기존 .btn 패딩 18. 4 그리드 밖이지만 44 높이와 비례가 맞아 유지"
+            "$description": "16. 기존 18 을 4 그리드로 통일(13 §7)"
           },
           "icon": {
             "$value": "{size.icon.md}",
@@ -3619,6 +3619,200 @@
         },
         "margin-bottom": {
           "$value": "{space.6}",
+          "$type": "dimension"
+        }
+      },
+      "stepper": {
+        "$description": "수량 스텝퍼 [−][인풋][+]",
+        "height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "button-width": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "input-width": {
+          "$value": "80px",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "border": {
+          "$value": "{color.border.strong}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.price-sm}",
+          "$type": "typography"
+        }
+      },
+      "accordion": {
+        "$description": "재무 상세·FAQ",
+        "header-height": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension",
+          "$description": "48"
+        },
+        "header-typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        },
+        "body-padding": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "icon": {
+          "$value": "{size.icon.sm}",
+          "$type": "dimension"
+        },
+        "divider": {
+          "$value": "{color.border.subtle}",
+          "$type": "color"
+        }
+      },
+      "pagination": {
+        "$description": "표 하단 페이지네이션",
+        "item-size": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension",
+          "$description": "36"
+        },
+        "gap": {
+          "$value": "{space.1}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "active-bg": {
+          "$value": "{color.interactive.selected-bg}",
+          "$type": "color"
+        },
+        "active-text": {
+          "$value": "{color.interactive.selected-text}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.label-sm}",
+          "$type": "typography"
+        }
+      },
+      "breadcrumb": {
+        "typography": {
+          "$value": "{typography.body-3}",
+          "$type": "typography"
+        },
+        "separator-icon": {
+          "$value": "{size.icon.sm}",
+          "$type": "dimension"
+        },
+        "separator-color": {
+          "$value": "{color.text.tertiary}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.secondary}",
+          "$type": "color"
+        },
+        "current-text": {
+          "$value": "{color.text.primary}",
+          "$type": "color"
+        },
+        "gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "margin-bottom": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        }
+      },
+      "notification-item": {
+        "$description": "알림 센터 항목",
+        "height": {
+          "$value": "68px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "icon-circle": {
+          "$value": "32px",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "unread-bg": {
+          "$value": "{color.interactive.selected-bg}",
+          "$type": "color"
+        },
+        "title-typography": {
+          "$value": "{typography.title-4}",
+          "$type": "typography"
+        },
+        "body-typography": {
+          "$value": "{typography.body-3}",
+          "$type": "typography"
+        },
+        "time-typography": {
+          "$value": "{typography.micro}",
+          "$type": "typography"
+        }
+      },
+      "settings-row": {
+        "$description": "설정 화면 한 행",
+        "min-height": {
+          "$value": "56px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "label-typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        },
+        "desc-typography": {
+          "$value": "{typography.caption}",
+          "$type": "typography"
+        },
+        "divider": {
+          "$value": "{color.border.subtle}",
+          "$type": "color"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        }
+      },
+      "filter-bar": {
+        "$description": "목록 툴바",
+        "padding-y": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "control-height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "search-width": {
+          "$value": "280px",
           "$type": "dimension"
         }
       }

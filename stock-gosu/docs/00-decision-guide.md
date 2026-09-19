@@ -81,6 +81,12 @@
 | 화면 좌우 여백 | `size.layout.page-gutter{,-md,-lg}` | 20 / 24 / 32 | 03 |
 | 콘텐츠 최대폭 | `size.container.xl` | 1180 | 03 |
 | 버튼·인풋 높이 | `size.control.md` | 44 | 06 |
+| 버튼 md 좌우 패딩 | `component.button.md.padding-x` | 16 | 06 |
+| 스텝퍼 | `component.stepper.*` | 44, 인풋 80 | 06 |
+| 아코디언 헤더 | `component.accordion.header-height` | 48 | 06 |
+| 페이지네이션 항목 | `component.pagination.item-size` | 36 | 06 |
+| 알림 항목 | `component.notification-item.height` | 68 | 12 |
+| 설정 행 | `component.settings-row.min-height` | 56 | 12 |
 | 툴바·세그먼트 항목 | `size.control.sm` | 36 | 06 |
 | 하단 고정 CTA | `size.control.lg` | 52 | 06 |
 | 종목 행 높이 | `component.stock-row.height` / `-compact` / `-mobile` | 68 / 52 / 78 | 06 |
@@ -125,6 +131,7 @@
 `sticky-panel` 20(검색 결과·분석 패널) · `dropdown` 1000 · `sticky` 1100(상단 탐색·하단 탭바) · `overlay` 1200 · `sheet` 1250 · `modal` 1300 · `popover` 1400 · `toast` 1500 · `tooltip` 1600
 
 ## 8. 이 표에 없으면
+0. **상황이 문제면 `docs/16-situations.md`** — "종목명이 길다", "툴바가 넘친다", "등락색을 상태에 쓰고 싶다" 같은 A~H 상황 사전.
 1. 가장 비슷한 행의 토큰을 쓴다. 새 값을 만들지 않는다.
 2. 정말 없으면 `docs/13-governance.md` 절차로 추가하고 여기 행을 넣는다.
 3. 급하면 `/* TODO(ds): 이유 */` 를 남긴다.

@@ -3,7 +3,7 @@
 `C:\mydevelop\memoir\memoir-frontend` 의 UI 를 만들거나 고칠 때 따른다. 구조는 `winterholic-base/CLAUDE.md` 와 같고, 아래는 memoir 전용이다. 프로젝트 `CLAUDE.md`(frontend-design 스킬 사용 등)와 함께 적용한다.
 
 ## 시작할 때
-1. `docs/00-decision-guide.md` §1(면과 구획)부터.
+1. `docs/00-decision-guide.md` §1(면과 구획)부터. 상황이 애매하면 `docs/16-situations.md`.
 2. 화면은 `docs/12-page-patterns.md` 의 카테고리 골격에서, 컴포넌트는 `docs/06-components.md`.
 3. 기존 코드를 고칠 때는 `docs/15-audit-and-migration.md` 대응표.
 

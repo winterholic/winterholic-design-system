@@ -1,6 +1,6 @@
 {
   "name": "stock-gosu-design-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "stock-gosu 투자 대시보드 디자인 시스템 — DTCG 토큰, CSS 변수, recharts 테마, 레거시 별칭, 문서",
   "type": "module",
   "private": true,
