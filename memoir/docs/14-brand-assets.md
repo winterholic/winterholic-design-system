@@ -1,35 +1,51 @@
 # 14 · 브랜드 자산 (memoir)
 
 ## 1. 컨셉
-**Empathic Archivist**(design-guide): 디지털 기억을 고급 문구처럼 다룬다. 크림 종이, 따뜻한 검정 잉크, 핑크 꽃잎(로고 심볼). 차갑고 기능적인 노트 앱이 아니라 개인의 서랍.
 
-## 2. 파일
-| 파일 | 출처 | 용도 |
-|---|---|---|
-| `assets/brand/icon.svg` | `app/icon.svg` | 파비콘·앱 아이콘. 핑크 꽃잎(클로버) 심볼, 그라데이션 `#FFC1D1 → #FF82A9 → #F45E93` |
-| `assets/brand/apple-icon.png` | `app/apple-icon.png` | iOS 홈 아이콘 |
-| `assets/brand/favicon.ico` | `app/favicon.ico` | 레거시 파비콘 |
-| `assets/brand/mascot.png` | `public/mascot.png` | 마스코트. 빈 상태·온보딩·404·랜딩 |
+**Empathic Archivist**. 디지털 기억을 고급 문구처럼 다룬다. 크림 종이, 따뜻한 잉크, 핑크 꽃잎과 기록을 안은 마스코트가 한 체계다.
 
-로고 컴포넌트는 `components/ui/MemoirLogo.tsx`(인라인 SVG: 꽃잎 심볼 + 워드마크). **보완 필요**(15 §2 #9): 워드마크가 Georgia 세리프 + 핑크 그라데이션이라 design-guide(Jakarta, 로즈 마크)와 어긋난다. 이 시스템의 정본은 아래 §3.
+## 2. 파일 지도
 
-## 3. 로고 규격
-- **심볼**: 핑크 꽃잎(icon.svg). 단색 버전은 `brand.rose` 또는 `brand.ink`. 그라데이션 심볼은 파비콘·앱 아이콘·랜딩 히어로에만.
-- **워드마크**: `memoir` 소문자, Plus Jakarta Sans 800, 24px 기준, 자간 -0.03em. `m` 만 `text.brand`(로즈), 나머지 `text.primary`. 그라데이션 텍스트 금지(design-guide "무거운 그라데이션 금지", 대비 검증 불가).
-- **로크업**: 심볼 24 + 8px + 워드마크. 헤더는 이 형태. 모바일은 심볼만 허용.
-- **최소 크기**: 심볼 16(파비콘), 로크업 높이 20.
-- **여백**: 심볼 높이의 1/2.
-- **배경**: 라이트 캔버스·크림 위 정본. 로즈 면 위에서는 흰 단색. 다크에서는 `m` pink.300 + 나머지 paper.
-- **금지**: 세리프 워드마크, 그림자, 회전, 다른 핑크.
+| 파일 | 용도 |
+|---|---|
+| `assets/brand/logo-mark.svg` | 기본 컬러 꽃잎 심볼 |
+| `assets/brand/logo-mark.png` | 앱 아이콘에서 파생한 투명 래스터 심볼 |
+| `assets/brand/logo-mark-mono.svg` | 로즈·잉크·흰색 단색 출력과 마스크 |
+| `assets/brand/logo-lockup.svg` | 밝은 면의 Jakarta 워드마크 로고 |
+| `assets/brand/logo-lockup-inverse.svg` | 로즈·어두운 면의 반전 로고 |
+| `assets/brand/favicon.svg` | 필터 없는 브라우저 기본 파비콘 |
+| `assets/brand/favicon-{16,32,48}.png` | 브라우저·검색 결과·레거시 메타데이터 |
+| `assets/brand/favicon.ico` | 16~256 멀티사이즈 ICO |
+| `assets/brand/app-icon-512.png` | PWA·앱 아이콘 |
+| `assets/brand/mascot.png` | 빈 상태·온보딩·404용 캐릭터 원본 |
+| `assets/brand/brand-hero.png` | 랜딩·저장소·소셜용 1600×900 브랜드 이미지 |
+| `assets/brand/brand-hero.webp` | 웹 미리보기용 경량 브랜드 이미지 |
+
+기존 `icon.svg`, `apple-icon.png` 경로도 호환을 위해 유지한다.
+
+## 3. 로고 규칙
+
+- 심볼은 핑크 꽃잎, 워드마크는 `memoir` 소문자다.
+- 워드마크는 Plus Jakarta Sans 800, 자간 -0.03em. `m`은 rose, `emoir`는 ink다.
+- 그라데이션은 심볼에만 쓴다. 워드마크 그라데이션과 Georgia 세리프는 쓰지 않는다.
+- 최소 높이: 심볼 16px, 로크업 20px. 안전 여백은 심볼 높이의 절반이다.
+- 라이트·크림 면은 `logo-lockup.svg`, 로즈·어두운 면은 `logo-lockup-inverse.svg`.
+- 단색 출력과 CSS 마스크는 `logo-mark-mono.svg`에 `color`를 지정한다.
 
 ```html
-<a class="mm-logo" aria-label="memoir 나의 공간으로"><img src="icon.svg" width="24" height="24" alt="" /><span class="mm-logo-mark">m</span>emoir</a>
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/brand/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/brand/app-icon-512.png" />
 ```
 
-## 4. 마스코트 사용
-크기 120(빈 상태)·160(404)·200(랜딩). 흰 배경 PNG 라 크림·다크 위에서는 `surface.default` 원형 카드(radius full) 안에. 문구와 나란히 두고 말풍선은 만들지 않는다. 앱 헤더·카드·버튼에는 안 쓴다.
+## 4. 마스코트
 
-## 5. OG · 앱 아이콘
-- OG 1200×630: 캔버스 cream + 블롭 옅게, 심볼 120 + 워드마크(로즈 m), 하단 caption "개인 메모 & 보안 관리".
-- 앱 아이콘: icon.svg 그대로(마스크 없이 여백 12%).
-- 스플래시(PWA): cream 배경 + 심볼 96.
+빈 상태 120px, 404 160px, 온보딩·랜딩 200~320px를 권장한다. 원본에 밝은 배경이 포함되어 있으므로 크림·다크 면에서는 `surface.default` 원형 카드 안에 둔다. 앱 헤더·버튼·일반 카드 장식으로 반복하지 않는다.
+
+## 5. 브랜드 이미지
+
+`brand-hero`는 왼쪽에 제목·설명을 놓는 종이 여백, 오른쪽에 원형 카드 속 마스코트를 둔다. paper·blush·periwinkle만 쓰고 별도 테두리나 유리 효과를 얹지 않는다. 16:9 또는 1.91:1 크롭에서 캐릭터가 잘리지 않게 오른쪽 40%를 보존한다.
+
+## 6. 생성 원본
+
+파생 방법과 원본 관계는 `assets/brand/README.md`에 기록한다. `python scripts/build-brand-assets.py`를 다시 실행하면 PNG·WebP·ICO·SVG를 같은 규격으로 재생성한다.

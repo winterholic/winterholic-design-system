@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>stock-gosu design system preview</title>
 <script>try{const t=localStorage.getItem('sg-theme');if(t)document.documentElement.dataset.theme=t;const m=localStorage.getItem('sg-market');if(m)document.documentElement.dataset.market=m;}catch{}</script>
+<link rel="icon" href="../assets/brand/favicon.svg?v=1.2.0" type="image/svg+xml" />
+<link rel="icon" href="../assets/brand/favicon-32.png?v=1.2.0" sizes="32x32" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 <link rel="stylesheet" href="../dist/tokens.css" />
 <link rel="stylesheet" href="../dist/typography.css" />
@@ -17,8 +19,15 @@
   @media (min-width: 1024px) { .page { padding-inline: var(--sg-size-layout-page-gutter-lg); } }
 
   header.top { position: sticky; top: 0; z-index: var(--sg-z-index-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--sg-space-4); height: var(--sg-size-layout-header-lg); padding-inline: var(--sg-size-layout-page-gutter-lg); background: color-mix(in srgb, var(--sg-color-surface-default) 90%, transparent); backdrop-filter: blur(var(--sg-blur-md)); border-bottom: 1px solid var(--sg-color-border-default); }
-  .logo { display: flex; align-items: center; gap: var(--sg-space-2); font-weight: var(--sg-font-weight-bold); letter-spacing: var(--sg-font-letter-spacing-tight); font-size: var(--sg-font-size-xl); color: var(--sg-color-text-primary); }
-  .logo img { width: 28px; height: 28px; border-radius: var(--sg-radius-full); object-fit: cover; }
+  .logo { display: flex; align-items: center; color: var(--sg-color-text-primary); }
+  .logo img { display: block; width: auto; height: var(--sg-size-icon-xl); }
+  .logo .logo--inverse { display: none; }
+  :root[data-theme="dark"] .logo .logo--default { display: none; }
+  :root[data-theme="dark"] .logo .logo--inverse { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .logo .logo--default { display: none; }
+    :root:not([data-theme="light"]) .logo .logo--inverse { display: block; }
+  }
   nav.toc { display: flex; gap: var(--sg-space-4); flex-wrap: wrap; }
   nav.toc a { color: var(--sg-color-text-secondary); text-decoration: none; }
   nav.toc a:hover { color: var(--sg-color-text-primary); }
@@ -36,8 +45,8 @@
   .seg.tall button { height: var(--sg-component-segmented-item-height); }
   .seg button[aria-selected="true"] { background: var(--sg-component-segmented-active-bg); color: var(--sg-component-segmented-active-text); box-shadow: var(--sg-component-segmented-active-shadow); }
 
-  .hero { background: var(--sg-gradient-brand); color: var(--sg-color-text-on-brand); border-radius: var(--sg-radius-3xl); padding: var(--sg-space-12) var(--sg-space-8); display: flex; gap: var(--sg-space-8); align-items: center; }
-  .hero img { width: 96px; height: 96px; border-radius: var(--sg-radius-full); object-fit: cover; border: 3px solid var(--sg-color-border-inverse); flex: none; }
+  .hero { min-height: calc(var(--sg-space-24) * 4); background: url('../assets/brand/brand-hero.webp') 65% center / cover no-repeat; color: var(--sg-base-white); border-radius: var(--sg-radius-3xl); padding: var(--sg-space-12) var(--sg-space-8); display: flex; align-items: center; }
+  .hero > div { max-width: 52ch; }
   .hero p { margin: var(--sg-space-2) 0 0; opacity: .9; }
 
   .ramp { display: grid; grid-template-columns: 80px repeat(11, 1fr); align-items: center; gap: var(--sg-space-1); margin-bottom: var(--sg-space-2); }
@@ -200,7 +209,7 @@
 </head>
 <body>
 <header class="top">
-  <span class="logo"><img src="../assets/brand/stock-gosu.png" alt="" /> stock-gosu</span>
+  <span class="logo"><img class="logo--default" src="../assets/brand/logo-lockup.svg?v=1.2.0" alt="stock-gosu" /><img class="logo--inverse" src="../assets/brand/logo-lockup-inverse.svg?v=1.2.0" alt="stock-gosu" /></span>
   <nav class="toc sg-label-sm"><a href="#fin">등락</a><a href="#color">색</a><a href="#type">글자</a><a href="#comp">컴포넌트</a><a href="#viz">차트</a><a href="#state">상태</a></nav>
   <div class="row">
     <div class="seg" role="tablist" aria-label="등락색"><button data-market="" aria-selected="true">한국식</button><button data-market="us" aria-selected="false">미국식</button></div>
@@ -210,9 +219,8 @@
 
 <main class="page">
   <div class="hero">
-    <img src="../assets/brand/stock-gosu.png" alt="stock-gosu 파랑새 로고" />
     <div>
-      <div class="sg-micro" style="opacity:.8">design tokens · v1.0.0</div>
+      <div class="sg-micro" style="opacity:.8">design tokens · v1.2.0</div>
       <h1 class="sg-display" style="margin: var(--sg-space-1) 0 0">stock-gosu</h1>
       <p class="sg-body-2">투자 대시보드 디자인 시스템. 위 토글로 다크와 미국식 등락색을 켜면 컴포넌트 코드 수정 없이 바뀐다.</p>
     </div>

@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>memoir design system preview</title>
 <script>try{const t=localStorage.getItem('mm-theme');if(t)document.documentElement.dataset.theme=t;}catch{}</script>
+<link rel="icon" href="../assets/brand/favicon.svg?v=1.2.0" type="image/svg+xml" />
+<link rel="icon" href="../assets/brand/favicon-32.png?v=1.2.0" sizes="32x32" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
@@ -15,6 +17,16 @@
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; }
   a { color: inherit; text-decoration: none; }
+  .brand-lockup { display: block; width: auto; height: var(--mm-component-header-logo-height); }
+  .brand-lockup--inverse { display: none; }
+  :root[data-theme="dark"] .brand-lockup--default { display: none; }
+  :root[data-theme="dark"] .brand-lockup--inverse { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .brand-lockup--default { display: none; }
+    :root:not([data-theme="light"]) .brand-lockup--inverse { display: block; }
+  }
+  .brand-hero { min-height: calc(var(--mm-space-24) * 4); display: flex; align-items: center; color: var(--mm-brand-ink); border-radius: var(--mm-radius-3xl); padding: var(--mm-space-12) var(--mm-space-8); background: url('../assets/brand/brand-hero.webp') 66% center / cover no-repeat; overflow: hidden; }
+  .brand-hero > div { max-width: var(--mm-size-container-prose); }
 
   /* 헤더 2단 */
   .hdr { position: sticky; top: 0; z-index: var(--mm-z-index-sticky); height: var(--mm-component-header-height); display: flex; align-items: center; gap: var(--mm-component-header-gap); padding-inline: var(--mm-component-header-padding-x); background: var(--mm-component-header-bg); }
@@ -196,7 +208,7 @@
 </head>
 <body>
 <header class="hdr glass">
-  <a class="mm-logo" href="#" aria-label="memoir"><img src="../assets/brand/icon.svg" width="24" height="24" alt="" style="vertical-align:-4px; margin-right: var(--mm-space-2)" /><span class="mm-logo-mark">m</span>emoir</a>
+  <a class="mm-logo" href="#" aria-label="memoir"><img class="brand-lockup brand-lockup--default" src="../assets/brand/logo-lockup.svg?v=1.2.0" alt="memoir" /><img class="brand-lockup brand-lockup--inverse" src="../assets/brand/logo-lockup-inverse.svg?v=1.2.0" alt="memoir" /></a>
   <span class="cat-trigger mm-label-lg">💻 코드 스니펫 <svg class="i i-sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
   <label class="search"><svg class="i i-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input placeholder="코드 검색" /><span class="mm-caption">⌘K</span></label>
   <div class="seg" role="tablist" aria-label="테마" style="margin-left:auto"><button data-theme="" aria-selected="true">시스템</button><button data-theme="light" aria-selected="false">라이트</button><button data-theme="dark" aria-selected="false">다크</button></div>
@@ -208,10 +220,12 @@
 </nav>
 
 <main class="page">
-  <div style="max-width: var(--mm-size-container-prose)">
-    <div class="mm-label" style="color: var(--mm-color-text-tertiary)">design tokens · v1.0.0</div>
-    <h1 class="mm-display-md" style="margin: var(--mm-space-3) 0 0">Your Digital<br /><span style="color: var(--mm-color-text-brand)">Archival Ledger</span>.</h1>
-    <p class="mm-body-lg" style="color: var(--mm-color-text-secondary); margin: var(--mm-space-4) 0 0">이 페이지의 모든 값은 토큰이다. 선 대신 면, 파랑은 클릭 가능, 핑크는 강조·로즈는 액션. 위 토글로 다크를 켜면 컴포넌트 코드 수정 없이 바뀐다.</p>
+  <div class="brand-hero">
+   <div>
+    <div class="mm-label" style="color: var(--mm-neutral-700)">design tokens · v1.2.0</div>
+    <h1 class="mm-display-md" style="margin: var(--mm-space-3) 0 0">Your Digital<br /><span style="color: var(--mm-brand-rose)">Archival Ledger</span>.</h1>
+    <p class="mm-body-lg" style="color: var(--mm-neutral-800); margin: var(--mm-space-4) 0 0">이 페이지의 모든 값은 토큰이다. 선 대신 면, 파랑은 클릭 가능, 핑크는 강조·로즈는 액션.</p>
+   </div>
   </div>
 
   <!-- 종이 층 -->

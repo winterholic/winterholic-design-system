@@ -1,32 +1,50 @@
 # 14 · 브랜드 자산 (stock-gosu)
 
 ## 1. 컨셉
-파랑새. 가볍고 빠르게 시장을 살펴보는 눈. 색은 Toss Blue 계열(`blue.500` 몸통, `blue.300` 날개 하이라이트, `blue.900` 눈). 금색·로켓·상승 화살표 같은 "수익" 연상 모티프는 쓰지 않는다 — 정보·분석 서비스라는 정체성.
 
-## 2. 파일
+파랑새는 가볍고 빠르게 시장을 살펴보는 눈이다. Toss Blue 계열 몸통과 맑은 하이라이트, 남색 눈을 유지한다. 금색·로켓·상승 화살표처럼 수익을 약속하는 모티프는 쓰지 않는다.
+
+## 2. 파일 지도
+
 | 파일 | 용도 |
 |---|---|
-| `assets/brand/stock-gosu.svg` | 벡터 원본(1024 그리드, 단색 path). 색은 CSS `fill: currentColor` 로 입힌다 |
-| `assets/brand/stock-gosu.png` | 컬러 래스터(1024). OG·앱 아이콘 원본. 회색 배경이 포함돼 있어 마스크가 필요하다 |
-| `assets/brand/stock-gosu.ico` | 파비콘 |
+| `assets/brand/logo-mark.svg` | PWA 파랑새 원본을 보존한 self-contained 컬러 심볼 |
+| `assets/brand/logo-mark.png` | 투명 컬러 심볼 래스터 원본 |
+| `assets/brand/logo-mark-mono.svg` | 단색 인쇄·마스크·작은 UI |
+| `assets/brand/logo-lockup.svg` | 밝은 면의 가로 로고 |
+| `assets/brand/logo-lockup-inverse.svg` | 브랜드 면·어두운 면의 가로 로고 |
+| `assets/brand/favicon.svg` | 브라우저 기본 파비콘. 레거시 DOCTYPE과 외부 참조 없음 |
+| `assets/brand/favicon-{16,32,48}.png` | 브라우저·검색 결과·레거시 메타데이터 |
+| `assets/brand/favicon.ico` | 16~256 멀티사이즈 ICO |
+| `assets/brand/app-icon-512.png` | PWA·앱 아이콘 |
+| `assets/brand/brand-hero.png` | 랜딩·저장소·소셜용 1600×900 브랜드 이미지 |
+| `assets/brand/brand-hero.webp` | 웹 미리보기용 경량 브랜드 이미지 |
 
-**보완 필요**(이번에 만들지 않음): 투명 배경 컬러 SVG, 단색 mono, 가로 로크업(심볼 + 워드마크), 다크용 inverse, 파비콘 SVG. png 원본에 회색 배경이 박혀 있어 다크 화면에서 그대로 쓰면 회색 사각형이 보인다. 우선은 `border-radius: full` + `object-fit: cover` 로 원형 마스크.
+기존 경로 `stock-gosu.svg`와 `stock-gosu.ico`도 각각 새 심볼과 ICO의 호환 별칭으로 유지한다.
 
-## 3. 사용 규칙
-| 항목 | 규칙 |
-|---|---|
-| 헤더 | 심볼 28 + 워드마크 "stock-gosu" Pretendard 700 `text.primary`, 간격 8. 모바일은 심볼만 |
-| 최소 크기 | 심볼 20, 로크업 높이 24 |
-| 여백 | 심볼 높이의 1/2 이상 |
-| 색 | 밝은 면: 컬러 또는 `text.primary` 단색. 브랜드 면(`surface.brand`): white 단색. 다크: 컬러(배경 없이) 또는 `text.primary` |
-| 금지 | 늘리기·회전·그라데이션 덧칠·다른 파랑으로 재색칠·배경 회색 사각형 노출 |
-| 파비콘 | `stock-gosu.ico`. SVG 파비콘은 보완 항목 |
-| OG 이미지 | 1200×630, `gradient.brand` 배경, 심볼 160 좌측, 제목 display-lg white, 하단 면책 문구 micro |
-| 앱 아이콘 | `blue.500` 배경 + 흰 심볼, radius 22%(iOS 마스크는 OS 가 처리) |
-| 빈 상태·온보딩 | 심볼 80, `brand-subtle` 배경 원 120 |
+## 3. 로고 규칙
 
-## 4. 워드마크
-`stock-gosu` 소문자, Pretendard 700, 자간 -0.02em. 하이픈 유지. 한글 표기 "스톡고수" 는 문장 안에서만.
+- 최소 높이: 심볼 20px, 로크업 24px. 그보다 작으면 전용 `favicon.svg` 또는 PNG를 쓴다.
+- 안전 여백: 파랑새 몸통 높이의 절반만큼 사방을 비운다.
+- 밝은 면: `logo-lockup.svg`. 브랜드·어두운 면: `logo-lockup-inverse.svg`.
+- 단색 출력과 CSS 마스크: `logo-mark-mono.svg`에 `color`로 한 색만 지정한다.
+- 워드마크는 `stock-gosu`, Pretendard 700, 자간 -0.02em, 하이픈 유지다.
+- 금지: 비율 변경, 회전, 임의 색 변경, 상승 화살표 합성, 회색 사각 배경 추가.
 
-## 5. 브랜드 면 위 글자
-`surface.brand`(blue.600) 위 white(4.66:1). `gradient.brand` 위 글자는 어두운 시작점(blue.700) 쪽에 두고, 밝은 끝(blue.300) 위에는 글자를 놓지 않는다.
+```html
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/brand/favicon-32.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/brand/app-icon-512.png" />
+```
+
+## 4. 파비콘·PWA
+
+파비콘 PNG와 ICO는 브라우저가 큰 SVG를 축소하게 두지 않고, 정상 표시되던 PWA 원본에서 각 크기로 직접 리샘플링한다. `favicon.svg`도 같은 원본의 128px 파생 이미지를 내부에 포함해 네트워크 경로나 MIME 설정 때문에 깨지지 않는다. 앱 아이콘은 투명 원본과 6% 안전 여백을 유지하며 OS 마스크를 자산에 미리 굽지 않는다.
+
+## 5. 브랜드 이미지
+
+`brand-hero`는 1600×900이다. 왼쪽은 제목·설명용 빈 공간, 오른쪽은 파랑새, 배경은 `brand` 계열과 추상 차트 그리드다. 실제 종목·수익률·상승을 보장하는 숫자를 넣지 않는다. 16:9 또는 1.91:1로 크롭할 때 파랑새가 잘리지 않도록 오른쪽 40%를 보존한다.
+
+## 6. 생성 원본
+
+파생 방법과 원본 관계는 `assets/brand/README.md`에 기록한다. `python scripts/build-brand-assets.py`를 다시 실행하면 PNG·WebP·ICO·SVG 호환 파일을 같은 규격으로 재생성한다.

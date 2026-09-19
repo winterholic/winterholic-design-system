@@ -5,8 +5,8 @@ winterholic 의 디자인 시스템 모음. 시스템 하나가 디렉터리 하
 | 디렉터리 | 용도 | 상태 |
 |---|---|---|
 | [`winterholic-base/`](winterholic-base/) | 기본. 개인 프로젝트 대부분이 쓰는 시스템 | v1.1.6 |
-| [`stock-gosu/`](stock-gosu/) | 투자 대시보드 stock-gosu. 기존 FDS 를 옮기고 다크·대비·차트 색·금융 토큰을 보완 | v1.0.0 |
-| [`memoir/`](memoir/) | 개인 메모·보안 관리 memoir. 기획서·design-guide·tailwind 통합, No-Line 종이 층, 다크 추가 | v1.0.0 |
+| [`stock-gosu/`](stock-gosu/) | 투자 대시보드 stock-gosu. 기존 FDS 를 옮기고 다크·대비·차트 색·금융 토큰을 보완 | v1.2.0 |
+| [`memoir/`](memoir/) | 개인 메모·보안 관리 memoir. 기획서·design-guide·tailwind 통합, No-Line 종이 층, 다크 추가 | v1.2.0 |
 
 새 시스템을 파생하는 법: [`winterholic-base/docs/13-governance.md`](winterholic-base/docs/13-governance.md) §6.
 

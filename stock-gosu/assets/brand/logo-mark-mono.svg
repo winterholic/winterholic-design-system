@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">stock-gosu 단색 파랑새 심볼</title>
+  <path fill="currentColor" d="M14 36c-4-14 4-26 18-28 11-2 21 3 26 12l6 1-6 5c0 17-12 30-29 30-10 0-19-4-25-11 8 0 15-3 20-8-4 1-7 1-10-1Z"/>
+  <path fill="currentColor" d="M20 17c4 8 11 13 22 17-7 7-15 11-25 12 5-7 6-17 3-29Z" opacity=".72"/>
+  <circle cx="45" cy="20" r="2.4" fill="white"/>
+</svg>

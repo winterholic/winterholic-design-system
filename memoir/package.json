@@ -1,11 +1,12 @@
 {
   "name": "memoir-design-system",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "memoir 개인 메모 서비스 디자인 시스템 — DTCG 토큰, CSS 변수, Tailwind 프리셋(기존 클래스명 별칭 포함), 문서",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "node tokens/build.mjs",
+    "test:brand": "node --test ../scripts/brand-assets.test.mjs",
     "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs"
   },
   "exports": {
