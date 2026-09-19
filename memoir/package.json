@@ -1,0 +1,30 @@
+{
+  "name": "memoir-design-system",
+  "version": "1.0.0",
+  "description": "memoir 개인 메모 서비스 디자인 시스템 — DTCG 토큰, CSS 변수, Tailwind 프리셋(기존 클래스명 별칭 포함), 문서",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node tokens/build.mjs",
+    "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs"
+  },
+  "exports": {
+    ".": "./dist/tokens.js",
+    "./tokens.css": "./dist/tokens.css",
+    "./typography.css": "./dist/typography.css",
+    "./tailwind": "./dist/tailwind.preset.cjs",
+    "./tokens.json": "./tokens/tokens.json",
+    "./brand/*": "./assets/brand/*",
+    "./legacy-aliases.css": "./dist/legacy-aliases.css"
+  },
+  "files": [
+    "dist",
+    "tokens/tokens.json",
+    "tokens/tokens.dark.json",
+    "assets/brand"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

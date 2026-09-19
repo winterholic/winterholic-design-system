@@ -1,0 +1,11 @@
+/* memoir legacy aliases · 자동 생성
+   기존 app/globals.css 의 --background/--foreground 와 .text-display/.text-headline/.text-body/.text-label 을 새 토큰에 잇는다.
+   tokens.css·typography.css 다음에 로드한다. 이관이 끝나면 지운다. */
+:root {
+  --background: var(--mm-color-surface-canvas);
+  --foreground: var(--mm-color-text-primary);
+}
+.text-display  { font: var(--mm-font-weight-bold) var(--mm-font-size-6xl)/var(--mm-font-line-height-tight) var(--mm-font-family-display); letter-spacing: var(--mm-font-letter-spacing-tight); }
+.text-headline { font: var(--mm-font-weight-semibold) var(--mm-font-size-3xl)/var(--mm-font-line-height-snug) var(--mm-font-family-display); letter-spacing: var(--mm-font-letter-spacing-tight); }
+.text-body     { font: var(--mm-font-weight-regular) var(--mm-font-size-md)/var(--mm-font-line-height-relaxed) var(--mm-font-family-sans); }
+.text-label    { font: var(--mm-font-weight-semibold) var(--mm-font-size-xs)/var(--mm-font-line-height-normal) var(--mm-font-family-sans); letter-spacing: var(--mm-font-letter-spacing-wide); text-transform: uppercase; }

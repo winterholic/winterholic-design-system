@@ -1,0 +1,614 @@
+{
+  "pink": {
+    "50": {
+      "$value": "#FFF3F6",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.4
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFE5EB",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.66
+        }
+      }
+    },
+    "200": {
+      "$value": "#FFCBD8",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.79
+        }
+      }
+    },
+    "300": {
+      "$value": "#FCA6BD",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.33
+        }
+      }
+    },
+    "400": {
+      "$value": "#FF82A9",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.33,
+          "onBlack": 9.02
+        }
+      }
+    },
+    "500": {
+      "$value": "#C76583",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 3.74,
+          "onBlack": 5.62
+        }
+      }
+    },
+    "600": {
+      "$value": "#A1385E",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 6.48,
+          "onBlack": 3.24
+        }
+      }
+    },
+    "700": {
+      "$value": "#844155",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 7.32,
+          "onBlack": 2.87
+        }
+      }
+    },
+    "800": {
+      "$value": "#78163E",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 10.59,
+          "onBlack": 1.98
+        }
+      }
+    },
+    "900": {
+      "$value": "#49222E",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 13.53,
+          "onBlack": 1.55
+        }
+      }
+    },
+    "950": {
+      "$value": "#31151E",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 16.71,
+          "onBlack": 1.26
+        }
+      }
+    },
+    "$description": "Memoir Pink · 브랜드 원색·강조·활성 칩 · 앵커 #FF82A9 @400 · 고정 단계 400/600/800"
+  },
+  "blue": {
+    "50": {
+      "$value": "#F3F7FF",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.56
+        }
+      }
+    },
+    "100": {
+      "$value": "#E5EDFF",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.89
+        }
+      }
+    },
+    "200": {
+      "$value": "#CCDAFF",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15.04
+        }
+      }
+    },
+    "300": {
+      "$value": "#AEC1F4",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.79,
+          "onBlack": 11.73
+        }
+      }
+    },
+    "400": {
+      "$value": "#7F95D1",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.95,
+          "onBlack": 7.12
+        }
+      }
+    },
+    "500": {
+      "$value": "#7387BE",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 3.54,
+          "onBlack": 5.94
+        }
+      }
+    },
+    "600": {
+      "$value": "#465D95",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 6.44,
+          "onBlack": 3.26
+        }
+      }
+    },
+    "700": {
+      "$value": "#4A587F",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 7.02,
+          "onBlack": 2.99
+        }
+      }
+    },
+    "800": {
+      "$value": "#374262",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 9.91,
+          "onBlack": 2.12
+        }
+      }
+    },
+    "900": {
+      "$value": "#262F48",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 13.27,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "950": {
+      "$value": "#181E31",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 16.55,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Periwinkle · 상호작용(링크·활성 메뉴·포커스) · 앵커 #7F95D1 @400 · 고정 단계 400/600"
+  },
+  "neutral": {
+    "50": {
+      "$value": "#FEF4F2",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.44
+        }
+      }
+    },
+    "100": {
+      "$value": "#F7E9E6",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.75
+        }
+      }
+    },
+    "200": {
+      "$value": "#E5D7D4",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15
+        }
+      }
+    },
+    "300": {
+      "$value": "#CDBFBC",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.78,
+          "onBlack": 11.77
+        }
+      }
+    },
+    "400": {
+      "$value": "#B1A2A0",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.46,
+          "onBlack": 8.55
+        }
+      }
+    },
+    "500": {
+      "$value": "#948583",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 3.53,
+          "onBlack": 5.94
+        }
+      }
+    },
+    "600": {
+      "$value": "#7A6D6A",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 4.97,
+          "onBlack": 4.22
+        }
+      }
+    },
+    "700": {
+      "$value": "#635654",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 7.02,
+          "onBlack": 2.99
+        }
+      }
+    },
+    "800": {
+      "$value": "#4C413E",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 9.85,
+          "onBlack": 2.13
+        }
+      }
+    },
+    "900": {
+      "$value": "#382D2B",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 13.3,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "950": {
+      "$value": "#231917",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 17.17,
+          "onBlack": 1.22
+        }
+      }
+    },
+    "$description": "Warm Ink · 글자·아이콘 (따뜻한 검정) · 앵커 #231917 @950 · 고정 단계 950"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFF4F3",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.49
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE6E6",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.68
+        }
+      }
+    },
+    "200": {
+      "$value": "#FECDCD",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.83
+        }
+      }
+    },
+    "300": {
+      "$value": "#FCA8AA",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.86,
+          "onBlack": 11.32
+        }
+      }
+    },
+    "400": {
+      "$value": "#FA777F",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.62,
+          "onBlack": 8.01
+        }
+      }
+    },
+    "500": {
+      "$value": "#D93A4F",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 4.5,
+          "onBlack": 4.67
+        }
+      }
+    },
+    "600": {
+      "$value": "#C33145",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 5.46,
+          "onBlack": 3.85
+        }
+      }
+    },
+    "700": {
+      "$value": "#A02135",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 7.6,
+          "onBlack": 2.76
+        }
+      }
+    },
+    "800": {
+      "$value": "#7D1225",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 10.58,
+          "onBlack": 1.99
+        }
+      }
+    },
+    "900": {
+      "$value": "#5F0417",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 13.85,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#41020D",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 16.95,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Alert Red · 오류·삭제 · 앵커 #D93A4F @500"
+  },
+  "green": {
+    "50": {
+      "$value": "#E4FFEE",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.06,
+          "onBlack": 19.84
+        }
+      }
+    },
+    "100": {
+      "$value": "#CCFADF",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.15,
+          "onBlack": 18.31
+        }
+      }
+    },
+    "200": {
+      "$value": "#ADECC8",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.35,
+          "onBlack": 15.61
+        }
+      }
+    },
+    "300": {
+      "$value": "#8CD5AD",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.72,
+          "onBlack": 12.24
+        }
+      }
+    },
+    "400": {
+      "$value": "#64BB8D",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.32,
+          "onBlack": 9.03
+        }
+      }
+    },
+    "500": {
+      "$value": "#2E9E6B",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 3.38,
+          "onBlack": 6.22
+        }
+      }
+    },
+    "600": {
+      "$value": "#218458",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 4.66,
+          "onBlack": 4.51
+        }
+      }
+    },
+    "700": {
+      "$value": "#136A45",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 6.61,
+          "onBlack": 3.18
+        }
+      }
+    },
+    "800": {
+      "$value": "#065133",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 9.41,
+          "onBlack": 2.23
+        }
+      }
+    },
+    "900": {
+      "$value": "#073A24",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 12.81,
+          "onBlack": 1.64
+        }
+      }
+    },
+    "950": {
+      "$value": "#002715",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 16.14,
+          "onBlack": 1.3
+        }
+      }
+    },
+    "$description": "Sage Green · 성공·저장됨 · 앵커 #2E9E6B @500"
+  },
+  "amber": {
+    "50": {
+      "$value": "#FFF5E8",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.48
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEEACD",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.86
+        }
+      }
+    },
+    "200": {
+      "$value": "#FED395",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 14.97
+        }
+      }
+    },
+    "300": {
+      "$value": "#EDB867",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 1.8,
+          "onBlack": 11.65
+        }
+      }
+    },
+    "400": {
+      "$value": "#D59933",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.49,
+          "onBlack": 8.43
+        }
+      }
+    },
+    "500": {
+      "$value": "#C98A00",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 2.95,
+          "onBlack": 7.12
+        }
+      }
+    },
+    "600": {
+      "$value": "#926719",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 5.03,
+          "onBlack": 4.18
+        }
+      }
+    },
+    "700": {
+      "$value": "#76510F",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 7.11,
+          "onBlack": 2.95
+        }
+      }
+    },
+    "800": {
+      "$value": "#5B3D06",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 9.93,
+          "onBlack": 2.11
+        }
+      }
+    },
+    "900": {
+      "$value": "#422B01",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 13.31,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "950": {
+      "$value": "#2C1C02",
+      "$extensions": {
+        "mm.contrast": {
+          "onWhite": 16.48,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Honey Amber · 경고·2FA 만료 임박 · 앵커 #C98A00 @500"
+  }
+}

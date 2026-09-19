@@ -1,0 +1,3883 @@
+{
+  "wh/light": {
+    "pink": {
+      "50": {
+        "$value": "#FFF3F6",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.4
+          }
+        }
+      },
+      "100": {
+        "$value": "#FFE5EB",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.19,
+            "onBlack": 17.66
+          }
+        }
+      },
+      "200": {
+        "$value": "#FFCBD8",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.42,
+            "onBlack": 14.79
+          }
+        }
+      },
+      "300": {
+        "$value": "#FCA6BD",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.85,
+            "onBlack": 11.33
+          }
+        }
+      },
+      "400": {
+        "$value": "#FF82A9",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.33,
+            "onBlack": 9.02
+          }
+        }
+      },
+      "500": {
+        "$value": "#C76583",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 3.74,
+            "onBlack": 5.62
+          }
+        }
+      },
+      "600": {
+        "$value": "#A1385E",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 6.48,
+            "onBlack": 3.24
+          }
+        }
+      },
+      "700": {
+        "$value": "#844155",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 7.32,
+            "onBlack": 2.87
+          }
+        }
+      },
+      "800": {
+        "$value": "#78163E",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 10.59,
+            "onBlack": 1.98
+          }
+        }
+      },
+      "900": {
+        "$value": "#49222E",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 13.53,
+            "onBlack": 1.55
+          }
+        }
+      },
+      "950": {
+        "$value": "#31151E",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 16.71,
+            "onBlack": 1.26
+          }
+        }
+      },
+      "$description": "Memoir Pink · 브랜드 원색·강조·활성 칩 · 앵커 #FF82A9 @400 · 고정 단계 400/600/800"
+    },
+    "blue": {
+      "50": {
+        "$value": "#F3F7FF",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.07,
+            "onBlack": 19.56
+          }
+        }
+      },
+      "100": {
+        "$value": "#E5EDFF",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.17,
+            "onBlack": 17.89
+          }
+        }
+      },
+      "200": {
+        "$value": "#CCDAFF",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.4,
+            "onBlack": 15.04
+          }
+        }
+      },
+      "300": {
+        "$value": "#AEC1F4",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.79,
+            "onBlack": 11.73
+          }
+        }
+      },
+      "400": {
+        "$value": "#7F95D1",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.95,
+            "onBlack": 7.12
+          }
+        }
+      },
+      "500": {
+        "$value": "#7387BE",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 3.54,
+            "onBlack": 5.94
+          }
+        }
+      },
+      "600": {
+        "$value": "#465D95",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 6.44,
+            "onBlack": 3.26
+          }
+        }
+      },
+      "700": {
+        "$value": "#4A587F",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 7.02,
+            "onBlack": 2.99
+          }
+        }
+      },
+      "800": {
+        "$value": "#374262",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 9.91,
+            "onBlack": 2.12
+          }
+        }
+      },
+      "900": {
+        "$value": "#262F48",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 13.27,
+            "onBlack": 1.58
+          }
+        }
+      },
+      "950": {
+        "$value": "#181E31",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 16.55,
+            "onBlack": 1.27
+          }
+        }
+      },
+      "$description": "Periwinkle · 상호작용(링크·활성 메뉴·포커스) · 앵커 #7F95D1 @400 · 고정 단계 400/600"
+    },
+    "neutral": {
+      "50": {
+        "$value": "#FEF4F2",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.44
+          }
+        }
+      },
+      "100": {
+        "$value": "#F7E9E6",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.18,
+            "onBlack": 17.75
+          }
+        }
+      },
+      "200": {
+        "$value": "#E5D7D4",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.4,
+            "onBlack": 15
+          }
+        }
+      },
+      "300": {
+        "$value": "#CDBFBC",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.78,
+            "onBlack": 11.77
+          }
+        }
+      },
+      "400": {
+        "$value": "#B1A2A0",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.46,
+            "onBlack": 8.55
+          }
+        }
+      },
+      "500": {
+        "$value": "#948583",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 3.53,
+            "onBlack": 5.94
+          }
+        }
+      },
+      "600": {
+        "$value": "#7A6D6A",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 4.97,
+            "onBlack": 4.22
+          }
+        }
+      },
+      "700": {
+        "$value": "#635654",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 7.02,
+            "onBlack": 2.99
+          }
+        }
+      },
+      "800": {
+        "$value": "#4C413E",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 9.85,
+            "onBlack": 2.13
+          }
+        }
+      },
+      "900": {
+        "$value": "#382D2B",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 13.3,
+            "onBlack": 1.58
+          }
+        }
+      },
+      "950": {
+        "$value": "#231917",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 17.17,
+            "onBlack": 1.22
+          }
+        }
+      },
+      "$description": "Warm Ink · 글자·아이콘 (따뜻한 검정) · 앵커 #231917 @950 · 고정 단계 950"
+    },
+    "red": {
+      "50": {
+        "$value": "#FFF4F3",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.49
+          }
+        }
+      },
+      "100": {
+        "$value": "#FEE6E6",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.19,
+            "onBlack": 17.68
+          }
+        }
+      },
+      "200": {
+        "$value": "#FECDCD",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.42,
+            "onBlack": 14.83
+          }
+        }
+      },
+      "300": {
+        "$value": "#FCA8AA",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.86,
+            "onBlack": 11.32
+          }
+        }
+      },
+      "400": {
+        "$value": "#FA777F",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.62,
+            "onBlack": 8.01
+          }
+        }
+      },
+      "500": {
+        "$value": "#D93A4F",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 4.5,
+            "onBlack": 4.67
+          }
+        }
+      },
+      "600": {
+        "$value": "#C33145",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 5.46,
+            "onBlack": 3.85
+          }
+        }
+      },
+      "700": {
+        "$value": "#A02135",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 7.6,
+            "onBlack": 2.76
+          }
+        }
+      },
+      "800": {
+        "$value": "#7D1225",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 10.58,
+            "onBlack": 1.99
+          }
+        }
+      },
+      "900": {
+        "$value": "#5F0417",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 13.85,
+            "onBlack": 1.52
+          }
+        }
+      },
+      "950": {
+        "$value": "#41020D",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 16.95,
+            "onBlack": 1.24
+          }
+        }
+      },
+      "$description": "Alert Red · 오류·삭제 · 앵커 #D93A4F @500"
+    },
+    "green": {
+      "50": {
+        "$value": "#E4FFEE",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.06,
+            "onBlack": 19.84
+          }
+        }
+      },
+      "100": {
+        "$value": "#CCFADF",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.15,
+            "onBlack": 18.31
+          }
+        }
+      },
+      "200": {
+        "$value": "#ADECC8",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.35,
+            "onBlack": 15.61
+          }
+        }
+      },
+      "300": {
+        "$value": "#8CD5AD",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.72,
+            "onBlack": 12.24
+          }
+        }
+      },
+      "400": {
+        "$value": "#64BB8D",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.32,
+            "onBlack": 9.03
+          }
+        }
+      },
+      "500": {
+        "$value": "#2E9E6B",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 3.38,
+            "onBlack": 6.22
+          }
+        }
+      },
+      "600": {
+        "$value": "#218458",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 4.66,
+            "onBlack": 4.51
+          }
+        }
+      },
+      "700": {
+        "$value": "#136A45",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 6.61,
+            "onBlack": 3.18
+          }
+        }
+      },
+      "800": {
+        "$value": "#065133",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 9.41,
+            "onBlack": 2.23
+          }
+        }
+      },
+      "900": {
+        "$value": "#073A24",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 12.81,
+            "onBlack": 1.64
+          }
+        }
+      },
+      "950": {
+        "$value": "#002715",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 16.14,
+            "onBlack": 1.3
+          }
+        }
+      },
+      "$description": "Sage Green · 성공·저장됨 · 앵커 #2E9E6B @500"
+    },
+    "amber": {
+      "50": {
+        "$value": "#FFF5E8",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.08,
+            "onBlack": 19.48
+          }
+        }
+      },
+      "100": {
+        "$value": "#FEEACD",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.18,
+            "onBlack": 17.86
+          }
+        }
+      },
+      "200": {
+        "$value": "#FED395",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.4,
+            "onBlack": 14.97
+          }
+        }
+      },
+      "300": {
+        "$value": "#EDB867",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 1.8,
+            "onBlack": 11.65
+          }
+        }
+      },
+      "400": {
+        "$value": "#D59933",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.49,
+            "onBlack": 8.43
+          }
+        }
+      },
+      "500": {
+        "$value": "#C98A00",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 2.95,
+            "onBlack": 7.12
+          }
+        }
+      },
+      "600": {
+        "$value": "#926719",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 5.03,
+            "onBlack": 4.18
+          }
+        }
+      },
+      "700": {
+        "$value": "#76510F",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 7.11,
+            "onBlack": 2.95
+          }
+        }
+      },
+      "800": {
+        "$value": "#5B3D06",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 9.93,
+            "onBlack": 2.11
+          }
+        }
+      },
+      "900": {
+        "$value": "#422B01",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 13.31,
+            "onBlack": 1.58
+          }
+        }
+      },
+      "950": {
+        "$value": "#2C1C02",
+        "$extensions": {
+          "mm.contrast": {
+            "onWhite": 16.48,
+            "onBlack": 1.27
+          }
+        }
+      },
+      "$description": "Honey Amber · 경고·2FA 만료 임박 · 앵커 #C98A00 @500"
+    },
+    "brand": {
+      "$type": "color",
+      "$description": "memoir 브랜드 원색. 기획서 5.1 과 design-guide.md 의 값 그대로. 사용처는 시맨틱 토큰을 거친다.",
+      "pink": {
+        "$value": "#FF82A9",
+        "$description": "메인 핑크 (= pink.400). 로고·강조·활성 칩 배경. 글자·버튼 배경으로는 대비 2.33 이라 금지"
+      },
+      "rose": {
+        "$value": "#A1385E",
+        "$description": "design-guide Primary (= pink.600). CTA 버튼·로고 마크. 흰 글자 6.48:1"
+      },
+      "wine": {
+        "$value": "#78163E",
+        "$description": "on-primary-container (= pink.800). 핑크 배경 위 글자"
+      },
+      "periwinkle": {
+        "$value": "#7F95D1",
+        "$description": "메인 블루 (= blue.400). 활성 메뉴 배경·포인트. 파랗다 = 클릭할 수 있다"
+      },
+      "indigo": {
+        "$value": "#465D95",
+        "$description": "secondary-dark (= blue.600). 링크 글자·포커스 밑줄. 6.44:1"
+      },
+      "ink": {
+        "$value": "#231917",
+        "$description": "on-surface (= neutral.950). 따뜻한 검정. #000 금지"
+      },
+      "blush": {
+        "$value": "#FFC0BE",
+        "$description": "서브 라이트핑크. 태그 배지·hover·카드 포인트"
+      },
+      "cream": {
+        "$value": "#FFEBE7",
+        "$description": "서브 크림. 섹션 배경·카드 베이스"
+      },
+      "paper": {
+        "$value": "#FFF9F8",
+        "$description": "surface-low. 페이지 캔버스(tailwind surface-low)"
+      },
+      "paper-tint": {
+        "$value": "#FFF0EE",
+        "$description": "surface-container-low. 콘텐츠 구역 배경"
+      },
+      "paper-deep": {
+        "$value": "#FEEAE6",
+        "$description": "surface-container. 한 단계 더 눌린 구역"
+      },
+      "outline": {
+        "$value": "#DBC0C5",
+        "$description": "outline-variant. 고스트 테두리 재료(15% 로만 쓴다)"
+      }
+    },
+    "base": {
+      "$type": "color",
+      "white": {
+        "$value": "#FFFFFF"
+      },
+      "black": {
+        "$value": "#000000"
+      },
+      "transparent": {
+        "$value": "transparent"
+      }
+    },
+    "space": {
+      "0": {
+        "$value": "0px"
+      },
+      "1": {
+        "$value": "4px",
+        "$description": "칩 내부·아이콘↔라벨 미세"
+      },
+      "2": {
+        "$value": "8px",
+        "$description": "아이콘↔라벨, 칩 사이, 라벨↔인풋"
+      },
+      "3": {
+        "$value": "12px",
+        "$description": "미리보기 카드 패딩(design-guide), 카드 안 요소 사이"
+      },
+      "4": {
+        "$value": "16px",
+        "$description": "기본. 컴포넌트 내부 패딩, 모바일 좌우"
+      },
+      "5": {
+        "$value": "20px"
+      },
+      "6": {
+        "$value": "24px",
+        "$description": "리스트 항목 사이(구분선 대신), 카드 패딩, 데스크톱 좌우"
+      },
+      "8": {
+        "$value": "32px",
+        "$description": "카드 묶음 사이, 서브 헤더 아래 첫 콘텐츠, 데스크톱 좌우 최대"
+      },
+      "10": {
+        "$value": "40px"
+      },
+      "12": {
+        "$value": "48px",
+        "$description": "섹션 사이"
+      },
+      "16": {
+        "$value": "64px",
+        "$description": "히어로 아래·빈 상태 상하"
+      },
+      "20": {
+        "$value": "80px"
+      },
+      "24": {
+        "$value": "96px",
+        "$description": "랜딩 섹션"
+      },
+      "$type": "dimension",
+      "$description": "4px 그리드. memoir 는 여백이 구조다(No-Line). base 보다 한 단계 넉넉하게 쓴다: 리스트 항목 사이 24, 섹션 사이 48 이상.",
+      "px": {
+        "$value": "1px"
+      },
+      "0-5": {
+        "$value": "2px"
+      },
+      "1-5": {
+        "$value": "6px"
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "control": {
+        "xs": {
+          "$value": "28px",
+          "$description": "칩·태그 삭제·인라인 아이콘 버튼"
+        },
+        "sm": {
+          "$value": "36px",
+          "$description": "서브 헤더 필터·카드 헤더 액션·칩(필터)"
+        },
+        "md": {
+          "$value": "44px",
+          "$description": "기본. 버튼·인풋·헤더 검색"
+        },
+        "lg": {
+          "$value": "52px",
+          "$description": "로그인·2FA 인증·온보딩 CTA"
+        },
+        "xl": {
+          "$value": "56px",
+          "$description": "FAB"
+        }
+      },
+      "icon": {
+        "xs": {
+          "$value": "12px"
+        },
+        "sm": {
+          "$value": "16px"
+        },
+        "md": {
+          "$value": "20px"
+        },
+        "lg": {
+          "$value": "24px"
+        },
+        "xl": {
+          "$value": "32px"
+        },
+        "2xl": {
+          "$value": "48px"
+        }
+      },
+      "avatar": {
+        "sm": {
+          "$value": "32px"
+        },
+        "md": {
+          "$value": "40px"
+        },
+        "lg": {
+          "$value": "64px"
+        }
+      },
+      "touch-target-min": {
+        "$value": "44px"
+      },
+      "container": {
+        "sm": {
+          "$value": "480px",
+          "$description": "로그인·회원가입·2FA·프롬프트 모달"
+        },
+        "md": {
+          "$value": "720px",
+          "$description": "단순 메모·프라이빗 폴더 읽기"
+        },
+        "lg": {
+          "$value": "960px",
+          "$description": "일반 메모 에디터 본문 폭(상단 툴바는 전폭)"
+        },
+        "xl": {
+          "$value": "1280px",
+          "$description": "코드·명령어·북마크·영상 리스트"
+        },
+        "full": {
+          "$value": "100%",
+          "$description": "캘린더·대시보드 벤토·명령어 와이드 뷰(기획서: 전체 너비 활용)"
+        },
+        "prose": {
+          "$value": "680px",
+          "$description": "에디터 글 한 줄 폭. 좌 10% 우 5% 비대칭 여백은 lg 이상에서(design-guide)"
+        }
+      },
+      "layout": {
+        "header": {
+          "$value": "60px",
+          "$description": "메인 헤더(로고·카테고리 드롭다운·검색·액션). 기획서 5.3"
+        },
+        "subheader": {
+          "$value": "44px",
+          "$description": "서브 헤더(필터 칩·브레드크럼). 메인 헤더 바로 아래 sticky"
+        },
+        "header-stack": {
+          "$value": "104px",
+          "$description": "두 헤더 합. sticky 콘텐츠 top·스크롤 앵커 오프셋"
+        },
+        "sidebar": {
+          "$value": "0px",
+          "$description": "사이드바 없음(기획서 원칙). 캘린더 사이드 패널은 panel"
+        },
+        "panel": {
+          "$value": "320px",
+          "$description": "캘린더 날짜 상세·에디터 속성 패널"
+        },
+        "page-gutter": {
+          "$value": "16px",
+          "$description": "모바일"
+        },
+        "page-gutter-md": {
+          "$value": "24px",
+          "$description": "태블릿·데스크톱 기본(기획서 24~32)"
+        },
+        "page-gutter-lg": {
+          "$value": "32px",
+          "$description": "1280 이상"
+        },
+        "grid-gap": {
+          "$value": "16px"
+        },
+        "grid-gap-lg": {
+          "$value": "24px"
+        },
+        "fab-offset": {
+          "$value": "24px",
+          "$description": "FAB 우하단 여백. 모바일 16"
+        },
+        "dropdown-width": {
+          "$value": "280px",
+          "$description": "카테고리 드롭다운"
+        }
+      }
+    },
+    "breakpoint": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "640px"
+      },
+      "md": {
+        "$value": "768px"
+      },
+      "lg": {
+        "$value": "1024px"
+      },
+      "xl": {
+        "$value": "1280px"
+      },
+      "2xl": {
+        "$value": "1536px"
+      }
+    },
+    "radius": {
+      "$type": "dimension",
+      "$description": "design-guide: 버튼·카드 8, 칩 full. 큰 면(모달·벤토)은 16~24 로 부드럽게.",
+      "none": {
+        "$value": "0px"
+      },
+      "xs": {
+        "$value": "4px",
+        "$description": "인라인 코드·체크박스·언어 라벨(각진 배지)"
+      },
+      "sm": {
+        "$value": "6px",
+        "$description": "툴팁·드롭다운 항목"
+      },
+      "md": {
+        "$value": "8px",
+        "$description": "버튼·인풋·미리보기 카드·드롭다운 상자. 기본"
+      },
+      "lg": {
+        "$value": "12px",
+        "$description": "메모 카드·코드 블록·북마크 카드"
+      },
+      "xl": {
+        "$value": "16px",
+        "$description": "대시보드 벤토 박스·영상 썸네일 카드·모달"
+      },
+      "2xl": {
+        "$value": "24px",
+        "$description": "히어로·글래스 플로팅 바·온보딩 카드"
+      },
+      "full": {
+        "$value": "9999px",
+        "$description": "칩·태그·검색창·FAB·아바타·활성 메뉴"
+      }
+    },
+    "border-width": {
+      "$type": "dimension",
+      "hairline": {
+        "$value": "1px",
+        "$description": "고스트 테두리·캘린더 그리드만"
+      },
+      "underline": {
+        "$value": "2px",
+        "$description": "인풋 포커스 밑줄(design-guide)"
+      },
+      "focus": {
+        "$value": "2px"
+      },
+      "accent": {
+        "$value": "4px",
+        "$description": "보안 메모 잠금 카드 왼쪽 띠·인용"
+      }
+    },
+    "focus": {
+      "ring-width": {
+        "$value": "2px",
+        "$type": "dimension"
+      },
+      "ring-offset": {
+        "$value": "2px",
+        "$type": "dimension"
+      }
+    },
+    "font": {
+      "family": {
+        "$type": "fontFamily",
+        "sans": {
+          "$value": [
+            "Plus Jakarta Sans",
+            "Pretendard Variable",
+            "Pretendard",
+            "-apple-system",
+            "BlinkMacSystemFont",
+            "Apple SD Gothic Neo",
+            "Noto Sans KR",
+            "system-ui",
+            "sans-serif"
+          ],
+          "$description": "Plus Jakarta Sans 는 한글 글리프가 없다. 라틴·숫자는 Jakarta, 한글은 두 번째 Pretendard 로 떨어진다. 두 폰트를 모두 로드해야 한다(02 §1). Next.js 에서는 var(--font-jakarta) 를 첫 항목으로"
+        },
+        "mono": {
+          "$value": [
+            "JetBrains Mono",
+            "D2Coding",
+            "SFMono-Regular",
+            "Menlo",
+            "Consolas",
+            "monospace"
+          ],
+          "$description": "코드 스니펫·명령어 메모·인라인 코드"
+        },
+        "display": {
+          "$value": [
+            "Plus Jakarta Sans",
+            "Pretendard Variable",
+            "Pretendard",
+            "system-ui",
+            "sans-serif"
+          ],
+          "$description": "display·headline. Jakarta 의 기하학적 성격이 에디토리얼 느낌을 만든다"
+        }
+      },
+      "weight": {
+        "$type": "fontWeight",
+        "regular": {
+          "$value": 400
+        },
+        "medium": {
+          "$value": 500,
+          "$description": "라벨·메타·칩"
+        },
+        "semibold": {
+          "$value": 600,
+          "$description": "headline·title·버튼"
+        },
+        "bold": {
+          "$value": 700,
+          "$description": "display·강조 단어"
+        },
+        "extrabold": {
+          "$value": 800,
+          "$description": "로고 워드마크 전용"
+        }
+      },
+      "size": {
+        "$type": "dimension",
+        "2xs": {
+          "$value": "0.6875rem",
+          "$description": "11px · 코드 줄 번호"
+        },
+        "xs": {
+          "$value": "0.75rem",
+          "$description": "12px · label(대문자 메타)·태그·타임스탬프"
+        },
+        "sm": {
+          "$value": "0.875rem",
+          "$description": "14px · 보조 본문·칩·미리보기·명령어 행"
+        },
+        "md": {
+          "$value": "1rem",
+          "$description": "16px · 본문(body-lg)·에디터·인풋"
+        },
+        "lg": {
+          "$value": "1.125rem",
+          "$description": "18px · 리드 문단·에디터 인용"
+        },
+        "xl": {
+          "$value": "1.25rem",
+          "$description": "20px · 카드 제목·title"
+        },
+        "2xl": {
+          "$value": "1.5rem",
+          "$description": "24px · 섹션 제목·모달 제목"
+        },
+        "3xl": {
+          "$value": "1.75rem",
+          "$description": "28px · headline(메모 제목·페이지 제목)"
+        },
+        "4xl": {
+          "$value": "2.25rem",
+          "$description": "36px · display-sm(모바일 히어로)"
+        },
+        "5xl": {
+          "$value": "2.75rem",
+          "$description": "44px · display-md(대시보드 인사)"
+        },
+        "6xl": {
+          "$value": "3.5rem",
+          "$description": "56px · display-lg(빈 상태·랜딩 히어로, design-guide 3.5rem)"
+        }
+      },
+      "line-height": {
+        "$type": "number",
+        "none": {
+          "$value": 1
+        },
+        "tight": {
+          "$value": 1.1,
+          "$description": "display"
+        },
+        "snug": {
+          "$value": 1.3,
+          "$description": "headline·title"
+        },
+        "normal": {
+          "$value": 1.5,
+          "$description": "라벨·버튼·칩·명령어"
+        },
+        "relaxed": {
+          "$value": 1.6,
+          "$description": "본문 기본(design-guide: 한글 장문에 넉넉하게)"
+        },
+        "loose": {
+          "$value": 1.8,
+          "$description": "에디터 본문·긴 메모"
+        }
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "tighter": {
+          "$value": "-0.03em",
+          "$description": "display-lg·로고"
+        },
+        "tight": {
+          "$value": "-0.02em",
+          "$description": "display·headline(design-guide -0.02em)"
+        },
+        "snug": {
+          "$value": "-0.01em",
+          "$description": "title"
+        },
+        "normal": {
+          "$value": "0em"
+        },
+        "wide": {
+          "$value": "0.05em",
+          "$description": "label 대문자 메타(design-guide +0.05em)·언어 배지"
+        }
+      }
+    },
+    "typography": {
+      "$type": "typography",
+      "$description": "역할 스타일. 기존 globals.css 의 .text-display/.text-headline/.text-body/.text-label 을 포함해 확장했다. 에디토리얼 위계 = display 큼 + 본문 절제 + 메타 소문자 대신 대문자 자간.",
+      "display-lg": {
+        "$value": {
+          "fontFamily": "{font.family.display}",
+          "fontSize": "{font.size.6xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.tight}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "56/700. 랜딩 히어로·빈 상태 대형(기존 .text-display). 모바일 36"
+      },
+      "display-md": {
+        "$value": {
+          "fontFamily": "{font.family.display}",
+          "fontSize": "{font.size.5xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.tight}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "44/700. 대시보드 인사·카테고리 히어로 제목. 모바일 32"
+      },
+      "display-sm": {
+        "$value": {
+          "fontFamily": "{font.family.display}",
+          "fontSize": "{font.size.4xl}",
+          "fontWeight": "{font.weight.bold}",
+          "lineHeight": "{font.line-height.tight}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "36/700"
+      },
+      "headline": {
+        "$value": {
+          "fontFamily": "{font.family.display}",
+          "fontSize": "{font.size.3xl}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.tight}"
+        },
+        "$description": "28/600. 메모 제목·페이지 제목(기존 .text-headline)"
+      },
+      "title-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.2xl}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "24/600. 섹션·모달 제목"
+      },
+      "title": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xl}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.snug}",
+          "letterSpacing": "{font.letter-spacing.snug}"
+        },
+        "$description": "20/600. 카드 제목·코드 스니펫 제목·벤토 박스 제목"
+      },
+      "title-sm": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "16/600. 리스트 항목 제목·북마크 제목·폴더 이름"
+      },
+      "body-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.lg}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "18/400. 리드 문단·온보딩"
+      },
+      "body": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "16/400/1.6. 본문 기본(기존 .text-body)"
+      },
+      "body-sm": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "14/400. 카드 설명·미리보기·명령어 설명"
+      },
+      "editor": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.loose}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "16/400/1.8. 일반 메모 블록 에디터 본문. 한 줄 폭 prose 680"
+      },
+      "label": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xs}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.wide}"
+        },
+        "$description": "12/600 대문자 +0.05em. 타임스탬프·언어 배지·섹션 라벨(기존 .text-label). 한글은 대문자가 없으니 자간만 적용"
+      },
+      "label-md": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "14/600. 버튼·칩·드롭다운 항목·헤더 메뉴"
+      },
+      "label-lg": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.md}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "16/600. lg 버튼·2FA CTA"
+      },
+      "caption": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xs}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "12/500. 도움말·글자 수·저장 상태"
+      },
+      "tag": {
+        "$value": {
+          "fontFamily": "{font.family.sans}",
+          "fontSize": "{font.size.xs}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "12/500. #태그 칩"
+      },
+      "code": {
+        "$value": {
+          "fontFamily": "{font.family.mono}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.regular}",
+          "lineHeight": "{font.line-height.relaxed}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "14 mono/1.6. 코드 블록"
+      },
+      "command": {
+        "$value": {
+          "fontFamily": "{font.family.mono}",
+          "fontSize": "{font.size.sm}",
+          "fontWeight": "{font.weight.medium}",
+          "lineHeight": "{font.line-height.normal}",
+          "letterSpacing": "{font.letter-spacing.normal}"
+        },
+        "$description": "14 mono/500. 명령어 메모 한 줄 행"
+      },
+      "pin": {
+        "$value": {
+          "fontFamily": "{font.family.mono}",
+          "fontSize": "{font.size.2xl}",
+          "fontWeight": "{font.weight.semibold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.wide}"
+        },
+        "$description": "24 mono/600. 2FA·PIN 입력 칸"
+      },
+      "logo": {
+        "$value": {
+          "fontFamily": "{font.family.display}",
+          "fontSize": "{font.size.2xl}",
+          "fontWeight": "{font.weight.extrabold}",
+          "lineHeight": "{font.line-height.none}",
+          "letterSpacing": "{font.letter-spacing.tighter}"
+        },
+        "$description": "24/800. memoir 워드마크. m 은 rose, emoir 는 ink"
+      }
+    },
+    "shadow": {
+      "$type": "shadow",
+      "$description": "design-guide: 깊이는 그림자가 아니라 면의 톤 차이로. 그림자는 플로팅 요소(FAB·모달·드롭다운)에만, 색은 ink 틴트, 아주 넓게 퍼뜨린다(ambient).",
+      "none": {
+        "$value": [
+          {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "카드 기본. 카드는 그림자 없이 면 차이로만 떠 보인다"
+      },
+      "soft": {
+        "$value": [
+          {
+            "color": "#2319170D",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "12px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "기존 tailwind shadow-soft. 카드 hover·드롭다운. 5%"
+      },
+      "ambient": {
+        "$value": [
+          {
+            "color": "#2319170F",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "40px",
+            "spread": "0px"
+          }
+        ],
+        "$description": "design-guide 플로팅 그림자. FAB·글래스 플로팅 바·팝오버. 6%"
+      },
+      "modal": {
+        "$value": [
+          {
+            "color": "#23191714",
+            "offsetX": "0px",
+            "offsetY": "24px",
+            "blur": "64px",
+            "spread": "-8px"
+          }
+        ],
+        "$description": "모달·와이드 모달. 8%"
+      },
+      "inner": {
+        "$value": [
+          {
+            "color": "#2319170F",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "3px",
+            "spread": "0px",
+            "inset": true
+          }
+        ],
+        "$description": "눌린 칩·인풋 채움면"
+      },
+      "focus": {
+        "$value": [
+          {
+            "color": "#465D9540",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "3px"
+          }
+        ],
+        "$description": "검색창·필 인풋 포커스 링(밑줄이 없는 둥근 인풋용). indigo 25%"
+      }
+    },
+    "shadow-dark": {
+      "$type": "shadow",
+      "none": {
+        "$value": [
+          {
+            "color": "#00000000",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "soft": {
+        "$value": [
+          {
+            "color": "#00000059",
+            "offsetX": "0px",
+            "offsetY": "2px",
+            "blur": "12px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "ambient": {
+        "$value": [
+          {
+            "color": "#00000080",
+            "offsetX": "0px",
+            "offsetY": "12px",
+            "blur": "40px",
+            "spread": "0px"
+          }
+        ]
+      },
+      "modal": {
+        "$value": [
+          {
+            "color": "#000000A6",
+            "offsetX": "0px",
+            "offsetY": "24px",
+            "blur": "64px",
+            "spread": "-8px"
+          }
+        ]
+      },
+      "inner": {
+        "$value": [
+          {
+            "color": "#00000066",
+            "offsetX": "0px",
+            "offsetY": "1px",
+            "blur": "3px",
+            "spread": "0px",
+            "inset": true
+          }
+        ]
+      },
+      "focus": {
+        "$value": [
+          {
+            "color": "#AEC1F440",
+            "offsetX": "0px",
+            "offsetY": "0px",
+            "blur": "0px",
+            "spread": "3px"
+          }
+        ]
+      }
+    },
+    "glass": {
+      "$description": "글래스모피즘 플로팅 요소(기획서 대시보드 bg-white/40 backdrop-blur-xl, design-guide 모달 80% + blur 20).",
+      "bg-floating": {
+        "$value": "#FFFFFF66",
+        "$type": "color",
+        "$description": "대시보드 벤토 박스·플로팅 액션 바. white 40%"
+      },
+      "bg-modal": {
+        "$value": "#FFFFFFCC",
+        "$type": "color",
+        "$description": "모달·드롭다운. white 80%"
+      },
+      "blur": {
+        "$value": "20px",
+        "$type": "dimension"
+      },
+      "blur-strong": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "tailwind backdrop-blur-xl"
+      }
+    },
+    "gradient": {
+      "$type": "gradient",
+      "$description": "design-guide: 무거운 그라데이션 금지. CTA 가 필요하면 rose → pink 미세 전환 하나. 랜딩 블롭은 별도.",
+      "cta": {
+        "$value": [
+          {
+            "color": "{pink.600}",
+            "position": 0
+          },
+          {
+            "color": "{pink.500}",
+            "position": 1
+          }
+        ],
+        "$description": "primary 버튼 hover 강조가 필요한 랜딩 CTA 에서만. 앱 버튼은 단색"
+      },
+      "blob-pink": {
+        "$value": [
+          {
+            "color": "#FF82A966",
+            "position": 0
+          },
+          {
+            "color": "#FF82A900",
+            "position": 1
+          }
+        ],
+        "$description": "랜딩 배경 블롭(기존 blob-float 애니메이션). radial 로 쓴다. 40% → 0"
+      },
+      "blob-blue": {
+        "$value": [
+          {
+            "color": "#7F95D14D",
+            "position": 0
+          },
+          {
+            "color": "#7F95D100",
+            "position": 1
+          }
+        ],
+        "$description": "랜딩 배경 블롭 30% → 0"
+      },
+      "paper": {
+        "$value": [
+          {
+            "color": "{brand.paper}",
+            "position": 0
+          },
+          {
+            "color": "{brand.cream}",
+            "position": 1
+          }
+        ],
+        "$description": "온보딩·빈 상태 카드 배경. 거의 안 보임. 180deg"
+      },
+      "scrim-bottom": {
+        "$value": [
+          {
+            "color": "#23191700",
+            "position": 0
+          },
+          {
+            "color": "#231917B3",
+            "position": 1
+          }
+        ],
+        "$description": "영상 썸네일 위 제목. 180deg"
+      },
+      "fade-right": {
+        "$value": [
+          {
+            "color": "#FFF9F800",
+            "position": 0
+          },
+          {
+            "color": "{brand.paper}",
+            "position": 1
+          }
+        ],
+        "$description": "서브 헤더 필터 칩 가로 스크롤 끝. 90deg"
+      }
+    },
+    "gradient-angle": {
+      "$type": "number",
+      "default": {
+        "$value": 135
+      },
+      "vertical": {
+        "$value": 180
+      },
+      "horizontal": {
+        "$value": 90
+      }
+    },
+    "opacity": {
+      "$type": "number",
+      "disabled": {
+        "$value": 0.4
+      },
+      "hover": {
+        "$value": 0.04
+      },
+      "pressed": {
+        "$value": 0.08
+      },
+      "scrim": {
+        "$value": 0.4
+      },
+      "skeleton": {
+        "$value": 0.6
+      },
+      "locked": {
+        "$value": 0.5,
+        "$description": "잠긴 보안 메모 미리보기(블러와 함께)"
+      },
+      "ghost-border": {
+        "$value": 0.15,
+        "$description": "outline-variant 를 테두리로 쓸 때의 alpha"
+      }
+    },
+    "blur": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "4px"
+      },
+      "md": {
+        "$value": "12px",
+        "$description": "헤더 스크롤 시 글래스"
+      },
+      "lg": {
+        "$value": "20px",
+        "$description": "모달 뒤·글래스 플로팅(design-guide)"
+      },
+      "locked": {
+        "$value": "8px",
+        "$description": "잠긴 보안 메모 본문 블러"
+      }
+    },
+    "z-index": {
+      "$type": "number",
+      "hide": {
+        "$value": -1
+      },
+      "base": {
+        "$value": 0
+      },
+      "raised": {
+        "$value": 10
+      },
+      "fab": {
+        "$value": 900
+      },
+      "dropdown": {
+        "$value": 1000
+      },
+      "sticky": {
+        "$value": 1100,
+        "$description": "메인 헤더·서브 헤더"
+      },
+      "overlay": {
+        "$value": 1200
+      },
+      "modal": {
+        "$value": 1300
+      },
+      "popover": {
+        "$value": 1400
+      },
+      "toast": {
+        "$value": 1500
+      },
+      "tooltip": {
+        "$value": 1600
+      }
+    },
+    "motion": {
+      "$description": "기존 globals.css 애니메이션(slide-in-right 250, slide-up 300, fade-in 200, shake 400)을 토큰으로. 종이가 미끄러지듯, 튀지 않게.",
+      "duration": {
+        "$type": "duration",
+        "instant": {
+          "$value": "0ms"
+        },
+        "fast": {
+          "$value": "150ms",
+          "$description": "hover 면 전환·칩 활성"
+        },
+        "normal": {
+          "$value": "200ms",
+          "$description": "fade-in·드롭다운·툴팁 (기존 fade-in 0.2s)"
+        },
+        "slide": {
+          "$value": "250ms",
+          "$description": "패널 slide-in-right (기존)"
+        },
+        "slow": {
+          "$value": "300ms",
+          "$description": "모달·시트 slide-up (기존)"
+        },
+        "shake": {
+          "$value": "400ms",
+          "$description": "2FA·비밀번호 오류 흔들림 (기존)"
+        },
+        "lock": {
+          "$value": "600ms",
+          "$description": "보안 메모 잠금 해제 블러 걷힘"
+        },
+        "skeleton-cycle": {
+          "$value": "1600ms"
+        },
+        "toast": {
+          "$value": "3000ms"
+        },
+        "blob": {
+          "$value": "18000ms",
+          "$description": "랜딩 블롭 부유 한 주기"
+        }
+      },
+      "easing": {
+        "$type": "cubicBezier",
+        "out": {
+          "$value": [
+            0.22,
+            1,
+            0.36,
+            1
+          ],
+          "$description": "등장·이동 (기존 slide 계열)"
+        },
+        "in-out": {
+          "$value": [
+            0.4,
+            0,
+            0.2,
+            1
+          ],
+          "$description": "색·면 전환"
+        },
+        "in": {
+          "$value": [
+            0.4,
+            0,
+            1,
+            1
+          ],
+          "$description": "사라짐"
+        },
+        "ease": {
+          "$value": [
+            0.25,
+            0.1,
+            0.25,
+            1
+          ],
+          "$description": "기존 fade-in·shake 의 ease"
+        },
+        "linear": {
+          "$value": [
+            0,
+            0,
+            1,
+            1
+          ]
+        }
+      },
+      "distance": {
+        "$type": "dimension",
+        "sm": {
+          "$value": "4px",
+          "$description": "fade-in translateY (기존)"
+        },
+        "md": {
+          "$value": "8px"
+        },
+        "lg": {
+          "$value": "16px"
+        },
+        "shake": {
+          "$value": "6px",
+          "$description": "shake 진폭 (기존 6/4)"
+        },
+        "panel": {
+          "$value": "100%",
+          "$description": "slide-in-right·slide-up"
+        }
+      },
+      "scale": {
+        "$type": "number",
+        "enter": {
+          "$value": 0.98
+        },
+        "press": {
+          "$value": 0.98
+        },
+        "fab-hover": {
+          "$value": 1.04
+        }
+      }
+    },
+    "color": {
+      "$type": "color",
+      "$description": "시맨틱 색(라이트). Warm Minimalist: 크림·연분홍 면 위에 따뜻한 검정 글자. 테두리 대신 면의 밝기 차이로 구획한다(No-Line). 파랑은 상호작용에만, 핑크는 브랜드·강조에만.",
+      "surface": {
+        "$description": "종이를 겹쳐 놓은 층. canvas(paper) → zone(paper-tint) → card(white) 순으로 밝아진다. 선 없이 면 차이로만 구분.",
+        "canvas": {
+          "$value": "{brand.paper}",
+          "$description": "body. #FFF9F8"
+        },
+        "zone": {
+          "$value": "{brand.paper-tint}",
+          "$description": "콘텐츠 구역·리스트 배경·사이드 패널. 카드가 올라갈 바닥"
+        },
+        "zone-deep": {
+          "$value": "{brand.paper-deep}",
+          "$description": "구역 안 구역·인풋 채움·비활성"
+        },
+        "default": {
+          "$value": "{base.white}",
+          "$description": "카드·메모·에디터 면. zone 위에서 떠 보인다"
+        },
+        "raised": {
+          "$value": "#FFFFFFCC",
+          "$description": "모달·드롭다운·플로팅 바. white 80% + backdrop-blur 20 (glass)"
+        },
+        "cream": {
+          "$value": "{brand.cream}",
+          "$description": "섹션 배경·대시보드 벤토 박스·빈 상태 카드"
+        },
+        "blush": {
+          "$value": "{brand.blush}",
+          "$description": "태그 배지·카드 포인트 띠·hover 강조"
+        },
+        "overlay": {
+          "$value": "#23191766",
+          "$description": "모달 스크림 ink 40%"
+        },
+        "inverse": {
+          "$value": "{brand.ink}",
+          "$description": "툴팁·토스트"
+        },
+        "brand": {
+          "$value": "{pink.600}",
+          "$description": "로즈 면(온보딩·프로모션·FAB). 흰 글자 6.48"
+        },
+        "brand-subtle": {
+          "$value": "{pink.50}",
+          "$description": "선택된 행·활성 항목 배경"
+        },
+        "interactive": {
+          "$value": "{blue.400}",
+          "$description": "활성 메뉴·카테고리 드롭다운 선택 항목 배경 + 흰 글자(기획서 5.2). 흰 글자 2.95 라 라벨은 14px 이상 600 굵기"
+        },
+        "interactive-subtle": {
+          "$value": "{blue.50}",
+          "$description": "링크 hover·포커스 배경"
+        },
+        "disabled": {
+          "$value": "{brand.paper-deep}"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{brand.ink}",
+          "$description": "17.17:1. 본문·제목"
+        },
+        "secondary": {
+          "$value": "{neutral.800}",
+          "$description": "#4C413E 9.85. 설명·미리보기 본문"
+        },
+        "tertiary": {
+          "$value": "{neutral.700}",
+          "$description": "#635654 7.02(흰), cream 위 6.2. 타임스탬프·라벨·메타. 크림 면 위에서도 AA 를 넘기려 600 대신 700"
+        },
+        "placeholder": {
+          "$value": "{neutral.700}"
+        },
+        "disabled": {
+          "$value": "{neutral.400}"
+        },
+        "inverse": {
+          "$value": "{brand.paper}",
+          "$description": "ink 면 위 글자(툴팁·토스트)"
+        },
+        "on-brand": {
+          "$value": "{base.white}",
+          "$description": "rose 면·primary 버튼 위"
+        },
+        "on-pink": {
+          "$value": "{brand.wine}",
+          "$description": "핑크(#FF82A9)·blush 배경 위 글자"
+        },
+        "on-interactive": {
+          "$value": "{base.white}",
+          "$description": "periwinkle 활성 메뉴 위"
+        },
+        "brand": {
+          "$value": "{pink.600}",
+          "$description": "로즈 글자. 헤드라인 강조 단어·로고 워드마크. 6.48"
+        },
+        "link": {
+          "$value": "{blue.600}",
+          "$description": "#465D95 6.44. 파랗다 = 클릭 가능"
+        },
+        "link-hover": {
+          "$value": "{blue.700}"
+        },
+        "success": {
+          "$value": "{green.700}"
+        },
+        "warning": {
+          "$value": "{amber.600}"
+        },
+        "danger": {
+          "$value": "{red.600}"
+        },
+        "info": {
+          "$value": "{blue.600}"
+        }
+      },
+      "border": {
+        "$description": "No-Line 규칙: 구획에 1px 선을 쓰지 않는다. 아래는 접근성·포커스·인풋 밑줄 같은 예외 전용.",
+        "ghost": {
+          "$value": "#DBC0C526",
+          "$description": "outline-variant 15%. 접근성상 경계가 필요할 때의 유일한 테두리"
+        },
+        "subtle": {
+          "$value": "{brand.paper-deep}",
+          "$description": "면과 면 사이 미세 단차. 선처럼 보이면 안 된다"
+        },
+        "default": {
+          "$value": "{neutral.200}",
+          "$description": "캘린더 그리드처럼 선이 곧 정보인 곳만"
+        },
+        "strong": {
+          "$value": "{neutral.300}"
+        },
+        "input-strict": {
+          "$value": "{neutral.500}",
+          "$description": "체크박스·라디오 3.53"
+        },
+        "brand": {
+          "$value": "{pink.400}"
+        },
+        "interactive": {
+          "$value": "{blue.600}",
+          "$description": "인풋 포커스 밑줄 2px"
+        },
+        "focus": {
+          "$value": "{blue.600}"
+        },
+        "danger": {
+          "$value": "{red.500}"
+        },
+        "inverse": {
+          "$value": "#FFF9F833"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "$value": "{pink.600}",
+            "$description": "로즈 #A1385E + 흰 글자 6.48. 핑크 원색은 2.33 이라 버튼 배경 금지"
+          },
+          "bg-hover": {
+            "$value": "{pink.700}"
+          },
+          "bg-active": {
+            "$value": "{pink.800}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "secondary": {
+          "bg": {
+            "$value": "{brand.paper-deep}",
+            "$description": "design-guide Secondary: surface-container + rose 글자"
+          },
+          "bg-hover": {
+            "$value": "{brand.cream}"
+          },
+          "bg-active": {
+            "$value": "{pink.100}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          },
+          "text": {
+            "$value": "{pink.600}"
+          }
+        },
+        "ghost": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{brand.paper-tint}"
+          },
+          "bg-active": {
+            "$value": "{brand.paper-deep}"
+          },
+          "text": {
+            "$value": "{neutral.700}"
+          }
+        },
+        "interactive": {
+          "bg": {
+            "$value": "{blue.400}",
+            "$description": "활성 메뉴·선택된 카테고리(기획서 5.2 #7F95D1 배경 + 흰 텍스트). 라벨 14px 이상 600"
+          },
+          "bg-hover": {
+            "$value": "{blue.500}"
+          },
+          "bg-active": {
+            "$value": "{blue.600}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.600}",
+            "$description": "삭제. 5.46"
+          },
+          "bg-hover": {
+            "$value": "{red.700}"
+          },
+          "bg-active": {
+            "$value": "{red.800}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "danger-ghost": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{red.50}"
+          },
+          "text": {
+            "$value": "{red.600}"
+          }
+        },
+        "disabled": {
+          "bg": {
+            "$value": "{brand.paper-deep}"
+          },
+          "text": {
+            "$value": "{neutral.400}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          }
+        }
+      },
+      "chip": {
+        "$description": "필터 칩·태그. 기본은 눌린 면, 활성은 브랜드 핑크 + wine 글자.",
+        "bg": {
+          "$value": "{brand.paper-deep}"
+        },
+        "text": {
+          "$value": "{neutral.700}"
+        },
+        "bg-hover": {
+          "$value": "{brand.cream}"
+        },
+        "bg-active": {
+          "$value": "{pink.400}",
+          "$description": "#FF82A9"
+        },
+        "text-active": {
+          "$value": "{brand.wine}",
+          "$description": "#78163E"
+        },
+        "tag-bg": {
+          "$value": "{brand.blush}",
+          "$description": "#태그 배지(기획서: #FFC0BE + 검정 글자)"
+        },
+        "tag-text": {
+          "$value": "{brand.ink}"
+        },
+        "all-bg": {
+          "$value": "{brand.ink}",
+          "$description": "ALL 같은 강조 칩(v4 시안의 검정 칩)"
+        },
+        "all-text": {
+          "$value": "{brand.paper}"
+        }
+      },
+      "status": {
+        "success": {
+          "bg": {
+            "$value": "{green.50}"
+          },
+          "border": {
+            "$value": "{green.200}"
+          },
+          "text": {
+            "$value": "{green.700}"
+          },
+          "icon": {
+            "$value": "{green.600}"
+          },
+          "solid": {
+            "$value": "{green.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "warning": {
+          "bg": {
+            "$value": "{amber.50}"
+          },
+          "border": {
+            "$value": "{amber.200}"
+          },
+          "text": {
+            "$value": "{amber.700}"
+          },
+          "icon": {
+            "$value": "{amber.600}"
+          },
+          "solid": {
+            "$value": "{amber.300}"
+          },
+          "on-solid": {
+            "$value": "{brand.ink}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.50}"
+          },
+          "border": {
+            "$value": "{red.200}"
+          },
+          "text": {
+            "$value": "{red.700}"
+          },
+          "icon": {
+            "$value": "{red.600}"
+          },
+          "solid": {
+            "$value": "{red.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "info": {
+          "bg": {
+            "$value": "{blue.50}"
+          },
+          "border": {
+            "$value": "{blue.200}"
+          },
+          "text": {
+            "$value": "{blue.700}"
+          },
+          "icon": {
+            "$value": "{blue.600}"
+          },
+          "solid": {
+            "$value": "{blue.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "secure": {
+          "$description": "보안·2FA 상태. 기획서 경고/보안 = 핑크 계열. 잠금·인증 만료·비밀번호 확인",
+          "bg": {
+            "$value": "{pink.50}"
+          },
+          "border": {
+            "$value": "{pink.200}"
+          },
+          "text": {
+            "$value": "{pink.700}"
+          },
+          "icon": {
+            "$value": "{pink.600}"
+          },
+          "solid": {
+            "$value": "{pink.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        },
+        "neutral": {
+          "bg": {
+            "$value": "{brand.paper-deep}"
+          },
+          "border": {
+            "$value": "{neutral.200}"
+          },
+          "text": {
+            "$value": "{neutral.700}"
+          },
+          "icon": {
+            "$value": "{neutral.600}"
+          },
+          "solid": {
+            "$value": "{neutral.600}"
+          },
+          "on-solid": {
+            "$value": "{base.white}"
+          }
+        }
+      },
+      "interactive": {
+        "focus-ring": {
+          "$value": "{blue.600}"
+        },
+        "selected-bg": {
+          "$value": "{pink.50}"
+        },
+        "selected-border": {
+          "$value": "{pink.400}"
+        },
+        "selected-text": {
+          "$value": "{pink.700}"
+        },
+        "hover-overlay": {
+          "$value": "#2319170A",
+          "$description": "ink 4%. 이미 흰 면인 곳의 hover"
+        },
+        "pressed-overlay": {
+          "$value": "#23191714"
+        },
+        "row-hover": {
+          "$value": "{base.white}",
+          "$description": "zone(paper-tint) 위 리스트 행 hover 는 흰 면으로 떠오른다"
+        }
+      },
+      "category": {
+        "$description": "9개 카테고리 식별색. 드롭다운 아이콘 배경·서브 헤더 포인트·대시보드 벤토 박스 헤더에만. 본문·버튼에는 쓰지 않는다.",
+        "dashboard": {
+          "$value": "{blue.200}"
+        },
+        "calendar": {
+          "$value": "{pink.200}"
+        },
+        "general": {
+          "$value": "{brand.cream}"
+        },
+        "simple": {
+          "$value": "{amber.100}"
+        },
+        "code": {
+          "$value": "{neutral.900}",
+          "$description": "코드는 ink 면(다크 코드 블록과 짝)"
+        },
+        "command": {
+          "$value": "{neutral.200}"
+        },
+        "bookmark": {
+          "$value": "{blue.100}"
+        },
+        "video": {
+          "$value": "{red.100}"
+        },
+        "secure": {
+          "$value": "{pink.400}"
+        },
+        "private": {
+          "$value": "{neutral.300}"
+        }
+      },
+      "code": {
+        "$description": "코드 블록(다크 면). 라이트·다크 모두 어둡다. 코드는 항상 ink 위.",
+        "bg": {
+          "$value": "#1A1A1A"
+        },
+        "text": {
+          "$value": "#E6E1DF"
+        },
+        "comment": {
+          "$value": "{neutral.500}"
+        },
+        "keyword": {
+          "$value": "{pink.300}"
+        },
+        "string": {
+          "$value": "{green.300}"
+        },
+        "number": {
+          "$value": "{amber.300}"
+        },
+        "function": {
+          "$value": "{blue.300}"
+        },
+        "gutter": {
+          "$value": "{neutral.600}"
+        },
+        "line-highlight": {
+          "$value": "#FFFFFF0F"
+        },
+        "inline-bg": {
+          "$value": "{brand.paper-deep}",
+          "$description": "본문 안 인라인 코드"
+        },
+        "inline-text": {
+          "$value": "{pink.700}"
+        }
+      },
+      "chart": {
+        "$description": "대시보드 통계(카테고리별 메모 수·주간 활동). 소박하게.",
+        "categorical": {
+          "1": {
+            "$value": "{pink.400}"
+          },
+          "2": {
+            "$value": "{blue.400}"
+          },
+          "3": {
+            "$value": "{amber.300}"
+          },
+          "4": {
+            "$value": "{green.400}"
+          },
+          "5": {
+            "$value": "{neutral.400}"
+          }
+        },
+        "grid": {
+          "$value": "{neutral.200}"
+        },
+        "axis": {
+          "$value": "{neutral.500}"
+        },
+        "label": {
+          "$value": "{neutral.700}"
+        },
+        "heat": {
+          "0": {
+            "$value": "{brand.paper-deep}"
+          },
+          "1": {
+            "$value": "{pink.100}"
+          },
+          "2": {
+            "$value": "{pink.200}"
+          },
+          "3": {
+            "$value": "{pink.300}"
+          },
+          "4": {
+            "$value": "{pink.400}"
+          },
+          "$description": "캘린더 활동 히트맵 5단계"
+        }
+      }
+    },
+    "component": {
+      "$description": "컴포넌트 토큰. 기존 components/ui(Button·Chip·Input·Modal·WideModal·PromptModal·SearchBar·CustomSelect·MemoirLogo)와 layout(MainHeader·SubHeader·CategoryDropdown)을 토큰으로, 카테고리별 메모 카드 규격을 더했다.",
+      "button": {
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension",
+          "$description": "8 (design-guide)"
+        },
+        "radius-pill": {
+          "$value": "{radius.full}",
+          "$type": "dimension",
+          "$description": "헤더 New 버튼·랜딩 CTA"
+        },
+        "gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "min-width": {
+          "$value": "72px",
+          "$type": "dimension"
+        },
+        "xs": {
+          "height": {
+            "$value": "{size.control.xs}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.2}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.caption}",
+            "$type": "typography"
+          }
+        },
+        "sm": {
+          "height": {
+            "$value": "{size.control.sm}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.3}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.sm}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-md}",
+            "$type": "typography"
+          }
+        },
+        "md": {
+          "height": {
+            "$value": "{size.control.md}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.5}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-md}",
+            "$type": "typography"
+          }
+        },
+        "lg": {
+          "height": {
+            "$value": "{size.control.lg}",
+            "$type": "dimension"
+          },
+          "padding-x": {
+            "$value": "{space.6}",
+            "$type": "dimension"
+          },
+          "icon": {
+            "$value": "{size.icon.md}",
+            "$type": "dimension"
+          },
+          "typography": {
+            "$value": "{typography.label-lg}",
+            "$type": "typography"
+          }
+        }
+      },
+      "fab": {
+        "size": {
+          "$value": "{size.control.xl}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.action.primary.bg}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.action.primary.text}",
+          "$type": "color"
+        },
+        "shadow": {
+          "$value": "{shadow.ambient}",
+          "$type": "shadow"
+        },
+        "icon": {
+          "$value": "{size.icon.lg}",
+          "$type": "dimension"
+        },
+        "offset": {
+          "$value": "{size.layout.fab-offset}",
+          "$type": "dimension"
+        }
+      },
+      "input": {
+        "$description": "두 형태: underline(에디토리얼, 폼)과 filled(검색·필터). 테두리 상자형은 쓰지 않는다.",
+        "height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "height-lg": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "bg-filled": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color",
+          "$description": "filled 형 배경(design-guide surface-container-highest)"
+        },
+        "bg-focus": {
+          "$value": "{color.surface.default}",
+          "$type": "color",
+          "$description": "포커스 시 흰 면으로"
+        },
+        "underline": {
+          "$value": "{color.border.strong}",
+          "$type": "color",
+          "$description": "underline 형 기본 밑줄 1px"
+        },
+        "underline-focus": {
+          "$value": "{color.border.interactive}",
+          "$type": "color",
+          "$description": "포커스 밑줄 2px indigo"
+        },
+        "underline-error": {
+          "$value": "{color.border.danger}",
+          "$type": "color"
+        },
+        "padding-x": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "label-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "help-gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "field-gap": {
+          "$value": "{space.6}",
+          "$type": "dimension",
+          "$description": "필드 사이 24 (여백이 구분선)"
+        },
+        "typography": {
+          "$value": "{typography.body}",
+          "$type": "typography"
+        },
+        "label-typography": {
+          "$value": "{typography.label}",
+          "$type": "typography",
+          "$description": "라벨은 대문자 메타 스타일"
+        }
+      },
+      "search": {
+        "$description": "메인 헤더 검색(SearchBar). 필 형태, 채움면.",
+        "height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color"
+        },
+        "bg-focus": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "focus-shadow": {
+          "$value": "{shadow.focus}",
+          "$type": "shadow"
+        },
+        "icon": {
+          "$value": "{size.icon.sm}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "max-width": {
+          "$value": "400px",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.body-sm}",
+          "$type": "typography"
+        }
+      },
+      "pin": {
+        "$description": "2FA·PIN 6자리 입력(보안 메모 진입).",
+        "cell-size": {
+          "$value": "{size.control.lg}",
+          "$type": "dimension"
+        },
+        "cell-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "cell-radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "cell-bg": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color"
+        },
+        "cell-bg-filled": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "cell-underline-active": {
+          "$value": "{color.border.interactive}",
+          "$type": "color"
+        },
+        "cell-error": {
+          "$value": "{color.border.danger}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.pin}",
+          "$type": "typography"
+        }
+      },
+      "chip": {
+        "$description": "서브 헤더 필터 칩(Chip). 필 형태. v4 시안: ALL 은 ink 채움, 나머지 옅은 면, 활성 핑크.",
+        "height": {
+          "$value": "{size.control.xs}",
+          "$type": "dimension",
+          "$description": "28. 터치 위주 화면은 36"
+        },
+        "height-touch": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.2}",
+          "$type": "dimension",
+          "$description": "칩 사이"
+        },
+        "typography": {
+          "$value": "{typography.label}",
+          "$type": "typography",
+          "$description": "12/600 대문자 자간(언어·플랫폼 필터)"
+        },
+        "bg": {
+          "$value": "{color.chip.bg}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.chip.text}",
+          "$type": "color"
+        },
+        "bg-active": {
+          "$value": "{color.chip.bg-active}",
+          "$type": "color"
+        },
+        "text-active": {
+          "$value": "{color.chip.text-active}",
+          "$type": "color"
+        },
+        "bg-all": {
+          "$value": "{color.chip.all-bg}",
+          "$type": "color"
+        },
+        "text-all": {
+          "$value": "{color.chip.all-text}",
+          "$type": "color"
+        }
+      },
+      "tag": {
+        "$description": "#태그 배지(메모 하단).",
+        "height": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.chip.tag-bg}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.chip.tag-text}",
+          "$type": "color"
+        },
+        "typography": {
+          "$value": "{typography.tag}",
+          "$type": "typography"
+        },
+        "gap": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        }
+      },
+      "lang-badge": {
+        "$description": "코드 스니펫 언어 배지(JAVASCRIPT·JAVA). 각진 사각, 언어별 옅은 색.",
+        "height": {
+          "$value": "22px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xs}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.label}",
+          "$type": "typography"
+        },
+        "bg": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.secondary}",
+          "$type": "color"
+        }
+      },
+      "card": {
+        "$description": "메모 카드 공통. 테두리·그림자 없이 zone 위 흰 면.",
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "bg-zone": {
+          "$value": "{color.surface.zone}",
+          "$type": "color",
+          "$description": "카드가 놓이는 바닥"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension",
+          "$description": "12. 미리보기 카드는 md 8"
+        },
+        "radius-preview": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.none}",
+          "$type": "shadow"
+        },
+        "shadow-hover": {
+          "$value": "{shadow.soft}",
+          "$type": "shadow",
+          "$description": "클릭 가능한 카드 hover 만"
+        },
+        "padding": {
+          "$value": "{space.6}",
+          "$type": "dimension",
+          "$description": "24 (v4 시안)"
+        },
+        "padding-sm": {
+          "$value": "{space.3}",
+          "$type": "dimension",
+          "$description": "12 미리보기 카드(design-guide)"
+        },
+        "gap": {
+          "$value": "{space.6}",
+          "$type": "dimension",
+          "$description": "카드 사이 24 (구분선 대신 여백)"
+        },
+        "header-gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "meta-gap": {
+          "$value": "{space.4}",
+          "$type": "dimension",
+          "$description": "본문↔태그·날짜 줄"
+        }
+      },
+      "code-block": {
+        "bg": {
+          "$value": "{color.code.bg}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.code.text}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.code}",
+          "$type": "typography"
+        },
+        "gutter-width": {
+          "$value": "40px",
+          "$type": "dimension"
+        },
+        "max-height-collapsed": {
+          "$value": "240px",
+          "$type": "dimension",
+          "$description": "아코디언 접힘 높이"
+        },
+        "toolbar-height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension",
+          "$description": "언어·복사 버튼 줄"
+        }
+      },
+      "command-row": {
+        "$description": "명령어 메모 한 줄(와이드 뷰). [플랫폼 배지] [명령어 mono] [설명] [복사]",
+        "height": {
+          "$value": "52px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "row-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension",
+          "$description": "행 사이 8 (촘촘한 카테고리 예외)"
+        },
+        "cmd-typography": {
+          "$value": "{typography.command}",
+          "$type": "typography"
+        },
+        "cmd-bg": {
+          "$value": "{color.code.inline-bg}",
+          "$type": "color"
+        }
+      },
+      "bookmark-card": {
+        "$description": "URL 북마크 가로 슬림 카드. [OG 이미지 96×64] [제목 / 도메인 / 설명 1줄] [태그]",
+        "height": {
+          "$value": "96px",
+          "$type": "dimension"
+        },
+        "image-width": {
+          "$value": "96px",
+          "$type": "dimension"
+        },
+        "image-radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "domain-typography": {
+          "$value": "{typography.label}",
+          "$type": "typography"
+        }
+      },
+      "video-card": {
+        "$description": "영상 메모 썸네일 갤러리. 16:9 썸네일 + 제목 2줄 + 채널·길이",
+        "thumb-ratio": {
+          "$value": "16 / 9",
+          "$type": "string"
+        },
+        "thumb-radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "duration-bg": {
+          "$value": "{color.surface.inverse}",
+          "$type": "color"
+        },
+        "duration-text": {
+          "$value": "{color.text.inverse}",
+          "$type": "color"
+        },
+        "columns-lg": {
+          "$value": 3,
+          "$type": "number"
+        },
+        "columns-md": {
+          "$value": 2,
+          "$type": "number"
+        }
+      },
+      "secure-row": {
+        "$description": "보안 메모 가로 컴팩트 카드. 잠금 상태면 본문 블러 + 자물쇠. 왼쪽 4px 핑크 띠.",
+        "height": {
+          "$value": "72px",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "accent": {
+          "$value": "{color.status.secure.solid}",
+          "$type": "color"
+        },
+        "accent-width": {
+          "$value": "{border-width.accent}",
+          "$type": "dimension"
+        },
+        "locked-blur": {
+          "$value": "{blur.locked}",
+          "$type": "dimension"
+        },
+        "locked-opacity": {
+          "$value": "{opacity.locked}",
+          "$type": "number"
+        },
+        "countdown-typography": {
+          "$value": "{typography.label}",
+          "$type": "typography"
+        },
+        "countdown-color": {
+          "$value": "{color.status.secure.text}",
+          "$type": "color"
+        }
+      },
+      "folder": {
+        "$description": "프라이빗 폴더 그리드 타일",
+        "size": {
+          "$value": "160px",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.cream}",
+          "$type": "color"
+        },
+        "bg-hover": {
+          "$value": "{color.surface.blush}",
+          "$type": "color"
+        },
+        "icon": {
+          "$value": "{size.icon.xl}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        }
+      },
+      "calendar": {
+        "cell-min-height": {
+          "$value": "96px",
+          "$type": "dimension"
+        },
+        "cell-min-height-mobile": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "cell-padding": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "grid-line": {
+          "$value": "{color.border.default}",
+          "$type": "color",
+          "$description": "선이 정보인 유일한 곳"
+        },
+        "today-bg": {
+          "$value": "{color.surface.brand-subtle}",
+          "$type": "color"
+        },
+        "today-marker": {
+          "$value": "{color.action.primary.bg}",
+          "$type": "color",
+          "$description": "오늘 날짜 숫자 원형 채움 + 흰 글자"
+        },
+        "selected-ring": {
+          "$value": "{color.border.interactive}",
+          "$type": "color"
+        },
+        "event-dot": {
+          "$value": "{brand.periwinkle}",
+          "$type": "color"
+        },
+        "weekend-text": {
+          "$value": "{color.text.tertiary}",
+          "$type": "color"
+        },
+        "day-typography": {
+          "$value": "{typography.label-md}",
+          "$type": "typography"
+        },
+        "panel-width": {
+          "$value": "{size.layout.panel}",
+          "$type": "dimension"
+        }
+      },
+      "header": {
+        "$description": "메인 헤더(MainHeader) 60 + 서브 헤더(SubHeader) 44. 둘 다 sticky. 사이드바 없음.",
+        "height": {
+          "$value": "{size.layout.header}",
+          "$type": "dimension"
+        },
+        "sub-height": {
+          "$value": "{size.layout.subheader}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.default}",
+          "$type": "color"
+        },
+        "bg-scrolled": {
+          "$value": "{glass.bg-modal}",
+          "$type": "color",
+          "$description": "스크롤 시 white 80% + blur"
+        },
+        "sub-bg": {
+          "$value": "{color.surface.canvas}",
+          "$type": "color"
+        },
+        "padding-x": {
+          "$value": "{size.layout.page-gutter-md}",
+          "$type": "dimension"
+        },
+        "logo-height": {
+          "$value": "24px",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "action-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "divider": {
+          "$value": "{color.border.subtle}",
+          "$type": "color",
+          "$description": "서브 헤더 아래 면 단차(선 아님)"
+        }
+      },
+      "category-dropdown": {
+        "width": {
+          "$value": "{size.layout.dropdown-width}",
+          "$type": "dimension"
+        },
+        "bg": {
+          "$value": "{color.surface.raised}",
+          "$type": "color"
+        },
+        "blur": {
+          "$value": "{glass.blur}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.ambient}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{size.control.md}",
+          "$type": "dimension"
+        },
+        "item-radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "item-icon-size": {
+          "$value": "{size.control.xs}",
+          "$type": "dimension",
+          "$description": "카테고리 색 원 28 + 이모지·아이콘"
+        },
+        "item-active-bg": {
+          "$value": "{color.action.interactive.bg}",
+          "$type": "color"
+        },
+        "item-active-text": {
+          "$value": "{color.action.interactive.text}",
+          "$type": "color"
+        },
+        "item-hover-bg": {
+          "$value": "{color.surface.zone}",
+          "$type": "color"
+        },
+        "trigger-typography": {
+          "$value": "{typography.label-lg}",
+          "$type": "typography"
+        }
+      },
+      "modal": {
+        "$description": "Modal(sm) · PromptModal(sm) · WideModal(lg). 글래스 면.",
+        "bg": {
+          "$value": "{glass.bg-modal}",
+          "$type": "color"
+        },
+        "blur": {
+          "$value": "{glass.blur}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.modal}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.8}",
+          "$type": "dimension"
+        },
+        "padding-mobile": {
+          "$value": "{space.5}",
+          "$type": "dimension"
+        },
+        "width-sm": {
+          "$value": "{size.container.sm}",
+          "$type": "dimension",
+          "$description": "480 확인·프롬프트"
+        },
+        "width-md": {
+          "$value": "640px",
+          "$type": "dimension"
+        },
+        "width-lg": {
+          "$value": "{size.container.lg}",
+          "$type": "dimension",
+          "$description": "960 WideModal(메모 편집)"
+        },
+        "footer-gap": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "section-gap": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "enter-duration": {
+          "$value": "{motion.duration.slow}",
+          "$type": "duration"
+        }
+      },
+      "bento": {
+        "$description": "대시보드 벤토 박스(글래스)",
+        "bg": {
+          "$value": "{glass.bg-floating}",
+          "$type": "color"
+        },
+        "blur": {
+          "$value": "{glass.blur-strong}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xl}",
+          "$type": "dimension"
+        },
+        "padding": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "gap": {
+          "$value": "{space.6}",
+          "$type": "dimension"
+        },
+        "title-typography": {
+          "$value": "{typography.title}",
+          "$type": "typography"
+        },
+        "min-height": {
+          "$value": "240px",
+          "$type": "dimension"
+        }
+      },
+      "tooltip": {
+        "bg": {
+          "$value": "{color.surface.inverse}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.inverse}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.sm}",
+          "$type": "dimension"
+        },
+        "padding-y": {
+          "$value": "{space.1-5}",
+          "$type": "dimension"
+        },
+        "padding-x": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "max-width": {
+          "$value": "240px",
+          "$type": "dimension"
+        },
+        "typography": {
+          "$value": "{typography.caption}",
+          "$type": "typography"
+        }
+      },
+      "toast": {
+        "bg": {
+          "$value": "{color.surface.inverse}",
+          "$type": "color"
+        },
+        "text": {
+          "$value": "{color.text.inverse}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.ambient}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.4}",
+          "$type": "dimension"
+        },
+        "width": {
+          "$value": "360px",
+          "$type": "dimension"
+        }
+      },
+      "dropdown": {
+        "bg": {
+          "$value": "{color.surface.raised}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.lg}",
+          "$type": "dimension"
+        },
+        "shadow": {
+          "$value": "{shadow.ambient}",
+          "$type": "shadow"
+        },
+        "padding": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "item-height": {
+          "$value": "{size.control.sm}",
+          "$type": "dimension"
+        },
+        "item-padding-x": {
+          "$value": "{space.3}",
+          "$type": "dimension"
+        },
+        "item-radius": {
+          "$value": "{radius.sm}",
+          "$type": "dimension"
+        },
+        "min-width": {
+          "$value": "180px",
+          "$type": "dimension"
+        },
+        "max-height": {
+          "$value": "320px",
+          "$type": "dimension"
+        }
+      },
+      "checkbox": {
+        "size": {
+          "$value": "{size.icon.md}",
+          "$type": "dimension"
+        },
+        "radius": {
+          "$value": "{radius.xs}",
+          "$type": "dimension"
+        },
+        "border": {
+          "$value": "{color.border.input-strict}",
+          "$type": "color"
+        },
+        "bg-checked": {
+          "$value": "{color.action.primary.bg}",
+          "$type": "color"
+        },
+        "check-color": {
+          "$value": "{color.action.primary.text}",
+          "$type": "color"
+        },
+        "label-gap": {
+          "$value": "{space.2}",
+          "$type": "dimension"
+        },
+        "todo-done-text": {
+          "$value": "{color.text.tertiary}",
+          "$type": "color",
+          "$description": "대시보드 할일 완료: 취소선 + tertiary"
+        }
+      },
+      "skeleton": {
+        "bg": {
+          "$value": "{color.surface.zone-deep}",
+          "$type": "color"
+        },
+        "radius": {
+          "$value": "{radius.md}",
+          "$type": "dimension"
+        },
+        "text-height": {
+          "$value": "0.75em",
+          "$type": "dimension"
+        }
+      },
+      "avatar": {
+        "radius": {
+          "$value": "{radius.full}",
+          "$type": "dimension"
+        },
+        "fallback-bg": {
+          "$value": "{color.surface.blush}",
+          "$type": "color"
+        },
+        "fallback-text": {
+          "$value": "{color.text.on-pink}",
+          "$type": "color"
+        }
+      }
+    }
+  },
+  "wh/dark": {
+    "color": {
+      "$type": "color",
+      "$description": "시맨틱 색(다크). 따뜻한 다크: 검정이 아니라 ink 계열 갈색 검정. 종이 층은 어두운 쪽에서 위로 갈수록 밝아진다. 라이트와 경로 1:1.",
+      "surface": {
+        "canvas": {
+          "$value": "#1B1514",
+          "$description": "ink 보다 조금 더 어두운 따뜻한 검정"
+        },
+        "zone": {
+          "$value": "{brand.ink}",
+          "$description": "#231917"
+        },
+        "zone-deep": {
+          "$value": "#1F1816"
+        },
+        "default": {
+          "$value": "{neutral.900}",
+          "$description": "#382D2B 카드"
+        },
+        "raised": {
+          "$value": "#382D2BE6",
+          "$description": "neutral.900 90% + blur"
+        },
+        "cream": {
+          "$value": "{neutral.900}"
+        },
+        "blush": {
+          "$value": "{pink.300}",
+          "$description": "다크에서도 밝은 핑크 면(태그). 위 글자 wine"
+        },
+        "overlay": {
+          "$value": "#000000A6"
+        },
+        "inverse": {
+          "$value": "{brand.paper}"
+        },
+        "brand": {
+          "$value": "{pink.700}"
+        },
+        "brand-subtle": {
+          "$value": "{pink.950}"
+        },
+        "interactive": {
+          "$value": "{blue.600}",
+          "$description": "다크에서 활성 메뉴는 indigo + 흰 글자 (6.44 on white 기준, 어두운 면에서 충분)"
+        },
+        "interactive-subtle": {
+          "$value": "{blue.950}"
+        },
+        "disabled": {
+          "$value": "{neutral.800}"
+        }
+      },
+      "text": {
+        "primary": {
+          "$value": "{brand.paper}",
+          "$description": "#FFF9F8 따뜻한 흰색"
+        },
+        "secondary": {
+          "$value": "{neutral.300}"
+        },
+        "tertiary": {
+          "$value": "{neutral.400}"
+        },
+        "placeholder": {
+          "$value": "{neutral.400}"
+        },
+        "disabled": {
+          "$value": "{neutral.600}"
+        },
+        "inverse": {
+          "$value": "{brand.ink}"
+        },
+        "on-brand": {
+          "$value": "{base.white}"
+        },
+        "on-pink": {
+          "$value": "{brand.wine}"
+        },
+        "on-interactive": {
+          "$value": "{base.white}"
+        },
+        "brand": {
+          "$value": "{pink.300}"
+        },
+        "link": {
+          "$value": "{blue.300}"
+        },
+        "link-hover": {
+          "$value": "{blue.200}"
+        },
+        "success": {
+          "$value": "{green.300}"
+        },
+        "warning": {
+          "$value": "{amber.300}"
+        },
+        "danger": {
+          "$value": "{red.300}"
+        },
+        "info": {
+          "$value": "{blue.300}"
+        }
+      },
+      "border": {
+        "ghost": {
+          "$value": "#DBC0C51F"
+        },
+        "subtle": {
+          "$value": "#1F1816"
+        },
+        "default": {
+          "$value": "{neutral.800}"
+        },
+        "strong": {
+          "$value": "{neutral.700}"
+        },
+        "input-strict": {
+          "$value": "{neutral.500}"
+        },
+        "brand": {
+          "$value": "{pink.400}"
+        },
+        "interactive": {
+          "$value": "{blue.300}"
+        },
+        "focus": {
+          "$value": "{blue.300}"
+        },
+        "danger": {
+          "$value": "{red.400}"
+        },
+        "inverse": {
+          "$value": "#23191733"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "$value": "{pink.400}",
+            "$description": "다크에서는 브랜드 핑크 원색 + wine 글자. 어두운 면에서 핑크가 살아난다"
+          },
+          "bg-hover": {
+            "$value": "{pink.300}"
+          },
+          "bg-active": {
+            "$value": "{pink.200}"
+          },
+          "text": {
+            "$value": "{brand.wine}"
+          }
+        },
+        "secondary": {
+          "bg": {
+            "$value": "{pink.950}"
+          },
+          "bg-hover": {
+            "$value": "{pink.900}"
+          },
+          "bg-active": {
+            "$value": "{pink.800}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          },
+          "text": {
+            "$value": "{pink.300}"
+          }
+        },
+        "ghost": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{neutral.900}"
+          },
+          "bg-active": {
+            "$value": "{neutral.800}"
+          },
+          "text": {
+            "$value": "{neutral.300}"
+          }
+        },
+        "interactive": {
+          "bg": {
+            "$value": "{blue.600}"
+          },
+          "bg-hover": {
+            "$value": "{blue.500}"
+          },
+          "bg-active": {
+            "$value": "{blue.400}"
+          },
+          "text": {
+            "$value": "{base.white}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.400}"
+          },
+          "bg-hover": {
+            "$value": "{red.300}"
+          },
+          "bg-active": {
+            "$value": "{red.200}"
+          },
+          "text": {
+            "$value": "{red.950}"
+          }
+        },
+        "danger-ghost": {
+          "bg": {
+            "$value": "{base.transparent}"
+          },
+          "bg-hover": {
+            "$value": "{red.950}"
+          },
+          "text": {
+            "$value": "{red.300}"
+          }
+        },
+        "disabled": {
+          "bg": {
+            "$value": "{neutral.800}"
+          },
+          "text": {
+            "$value": "{neutral.600}"
+          },
+          "border": {
+            "$value": "{base.transparent}"
+          }
+        }
+      },
+      "chip": {
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.300}"
+        },
+        "bg-hover": {
+          "$value": "{neutral.700}"
+        },
+        "bg-active": {
+          "$value": "{pink.400}"
+        },
+        "text-active": {
+          "$value": "{brand.wine}"
+        },
+        "tag-bg": {
+          "$value": "{pink.300}"
+        },
+        "tag-text": {
+          "$value": "{brand.wine}"
+        },
+        "all-bg": {
+          "$value": "{brand.paper}"
+        },
+        "all-text": {
+          "$value": "{brand.ink}"
+        }
+      },
+      "status": {
+        "success": {
+          "bg": {
+            "$value": "{green.950}"
+          },
+          "border": {
+            "$value": "{green.800}"
+          },
+          "text": {
+            "$value": "{green.300}"
+          },
+          "icon": {
+            "$value": "{green.400}"
+          },
+          "solid": {
+            "$value": "{green.400}"
+          },
+          "on-solid": {
+            "$value": "{green.950}"
+          }
+        },
+        "warning": {
+          "bg": {
+            "$value": "{amber.950}"
+          },
+          "border": {
+            "$value": "{amber.800}"
+          },
+          "text": {
+            "$value": "{amber.300}"
+          },
+          "icon": {
+            "$value": "{amber.300}"
+          },
+          "solid": {
+            "$value": "{amber.300}"
+          },
+          "on-solid": {
+            "$value": "{amber.950}"
+          }
+        },
+        "danger": {
+          "bg": {
+            "$value": "{red.950}"
+          },
+          "border": {
+            "$value": "{red.800}"
+          },
+          "text": {
+            "$value": "{red.300}"
+          },
+          "icon": {
+            "$value": "{red.400}"
+          },
+          "solid": {
+            "$value": "{red.400}"
+          },
+          "on-solid": {
+            "$value": "{red.950}"
+          }
+        },
+        "info": {
+          "bg": {
+            "$value": "{blue.950}"
+          },
+          "border": {
+            "$value": "{blue.800}"
+          },
+          "text": {
+            "$value": "{blue.300}"
+          },
+          "icon": {
+            "$value": "{blue.300}"
+          },
+          "solid": {
+            "$value": "{blue.300}"
+          },
+          "on-solid": {
+            "$value": "{blue.950}"
+          }
+        },
+        "secure": {
+          "bg": {
+            "$value": "{pink.950}"
+          },
+          "border": {
+            "$value": "{pink.800}"
+          },
+          "text": {
+            "$value": "{pink.300}"
+          },
+          "icon": {
+            "$value": "{pink.400}"
+          },
+          "solid": {
+            "$value": "{pink.400}"
+          },
+          "on-solid": {
+            "$value": "{brand.wine}"
+          }
+        },
+        "neutral": {
+          "bg": {
+            "$value": "{neutral.800}"
+          },
+          "border": {
+            "$value": "{neutral.700}"
+          },
+          "text": {
+            "$value": "{neutral.200}"
+          },
+          "icon": {
+            "$value": "{neutral.300}"
+          },
+          "solid": {
+            "$value": "{neutral.400}"
+          },
+          "on-solid": {
+            "$value": "{brand.ink}"
+          }
+        }
+      },
+      "interactive": {
+        "focus-ring": {
+          "$value": "{blue.300}"
+        },
+        "selected-bg": {
+          "$value": "{pink.950}"
+        },
+        "selected-border": {
+          "$value": "{pink.400}"
+        },
+        "selected-text": {
+          "$value": "{pink.200}"
+        },
+        "hover-overlay": {
+          "$value": "#FFF9F80F"
+        },
+        "pressed-overlay": {
+          "$value": "#FFF9F81A"
+        },
+        "row-hover": {
+          "$value": "{neutral.900}"
+        }
+      },
+      "category": {
+        "dashboard": {
+          "$value": "{blue.800}"
+        },
+        "calendar": {
+          "$value": "{pink.800}"
+        },
+        "general": {
+          "$value": "{neutral.800}"
+        },
+        "simple": {
+          "$value": "{amber.800}"
+        },
+        "code": {
+          "$value": "{neutral.950}"
+        },
+        "command": {
+          "$value": "{neutral.700}"
+        },
+        "bookmark": {
+          "$value": "{blue.900}"
+        },
+        "video": {
+          "$value": "{red.900}"
+        },
+        "secure": {
+          "$value": "{pink.600}"
+        },
+        "private": {
+          "$value": "{neutral.600}"
+        }
+      },
+      "code": {
+        "bg": {
+          "$value": "#141010"
+        },
+        "text": {
+          "$value": "#E6E1DF"
+        },
+        "comment": {
+          "$value": "{neutral.500}"
+        },
+        "keyword": {
+          "$value": "{pink.300}"
+        },
+        "string": {
+          "$value": "{green.300}"
+        },
+        "number": {
+          "$value": "{amber.300}"
+        },
+        "function": {
+          "$value": "{blue.300}"
+        },
+        "gutter": {
+          "$value": "{neutral.600}"
+        },
+        "line-highlight": {
+          "$value": "#FFFFFF0F"
+        },
+        "inline-bg": {
+          "$value": "{neutral.800}"
+        },
+        "inline-text": {
+          "$value": "{pink.300}"
+        }
+      },
+      "chart": {
+        "categorical": {
+          "1": {
+            "$value": "{pink.400}"
+          },
+          "2": {
+            "$value": "{blue.400}"
+          },
+          "3": {
+            "$value": "{amber.300}"
+          },
+          "4": {
+            "$value": "{green.400}"
+          },
+          "5": {
+            "$value": "{neutral.500}"
+          }
+        },
+        "grid": {
+          "$value": "{neutral.800}"
+        },
+        "axis": {
+          "$value": "{neutral.500}"
+        },
+        "label": {
+          "$value": "{neutral.300}"
+        },
+        "heat": {
+          "0": {
+            "$value": "{neutral.800}"
+          },
+          "1": {
+            "$value": "{pink.900}"
+          },
+          "2": {
+            "$value": "{pink.800}"
+          },
+          "3": {
+            "$value": "{pink.600}"
+          },
+          "4": {
+            "$value": "{pink.400}"
+          }
+        }
+      }
+    }
+  },
+  "$metadata": {
+    "tokenSetOrder": [
+      "wh/light",
+      "wh/dark"
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "4px 그리드. memoir 는 여백이 구조다(No-Line). base 보다 한 단계 넉넉하게 쓴다: 리스트 항목 사이 24, 섹션 사이 48 이상.",
+    "0":   { "$value": "0px" },
+    "px":  { "$value": "1px" },
+    "0-5": { "$value": "2px" },
+    "1":   { "$value": "4px",   "$description": "칩 내부·아이콘↔라벨 미세" },
+    "1-5": { "$value": "6px" },
+    "2":   { "$value": "8px",   "$description": "아이콘↔라벨, 칩 사이, 라벨↔인풋" },
+    "3":   { "$value": "12px",  "$description": "미리보기 카드 패딩(design-guide), 카드 안 요소 사이" },
+    "4":   { "$value": "16px",  "$description": "기본. 컴포넌트 내부 패딩, 모바일 좌우" },
+    "5":   { "$value": "20px" },
+    "6":   { "$value": "24px",  "$description": "리스트 항목 사이(구분선 대신), 카드 패딩, 데스크톱 좌우" },
+    "8":   { "$value": "32px",  "$description": "카드 묶음 사이, 서브 헤더 아래 첫 콘텐츠, 데스크톱 좌우 최대" },
+    "10":  { "$value": "40px" },
+    "12":  { "$value": "48px",  "$description": "섹션 사이" },
+    "16":  { "$value": "64px",  "$description": "히어로 아래·빈 상태 상하" },
+    "20":  { "$value": "80px" },
+    "24":  { "$value": "96px",  "$description": "랜딩 섹션" }
+  },
+
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "xs": { "$value": "28px", "$description": "칩·태그 삭제·인라인 아이콘 버튼" },
+      "sm": { "$value": "36px", "$description": "서브 헤더 필터·카드 헤더 액션·칩(필터)" },
+      "md": { "$value": "44px", "$description": "기본. 버튼·인풋·헤더 검색" },
+      "lg": { "$value": "52px", "$description": "로그인·2FA 인증·온보딩 CTA" },
+      "xl": { "$value": "56px", "$description": "FAB" }
+    },
+    "icon": { "xs": { "$value": "12px" }, "sm": { "$value": "16px" }, "md": { "$value": "20px" }, "lg": { "$value": "24px" }, "xl": { "$value": "32px" }, "2xl": { "$value": "48px" } },
+    "avatar": { "sm": { "$value": "32px" }, "md": { "$value": "40px" }, "lg": { "$value": "64px" } },
+    "touch-target-min": { "$value": "44px" },
+    "container": {
+      "sm":  { "$value": "480px",  "$description": "로그인·회원가입·2FA·프롬프트 모달" },
+      "md":  { "$value": "720px",  "$description": "단순 메모·프라이빗 폴더 읽기" },
+      "lg":  { "$value": "960px",  "$description": "일반 메모 에디터 본문 폭(상단 툴바는 전폭)" },
+      "xl":  { "$value": "1280px", "$description": "코드·명령어·북마크·영상 리스트" },
+      "full":{ "$value": "100%",   "$description": "캘린더·대시보드 벤토·명령어 와이드 뷰(기획서: 전체 너비 활용)" },
+      "prose": { "$value": "680px", "$description": "에디터 글 한 줄 폭. 좌 10% 우 5% 비대칭 여백은 lg 이상에서(design-guide)" }
+    },
+    "layout": {
+      "header":        { "$value": "60px", "$description": "메인 헤더(로고·카테고리 드롭다운·검색·액션). 기획서 5.3" },
+      "subheader":     { "$value": "44px", "$description": "서브 헤더(필터 칩·브레드크럼). 메인 헤더 바로 아래 sticky" },
+      "header-stack":  { "$value": "104px", "$description": "두 헤더 합. sticky 콘텐츠 top·스크롤 앵커 오프셋" },
+      "sidebar":       { "$value": "0px",  "$description": "사이드바 없음(기획서 원칙). 캘린더 사이드 패널은 panel" },
+      "panel":         { "$value": "320px", "$description": "캘린더 날짜 상세·에디터 속성 패널" },
+      "page-gutter":     { "$value": "16px", "$description": "모바일" },
+      "page-gutter-md":  { "$value": "24px", "$description": "태블릿·데스크톱 기본(기획서 24~32)" },
+      "page-gutter-lg":  { "$value": "32px", "$description": "1280 이상" },
+      "grid-gap":      { "$value": "16px" },
+      "grid-gap-lg":   { "$value": "24px" },
+      "fab-offset":    { "$value": "24px", "$description": "FAB 우하단 여백. 모바일 16" },
+      "dropdown-width":{ "$value": "280px", "$description": "카테고리 드롭다운" }
+    }
+  },
+
+  "breakpoint": {
+    "$type": "dimension",
+    "sm": { "$value": "640px" }, "md": { "$value": "768px" }, "lg": { "$value": "1024px" }, "xl": { "$value": "1280px" }, "2xl": { "$value": "1536px" }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "design-guide: 버튼·카드 8, 칩 full. 큰 면(모달·벤토)은 16~24 로 부드럽게.",
+    "none": { "$value": "0px" },
+    "xs":   { "$value": "4px",  "$description": "인라인 코드·체크박스·언어 라벨(각진 배지)" },
+    "sm":   { "$value": "6px",  "$description": "툴팁·드롭다운 항목" },
+    "md":   { "$value": "8px",  "$description": "버튼·인풋·미리보기 카드·드롭다운 상자. 기본" },
+    "lg":   { "$value": "12px", "$description": "메모 카드·코드 블록·북마크 카드" },
+    "xl":   { "$value": "16px", "$description": "대시보드 벤토 박스·영상 썸네일 카드·모달" },
+    "2xl":  { "$value": "24px", "$description": "히어로·글래스 플로팅 바·온보딩 카드" },
+    "full": { "$value": "9999px", "$description": "칩·태그·검색창·FAB·아바타·활성 메뉴" }
+  },
+
+  "border-width": {
+    "$type": "dimension",
+    "hairline": { "$value": "1px", "$description": "고스트 테두리·캘린더 그리드만" },
+    "underline":{ "$value": "2px", "$description": "인풋 포커스 밑줄(design-guide)" },
+    "focus":    { "$value": "2px" },
+    "accent":   { "$value": "4px", "$description": "보안 메모 잠금 카드 왼쪽 띠·인용" }
+  },
+
+  "focus": {
+    "ring-width":  { "$value": "2px", "$type": "dimension" },
+    "ring-offset": { "$value": "2px", "$type": "dimension" }
+  }
+}

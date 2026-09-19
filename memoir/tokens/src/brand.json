@@ -1,0 +1,24 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "memoir 브랜드 원색. 기획서 5.1 과 design-guide.md 의 값 그대로. 사용처는 시맨틱 토큰을 거친다.",
+    "pink":      { "$value": "#FF82A9", "$description": "메인 핑크 (= pink.400). 로고·강조·활성 칩 배경. 글자·버튼 배경으로는 대비 2.33 이라 금지" },
+    "rose":      { "$value": "#A1385E", "$description": "design-guide Primary (= pink.600). CTA 버튼·로고 마크. 흰 글자 6.48:1" },
+    "wine":      { "$value": "#78163E", "$description": "on-primary-container (= pink.800). 핑크 배경 위 글자" },
+    "periwinkle":{ "$value": "#7F95D1", "$description": "메인 블루 (= blue.400). 활성 메뉴 배경·포인트. 파랗다 = 클릭할 수 있다" },
+    "indigo":    { "$value": "#465D95", "$description": "secondary-dark (= blue.600). 링크 글자·포커스 밑줄. 6.44:1" },
+    "ink":       { "$value": "#231917", "$description": "on-surface (= neutral.950). 따뜻한 검정. #000 금지" },
+    "blush":     { "$value": "#FFC0BE", "$description": "서브 라이트핑크. 태그 배지·hover·카드 포인트" },
+    "cream":     { "$value": "#FFEBE7", "$description": "서브 크림. 섹션 배경·카드 베이스" },
+    "paper":     { "$value": "#FFF9F8", "$description": "surface-low. 페이지 캔버스(tailwind surface-low)" },
+    "paper-tint":{ "$value": "#FFF0EE", "$description": "surface-container-low. 콘텐츠 구역 배경" },
+    "paper-deep":{ "$value": "#FEEAE6", "$description": "surface-container. 한 단계 더 눌린 구역" },
+    "outline":   { "$value": "#DBC0C5", "$description": "outline-variant. 고스트 테두리 재료(15% 로만 쓴다)" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

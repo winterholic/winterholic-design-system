@@ -1,0 +1,86 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Plus Jakarta Sans", "Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "Apple SD Gothic Neo", "Noto Sans KR", "system-ui", "sans-serif"],
+        "$description": "Plus Jakarta Sans 는 한글 글리프가 없다. 라틴·숫자는 Jakarta, 한글은 두 번째 Pretendard 로 떨어진다. 두 폰트를 모두 로드해야 한다(02 §1). Next.js 에서는 var(--font-jakarta) 를 첫 항목으로"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "D2Coding", "SFMono-Regular", "Menlo", "Consolas", "monospace"],
+        "$description": "코드 스니펫·명령어 메모·인라인 코드"
+      },
+      "display": {
+        "$value": ["Plus Jakarta Sans", "Pretendard Variable", "Pretendard", "system-ui", "sans-serif"],
+        "$description": "display·headline. Jakarta 의 기하학적 성격이 에디토리얼 느낌을 만든다"
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular":  { "$value": 400 },
+      "medium":   { "$value": 500, "$description": "라벨·메타·칩" },
+      "semibold": { "$value": 600, "$description": "headline·title·버튼" },
+      "bold":     { "$value": 700, "$description": "display·강조 단어" },
+      "extrabold":{ "$value": 800, "$description": "로고 워드마크 전용" }
+    },
+    "size": {
+      "$type": "dimension",
+      "2xs": { "$value": "0.6875rem", "$description": "11px · 코드 줄 번호" },
+      "xs":  { "$value": "0.75rem",   "$description": "12px · label(대문자 메타)·태그·타임스탬프" },
+      "sm":  { "$value": "0.875rem",  "$description": "14px · 보조 본문·칩·미리보기·명령어 행" },
+      "md":  { "$value": "1rem",      "$description": "16px · 본문(body-lg)·에디터·인풋" },
+      "lg":  { "$value": "1.125rem",  "$description": "18px · 리드 문단·에디터 인용" },
+      "xl":  { "$value": "1.25rem",   "$description": "20px · 카드 제목·title" },
+      "2xl": { "$value": "1.5rem",    "$description": "24px · 섹션 제목·모달 제목" },
+      "3xl": { "$value": "1.75rem",   "$description": "28px · headline(메모 제목·페이지 제목)" },
+      "4xl": { "$value": "2.25rem",   "$description": "36px · display-sm(모바일 히어로)" },
+      "5xl": { "$value": "2.75rem",   "$description": "44px · display-md(대시보드 인사)" },
+      "6xl": { "$value": "3.5rem",    "$description": "56px · display-lg(빈 상태·랜딩 히어로, design-guide 3.5rem)" }
+    },
+    "line-height": {
+      "$type": "number",
+      "none":    { "$value": 1 },
+      "tight":   { "$value": 1.1,  "$description": "display" },
+      "snug":    { "$value": 1.3,  "$description": "headline·title" },
+      "normal":  { "$value": 1.5,  "$description": "라벨·버튼·칩·명령어" },
+      "relaxed": { "$value": 1.6,  "$description": "본문 기본(design-guide: 한글 장문에 넉넉하게)" },
+      "loose":   { "$value": 1.8,  "$description": "에디터 본문·긴 메모" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tighter": { "$value": "-0.03em", "$description": "display-lg·로고" },
+      "tight":   { "$value": "-0.02em", "$description": "display·headline(design-guide -0.02em)" },
+      "snug":    { "$value": "-0.01em", "$description": "title" },
+      "normal":  { "$value": "0em" },
+      "wide":    { "$value": "0.05em",  "$description": "label 대문자 메타(design-guide +0.05em)·언어 배지" }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+    "$description": "역할 스타일. 기존 globals.css 의 .text-display/.text-headline/.text-body/.text-label 을 포함해 확장했다. 에디토리얼 위계 = display 큼 + 본문 절제 + 메타 소문자 대신 대문자 자간.",
+
+    "display-lg": { "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.6xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "56/700. 랜딩 히어로·빈 상태 대형(기존 .text-display). 모바일 36" },
+    "display-md": { "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.5xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "44/700. 대시보드 인사·카테고리 히어로 제목. 모바일 32" },
+    "display-sm": { "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "36/700" },
+    "headline":   { "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.3xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "28/600. 메모 제목·페이지 제목(기존 .text-headline)" },
+    "title-lg":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "24/600. 섹션·모달 제목" },
+    "title":      { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "20/600. 카드 제목·코드 스니펫 제목·벤토 박스 제목" },
+    "title-sm":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "16/600. 리스트 항목 제목·북마크 제목·폴더 이름" },
+
+    "body-lg":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "18/400. 리드 문단·온보딩" },
+    "body":       { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "16/400/1.6. 본문 기본(기존 .text-body)" },
+    "body-sm":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14/400. 카드 설명·미리보기·명령어 설명" },
+    "editor":     { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.loose}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "16/400/1.8. 일반 메모 블록 에디터 본문. 한 줄 폭 prose 680" },
+
+    "label":      { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "12/600 대문자 +0.05em. 타임스탬프·언어 배지·섹션 라벨(기존 .text-label). 한글은 대문자가 없으니 자간만 적용" },
+    "label-md":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14/600. 버튼·칩·드롭다운 항목·헤더 메뉴" },
+    "label-lg":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "16/600. lg 버튼·2FA CTA" },
+    "caption":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "12/500. 도움말·글자 수·저장 상태" },
+    "tag":        { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "12/500. #태그 칩" },
+    "code":       { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14 mono/1.6. 코드 블록" },
+    "command":    { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14 mono/500. 명령어 메모 한 줄 행" },
+    "pin":        { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "24 mono/600. 2FA·PIN 입력 칸" },
+    "logo":       { "$value": { "fontFamily": "{font.family.display}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.extrabold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "24/800. memoir 워드마크. m 은 rose, emoir 는 ink" }
+  }
+}

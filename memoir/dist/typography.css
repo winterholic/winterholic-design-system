@@ -1,0 +1,182 @@
+/* memoir typography · 자동 생성 */
+/* Plus Jakarta Sans + Pretendard 로드는 소비 앱이 한다(docs/02-typography.md). Next.js 는 --font-jakarta 를 sans 첫 항목에 넣는다. */
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; word-break: keep-all; overflow-wrap: anywhere; }
+body { font-family: var(--mm-font-family-sans); font-size: var(--mm-font-size-md); line-height: var(--mm-font-line-height-relaxed); color: var(--mm-color-text-primary); background: var(--mm-color-surface-canvas); -webkit-font-smoothing: antialiased; }
+code, kbd, pre, samp { font-family: var(--mm-font-family-mono); }
+:where(code):not(pre code) { font-size: 0.9em; padding: 0.1em 0.35em; border-radius: var(--mm-radius-xs); background: var(--mm-color-surface-sunken); }
+:focus-visible { outline: var(--mm-focus-ring-width) solid var(--mm-color-interactive-focus-ring); outline-offset: var(--mm-focus-ring-offset); }
+
+.mm-display-lg {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.mm-display-md {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.mm-display-sm {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.mm-headline {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.mm-title-lg {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.mm-title {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.mm-title-sm {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.mm-body-lg {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.mm-body {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.mm-body-sm {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.mm-editor {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0em;
+}
+
+.mm-label {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.mm-label-md {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.mm-label-lg {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.mm-caption {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.mm-tag {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0em;
+}
+
+.mm-code {
+  font-family: "JetBrains Mono", D2Coding, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.mm-command {
+  font-family: "JetBrains Mono", D2Coding, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.mm-pin {
+  font-family: "JetBrains Mono", D2Coding, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.mm-logo {
+  font-family: "Plus Jakarta Sans", "Pretendard Variable", Pretendard, system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* 글래스 유틸 (04 §4) */
+.mm-glass-floating { background: var(--mm-glass-bg-floating); backdrop-filter: blur(var(--mm-glass-blur-strong)); -webkit-backdrop-filter: blur(var(--mm-glass-blur-strong)); }
+.mm-glass-modal { background: var(--mm-glass-bg-modal); backdrop-filter: blur(var(--mm-glass-blur)); -webkit-backdrop-filter: blur(var(--mm-glass-blur)); }
+/* 로고 워드마크: m 만 rose */
+.mm-logo .mm-logo-mark { color: var(--mm-color-text-brand); }
+/* 반응형: 모바일에서 한 단계 내린다 */
+@media (max-width: 767px) {
+  .mm-display-lg { font-size: var(--mm-font-size-4xl); }
+  .mm-display-md { font-size: var(--mm-font-size-4xl); }
+  .mm-display-sm { font-size: var(--mm-font-size-3xl); }
+  .mm-headline   { font-size: var(--mm-font-size-2xl); }
+}

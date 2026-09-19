@@ -1,0 +1,86 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "design-guide: 깊이는 그림자가 아니라 면의 톤 차이로. 그림자는 플로팅 요소(FAB·모달·드롭다운)에만, 색은 ink 틴트, 아주 넓게 퍼뜨린다(ambient).",
+    "none": { "$value": [{ "color": "#00000000", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }], "$description": "카드 기본. 카드는 그림자 없이 면 차이로만 떠 보인다" },
+    "soft": { "$value": [{ "color": "#2319170D", "offsetX": "0px", "offsetY": "2px", "blur": "12px", "spread": "0px" }], "$description": "기존 tailwind shadow-soft. 카드 hover·드롭다운. 5%" },
+    "ambient": { "$value": [{ "color": "#2319170F", "offsetX": "0px", "offsetY": "12px", "blur": "40px", "spread": "0px" }], "$description": "design-guide 플로팅 그림자. FAB·글래스 플로팅 바·팝오버. 6%" },
+    "modal": { "$value": [{ "color": "#23191714", "offsetX": "0px", "offsetY": "24px", "blur": "64px", "spread": "-8px" }], "$description": "모달·와이드 모달. 8%" },
+    "inner": { "$value": [{ "color": "#2319170F", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px", "inset": true }], "$description": "눌린 칩·인풋 채움면" },
+    "focus": { "$value": [{ "color": "#465D9540", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "3px" }], "$description": "검색창·필 인풋 포커스 링(밑줄이 없는 둥근 인풋용). indigo 25%" }
+  },
+  "shadow-dark": {
+    "$type": "shadow",
+    "none": { "$value": [{ "color": "#00000000", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }] },
+    "soft": { "$value": [{ "color": "#00000059", "offsetX": "0px", "offsetY": "2px", "blur": "12px", "spread": "0px" }] },
+    "ambient": { "$value": [{ "color": "#00000080", "offsetX": "0px", "offsetY": "12px", "blur": "40px", "spread": "0px" }] },
+    "modal": { "$value": [{ "color": "#000000A6", "offsetX": "0px", "offsetY": "24px", "blur": "64px", "spread": "-8px" }] },
+    "inner": { "$value": [{ "color": "#00000066", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px", "inset": true }] },
+    "focus": { "$value": [{ "color": "#AEC1F440", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "3px" }] }
+  },
+
+  "glass": {
+    "$description": "글래스모피즘 플로팅 요소(기획서 대시보드 bg-white/40 backdrop-blur-xl, design-guide 모달 80% + blur 20).",
+    "bg-floating": { "$value": "#FFFFFF66", "$type": "color", "$description": "대시보드 벤토 박스·플로팅 액션 바. white 40%" },
+    "bg-modal":    { "$value": "#FFFFFFCC", "$type": "color", "$description": "모달·드롭다운. white 80%" },
+    "blur":        { "$value": "20px", "$type": "dimension" },
+    "blur-strong": { "$value": "24px", "$type": "dimension", "$description": "tailwind backdrop-blur-xl" }
+  },
+
+  "gradient": {
+    "$type": "gradient",
+    "$description": "design-guide: 무거운 그라데이션 금지. CTA 가 필요하면 rose → pink 미세 전환 하나. 랜딩 블롭은 별도.",
+    "cta": {
+      "$value": [ { "color": "{pink.600}", "position": 0 }, { "color": "{pink.500}", "position": 1 } ],
+      "$description": "primary 버튼 hover 강조가 필요한 랜딩 CTA 에서만. 앱 버튼은 단색"
+    },
+    "blob-pink": {
+      "$value": [ { "color": "#FF82A966", "position": 0 }, { "color": "#FF82A900", "position": 1 } ],
+      "$description": "랜딩 배경 블롭(기존 blob-float 애니메이션). radial 로 쓴다. 40% → 0"
+    },
+    "blob-blue": {
+      "$value": [ { "color": "#7F95D14D", "position": 0 }, { "color": "#7F95D100", "position": 1 } ],
+      "$description": "랜딩 배경 블롭 30% → 0"
+    },
+    "paper": {
+      "$value": [ { "color": "{brand.paper}", "position": 0 }, { "color": "{brand.cream}", "position": 1 } ],
+      "$description": "온보딩·빈 상태 카드 배경. 거의 안 보임. 180deg"
+    },
+    "scrim-bottom": {
+      "$value": [ { "color": "#23191700", "position": 0 }, { "color": "#231917B3", "position": 1 } ],
+      "$description": "영상 썸네일 위 제목. 180deg"
+    },
+    "fade-right": {
+      "$value": [ { "color": "#FFF9F800", "position": 0 }, { "color": "{brand.paper}", "position": 1 } ],
+      "$description": "서브 헤더 필터 칩 가로 스크롤 끝. 90deg"
+    }
+  },
+  "gradient-angle": { "$type": "number", "default": { "$value": 135 }, "vertical": { "$value": 180 }, "horizontal": { "$value": 90 } },
+
+  "opacity": {
+    "$type": "number",
+    "disabled": { "$value": 0.4 },
+    "hover":    { "$value": 0.04 },
+    "pressed":  { "$value": 0.08 },
+    "scrim":    { "$value": 0.4 },
+    "skeleton": { "$value": 0.6 },
+    "locked":   { "$value": 0.5, "$description": "잠긴 보안 메모 미리보기(블러와 함께)" },
+    "ghost-border": { "$value": 0.15, "$description": "outline-variant 를 테두리로 쓸 때의 alpha" }
+  },
+
+  "blur": {
+    "$type": "dimension",
+    "sm": { "$value": "4px" },
+    "md": { "$value": "12px", "$description": "헤더 스크롤 시 글래스" },
+    "lg": { "$value": "20px", "$description": "모달 뒤·글래스 플로팅(design-guide)" },
+    "locked": { "$value": "8px", "$description": "잠긴 보안 메모 본문 블러" }
+  },
+
+  "z-index": {
+    "$type": "number",
+    "hide": { "$value": -1 }, "base": { "$value": 0 }, "raised": { "$value": 10 },
+    "fab": { "$value": 900 },
+    "dropdown": { "$value": 1000 }, "sticky": { "$value": 1100, "$description": "메인 헤더·서브 헤더" },
+    "overlay": { "$value": 1200 }, "modal": { "$value": 1300 }, "popover": { "$value": 1400 }, "toast": { "$value": 1500 }, "tooltip": { "$value": 1600 }
+  }
+}

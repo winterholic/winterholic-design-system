@@ -1,0 +1,562 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색(라이트). Warm Minimalist: 크림·연분홍 면 위에 따뜻한 검정 글자. 테두리 대신 면의 밝기 차이로 구획한다(No-Line). 파랑은 상호작용에만, 핑크는 브랜드·강조에만.",
+    "surface": {
+      "$description": "종이를 겹쳐 놓은 층. canvas(paper) → zone(paper-tint) → card(white) 순으로 밝아진다. 선 없이 면 차이로만 구분.",
+      "canvas": {
+        "$value": "{brand.paper}",
+        "$description": "body. #FFF9F8"
+      },
+      "zone": {
+        "$value": "{brand.paper-tint}",
+        "$description": "콘텐츠 구역·리스트 배경·사이드 패널. 카드가 올라갈 바닥"
+      },
+      "zone-deep": {
+        "$value": "{brand.paper-deep}",
+        "$description": "구역 안 구역·인풋 채움·비활성"
+      },
+      "default": {
+        "$value": "{base.white}",
+        "$description": "카드·메모·에디터 면. zone 위에서 떠 보인다"
+      },
+      "raised": {
+        "$value": "#FFFFFFCC",
+        "$description": "모달·드롭다운·플로팅 바. white 80% + backdrop-blur 20 (glass)"
+      },
+      "cream": {
+        "$value": "{brand.cream}",
+        "$description": "섹션 배경·대시보드 벤토 박스·빈 상태 카드"
+      },
+      "blush": {
+        "$value": "{brand.blush}",
+        "$description": "태그 배지·카드 포인트 띠·hover 강조"
+      },
+      "overlay": {
+        "$value": "#23191766",
+        "$description": "모달 스크림 ink 40%"
+      },
+      "inverse": {
+        "$value": "{brand.ink}",
+        "$description": "툴팁·토스트"
+      },
+      "brand": {
+        "$value": "{pink.600}",
+        "$description": "로즈 면(온보딩·프로모션·FAB). 흰 글자 6.48"
+      },
+      "brand-subtle": {
+        "$value": "{pink.50}",
+        "$description": "선택된 행·활성 항목 배경"
+      },
+      "interactive": {
+        "$value": "{blue.400}",
+        "$description": "활성 메뉴·카테고리 드롭다운 선택 항목 배경 + 흰 글자(기획서 5.2). 흰 글자 2.95 라 라벨은 14px 이상 600 굵기"
+      },
+      "interactive-subtle": {
+        "$value": "{blue.50}",
+        "$description": "링크 hover·포커스 배경"
+      },
+      "disabled": {
+        "$value": "{brand.paper-deep}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{brand.ink}",
+        "$description": "17.17:1. 본문·제목"
+      },
+      "secondary": {
+        "$value": "{neutral.800}",
+        "$description": "#4C413E 9.85. 설명·미리보기 본문"
+      },
+      "tertiary": {
+        "$value": "{neutral.700}",
+        "$description": "#635654 7.02(흰), cream 위 6.2. 타임스탬프·라벨·메타. 크림 면 위에서도 AA 를 넘기려 600 대신 700"
+      },
+      "placeholder": {
+        "$value": "{neutral.700}"
+      },
+      "disabled": {
+        "$value": "{neutral.400}"
+      },
+      "inverse": {
+        "$value": "{brand.paper}",
+        "$description": "ink 면 위 글자(툴팁·토스트)"
+      },
+      "on-brand": {
+        "$value": "{base.white}",
+        "$description": "rose 면·primary 버튼 위"
+      },
+      "on-pink": {
+        "$value": "{brand.wine}",
+        "$description": "핑크(#FF82A9)·blush 배경 위 글자"
+      },
+      "on-interactive": {
+        "$value": "{base.white}",
+        "$description": "periwinkle 활성 메뉴 위"
+      },
+      "brand": {
+        "$value": "{pink.600}",
+        "$description": "로즈 글자. 헤드라인 강조 단어·로고 워드마크. 6.48"
+      },
+      "link": {
+        "$value": "{blue.600}",
+        "$description": "#465D95 6.44. 파랗다 = 클릭 가능"
+      },
+      "link-hover": {
+        "$value": "{blue.700}"
+      },
+      "success": {
+        "$value": "{green.700}"
+      },
+      "warning": {
+        "$value": "{amber.600}"
+      },
+      "danger": {
+        "$value": "{red.600}"
+      },
+      "info": {
+        "$value": "{blue.600}"
+      }
+    },
+    "border": {
+      "$description": "No-Line 규칙: 구획에 1px 선을 쓰지 않는다. 아래는 접근성·포커스·인풋 밑줄 같은 예외 전용.",
+      "ghost": {
+        "$value": "#DBC0C526",
+        "$description": "outline-variant 15%. 접근성상 경계가 필요할 때의 유일한 테두리"
+      },
+      "subtle": {
+        "$value": "{brand.paper-deep}",
+        "$description": "면과 면 사이 미세 단차. 선처럼 보이면 안 된다"
+      },
+      "default": {
+        "$value": "{neutral.200}",
+        "$description": "캘린더 그리드처럼 선이 곧 정보인 곳만"
+      },
+      "strong": {
+        "$value": "{neutral.300}"
+      },
+      "input-strict": {
+        "$value": "{neutral.500}",
+        "$description": "체크박스·라디오 3.53"
+      },
+      "brand": {
+        "$value": "{pink.400}"
+      },
+      "interactive": {
+        "$value": "{blue.600}",
+        "$description": "인풋 포커스 밑줄 2px"
+      },
+      "focus": {
+        "$value": "{blue.600}"
+      },
+      "danger": {
+        "$value": "{red.500}"
+      },
+      "inverse": {
+        "$value": "#FFF9F833"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{pink.600}",
+          "$description": "로즈 #A1385E + 흰 글자 6.48. 핑크 원색은 2.33 이라 버튼 배경 금지"
+        },
+        "bg-hover": {
+          "$value": "{pink.700}"
+        },
+        "bg-active": {
+          "$value": "{pink.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{brand.paper-deep}",
+          "$description": "design-guide Secondary: surface-container + rose 글자"
+        },
+        "bg-hover": {
+          "$value": "{brand.cream}"
+        },
+        "bg-active": {
+          "$value": "{pink.100}"
+        },
+        "border": {
+          "$value": "{base.transparent}"
+        },
+        "text": {
+          "$value": "{pink.600}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "{brand.paper-tint}"
+        },
+        "bg-active": {
+          "$value": "{brand.paper-deep}"
+        },
+        "text": {
+          "$value": "{neutral.700}"
+        }
+      },
+      "interactive": {
+        "bg": {
+          "$value": "{blue.400}",
+          "$description": "활성 메뉴·선택된 카테고리(기획서 5.2 #7F95D1 배경 + 흰 텍스트). 라벨 14px 이상 600"
+        },
+        "bg-hover": {
+          "$value": "{blue.500}"
+        },
+        "bg-active": {
+          "$value": "{blue.600}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.600}",
+          "$description": "삭제. 5.46"
+        },
+        "bg-hover": {
+          "$value": "{red.700}"
+        },
+        "bg-active": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "danger-ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "{red.50}"
+        },
+        "text": {
+          "$value": "{red.600}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{brand.paper-deep}"
+        },
+        "text": {
+          "$value": "{neutral.400}"
+        },
+        "border": {
+          "$value": "{base.transparent}"
+        }
+      }
+    },
+    "chip": {
+      "$description": "필터 칩·태그. 기본은 눌린 면, 활성은 브랜드 핑크 + wine 글자.",
+      "bg": {
+        "$value": "{brand.paper-deep}"
+      },
+      "text": {
+        "$value": "{neutral.700}"
+      },
+      "bg-hover": {
+        "$value": "{brand.cream}"
+      },
+      "bg-active": {
+        "$value": "{pink.400}",
+        "$description": "#FF82A9"
+      },
+      "text-active": {
+        "$value": "{brand.wine}",
+        "$description": "#78163E"
+      },
+      "tag-bg": {
+        "$value": "{brand.blush}",
+        "$description": "#태그 배지(기획서: #FFC0BE + 검정 글자)"
+      },
+      "tag-text": {
+        "$value": "{brand.ink}"
+      },
+      "all-bg": {
+        "$value": "{brand.ink}",
+        "$description": "ALL 같은 강조 칩(v4 시안의 검정 칩)"
+      },
+      "all-text": {
+        "$value": "{brand.paper}"
+      }
+    },
+    "status": {
+      "success": {
+        "bg": {
+          "$value": "{green.50}"
+        },
+        "border": {
+          "$value": "{green.200}"
+        },
+        "text": {
+          "$value": "{green.700}"
+        },
+        "icon": {
+          "$value": "{green.600}"
+        },
+        "solid": {
+          "$value": "{green.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{amber.50}"
+        },
+        "border": {
+          "$value": "{amber.200}"
+        },
+        "text": {
+          "$value": "{amber.700}"
+        },
+        "icon": {
+          "$value": "{amber.600}"
+        },
+        "solid": {
+          "$value": "{amber.300}"
+        },
+        "on-solid": {
+          "$value": "{brand.ink}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.50}"
+        },
+        "border": {
+          "$value": "{red.200}"
+        },
+        "text": {
+          "$value": "{red.700}"
+        },
+        "icon": {
+          "$value": "{red.600}"
+        },
+        "solid": {
+          "$value": "{red.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{blue.50}"
+        },
+        "border": {
+          "$value": "{blue.200}"
+        },
+        "text": {
+          "$value": "{blue.700}"
+        },
+        "icon": {
+          "$value": "{blue.600}"
+        },
+        "solid": {
+          "$value": "{blue.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "secure": {
+        "$description": "보안·2FA 상태. 기획서 경고/보안 = 핑크 계열. 잠금·인증 만료·비밀번호 확인",
+        "bg": {
+          "$value": "{pink.50}"
+        },
+        "border": {
+          "$value": "{pink.200}"
+        },
+        "text": {
+          "$value": "{pink.700}"
+        },
+        "icon": {
+          "$value": "{pink.600}"
+        },
+        "solid": {
+          "$value": "{pink.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{brand.paper-deep}"
+        },
+        "border": {
+          "$value": "{neutral.200}"
+        },
+        "text": {
+          "$value": "{neutral.700}"
+        },
+        "icon": {
+          "$value": "{neutral.600}"
+        },
+        "solid": {
+          "$value": "{neutral.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{blue.600}"
+      },
+      "selected-bg": {
+        "$value": "{pink.50}"
+      },
+      "selected-border": {
+        "$value": "{pink.400}"
+      },
+      "selected-text": {
+        "$value": "{pink.700}"
+      },
+      "hover-overlay": {
+        "$value": "#2319170A",
+        "$description": "ink 4%. 이미 흰 면인 곳의 hover"
+      },
+      "pressed-overlay": {
+        "$value": "#23191714"
+      },
+      "row-hover": {
+        "$value": "{base.white}",
+        "$description": "zone(paper-tint) 위 리스트 행 hover 는 흰 면으로 떠오른다"
+      }
+    },
+    "category": {
+      "$description": "9개 카테고리 식별색. 드롭다운 아이콘 배경·서브 헤더 포인트·대시보드 벤토 박스 헤더에만. 본문·버튼에는 쓰지 않는다.",
+      "dashboard": {
+        "$value": "{blue.200}"
+      },
+      "calendar": {
+        "$value": "{pink.200}"
+      },
+      "general": {
+        "$value": "{brand.cream}"
+      },
+      "simple": {
+        "$value": "{amber.100}"
+      },
+      "code": {
+        "$value": "{neutral.900}",
+        "$description": "코드는 ink 면(다크 코드 블록과 짝)"
+      },
+      "command": {
+        "$value": "{neutral.200}"
+      },
+      "bookmark": {
+        "$value": "{blue.100}"
+      },
+      "video": {
+        "$value": "{red.100}"
+      },
+      "secure": {
+        "$value": "{pink.400}"
+      },
+      "private": {
+        "$value": "{neutral.300}"
+      }
+    },
+    "code": {
+      "$description": "코드 블록(다크 면). 라이트·다크 모두 어둡다. 코드는 항상 ink 위.",
+      "bg": {
+        "$value": "#1A1A1A"
+      },
+      "text": {
+        "$value": "#E6E1DF"
+      },
+      "comment": {
+        "$value": "{neutral.500}"
+      },
+      "keyword": {
+        "$value": "{pink.300}"
+      },
+      "string": {
+        "$value": "{green.300}"
+      },
+      "number": {
+        "$value": "{amber.300}"
+      },
+      "function": {
+        "$value": "{blue.300}"
+      },
+      "gutter": {
+        "$value": "{neutral.600}"
+      },
+      "line-highlight": {
+        "$value": "#FFFFFF0F"
+      },
+      "inline-bg": {
+        "$value": "{brand.paper-deep}",
+        "$description": "본문 안 인라인 코드"
+      },
+      "inline-text": {
+        "$value": "{pink.700}"
+      }
+    },
+    "chart": {
+      "$description": "대시보드 통계(카테고리별 메모 수·주간 활동). 소박하게.",
+      "categorical": {
+        "1": {
+          "$value": "{pink.400}"
+        },
+        "2": {
+          "$value": "{blue.400}"
+        },
+        "3": {
+          "$value": "{amber.300}"
+        },
+        "4": {
+          "$value": "{green.400}"
+        },
+        "5": {
+          "$value": "{neutral.400}"
+        }
+      },
+      "grid": {
+        "$value": "{neutral.200}"
+      },
+      "axis": {
+        "$value": "{neutral.500}"
+      },
+      "label": {
+        "$value": "{neutral.700}"
+      },
+      "heat": {
+        "$description": "캘린더 활동 히트맵 5단계",
+        "0": {
+          "$value": "{brand.paper-deep}"
+        },
+        "1": {
+          "$value": "{pink.100}"
+        },
+        "2": {
+          "$value": "{pink.200}"
+        },
+        "3": {
+          "$value": "{pink.300}"
+        },
+        "4": {
+          "$value": "{pink.400}"
+        }
+      }
+    }
+  }
+}

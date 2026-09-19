@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>memoir design system preview</title>
+<script>try{const t=localStorage.getItem('mm-theme');if(t)document.documentElement.dataset.theme=t;}catch{}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="../dist/tokens.css" />
+<link rel="stylesheet" href="../dist/typography.css" />
+<style>
+  /* 모든 값은 토큰. hex·px 리터럴이 있으면 버그. 선(border)은 캘린더·밑줄·포커스에만. */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+
+  /* 헤더 2단 */
+  .hdr { position: sticky; top: 0; z-index: var(--mm-z-index-sticky); height: var(--mm-component-header-height); display: flex; align-items: center; gap: var(--mm-component-header-gap); padding-inline: var(--mm-component-header-padding-x); background: var(--mm-component-header-bg); }
+  .hdr.glass { background: var(--mm-component-header-bg-scrolled); backdrop-filter: blur(var(--mm-blur-md)); }
+  .sub { position: sticky; top: var(--mm-component-header-height); z-index: var(--mm-z-index-sticky); height: var(--mm-component-header-sub-height); display: flex; align-items: center; gap: var(--mm-component-chip-gap); padding-inline: var(--mm-component-header-padding-x); background: var(--mm-component-header-sub-bg); overflow-x: auto; scrollbar-width: none; }
+  .cat-trigger { display: inline-flex; align-items: center; gap: var(--mm-space-1-5); height: var(--mm-size-control-md); padding-inline: var(--mm-space-3); border-radius: var(--mm-radius-md); cursor: pointer; }
+  .cat-trigger:hover { background: var(--mm-component-category-dropdown-item-hover-bg); }
+  .search { flex: 1; max-width: var(--mm-component-search-max-width); display: flex; align-items: center; gap: var(--mm-space-2); height: var(--mm-component-search-height); padding-inline: var(--mm-component-search-padding-x); border-radius: var(--mm-component-search-radius); background: var(--mm-component-search-bg); color: var(--mm-color-text-placeholder); }
+  .search:focus-within { background: var(--mm-component-search-bg-focus); box-shadow: var(--mm-component-search-focus-shadow); }
+  .search input { border: 0; background: transparent; font: inherit; color: var(--mm-color-text-primary); outline: none; flex: 1; min-width: 0; }
+  .avatar { width: 32px; height: 32px; border-radius: var(--mm-component-avatar-radius); background: var(--mm-component-avatar-fallback-bg); color: var(--mm-component-avatar-fallback-text); display: grid; place-items: center; font-weight: var(--mm-font-weight-semibold); font-size: var(--mm-font-size-sm); }
+  svg.i { width: var(--mm-size-icon-md); height: var(--mm-size-icon-md); stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .i-sm { width: var(--mm-size-icon-sm) !important; height: var(--mm-size-icon-sm) !important; }
+  @media (max-width: 767px) { .hdr { position: static; height: auto; min-height: var(--mm-component-header-height); flex-wrap: wrap; gap: var(--mm-space-3); padding-block: var(--mm-space-3); padding-inline: var(--mm-size-layout-page-gutter); } .hdr .search { order: 9; flex-basis: 100%; max-width: none; } .hdr .seg { margin-left: 0 !important; } .sub { top: 0; padding-inline: var(--mm-size-layout-page-gutter); } }
+
+  .page { max-width: var(--mm-size-container-xl); margin-inline: auto; padding: var(--mm-space-8) var(--mm-size-layout-page-gutter) var(--mm-space-24); }
+  @media (min-width: 768px)  { .page { padding-inline: var(--mm-size-layout-page-gutter-md); } }
+  @media (min-width: 1280px) { .page { padding-inline: var(--mm-size-layout-page-gutter-lg); } }
+  section { margin-top: var(--mm-space-12); }
+  section > h2 { margin: 0 0 var(--mm-space-1); }
+  section > p.lead { margin: 0 0 var(--mm-space-6); color: var(--mm-color-text-secondary); }
+  h3.sub-h { margin: var(--mm-space-8) 0 var(--mm-space-4); }
+  .row { display: flex; gap: var(--mm-space-3); flex-wrap: wrap; align-items: center; }
+  .grid { display: grid; gap: var(--mm-space-6); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .grid > *, .bento > * { min-width: 0; }
+
+  /* 칩·태그·배지 */
+  .chip { display: inline-flex; align-items: center; height: var(--mm-component-chip-height); padding-inline: var(--mm-component-chip-padding-x); border-radius: var(--mm-component-chip-radius); background: var(--mm-component-chip-bg); color: var(--mm-component-chip-text); border: 0; cursor: pointer; font-family: var(--mm-font-family-sans); font-size: var(--mm-font-size-xs); font-weight: var(--mm-font-weight-semibold); letter-spacing: var(--mm-font-letter-spacing-wide); text-transform: uppercase; white-space: nowrap; transition: background-color var(--mm-motion-duration-fast) var(--mm-motion-easing-in-out); }
+  .chip:hover { background: var(--mm-color-chip-bg-hover); }
+  .chip.on { background: var(--mm-component-chip-bg-active); color: var(--mm-component-chip-text-active); }
+  .chip.all { background: var(--mm-component-chip-bg-all); color: var(--mm-component-chip-text-all); }
+  .tag { display: inline-flex; align-items: center; height: var(--mm-component-tag-height); padding-inline: var(--mm-component-tag-padding-x); border-radius: var(--mm-component-tag-radius); background: var(--mm-component-tag-bg); color: var(--mm-component-tag-text); font-size: var(--mm-font-size-xs); font-weight: var(--mm-font-weight-medium); }
+  .lang { display: inline-flex; align-items: center; height: var(--mm-component-lang-badge-height); padding-inline: var(--mm-component-lang-badge-padding-x); border-radius: var(--mm-component-lang-badge-radius); background: var(--mm-component-lang-badge-bg); color: var(--mm-component-lang-badge-text); font-size: var(--mm-font-size-xs); font-weight: var(--mm-font-weight-semibold); letter-spacing: var(--mm-font-letter-spacing-wide); text-transform: uppercase; }
+  .lang.js { background: var(--mm-amber-100); color: var(--mm-amber-800); } .lang.java { background: var(--mm-blue-100); color: var(--mm-blue-800); } .lang.py { background: var(--mm-green-100); color: var(--mm-green-800); }
+
+  /* 버튼 */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--mm-component-button-gap); height: var(--mm-component-button-md-height); padding-inline: var(--mm-component-button-md-padding-x); min-width: var(--mm-component-button-min-width); border-radius: var(--mm-component-button-radius); border: 0; cursor: pointer; font-family: var(--mm-font-family-sans); font-size: var(--mm-font-size-sm); font-weight: var(--mm-font-weight-semibold); white-space: nowrap; transition: background-color var(--mm-motion-duration-fast) var(--mm-motion-easing-in-out), transform var(--mm-motion-duration-fast); }
+  .btn:active { transform: scale(var(--mm-motion-scale-press)); }
+  .btn--pill { border-radius: var(--mm-component-button-radius-pill); }
+  .btn--sm { height: var(--mm-component-button-sm-height); padding-inline: var(--mm-component-button-sm-padding-x); min-width: 0; }
+  .btn--xs { height: var(--mm-component-button-xs-height); padding-inline: var(--mm-component-button-xs-padding-x); min-width: 0; font-size: var(--mm-font-size-xs); }
+  .btn--lg { height: var(--mm-component-button-lg-height); padding-inline: var(--mm-component-button-lg-padding-x); font-size: var(--mm-font-size-md); }
+  .btn--primary { background: var(--mm-color-action-primary-bg); color: var(--mm-color-action-primary-text); }
+  .btn--primary:hover { background: var(--mm-color-action-primary-bg-hover); }
+  .btn--secondary { background: var(--mm-color-action-secondary-bg); color: var(--mm-color-action-secondary-text); }
+  .btn--secondary:hover { background: var(--mm-color-action-secondary-bg-hover); }
+  .btn--ghost { background: var(--mm-color-action-ghost-bg); color: var(--mm-color-action-ghost-text); }
+  .btn--ghost:hover { background: var(--mm-color-action-ghost-bg-hover); }
+  .btn--interactive { background: var(--mm-color-action-interactive-bg); color: var(--mm-color-action-interactive-text); }
+  .btn--danger { background: var(--mm-color-action-danger-bg); color: var(--mm-color-action-danger-text); }
+  .btn:disabled { background: var(--mm-color-action-disabled-bg); color: var(--mm-color-action-disabled-text); cursor: not-allowed; transform: none; }
+  .fab { position: fixed; right: var(--mm-component-fab-offset); bottom: var(--mm-component-fab-offset); z-index: var(--mm-z-index-fab); width: var(--mm-component-fab-size); height: var(--mm-component-fab-size); border-radius: var(--mm-component-fab-radius); background: var(--mm-component-fab-bg); color: var(--mm-component-fab-text); box-shadow: var(--mm-component-fab-shadow); border: 0; display: grid; place-items: center; cursor: pointer; transition: transform var(--mm-motion-duration-fast) var(--mm-motion-easing-out); }
+  .fab:hover { transform: scale(var(--mm-motion-scale-fab-hover)); }
+  .fab svg { width: var(--mm-component-fab-icon); height: var(--mm-component-fab-icon); }
+
+  /* 종이 층 */
+  .zone { background: var(--mm-color-surface-zone); border-radius: var(--mm-radius-xl); padding: var(--mm-space-6); }
+  .card { background: var(--mm-component-card-bg); border-radius: var(--mm-component-card-radius); padding: var(--mm-component-card-padding); box-shadow: var(--mm-component-card-shadow); }
+  .card.tap { cursor: pointer; transition: box-shadow var(--mm-motion-duration-fast) var(--mm-motion-easing-in-out); }
+  .card.tap:hover { box-shadow: var(--mm-component-card-shadow-hover); }
+  .card-head { display: flex; align-items: center; gap: var(--mm-space-3); margin-bottom: var(--mm-component-card-header-gap); }
+  .card-head h4 { margin: 0; flex: 1; }
+  .meta { display: flex; align-items: center; justify-content: space-between; gap: var(--mm-space-3); margin-top: var(--mm-component-card-meta-gap); }
+  .meta .tags { display: flex; gap: var(--mm-component-tag-gap); flex-wrap: wrap; }
+  .stack > * + * { margin-top: var(--mm-component-card-gap); }
+
+  /* 코드 블록 */
+  .code { background: var(--mm-component-code-block-bg); color: var(--mm-component-code-block-text); border-radius: var(--mm-component-code-block-radius); padding: var(--mm-component-code-block-padding); font-family: var(--mm-font-family-mono); font-size: var(--mm-font-size-sm); line-height: var(--mm-font-line-height-relaxed); overflow-x: auto; position: relative; }
+  .code .k { color: var(--mm-color-code-keyword); } .code .s { color: var(--mm-color-code-string); } .code .n { color: var(--mm-color-code-number); } .code .f { color: var(--mm-color-code-function); } .code .c { color: var(--mm-color-code-comment); }
+  .code .copy { position: absolute; top: var(--mm-space-3); right: var(--mm-space-3); color: var(--mm-color-code-comment); background: transparent; border: 0; cursor: pointer; }
+  .code .copy:hover { color: var(--mm-color-code-text); }
+  code.inline { background: var(--mm-color-code-inline-bg); color: var(--mm-color-code-inline-text); padding: 0.1em 0.4em; border-radius: var(--mm-radius-xs); font-family: var(--mm-font-family-mono); font-size: 0.9em; }
+
+  /* 명령어 행 */
+  .cmd { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--mm-component-command-row-gap); min-height: var(--mm-component-command-row-height); padding-inline: var(--mm-component-command-row-padding-x); background: var(--mm-component-command-row-bg); border-radius: var(--mm-component-command-row-radius); }
+  .cmd + .cmd { margin-top: var(--mm-component-command-row-row-gap); }
+  .cmd:hover { background: var(--mm-component-command-row-bg-hover); }
+  .cmd code { background: var(--mm-component-command-row-cmd-bg); padding: var(--mm-space-1) var(--mm-space-2); border-radius: var(--mm-radius-xs); font-family: var(--mm-font-family-mono); font-size: var(--mm-font-size-sm); font-weight: var(--mm-font-weight-medium); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cmd small { color: var(--mm-color-text-secondary); font-size: var(--mm-font-size-sm); }
+  @media (max-width: 767px) { .cmd { grid-template-columns: auto 1fr; } .cmd small { grid-column: 1 / -1; } }
+
+  /* 북마크·영상·보안·폴더 */
+  .bm { display: grid; grid-template-columns: var(--mm-component-bookmark-card-image-width) 1fr; gap: var(--mm-component-bookmark-card-gap); padding: var(--mm-component-bookmark-card-padding); background: var(--mm-component-card-bg); border-radius: var(--mm-component-card-radius); min-height: var(--mm-component-bookmark-card-height); }
+  .bm .img { aspect-ratio: 3 / 2; border-radius: var(--mm-component-bookmark-card-image-radius); background: var(--mm-color-surface-zone-deep); display: grid; place-items: center; color: var(--mm-color-text-tertiary); }
+  .bm .t { display: grid; gap: var(--mm-space-1); min-width: 0; }
+  .bm .t > * { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .vid { display: grid; gap: var(--mm-component-video-card-gap); }
+  .vid .thumb { aspect-ratio: 16 / 9; border-radius: var(--mm-component-video-card-thumb-radius); background: var(--mm-color-surface-zone-deep); position: relative; overflow: hidden; }
+  .vid .thumb::after { content: ''; position: absolute; inset: 0; background: var(--mm-gradient-scrim-bottom); }
+  .vid .thumb .dur { position: absolute; right: var(--mm-space-2); bottom: var(--mm-space-2); z-index: 1; background: var(--mm-component-video-card-duration-bg); color: var(--mm-component-video-card-duration-text); font-size: var(--mm-font-size-xs); padding: var(--mm-space-0-5) var(--mm-space-1-5); border-radius: var(--mm-radius-xs); }
+  .sec { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: var(--mm-space-4); min-height: var(--mm-component-secure-row-height); padding-inline: var(--mm-component-secure-row-padding-x); background: var(--mm-component-card-bg); border-radius: var(--mm-component-card-radius); border-left: var(--mm-component-secure-row-accent-width) solid var(--mm-component-secure-row-accent); }
+  .sec .body { color: var(--mm-color-text-secondary); font-size: var(--mm-font-size-sm); }
+  .sec.locked .body { filter: blur(var(--mm-component-secure-row-locked-blur)); opacity: var(--mm-component-secure-row-locked-opacity); user-select: none; }
+  .sec .cd { color: var(--mm-component-secure-row-countdown-color); font-size: var(--mm-font-size-xs); font-weight: var(--mm-font-weight-semibold); letter-spacing: var(--mm-font-letter-spacing-wide); text-transform: uppercase; white-space: nowrap; }
+  .folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--mm-component-folder-size), 1fr)); gap: var(--mm-component-folder-gap); }
+  .folder { aspect-ratio: 1; border-radius: var(--mm-component-folder-radius); background: var(--mm-component-folder-bg); display: grid; place-content: center; gap: var(--mm-space-2); text-align: center; cursor: pointer; transition: background-color var(--mm-motion-duration-fast); }
+  .folder:hover { background: var(--mm-component-folder-bg-hover); }
+  .folder svg { width: var(--mm-component-folder-icon); height: var(--mm-component-folder-icon); margin-inline: auto; stroke: var(--mm-color-text-brand); fill: none; stroke-width: 1.5; }
+
+  /* 인풋·PIN */
+  .field { display: grid; gap: var(--mm-component-input-label-gap); }
+  .field + .field { margin-top: var(--mm-component-input-field-gap); }
+  .ul { height: var(--mm-component-input-height); padding-inline: 0; border: 0; border-bottom: 1px solid var(--mm-component-input-underline); background: transparent; font: inherit; font-size: var(--mm-font-size-md); color: var(--mm-color-text-primary); outline: none; transition: border-color var(--mm-motion-duration-fast), background-color var(--mm-motion-duration-fast); }
+  .ul:focus { border-bottom: var(--mm-border-width-underline) solid var(--mm-component-input-underline-focus); background: var(--mm-component-input-bg-focus); padding-inline: var(--mm-component-input-padding-x); }
+  .ul[aria-invalid="true"] { border-bottom: var(--mm-border-width-underline) solid var(--mm-component-input-underline-error); }
+  .filled { height: var(--mm-component-input-height); padding-inline: var(--mm-component-input-padding-x); border: 0; border-radius: var(--mm-component-input-radius); background: var(--mm-component-input-bg-filled); font: inherit; font-size: var(--mm-font-size-md); color: var(--mm-color-text-primary); outline: none; }
+  .filled:focus { background: var(--mm-component-input-bg-focus); box-shadow: var(--mm-shadow-focus); }
+  .help { font-size: var(--mm-font-size-xs); color: var(--mm-color-text-tertiary); }
+  .help.err { color: var(--mm-color-text-danger); }
+  .pin { display: flex; gap: var(--mm-component-pin-cell-gap); }
+  .pin span { width: var(--mm-component-pin-cell-size); height: var(--mm-component-pin-cell-size); border-radius: var(--mm-component-pin-cell-radius); background: var(--mm-component-pin-cell-bg); display: grid; place-items: center; font-family: var(--mm-font-family-mono); font-size: var(--mm-font-size-2xl); font-weight: var(--mm-font-weight-semibold); }
+  .pin span.f { background: var(--mm-component-pin-cell-bg-filled); }
+  .pin span.a { box-shadow: inset 0 calc(-1 * var(--mm-border-width-underline)) 0 var(--mm-component-pin-cell-underline-active); }
+  .pin.err span { box-shadow: inset 0 calc(-1 * var(--mm-border-width-underline)) 0 var(--mm-component-pin-cell-error); animation: mm-shake var(--mm-motion-duration-shake) var(--mm-motion-easing-ease) both; }
+  @keyframes mm-shake { 0%,100% { transform: none; } 20% { transform: translateX(calc(-1 * var(--mm-motion-distance-shake))); } 40% { transform: translateX(var(--mm-motion-distance-shake)); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+
+  /* 드롭다운·모달·벤토·캘린더 */
+  .dd { width: var(--mm-component-category-dropdown-width); background: var(--mm-component-category-dropdown-bg); backdrop-filter: blur(var(--mm-component-category-dropdown-blur)); border-radius: var(--mm-component-category-dropdown-radius); box-shadow: var(--mm-component-category-dropdown-shadow); padding: var(--mm-component-category-dropdown-padding); }
+  .dd .it { display: flex; align-items: center; gap: var(--mm-space-3); height: var(--mm-component-category-dropdown-item-height); padding-inline: var(--mm-space-2); border-radius: var(--mm-component-category-dropdown-item-radius); font-size: var(--mm-font-size-sm); font-weight: var(--mm-font-weight-semibold); cursor: pointer; }
+  .dd .it:hover { background: var(--mm-component-category-dropdown-item-hover-bg); }
+  .dd .it.on { background: var(--mm-component-category-dropdown-item-active-bg); color: var(--mm-component-category-dropdown-item-active-text); }
+  .dd .it i { width: var(--mm-component-category-dropdown-item-icon-size); height: var(--mm-component-category-dropdown-item-icon-size); border-radius: var(--mm-radius-full); display: grid; place-items: center; font-style: normal; font-size: var(--mm-font-size-sm); }
+  .dd .it small { margin-left: auto; font-size: var(--mm-font-size-xs); opacity: .7; }
+  .modal-demo { position: relative; height: 380px; background: var(--mm-color-surface-cream); border-radius: var(--mm-radius-xl); display: grid; place-items: center; overflow: hidden; }
+  .modal-demo::before { content: ''; position: absolute; inset: 0; background: var(--mm-color-surface-overlay); }
+  .modal { position: relative; width: min(var(--mm-component-modal-width-sm), 90%); background: var(--mm-component-modal-bg); backdrop-filter: blur(var(--mm-component-modal-blur)); border-radius: var(--mm-component-modal-radius); box-shadow: var(--mm-component-modal-shadow); padding: var(--mm-component-modal-padding); }
+  .modal h3 { margin: 0 0 var(--mm-space-2); }
+  .modal p { margin: 0 0 var(--mm-component-modal-section-gap); color: var(--mm-color-text-secondary); font-size: var(--mm-font-size-sm); }
+  .modal .foot { display: flex; justify-content: flex-end; gap: var(--mm-component-modal-footer-gap); }
+  .bento-wrap { background: var(--mm-color-surface-cream); border-radius: var(--mm-radius-2xl); padding: var(--mm-space-6); position: relative; overflow: hidden; }
+  .bento-wrap::before, .bento-wrap::after { content: ''; position: absolute; width: 360px; height: 360px; border-radius: var(--mm-radius-full); filter: blur(60px); pointer-events: none; }
+  .bento-wrap::before { background: var(--mm-gradient-blob-pink); top: -120px; left: -80px; } .bento-wrap::after { background: var(--mm-gradient-blob-blue); bottom: -140px; right: -60px; }
+  .bento { position: relative; display: grid; gap: var(--mm-component-bento-gap); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .bento { grid-template-columns: repeat(2, 1fr); } .bento .wide { grid-column: 1 / -1; } }
+  @media (min-width: 1024px) { .bento { grid-template-columns: repeat(3, 1fr); } }
+  .bento > div { background: var(--mm-component-bento-bg); backdrop-filter: blur(var(--mm-component-bento-blur)); border-radius: var(--mm-component-bento-radius); padding: var(--mm-component-bento-padding); min-height: var(--mm-component-bento-min-height); }
+  .bento h4 { margin: 0 0 var(--mm-space-4); display: flex; justify-content: space-between; align-items: center; }
+  .bento h4 a { font-size: var(--mm-font-size-sm); color: var(--mm-color-text-link); font-weight: var(--mm-font-weight-semibold); }
+  .todo { display: flex; align-items: center; gap: var(--mm-component-checkbox-label-gap); padding-block: var(--mm-space-2); }
+  .todo input { appearance: none; width: var(--mm-component-checkbox-size); height: var(--mm-component-checkbox-size); border: 1px solid var(--mm-component-checkbox-border); border-radius: var(--mm-component-checkbox-radius); margin: 0; display: grid; place-content: center; background: var(--mm-color-surface-default); }
+  .todo input:checked { background: var(--mm-component-checkbox-bg-checked); border-color: var(--mm-component-checkbox-bg-checked); }
+  .todo input:checked::after { content: ''; width: 5px; height: 9px; border: solid var(--mm-component-checkbox-check-color); border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+  .todo input:checked + span { text-decoration: line-through; color: var(--mm-component-checkbox-todo-done-text); }
+  .mini { background: var(--mm-color-surface-zone); border-radius: var(--mm-component-card-radius-preview); padding: var(--mm-component-card-padding-sm); font-size: var(--mm-font-size-sm); }
+  .mini + .mini { margin-top: var(--mm-space-2); }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid var(--mm-component-calendar-grid-line); border-left: 1px solid var(--mm-component-calendar-grid-line); }
+  .cal div { min-height: var(--mm-component-calendar-cell-min-height-mobile); padding: var(--mm-component-calendar-cell-padding); border-right: 1px solid var(--mm-component-calendar-grid-line); border-bottom: 1px solid var(--mm-component-calendar-grid-line); font-size: var(--mm-font-size-sm); font-weight: var(--mm-font-weight-semibold); }
+  @media (min-width: 768px) { .cal div { min-height: var(--mm-component-calendar-cell-min-height); } }
+  .cal .h { min-height: 0; color: var(--mm-color-text-tertiary); font-size: var(--mm-font-size-xs); text-transform: uppercase; letter-spacing: var(--mm-font-letter-spacing-wide); background: var(--mm-color-surface-zone); }
+  .cal .we { color: var(--mm-component-calendar-weekend-text); }
+  .cal .today { background: var(--mm-component-calendar-today-bg); }
+  .cal .today b { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: var(--mm-radius-full); background: var(--mm-component-calendar-today-marker); color: var(--mm-color-text-on-brand); }
+  .cal .sel { box-shadow: inset 0 0 0 2px var(--mm-component-calendar-selected-ring); }
+  .cal .dot { display: inline-block; width: 6px; height: 6px; border-radius: var(--mm-radius-full); background: var(--mm-component-calendar-event-dot); margin: var(--mm-space-1) 2px 0 0; }
+  .heat { display: flex; gap: 3px; }
+  .heat i { width: 12px; height: 12px; border-radius: 2px; display: block; }
+
+  /* 팔레트·타이포 표 */
+  .ramp { display: grid; grid-template-columns: 72px repeat(11, 1fr); align-items: center; gap: var(--mm-space-1); margin-bottom: var(--mm-space-2); }
+  .sw { height: 36px; border-radius: var(--mm-radius-sm); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 3px; font-size: var(--mm-font-size-2xs); font-family: var(--mm-font-family-mono); }
+  .sw.fixed { box-shadow: 0 0 0 2px var(--mm-color-interactive-focus-ring); }
+  .layers { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--mm-space-3); }
+  .layers div { height: 64px; border-radius: var(--mm-radius-md); display: grid; place-items: end start; padding: var(--mm-space-2); font-size: var(--mm-font-size-2xs); font-family: var(--mm-font-family-mono); }
+  .type-row { display: grid; grid-template-columns: 110px 1fr 170px; gap: var(--mm-space-4); align-items: baseline; padding: var(--mm-space-3) 0; }
+  .type-row + .type-row { border: 0; }
+  .type-row code, .type-row .spec { font-size: var(--mm-font-size-xs); color: var(--mm-color-text-tertiary); font-family: var(--mm-font-family-mono); }
+  @media (max-width: 767px) { .type-row { grid-template-columns: 1fr; gap: var(--mm-space-1); } }
+  .toast { display: inline-flex; align-items: center; gap: var(--mm-space-3); width: min(var(--mm-component-toast-width), 100%); padding: var(--mm-component-toast-padding); border-radius: var(--mm-component-toast-radius); background: var(--mm-component-toast-bg); color: var(--mm-component-toast-text); box-shadow: var(--mm-component-toast-shadow); font-size: var(--mm-font-size-sm); }
+  .toast .grow { flex: 1; }
+  .alert { display: flex; gap: var(--mm-space-3); padding: var(--mm-space-4); border-radius: var(--mm-radius-lg); font-size: var(--mm-font-size-sm); }
+  .a-secure { background: var(--mm-color-status-secure-bg); color: var(--mm-color-status-secure-text); } .a-danger { background: var(--mm-color-status-danger-bg); color: var(--mm-color-status-danger-text); } .a-success { background: var(--mm-color-status-success-bg); color: var(--mm-color-status-success-text); } .a-neutral { background: var(--mm-color-status-neutral-bg); color: var(--mm-color-status-neutral-text); }
+  .empty { text-align: center; padding: var(--mm-space-16) var(--mm-space-6); }
+  .empty img { width: 120px; height: 120px; border-radius: var(--mm-radius-full); object-fit: cover; background: var(--mm-color-surface-default); margin-bottom: var(--mm-space-4); }
+  .empty p { color: var(--mm-color-text-secondary); margin: var(--mm-space-2) 0 var(--mm-space-6); }
+  .seg { display: inline-flex; background: var(--mm-color-surface-zone-deep); border-radius: var(--mm-radius-full); padding: 3px; gap: 2px; }
+  .seg button { height: 28px; padding-inline: var(--mm-space-3); border: 0; border-radius: var(--mm-radius-full); background: transparent; font: inherit; font-size: var(--mm-font-size-xs); font-weight: var(--mm-font-weight-semibold); color: var(--mm-color-text-secondary); cursor: pointer; }
+  .seg button[aria-selected="true"] { background: var(--mm-color-surface-default); color: var(--mm-color-text-primary); box-shadow: var(--mm-shadow-soft); }
+</style>
+</head>
+<body>
+<header class="hdr glass">
+  <a class="mm-logo" href="#" aria-label="memoir"><img src="../assets/brand/icon.svg" width="24" height="24" alt="" style="vertical-align:-4px; margin-right: var(--mm-space-2)" /><span class="mm-logo-mark">m</span>emoir</a>
+  <span class="cat-trigger mm-label-lg">💻 코드 스니펫 <svg class="i i-sm" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+  <label class="search"><svg class="i i-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input placeholder="코드 검색" /><span class="mm-caption">⌘K</span></label>
+  <div class="seg" role="tablist" aria-label="테마" style="margin-left:auto"><button data-theme="" aria-selected="true">시스템</button><button data-theme="light" aria-selected="false">라이트</button><button data-theme="dark" aria-selected="false">다크</button></div>
+  <button class="btn btn--primary btn--pill"><svg class="i i-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New</button>
+  <span class="avatar">승</span>
+</header>
+<nav class="sub" aria-label="필터">
+  <button class="chip all">All</button><button class="chip">Java</button><button class="chip on">Python</button><button class="chip">JavaScript</button><button class="chip">TypeScript</button><button class="chip">Go</button><button class="chip">Rust</button><button class="chip">CSS</button>
+</nav>
+
+<main class="page">
+  <div style="max-width: var(--mm-size-container-prose)">
+    <div class="mm-label" style="color: var(--mm-color-text-tertiary)">design tokens · v1.0.0</div>
+    <h1 class="mm-display-md" style="margin: var(--mm-space-3) 0 0">Your Digital<br /><span style="color: var(--mm-color-text-brand)">Archival Ledger</span>.</h1>
+    <p class="mm-body-lg" style="color: var(--mm-color-text-secondary); margin: var(--mm-space-4) 0 0">이 페이지의 모든 값은 토큰이다. 선 대신 면, 파랑은 클릭 가능, 핑크는 강조·로즈는 액션. 위 토글로 다크를 켜면 컴포넌트 코드 수정 없이 바뀐다.</p>
+  </div>
+
+  <!-- 종이 층 -->
+  <section id="surface">
+    <h2 class="mm-title-lg">종이 층 (No-Line)</h2>
+    <p class="lead mm-body-sm">canvas → zone → card. 테두리·그림자 없이 밝기 차이로 구획한다. 리스트 항목 사이는 24px 여백.</p>
+    <div class="layers" id="layers"></div>
+    <h3 class="sub-h mm-title">코드 스니펫 카드 (zone 위 흰 카드, 사이 24)</h3>
+    <div class="zone stack">
+      <article class="card">
+        <div class="card-head"><span class="lang js">JavaScript</span><h4 class="mm-title">Debounce Function Implementation</h4><button class="btn btn--ghost btn--xs" aria-label="더보기">⋯</button></div>
+        <div class="code"><button class="copy" aria-label="코드 복사"><svg class="i i-sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><span class="k">function</span> <span class="f">debounce</span>(func, wait) {<br />  <span class="k">let</span> timeout;<br />  <span class="k">return</span> <span class="k">function</span>(...args) {<br />    <span class="f">clearTimeout</span>(timeout);<br />    timeout = <span class="f">setTimeout</span>(() => func.<span class="f">apply</span>(<span class="k">this</span>, args), wait);<br />  };<br />}<br /><span class="c">// 사용 예시</span><br /><span class="k">const</span> handleSearch = <span class="f">debounce</span>(() => console.<span class="f">log</span>(<span class="s">'Searching...'</span>), <span class="n">300</span>);</div>
+        <p class="mm-body-sm" style="color: var(--mm-color-text-secondary); margin: var(--mm-space-4) 0 0">성능 최적화를 위한 디바운스 유틸리티 함수입니다. 검색창 입력이나 리사이즈 이벤트에 씁니다. 인라인 코드는 <code class="inline">wait</code> 처럼.</p>
+        <div class="meta"><div class="tags"><span class="tag">#utility</span><span class="tag">#performance</span></div><span class="mm-label" style="color: var(--mm-color-text-tertiary)">Oct 24, 2023</span></div>
+      </article>
+      <article class="card">
+        <div class="card-head"><span class="lang py">Python</span><h4 class="mm-title">Async FastAPI Dependency</h4><button class="btn btn--ghost btn--xs" aria-label="더보기">⋯</button></div>
+        <div class="code"><span class="k">async def</span> <span class="f">get_db_session</span>():<br />    <span class="k">async with</span> <span class="f">async_session</span>() <span class="k">as</span> session:<br />        <span class="k">yield</span> session</div>
+        <div class="meta"><div class="tags"><span class="tag">#fastapi</span></div><span class="mm-label" style="color: var(--mm-color-text-tertiary)">Dec 05, 2023</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 색 -->
+  <section id="color">
+    <h2 class="mm-title-lg">색</h2>
+    <p class="lead mm-body-sm">테두리 있는 스와치가 기존 값(핑크 400/600/800, 블루 400/600, 잉크 950). 나머지는 OKLCH 생성.</p>
+    <div id="ramps"></div>
+    <h3 class="sub-h mm-title">글자·액션·칩</h3>
+    <div class="grid">
+      <div class="card">
+        <div class="mm-body" style="color: var(--mm-color-text-primary)">text.primary — 따뜻한 검정</div>
+        <div class="mm-body" style="color: var(--mm-color-text-secondary)">text.secondary — 설명·미리보기</div>
+        <div class="mm-body" style="color: var(--mm-color-text-tertiary)">text.tertiary — 메타(크림 위 6.2)</div>
+        <div class="mm-body" style="color: var(--mm-color-text-brand)">text.brand — 로즈 강조 단어</div>
+        <div class="mm-body"><a href="#" style="color: var(--mm-color-text-link); text-decoration: underline">text.link — 파랗다 = 클릭 가능</a></div>
+        <div class="mm-body" style="color: var(--mm-color-text-danger)">text.danger</div>
+      </div>
+      <div class="card">
+        <div class="row"><button class="btn btn--primary">저장</button><button class="btn btn--secondary">취소</button><button class="btn btn--ghost">더보기</button><button class="btn btn--interactive">활성 메뉴</button><button class="btn btn--danger">삭제</button><button class="btn btn--primary" disabled>비활성</button></div>
+        <div class="row" style="margin-top: var(--mm-space-3); align-items: flex-end"><button class="btn btn--xs btn--secondary">xs 28</button><button class="btn btn--sm btn--secondary">sm 36</button><button class="btn btn--secondary">md 44</button><button class="btn btn--lg btn--primary">lg 52</button></div>
+        <p class="help" style="margin: var(--mm-space-3) 0 0">핑크(#FF82A9) + 흰 글자 버튼은 2.33:1 — 금지. 로즈(#A1385E) 6.48.</p>
+      </div>
+      <div class="card">
+        <div class="row"><span class="chip all">All</span><span class="chip">Java</span><span class="chip on">Python</span><span class="tag">#utility</span><span class="tag">#security</span><span class="lang js">JavaScript</span><span class="lang java">Java</span><span class="lang">Rust</span></div>
+        <div class="row" style="margin-top: var(--mm-space-4)" id="cats"></div>
+        <p class="help" style="margin: var(--mm-space-3) 0 0">카테고리 식별색 — 드롭다운·벤토 헤더에만.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 타이포 -->
+  <section id="type">
+    <h2 class="mm-title-lg">타이포그래피</h2>
+    <p class="lead mm-body-sm">Plus Jakarta Sans + Pretendard 폴백. 메타는 대문자 자간.</p>
+    <div class="card" id="types"></div>
+  </section>
+
+  <!-- 카테고리 컴포넌트 -->
+  <section id="cat">
+    <h2 class="mm-title-lg">카테고리별 컴포넌트</h2>
+    <p class="lead mm-body-sm">docs/06 §8. 명령어 행·북마크·영상·보안·폴더.</p>
+    <div class="grid">
+      <div class="zone">
+        <div class="mm-label" style="color: var(--mm-color-text-tertiary); margin-bottom: var(--mm-space-3)">Git</div>
+        <div class="cmd"><span class="lang">mac</span><code>git log --oneline --graph --all</code><small>브랜치 그래프 한눈에</small></div>
+        <div class="cmd"><span class="lang">linux</span><code>sudo systemctl restart nginx</code><small>nginx 재시작</small></div>
+        <div class="cmd"><span class="lang">docker</span><code>docker compose up -d --build</code><small>빌드 후 백그라운드</small></div>
+      </div>
+      <div class="zone stack">
+        <a class="bm" href="#"><div class="img"><svg class="i" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div><div class="t"><span class="mm-title-sm">Design Tokens Format Module</span><span class="mm-label" style="color: var(--mm-color-text-tertiary)">designtokens.org</span><span class="mm-body-sm" style="color: var(--mm-color-text-secondary)">W3C Community Group 토큰 포맷 명세</span></div></a>
+        <a class="bm" href="#"><div class="img"><svg class="i" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></div><div class="t"><span class="mm-title-sm">Pretendard</span><span class="mm-label" style="color: var(--mm-color-text-tertiary)">github.com</span><span class="mm-body-sm" style="color: var(--mm-color-text-secondary)">한글 가변 폰트</span></div></a>
+      </div>
+      <div class="zone">
+        <div class="vid"><div class="thumb"><span class="dur">12:40</span></div><span class="mm-title-sm">Next.js App Router 완전 정복</span><span class="mm-caption" style="color: var(--mm-color-text-tertiary)">winterholic · 2026.09.12</span></div>
+      </div>
+      <div class="zone stack">
+        <div class="alert a-secure"><svg class="i" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><b>보안 구역 · 14:32 까지</b><br />5분 동안 활동이 없으면 다시 잠겨요.</div></div>
+        <div class="sec locked"><svg class="i" viewBox="0 0 24 24" style="color: var(--mm-color-status-secure-icon)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><div><div class="mm-title-sm">AWS 루트 계정</div><div class="body">비밀번호와 MFA 백업 코드가 들어 있어요</div></div><span class="cd">잠김</span></div>
+        <div class="sec"><svg class="i" viewBox="0 0 24 24" style="color: var(--mm-color-status-secure-icon)"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg><div><div class="mm-title-sm">공인인증서 비밀번호</div><div class="body">은행 · 2026.03 갱신</div></div><span class="cd">02:41</span></div>
+      </div>
+      <div class="zone">
+        <div class="folders"><div class="folder"><svg viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.2 3.4A2 2 0 0 0 7.5 2.5H4a2 2 0 0 0-2 2v13.5a2 2 0 0 0 2 2z"/></svg><span class="mm-title-sm">2026</span><span class="mm-caption" style="color: var(--mm-color-text-tertiary)">12개</span></div><div class="folder"><svg viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9L9.2 3.4A2 2 0 0 0 7.5 2.5H4a2 2 0 0 0-2 2v13.5a2 2 0 0 0 2 2z"/></svg><span class="mm-title-sm">일기</span><span class="mm-caption" style="color: var(--mm-color-text-tertiary)">48개</span></div></div>
+      </div>
+      <div class="zone">
+        <div class="pin"><span class="f">4</span><span class="f">8</span><span class="f">2</span><span class="a"></span><span></span><span></span></div>
+        <p class="help" style="margin: var(--mm-space-3) 0">2FA 6자리. 현재 칸 인디고 밑줄.</p>
+        <div class="pin err"><span class="f">1</span><span class="f">2</span><span class="f">3</span><span class="f">4</span><span class="f">5</span><span class="f">6</span></div>
+        <p class="help err" style="margin: var(--mm-space-3) 0 0">코드가 맞지 않아요 (2/5)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 대시보드 벤토 + 캘린더 -->
+  <section id="dash">
+    <h2 class="mm-title-lg">나의 공간 · 캘린더</h2>
+    <p class="lead mm-body-sm">글래스 벤토는 크림·블롭 위에서만 보인다. 캘린더 그리드는 선이 정보인 유일한 곳.</p>
+    <div class="bento-wrap">
+      <div class="bento">
+        <div class="wide"><h4 class="mm-title">오늘의 할일 <a href="#">전체 보기 →</a></h4>
+          <label class="todo"><input type="checkbox" checked /><span class="mm-body">디자인 시스템 토큰 빌드</span></label>
+          <label class="todo"><input type="checkbox" /><span class="mm-body">memoir 프론트에 프리셋 적용</span></label>
+          <label class="todo"><input type="checkbox" /><span class="mm-body">보안 메모 2FA 세션 만료 테스트</span></label>
+        </div>
+        <div><h4 class="mm-title">코드 스니펫 <a href="#">전체 보기 →</a></h4><div class="mini"><span class="lang js">JS</span> debounce</div><div class="mini"><span class="lang py">PY</span> async session</div></div>
+        <div><h4 class="mm-title">명령어 <a href="#">전체 보기 →</a></h4><div class="mini"><code class="inline">git log --graph</code></div><div class="mini"><code class="inline">docker compose up</code></div></div>
+        <div><h4 class="mm-title">북마크 <a href="#">전체 보기 →</a></h4><div class="mini">Design Tokens Format Module</div><div class="mini">Pretendard</div></div>
+      </div>
+    </div>
+    <h3 class="sub-h mm-title">캘린더</h3>
+    <div class="card" style="padding: 0; overflow: hidden">
+      <div class="cal" id="cal"></div>
+    </div>
+    <div class="row" style="margin-top: var(--mm-space-4)"><span class="mm-caption" style="color: var(--mm-color-text-tertiary)">활동 히트맵</span><div class="heat" id="heat"></div></div>
+  </section>
+
+  <!-- 드롭다운·모달·인풋 -->
+  <section id="ov">
+    <h2 class="mm-title-lg">드롭다운 · 모달 · 인풋</h2>
+    <p class="lead mm-body-sm">글래스 80% + blur 20. 인풋은 underline 또는 filled, 상자 테두리 없음.</p>
+    <div class="grid">
+      <div class="dd" role="menu" id="dd"></div>
+      <div class="modal-demo"><div class="modal" role="dialog" aria-modal="true"><h3 class="mm-title-lg">‘2026’ 폴더와 메모 12개를 삭제할까요?</h3><p>삭제한 메모는 30일 동안 휴지통에 보관돼요.</p><div class="foot"><button class="btn btn--ghost">취소</button><button class="btn btn--danger">삭제</button></div></div></div>
+      <div class="card">
+        <div class="field"><label class="mm-label" style="color: var(--mm-color-text-tertiary)" for="t">제목</label><input id="t" class="ul" value="회의록 · 9월 셋째 주" /></div>
+        <div class="field"><label class="mm-label" style="color: var(--mm-color-text-tertiary)" for="e">이메일</label><input id="e" class="ul" value="hong@" aria-invalid="true" /><span class="help err">이메일 형식이 아니에요</span></div>
+        <div class="field"><label class="mm-label" style="color: var(--mm-color-text-tertiary)" for="u">링크 추가</label><input id="u" class="filled" placeholder="링크를 붙여넣으면 정보를 가져와요" /><span class="help">OG 이미지·제목을 자동으로 채워요</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 상태 -->
+  <section id="state">
+    <h2 class="mm-title-lg">상태 · 피드백</h2>
+    <p class="lead mm-body-sm">보안(핑크)과 오류(빨강)를 구분한다. 빈 상태는 마스코트.</p>
+    <div class="grid">
+      <div class="stack">
+        <div class="alert a-neutral"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div>오프라인이에요. 연결되면 저장돼요.</div></div>
+        <div class="alert a-danger"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg><div><b>저장하지 못했어요</b><br />네트워크를 확인하고 다시 시도해 주세요. 내용은 이 기기에 남아 있어요.</div></div>
+        <div class="alert a-success"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><div>2FA 를 설정했어요. 백업 코드를 안전한 곳에 보관하세요.</div></div>
+        <div class="toast" role="status"><span class="grow">메모를 삭제했어요</span><button class="btn btn--ghost btn--sm" style="color: var(--mm-color-text-inverse)">되돌리기</button></div>
+      </div>
+      <div class="zone"><div class="empty"><img src="../assets/brand/mascot.png" alt="" /><h4 class="mm-title-lg" style="margin:0">아직 코드 스니펫이 없어요</h4><p class="mm-body-sm">자주 쓰는 함수를 저장해 두면 검색 한 번에 찾아요.</p><button class="btn btn--primary">첫 스니펫 만들기</button></div></div>
+    </div>
+  </section>
+</main>
+<button class="fab" aria-label="새 메모"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+
+<script>
+  const root = document.documentElement; const seg = document.querySelector('header .seg');
+  const apply = (t) => { if (t) root.dataset.theme = t; else delete root.dataset.theme; try { t ? localStorage.setItem('mm-theme', t) : localStorage.removeItem('mm-theme'); } catch {} seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.theme === (t || '')))); };
+  seg.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) apply(b.dataset.theme); }); apply(root.dataset.theme || '');
+  const cs = getComputedStyle(root); const v = (n) => cs.getPropertyValue(n).trim();
+  const steps = [50,100,200,300,400,500,600,700,800,900,950];
+  const ramps = { pink: [400,600,800], blue: [400,600], neutral: [950], red: [], green: [], amber: [] };
+  document.getElementById('ramps').innerHTML = Object.entries(ramps).map(([n, f]) => `<div class="ramp"><span class="mm-label-md">${n}</span>${steps.map(s => `<div class="sw ${f.includes(s) ? 'fixed' : ''}" style="background: var(--mm-${n}-${s}); color: ${s >= 500 ? 'var(--mm-base-white)' : 'var(--mm-brand-ink)'}" title="${n}.${s} ${v(`--mm-${n}-${s}`)}">${s}</div>`).join('')}</div>`).join('');
+  const layers = ['canvas','zone','zone-deep','default','cream','blush','brand-subtle','interactive-subtle','brand','interactive','inverse'];
+  document.getElementById('layers').innerHTML = layers.map(s => `<div style="background: var(--mm-color-surface-${s}); color: ${['brand','interactive','inverse'].includes(s) ? 'var(--mm-color-text-on-brand)' : 'var(--mm-color-text-tertiary)'}">surface.${s}</div>`).join('');
+  const cats = { dashboard: '☁️', calendar: '📅', general: '📝', simple: '✍️', code: '💻', command: '⌨️', bookmark: '🔗', video: '🎬', secure: '🔐', private: '🙈' };
+  const catNames = { dashboard: '나의 공간', calendar: '캘린더', general: '일반 메모', simple: '단순 메모', code: '코드 스니펫', command: '명령어 메모', bookmark: 'URL 북마크', video: '영상 메모', secure: '보안 메모', private: '프라이빗' };
+  document.getElementById('cats').innerHTML = Object.entries(cats).map(([k, e]) => `<span style="display:inline-grid; place-items:center; width:28px; height:28px; border-radius: var(--mm-radius-full); background: var(--mm-color-category-${k})" title="category.${k}">${e}</span>`).join('');
+  document.getElementById('dd').innerHTML = Object.entries(cats).map(([k, e], i) => `<div class="it ${k === 'code' ? 'on' : ''}" role="menuitem"><i style="background: var(--mm-color-category-${k})">${e}</i>${catNames[k]}<small>${[3,12,7,21,18,34,9,5,4,2][i]}</small></div>`).join('');
+  const types = ['display-lg','display-md','headline','title-lg','title','title-sm','body-lg','body','body-sm','editor','label','label-md','caption','tag','code','command','pin','logo'];
+  const sample = (t) => t.startsWith('display') ? '기억을 보관하는 방식' : t === 'headline' ? '9월 셋째 주 회의록' : t.startsWith('title') ? '보유한 스니펫 현황' : t === 'label' ? 'Oct 24, 2023 · JavaScript' : t === 'pin' ? '482' : t === 'code' || t === 'command' ? 'git log --oneline' : t === 'logo' ? 'memoir' : t === 'tag' ? '#utility' : '개인이 일상적으로 쓰는 다양한 메모를 한 공간에서 관리하고, 민감한 정보는 2FA 로 보호해요.';
+  document.getElementById('types').innerHTML = types.map(t => { const el = document.createElement('span'); el.className = `mm-${t}`; document.body.appendChild(el); const s = getComputedStyle(el); const spec = `${parseFloat(s.fontSize)}px / ${s.fontWeight} / ${(parseFloat(s.lineHeight)/parseFloat(s.fontSize)).toFixed(2)}`; el.remove(); return `<div class="type-row"><code>${t}</code><span class="mm-${t}">${t === 'logo' ? '<span class="mm-logo-mark">m</span>emoir' : sample(t)}</span><span class="spec">${spec}</span></div>`; }).join('');
+  const days = ['일','월','화','수','목','금','토'];
+  let cal = days.map((d, i) => `<div class="h ${i === 0 || i === 6 ? 'we' : ''}">${d}</div>`).join('');
+  for (let i = 0; i < 35; i++) { const d = i - 1; const we = i % 7 === 0 || i % 7 === 6; cal += d < 1 || d > 30 ? `<div style="background: var(--mm-color-surface-zone)"></div>` : `<div class="${we ? 'we' : ''} ${d === 19 ? 'today' : ''} ${d === 22 ? 'sel' : ''}">${d === 19 ? '<b>19</b>' : d}${[3,8,12,19,22,27].includes(d) ? '<br /><span class="dot"></span><span class="dot"></span>' : ''}</div>`; }
+  document.getElementById('cal').innerHTML = cal;
+  document.getElementById('heat').innerHTML = [0,1,2,4,3,0,1,2,2,4,1,0,3,4,2,1,0,0,1,3].map(n => `<i style="background: var(--mm-color-chart-heat-${n})" title="${n}개"></i>`).join('');
+</script>
+</body>
+</html>

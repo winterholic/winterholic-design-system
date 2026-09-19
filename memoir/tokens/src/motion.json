@@ -1,0 +1,40 @@
+{
+  "motion": {
+    "$description": "기존 globals.css 애니메이션(slide-in-right 250, slide-up 300, fade-in 200, shake 400)을 토큰으로. 종이가 미끄러지듯, 튀지 않게.",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "0ms" },
+      "fast":    { "$value": "150ms", "$description": "hover 면 전환·칩 활성" },
+      "normal":  { "$value": "200ms", "$description": "fade-in·드롭다운·툴팁 (기존 fade-in 0.2s)" },
+      "slide":   { "$value": "250ms", "$description": "패널 slide-in-right (기존)" },
+      "slow":    { "$value": "300ms", "$description": "모달·시트 slide-up (기존)" },
+      "shake":   { "$value": "400ms", "$description": "2FA·비밀번호 오류 흔들림 (기존)" },
+      "lock":    { "$value": "600ms", "$description": "보안 메모 잠금 해제 블러 걷힘" },
+      "skeleton-cycle": { "$value": "1600ms" },
+      "toast":   { "$value": "3000ms" },
+      "blob":    { "$value": "18000ms", "$description": "랜딩 블롭 부유 한 주기" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "out":    { "$value": [0.22, 1, 0.36, 1], "$description": "등장·이동 (기존 slide 계열)" },
+      "in-out": { "$value": [0.4, 0, 0.2, 1],  "$description": "색·면 전환" },
+      "in":     { "$value": [0.4, 0, 1, 1],    "$description": "사라짐" },
+      "ease":   { "$value": [0.25, 0.1, 0.25, 1], "$description": "기존 fade-in·shake 의 ease" },
+      "linear": { "$value": [0, 0, 1, 1] }
+    },
+    "distance": {
+      "$type": "dimension",
+      "sm": { "$value": "4px", "$description": "fade-in translateY (기존)" },
+      "md": { "$value": "8px" },
+      "lg": { "$value": "16px" },
+      "shake": { "$value": "6px", "$description": "shake 진폭 (기존 6/4)" },
+      "panel": { "$value": "100%", "$description": "slide-in-right·slide-up" }
+    },
+    "scale": {
+      "$type": "number",
+      "enter": { "$value": 0.98 },
+      "press": { "$value": 0.98 },
+      "fab-hover": { "$value": 1.04 }
+    }
+  }
+}
