@@ -1,0 +1,59 @@
+{
+  "hanji": {
+    "$type": "color",
+    "$description": "한지 5단계. 원본 tokens.css 값 그대로(이 시스템은 램프를 생성하지 않는다 — 디자인이 확정돼 있다). 순백은 없다.",
+    "bright": { "$value": "#FBF5E5", "$description": "떠 있는 표면: 카드·입력·칩" },
+    "base":   { "$value": "#F4ECDA", "$description": "앱 메인 배경" },
+    "2":      { "$value": "#E8DCBE", "$description": "연한 구분면, 프로그레스 트랙" },
+    "dark":   { "$value": "#D9C99E", "$description": "리스트 경계선" },
+    "deep":   { "$value": "#B8A578", "$description": "가장 진한 종이톤, 텍스처 점, 스크롤바" }
+  },
+  "dancheong": {
+    "$type": "color",
+    "$description": "단청 오방색. 액센트(가는 선)에만. 원본 --dc-*",
+    "red":         { "$value": "#C8362E" },
+    "red-deep":    { "$value": "#9E2521" },
+    "blue":        { "$value": "#2A5E8C" },
+    "blue-deep":   { "$value": "#18416B" },
+    "yellow":      { "$value": "#E8B632" },
+    "yellow-deep": { "$value": "#B8881A" },
+    "white":       { "$value": "#F6F0E2", "$description": "오방색 띠의 흰" },
+    "black":       { "$value": "#1A1611", "$description": "= ink" }
+  },
+  "ink": {
+    "$type": "color",
+    "$description": "잉크 4단계. 한지 위 대비(실측 2026-09-19): ink 15.3 · ink-2 8.94 · ink-3 5.17 · ink-4 2.49",
+    "1": { "$value": "#1A1611" },
+    "2": { "$value": "#4A3D2E" },
+    "3": { "$value": "#735F47", "$description": "원본 tokens.css 값. 스킬 references 의 #7c6b53 은 옛 값" },
+    "4": { "$value": "#A89479", "$description": "장식 전용. 글자 금지(2.49)" }
+  },
+  "korean": {
+    "$type": "color",
+    "$description": "보조 한국색. 칩 변형·등급색 재료. 큰 면 금지",
+    "jade":        { "$value": "#4A8A6D" },
+    "persimmon":   { "$value": "#DC6B43" },
+    "indigo":      { "$value": "#2F3D6E" },
+    "plum":        { "$value": "#8B3A5E" },
+    "gold":        { "$value": "#C9A032" },
+    "gold-bright": { "$value": "#E8C44E" },
+    "twilight":    { "$value": "#4A3A6E" },
+    "moon-white":  { "$value": "#9FB3C0", "$description": "월백(月白). moment 등급 은박" }
+  },
+  "holo": {
+    "$type": "color",
+    "$description": "홀로 효과색. 어두운 연출 배경 위 빛 효과 전용. 일반 UI 금지",
+    "red":    { "$value": "#FF5247" },
+    "blue":   { "$value": "#4DB5FF" },
+    "yellow": { "$value": "#FFD84D" },
+    "jade":   { "$value": "#5FCFA0" },
+    "plum":   { "$value": "#D14F8E" }
+  },
+  "stage": {
+    "$type": "color",
+    "$description": "연출(prelude·결과 공개) 어두운 무대. AppShell tone=dark",
+    "bg":      { "$value": "#1A1611" },
+    "bg-deep": { "$value": "#110E0A" },
+    "text":    { "$value": "#FBF5E5" }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "$description": "7개 서체, 역할 고정(Bright Line 7). 섞지 않는다.",
+      "myeongjo": { "$value": ["Nanum Myeongjo", "serif"], "$description": "heading(800)·카드 지역명·버튼 라벨" },
+      "batang":   { "$value": ["Gowun Batang", "serif"], "$description": "본문·입력값·태그라인" },
+      "brush":    { "$value": ["Nanum Brush Script", "cursive"], "$description": "강조 1~2곳. 항상 rotate(-1~-2deg)" },
+      "rank":     { "$value": ["Cinzel", "serif"], "$description": "등급 라벨(영문)·카드 헤더 메타·eyebrow" },
+      "hand":     { "$value": ["Gaegu", "cursive"], "$description": "손글씨 보조(드물게)" },
+      "ui":       { "$value": ["Pretendard", "sans-serif"], "$description": "UI 시스템 폰트(폼·시스템 텍스트·body 기본)" },
+      "mono":     { "$value": ["DM Mono", "monospace"], "$description": "숫자·메타·NO.0001·좌표·데이터 라벨" }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "regular":  { "$value": 400 },
+      "medium":   { "$value": 500 },
+      "semibold": { "$value": 600 },
+      "bold":     { "$value": 700 },
+      "heading":  { "$value": 800, "$description": "Myeongjo heading·버튼" }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "모바일 375 기준. 본문 13~14, 헤더 20~22(Bright Line 10). 11 이 하한(등급 라벨·메타).",
+      "2xs": { "$value": "0.6875rem", "$description": "11px · 등급 라벨 sub·카드 메타·인풋 도움말" },
+      "xs":  { "$value": "0.75rem",   "$description": "12px · 칩·배지·탭바 라벨·입력 라벨·sm 버튼" },
+      "sm":  { "$value": "0.8125rem", "$description": "13px · 본문 보조·리스트 메타" },
+      "md":  { "$value": "0.875rem",  "$description": "14px · 본문·버튼·입력값" },
+      "lg":  { "$value": "1rem",      "$description": "16px · lg 버튼·강조 본문" },
+      "xl":  { "$value": "1.0625rem", "$description": "17px · 도감 셀 도장 글자·리스트 제목" },
+      "2xl": { "$value": "1.25rem",   "$description": "20px · 헤더 하한·섹션 제목" },
+      "3xl": { "$value": "1.375rem",  "$description": "22px · 헤더 상한·페이지 타이틀" },
+      "4xl": { "$value": "1.75rem",   "$description": "28px · 카드 지역명·결과 배너" },
+      "5xl": { "$value": "2.25rem",   "$description": "36px · 등급 배너(BannerRank)·온보딩" },
+      "brush-lg": { "$value": "1.5rem", "$description": "24px · 붓글씨 강조" }
+    },
+    "line-height": {
+      "$type": "number",
+      "none":    { "$value": 1 },
+      "tight":   { "$value": 1.15, "$description": "heading·배너" },
+      "snug":    { "$value": 1.3 },
+      "normal":  { "$value": 1.5,  "$description": "입력 도움말·라벨" },
+      "relaxed": { "$value": 1.6,  "$description": "body 기본(base.css)" },
+      "loose":   { "$value": 1.8,  "$description": "안내 문서 본문" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tight":  { "$value": "-0.01em", "$description": "버튼(원본)·heading" },
+      "normal": { "$value": "0em" },
+      "wide":   { "$value": "0.08em",  "$description": "Cinzel 등급 라벨·eyebrow" },
+      "wider":  { "$value": "0.12em",  "$description": "DM Mono 메타(NO.0001)" }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+    "$description": "역할 스타일. 서체가 곧 역할이다 — 스타일 이름에 서체가 드러난다.",
+
+    "heading-xl":  { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "28/800 Myeongjo. 카드 지역명·결과 제목·온보딩" },
+    "heading":     { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.3xl}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "22/800. 페이지 타이틀(헤더 상한)" },
+    "heading-sm":  { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "20/800. 섹션 제목·시트 제목" },
+    "title":       { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "17/800. 리스트 항목 제목·카드 제목·도감 셀 지역명" },
+    "body":        { "$value": { "fontFamily": "{font.family.batang}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14/400 Gowun Batang. 본문·태그라인·카드 인용" },
+    "body-sm":     { "$value": { "fontFamily": "{font.family.batang}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "13/400. 보조 설명·리스트 메타 문장" },
+    "ui":          { "$value": { "fontFamily": "{font.family.ui}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "14/400 Pretendard. 폼·시스템 문구·설정·법적 고지" },
+    "ui-sm":       { "$value": { "fontFamily": "{font.family.ui}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "12/500. 입력 라벨·탭바 라벨·칩" },
+    "button":      { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "14/800 Myeongjo. md 버튼(원본). sm 12, lg 16" },
+    "button-sm":   { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "12/800" },
+    "button-lg":   { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "16/800" },
+    "brush":       { "$value": { "fontFamily": "{font.family.brush}", "fontSize": "{font.size.brush-lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "24 Nanum Brush. 강조 1~2곳, rotate(-1~-2deg) 필수" },
+    "rank":        { "$value": { "fontFamily": "{font.family.rank}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "12/700 Cinzel. 등급 라벨(Common…Unique)·eyebrow. 대문자" },
+    "rank-lg":     { "$value": { "fontFamily": "{font.family.rank}", "fontSize": "{font.size.5xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "36/700. BannerRank 결과 공개" },
+    "mono":        { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.wider}" }, "$description": "12 DM Mono. 카드 번호 NO.0001·남은 횟수 7/10·좌표·통계" },
+    "mono-sm":     { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.2xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.wider}" }, "$description": "11. 카드 메타·visitorNote" },
+    "hand":        { "$value": { "fontFamily": "{font.family.hand}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "16 Gaegu. 손글씨 보조(온보딩 말풍선 정도)" },
+    "caption":     { "$value": { "fontFamily": "{font.family.ui}", "fontSize": "{font.size.2xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "11/400 Pretendard. 입력 도움말·이미지 출처(image-credit)" },
+    "seal":        { "$value": { "fontFamily": "{font.family.myeongjo}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.heading}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "17/800. 한자 도장(常/隱/運/傳/唯) 한 글자" }
+  }
+}

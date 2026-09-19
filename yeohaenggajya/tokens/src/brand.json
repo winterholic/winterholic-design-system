@@ -1,0 +1,17 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "브랜드 표기는 여행가쟈(워드마크 철자). 로고 SVG 내부 그라데이션은 에셋 고유 색이라 토큰 대상이 아니다(원본 규칙). 여기는 시스템이 부르는 이름만.",
+    "hanji":    { "$value": "{hanji.base}",       "$description": "앱 배경" },
+    "red":      { "$value": "{dancheong.red}",    "$description": "주 액센트·CTA·도장" },
+    "blue":     { "$value": "{dancheong.blue}",   "$description": "보조 액센트·포커스·링크" },
+    "yellow":   { "$value": "{dancheong.yellow}", "$description": "오방색 띠" },
+    "ink":      { "$value": "{ink.1}" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF", "$description": "쓰지 않는다(Bright Line 2). 검사·예외 참조용" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

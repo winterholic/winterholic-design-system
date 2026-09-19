@@ -1,0 +1,738 @@
+[
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 15.3,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 8.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 9.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 5.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 5.58,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 5.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 5.58,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 5.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 6.27,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 6.52,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 7.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 4.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 4.44,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 4.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 6.27,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.ghost.text",
+    "bg": "color.surface.canvas",
+    "ratio": 15.3,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 7.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 4.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 3.75,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 3.75,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 9.57,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 2.93,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 7.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 4.8,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 4.8,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 6.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 6.27,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 7.71,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 5.58,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 4.46,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.chip.red",
+    "bg": "color.surface.default",
+    "ratio": 4.8,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.chip.blue",
+    "bg": "color.surface.default",
+    "ratio": 6.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.chip.jade",
+    "bg": "color.surface.default",
+    "ratio": 3.75,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.chip.plum",
+    "bg": "color.surface.default",
+    "ratio": 6.74,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.rarity.rare.text",
+    "bg": "color.surface.default",
+    "ratio": 6.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.rarity.epic.text",
+    "bg": "color.surface.default",
+    "ratio": 7.04,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.rarity.unique.text",
+    "bg": "color.surface.default",
+    "ratio": 9.09,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.rarity.common.text",
+    "bg": "color.surface.default",
+    "ratio": 9.66,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.rarity.moment.text",
+    "bg": "color.surface.default",
+    "ratio": 9.66,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.default",
+    "ratio": 6.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.nav-active",
+    "bg": "color.surface.default",
+    "ratio": 4.8,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 15.16,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 13.21,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 12.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 10.97,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 10.05,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 10.97,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 10.05,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 8.03,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 7.36,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 5.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 5.14,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 5.14,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 5.61,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 4.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 6.27,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.ghost.text",
+    "bg": "color.surface.canvas",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 7.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 16.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 4.8,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 15.16,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 3.75,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 8.58,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 15.16,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 9.57,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 11.92,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 5.14,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 4.8,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 5.14,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 15.16,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 6.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 7.36,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 15.16,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 5.58,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 2.72,
+    "min": 2.7,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.chip.red",
+    "bg": "color.surface.default",
+    "ratio": 5.14,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.chip.blue",
+    "bg": "color.surface.default",
+    "ratio": 7.36,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.chip.jade",
+    "bg": "color.surface.default",
+    "ratio": 8.58,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.chip.plum",
+    "bg": "color.surface.default",
+    "ratio": 4.1,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.rarity.rare.text",
+    "bg": "color.surface.default",
+    "ratio": 7.36,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.rarity.epic.text",
+    "bg": "color.surface.default",
+    "ratio": 5.14,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.rarity.unique.text",
+    "bg": "color.surface.default",
+    "ratio": 6.9,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.rarity.common.text",
+    "bg": "color.surface.default",
+    "ratio": 12.11,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.rarity.moment.text",
+    "bg": "color.surface.default",
+    "ratio": 7.61,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.default",
+    "ratio": 7.36,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.nav-active",
+    "bg": "color.surface.default",
+    "ratio": 3.16,
+    "min": 3,
+    "pass": true
+  }
+]

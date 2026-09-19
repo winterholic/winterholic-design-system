@@ -1,0 +1,105 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "원본 --sp-1 ~ --sp-12 (4px 스케일, 12단계). 이름은 원본 번호 그대로. 임의 px 금지.",
+    "0":  { "$value": "0px" },
+    "px": { "$value": "1px" },
+    "1":  { "$value": "4px",  "$description": "칩 내부, 아이콘↔라벨 미세, 탭바 항목 gap" },
+    "2":  { "$value": "8px",  "$description": "버튼 gap(6 은 예외 토큰), 칩 사이, 탭바 패딩" },
+    "3":  { "$value": "12px", "$description": "카드 안 요소 사이, 셀 좌우, 헤더 gap" },
+    "4":  { "$value": "16px", "$description": "기본. 셸 안전 여백(모바일), 카드 패딩" },
+    "5":  { "$value": "20px", "$description": "BottomCta 패딩, 태블릿 셸 여백" },
+    "6":  { "$value": "24px", "$description": "섹션 안 블록 사이, 프레임 패딩" },
+    "7":  { "$value": "32px", "$description": "섹션 사이(모바일), 데스크톱 배경 패딩" },
+    "8":  { "$value": "40px", "$description": "데스크톱 셸 상단 패딩" },
+    "9":  { "$value": "48px", "$description": "섹션 사이(데스크톱), 셸 좌우" },
+    "10": { "$value": "64px", "$description": "프레임 높이 여유(100dvh − 64)" },
+    "11": { "$value": "80px" },
+    "12": { "$value": "96px", "$description": "데스크톱 배경 격자 간격" }
+  },
+
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "$description": "버튼 높이는 패딩+글자로 결정된다(원본). 환산값: sm 30 · md 40 · lg 50. 터치 44 는 셸 액션 행에서 확보.",
+      "xs": { "$value": "28px", "$description": "칩·도장 아이콘·낙관" },
+      "sm": { "$value": "30px", "$description": "btn--sm (6/12, 12px)" },
+      "md": { "$value": "40px", "$description": "btn (10/18, 14px). 인풋(10/12, 14px)" },
+      "lg": { "$value": "50px", "$description": "btn--lg (14/24, 16px)" },
+      "cta": { "$value": "52px", "$description": "GachaCta·하단 CTA 높이(청사진)" }
+    },
+    "icon": {
+      "xs": { "$value": "12px" }, "sm": { "$value": "16px" }, "md": { "$value": "20px" }, "nav": { "$value": "22px", "$description": "탭바 아이콘(원본 22)" }, "lg": { "$value": "24px" }, "xl": { "$value": "32px" }, "2xl": { "$value": "48px" }
+    },
+    "avatar": { "sm": { "$value": "32px" }, "md": { "$value": "38px", "$description": "도감 셀 도장 원(원본 38)" }, "lg": { "$value": "56px" }, "xl": { "$value": "80px" } },
+    "touch-target-min": { "$value": "44px" },
+    "capsule": {
+      "$description": "캡슐 = 모든 화면의 시각 중심. 높이 = 폭 × 1.18",
+      "xs": { "$value": "40px" }, "sm": { "$value": "72px" }, "md": { "$value": "120px" }, "lg": { "$value": "160px", "$description": "홈 캡슐 폭(≈160×190, 가용 높이 40%)" }, "xl": { "$value": "220px" },
+      "ratio": { "$value": 1.18, "$type": "number" }
+    },
+    "card": {
+      "width": { "$value": "200px", "$description": "결과 카드 폭(원본)" },
+      "ratio": { "$value": "5 / 7", "$type": "string", "$description": "카드 비율" },
+      "frame": { "$value": "3px", "$description": "카드 테두리(등급 액센트)" }
+    },
+    "dex-cell": { "$value": "108px", "$description": "도감 3열 셀(375 기준)" },
+    "container": {
+      "$description": "원본 --w-* 기둥. 한 화면은 기둥 하나만.",
+      "panel":   { "$value": "520px",  "$description": "폼·단일 카드(로그인·가입·방 만들기). --w-panel" },
+      "doc":     { "$value": "720px",  "$description": "읽는 문서(본문·표·콜아웃). --w-doc" },
+      "wide":    { "$value": "960px",  "$description": "이미지·차트 섞인 안내. --w-wide" },
+      "content": { "$value": "1152px", "$description": "목록·그리드 상한. --w-content" },
+      "phone":   { "$value": "430px",  "$description": "폰 프레임 안 본문 최대(셸)" },
+      "frame":   { "$value": "1080px", "$description": "데스크톱 폰 프레임 셸 폭" },
+      "cta":     { "$value": "390px",  "$description": "BottomCta 최대폭" }
+    },
+    "layout": {
+      "band":         { "$value": "6px",  "$description": "오방색 띠 높이(앱 상단)" },
+      "header":       { "$value": "52px", "$description": "얇은 헤더" },
+      "header-action-pad": { "$value": "4px", "$description": "액션 행 상단 패딩(원본, 44 터치 유지)" },
+      "tabbar-icon":  { "$value": "22px" },
+      "page-gutter":  { "$value": "16px", "$description": "모바일 안전 여백 = max(sp-4, safe-area)" },
+      "page-gutter-md": { "$value": "20px", "$description": "태블릿 768 이상" },
+      "page-gutter-lg": { "$value": "48px", "$description": "데스크톱 셸 좌우" },
+      "frame-height": { "$value": "900px", "$description": "min(900, 100dvh − 64)" },
+      "frame-padding":{ "$value": "24px" },
+      "sheet-max":    { "$value": "88vh" }
+    }
+  },
+
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "모바일 375 기준. 768 태블릿(폰 프레임 셸 등장), 1024 데스크톱(격자 배경 + 플로팅 네비)",
+    "xs": { "$value": "375px" }, "sm": { "$value": "640px" }, "md": { "$value": "768px" }, "lg": { "$value": "1024px" }, "xl": { "$value": "1280px" }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "원본 --r-*. 카드 12 고정. 칩·뱃지·프로그레스·탭바(데스크톱) 999.",
+    "none":  { "$value": "0px" },
+    "xs":    { "$value": "4px",  "$description": "도장 사각, 등급 라벨 3~4" },
+    "sm":    { "$value": "8px",  "$description": "버튼·입력·도감 셀·탭바 항목" },
+    "md":    { "$value": "12px", "$description": "카드(고정)·시트" },
+    "lg":    { "$value": "20px", "$description": "탭바 컨테이너·큰 패널" },
+    "frame": { "$value": "32px", "$description": "폰 프레임 셸 전용" },
+    "paper-bar": { "$value": "10px", "$description": "한지 필터 바(9-slice 아트워크)" },
+    "full":  { "$value": "999px" }
+  },
+
+  "border-width": {
+    "$type": "dimension",
+    "$description": "먹선 두께. 이 시스템은 선이 두껍다.",
+    "thin":   { "$value": "1px",   "$description": "faint 외곽, 도감 셀 안쪽" },
+    "chip":   { "$value": "1.5px", "$description": "칩·입력·등급 배지" },
+    "ink":    { "$value": "2px",   "$description": "버튼·카드·캡슐·탭바·프레임" },
+    "caret":  { "$value": "2.5px", "$description": "꺾쇠" },
+    "card":   { "$value": "3px",   "$description": "결과 카드 등급 프레임" },
+    "focus":  { "$value": "2px" }
+  },
+
+  "focus": {
+    "ring-width":  { "$value": "2px", "$type": "dimension" },
+    "ring-offset": { "$value": "3px", "$type": "dimension", "$description": "원본 paper-bar:focus-visible offset 3" }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "motion": {
+    "$description": "원본 --dur-*·--ease-out 그대로 + effects.css 의 키프레임 이름·주기. 새 keyframe 은 effects.css 에만 모은다. prefers-reduced-motion 전역 가드(1ms) 존재.",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "1ms",   "$description": "reduced-motion 전역 가드 값(0 이 아니라 1ms — 애니메이션 종료 이벤트가 나오게)" },
+      "fast":    { "$value": "180ms", "$description": "hover·탭·눌림·꺾쇠 회전·작은 전환. --dur-fast" },
+      "normal":  { "$value": "320ms", "$description": "등장·페이드·상태 변화·시트. --dur-norm" },
+      "flip":    { "$value": "700ms", "$description": "카드 뒤집기. --dur-flip" },
+      "fade-in": { "$value": "400ms", "$description": "cpFadeIn(코스 항목 등장)" },
+      "shake-soft":   { "$value": "3200ms", "$description": "capShakeSoft 한 주기(Rare 이하)" },
+      "shake-strong": { "$value": "2600ms", "$description": "capShakeStrong(Epic)" },
+      "shake-vivid":  { "$value": "2200ms", "$description": "capShakeVivid(Legendary·Unique)" },
+      "arrive":  { "$value": "700ms", "$description": "capArrive(캡슐·카드 등장)" },
+      "float":   { "$value": "3600ms", "$description": "appCapsuleFloat 홈 캡슐 부유" },
+      "pulse":   { "$value": "2000ms", "$description": "legendPulse·fxPulse 한 주기" },
+      "holo-shift":  { "$value": "3000ms", "$description": "holoShift 광택 이동" },
+      "holo-rotate": { "$value": "8000ms", "$description": "holoRotate 무지개 회전(Legendary). Unique 는 16000" },
+      "twinkle": { "$value": "1600ms", "$description": "fxTwinkle" },
+      "prelude": { "$value": "3000ms", "$description": "캡슐의 여정(결정 2s → 여정 3~5s → 공개 1~2s)" },
+      "toast":   { "$value": "2800ms" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "out":    { "$value": [0.2, 0.8, 0.2, 1], "$description": "기본 이징 전부. --ease-out" },
+      "in-out": { "$value": [0.4, 0, 0.2, 1],  "$description": "색 전환·부유" },
+      "in":     { "$value": [0.4, 0, 1, 1],    "$description": "사라짐" },
+      "linear": { "$value": [0, 0, 1, 1],      "$description": "holoRotate·holoShift" }
+    },
+    "distance": {
+      "$type": "dimension",
+      "press":  { "$value": "1px",  "$description": "버튼 눌림 translate(1,1)" },
+      "sm":     { "$value": "4px",  "$description": "fxTwinkle" },
+      "md":     { "$value": "8px",  "$description": "cpFadeIn translateY" },
+      "float":  { "$value": "10px", "$description": "appCapsuleFloat 진폭" },
+      "arrive": { "$value": "40px", "$description": "capArrive 시작 오프셋" },
+      "sheet":  { "$value": "100%" }
+    },
+    "rotate": {
+      "$type": "number",
+      "$description": "deg",
+      "brush":        { "$value": -1.5, "$description": "붓글씨 강조 -1~-2" },
+      "shake-soft":   { "$value": 3 },
+      "shake-strong": { "$value": 5 },
+      "shake-vivid":  { "$value": 7 },
+      "stamp":        { "$value": -6,  "$description": "도장 살짝 기울임" }
+    },
+    "scale": {
+      "$type": "number",
+      "arrive-start": { "$value": 0.3 },
+      "arrive-over":  { "$value": 1.12 },
+      "vivid":        { "$value": 1.02 },
+      "twinkle":      { "$value": 1.04 }
+    },
+    "keyframes": {
+      "$description": "effects.css 에 존재하는 키프레임 이름. 컴포넌트는 사용만 한다.",
+      "list": { "$value": "holoRotate holoShift legendPulse appCapsuleFloat capShakeSoft capShakeStrong capShakeVivid capArrive fxPulse fxTwinkle cpFadeIn", "$type": "string" }
+    }
+  }
+}

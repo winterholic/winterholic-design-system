@@ -1,0 +1,173 @@
+/* 여행가쟈 typography · 자동 생성 */
+/* 서체 7종 로드는 소비 앱(next/font 또는 Google Fonts)이 한다(docs/02). 여기서는 역할 클래스만. */
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+:where(h1, h2, h3, h4, h5, h6, p, li, dt, dd, figcaption, label, button, a, summary, strong, em, b, i, small, span, td, th) { word-break: keep-all; overflow-wrap: break-word; }
+body { font-family: var(--yg-font-family-ui); font-size: var(--yg-font-size-md); line-height: var(--yg-font-line-height-relaxed); color: var(--yg-color-text-primary); background: var(--yg-color-surface-canvas); background-image: radial-gradient(circle at 25% 30%, var(--yg-texture-dot-color) 0.5px, transparent 1px), radial-gradient(circle at 75% 70%, var(--yg-texture-dot-color-2) 0.5px, transparent 1px); background-size: var(--yg-texture-dot-size) var(--yg-texture-dot-size), var(--yg-texture-dot-size-2) var(--yg-texture-dot-size-2); -webkit-font-smoothing: antialiased; }
+/* 오방색 띠 · 한지 스크롤바 유틸 */
+.yg-band { height: var(--yg-size-layout-band); background: var(--yg-gradient-band); }
+.yg-hanji-scroll { scrollbar-color: var(--yg-hanji-deep) transparent; scrollbar-width: thin; }
+.yg-hanji-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.yg-hanji-scroll::-webkit-scrollbar-thumb { background-clip: padding-box; background-color: color-mix(in srgb, var(--yg-hanji-deep) 80%, transparent); border: 3px solid transparent; border-radius: 999px; }
+.yg-hanji-scroll::-webkit-scrollbar-button { display: none; }
+code, kbd, pre, samp { font-family: var(--yg-font-family-mono); }
+:focus-visible { outline: var(--yg-focus-ring-width) solid var(--yg-color-interactive-focus-ring); outline-offset: var(--yg-focus-ring-offset); }
+
+.yg-heading-xl {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.yg-heading {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.375rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.yg-heading-sm {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.yg-title {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.yg-body {
+  font-family: "Gowun Batang", serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.yg-body-sm {
+  font-family: "Gowun Batang", serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.yg-ui {
+  font-family: Pretendard, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0em;
+}
+
+.yg-ui-sm {
+  font-family: Pretendard, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.yg-button {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.yg-button-sm {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 0.75rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.yg-button-lg {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.yg-brush {
+  font-family: "Nanum Brush Script", cursive;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0em;
+  display: inline-block;
+  transform: rotate(calc(var(--yg-motion-rotate-brush) * 1deg));
+}
+
+.yg-rank {
+  font-family: Cinzel, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.yg-rank-lg {
+  font-family: Cinzel, serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.yg-mono {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.yg-mono-sm {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+.yg-hand {
+  font-family: Gaegu, cursive;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0em;
+}
+
+.yg-caption {
+  font-family: Pretendard, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0em;
+}
+
+.yg-seal {
+  font-family: "Nanum Myeongjo", serif;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0em;
+}
+
+/* 모바일 375 기준 시스템이라 축소 규칙 없음. 데스크톱은 폰 프레임 셸 안에서 같은 크기 */

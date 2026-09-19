@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>여행가쟈 design system preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&family=Nanum+Brush+Script&family=Cinzel:wght@400;700&family=Gaegu:wght@400;700&family=DM+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="../dist/tokens.css" />
+<link rel="stylesheet" href="../dist/typography.css" />
+<link rel="stylesheet" href="../dist/legacy-aliases.css" />
+<style>
+  /* 모든 값은 토큰(--yg-* 또는 원본 별칭). 순백·hex 리터럴이 있으면 버그. */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  .band { height: var(--yg-size-layout-band); background: var(--yg-gradient-band); }
+  .hdr { position: sticky; top: 0; z-index: var(--yg-z-index-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3); min-height: var(--yg-size-layout-header); padding: var(--sp-1) var(--sp-4) 0; background: var(--hanji); }
+  .page { max-width: var(--w-content); margin-inline: auto; padding: var(--sp-6) var(--sp-4) var(--sp-11); }
+  @media (min-width: 768px) { .page { padding-inline: var(--sp-5); } }
+  @media (min-width: 1024px) { .page { padding-inline: var(--sp-9); } }
+  section { margin-top: var(--sp-9); }
+  section > h2 { margin: 0 0 var(--sp-1); }
+  section > p.lead { margin: 0 0 var(--sp-5); color: var(--yg-color-text-secondary); }
+  h3.sub { margin: var(--sp-7) 0 var(--sp-3); }
+  .row { display: flex; gap: var(--sp-3); flex-wrap: wrap; align-items: center; }
+  .grid { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .grid > * { min-width: 0; }
+
+  /* 세그먼트(한지/무대) */
+  .seg { display: inline-flex; gap: var(--sp-1); padding: var(--sp-1); border: var(--yg-border-width-ink) solid var(--yg-color-border-ink); border-radius: var(--r-lg); background: var(--hanji-bright); }
+  .seg button { height: 32px; padding-inline: var(--sp-3); border: 0; border-radius: var(--r-sm); background: transparent; font: 800 12px var(--f-myeongjo); color: var(--ink-3); cursor: pointer; }
+  .seg button[aria-selected="true"] { background: var(--hanji-2); color: var(--dc-red); }
+
+  /* 버튼 */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--yg-component-button-gap); padding: var(--yg-component-button-md-padding-y) var(--yg-component-button-md-padding-x); border: var(--yg-border-width-ink) solid var(--yg-color-border-ink); border-radius: var(--r-sm); background: var(--yg-color-action-primary-bg); color: var(--yg-color-action-primary-text); box-shadow: var(--yg-shadow-stamp); font: 800 var(--yg-font-size-md)/1.3 var(--f-myeongjo); letter-spacing: -0.01em; cursor: pointer; transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+  .btn:active { box-shadow: var(--yg-shadow-stamp-pressed); transform: translate(1px, 1px); }
+  .btn--blue { background: var(--yg-color-action-secondary-bg); box-shadow: var(--yg-shadow-stamp-blue); }
+  .btn--ghost { background: transparent; color: var(--yg-color-action-ghost-text); border-color: var(--yg-color-action-ghost-border); box-shadow: var(--yg-shadow-stamp-ink); }
+  .btn--danger { background: var(--yg-color-action-danger-bg); box-shadow: 3px 3px 0 var(--yg-color-action-danger-shadow-color); }
+  .btn--sm { padding: var(--yg-component-button-sm-padding-y) var(--yg-component-button-sm-padding-x); font-size: var(--yg-font-size-xs); }
+  .btn--lg { padding: var(--yg-component-button-lg-padding-y) var(--yg-component-button-lg-padding-x); font-size: var(--yg-font-size-lg); }
+  .btn:disabled { background: var(--yg-color-action-disabled-bg); color: var(--yg-color-action-disabled-text); border-color: var(--yg-color-action-disabled-border); box-shadow: var(--yg-shadow-stamp-disabled); opacity: var(--yg-opacity-disabled); cursor: wait; transform: none; }
+  .cta { height: var(--yg-size-control-cta); width: 100%; max-width: var(--w-content); font-size: var(--yg-font-size-lg); }
+
+  /* 카드·면 */
+  .card { background: var(--yg-color-surface-default); border: var(--yg-border-width-ink) solid var(--yg-color-border-ink); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-3); box-shadow: var(--yg-shadow-paper); }
+  .card h4 { margin: 0 0 var(--sp-2); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--sp-2); }
+  .sw { height: 56px; border: 1px solid var(--yg-color-border-default); border-radius: var(--r-sm); display: grid; place-items: end start; padding: var(--sp-1) var(--sp-2); font: 500 11px var(--f-mono); }
+
+  /* 칩·배지·도장 */
+  .chip { display: inline-flex; align-items: center; height: var(--yg-component-chip-height); padding-inline: var(--yg-component-chip-padding-x); border: var(--yg-border-width-chip) solid var(--yg-color-border-ink); border-radius: 999px; background: var(--hanji-bright); font: 500 12px var(--f-ui); color: var(--ink); }
+  .chip.on { background: var(--hanji-2); border-color: var(--dc-red); }
+  .chip--red { color: var(--yg-color-chip-red); border-color: var(--yg-color-chip-red); } .chip--blue { color: var(--yg-color-chip-blue); border-color: var(--yg-color-chip-blue); } .chip--jade { color: var(--yg-color-chip-jade); border-color: var(--yg-color-chip-jade); } .chip--plum { color: var(--yg-color-chip-plum); border-color: var(--yg-color-chip-plum); } .chip--yellow { color: var(--yg-color-chip-yellow); border-color: var(--dc-yellow); }
+  .rb { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding-inline: 10px; border: 1.5px solid var(--yg-color-border-ink); border-radius: 999px; background: var(--hanji-bright); }
+  .rb .en { font: 700 12px var(--f-rank); letter-spacing: 0.08em; text-transform: uppercase; }
+  .rb i { width: 1px; height: 10px; background: var(--ink-3); }
+  .rb .ko { font: 400 11px var(--f-mono); letter-spacing: 0.12em; color: var(--ink-2); }
+  .stamp { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--dc-red); color: var(--hanji-bright); border: 2px solid var(--ink); font: 800 17px/1 var(--f-myeongjo); transform: rotate(-6deg); }
+
+  /* 캡슐 */
+  .capsule { --cap: 120px; position: relative; width: var(--cap); height: calc(var(--cap) * 1.18); margin-inline: auto; }
+  .capsule .dome { position: absolute; left: 0; right: 0; top: 0; height: 55%; background: var(--yg-component-capsule-dome-bg); border: 2px solid var(--ink); border-radius: 50% 50% 8% 8% / 90% 90% 8% 8%; }
+  .capsule .dome::after { content: ''; position: absolute; left: 18%; top: 14%; width: 30%; height: 30%; border-radius: 50%; background: var(--hanji-bright); opacity: .9; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink) 20%, transparent); }
+  .capsule .band { position: absolute; z-index: 1; left: 0; right: 0; top: 52%; height: 8%; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); background: var(--yg-gradient-band); }
+  .capsule .base { position: absolute; left: 0; right: 0; bottom: 0; height: 47%; background: var(--yg-component-capsule-base-bg); border: 2px solid var(--ink); border-radius: 8% 8% 50% 50% / 8% 8% 80% 80%; }
+  .capsule.r-rare .band { background: var(--yg-color-rarity-rare-accent); } .capsule.r-epic .band { background: var(--yg-color-rarity-epic-accent); } .capsule.r-legend .band { background: var(--yg-color-rarity-legend-accent); } .capsule.r-unique .band { background: var(--yg-color-rarity-unique-accent); } .capsule.r-moment .band { background: var(--yg-color-rarity-moment-accent); } .capsule.r-common .band { background: var(--yg-color-rarity-common-accent); }
+  .capsule.float { animation: capFloat var(--yg-motion-duration-float) var(--yg-motion-easing-in-out) infinite; }
+  @keyframes capFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(calc(-1 * var(--yg-motion-distance-float))); } }
+  .capsule.shake { animation: capShake var(--yg-motion-duration-shake-strong) var(--yg-motion-easing-out) infinite; }
+  @keyframes capShake { 0%,80%,100% { transform: rotate(0); } 85% { transform: rotate(-5deg) translateY(-2px); } 90% { transform: rotate(5deg) translateY(-2px); } 95% { transform: rotate(-3deg); } }
+  .cap-label { text-align: center; margin-top: var(--sp-2); }
+
+  /* 결과 카드 */
+  .gcard { width: var(--yg-component-card-width); aspect-ratio: 5 / 7; margin-inline: auto; background: var(--yg-component-card-bg); border: var(--yg-component-card-frame) solid var(--yg-color-rarity-epic-accent); border-radius: var(--r-md); padding: var(--sp-4) var(--sp-3); box-shadow: var(--yg-shadow-paper); display: grid; grid-template-rows: auto 1fr auto auto auto auto; gap: var(--sp-2); position: relative; overflow: hidden; }
+  .gcard.r-legend { border-color: var(--yg-color-rarity-legend-accent); box-shadow: var(--yg-shadow-paper), var(--yg-shadow-foil); }
+  .gcard.r-unique { border-color: var(--yg-color-rarity-unique-accent); }
+  .gcard .top { display: flex; justify-content: space-between; align-items: center; }
+  .gcard .art { width: 64%; margin-inline: auto; aspect-ratio: 1; border-radius: var(--r-xs); background: var(--hanji-2); display: grid; place-items: center; color: var(--ink-3); font: 400 11px var(--f-mono); }
+  .gcard .name { text-align: center; }
+  .gcard .quote { text-align: center; color: var(--dc-red); }
+  .gcard .proof { text-align: center; border-top: 1px solid var(--yg-color-rarity-epic-accent); padding-top: var(--sp-1); color: var(--ink-2); }
+  .gcard .foot { height: 6px; background: var(--yg-gradient-band); margin: 0 calc(-1 * var(--sp-3)) calc(-1 * var(--sp-4)); }
+
+  /* 도감 셀 */
+  .dex { display: grid; grid-template-columns: repeat(3, var(--yg-size-dex-cell)); gap: var(--sp-2); justify-content: center; }
+  .cell { width: var(--yg-size-dex-cell); height: var(--yg-size-dex-cell); border: 2px solid var(--yg-color-rarity-common-accent); border-radius: var(--r-sm); background: var(--hanji-bright); position: relative; display: grid; grid-template-rows: 1fr auto; overflow: hidden; }
+  .cell::before { content: ''; position: absolute; inset: 3px; border: 1px solid var(--yg-component-dex-cell-inner-line); border-radius: 6px; pointer-events: none; }
+  .cell .art { background: var(--hanji-2); display: grid; place-items: center; }
+  .cell .art span { width: 36px; height: 36px; border-radius: 50%; background: var(--yg-color-rarity-common-accent); opacity: .5; }
+  .cell .nm { font: 800 13px var(--f-myeongjo); padding: 4px 6px; text-align: center; }
+  .cell.r-rare { border-color: var(--yg-color-rarity-rare-accent); } .cell.r-epic { border-color: var(--yg-color-rarity-epic-accent); } .cell.r-legend { border-color: var(--yg-color-rarity-legend-accent); box-shadow: var(--yg-shadow-foil); } .cell.r-unique { border-color: var(--yg-color-rarity-unique-accent); }
+  .cell.locked .art span { opacity: .25; } .cell.locked .nm { color: var(--ink-3); }
+  .cell .st { position: absolute; right: 6px; top: 6px; width: 28px; height: 28px; font-size: 12px; }
+
+  /* 탭바·리스트·인풋·프로그레스 */
+  .tabbar { display: inline-flex; gap: var(--sp-1); padding: var(--sp-2); border: 2px solid var(--ink); border-radius: var(--r-lg); background: var(--hanji-bright); }
+  .tabbar a { display: grid; place-items: center; gap: 2px; padding: var(--sp-2) var(--sp-1); min-width: 64px; border-radius: var(--r-sm); font: 500 12px var(--f-ui); color: var(--ink-3); }
+  .tabbar a[aria-current="page"] { color: var(--dc-red); background: var(--hanji-2); }
+  .tabbar svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .li { display: flex; align-items: center; gap: var(--sp-3); min-height: 56px; padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--hanji-dark); }
+  .li:last-child { border-bottom: 0; }
+  .li .num { font: 400 12px var(--f-mono); letter-spacing: .12em; color: var(--ink-3); }
+  .li .t { flex: 1; } .li .t small { display: block; color: var(--ink-2); }
+  .field { display: grid; gap: var(--sp-1); max-width: 360px; }
+  .field label { font: 500 12px var(--f-ui); color: var(--ink-2); }
+  .input { height: 40px; padding: 10px 12px; border: 1.5px solid var(--ink); border-radius: var(--r-sm); background: var(--hanji-bright); font: 400 14px var(--f-ui); color: var(--ink); outline: none; }
+  .input:focus-visible { border-color: var(--dc-blue); outline: 2px solid var(--dc-blue); outline-offset: 3px; }
+  .input[aria-invalid="true"] { border-color: var(--dc-red-deep); }
+  .help { font: 400 11px var(--f-ui); color: var(--ink-3); } .help.err { color: var(--yg-color-text-danger); }
+  .prog { height: 8px; border-radius: 999px; background: var(--yg-component-progress-track); overflow: hidden; }
+  .prog > i { display: block; height: 100%; width: 42%; background: var(--yg-component-progress-fill); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-2); text-align: center; }
+  .stats b { display: block; font: 700 17px var(--f-mono); } .stats span { font: 500 12px var(--f-ui); color: var(--ink-2); }
+
+  /* 무대 */
+  .stage { background: var(--yg-color-surface-stage); background-image: var(--yg-gradient-stage-vignette); color: var(--yg-color-text-primary); border-radius: var(--r-md); padding: var(--sp-7) var(--sp-4); text-align: center; position: relative; overflow: hidden; }
+  .stage .aura { position: absolute; left: 50%; top: 40%; width: 260px; height: 260px; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, var(--yg-color-fx-foil) 0%, transparent 60%); filter: blur(var(--yg-blur-glow)); opacity: .55; }
+  .stage .rank { display: block; margin-top: var(--sp-4); text-shadow: 0 0 24px var(--yg-color-rarity-legend-glow); }
+  .stage .gcard { box-shadow: var(--yg-shadow-deep), var(--yg-shadow-foil); }
+  .types .row-t { display: grid; grid-template-columns: 110px 1fr 180px; gap: var(--sp-3); align-items: baseline; padding: var(--sp-2) 0; border-bottom: 1px solid var(--hanji-dark); }
+  .types code, .types .spec { font: 400 11px var(--f-mono); color: var(--ink-3); }
+  @media (max-width: 767px) { .types .row-t { grid-template-columns: 1fr; } .stats { grid-template-columns: repeat(2, 1fr); } }
+  .shadows { display: flex; gap: var(--sp-6); flex-wrap: wrap; padding: var(--sp-4); }
+  .shadows div { width: 120px; height: 72px; background: var(--hanji-bright); border: 2px solid var(--ink); border-radius: var(--r-sm); display: grid; place-items: center; font: 400 11px var(--f-mono); }
+</style>
+</head>
+<body>
+<div class="band" aria-hidden="true"></div>
+<header class="hdr">
+  <a href="#" aria-label="여행가쟈"><img src="../assets/brand/yeohaenggajya-logo-horizontal-outlined.svg" alt="" height="28" style="height:28px; display:block" /></a>
+  <span class="yg-mono" style="color: var(--ink-2)">7/10 <span class="yg-ui-sm">오늘 남은 횟수</span></span>
+  <div class="seg" role="tablist" aria-label="톤"><button data-tone="" aria-selected="true">한지</button><button data-tone="dark" aria-selected="false">무대</button></div>
+</header>
+
+<main class="page" id="root">
+  <div style="text-align:center; max-width: 520px; margin-inline:auto">
+    <div class="yg-rank" style="color: var(--yg-color-text-brand)">Today's Capsule</div>
+    <h1 class="yg-heading" style="margin: var(--sp-1) 0 0; display:inline-block; border-bottom: 3px solid; border-image: var(--yg-gradient-title-underline) 1">오늘 어디로 가실래요?</h1>
+    <div class="capsule float r-legend" role="img" aria-label="Legendary 캡슐" style="--cap: 160px; margin-top: var(--sp-5)"><div class="dome"></div><div class="band"></div><div class="base"></div></div>
+    <p class="yg-body" style="margin: var(--sp-4) 0 0">두근두근— 뭐가 나올까요. <span class="yg-brush" style="color: var(--dc-red)">캡슐 굴려요</span></p>
+    <button class="btn cta" style="margin-top: var(--sp-5)">캡슐 굴려요</button>
+  </div>
+
+  <section id="color">
+    <h2 class="yg-heading-sm">색</h2>
+    <p class="lead yg-body-sm">원본 tokens.css 값 그대로. 한지 5 · 단청 오방색 · 잉크 4 · 한국색 · 홀로(무대 전용).</p>
+    <div class="swatches" id="sw"></div>
+    <h3 class="sub yg-title">글자 (한지 위)</h3>
+    <div class="card">
+      <div class="yg-body" style="color: var(--ink)">ink — 본문·제목 15.3:1</div>
+      <div class="yg-body" style="color: var(--ink-2)">ink-2 — 보조·라벨 8.9:1</div>
+      <div class="yg-body" style="color: var(--ink-3)">ink-3 — 메타·비활성 탭 5.2:1 (읽는 글자 하한)</div>
+      <div class="yg-body" style="color: var(--ink-4)">ink-4 — 2.5:1 장식 전용, 글자 금지</div>
+      <div class="yg-body" style="color: var(--yg-color-text-brand); font-weight: 800">강조 단어 — 단청 빨강 14px 800</div>
+      <div class="yg-body"><a href="#" style="color: var(--yg-color-text-link); text-decoration: underline">링크 — 단청 파랑 + 밑줄</a></div>
+    </div>
+    <h3 class="sub yg-title">그림자 — 도장·종이 오프셋</h3>
+    <div class="shadows"><div style="box-shadow: var(--sh-stamp)">stamp</div><div style="box-shadow: var(--yg-shadow-stamp-blue)">stamp-blue</div><div style="box-shadow: var(--yg-shadow-stamp-ink)">stamp-ink</div><div style="box-shadow: var(--sh-paper)">paper</div><div style="box-shadow: var(--sh-paper-lg)">paper-lg</div><div style="box-shadow: var(--sh-foil)">foil</div></div>
+  </section>
+
+  <section id="type" class="types">
+    <h2 class="yg-heading-sm">타이포그래피 — 서체가 역할</h2>
+    <p class="lead yg-body-sm">Myeongjo 제목 · Batang 본문 · Brush 강조 · Cinzel 등급 · DM Mono 숫자 · Pretendard UI · Gaegu 손글씨.</p>
+    <div class="card" id="types"></div>
+  </section>
+
+  <section id="comp">
+    <h2 class="yg-heading-sm">컴포넌트</h2>
+    <p class="lead yg-body-sm">먹선 2px + 도장 그림자. 눌리면 1px 이동. 등급은 풀네임.</p>
+    <h3 class="sub yg-title">Button</h3>
+    <div class="row"><button class="btn">캡슐 굴려요</button><button class="btn btn--blue">까치 보내기</button><button class="btn btn--ghost">건너뛰기</button><button class="btn btn--danger">기록 지우기</button><button class="btn" disabled>굴리는 중…</button></div>
+    <div class="row" style="margin-top: var(--sp-3); align-items: flex-end"><button class="btn btn--sm btn--ghost">sm 30</button><button class="btn btn--ghost">md 40</button><button class="btn btn--lg">lg 50 · 여기로 떠나기</button></div>
+    <h3 class="sub yg-title">Chip · RarityBadge · Stamp</h3>
+    <div class="row"><span class="chip on">전체</span><span class="chip chip--red">봄</span><span class="chip chip--blue">바다</span><span class="chip chip--jade">산</span><span class="chip chip--plum">축제</span><span class="chip chip--yellow">▲ 가을</span></div>
+    <div class="row" style="margin-top: var(--sp-3)" id="badges"></div>
+    <div class="row" style="margin-top: var(--sp-3)"><span class="stamp">常</span><span class="stamp" style="background: var(--dc-blue)">隱</span><span class="stamp">運</span><span class="stamp" style="background: var(--gold-bright); color: var(--ink)">傳</span><span class="stamp" style="background: var(--twilight)">唯</span></div>
+    <h3 class="sub yg-title">Capsule × 6등급</h3>
+    <div class="grid" id="caps"></div>
+    <h3 class="sub yg-title">GachaCard · DexCell</h3>
+    <div class="grid">
+      <div>
+        <article class="gcard r-epic">
+          <div class="top"><span class="rb"><span class="en" style="color: var(--yg-color-rarity-epic-text)">Epic</span><i></i><span class="ko">운명의 발견</span></span><span class="yg-mono-sm" style="color: var(--ink-3)">NO.0042</span></div>
+          <div class="art">사진 · 한국관광공사</div>
+          <div class="name yg-heading-xl">보령 <span style="font-size:.7em">保寧</span></div>
+          <div class="quote yg-brush">진흙 위에 빛나는 여름</div>
+          <div class="proof yg-mono-sm">한 해 7만 7천 명만 다녀간 곳</div>
+          <div class="foot"></div>
+        </article>
+      </div>
+      <div>
+        <div class="dex" id="dex"></div>
+        <div style="max-width: 340px; margin: var(--sp-4) auto 0"><div class="row" style="justify-content: space-between"><span class="yg-ui-sm" style="color: var(--ink-2)">도감</span><span class="yg-mono">12 / 48</span></div><div class="prog" style="margin-top: var(--sp-1)"><i></i></div><p class="yg-body-sm" style="margin: var(--sp-2) 0 var(--sp-3)">다음 한 걸음: 남해 하나면 봄 세트 완주예요</p><div class="stats"><div><b>25%</b><span>도감</span></div><div><b>12</b><span>뽑은 카드</span></div><div><b>1</b><span>완주 세트</span></div><div><b>3</b><span>방문 인증</span></div></div></div>
+      </div>
+      <div>
+        <div class="card" style="padding:0"><div class="li"><span class="num">10:00</span><span class="t"><span class="yg-title">대천해수욕장</span><small class="yg-body-sm">머드 체험 · 40분</small></span><span class="yg-mono-sm" style="color: var(--ink-3)">2.1km</span></div><div class="li"><span class="num">12:30</span><span class="t"><span class="yg-title">보령 조개구이 거리</span><small class="yg-body-sm">점심</small></span></div><div class="li"><span class="num">15:00</span><span class="t"><span class="yg-title">죽도 상화원</span><small class="yg-body-sm">산책 · 1시간</small></span></div></div>
+        <div class="row" style="margin-top: var(--sp-4); justify-content: center"><nav class="tabbar" aria-label="주 메뉴"><a href="#" aria-current="page"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>홈</a><a href="#"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>도감</a><a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>마이</a></nav></div>
+      </div>
+      <div class="card">
+        <div class="field"><label for="n">방 이름</label><input id="n" class="input" value="같이 굴릴 사람" /><span class="help">10자 이내</span></div>
+        <div class="field" style="margin-top: var(--sp-4)"><label for="e">초대 코드</label><input id="e" class="input" value="12" aria-invalid="true" /><span class="help err">코드는 6자리예요</span></div>
+        <div class="row" style="margin-top: var(--sp-4); justify-content: flex-end"><button class="btn btn--ghost">닫기</button><button class="btn btn--blue">방 만들기</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stage-demo">
+    <h2 class="yg-heading-sm">어두운 무대 (연출)</h2>
+    <p class="lead yg-body-sm">Bright Line 2 의 유일한 예외. 위 토글로 전체를 무대 톤으로 볼 수 있다. 홀로·글로우는 여기서만.</p>
+    <div class="stage" data-tone="dark">
+      <div class="aura" aria-hidden="true"></div>
+      <div class="capsule shake r-legend" role="img" aria-label="Legendary 캡슐" style="--cap: 140px"><div class="dome"></div><div class="band"></div><div class="base"></div></div>
+      <span class="yg-rank-lg rank" style="color: var(--yg-color-rarity-legend-text)">Legendary</span>
+      <div class="yg-heading-sm" style="margin-top: var(--sp-1)">전설의 발견이에요!</div>
+      <div class="yg-body-sm" style="margin-top: var(--sp-2); color: var(--yg-color-text-secondary)">지금 축제가 열리는 곳이에요</div>
+      <div class="row" style="justify-content:center; margin-top: var(--sp-5)"><button class="btn btn--ghost">건너뛰기</button></div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const root = document.documentElement, seg = document.querySelector('.seg'), main = document.getElementById('root'), hdr = document.querySelector('.hdr');
+  const apply = (t) => { for (const el of [main, hdr, document.body]) { if (t) el.dataset.tone = t; else delete el.dataset.tone; } seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tone === (t || '')))); document.body.style.background = t ? 'var(--yg-color-surface-stage)' : ''; };
+  seg.addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) apply(b.dataset.tone); });
+  const groups = { hanji: ['bright','base','2','dark','deep'], dancheong: ['red','red-deep','blue','blue-deep','yellow','yellow-deep','white','black'], ink: ['1','2','3','4'], korean: ['jade','persimmon','indigo','plum','gold','gold-bright','twilight','moon-white'], holo: ['red','blue','yellow','jade','plum'] };
+  const cs = getComputedStyle(root); const v = (n) => cs.getPropertyValue(n).trim();
+  document.getElementById('sw').innerHTML = Object.entries(groups).flatMap(([g, ks]) => ks.map(k => { const hex = v(`--yg-${g}-${k}`); const dark = ['ink','holo'].includes(g) || ['red','red-deep','blue','blue-deep','black','yellow-deep'].includes(k) || ['jade','indigo','plum','twilight','persimmon'].includes(k); return `<div class="sw" style="background: var(--yg-${g}-${k}); color: ${dark ? 'var(--yg-hanji-bright)' : 'var(--yg-ink-1)'}" title="${g}.${k} ${hex}">${g}.${k}</div>`; })).join('');
+  const R = { common: ['Common','보통의 발견'], rare: ['Rare','숨겨진 발견'], epic: ['Epic','운명의 발견'], legend: ['Legendary','전설의 발견'], unique: ['Unique','유일한 발견'], moment: ['Moment','찰나의 발견'] };
+  document.getElementById('badges').innerHTML = Object.entries(R).map(([k,[en,ko]]) => `<span class="rb" style="border-color: var(--yg-color-rarity-${k}-accent)"><span class="en" style="color: var(--yg-color-rarity-${k}-text)">${en}</span><i></i><span class="ko">${ko}</span></span>`).join('');
+  document.getElementById('caps').innerHTML = Object.entries(R).map(([k,[en,ko]]) => `<div><div class="capsule r-${k}" role="img" aria-label="${en} 캡슐"><div class="dome"></div><div class="band"></div><div class="base"></div></div><div class="cap-label"><span class="yg-rank" style="color: var(--yg-color-rarity-${k}-text)">${en}</span> <span class="yg-mono-sm" style="color: var(--ink-2)">${ko}</span></div></div>`).join('');
+  const dexData = [['보령','epic',false],['영양','unique',false],['강릉','rare',false],['전주','common',false],['보성','legend',false],['철원','common',true],['백령도','unique',true],['하동','rare',true],['담양','common',true]];
+  document.getElementById('dex').innerHTML = dexData.map(([n,r,l]) => `<button class="cell r-${r} ${l ? 'locked' : ''}" aria-label="${n} · ${R[r][0]} · ${l ? '아직' : '수집함'}"><span class="art"><span style="background: var(--yg-color-rarity-${r}-accent)"></span></span><span class="nm">${l ? '?' : n}</span>${l ? '' : `<span class="stamp st" aria-hidden="true">${{common:'常',rare:'隱',epic:'運',legend:'傳',unique:'唯',moment:'瞬'}[r]}</span>`}</button>`).join('');
+  const types = ['heading-xl','heading','heading-sm','title','body','body-sm','ui','ui-sm','button','brush','rank','rank-lg','mono','mono-sm','seal','hand','caption'];
+  const sample = (t) => t.startsWith('heading') || t === 'title' ? '머드철 保寧' : t === 'brush' ? '진흙 위에 빛나는 여름' : t.startsWith('rank') ? 'Legendary' : t.startsWith('mono') ? 'NO.0042 · 7/10' : t === 'seal' ? '傳' : t === 'button' ? '캡슐 굴려요' : t === 'hand' ? '오늘은 여기로 가볼까' : '가챠로 뽑는 국내 여행지. 짠— 새 캡슐이 도착했어요.';
+  document.getElementById('types').innerHTML = types.map(t => { const el = document.createElement('span'); el.className = `yg-${t}`; document.body.appendChild(el); const s = getComputedStyle(el); const spec = `${s.fontFamily.split(',')[0].replace(/"/g,'')} ${parseFloat(s.fontSize)}/${s.fontWeight}`; el.remove(); return `<div class="row-t"><code>${t}</code><span class="yg-${t}">${sample(t)}</span><span class="spec">${spec}</span></div>`; }).join('');
+</script>
+</body>
+</html>

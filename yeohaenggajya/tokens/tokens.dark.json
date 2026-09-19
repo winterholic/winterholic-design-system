@@ -1,0 +1,523 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "어두운 무대(tone=dark) — 가챠 연출(prelude·결과 공개)과 tone=dark 셸에서만. 일반 화면에 다크 모드는 없다(한지가 정체성). 라이트와 경로 1:1 로 두되 무대에 필요한 것만 바뀐다.",
+    "surface": {
+      "canvas": {
+        "$value": "{stage.bg}"
+      },
+      "default": {
+        "$value": "#241E17"
+      },
+      "raised": {
+        "$value": "#2B241C"
+      },
+      "sunken": {
+        "$value": "{stage.bg-deep}"
+      },
+      "line": {
+        "$value": "#3A312A"
+      },
+      "deep": {
+        "$value": "#4A3D2E"
+      },
+      "overlay": {
+        "$value": "#000000B3"
+      },
+      "inverse": {
+        "$value": "{hanji.bright}"
+      },
+      "brand": {
+        "$value": "{dancheong.red}"
+      },
+      "brand-subtle": {
+        "$value": "#2B241C"
+      },
+      "disabled": {
+        "$value": "#2B241C"
+      },
+      "stage": {
+        "$value": "{stage.bg}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{hanji.bright}"
+      },
+      "secondary": {
+        "$value": "{hanji.2}"
+      },
+      "tertiary": {
+        "$value": "{hanji.dark}"
+      },
+      "decorative": {
+        "$value": "{ink.3}"
+      },
+      "placeholder": {
+        "$value": "{hanji.dark}"
+      },
+      "disabled": {
+        "$value": "{ink.3}"
+      },
+      "inverse": {
+        "$value": "{ink.1}"
+      },
+      "on-brand": {
+        "$value": "{hanji.bright}"
+      },
+      "brand": {
+        "$value": "{holo.red}"
+      },
+      "link": {
+        "$value": "{holo.blue}"
+      },
+      "link-hover": {
+        "$value": "{hanji.bright}"
+      },
+      "success": {
+        "$value": "{holo.jade}"
+      },
+      "warning": {
+        "$value": "{holo.yellow}"
+      },
+      "danger": {
+        "$value": "{holo.red}"
+      },
+      "info": {
+        "$value": "{holo.blue}"
+      }
+    },
+    "border": {
+      "$description": "이 시스템의 선은 잉크 선이다. 1.5~2px ink 테두리가 종이 위 먹선.",
+      "ink": {
+        "$value": "{hanji.bright}"
+      },
+      "subtle": {
+        "$value": "#3A312A"
+      },
+      "default": {
+        "$value": "#4A3D2E"
+      },
+      "faint": {
+        "$value": "#FBF5E524"
+      },
+      "brand": {
+        "$value": "{holo.red}"
+      },
+      "focus": {
+        "$value": "{holo.blue}"
+      },
+      "danger": {
+        "$value": "{holo.red}"
+      },
+      "inverse": {
+        "$value": "#1A161152"
+      }
+    },
+    "action": {
+      "$description": "버튼 3변형(기존 Button variant red|blue|ghost). 도장 오프셋 그림자가 질감.",
+      "primary": {
+        "bg": {
+          "$value": "{dancheong.red}"
+        },
+        "bg-hover": {
+          "$value": "{dancheong.red-deep}"
+        },
+        "bg-active": {
+          "$value": "{dancheong.red}",
+          "$description": "active 는 색이 아니라 translate(1,1) + 그림자 1px"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "border": {
+          "$value": "{ink.1}"
+        },
+        "shadow-color": {
+          "$value": "{dancheong.red}",
+          "$description": "--sh-stamp 3px 3px 0"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{dancheong.blue}"
+        },
+        "bg-hover": {
+          "$value": "{dancheong.blue-deep}"
+        },
+        "bg-active": {
+          "$value": "{dancheong.blue}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "border": {
+          "$value": "{ink.1}"
+        },
+        "shadow-color": {
+          "$value": "{dancheong.blue-deep}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "#2B241C"
+        },
+        "bg-active": {
+          "$value": "{base.transparent}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "border": {
+          "$value": "{hanji.bright}"
+        },
+        "shadow-color": {
+          "$value": "{hanji.deep}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{dancheong.red-deep}",
+          "$description": "되돌릴 수 없는 것(계정 연결 해제·기록 삭제). primary 와 구분하려 deep"
+        },
+        "bg-hover": {
+          "$value": "{dancheong.red}"
+        },
+        "bg-active": {
+          "$value": "{dancheong.red-deep}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "border": {
+          "$value": "{ink.1}"
+        },
+        "shadow-color": {
+          "$value": "{ink.1}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "#2B241C"
+        },
+        "text": {
+          "$value": "{ink.3}"
+        },
+        "border": {
+          "$value": "{ink.3}"
+        },
+        "shadow-color": {
+          "$value": "{ink.3}",
+          "$description": "1px 1px 0, opacity .72(기존)"
+        }
+      }
+    },
+    "rarity": {
+      "$description": "등급 5 + moment. 등급은 카드에 붙지 지역에 붙지 않는다. 풀네임 표기. 색은 액센트(띠·테두리·글로우)에만.",
+      "common": {
+        "solid": {
+          "$value": "{korean.moon-white}",
+          "$description": "실제 --r-common 은 #8A7960(아래 accent). solid 는 무채색 종이톤"
+        },
+        "accent": {
+          "$value": "#8A7960"
+        },
+        "text": {
+          "$value": "{hanji.2}"
+        },
+        "glow": {
+          "$value": "#00000000"
+        }
+      },
+      "rare": {
+        "solid": {
+          "$value": "{dancheong.blue}"
+        },
+        "accent": {
+          "$value": "{holo.blue}"
+        },
+        "text": {
+          "$value": "{holo.blue}"
+        },
+        "glow": {
+          "$value": "#4DB5FF66",
+          "$description": "holo-blue 40%"
+        }
+      },
+      "epic": {
+        "solid": {
+          "$value": "{dancheong.red}"
+        },
+        "accent": {
+          "$value": "{holo.red}"
+        },
+        "text": {
+          "$value": "{holo.red}"
+        },
+        "glow": {
+          "$value": "#FF524766"
+        }
+      },
+      "legend": {
+        "solid": {
+          "$value": "{korean.gold-bright}"
+        },
+        "accent": {
+          "$value": "{korean.gold-bright}"
+        },
+        "text": {
+          "$value": "{holo.yellow}",
+          "$description": "어두운 무대에서 금빛 라벨 10.7:1"
+        },
+        "glow": {
+          "$value": "#E8C44E80"
+        }
+      },
+      "unique": {
+        "solid": {
+          "$value": "{korean.twilight}"
+        },
+        "accent": {
+          "$value": "{korean.twilight}"
+        },
+        "text": {
+          "$value": "#B79BE0"
+        },
+        "glow": {
+          "$value": "#4A3A6E80",
+          "$description": "고요한 보랏빛. Legendary 처럼 시끄럽지 않게"
+        }
+      },
+      "moment": {
+        "solid": {
+          "$value": "{korean.moon-white}"
+        },
+        "accent": {
+          "$value": "{korean.moon-white}"
+        },
+        "text": {
+          "$value": "{korean.moon-white}"
+        },
+        "glow": {
+          "$value": "#9FB3C066",
+          "$description": "찰나의 발견 — 은박. 유일 위, 전설 아래"
+        }
+      }
+    },
+    "status": {
+      "$description": "상태 피드백. 이 시스템은 상태색 면을 쓰지 않는다 — 한지 면 + 잉크 테두리 + 아이콘/띠 색으로 말한다.",
+      "success": {
+        "bg": {
+          "$value": "#241E17"
+        },
+        "border": {
+          "$value": "{korean.jade}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "icon": {
+          "$value": "{holo.jade}"
+        },
+        "solid": {
+          "$value": "{korean.jade}"
+        },
+        "on-solid": {
+          "$value": "{hanji.bright}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "#241E17"
+        },
+        "border": {
+          "$value": "{dancheong.yellow}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "icon": {
+          "$value": "{holo.yellow}"
+        },
+        "solid": {
+          "$value": "{dancheong.yellow}"
+        },
+        "on-solid": {
+          "$value": "{ink.1}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "#241E17"
+        },
+        "border": {
+          "$value": "{dancheong.red}"
+        },
+        "text": {
+          "$value": "{holo.red}"
+        },
+        "icon": {
+          "$value": "{holo.red}"
+        },
+        "solid": {
+          "$value": "{dancheong.red}"
+        },
+        "on-solid": {
+          "$value": "{hanji.bright}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "#241E17"
+        },
+        "border": {
+          "$value": "{dancheong.blue}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "icon": {
+          "$value": "{holo.blue}"
+        },
+        "solid": {
+          "$value": "{dancheong.blue}"
+        },
+        "on-solid": {
+          "$value": "{hanji.bright}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "#241E17"
+        },
+        "border": {
+          "$value": "{hanji.deep}"
+        },
+        "text": {
+          "$value": "{hanji.bright}"
+        },
+        "icon": {
+          "$value": "{ink.3}"
+        },
+        "solid": {
+          "$value": "{ink.3}"
+        },
+        "on-solid": {
+          "$value": "{hanji.bright}"
+        }
+      }
+    },
+    "chip": {
+      "$description": "카테고리 칩 5색(기존 Chip color). 배경은 한지, 테두리·글자만 색",
+      "red": {
+        "$value": "{holo.red}"
+      },
+      "blue": {
+        "$value": "{holo.blue}"
+      },
+      "yellow": {
+        "$value": "{holo.yellow}"
+      },
+      "jade": {
+        "$value": "{holo.jade}"
+      },
+      "plum": {
+        "$value": "{holo.plum}"
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{holo.blue}"
+      },
+      "selected-bg": {
+        "$value": "#2B241C"
+      },
+      "selected-border": {
+        "$value": "{dancheong.red}"
+      },
+      "selected-text": {
+        "$value": "{hanji.bright}"
+      },
+      "hover-overlay": {
+        "$value": "#FBF5E514"
+      },
+      "pressed-overlay": {
+        "$value": "#FBF5E51F"
+      },
+      "tab-active": {
+        "$value": "{dancheong.red}",
+        "$description": "탭 밑줄"
+      },
+      "nav-active": {
+        "$value": "{dancheong.red}",
+        "$description": "하단 네비 활성 아이콘·라벨"
+      }
+    },
+    "band": {
+      "1": {
+        "$value": "{dancheong.red}"
+      },
+      "2": {
+        "$value": "{dancheong.blue}"
+      },
+      "3": {
+        "$value": "{dancheong.yellow}"
+      },
+      "4": {
+        "$value": "{dancheong.white}"
+      },
+      "5": {
+        "$value": "{dancheong.black}"
+      },
+      "$description": "오방색 띠(브랜드 시그니처). 20% 씩 5색. 앱 상단·캡슐·카드"
+    },
+    "fx": {
+      "$description": "연출(EffectStage) 색. 어두운 무대 전용. 등급별 a/b 두 색을 --fx-color-a/b 로 넘긴다",
+      "aura-warm": {
+        "$value": "{holo.red}"
+      },
+      "aura-cold": {
+        "$value": "{holo.blue}"
+      },
+      "foil": {
+        "$value": "{holo.yellow}"
+      },
+      "ray": {
+        "$value": "#FFD84D80"
+      },
+      "twinkle": {
+        "$value": "{hanji.bright}"
+      },
+      "unique-mist": {
+        "$value": "{holo.plum}"
+      },
+      "jade-spark": {
+        "$value": "{holo.jade}"
+      }
+    },
+    "chart": {
+      "$description": "도감 진행 막대·통계. 차트는 거의 없다",
+      "track": {
+        "$value": "#2B241C"
+      },
+      "fill": {
+        "$value": "{dancheong.red}"
+      },
+      "fill-2": {
+        "$value": "{dancheong.blue}"
+      },
+      "grid": {
+        "$value": "#3A312A"
+      },
+      "axis": {
+        "$value": "{hanji.dark}"
+      },
+      "label": {
+        "$value": "{hanji.2}"
+      }
+    }
+  }
+}

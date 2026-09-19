@@ -1,0 +1,121 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "오프셋 그림자(Npx Npx 0)가 이 시스템의 질감 — 도장·종이. blur 있는 부드러운 그림자는 연출(foil·holo·deep)에만. 원본 --sh-* 그대로.",
+    "stamp":    { "$value": [{ "color": "{dancheong.red}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }], "$description": "도장·버튼(primary). --sh-stamp" },
+    "stamp-blue": { "$value": [{ "color": "{dancheong.blue-deep}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }], "$description": "파랑 버튼" },
+    "stamp-ink":  { "$value": [{ "color": "{ink.3}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }], "$description": "ghost 버튼" },
+    "stamp-pressed": { "$value": [{ "color": "{dancheong.red}", "offsetX": "1px", "offsetY": "1px", "blur": "0px", "spread": "0px" }], "$description": "눌림: translate(1,1) 과 함께" },
+    "stamp-disabled": { "$value": [{ "color": "{ink.3}", "offsetX": "1px", "offsetY": "1px", "blur": "0px", "spread": "0px" }] },
+    "paper":    { "$value": [
+      { "color": "{ink.1}", "offsetX": "0px", "offsetY": "2px", "blur": "0px", "spread": "0px" },
+      { "color": "{dancheong.red}", "offsetX": "4px", "offsetY": "4px", "blur": "0px", "spread": "0px" }
+    ], "$description": "종이가 들린 느낌(잉크 + 빨강). 카드·시트. --sh-paper" },
+    "paper-lg": { "$value": [
+      { "color": "{ink.1}", "offsetX": "0px", "offsetY": "4px", "blur": "0px", "spread": "0px" },
+      { "color": "{dancheong.red}", "offsetX": "6px", "offsetY": "6px", "blur": "0px", "spread": "0px" }
+    ], "$description": "폰 프레임 셸·큰 패널. --sh-paper-lg" },
+    "foil":     { "$value": [
+      { "color": "#E8C44E80", "offsetX": "0px", "offsetY": "0px", "blur": "24px", "spread": "0px" },
+      { "color": "#E8C44E40", "offsetX": "0px", "offsetY": "0px", "blur": "64px", "spread": "0px" }
+    ], "$description": "호일 글로우(금빛) — 연출·Legendary 셀. --sh-foil" },
+    "holo":     { "$value": [
+      { "color": "#C8362E66", "offsetX": "0px", "offsetY": "0px", "blur": "32px", "spread": "0px" },
+      { "color": "#E8C44E4D", "offsetX": "0px", "offsetY": "0px", "blur": "64px", "spread": "0px" }
+    ], "$description": "홀로 글로우(빨강+금) — 연출. --sh-holo" },
+    "deep":     { "$value": [{ "color": "#00000066", "offsetX": "0px", "offsetY": "12px", "blur": "32px", "spread": "0px" }], "$description": "어두운 무대 위 카드. --sh-deep" },
+    "none":     { "$value": [{ "color": "#00000000", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }] }
+  },
+  "shadow-dark": {
+    "$type": "shadow",
+    "$description": "어두운 무대에서는 오프셋 그림자 색을 밝게(종이 → 먹 위 흰 선 느낌)",
+    "stamp":    { "$value": [{ "color": "{dancheong.red}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }] },
+    "stamp-blue": { "$value": [{ "color": "{dancheong.blue}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }] },
+    "stamp-ink":  { "$value": [{ "color": "{hanji.deep}", "offsetX": "3px", "offsetY": "3px", "blur": "0px", "spread": "0px" }] },
+    "stamp-pressed": { "$value": [{ "color": "{dancheong.red}", "offsetX": "1px", "offsetY": "1px", "blur": "0px", "spread": "0px" }] },
+    "stamp-disabled": { "$value": [{ "color": "{ink.3}", "offsetX": "1px", "offsetY": "1px", "blur": "0px", "spread": "0px" }] },
+    "paper":    { "$value": [{ "color": "{hanji.bright}", "offsetX": "0px", "offsetY": "2px", "blur": "0px", "spread": "0px" }, { "color": "{dancheong.red}", "offsetX": "4px", "offsetY": "4px", "blur": "0px", "spread": "0px" }] },
+    "paper-lg": { "$value": [{ "color": "{hanji.bright}", "offsetX": "0px", "offsetY": "4px", "blur": "0px", "spread": "0px" }, { "color": "{dancheong.red}", "offsetX": "6px", "offsetY": "6px", "blur": "0px", "spread": "0px" }] },
+    "foil":     { "$value": [{ "color": "#E8C44E80", "offsetX": "0px", "offsetY": "0px", "blur": "24px", "spread": "0px" }, { "color": "#E8C44E40", "offsetX": "0px", "offsetY": "0px", "blur": "64px", "spread": "0px" }] },
+    "holo":     { "$value": [{ "color": "#C8362E66", "offsetX": "0px", "offsetY": "0px", "blur": "32px", "spread": "0px" }, { "color": "#E8C44E4D", "offsetX": "0px", "offsetY": "0px", "blur": "64px", "spread": "0px" }] },
+    "deep":     { "$value": [{ "color": "#00000099", "offsetX": "0px", "offsetY": "12px", "blur": "32px", "spread": "0px" }] },
+    "none":     { "$value": [{ "color": "#00000000", "offsetX": "0px", "offsetY": "0px", "blur": "0px", "spread": "0px" }] }
+  },
+
+  "gradient": {
+    "$type": "gradient",
+    "$description": "오방색 띠가 유일한 브랜드 그라데이션(하드 스톱). 나머지는 연출용.",
+    "band": {
+      "$value": [
+        { "color": "{dancheong.red}", "position": 0 }, { "color": "{dancheong.red}", "position": 0.2 },
+        { "color": "{dancheong.blue}", "position": 0.2 }, { "color": "{dancheong.blue}", "position": 0.4 },
+        { "color": "{dancheong.yellow}", "position": 0.4 }, { "color": "{dancheong.yellow}", "position": 0.6 },
+        { "color": "{dancheong.white}", "position": 0.6 }, { "color": "{dancheong.white}", "position": 0.8 },
+        { "color": "{dancheong.black}", "position": 0.8 }, { "color": "{dancheong.black}", "position": 1 }
+      ],
+      "$description": "오방색 띠 20%×5, 90deg. 앱 상단 6px·캡슐 띠·카드 띠"
+    },
+    "title-underline": {
+      "$value": [ { "color": "{dancheong.red}", "position": 0 }, { "color": "{dancheong.blue}", "position": 0.5 }, { "color": "{dancheong.yellow}", "position": 1 } ],
+      "$description": "홈 타이틀 밑줄(단청 그라데). 90deg, 높이 3px"
+    },
+    "holo-sheen": {
+      "$value": [ { "color": "#FBF5E500", "position": 0 }, { "color": "#FBF5E566", "position": 0.5 }, { "color": "#FBF5E500", "position": 1 } ],
+      "$description": "홀로 광택 이동(holoShift). 120deg, background-size 300%"
+    },
+    "holo-rainbow": {
+      "$value": [ { "color": "{holo.red}", "position": 0 }, { "color": "{holo.yellow}", "position": 0.25 }, { "color": "{holo.jade}", "position": 0.5 }, { "color": "{holo.blue}", "position": 0.75 }, { "color": "{holo.plum}", "position": 1 } ],
+      "$description": "Legendary 무지개 홀로(conic, holoRotate). 연출 전용"
+    },
+    "stage-vignette": {
+      "$value": [ { "color": "#241E17", "position": 0 }, { "color": "{stage.bg-deep}", "position": 1 } ],
+      "$description": "연출 무대 배경(radial). 가운데 살짝 밝게"
+    },
+    "hanji-fade": {
+      "$value": [ { "color": "#F4ECDA00", "position": 0 }, { "color": "{hanji.base}", "position": 1 } ],
+      "$description": "가로 스크롤(칩·캐러셀) 끝 페이드. 90deg"
+    }
+  },
+  "gradient-angle": { "$type": "number", "default": { "$value": 90 }, "sheen": { "$value": 120 }, "vertical": { "$value": 180 } },
+
+  "texture": {
+    "$description": "한지 점 텍스처(base.css body). 두 겹 radial 점.",
+    "dot-color":   { "$value": "#B8A5780F", "$type": "color", "$description": "hanji-deep 6%" },
+    "dot-color-2": { "$value": "#B8A5780A", "$type": "color", "$description": "4%" },
+    "dot-size":    { "$value": "18px", "$type": "dimension" },
+    "dot-size-2":  { "$value": "22px", "$type": "dimension" },
+    "desk-grid":   { "$value": "96px", "$type": "dimension", "$description": "데스크톱 배경 격자(sp-12)" }
+  },
+
+  "opacity": {
+    "$type": "number",
+    "disabled":  { "$value": 0.72, "$description": "버튼 disabled(원본 .72)" },
+    "disabled-general": { "$value": 0.5 },
+    "hover":     { "$value": 0.06 },
+    "pressed":   { "$value": 0.1 },
+    "scrim":     { "$value": 0.6 },
+    "skeleton":  { "$value": 0.6 },
+    "locked-cell": { "$value": 0.55, "$description": "도감 잠긴 셀 일러스트" },
+    "twinkle-min": { "$value": 0.3, "$description": "fxTwinkle 최저" },
+    "fx-inset-line": { "$value": 0.08 }
+  },
+
+  "blur": {
+    "$type": "dimension",
+    "sm": { "$value": "4px" }, "md": { "$value": "12px", "$description": "시트 뒤 무대" }, "lg": { "$value": "24px" }, "glow": { "$value": "40px", "$description": "aura 블러" }
+  },
+
+  "z-index": {
+    "$type": "number",
+    "hide": { "$value": -1 }, "base": { "$value": 0 }, "raised": { "$value": 10 },
+    "fx": { "$value": 5, "$description": "연출 레이어(캡슐 뒤 aura·rays)" },
+    "capsule": { "$value": 20, "$description": "캡슐(연출 위)" },
+    "floating-finder": { "$value": 900, "$description": "도감 우하단 플로팅 필터 버튼" },
+    "dropdown": { "$value": 1000 }, "sticky": { "$value": 1100, "$description": "헤더·오방색 띠" },
+    "tabbar": { "$value": 1150, "$description": "플로팅 하단 네비" },
+    "cta": { "$value": 1160, "$description": "하단 고정 CTA(네비 위)" },
+    "overlay": { "$value": 1200 }, "sheet": { "$value": 1250 }, "modal": { "$value": 1300 },
+    "popover": { "$value": 1400 }, "toast": { "$value": 1500 }, "tooltip": { "$value": 1600 },
+    "stage": { "$value": 1700, "$description": "가챠 연출 풀스크린" }
+  }
+}

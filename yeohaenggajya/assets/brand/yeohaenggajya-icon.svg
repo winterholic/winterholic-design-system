@@ -1,0 +1,43 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>여행가쟈 앱 아이콘</title>
+  <defs>
+    <linearGradient id="bg" x1="512" y1="64" x2="512" y2="960" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF8EA"/>
+      <stop offset="1" stop-color="#F5E6C9"/>
+    </linearGradient>
+    <radialGradient id="redCap" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(348 250) rotate(38) scale(515 420)">
+      <stop stop-color="#FF8B72"/>
+      <stop offset="0.42" stop-color="#F2362E"/>
+      <stop offset="1" stop-color="#B90812"/>
+    </radialGradient>
+    <linearGradient id="creamBase" x1="330" y1="560" x2="690" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF6"/>
+      <stop offset="0.55" stop-color="#F8E9C8"/>
+      <stop offset="1" stop-color="#E8D1A8"/>
+    </linearGradient>
+    <linearGradient id="belt" x1="160" y1="495" x2="864" y2="495" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#371F14"/>
+      <stop offset="0.5" stop-color="#160F0B"/>
+      <stop offset="1" stop-color="#371F14"/>
+    </linearGradient>
+    <filter id="shadow" x="94" y="108" width="836" height="830" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#2A160C" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="220" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <path d="M161 500C161 306.1 318.1 149 512 149s351 157.1 351 351H161Z" fill="url(#redCap)" stroke="#1D1511" stroke-width="20" stroke-linejoin="round"/>
+    <path d="M161 524C171.3 708.2 323.9 855 512 855s340.7-146.8 351-331H161Z" fill="url(#creamBase)" stroke="#1D1511" stroke-width="20" stroke-linejoin="round"/>
+    <rect x="138" y="462" width="748" height="88" rx="22" fill="url(#belt)"/>
+    <rect x="157" y="477" width="160" height="58" rx="8" fill="#E94135"/>
+    <rect x="317" y="477" width="145" height="58" fill="#126EA6"/>
+    <rect x="462" y="477" width="150" height="58" fill="#E9AA21"/>
+    <rect x="612" y="477" width="255" height="58" rx="8" fill="#FFF6E7"/>
+    <rect x="138" y="462" width="748" height="88" rx="22" stroke="#1D1511" stroke-width="16"/>
+    <path d="M247 238C314 186 413 178 476 209" stroke="#FFFFFF" stroke-width="32" stroke-linecap="round" opacity="0.34"/>
+    <ellipse cx="288" cy="256" rx="52" ry="30" transform="rotate(-36 288 256)" fill="#FFFFFF" opacity="0.58"/>
+    <circle cx="243" cy="337" r="18" fill="#FFFFFF" opacity="0.38"/>
+    <path d="M225 600C258 715 358 777 479 783" stroke="#FFFFFF" stroke-width="34" stroke-linecap="round" opacity="0.24"/>
+    <ellipse cx="512" cy="862" rx="240" ry="34" fill="#2A160C" opacity="0.13"/>
+  </g>
+</svg>

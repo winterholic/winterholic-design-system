@@ -1,0 +1,162 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색(한지 톤 = 기본). 값은 전부 원본 tokens.css 의 것을 역할별로 배정했다. 어두운 무대(연출)는 color.dark.json = data-tone=dark.",
+
+    "surface": {
+      "canvas":   { "$value": "{hanji.base}",   "$description": "앱 배경 --hanji. 점 텍스처(base.css) 동반" },
+      "default":  { "$value": "{hanji.bright}", "$description": "카드·입력·칩 등 떠 있는 표면 --hanji-bright. 순백 대신" },
+      "raised":   { "$value": "{hanji.bright}", "$description": "시트·드롭다운·다이얼로그. 오프셋 그림자로 구분" },
+      "sunken":   { "$value": "{hanji.2}",      "$description": "연한 구분면·프로그레스 트랙·비활성 탭 배경" },
+      "line":     { "$value": "{hanji.dark}",   "$description": "리스트 경계 면(선이 아니라 면으로 쓸 때)" },
+      "deep":     { "$value": "{hanji.deep}",   "$description": "텍스처 점·스크롤바 thumb" },
+      "overlay":  { "$value": "#1A161199",      "$description": "시트·다이얼로그 스크림 ink 60%" },
+      "inverse":  { "$value": "{ink.1}",        "$description": "툴팁·토스트·연출 무대" },
+      "brand":    { "$value": "{dancheong.red}", "$description": "CTA 버튼 면. 큰 면 금지" },
+      "brand-subtle": { "$value": "{hanji.2}",  "$description": "선택된 항목 — 단청 대신 종이 한 단계 진하게" },
+      "disabled": { "$value": "{hanji.2}" },
+      "stage":    { "$value": "{stage.bg}",     "$description": "연출 화면 배경(tone=dark). Bright Line 2 의 명시된 예외" }
+    },
+
+    "text": {
+      "primary":    { "$value": "{ink.1}", "$description": "15.3:1. 본문·제목" },
+      "secondary":  { "$value": "{ink.2}", "$description": "8.94:1. 보조·라벨" },
+      "tertiary":   { "$value": "{ink.3}", "$description": "5.17:1(hanji) 5.58(bright). 메타·비활성 탭. 읽어야 하는 글자의 하한" },
+      "decorative": { "$value": "{ink.4}", "$description": "2.49:1 — 글자로 못 쓴다. 텍스처·장식 선·푸터 워터마크 전용. 기존 21곳 사용은 부채(15)" },
+      "placeholder":{ "$value": "{ink.3}" },
+      "disabled":   { "$value": "{ink.4}" },
+      "inverse":    { "$value": "{hanji.bright}", "$description": "ink·단청 면 위 글자" },
+      "on-brand":   { "$value": "{hanji.bright}", "$description": "빨강 버튼 위 4.80, 파랑 위 6.27" },
+      "brand":      { "$value": "{dancheong.red}", "$description": "4.44(hanji)·4.80(bright). 강조 단어·eyebrow. 14px 이상 800 굵기로" },
+      "link":       { "$value": "{dancheong.blue}", "$description": "5.80. 파랑 = 링크·포커스" },
+      "link-hover": { "$value": "{dancheong.blue-deep}" },
+      "success":    { "$value": "{korean.jade}", "$description": "3.47 — 글자 단독 금지. 아이콘·띠와 함께, 문구는 ink" },
+      "warning":    { "$value": "{dancheong.yellow-deep}", "$description": "2.72 — 글자 단독 금지" },
+      "danger":     { "$value": "{dancheong.red-deep}", "$description": "6.52. 오류 문구" },
+      "info":       { "$value": "{dancheong.blue}" }
+    },
+
+    "border": {
+      "$description": "이 시스템의 선은 잉크 선이다. 1.5~2px ink 테두리가 종이 위 먹선.",
+      "ink":     { "$value": "{ink.1}",     "$description": "카드·버튼·칩·입력 기본 테두리 2px(칩·입력 1.5px)" },
+      "subtle":  { "$value": "{hanji.dark}", "$description": "리스트 구분선" },
+      "default": { "$value": "{hanji.deep}", "$description": "표·구획선" },
+      "faint":   { "$value": "#1A161124",   "$description": "ink 14%. 데스크톱 플로팅 네비 외곽" },
+      "brand":   { "$value": "{dancheong.red}", "$description": "선택·강조 띠" },
+      "focus":   { "$value": "{dancheong.blue}", "$description": "포커스 링 2px offset 3(base.css paper-bar)" },
+      "danger":  { "$value": "{dancheong.red-deep}" },
+      "inverse": { "$value": "#FBF5E552",   "$description": "어두운 무대 위 선 hanji-bright 32%" }
+    },
+
+    "action": {
+      "$description": "버튼 3변형(기존 Button variant red|blue|ghost). 도장 오프셋 그림자가 질감.",
+      "primary": {
+        "bg":        { "$value": "{dancheong.red}" },
+        "bg-hover":  { "$value": "{dancheong.red-deep}" },
+        "bg-active": { "$value": "{dancheong.red}", "$description": "active 는 색이 아니라 translate(1,1) + 그림자 1px" },
+        "text":      { "$value": "{hanji.bright}" },
+        "border":    { "$value": "{ink.1}" },
+        "shadow-color": { "$value": "{dancheong.red}", "$description": "--sh-stamp 3px 3px 0" }
+      },
+      "secondary": {
+        "bg":        { "$value": "{dancheong.blue}" },
+        "bg-hover":  { "$value": "{dancheong.blue-deep}" },
+        "bg-active": { "$value": "{dancheong.blue}" },
+        "text":      { "$value": "{hanji.bright}" },
+        "border":    { "$value": "{ink.1}" },
+        "shadow-color": { "$value": "{dancheong.blue-deep}" }
+      },
+      "ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{hanji.2}" },
+        "bg-active": { "$value": "{base.transparent}" },
+        "text":      { "$value": "{ink.1}" },
+        "border":    { "$value": "{ink.1}" },
+        "shadow-color": { "$value": "{ink.3}" }
+      },
+      "danger": {
+        "bg":        { "$value": "{dancheong.red-deep}", "$description": "되돌릴 수 없는 것(계정 연결 해제·기록 삭제). primary 와 구분하려 deep" },
+        "bg-hover":  { "$value": "{dancheong.red}" },
+        "bg-active": { "$value": "{dancheong.red-deep}" },
+        "text":      { "$value": "{hanji.bright}" },
+        "border":    { "$value": "{ink.1}" },
+        "shadow-color": { "$value": "{ink.1}" }
+      },
+      "disabled": {
+        "bg":     { "$value": "{hanji.2}" },
+        "text":   { "$value": "{ink.3}" },
+        "border": { "$value": "{ink.3}" },
+        "shadow-color": { "$value": "{ink.3}", "$description": "1px 1px 0, opacity .72(기존)" }
+      }
+    },
+
+    "rarity": {
+      "$description": "등급 5 + moment. 등급은 카드에 붙지 지역에 붙지 않는다. 풀네임 표기. 색은 액센트(띠·테두리·글로우)에만.",
+      "common":  { "solid": { "$value": "{korean.moon-white}", "$description": "실제 --r-common 은 #8A7960(아래 accent). solid 는 무채색 종이톤" }, "accent": { "$value": "#8A7960" }, "text": { "$value": "{ink.2}" }, "glow": { "$value": "#00000000" } },
+      "rare":    { "solid": { "$value": "{dancheong.blue}" }, "accent": { "$value": "{dancheong.blue}" }, "text": { "$value": "{dancheong.blue}" }, "glow": { "$value": "#4DB5FF66", "$description": "holo-blue 40%" } },
+      "epic":    { "solid": { "$value": "{dancheong.red}" }, "accent": { "$value": "{dancheong.red}" }, "text": { "$value": "{dancheong.red-deep}" }, "glow": { "$value": "#FF524766" } },
+      "legend":  { "solid": { "$value": "{korean.gold-bright}" }, "accent": { "$value": "{korean.gold-bright}" }, "text": { "$value": "{korean.gold}", "$description": "2.09 — 글자 단독 금지, Cinzel 라벨은 ink 위 어두운 무대에서" }, "glow": { "$value": "#E8C44E80" } },
+      "unique":  { "solid": { "$value": "{korean.twilight}" }, "accent": { "$value": "{korean.twilight}" }, "text": { "$value": "{korean.twilight}" }, "glow": { "$value": "#4A3A6E80", "$description": "고요한 보랏빛. Legendary 처럼 시끄럽지 않게" } },
+      "moment":  { "solid": { "$value": "{korean.moon-white}" }, "accent": { "$value": "{korean.moon-white}" }, "text": { "$value": "{ink.2}" }, "glow": { "$value": "#9FB3C066", "$description": "찰나의 발견 — 은박. 유일 위, 전설 아래" } }
+    },
+
+    "status": {
+      "$description": "상태 피드백. 이 시스템은 상태색 면을 쓰지 않는다 — 한지 면 + 잉크 테두리 + 아이콘/띠 색으로 말한다.",
+      "success": { "bg": { "$value": "{hanji.bright}" }, "border": { "$value": "{korean.jade}" }, "text": { "$value": "{ink.1}" }, "icon": { "$value": "{korean.jade}" }, "solid": { "$value": "{korean.jade}" }, "on-solid": { "$value": "{hanji.bright}" } },
+      "warning": { "bg": { "$value": "{hanji.bright}" }, "border": { "$value": "{dancheong.yellow}" }, "text": { "$value": "{ink.1}" }, "icon": { "$value": "{dancheong.yellow-deep}" }, "solid": { "$value": "{dancheong.yellow}" }, "on-solid": { "$value": "{ink.1}" } },
+      "danger":  { "bg": { "$value": "{hanji.bright}" }, "border": { "$value": "{dancheong.red}" }, "text": { "$value": "{dancheong.red-deep}" }, "icon": { "$value": "{dancheong.red}" }, "solid": { "$value": "{dancheong.red}" }, "on-solid": { "$value": "{hanji.bright}" } },
+      "info":    { "bg": { "$value": "{hanji.bright}" }, "border": { "$value": "{dancheong.blue}" }, "text": { "$value": "{ink.1}" }, "icon": { "$value": "{dancheong.blue}" }, "solid": { "$value": "{dancheong.blue}" }, "on-solid": { "$value": "{hanji.bright}" } },
+      "neutral": { "bg": { "$value": "{hanji.2}" }, "border": { "$value": "{hanji.deep}" }, "text": { "$value": "{ink.2}" }, "icon": { "$value": "{ink.3}" }, "solid": { "$value": "{ink.3}" }, "on-solid": { "$value": "{hanji.bright}" } }
+    },
+
+    "chip": {
+      "$description": "카테고리 칩 5색(기존 Chip color). 배경은 한지, 테두리·글자만 색",
+      "red":    { "$value": "{dancheong.red}" },
+      "blue":   { "$value": "{dancheong.blue}" },
+      "yellow": { "$value": "{dancheong.yellow-deep}", "$description": "노랑 글자는 deep 으로(2.72 라 아이콘·띠와 동반)" },
+      "jade":   { "$value": "{korean.jade}" },
+      "plum":   { "$value": "{korean.plum}" }
+    },
+
+    "interactive": {
+      "focus-ring":      { "$value": "{dancheong.blue}" },
+      "selected-bg":     { "$value": "{hanji.2}" },
+      "selected-border": { "$value": "{dancheong.red}" },
+      "selected-text":   { "$value": "{ink.1}" },
+      "hover-overlay":   { "$value": "#1A16110F", "$description": "ink 6%" },
+      "pressed-overlay": { "$value": "#1A16111A" },
+      "tab-active":      { "$value": "{dancheong.red}", "$description": "탭 밑줄" },
+      "nav-active":      { "$value": "{dancheong.red}", "$description": "하단 네비 활성 아이콘·라벨" }
+    },
+
+    "band": {
+      "$description": "오방색 띠(브랜드 시그니처). 20% 씩 5색. 앱 상단·캡슐·카드",
+      "1": { "$value": "{dancheong.red}" },
+      "2": { "$value": "{dancheong.blue}" },
+      "3": { "$value": "{dancheong.yellow}" },
+      "4": { "$value": "{dancheong.white}" },
+      "5": { "$value": "{dancheong.black}" }
+    },
+
+    "fx": {
+      "$description": "연출(EffectStage) 색. 어두운 무대 전용. 등급별 a/b 두 색을 --fx-color-a/b 로 넘긴다",
+      "aura-warm":   { "$value": "{holo.red}" },
+      "aura-cold":   { "$value": "{holo.blue}" },
+      "foil":        { "$value": "{holo.yellow}" },
+      "ray":         { "$value": "#FFD84D80" },
+      "twinkle":     { "$value": "{hanji.bright}" },
+      "unique-mist": { "$value": "{holo.plum}" },
+      "jade-spark":  { "$value": "{holo.jade}" }
+    },
+
+    "chart": {
+      "$description": "도감 진행 막대·통계. 차트는 거의 없다",
+      "track":  { "$value": "{hanji.2}" },
+      "fill":   { "$value": "{dancheong.red}" },
+      "fill-2": { "$value": "{dancheong.blue}" },
+      "grid":   { "$value": "{hanji.dark}" },
+      "axis":   { "$value": "{ink.3}" },
+      "label":  { "$value": "{ink.2}" }
+    }
+  }
+}
