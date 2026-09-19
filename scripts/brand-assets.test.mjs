@@ -49,6 +49,39 @@ function readAlphaOccupancy(path) {
   return JSON.parse(result.stdout);
 }
 
+function readEmbeddedSvgOccupancy(path) {
+  const script = [
+    "from PIL import Image",
+    "import base64, io, json, re, sys",
+    "svg=open(sys.argv[1], encoding='utf-8').read()",
+    "m=re.search(r'<image x=\"([\\d.]+)\" y=\"([\\d.]+)\" width=\"([\\d.]+)\" height=\"([\\d.]+)\" href=\"data:image/png;base64,([^\"]+)', svg)",
+    "x,y,w,h=map(float,m.groups()[:4])",
+    "im=Image.open(io.BytesIO(base64.b64decode(m.group(5)))).convert('RGBA')",
+    "box=im.getchannel('A').getbbox()",
+    "print(json.dumps({'width':((box[2]-box[0])/im.width*w)/64,'height':((box[3]-box[1])/im.height*h)/64}))",
+  ].join(";");
+  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  return JSON.parse(result.stdout);
+}
+
+function readIcoContentOccupancy(path, background) {
+  const script = [
+    "from PIL import Image",
+    "import json, sys",
+    "im=Image.open(sys.argv[1])",
+    "im=im.ico.getimage((16,16)).convert('RGBA')",
+    "bg=tuple(map(int,sys.argv[2].split(',')))",
+    "mask=Image.new('L',im.size)",
+    "mask.putdata([255 if max(abs(p[i]-bg[i]) for i in range(3)) > 10 else 0 for p in im.getdata()])",
+    "box=mask.getbbox()",
+    "print(json.dumps({'width':(box[2]-box[0])/im.width,'height':(box[3]-box[1])/im.height}))",
+  ].join(";");
+  const result = spawnSync("python", ["-c", script, path, background.join(",")], { encoding: "utf8" });
+  assert.equal(result.status, 0, result.stderr);
+  return JSON.parse(result.stdout);
+}
+
 test(`${system}: base와 같은 브랜드 자산 묶음을 제공한다`, () => {
   const missing = requiredAssets.filter((file) => !existsSync(join(brandDir, file)));
   assert.deepEqual(missing, [], `누락된 브랜드 자산: ${missing.join(", ")}`);
@@ -79,6 +112,35 @@ test(`${system}: 파비콘과 앱 아이콘은 base처럼 캔버스를 충분히
   const mark = readAlphaOccupancy(join(brandDir, "logo-mark.png"));
   assert.ok(mark.width >= 0.65 && mark.height >= 0.55, `logo-mark.png 점유율이 작습니다: ${JSON.stringify(mark)}`);
 });
+
+if (system === "stock-gosu") {
+  test("stock-gosu: 단색 심볼은 임의 윤곽이 아니라 파랑새 원본을 사용한다", () => {
+    const color = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
+    const mono = readFileSync(join(brandDir, "logo-mark-mono.svg"), "utf8");
+    const colorSource = color.match(/href="(data:image\/png;base64,[^"]+)"/)?.[1];
+    const monoSource = mono.match(/href="(data:image\/png;base64,[^"]+)"/)?.[1];
+    assert.ok(monoSource, "단색 심볼이 파랑새 원본을 포함하지 않습니다.");
+    assert.equal(monoSource, colorSource, "단색 심볼이 컬러 심볼과 다른 윤곽을 사용합니다.");
+    assert.match(mono, /flood-color="currentColor"/, "단색 심볼의 color 지정이 동작하지 않습니다.");
+    assert.match(mono, /<svg[^>]+color="#1473E6"/, "외부 이미지로 표시할 때 사용할 기본 브랜드 색이 없습니다.");
+  });
+
+  test("stock-gosu: SVG 파비콘의 파랑새는 탭 면적을 94% 이상 채운다", () => {
+    const occupancy = readEmbeddedSvgOccupancy(join(brandDir, "favicon.svg"));
+    assert.ok(occupancy.width >= 0.94, `파랑새 가로 점유율이 작습니다: ${JSON.stringify(occupancy)}`);
+  });
+
+  test("stock-gosu: ICO의 16px 파랑새도 탭 면적을 94% 이상 채운다", () => {
+    const occupancy = readIcoContentOccupancy(join(brandDir, "favicon.ico"), [232, 243, 255, 255]);
+    assert.ok(occupancy.width >= 0.94, `ICO 파랑새 가로 점유율이 작습니다: ${JSON.stringify(occupancy)}`);
+  });
+
+  test("stock-gosu: preview의 단색 심볼은 호환되는 이미지 방식으로 표시한다", () => {
+    const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
+    assert.match(preview, /<img[^>]+logo-mark-mono\.svg/, "preview가 단색 심볼을 표시하지 않습니다.");
+    assert.doesNotMatch(preview, /mask:[^;]*logo-mark-mono\.svg/, "중첩 이미지를 포함한 SVG는 Chromium 외부 마스크로 표시되지 않습니다.");
+  });
+}
 
 test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연결한다`, () => {
   const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");

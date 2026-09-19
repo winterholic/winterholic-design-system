@@ -44,9 +44,11 @@ def tile_icon(
     background: tuple[int, int, int, int],
     padding_ratio: float,
     alpha_threshold: int,
+    allow_zero_padding: bool = False,
 ) -> Image.Image:
     canvas = Image.new("RGBA", (size, size), background)
-    mark = fit_mark(source, size, max(1, round(size * padding_ratio)), alpha_threshold)
+    minimum_padding = 0 if allow_zero_padding else 1
+    mark = fit_mark(source, size, max(minimum_padding, round(size * padding_ratio)), alpha_threshold)
     canvas.alpha_composite(mark)
     return canvas
 
@@ -57,21 +59,32 @@ def save_icon_set(
     padding_ratio: float,
     background: tuple[int, int, int, int],
     alpha_threshold: int = 1,
+    favicon_padding_ratio: float | None = None,
 ) -> None:
     mark = fit_mark(source, 1024, round(1024 * padding_ratio), alpha_threshold)
     mark.save(directory / "logo-mark.png", optimize=True)
+    favicon_padding = padding_ratio if favicon_padding_ratio is None else favicon_padding_ratio
     for size in (16, 32, 48):
-        icon = tile_icon(source, size, background, padding_ratio, alpha_threshold)
+        icon = tile_icon(source, size, background, favicon_padding, alpha_threshold, favicon_padding == 0)
         icon.save(directory / f"favicon-{size}.png", optimize=True)
     app = tile_icon(source, 512, background, padding_ratio, alpha_threshold)
     app.save(directory / "app-icon-512.png", optimize=True)
-    app.save(directory / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
+    ico_source = tile_icon(source, 512, background, favicon_padding, alpha_threshold, favicon_padding == 0)
+    ico_source.save(directory / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
 
 
-def svg_document(body: str, view_box: str, title: str, width: int | None = None, height: int | None = None) -> str:
+def svg_document(
+    body: str,
+    view_box: str,
+    title: str,
+    width: int | None = None,
+    height: int | None = None,
+    attributes: str = "",
+) -> str:
     dimensions = f' width="{width}" height="{height}"' if width and height else ""
+    extra_attributes = f" {attributes}" if attributes else ""
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{view_box}"{dimensions} role="img" aria-labelledby="title">\n'
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{view_box}"{dimensions}{extra_attributes} role="img" aria-labelledby="title">\n'
         f'  <title id="title">{title}</title>\n{body}\n</svg>\n'
     )
 
@@ -81,12 +94,17 @@ def stock_svgs(source: Image.Image, directory: Path) -> None:
     favicon_uri = png_data_uri(source, 128, 4)
     mark = svg_document(f'  <image width="512" height="512" href="{mark_uri}"/>', "0 0 512 512", "stock-gosu 파랑새 심볼")
     favicon_body = f'''  <rect width="64" height="64" rx="14" fill="#E8F3FF"/>
-  <image x="4" y="4" width="56" height="56" href="{favicon_uri}"/>'''
+  <image x="0.5" y="0.5" width="63" height="63" href="{favicon_uri}"/>'''
     favicon = svg_document(favicon_body, "0 0 64 64", "stock-gosu 파비콘", 64, 64)
-    mono_body = '''  <path fill="currentColor" d="M14 36c-4-14 4-26 18-28 11-2 21 3 26 12l6 1-6 5c0 17-12 30-29 30-10 0-19-4-25-11 8 0 15-3 20-8-4 1-7 1-10-1Z"/>
-  <path fill="currentColor" d="M20 17c4 8 11 13 22 17-7 7-15 11-25 12 5-7 6-17 3-29Z" opacity=".72"/>
-  <circle cx="45" cy="20" r="2.4" fill="white"/>'''
-    mono = svg_document(mono_body, "0 0 64 64", "stock-gosu 단색 파랑새 심볼")
+    mono_body = f'''  <defs>
+    <filter id="mono" color-interpolation-filters="sRGB">
+      <feFlood flood-color="currentColor" result="color"/>
+      <feComposite in="color" in2="SourceAlpha" operator="in"/>
+    </filter>
+  </defs>
+  <image width="512" height="512" href="{mark_uri}" filter="url(#mono)"/>
+  <circle cx="414" cy="162" r="15" fill="white"/>'''
+    mono = svg_document(mono_body, "0 0 512 512", "stock-gosu 단색 파랑새 심볼", attributes='color="#1473E6"')
     for inverse, filename in ((False, "logo-lockup.svg"), (True, "logo-lockup-inverse.svg")):
         word = "#FFFFFF" if inverse else "#191F28"
         body = f'''  <image x="0" y="0" width="64" height="64" href="{favicon_uri}"/>
@@ -185,7 +203,7 @@ def save_hero(image: Image.Image, directory: Path) -> None:
 def main() -> None:
     stock_dir = ROOT / "stock-gosu" / "assets" / "brand"
     stock_source = Image.open(stock_dir / "stock-gosu.png").convert("RGBA")
-    save_icon_set(stock_source, stock_dir, 0.06, (232, 243, 255, 255), 4)
+    save_icon_set(stock_source, stock_dir, 0.06, (232, 243, 255, 255), 4, favicon_padding_ratio=0)
     stock_svgs(stock_source, stock_dir)
     save_hero(stock_hero(stock_source), stock_dir)
     shutil.copyfile(stock_dir / "favicon.ico", stock_dir / "stock-gosu.ico")

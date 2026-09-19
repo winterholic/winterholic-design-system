@@ -27,7 +27,7 @@
 - 최소 높이: 심볼 20px, 로크업 24px. 그보다 작으면 전용 `favicon.svg` 또는 PNG를 쓴다.
 - 안전 여백: 파랑새 몸통 높이의 절반만큼 사방을 비운다.
 - 밝은 면: `logo-lockup.svg`. 브랜드·어두운 면: `logo-lockup-inverse.svg`.
-- 단색 출력과 CSS 마스크: `logo-mark-mono.svg`에 `color`로 한 색만 지정한다.
+- 단색 출력은 `logo-mark-mono.svg`를 쓴다. 외부 이미지 기본색은 브랜드 블루이며, SVG를 인라인으로 사용할 때 `color`로 다른 단색을 지정할 수 있다.
 - 워드마크는 `stock-gosu`, Pretendard 700, 자간 -0.02em, 하이픈 유지다.
 - 금지: 비율 변경, 회전, 임의 색 변경, 상승 화살표 합성, 회색 사각 배경 추가.
 
