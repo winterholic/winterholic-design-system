@@ -20,7 +20,7 @@ notting("Documents for humans, Markdown for tools, context for agents")의 디�
 | 다크모드 | 시맨틱 토큰이 자동 전환(따뜻한 잉크 다크). 컴포넌트에 `dark:` 없음 |
 | 접근성 | 텍스트 4.5:1, 비텍스트 3:1 을 빌드가 210쌍 자동 검사(코드 하이라이트·근거 칩·도메인 필 포함) |
 
-라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 브랜드 자산부터 전 토큰, 컴포넌트, notting 패턴(에디터·Ask·보고서·보드)까지 라이트·다크로 한 번에 보인다.
+라이브 미리보기: [`examples/preview.html`](examples/preview.html) 을 브라우저로 열면 브랜드 자산부터 전 토큰, 컴포넌트, notting 패턴(에디터·Ask·보고서·보드)까지 라이트·다크로 한 번에 보인다. 온보딩·로그인·빈 상태·복구·가져오기 완성 화면은 [`examples/experience-templates.html`](examples/experience-templates.html)에 있다.
 
 ## 설치
 
@@ -85,11 +85,12 @@ tokens.typography['prose-body'].value    // { fontFamily, fontSize, fontWeight, 
 | [09 다크모드](docs/09-dark-mode.md) | 따뜻한 잉크 다크 매핑 | 다크가 이상할 때 |
 | [10 아이콘·이미지](docs/10-iconography-imagery.md) | Lucide, notting 매핑표(상태·등급·AI), 로고, 커버 | 아이콘 고를 때 |
 | [11 데이터 시각화](docs/11-data-viz.md) | 이슈 통계·검색 평가·왕복 통계 | 차트 |
-| [12 페이지 패턴](docs/12-page-patterns.md) | 앱 셸·편집·Ask·가져오기·내보내기·검색·이슈·ADR·비교·Pack·설정·온보딩·랜딩 | 새 화면 시작 |
+| [12 페이지 패턴](docs/12-page-patterns.md) | 앱 셸·편집·Ask·가져오기·내보내기·검색·이슈·ADR·비교·Pack·설정·온보딩·로그인·랜딩·오류 | 새 화면 시작 |
 | [13 운영](docs/13-governance.md) | 파일 구조, 변경 절차, 도메인 그룹 추가법, 버전, 채택 기준 | 토큰 추가·수정 |
 | [14 브랜드 자산](docs/14-brand-assets.md) | 잉크 타일 + 근거 마커 심볼, 락업, 파비콘, 히어로 | 브랜딩 |
 | [15 제품 매핑](docs/15-product-mapping.md) | 기획서(initial-plan.md) 개념 → UI 규격 대조표 | **notting 개념이 화면에서 뭐가 되는지** |
 | [16 상황 사전](docs/16-situations.md) | A~J 범용 + K 에디터 · L 왕복 · M AI·근거 · N 이슈·revision | 상황이 애매할 때 |
+| [17 경험 템플릿](docs/17-experience-templates.md) | 온보딩·인증·빈 상태·복구·가져오기 완성 화면과 조립 규칙 | 화면을 바로 구현할 때 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트용 규칙 요약 | Claude 로 UI 만들 때 |
 
 ## 토큰 수정

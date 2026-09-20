@@ -1,5 +1,13 @@
 # Changelog
 
+## notting-v1.2.0 — 2026-09-20
+
+- 온보딩 4단계, 로그인·초대, 대표 빈 상태, 오프라인·읽기 전용·충돌·오류, 가져오기 3상태를 실제 렌더 화면으로 추가
+- `SetupShell`, `StepIndicator`, `EmptyState`, `Coachmark`, `SetupChecklist`, `ResultState` 조립 규칙 문서화
+- 데스크톱·모바일, 라이트·다크, 키보드 포커스, reduced motion을 경험 템플릿에 반영
+- 기록지기 캐릭터를 환영·첫 워크스페이스·404에만 사용하는 장면 규칙 추가
+- 기본 미리보기에서 경험 템플릿 갤러리로 바로 이동하는 링크 추가
+
 ## notting-v1.1.0 — 2026-09-20
 
 - 기존 잉크 타일·문서 줄·verdigris 근거 마커 로고 기하는 변경 없이 유지
