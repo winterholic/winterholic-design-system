@@ -1,13 +1,14 @@
 {
   "name": "notting-design-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "notting 디자인 시스템 — DTCG 토큰, CSS 변수, prose.css, Tailwind 프리셋, 문서",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "node tokens/build.mjs",
     "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs",
-    "brand": "python assets/brand/build-brand-assets.py"
+    "brand": "python assets/brand/build-brand-assets.py",
+    "test:brand": "node --test ../scripts/brand-assets.test.mjs"
   },
   "exports": {
     ".": "./dist/tokens.js",

@@ -10,7 +10,9 @@
 <link rel="stylesheet" href="../dist/tokens.css" />
 <link rel="stylesheet" href="../dist/typography.css" />
 <link rel="stylesheet" href="../dist/prose.css" />
-<link rel="icon" href="../assets/brand/favicon.svg?v=1.0.0" type="image/svg+xml" />
+<link rel="icon" href="../assets/brand/favicon.svg?v=1.1.0" type="image/svg+xml" />
+<link rel="icon" href="../assets/brand/favicon-32.png?v=1.1.0" sizes="32x32" />
+<link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon-180.png?v=1.1.0" />
 <style>
   /* 이 페이지의 모든 값은 토큰이다. hex·px 리터럴이 있으면 버그. */
   *, *::before, *::after { box-sizing: border-box; }
@@ -39,10 +41,13 @@
   .brand-stage--dark { background: var(--nt-gradient-brand); }
   .brand-stage--ink { background: var(--nt-gradient-ink); }
   .brand-stage img { max-width: 100%; max-height: calc(var(--nt-space-24) * 1.5); }
+  .brand-stage--mascot img { max-height: calc(var(--nt-space-24) * 2.25); }
   .favicon-row { display: flex; align-items: end; gap: var(--nt-space-6); }
-  .favicon-row img:nth-child(1) { width: var(--nt-size-icon-xl); }
-  .favicon-row img:nth-child(2) { width: var(--nt-size-avatar-lg); }
-  .favicon-row img:nth-child(3) { width: var(--nt-size-avatar-2xl); }
+  .favicon-row img { height: auto; }
+  .asset-16 { width: var(--nt-size-icon-sm); }
+  .asset-32 { width: var(--nt-size-icon-xl); }
+  .asset-48 { width: var(--nt-size-icon-2xl); }
+  .asset-app { width: var(--nt-size-avatar-2xl); }
   .mono-demo { color: var(--nt-color-text-primary); width: var(--nt-size-avatar-xl); }
   @media (max-width: 767px) {
     header.top { padding-inline: var(--nt-size-layout-page-gutter); }
@@ -263,8 +268,8 @@
 <body>
 <header class="top">
   <picture>
-    <source srcset="../assets/brand/logo-lockup-inverse.svg?v=1.0.0" media="(prefers-color-scheme: dark)" />
-    <img class="logo" src="../assets/brand/logo-lockup.svg?v=1.0.0" alt="notting" />
+    <source srcset="../assets/brand/logo-lockup-inverse.svg?v=1.1.0" media="(prefers-color-scheme: dark)" />
+    <img class="logo" src="../assets/brand/logo-lockup.svg?v=1.1.0" alt="notting" />
   </picture>
   <nav class="toc nt-label-md">
     <a href="#brand">브랜드</a><a href="#color">색</a><a href="#type">글자</a><a href="#space">간격·모양</a><a href="#components">컴포넌트</a><a href="#shell">앱 셸</a><a href="#ai">AI·근거</a><a href="#roundtrip">왕복·diff</a><a href="#issues">이슈</a><a href="#menus">메뉴</a>
@@ -276,17 +281,19 @@
   <section id="brand" style="margin-top:0">
     <div class="hero">
       <div class="hero__content">
-        <span class="nt-overline" style="opacity:.8">notting design system v1.0.0</span>
+        <span class="nt-overline" style="opacity:.8">notting design system v1.1.0</span>
         <h1 class="nt-display-md" style="margin:var(--nt-space-2) 0 0">Notion for humans,<br/>Markdown for tools,<br/>context for agents.</h1>
         <p class="nt-body-md">잉크와 종이, verdigris 행동, periwinkle 근거. 전 토큰과 notting 패턴을 라이트·다크로 확인한다.</p>
       </div>
     </div>
     <h3 class="sub nt-heading-3">브랜드 자산</h3>
     <div class="brand-assets">
-      <div class="brand-stage"><img src="../assets/brand/logo-lockup.svg?v=1.0.0" alt="notting 로고" /></div>
-      <div class="brand-stage brand-stage--dark"><img src="../assets/brand/logo-lockup-inverse.svg?v=1.0.0" alt="notting 반전 로고" /></div>
-      <div class="brand-stage"><div class="favicon-row"><img src="../assets/brand/favicon-32.png?v=1.0.0" alt="파비콘 32" /><img src="../assets/brand/favicon-48.png?v=1.0.0" alt="파비콘 48" /><img src="../assets/brand/app-icon-512.png?v=1.0.0" alt="앱 아이콘" /></div></div>
-      <div class="brand-stage"><img class="mono-demo" src="../assets/brand/logo-mark-mono.svg?v=1.0.0" alt="단색 심볼" /></div>
+      <div class="brand-stage"><img src="../assets/brand/logo-lockup.svg?v=1.1.0" alt="notting 로고" /></div>
+      <div class="brand-stage brand-stage--dark"><img src="../assets/brand/logo-lockup-inverse.svg?v=1.1.0" alt="notting 반전 로고" /></div>
+      <div class="brand-stage"><div class="favicon-row"><img class="asset-app" src="../assets/brand/logo-mark.svg?v=1.1.0" alt="컬러 심볼" /><img class="mono-demo" src="../assets/brand/logo-mark-mono.svg?v=1.1.0" alt="단색 심볼" /></div></div>
+      <div class="brand-stage"><div class="favicon-row"><img class="asset-16" src="../assets/brand/favicon-16.png?v=1.1.0" alt="파비콘 16" /><img class="asset-32" src="../assets/brand/favicon-32.png?v=1.1.0" alt="파비콘 32" /><img class="asset-48" src="../assets/brand/favicon-48.png?v=1.1.0" alt="파비콘 48" /><img class="asset-app" src="../assets/brand/app-icon-512.png?v=1.1.0" alt="앱 아이콘" /></div></div>
+      <div class="brand-stage"><div class="favicon-row"><img class="asset-app" src="../assets/brand/apple-touch-icon-180.png?v=1.1.0" alt="Apple Touch 아이콘" /><img class="asset-app" src="../assets/brand/app-icon-maskable-512.png?v=1.1.0" alt="Maskable 앱 아이콘" /></div></div>
+      <div class="brand-stage brand-stage--mascot"><div class="favicon-row"><img src="../assets/brand/mascot.png?v=1.1.0" alt="notting 기록지기 캐릭터" /><img class="asset-app" src="../assets/brand/mascot-avatar-512.png?v=1.1.0" alt="notting 캐릭터 아바타" /></div></div>
     </div>
   </section>
 

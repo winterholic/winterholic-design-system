@@ -1,5 +1,13 @@
 # Changelog
 
+## notting-v1.1.0 — 2026-09-20
+
+- 기존 잉크 타일·문서 줄·verdigris 근거 마커 로고 기하는 변경 없이 유지
+- iOS용 `apple-touch-icon-180.png`, PWA/Android용 `app-icon-maskable-512.png`, 16~256 멀티사이즈 ICO 추가
+- 로고 세계관을 확장한 기록지기 캐릭터와 투명 PNG·WebP·정사각 아바타 추가
+- 캐릭터의 역할·색·표정·크기·AI 근거 불빛 사용 규칙을 브랜드 문서에 추가
+- preview 브랜드 영역에서 심볼·단색형·전체 아이콘 규격·캐릭터를 함께 검수하도록 갱신
+
 ## notting-v1.0.0 — 2026-09-20
 
 첫 버전. `C:\notting\docs\initial-plan.md`(Draft v0.1) 를 읽고 winterholic-base 구조로 파생·확장.

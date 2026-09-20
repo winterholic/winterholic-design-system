@@ -100,13 +100,43 @@ def draw_symbol(size: int, tile: str | None = INK, line: str = PAPER, marker: st
     return im.resize((size, size), Image.LANCZOS)
 
 
+def fit_rgba(source: Image.Image, size: int, padding: int = 0) -> Image.Image:
+    source = source.convert("RGBA")
+    box = source.getchannel("A").getbbox()
+    if box:
+        source = source.crop(box)
+    target = size - padding * 2
+    scale = min(target / source.width, target / source.height)
+    source = source.resize((round(source.width * scale), round(source.height * scale)), Image.LANCZOS)
+    canvas = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    canvas.alpha_composite(source, ((size - source.width) // 2, (size - source.height) // 2))
+    return canvas
+
+
+def install_icon(size: int, symbol_ratio: float) -> Image.Image:
+    canvas = Image.new("RGBA", (size, size), PAPER)
+    symbol_size = round(size * symbol_ratio)
+    symbol = draw_symbol(symbol_size)
+    offset = (size - symbol_size) // 2
+    canvas.alpha_composite(symbol, (offset, offset))
+    return canvas
+
+
 def build_rasters() -> None:
     icon = draw_symbol(512)
     icon.save(HERE / "app-icon-512.png")
+    install_icon(512, 0.76).save(HERE / "app-icon-maskable-512.png", optimize=True)
+    install_icon(180, 0.84).save(HERE / "apple-touch-icon-180.png", optimize=True)
     for px in (16, 32, 48):
         draw_symbol(px).save(HERE / f"favicon-{px}.png")
-    draw_symbol(48).save(HERE / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
+    draw_symbol(512).save(HERE / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
     draw_symbol(512).save(HERE / "logo-mark.png")
+
+    mascot = Image.open(HERE / "mascot.png").convert("RGBA")
+    mascot.save(HERE / "mascot.webp", "WEBP", quality=92, method=6)
+    avatar = Image.new("RGBA", (512, 512), PAPER)
+    avatar.alpha_composite(fit_rgba(mascot, 512, 24))
+    avatar.save(HERE / "mascot-avatar-512.png", optimize=True)
 
 
 def lerp(a, b, t):

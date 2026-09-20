@@ -7,7 +7,7 @@ import test from "node:test";
 const root = process.cwd();
 const system = basename(root);
 const brandDir = join(root, "assets", "brand");
-const expectedSystems = new Set(["stock-gosu", "memoir"]);
+const expectedSystems = new Set(["stock-gosu", "memoir", "notting"]);
 
 assert.ok(expectedSystems.has(system), `지원하지 않는 디자인 시스템: ${system}`);
 
@@ -27,6 +27,16 @@ const requiredAssets = [
   "brand-hero.webp",
   "README.md",
 ];
+
+if (system === "notting") {
+  requiredAssets.push(
+    "apple-touch-icon-180.png",
+    "app-icon-maskable-512.png",
+    "mascot.png",
+    "mascot.webp",
+    "mascot-avatar-512.png",
+  );
+}
 
 function readPngSize(path) {
   const png = readFileSync(path);
@@ -174,6 +184,32 @@ if (system === "memoir") {
   });
 }
 
+if (system === "notting") {
+  test("notting: 기존 잉크 타일과 근거 마커 기하를 그대로 유지한다", () => {
+    const mark = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
+    assert.match(mark, /<rect x="0" y="0" width="512(?:\.0)?" height="512(?:\.0)?" rx="112(?:\.0)?" fill="#0A0908"/);
+    assert.match(mark, /<rect x="360(?:\.0)?" y="132(?:\.0)?" width="48(?:\.0)?" height="248(?:\.0)?" rx="24(?:\.0)?" fill="#1EA896"/);
+  });
+
+  test("notting: 설치 아이콘과 캐릭터 파생물은 용도별 크기와 투명도를 지킨다", () => {
+    assert.deepEqual(readPngSize(join(brandDir, "apple-touch-icon-180.png")), { width: 180, height: 180 });
+    assert.deepEqual(readPngSize(join(brandDir, "app-icon-maskable-512.png")), { width: 512, height: 512 });
+    assert.deepEqual(readPngSize(join(brandDir, "mascot-avatar-512.png")), { width: 512, height: 512 });
+    assert.deepEqual(readCornerAlpha(join(brandDir, "mascot.png")), [0, 0, 0, 0]);
+    const mascot = readAlphaOccupancy(join(brandDir, "mascot.png"));
+    assert.ok(mascot.width >= 0.55 && mascot.height >= 0.55, `mascot.png 점유율이 작습니다: ${JSON.stringify(mascot)}`);
+  });
+
+  test("notting: 문서와 preview가 캐릭터 시스템을 실제로 소개한다", () => {
+    const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");
+    const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
+    for (const name of ["mascot.png", "mascot-avatar-512.png", "app-icon-maskable-512.png", "apple-touch-icon-180.png"]) {
+      assert.ok(doc.includes(name), `14-brand-assets.md에 ${name}이 없습니다.`);
+      assert.ok(preview.includes(name), `preview가 ${name}을 보여주지 않습니다.`);
+    }
+  });
+}
+
 test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연결한다`, () => {
   const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");
   const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
@@ -196,6 +232,8 @@ test(`${system}: 브랜드 히어로 글자색은 테마 반전과 독립적이�
   const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
   const rule = system === "stock-gosu"
     ? /\.hero\s*\{[^}]*color:\s*var\(--sg-base-white\)/s
-    : /\.brand-hero\s*\{[^}]*color:\s*var\(--mm-brand-ink\)/s;
+    : system === "memoir"
+      ? /\.brand-hero\s*\{[^}]*color:\s*var\(--mm-brand-ink\)/s
+      : /\.hero\s*\{[^}]*color:\s*var\(--nt-color-text-on-brand\)/s;
   assert.match(preview, rule, "브랜드 히어로 글자색이 다크 테마에서 반전될 수 있습니다.");
 });
