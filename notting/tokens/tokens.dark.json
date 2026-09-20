@@ -1,0 +1,767 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(다크). 라이트와 경로 1:1 — 빠지면 빌드가 실패한다. 밝기 반전이 아니라 의미 재매핑: 위로 올라올수록 밝아진다(canvas 950 < default 900 < raised 800). 따뜻한 잉크 다크(neutral 이 hue 80 이라 푸른 다크가 아니다).",
+    "surface": {
+      "canvas": {
+        "$value": "{neutral.950}",
+        "$description": "#211F1C 사이드바·패널·body"
+      },
+      "default": {
+        "$value": "{neutral.900}",
+        "$description": "페이지 본문·카드. 캔버스보다 한 단계 밝다"
+      },
+      "raised": {
+        "$value": "{neutral.800}"
+      },
+      "sunken": {
+        "$value": "#181614",
+        "$description": "neutral.950 보다 한 단계 더 어두운 값. 램프 밖이라 리터럴"
+      },
+      "overlay": {
+        "$value": "#00000099",
+        "$description": "black 60%"
+      },
+      "inverse": {
+        "$value": "{neutral.50}"
+      },
+      "brand": {
+        "$value": "{teal.800}"
+      },
+      "brand-subtle": {
+        "$value": "{teal.950}"
+      },
+      "disabled": {
+        "$value": "{neutral.800}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{neutral.50}",
+        "$description": "default(#32302C) 위 12:1 이상"
+      },
+      "secondary": {
+        "$value": "{neutral.300}"
+      },
+      "tertiary": {
+        "$value": "{neutral.400}",
+        "$description": "default 위 약 5:1"
+      },
+      "placeholder": {
+        "$value": "{neutral.400}"
+      },
+      "disabled": {
+        "$value": "{neutral.600}"
+      },
+      "inverse": {
+        "$value": "{neutral.900}"
+      },
+      "on-brand": {
+        "$value": "{base.white}"
+      },
+      "brand": {
+        "$value": "{teal.300}",
+        "$description": "다크에서는 밝은 verdigris(300)가 브랜드 글자를 맡는다"
+      },
+      "link": {
+        "$value": "{teal.300}"
+      },
+      "link-hover": {
+        "$value": "{teal.200}"
+      },
+      "success": {
+        "$value": "{green.300}"
+      },
+      "warning": {
+        "$value": "{amber.300}"
+      },
+      "danger": {
+        "$value": "{coral.300}"
+      },
+      "info": {
+        "$value": "{teal.300}"
+      },
+      "ai": {
+        "$value": "{periwinkle.300}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{neutral.900}"
+      },
+      "default": {
+        "$value": "{neutral.800}"
+      },
+      "strong": {
+        "$value": "{neutral.700}"
+      },
+      "input-strict": {
+        "$value": "{neutral.500}"
+      },
+      "brand": {
+        "$value": "{teal.400}"
+      },
+      "focus": {
+        "$value": "{teal.400}"
+      },
+      "danger": {
+        "$value": "{coral.400}"
+      },
+      "ai": {
+        "$value": "{periwinkle.700}"
+      },
+      "inverse": {
+        "$value": "#211F1C33"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{teal.400}",
+          "$description": "밝은 verdigris + 어두운 글자. neutral.950 글자 대비 약 7:1"
+        },
+        "bg-hover": {
+          "$value": "{teal.300}"
+        },
+        "bg-active": {
+          "$value": "{teal.200}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{neutral.900}"
+        },
+        "bg-hover": {
+          "$value": "{neutral.800}"
+        },
+        "bg-active": {
+          "$value": "{neutral.700}"
+        },
+        "border": {
+          "$value": "{neutral.700}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "#4EBBAA1F",
+          "$description": "teal.400 12%"
+        },
+        "bg-active": {
+          "$value": "#4EBBAA33",
+          "$description": "teal.400 20%"
+        },
+        "text": {
+          "$value": "{teal.300}"
+        }
+      },
+      "ai": {
+        "bg": {
+          "$value": "{periwinkle.400}",
+          "$description": "원색 periwinkle + 어두운 글자"
+        },
+        "bg-hover": {
+          "$value": "{periwinkle.300}"
+        },
+        "bg-active": {
+          "$value": "{periwinkle.200}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{coral.400}",
+          "$description": "원색 coral + 어두운 글자. 다크에서는 원색이 산다"
+        },
+        "bg-hover": {
+          "$value": "{coral.300}"
+        },
+        "bg-active": {
+          "$value": "{coral.200}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "danger-ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "#FF715B1F"
+        },
+        "text": {
+          "$value": "{coral.300}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.600}"
+        },
+        "border": {
+          "$value": "{neutral.800}"
+        }
+      }
+    },
+    "status": {
+      "success": {
+        "bg": {
+          "$value": "{green.950}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "text": {
+          "$value": "{green.300}"
+        },
+        "icon": {
+          "$value": "{green.400}"
+        },
+        "solid": {
+          "$value": "{green.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{amber.950}"
+        },
+        "border": {
+          "$value": "{amber.800}"
+        },
+        "text": {
+          "$value": "{amber.300}"
+        },
+        "icon": {
+          "$value": "{amber.300}"
+        },
+        "solid": {
+          "$value": "{amber.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{coral.950}"
+        },
+        "border": {
+          "$value": "{coral.800}"
+        },
+        "text": {
+          "$value": "{coral.300}"
+        },
+        "icon": {
+          "$value": "{coral.400}"
+        },
+        "solid": {
+          "$value": "{coral.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "info": {
+        "bg": {
+          "$value": "{teal.950}"
+        },
+        "border": {
+          "$value": "{teal.800}"
+        },
+        "text": {
+          "$value": "{teal.300}"
+        },
+        "icon": {
+          "$value": "{teal.400}"
+        },
+        "solid": {
+          "$value": "{teal.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "border": {
+          "$value": "{neutral.700}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        },
+        "icon": {
+          "$value": "{neutral.300}"
+        },
+        "solid": {
+          "$value": "{neutral.400}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      }
+    },
+    "ai": {
+      "bg": {
+        "$value": "{periwinkle.950}"
+      },
+      "border": {
+        "$value": "{periwinkle.800}"
+      },
+      "text": {
+        "$value": "{periwinkle.300}"
+      },
+      "icon": {
+        "$value": "{periwinkle.400}"
+      },
+      "solid": {
+        "$value": "{periwinkle.400}"
+      },
+      "on-solid": {
+        "$value": "{neutral.950}"
+      },
+      "stream": {
+        "$value": "{periwinkle.400}"
+      }
+    },
+    "citation": {
+      "bg": {
+        "$value": "{periwinkle.900}"
+      },
+      "bg-hover": {
+        "$value": "{periwinkle.800}"
+      },
+      "text": {
+        "$value": "{periwinkle.200}"
+      },
+      "marker": {
+        "$value": "{periwinkle.400}"
+      },
+      "stale-bg": {
+        "$value": "{amber.900}"
+      },
+      "stale-text": {
+        "$value": "{amber.200}"
+      }
+    },
+    "mark": {
+      "highlight": {
+        "$value": "{amber.700}",
+        "$description": "어두운 면 위 하이라이트는 진한 amber + 밝은 글자"
+      },
+      "highlight-text": {
+        "$value": "{neutral.50}"
+      },
+      "selection": {
+        "$value": "{teal.900}"
+      },
+      "block-hover": {
+        "$value": "#FFFFFF0A",
+        "$description": "white 4%"
+      },
+      "drop-indicator": {
+        "$value": "{teal.400}"
+      }
+    },
+    "diff": {
+      "added-bg": {
+        "$value": "{green.950}"
+      },
+      "added-text": {
+        "$value": "{green.200}"
+      },
+      "added-marker": {
+        "$value": "{green.400}"
+      },
+      "removed-bg": {
+        "$value": "{coral.950}"
+      },
+      "removed-text": {
+        "$value": "{coral.200}"
+      },
+      "removed-marker": {
+        "$value": "{coral.400}"
+      },
+      "changed-bg": {
+        "$value": "{amber.950}"
+      },
+      "changed-text": {
+        "$value": "{amber.200}"
+      },
+      "changed-marker": {
+        "$value": "{amber.400}"
+      },
+      "conflict-bg": {
+        "$value": "{periwinkle.950}"
+      },
+      "conflict-border": {
+        "$value": "{periwinkle.500}"
+      }
+    },
+    "workflow": {
+      "backlog": {
+        "solid": {
+          "$value": "{neutral.500}"
+        },
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        }
+      },
+      "todo": {
+        "solid": {
+          "$value": "{neutral.300}"
+        },
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "in-progress": {
+        "solid": {
+          "$value": "{amber.400}"
+        },
+        "bg": {
+          "$value": "{amber.950}"
+        },
+        "text": {
+          "$value": "{amber.300}"
+        }
+      },
+      "review": {
+        "solid": {
+          "$value": "{periwinkle.400}"
+        },
+        "bg": {
+          "$value": "{periwinkle.950}"
+        },
+        "text": {
+          "$value": "{periwinkle.300}"
+        }
+      },
+      "done": {
+        "solid": {
+          "$value": "{teal.400}"
+        },
+        "bg": {
+          "$value": "{teal.950}"
+        },
+        "text": {
+          "$value": "{teal.300}"
+        }
+      },
+      "canceled": {
+        "solid": {
+          "$value": "{neutral.600}"
+        },
+        "bg": {
+          "$value": "{neutral.900}"
+        },
+        "text": {
+          "$value": "{neutral.400}"
+        }
+      }
+    },
+    "priority": {
+      "urgent": {
+        "$value": "{coral.400}"
+      },
+      "high": {
+        "$value": "{amber.400}"
+      },
+      "medium": {
+        "$value": "{teal.400}"
+      },
+      "low": {
+        "$value": "{neutral.400}"
+      },
+      "none": {
+        "$value": "{neutral.700}"
+      }
+    },
+    "decision": {
+      "proposed": {
+        "solid": {
+          "$value": "{periwinkle.400}"
+        },
+        "bg": {
+          "$value": "{periwinkle.950}"
+        },
+        "text": {
+          "$value": "{periwinkle.300}"
+        }
+      },
+      "accepted": {
+        "solid": {
+          "$value": "{teal.400}"
+        },
+        "bg": {
+          "$value": "{teal.950}"
+        },
+        "text": {
+          "$value": "{teal.300}"
+        }
+      },
+      "deprecated": {
+        "solid": {
+          "$value": "{amber.400}"
+        },
+        "bg": {
+          "$value": "{amber.950}"
+        },
+        "text": {
+          "$value": "{amber.300}"
+        }
+      },
+      "superseded": {
+        "solid": {
+          "$value": "{neutral.500}"
+        },
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        }
+      },
+      "rejected": {
+        "solid": {
+          "$value": "{coral.400}"
+        },
+        "bg": {
+          "$value": "{coral.950}"
+        },
+        "text": {
+          "$value": "{coral.300}"
+        }
+      }
+    },
+    "fidelity": {
+      "lossless": {
+        "solid": {
+          "$value": "{green.400}"
+        },
+        "bg": {
+          "$value": "{green.950}"
+        },
+        "text": {
+          "$value": "{green.300}"
+        }
+      },
+      "normalized": {
+        "solid": {
+          "$value": "{neutral.400}"
+        },
+        "bg": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        }
+      },
+      "degraded": {
+        "solid": {
+          "$value": "{amber.400}"
+        },
+        "bg": {
+          "$value": "{amber.950}"
+        },
+        "text": {
+          "$value": "{amber.300}"
+        }
+      },
+      "dropped": {
+        "solid": {
+          "$value": "{coral.400}"
+        },
+        "bg": {
+          "$value": "{coral.950}"
+        },
+        "text": {
+          "$value": "{coral.300}"
+        }
+      },
+      "opaque": {
+        "solid": {
+          "$value": "{periwinkle.400}"
+        },
+        "bg": {
+          "$value": "{periwinkle.950}"
+        },
+        "text": {
+          "$value": "{periwinkle.300}"
+        }
+      }
+    },
+    "code": {
+      "bg": {
+        "$value": "#181614",
+        "$description": "= surface.sunken 다크. 캔버스보다 어둡다"
+      },
+      "bg-inline": {
+        "$value": "{neutral.800}"
+      },
+      "text": {
+        "$value": "{neutral.100}"
+      },
+      "comment": {
+        "$value": "{neutral.500}"
+      },
+      "punctuation": {
+        "$value": "{neutral.300}"
+      },
+      "keyword": {
+        "$value": "{teal.300}"
+      },
+      "string": {
+        "$value": "{coral.300}"
+      },
+      "number": {
+        "$value": "{amber.300}"
+      },
+      "function": {
+        "$value": "{periwinkle.300}"
+      },
+      "line-number": {
+        "$value": "{neutral.500}"
+      },
+      "line-highlight": {
+        "$value": "{amber.900}"
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{teal.400}"
+      },
+      "selected-bg": {
+        "$value": "{teal.950}"
+      },
+      "selected-border": {
+        "$value": "{teal.400}"
+      },
+      "selected-text": {
+        "$value": "{teal.200}"
+      },
+      "hover-overlay": {
+        "$value": "#FFFFFF14",
+        "$description": "white 8%"
+      },
+      "pressed-overlay": {
+        "$value": "#FFFFFF1F",
+        "$description": "white 12%"
+      }
+    },
+    "accent": {
+      "verdigris": {
+        "$value": "{teal.400}"
+      },
+      "periwinkle": {
+        "$value": "{brand.periwinkle}"
+      },
+      "coral": {
+        "$value": "{brand.coral}"
+      },
+      "paper": {
+        "$value": "{neutral.100}"
+      },
+      "ink": {
+        "$value": "{brand.ink}"
+      }
+    },
+    "chart": {
+      "categorical": {
+        "1": {
+          "$value": "{teal.400}"
+        },
+        "2": {
+          "$value": "{periwinkle.300}"
+        },
+        "3": {
+          "$value": "{coral.300}"
+        },
+        "4": {
+          "$value": "{amber.300}"
+        },
+        "5": {
+          "$value": "{green.400}"
+        },
+        "6": {
+          "$value": "{teal.200}"
+        },
+        "7": {
+          "$value": "{periwinkle.500}"
+        },
+        "8": {
+          "$value": "{neutral.400}"
+        }
+      },
+      "sequential": {
+        "1": {
+          "$value": "{teal.900}"
+        },
+        "2": {
+          "$value": "{teal.800}"
+        },
+        "3": {
+          "$value": "{teal.700}"
+        },
+        "4": {
+          "$value": "{teal.600}"
+        },
+        "5": {
+          "$value": "{teal.500}"
+        },
+        "6": {
+          "$value": "{teal.400}"
+        },
+        "7": {
+          "$value": "{teal.300}"
+        },
+        "8": {
+          "$value": "{teal.200}"
+        }
+      },
+      "diverging": {
+        "negative": {
+          "$value": "{coral.400}"
+        },
+        "mid": {
+          "$value": "{neutral.700}"
+        },
+        "positive": {
+          "$value": "{teal.400}"
+        }
+      },
+      "grid": {
+        "$value": "{neutral.800}"
+      },
+      "axis": {
+        "$value": "{neutral.400}"
+      },
+      "label": {
+        "$value": "{neutral.300}"
+      }
+    }
+  }
+}

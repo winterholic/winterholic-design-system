@@ -1,0 +1,288 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(라이트). 사용처 코드는 이 그룹만 참조한다. 값은 palette.json / brand.json 의 원시 토큰을 가리킨다. notting 전용 그룹: ai · citation · mark · diff · workflow · priority · decision · fidelity · code.",
+
+    "surface": {
+      "$description": "면. notting 은 두 세계가 있다 — 앱 크롬(사이드바·패널·툴바)은 canvas(종이), 문서(페이지 본문·카드·인풋)는 default(흰색). 그 위 raised 는 그림자로 뜬다.",
+      "canvas":       { "$value": "{brand.paper}",  "$description": "body 와 사이드바·우측 패널·툴바. 종이색. 한 페이지에 한 번" },
+      "default":      { "$value": "{base.white}",   "$description": "페이지 본문(에디터)·카드·인풋·표. canvas 위에 놓이는 기본 면" },
+      "raised":       { "$value": "{base.white}",   "$description": "떠 있는 면(모달·팝오버·슬래시 메뉴·커맨드 팔레트). default 와 같은 색, shadow 로 구분" },
+      "sunken":       { "$value": "{neutral.100}",  "$description": "안으로 들어간 면(표 헤더·kbd·세그먼트 트랙·스켈레톤). 코드 블록은 code.bg" },
+      "overlay":      { "$value": "#0A090880",      "$description": "모달 뒤 스크림. ink 50%" },
+      "inverse":      { "$value": "{brand.ink}",    "$description": "반전 면(툴팁·토스트·단축키 힌트)" },
+      "brand":        { "$value": "{teal.700}",     "$description": "브랜드 강조 면(랜딩 CTA 섹션·온보딩 헤더·로그인 사이드). 위 글자 white 6.70:1" },
+      "brand-subtle": { "$value": "{teal.50}",      "$description": "브랜드 기운만 있는 옅은 면(선택된 트리 항목·활성 탭·안내 카드)" },
+      "disabled":     { "$value": "{neutral.100}",  "$description": "비활성 컨트롤 배경" }
+    },
+
+    "text": {
+      "$description": "글자색. surface.default(흰색) 기준으로 정했고 canvas(#FBFBF2) 위에서도 같은 등급이 유지된다(tertiary 4.75:1).",
+      "primary":     { "$value": "{neutral.900}",   "$description": "본문·제목. 흰 배경 13.17:1. 순검정 ink 는 글자에 쓰지 않는다" },
+      "secondary":   { "$value": "{neutral.700}",   "$description": "설명·메타·속성 값. 6.96:1" },
+      "tertiary":    { "$value": "{neutral.600}",   "$description": "캡션·타임스탬프·속성 라벨·블록 핸들. 4.95:1 (canvas 위 4.75, AA 하한)" },
+      "placeholder": { "$value": "{neutral.600}",   "$description": "인풋·빈 블록 플레이스홀더(슬래시로 블록 추가). tertiary 와 같은 값" },
+      "disabled":    { "$value": "{neutral.400}",   "$description": "비활성. 대비 예외" },
+      "inverse":     { "$value": "{base.white}",    "$description": "inverse 면 위" },
+      "on-brand":    { "$value": "{base.white}",    "$description": "surface.brand·action.primary 위. teal.600 위 4.71, teal.700 위 6.70" },
+      "brand":       { "$value": "{teal.700}",      "$description": "브랜드색 글자(강조 키워드·활성 탭·선택 트리 항목). 6.70:1. teal.500 은 2.96 으로 글자 불가" },
+      "link":        { "$value": "{teal.700}",      "$description": "링크. 문서 안 링크는 밑줄 동반" },
+      "link-hover":  { "$value": "{teal.800}" },
+      "success":     { "$value": "{green.700}",     "$description": "6.55:1" },
+      "warning":     { "$value": "{amber.700}",     "$description": "7.08:1 — amber 는 700 이하로 내려야 글자가 된다" },
+      "danger":      { "$value": "{coral.700}",     "$description": "7.41:1" },
+      "info":        { "$value": "{teal.700}" },
+      "ai":          { "$value": "{periwinkle.700}", "$description": "AI 가 만든 텍스트의 라벨·AI 제안 표시·근거 번호. 7.08:1. 답변 본문 글자는 primary" }
+    },
+
+    "border": {
+      "$description": "테두리. 문서 화면은 선을 아낀다 — 카드·표에만 default, 리스트는 subtle 또는 여백.",
+      "subtle":  { "$value": "{neutral.100}", "$description": "구획 구분선(사이드바 섹션·속성 행 사이·블록 구분)" },
+      "default": { "$value": "{neutral.200}", "$description": "카드·패널·표 선·코드 블록 외곽" },
+      "strong":  { "$value": "{neutral.400}", "$description": "인풋·셀렉트 외곽선. 2.43:1 — 엄격 기준이면 input-strict" },
+      "input-strict": { "$value": "{neutral.500}", "$description": "체크박스·라디오·작은 컨트롤. 비텍스트 3:1 (3.48)" },
+      "brand":   { "$value": "{teal.600}",    "$description": "선택·활성 표시 테두리. 4.71 (teal.500 은 2.96 으로 3:1 미달)" },
+      "focus":   { "$value": "{teal.600}",    "$description": "포커스 링. 두께·오프셋은 focus 토큰" },
+      "danger":  { "$value": "{coral.500}",   "$description": "오류 인풋·손실 항목 테두리. 3.76" },
+      "ai":      { "$value": "{periwinkle.300}", "$description": "AI 패널·답변 카드 테두리(장식, 3:1 요구 없음)" },
+      "inverse": { "$value": "#FFFFFF33",     "$description": "inverse·brand 면 위 구분선. white 20%" }
+    },
+
+    "action": {
+      "$description": "버튼·클릭 가능한 것. variant 마다 bg/text(+border) + hover/active 세트. ai 는 AI 에게 시키는 버튼 전용.",
+      "primary": {
+        "bg":        { "$value": "{teal.600}", "$description": "흰 글자 4.71:1. 브랜드 원색 teal.500 은 2.96 이라 한 단계 내렸다" },
+        "bg-hover":  { "$value": "{teal.700}" },
+        "bg-active": { "$value": "{teal.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "secondary": {
+        "bg":        { "$value": "{base.white}" },
+        "bg-hover":  { "$value": "{neutral.50}" },
+        "bg-active": { "$value": "{neutral.100}" },
+        "border":    { "$value": "{neutral.300}" },
+        "text":      { "$value": "{neutral.800}" }
+      },
+      "ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{teal.50}" },
+        "bg-active": { "$value": "{teal.100}" },
+        "text":      { "$value": "{teal.700}" }
+      },
+      "ai": {
+        "bg":        { "$value": "{periwinkle.600}", "$description": "물어보기·Context Pack 만들기·관계 제안 보기. 흰 글자 5.04:1. 화면당 1개" },
+        "bg-hover":  { "$value": "{periwinkle.700}" },
+        "bg-active": { "$value": "{periwinkle.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "danger": {
+        "bg":        { "$value": "{coral.600}", "$description": "흰 글자 5.26:1. coral.400 원색은 2.70" },
+        "bg-hover":  { "$value": "{coral.700}" },
+        "bg-active": { "$value": "{coral.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "danger-ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{coral.50}" },
+        "text":      { "$value": "{coral.700}" }
+      },
+      "disabled": {
+        "bg":     { "$value": "{neutral.200}" },
+        "text":   { "$value": "{neutral.500}" },
+        "border": { "$value": "{neutral.200}" }
+      }
+    },
+
+    "status": {
+      "$description": "상태 피드백 4종 + neutral. bg/border/text/icon 은 배너·인라인, solid/on-solid 는 배지·도트·프로그레스.",
+      "success": {
+        "bg":     { "$value": "{green.50}" },
+        "border": { "$value": "{green.200}" },
+        "text":   { "$value": "{green.700}" },
+        "icon":   { "$value": "{green.600}" },
+        "solid":  { "$value": "{green.600}", "$description": "흰 글자 4.63:1" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "warning": {
+        "bg":     { "$value": "{amber.50}" },
+        "border": { "$value": "{amber.200}" },
+        "text":   { "$value": "{amber.700}" },
+        "icon":   { "$value": "{amber.500}", "$description": "비텍스트 3:1 기준 3.56 통과" },
+        "solid":  { "$value": "{amber.400}", "$description": "= Marigold #E0A100. 검은 글자를 얹는다 — 흰 글자 금지" },
+        "on-solid": { "$value": "{neutral.950}" }
+      },
+      "danger": {
+        "bg":     { "$value": "{coral.50}" },
+        "border": { "$value": "{coral.200}" },
+        "text":   { "$value": "{coral.700}" },
+        "icon":   { "$value": "{coral.600}" },
+        "solid":  { "$value": "{coral.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "info": {
+        "bg":     { "$value": "{teal.50}" },
+        "border": { "$value": "{teal.200}" },
+        "text":   { "$value": "{teal.700}" },
+        "icon":   { "$value": "{teal.600}" },
+        "solid":  { "$value": "{teal.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "neutral": {
+        "bg":     { "$value": "{neutral.100}" },
+        "border": { "$value": "{neutral.200}" },
+        "text":   { "$value": "{neutral.700}" },
+        "icon":   { "$value": "{neutral.600}" },
+        "solid":  { "$value": "{neutral.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      }
+    },
+
+    "ai": {
+      "$description": "AI 가 만든 것(답변·Context Pack·관계 제안·요약)의 면·테두리·글자. 사람이 쓴 문서와 반드시 색으로 구분한다. AI is a reader first — AI 영역은 항상 periwinkle 로 표시하고 근거 없이는 채색하지 않는다.",
+      "bg":       { "$value": "{periwinkle.50}",  "$description": "AI 답변 카드·제안 배너 배경" },
+      "border":   { "$value": "{periwinkle.200}" },
+      "text":     { "$value": "{periwinkle.700}", "$description": "라벨(AI 답변·제안)·아이콘 옆 글자. 답변 본문은 text.primary" },
+      "icon":     { "$value": "{periwinkle.600}", "$description": "sparkles 아이콘. bg 위 3:1 통과" },
+      "solid":    { "$value": "{periwinkle.600}", "$description": "AI 배지·도트. 흰 글자 5.04" },
+      "on-solid": { "$value": "{base.white}" },
+      "stream":   { "$value": "{periwinkle.400}", "$description": "스트리밍 중 커서·진행 바. 장식(원색 허용)" }
+    },
+
+    "citation": {
+      "$description": "답변 문장 끝의 근거 칩 [1] 과 원문으로 여는 링크. 눌러야 하는 것이므로 hover 가 있다.",
+      "bg":        { "$value": "{periwinkle.100}" },
+      "bg-hover":  { "$value": "{periwinkle.200}" },
+      "text":      { "$value": "{periwinkle.800}", "$description": "bg 위 8:1 이상" },
+      "marker":    { "$value": "{periwinkle.600}", "$description": "원문 열었을 때 해당 블록 왼쪽 마커 3px" },
+      "stale-bg":  { "$value": "{amber.100}",      "$description": "근거 문서가 그 뒤 수정·삭제된 경우(현재 아님)" },
+      "stale-text":{ "$value": "{amber.800}" }
+    },
+
+    "mark": {
+      "$description": "본문 위에 얹는 표시. 검색 히트·에디터 선택·블록 hover.",
+      "highlight":      { "$value": "{amber.200}",  "$description": "검색 결과 히트·Ask 답변에서 인용된 구절. 위 글자 neutral.950" },
+      "highlight-text": { "$value": "{neutral.950}" },
+      "selection":      { "$value": "{teal.100}",   "$description": "에디터 텍스트 선택(::selection)·블록 다중 선택" },
+      "block-hover":    { "$value": "#0A090808",    "$description": "블록 hover 시 핸들 영역 배경. ink 3%" },
+      "drop-indicator": { "$value": "{teal.600}",   "$description": "드래그 중 삽입 위치 선 2px" }
+    },
+
+    "diff": {
+      "$description": "revision 비교·충돌 UI·import 미리보기의 추가/삭제/변경. 색 + 기호(+ − ~) 를 항상 같이 쓴다.",
+      "added-bg":      { "$value": "{green.50}" },
+      "added-text":    { "$value": "{green.800}" },
+      "added-marker":  { "$value": "{green.500}" },
+      "removed-bg":    { "$value": "{coral.50}" },
+      "removed-text":  { "$value": "{coral.800}" },
+      "removed-marker":{ "$value": "{coral.500}" },
+      "changed-bg":    { "$value": "{amber.50}" },
+      "changed-text":  { "$value": "{amber.800}" },
+      "changed-marker":{ "$value": "{amber.500}" },
+      "conflict-bg":   { "$value": "{periwinkle.50}", "$description": "3-way merge 에서 사람이 골라야 하는 구간" },
+      "conflict-border": { "$value": "{periwinkle.400}" }
+    },
+
+    "workflow": {
+      "$description": "Issue 기본 상태 6종(Phase 2). solid 는 상태 아이콘·도트·보드 컬럼 헤더, bg/text 는 상태 필(pill). 색만으로 말하지 않는다 — 상태 아이콘(원 채움 정도)을 같이 쓴다.",
+      "backlog":     { "solid": { "$value": "{neutral.400}" }, "bg": { "$value": "{neutral.100}" }, "text": { "$value": "{neutral.700}" } },
+      "todo":        { "solid": { "$value": "{neutral.600}" }, "bg": { "$value": "{neutral.100}" }, "text": { "$value": "{neutral.800}" } },
+      "in-progress": { "solid": { "$value": "{amber.500}" },   "bg": { "$value": "{amber.50}" },    "text": { "$value": "{amber.700}" } },
+      "review":      { "solid": { "$value": "{periwinkle.500}" }, "bg": { "$value": "{periwinkle.50}" }, "text": { "$value": "{periwinkle.700}" } },
+      "done":        { "solid": { "$value": "{teal.600}" },    "bg": { "$value": "{teal.50}" },     "text": { "$value": "{teal.800}" } },
+      "canceled":    { "solid": { "$value": "{neutral.300}" }, "bg": { "$value": "{neutral.50}" },  "text": { "$value": "{neutral.600}", "$description": "취소선과 함께" } }
+    },
+
+    "priority": {
+      "$description": "이슈 우선순위 아이콘 색(막대 1~4개 아이콘의 채움). 글자에는 쓰지 않는다.",
+      "urgent": { "$value": "{coral.600}" },
+      "high":   { "$value": "{amber.500}" },
+      "medium": { "$value": "{teal.600}" },
+      "low":    { "$value": "{neutral.500}" },
+      "none":   { "$value": "{neutral.300}", "$description": "빈 막대. 장식" }
+    },
+
+    "decision": {
+      "$description": "ADR 상태. 문서 헤더 배지와 목록 필.",
+      "proposed":   { "solid": { "$value": "{periwinkle.500}" }, "bg": { "$value": "{periwinkle.50}" }, "text": { "$value": "{periwinkle.700}" } },
+      "accepted":   { "solid": { "$value": "{teal.600}" },       "bg": { "$value": "{teal.50}" },       "text": { "$value": "{teal.800}" } },
+      "deprecated": { "solid": { "$value": "{amber.500}" },      "bg": { "$value": "{amber.50}" },      "text": { "$value": "{amber.700}" } },
+      "superseded": { "solid": { "$value": "{neutral.400}" },    "bg": { "$value": "{neutral.100}" },   "text": { "$value": "{neutral.700}" } },
+      "rejected":   { "solid": { "$value": "{coral.500}" },      "bg": { "$value": "{coral.50}" },      "text": { "$value": "{coral.700}" } }
+    },
+
+    "fidelity": {
+      "$description": "Markdown 왕복 보고서(import/export report)의 항목 등급. No silent loss — 손실은 반드시 이 색과 문구로 드러낸다.",
+      "lossless":   { "solid": { "$value": "{green.600}" },      "bg": { "$value": "{green.50}" },      "text": { "$value": "{green.700}" },      "$description": "의미 동등. 지원 profile" },
+      "normalized": { "solid": { "$value": "{neutral.500}" },    "bg": { "$value": "{neutral.100}" },   "text": { "$value": "{neutral.700}" },    "$description": "공백·마커 정규화. 의미 유지" },
+      "degraded":   { "solid": { "$value": "{amber.500}" },      "bg": { "$value": "{amber.50}" },      "text": { "$value": "{amber.700}" },      "$description": "대체 표현으로 내보냄(고유 블록 → 표준 문법)" },
+      "dropped":    { "solid": { "$value": "{coral.600}" },      "bg": { "$value": "{coral.50}" },      "text": { "$value": "{coral.700}" },      "$description": "표현 불가. 사이드카에만 남거나 사라짐" },
+      "opaque":     { "solid": { "$value": "{periwinkle.500}" }, "bg": { "$value": "{periwinkle.50}" }, "text": { "$value": "{periwinkle.700}" }, "$description": "알 수 없는 블록을 그대로 보존(opaque node)" }
+    },
+
+    "code": {
+      "$description": "코드 블록·인라인 코드·diff 안 코드. 개발자 도구라 라이트에서도 하이라이트 대비를 빌드가 검사한다(4.5:1).",
+      "bg":          { "$value": "{neutral.50}",  "$description": "코드 블록 배경. 흰 카드 안에서는 테두리 border.default 를 더한다" },
+      "bg-inline":   { "$value": "{neutral.100}", "$description": "인라인 코드" },
+      "text":        { "$value": "{neutral.900}" },
+      "comment":     { "$value": "{neutral.600}", "$description": "bg 위 4.5 이상" },
+      "punctuation": { "$value": "{neutral.700}" },
+      "keyword":     { "$value": "{teal.800}" },
+      "string":      { "$value": "{coral.700}" },
+      "number":      { "$value": "{amber.700}" },
+      "function":    { "$value": "{periwinkle.700}" },
+      "line-number": { "$value": "{neutral.500}", "$description": "3:1 비텍스트 취급" },
+      "line-highlight": { "$value": "{amber.100}", "$description": "강조 줄·인용된 줄" }
+    },
+
+    "interactive": {
+      "$description": "선택·호버·포커스.",
+      "focus-ring":      { "$value": "{teal.600}" },
+      "selected-bg":     { "$value": "{teal.50}" },
+      "selected-border": { "$value": "{teal.600}" },
+      "selected-text":   { "$value": "{teal.800}" },
+      "hover-overlay":   { "$value": "#0A09080F", "$description": "어떤 면 위에도 얹는 호버 덧칠. ink 6%" },
+      "pressed-overlay": { "$value": "#0A09081A", "$description": "ink 10%" }
+    },
+
+    "accent": {
+      "$description": "장식·브랜드 표현 전용. 글자색·상태색으로 쓰지 않는다. 그라데이션·일러스트·아이콘 배경·빈 상태에만.",
+      "verdigris":  { "$value": "{brand.verdigris}" },
+      "periwinkle": { "$value": "{brand.periwinkle}" },
+      "coral":      { "$value": "{brand.coral}" },
+      "paper":      { "$value": "{brand.paper}" },
+      "ink":        { "$value": "{brand.ink}" }
+    },
+
+    "chart": {
+      "$description": "데이터 시각화(대시보드·이슈 통계·검색 평가 결과). categorical 은 순서대로(1→8). 3개 이하면 1·2·4.",
+      "categorical": {
+        "1": { "$value": "{teal.500}" },
+        "2": { "$value": "{periwinkle.400}" },
+        "3": { "$value": "{coral.400}" },
+        "4": { "$value": "{amber.400}" },
+        "5": { "$value": "{green.500}" },
+        "6": { "$value": "{teal.800}" },
+        "7": { "$value": "{periwinkle.700}" },
+        "8": { "$value": "{neutral.500}" }
+      },
+      "sequential": {
+        "1": { "$value": "{teal.100}" },
+        "2": { "$value": "{teal.200}" },
+        "3": { "$value": "{teal.300}" },
+        "4": { "$value": "{teal.400}" },
+        "5": { "$value": "{teal.500}" },
+        "6": { "$value": "{teal.600}" },
+        "7": { "$value": "{teal.700}" },
+        "8": { "$value": "{teal.800}" }
+      },
+      "diverging": {
+        "negative": { "$value": "{coral.500}" },
+        "mid":      { "$value": "{neutral.200}" },
+        "positive": { "$value": "{teal.500}" }
+      },
+      "grid":  { "$value": "{neutral.200}" },
+      "axis":  { "$value": "{neutral.600}" },
+      "label": { "$value": "{neutral.700}" }
+    }
+  }
+}

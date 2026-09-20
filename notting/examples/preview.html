@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>notting preview</title>
+<script>try{const t=localStorage.getItem('nt-theme');if(t)document.documentElement.dataset.theme=t;}catch{}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css" />
+<link rel="stylesheet" href="../dist/tokens.css" />
+<link rel="stylesheet" href="../dist/typography.css" />
+<link rel="stylesheet" href="../dist/prose.css" />
+<link rel="icon" href="../assets/brand/favicon.svg?v=1.0.0" type="image/svg+xml" />
+<style>
+  /* 이 페이지의 모든 값은 토큰이다. hex·px 리터럴이 있으면 버그. */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; overflow-x: hidden; }
+  .page { max-width: var(--nt-size-container-xl); margin-inline: auto; padding: var(--nt-space-8) var(--nt-size-layout-page-gutter) var(--nt-space-24); }
+  @media (min-width: 768px) { .page { padding-inline: var(--nt-size-layout-page-gutter-md); } }
+  @media (min-width: 1024px) { .page { padding-inline: var(--nt-size-layout-page-gutter-lg); } }
+
+  header.top { position: sticky; top: 0; z-index: var(--nt-z-index-sticky); display: flex; align-items: center; justify-content: space-between; gap: var(--nt-space-4); height: var(--nt-size-layout-header-lg); padding-inline: var(--nt-size-layout-page-gutter-lg); background: color-mix(in srgb, var(--nt-color-surface-canvas) 90%, transparent); backdrop-filter: blur(var(--nt-blur-md)); border-bottom: 1px solid var(--nt-color-border-subtle); }
+  .logo { display: block; height: var(--nt-size-icon-lg); width: auto; }
+  nav.toc { display: flex; gap: var(--nt-space-4); flex-wrap: wrap; }
+  nav.toc a { color: var(--nt-color-text-secondary); text-decoration: none; }
+  nav.toc a:hover { color: var(--nt-color-text-primary); }
+
+  section { margin-top: var(--nt-space-16); }
+  section > h2 { margin: 0 0 var(--nt-space-2); }
+  section > p.lead { margin: 0 0 var(--nt-space-6); color: var(--nt-color-text-secondary); }
+  h3.sub { margin: var(--nt-space-8) 0 var(--nt-space-4); }
+  .hero { position: relative; min-height: calc(var(--nt-space-24) * 4); display: flex; align-items: center; overflow: hidden; background: url('../assets/brand/brand-hero.webp') 70% center / cover no-repeat; color: var(--nt-color-text-on-brand); border-radius: var(--nt-radius-2xl); padding: var(--nt-space-16) var(--nt-space-8); }
+  .hero__content { position: relative; max-width: calc(var(--nt-size-container-prose) * 0.6); }
+  .hero p { color: var(--nt-color-text-on-brand); opacity: .85; margin: var(--nt-space-4) 0 0; }
+
+  .brand-assets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--nt-space-6); }
+  .brand-stage { min-height: calc(var(--nt-space-24) * 2.5); display: grid; place-items: center; padding: var(--nt-space-8); border-radius: var(--nt-radius-xl); border: var(--nt-border-width-hairline) solid var(--nt-color-border-default); background: var(--nt-gradient-paper); }
+  :root[data-theme="dark"] .brand-stage { background: var(--nt-color-surface-brand-subtle); }
+  .brand-stage--dark { background: var(--nt-gradient-brand); }
+  .brand-stage--ink { background: var(--nt-gradient-ink); }
+  .brand-stage img { max-width: 100%; max-height: calc(var(--nt-space-24) * 1.5); }
+  .favicon-row { display: flex; align-items: end; gap: var(--nt-space-6); }
+  .favicon-row img:nth-child(1) { width: var(--nt-size-icon-xl); }
+  .favicon-row img:nth-child(2) { width: var(--nt-size-avatar-lg); }
+  .favicon-row img:nth-child(3) { width: var(--nt-size-avatar-2xl); }
+  .mono-demo { color: var(--nt-color-text-primary); width: var(--nt-size-avatar-xl); }
+  @media (max-width: 767px) {
+    header.top { padding-inline: var(--nt-size-layout-page-gutter); }
+    header.top nav.toc { display: none; }
+    .brand-assets { grid-template-columns: 1fr; }
+  }
+
+  .row { display: flex; gap: var(--nt-space-3); flex-wrap: wrap; align-items: center; }
+  .grid { display: grid; gap: var(--nt-space-4); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .grid-2 { display: grid; gap: var(--nt-space-6); grid-template-columns: 1fr; }
+  @media (min-width: 1024px) { .grid-2 { grid-template-columns: 1fr 1fr; } .grid { gap: var(--nt-space-6); } }
+
+  /* 램프 */
+  .ramp { display: grid; grid-template-columns: 96px repeat(11, 1fr); align-items: center; gap: var(--nt-space-1); margin-bottom: var(--nt-space-2); }
+  .ramp .name { font-weight: var(--nt-font-weight-medium); }
+  .swatch { height: 44px; border-radius: var(--nt-radius-sm); display: flex; align-items: flex-end; justify-content: center; padding-bottom: var(--nt-space-1); font-size: var(--nt-font-size-2xs); font-family: var(--nt-font-family-mono); }
+  .swatch.anchor { outline: var(--nt-focus-ring-width) solid var(--nt-color-interactive-focus-ring); outline-offset: var(--nt-focus-ring-offset); }
+  .brand-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--nt-space-4); }
+  .brand-card { border-radius: var(--nt-radius-lg); overflow: hidden; border: 1px solid var(--nt-color-border-default); background: var(--nt-color-surface-default); }
+  .brand-card .c { height: 96px; }
+  .brand-card .t { padding: var(--nt-space-3); }
+  .brand-card code { font-size: var(--nt-font-size-xs); }
+
+  table.tok { width: 100%; border-collapse: collapse; }
+  table.tok th, table.tok td { text-align: left; padding: var(--nt-space-2) var(--nt-space-3); border-bottom: 1px solid var(--nt-color-border-default); vertical-align: middle; }
+  table.tok th { background: var(--nt-color-surface-sunken); font-weight: var(--nt-font-weight-medium); color: var(--nt-color-text-secondary); }
+  .chip { display: inline-block; width: 20px; height: 20px; border-radius: var(--nt-radius-xs); border: 1px solid var(--nt-color-border-default); vertical-align: middle; margin-right: var(--nt-space-2); }
+
+  /* 버튼 */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--nt-component-button-gap); height: var(--nt-component-button-md-height); padding-inline: var(--nt-component-button-md-padding-x); border-radius: var(--nt-component-button-radius); font-family: var(--nt-font-family-sans); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); line-height: var(--nt-font-line-height-normal); white-space: nowrap; min-width: 64px; border: 1px solid transparent; cursor: pointer; transition: background-color var(--nt-motion-duration-fast) var(--nt-motion-easing-standard), transform var(--nt-motion-duration-fast) var(--nt-motion-easing-standard); }
+  .btn:active { transform: scale(var(--nt-motion-scale-press)); }
+  .btn--xs { height: var(--nt-component-button-xs-height); padding-inline: var(--nt-component-button-xs-padding-x); font-size: var(--nt-font-size-xs); min-width: 0; }
+  .btn--sm { height: var(--nt-component-button-sm-height); padding-inline: var(--nt-component-button-sm-padding-x); }
+  .btn--lg { height: var(--nt-component-button-lg-height); padding-inline: var(--nt-component-button-lg-padding-x); font-size: var(--nt-font-size-md); }
+  .btn--primary { background: var(--nt-color-action-primary-bg); color: var(--nt-color-action-primary-text); }
+  .btn--primary:hover { background: var(--nt-color-action-primary-bg-hover); }
+  .btn--ai { background: var(--nt-color-action-ai-bg); color: var(--nt-color-action-ai-text); }
+  .btn--ai:hover { background: var(--nt-color-action-ai-bg-hover); }
+  .btn--secondary { background: var(--nt-color-action-secondary-bg); color: var(--nt-color-action-secondary-text); border-color: var(--nt-color-action-secondary-border); }
+  .btn--secondary:hover { background: var(--nt-color-action-secondary-bg-hover); }
+  .btn--ghost { background: transparent; color: var(--nt-color-action-ghost-text); }
+  .btn--ghost:hover { background: var(--nt-color-action-ghost-bg-hover); }
+  .btn--danger { background: var(--nt-color-action-danger-bg); color: var(--nt-color-action-danger-text); }
+  .btn--danger-ghost { background: transparent; color: var(--nt-color-action-danger-ghost-text); }
+  .btn--danger-ghost:hover { background: var(--nt-color-action-danger-ghost-bg-hover); }
+  .btn:disabled { background: var(--nt-color-action-disabled-bg); color: var(--nt-color-action-disabled-text); border-color: var(--nt-color-action-disabled-border); cursor: not-allowed; }
+  .btn--icon { width: var(--nt-component-button-sm-height); min-width: 0; padding: 0; }
+  .ico { width: var(--nt-size-icon-sm); height: var(--nt-size-icon-sm); flex: none; }
+  .ico--md { width: var(--nt-size-icon-md); height: var(--nt-size-icon-md); }
+
+  /* 인풋 */
+  .field { display: flex; flex-direction: column; gap: var(--nt-component-input-label-gap); }
+  .field label { font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .input { height: var(--nt-component-input-md-height); padding-inline: var(--nt-component-input-md-padding-x); border-radius: var(--nt-component-input-radius); background: var(--nt-component-input-bg); border: 1px solid var(--nt-component-input-border); font: inherit; font-size: var(--nt-font-size-md); color: var(--nt-color-text-primary); }
+  .input::placeholder { color: var(--nt-color-text-placeholder); }
+  .input:focus-visible { outline: none; border-color: var(--nt-component-input-border-focus); box-shadow: 0 0 0 1px var(--nt-component-input-border-focus); }
+  .input--error { border-color: var(--nt-component-input-border-error); }
+  .help { font-size: var(--nt-font-size-xs); color: var(--nt-color-text-tertiary); margin-top: calc(var(--nt-component-input-help-gap) - var(--nt-component-input-label-gap)); }
+  .help--error { color: var(--nt-color-text-danger); }
+
+  /* 배지·필 */
+  .badge { display: inline-flex; align-items: center; gap: var(--nt-space-1); height: var(--nt-component-badge-height-md); padding-inline: var(--nt-component-badge-padding-x-md); border-radius: var(--nt-component-badge-radius); font-size: var(--nt-font-size-xs); font-weight: var(--nt-font-weight-medium); line-height: 1; }
+  .pill { display: inline-flex; align-items: center; gap: var(--nt-component-status-pill-gap); height: var(--nt-component-status-pill-height); padding-inline: var(--nt-component-status-pill-padding-x); border-radius: var(--nt-component-status-pill-radius); font-size: var(--nt-font-size-xs); font-weight: var(--nt-font-weight-medium); line-height: 1; }
+  .pill .dot { width: var(--nt-component-status-pill-icon-size); height: var(--nt-component-status-pill-icon-size); border-radius: var(--nt-radius-full); }
+  .pill--canceled { text-decoration: line-through; }
+  .ai-badge { display: inline-flex; align-items: center; gap: var(--nt-space-1); height: var(--nt-component-badge-height-sm); padding-inline: var(--nt-component-badge-padding-x-sm); border-radius: var(--nt-radius-full); background: var(--nt-gradient-context); color: var(--nt-neutral-950); font-size: var(--nt-font-size-2xs); font-weight: var(--nt-font-weight-semibold); line-height: 1; }
+
+  /* 카드·콜아웃 */
+  .card { background: var(--nt-component-card-bg); border: 1px solid var(--nt-component-card-border); border-radius: var(--nt-component-card-radius); padding: var(--nt-component-card-padding-md); }
+  .card h4 { margin: 0 0 var(--nt-component-card-header-gap); }
+  .card p { margin: 0; color: var(--nt-color-text-secondary); }
+  .alert { display: flex; gap: var(--nt-space-3); padding: var(--nt-space-4); border-radius: var(--nt-radius-lg); border: 1px solid; font-size: var(--nt-font-size-sm); }
+  .alert--success { background: var(--nt-color-status-success-bg); border-color: var(--nt-color-status-success-border); color: var(--nt-color-status-success-text); }
+  .alert--warning { background: var(--nt-color-status-warning-bg); border-color: var(--nt-color-status-warning-border); color: var(--nt-color-status-warning-text); }
+  .alert--danger { background: var(--nt-color-status-danger-bg); border-color: var(--nt-color-status-danger-border); color: var(--nt-color-status-danger-text); }
+  .alert--info { background: var(--nt-color-status-info-bg); border-color: var(--nt-color-status-info-border); color: var(--nt-color-status-info-text); }
+  .alert--ai { background: var(--nt-color-ai-bg); border-color: var(--nt-color-ai-border); color: var(--nt-color-ai-text); }
+
+  /* 모양·깊이 데모 */
+  .radius-demo, .shadow-demo { display: flex; gap: var(--nt-space-4); flex-wrap: wrap; }
+  .radius-demo div { width: 72px; height: 72px; background: var(--nt-color-surface-brand-subtle); border: 1px solid var(--nt-color-border-brand); display: grid; place-items: center; font-size: var(--nt-font-size-xs); }
+  .shadow-demo div { width: 120px; height: 72px; background: var(--nt-color-surface-raised); border: 1px solid var(--nt-color-border-subtle); border-radius: var(--nt-radius-lg); display: grid; place-items: center; font-size: var(--nt-font-size-xs); }
+  .grad { height: 96px; border-radius: var(--nt-radius-lg); display: flex; align-items: end; padding: var(--nt-space-3); font-size: var(--nt-font-size-xs); font-family: var(--nt-font-family-mono); }
+  .space-demo { display: flex; align-items: end; gap: var(--nt-space-2); flex-wrap: wrap; }
+  .space-demo div { background: var(--nt-color-accent-verdigris); opacity: .5; width: var(--w); height: var(--w); }
+
+  /* ── notting 패턴 ── */
+  .shell { display: grid; grid-template-columns: var(--nt-size-layout-sidebar) 1fr var(--nt-size-layout-panel); border: 1px solid var(--nt-color-border-default); border-radius: var(--nt-radius-xl); overflow: hidden; min-height: 560px; background: var(--nt-color-surface-canvas); }
+  @media (max-width: 1279px) { .shell { grid-template-columns: var(--nt-size-layout-sidebar) 1fr; } .shell .panel { display: none; } }
+  @media (max-width: 1023px) { .shell { grid-template-columns: 1fr; } .shell .sidebar { display: none; } }
+  .sidebar { background: var(--nt-color-surface-canvas); border-right: 1px solid var(--nt-color-border-subtle); padding: var(--nt-space-3); display: flex; flex-direction: column; gap: var(--nt-space-1); }
+  .ws { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-size-control-sm); padding-inline: var(--nt-space-2); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-semibold); }
+  .search { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-size-control-sm); padding-inline: var(--nt-space-2); border-radius: var(--nt-radius-sm); background: var(--nt-color-surface-default); border: 1px solid var(--nt-color-border-default); color: var(--nt-color-text-placeholder); font-size: var(--nt-font-size-sm); margin-bottom: var(--nt-space-4); }
+  .search kbd { margin-left: auto; }
+  .tree-sec { margin: var(--nt-space-4) 0 var(--nt-space-1); padding-inline: var(--nt-space-2); }
+  .tree-item { display: flex; align-items: center; gap: var(--nt-component-page-tree-item-gap); height: var(--nt-component-page-tree-item-height); padding-inline: var(--nt-component-page-tree-item-padding-x); border-radius: var(--nt-component-page-tree-item-radius); color: var(--nt-component-page-tree-text); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tree-item:hover { background: var(--nt-component-page-tree-bg-hover); }
+  .tree-item.active { background: var(--nt-component-page-tree-bg-active); color: var(--nt-component-page-tree-text-active); }
+  .tree-item.l1 { padding-left: calc(var(--nt-component-page-tree-item-padding-x) + var(--nt-component-page-tree-indent)); }
+  .tree-item.l2 { padding-left: calc(var(--nt-component-page-tree-item-padding-x) + var(--nt-component-page-tree-indent) * 2); }
+  .tree-item .ico { color: var(--nt-color-text-tertiary); }
+  .tree-item.active .ico { color: inherit; }
+
+  .main { display: flex; flex-direction: column; min-width: 0; }
+  .toolbar { display: flex; align-items: center; gap: var(--nt-component-page-toolbar-gap); height: var(--nt-component-page-toolbar-height); padding-inline: var(--nt-component-page-toolbar-padding-x); background: var(--nt-component-page-toolbar-bg); border-bottom: 1px solid var(--nt-component-page-toolbar-border); font-size: var(--nt-font-size-sm); }
+  .crumb { display: flex; align-items: center; gap: var(--nt-space-1); color: var(--nt-color-text-secondary); min-width: 0; }
+  .crumb .cur { color: var(--nt-color-text-primary); }
+  .crumb .sep { color: var(--nt-color-text-tertiary); }
+  .save { margin-left: auto; display: inline-flex; align-items: center; gap: var(--nt-component-save-indicator-gap); font-size: var(--nt-font-size-xs); color: var(--nt-component-save-indicator-saved); }
+  .editor-wrap { flex: 1; background: var(--nt-color-surface-default); overflow: auto; }
+  .editor { max-width: var(--nt-size-layout-editor); margin-inline: auto; padding: var(--nt-space-10) var(--nt-space-5) var(--nt-space-12); position: relative; }
+  .editor .title { margin: 0 0 var(--nt-component-editor-title-gap); }
+  .props { border-top: 1px solid var(--nt-color-border-subtle); border-bottom: 1px solid var(--nt-color-border-subtle); margin-bottom: var(--nt-component-editor-title-gap); }
+  .prop { display: flex; align-items: center; min-height: var(--nt-component-property-row-min-height); gap: var(--nt-component-property-row-gap); }
+  .prop .k { width: var(--nt-component-property-row-label-width); flex: none; display: flex; align-items: center; gap: var(--nt-space-1-5); font-size: var(--nt-font-size-xs); color: var(--nt-component-property-row-label-color); }
+  .prop .v { font-size: var(--nt-font-size-sm); padding-inline: var(--nt-component-property-row-value-padding-x); border-radius: var(--nt-component-property-row-value-radius); min-height: var(--nt-size-control-xs); display: inline-flex; align-items: center; gap: var(--nt-space-2); }
+  .prop .v:hover { background: var(--nt-component-property-row-value-bg-hover); }
+  .prop .v.empty { color: var(--nt-component-property-row-empty-text); }
+  .block { position: relative; }
+  .block:hover .handle { opacity: 1; }
+  .handle { position: absolute; left: calc(-1 * var(--nt-component-editor-gutter)); top: 0.2em; display: flex; gap: var(--nt-space-0-5); opacity: 0; transition: opacity var(--nt-motion-duration-fast) var(--nt-motion-easing-standard); color: var(--nt-component-editor-handle-color); }
+  .handle svg { width: var(--nt-size-icon-sm); height: var(--nt-size-icon-sm); }
+  .empty-block { color: var(--nt-component-editor-placeholder); }
+
+  .panel { background: var(--nt-component-panel-bg); border-left: 1px solid var(--nt-component-panel-border); display: flex; flex-direction: column; min-width: 0; }
+  .panel-head { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-panel-header-height); padding-inline: var(--nt-space-3); border-bottom: 1px solid var(--nt-color-border-subtle); }
+  .seg { display: inline-flex; background: var(--nt-component-tabs-segmented-bg); border-radius: var(--nt-component-tabs-segmented-radius); padding: var(--nt-component-tabs-segmented-padding); height: var(--nt-size-control-sm); }
+  .seg span { display: inline-flex; align-items: center; padding-inline: var(--nt-space-2); border-radius: var(--nt-radius-sm); font-size: var(--nt-font-size-xs); font-weight: var(--nt-font-weight-medium); color: var(--nt-component-tabs-text); }
+  .seg span.on { background: var(--nt-component-tabs-segmented-active-bg); color: var(--nt-component-tabs-text-active); box-shadow: var(--nt-shadow-xs); }
+  .panel-body { padding: var(--nt-component-panel-padding); display: flex; flex-direction: column; gap: var(--nt-space-4); overflow: auto; }
+  .q { font-size: var(--nt-font-size-md); }
+  .ai-answer { background: var(--nt-component-ai-answer-bg); border: 1px solid var(--nt-component-ai-answer-border); border-radius: var(--nt-component-ai-answer-radius); padding: var(--nt-component-ai-answer-padding); }
+  .ai-answer--streaming { box-shadow: var(--nt-shadow-ai); }
+  .ai-answer .lbl { display: flex; align-items: center; gap: var(--nt-space-1); font-size: var(--nt-font-size-xs); font-weight: var(--nt-font-weight-medium); color: var(--nt-component-ai-answer-label-color); margin-bottom: var(--nt-space-2); }
+  .ai-answer .lbl .ico { color: var(--nt-color-ai-icon); }
+  .ai-answer .lbl .btn { margin-left: auto; }
+  .ai-answer .nt-doc { font-size: var(--nt-font-size-sm); }
+  .sources { margin-top: var(--nt-component-ai-answer-sources-gap); border-top: 1px solid var(--nt-color-ai-border); padding-top: var(--nt-space-2); display: flex; flex-direction: column; }
+  .src { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-ai-answer-source-item-height); font-size: var(--nt-font-size-xs); color: var(--nt-color-text-secondary); border-radius: var(--nt-radius-sm); padding-inline: var(--nt-space-1); }
+  .src:hover { background: var(--nt-color-interactive-hover-overlay); }
+  .src .n { font-family: var(--nt-font-family-mono); color: var(--nt-color-text-ai); }
+  .src .t { color: var(--nt-color-text-primary); }
+  .src .path { margin-left: auto; font-family: var(--nt-font-family-mono); color: var(--nt-color-text-tertiary); }
+  .stream-caret { display: inline-block; width: var(--nt-component-ai-answer-stream-caret-width); height: 1em; vertical-align: text-bottom; background: var(--nt-component-ai-answer-stream-caret-color); animation: nt-blink var(--nt-motion-duration-stream-caret) var(--nt-motion-easing-linear) infinite; }
+  @keyframes nt-blink { 50% { opacity: 0; } }
+  .ai-answer--insufficient { background: var(--nt-component-ai-answer-insufficient-bg); border-color: var(--nt-color-status-neutral-border); }
+  .ai-answer--insufficient .lbl { color: var(--nt-color-text-secondary); }
+  .ai-answer--insufficient .lbl .ico { color: var(--nt-color-text-tertiary); }
+  .ask { display: flex; gap: var(--nt-space-2); margin-top: auto; }
+  .ask .input { flex: 1; }
+
+  .cp { background: var(--nt-component-context-pack-bg); border: 1px solid var(--nt-component-context-pack-border); border-radius: var(--nt-component-context-pack-radius); overflow: hidden; }
+  .cp-bar { height: var(--nt-component-context-pack-top-bar-height); background: var(--nt-component-context-pack-top-bar); }
+  .cp-body { padding: var(--nt-component-context-pack-padding); }
+  .cp-head { display: flex; align-items: center; gap: var(--nt-space-2); margin-bottom: var(--nt-space-1); }
+  .cp-head .rev { margin-left: auto; }
+  .cp-item { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-context-pack-item-height); font-size: var(--nt-font-size-sm); }
+  .cp-item .why { margin-left: auto; font-size: var(--nt-font-size-xs); color: var(--nt-component-context-pack-reason-color); }
+  .cp-item.off { opacity: var(--nt-opacity-stale); }
+
+  .report { border: 1px solid var(--nt-color-border-default); border-radius: var(--nt-radius-lg); overflow: hidden; }
+  .rep-sum { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--nt-space-4); padding: var(--nt-space-4); border-bottom: 1px solid var(--nt-color-border-default); }
+  .rep-sum div { display: flex; flex-direction: column; gap: var(--nt-space-1); }
+  .rep-sum .l { display: flex; align-items: center; gap: var(--nt-space-1-5); font-size: var(--nt-font-size-xs); color: var(--nt-color-text-secondary); }
+  .rep-sum .l i { width: var(--nt-component-report-severity-dot); height: var(--nt-component-report-severity-dot); border-radius: var(--nt-radius-full); }
+  .rep-g { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-report-group-header-height); padding-inline: var(--nt-component-report-row-padding-x); background: var(--nt-component-report-group-header-bg); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .rep-r { display: flex; align-items: center; gap: var(--nt-space-3); height: var(--nt-component-report-row-height); padding-inline: var(--nt-component-report-row-padding-x); border-top: 1px solid var(--nt-component-report-row-border); font-size: var(--nt-font-size-sm); }
+  .rep-r .path { font-family: var(--nt-font-family-mono); font-size: var(--nt-font-size-xs); color: var(--nt-color-text-secondary); flex: none; }
+  .rep-r .msg { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .rep-r i { width: var(--nt-component-report-severity-dot); height: var(--nt-component-report-severity-dot); border-radius: var(--nt-radius-full); flex: none; }
+
+  .board { display: flex; gap: var(--nt-component-board-column-gap); overflow-x: auto; padding-bottom: var(--nt-space-2); }
+  .col { flex: none; width: var(--nt-component-board-column-width); background: var(--nt-component-board-column-bg); border-radius: var(--nt-component-board-column-radius); padding: var(--nt-component-board-column-padding); display: flex; flex-direction: column; gap: var(--nt-component-board-card-gap); }
+  .col-h { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-board-header-height); padding-inline: var(--nt-space-2); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .col-h .cnt { color: var(--nt-color-text-tertiary); font-size: var(--nt-font-size-xs); }
+  .col-h .dot { width: var(--nt-size-icon-xs); height: var(--nt-size-icon-xs); border-radius: var(--nt-radius-full); }
+  .issue { background: var(--nt-component-issue-card-bg); border: 1px solid var(--nt-component-issue-card-border); border-radius: var(--nt-component-issue-card-radius); padding: var(--nt-component-issue-card-padding); display: flex; flex-direction: column; gap: var(--nt-component-issue-card-gap); }
+  .issue:hover { box-shadow: var(--nt-shadow-sm); }
+  .issue .key { display: flex; align-items: center; font-family: var(--nt-font-family-mono); font-size: var(--nt-font-size-xs); color: var(--nt-component-issue-card-key-color); }
+  .issue .key .pr { margin-left: auto; display: flex; gap: 2px; align-items: end; }
+  .issue .key .pr i { width: var(--nt-border-width-marker); border-radius: var(--nt-space-px); background: var(--nt-color-priority-none); }
+  .issue .t { font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .issue .m { display: flex; align-items: center; gap: var(--nt-space-2); }
+  .avatar { width: var(--nt-size-avatar-xs); height: var(--nt-size-avatar-xs); border-radius: var(--nt-radius-full); background: var(--nt-component-avatar-fallback-bg); color: var(--nt-component-avatar-fallback-text); display: grid; place-items: center; font-size: var(--nt-font-size-2xs); font-weight: var(--nt-font-weight-medium); margin-left: auto; }
+
+  .diff { border: 1px solid var(--nt-color-border-default); border-radius: var(--nt-radius-md); overflow: hidden; font-size: var(--nt-font-size-sm); }
+  .dl { display: flex; align-items: stretch; }
+  .dl .g { width: var(--nt-component-diff-gutter-width); flex: none; display: grid; place-items: center; font-family: var(--nt-font-family-mono); color: var(--nt-component-diff-sign-color); }
+  .dl .c { flex: 1; padding: var(--nt-space-1) var(--nt-component-diff-line-padding-x); border-left: var(--nt-component-diff-marker-width) solid transparent; }
+  .dl--add .c { background: var(--nt-color-diff-added-bg); color: var(--nt-color-diff-added-text); border-left-color: var(--nt-color-diff-added-marker); }
+  .dl--del .c { background: var(--nt-color-diff-removed-bg); color: var(--nt-color-diff-removed-text); border-left-color: var(--nt-color-diff-removed-marker); }
+  .dl--chg .c { background: var(--nt-color-diff-changed-bg); color: var(--nt-color-diff-changed-text); border-left-color: var(--nt-color-diff-changed-marker); }
+  .conflict { background: var(--nt-color-diff-conflict-bg); border: 1px solid var(--nt-color-diff-conflict-border); border-radius: var(--nt-radius-md); }
+  .conflict .acts { display: flex; gap: var(--nt-space-2); align-items: center; height: var(--nt-component-diff-conflict-actions-height); padding-inline: var(--nt-space-3); border-bottom: 1px solid var(--nt-color-diff-conflict-border); font-size: var(--nt-font-size-xs); color: var(--nt-color-text-ai); }
+
+  .slash { width: var(--nt-component-slash-menu-width); background: var(--nt-component-slash-menu-bg); border: 1px solid var(--nt-component-slash-menu-border); border-radius: var(--nt-component-slash-menu-radius); box-shadow: var(--nt-component-slash-menu-shadow); padding: var(--nt-component-slash-menu-padding); }
+  .slash .g { padding: var(--nt-space-2); color: var(--nt-color-text-tertiary); }
+  .slash .it { display: flex; align-items: center; gap: var(--nt-component-slash-menu-item-gap); height: var(--nt-component-slash-menu-item-height); padding-inline: var(--nt-component-slash-menu-item-padding-x); border-radius: var(--nt-component-slash-menu-item-radius); }
+  .slash .it.sel { background: var(--nt-component-slash-menu-selected-bg); }
+  .slash .tile { width: var(--nt-component-slash-menu-icon-tile); height: var(--nt-component-slash-menu-icon-tile); border-radius: var(--nt-component-slash-menu-icon-tile-radius); background: var(--nt-component-slash-menu-icon-tile-bg); display: grid; place-items: center; color: var(--nt-color-text-secondary); flex: none; }
+  .slash .tile--ai { background: var(--nt-color-ai-bg); color: var(--nt-color-ai-icon); }
+  .slash .tx { display: flex; flex-direction: column; min-width: 0; }
+  .slash .tx b { font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .slash .tx small { font-size: var(--nt-font-size-xs); color: var(--nt-color-text-tertiary); }
+
+  .palette { width: min(100%, var(--nt-component-command-palette-width)); background: var(--nt-component-command-palette-bg); border-radius: var(--nt-component-command-palette-radius); box-shadow: var(--nt-component-command-palette-shadow); overflow: hidden; border: 1px solid var(--nt-color-border-default); }
+  .palette .in { display: flex; align-items: center; gap: var(--nt-space-2); height: var(--nt-component-command-palette-input-height); padding-inline: var(--nt-space-4); border-bottom: 1px solid var(--nt-color-border-subtle); font-size: var(--nt-font-size-md); color: var(--nt-color-text-placeholder); }
+  .palette .it { display: flex; align-items: center; gap: var(--nt-space-3); height: var(--nt-component-command-palette-item-height); padding-inline: var(--nt-component-command-palette-item-padding-x); margin: 0 var(--nt-space-1); border-radius: var(--nt-component-command-palette-item-radius); font-size: var(--nt-font-size-sm); font-weight: var(--nt-font-weight-medium); }
+  .palette .it.sel { background: var(--nt-color-interactive-hover-overlay); }
+  .palette .it .path { margin-left: auto; font-family: var(--nt-font-family-mono); font-size: var(--nt-font-size-xs); font-weight: var(--nt-font-weight-regular); color: var(--nt-color-text-tertiary); }
+  .palette .it--ai { background: var(--nt-color-ai-bg); color: var(--nt-color-text-ai); }
+  .palette .ft { display: flex; align-items: center; gap: var(--nt-space-3); height: var(--nt-component-command-palette-footer-height); padding-inline: var(--nt-space-4); background: var(--nt-component-command-palette-footer-bg); font-size: var(--nt-font-size-xs); color: var(--nt-color-text-tertiary); }
+
+  .code-demo { display: grid; gap: var(--nt-space-4); }
+  .skel { background: var(--nt-component-skeleton-bg); border-radius: var(--nt-component-skeleton-radius); height: var(--nt-component-skeleton-text-height); }
+</style>
+</head>
+<body>
+<header class="top">
+  <picture>
+    <source srcset="../assets/brand/logo-lockup-inverse.svg?v=1.0.0" media="(prefers-color-scheme: dark)" />
+    <img class="logo" src="../assets/brand/logo-lockup.svg?v=1.0.0" alt="notting" />
+  </picture>
+  <nav class="toc nt-label-md">
+    <a href="#brand">브랜드</a><a href="#color">색</a><a href="#type">글자</a><a href="#space">간격·모양</a><a href="#components">컴포넌트</a><a href="#shell">앱 셸</a><a href="#ai">AI·근거</a><a href="#roundtrip">왕복·diff</a><a href="#issues">이슈</a><a href="#menus">메뉴</a>
+  </nav>
+  <div class="row"><button class="btn btn--secondary btn--sm" id="theme">다크 ↔ 라이트</button></div>
+</header>
+
+<main class="page">
+  <section id="brand" style="margin-top:0">
+    <div class="hero">
+      <div class="hero__content">
+        <span class="nt-overline" style="opacity:.8">notting design system v1.0.0</span>
+        <h1 class="nt-display-md" style="margin:var(--nt-space-2) 0 0">Notion for humans,<br/>Markdown for tools,<br/>context for agents.</h1>
+        <p class="nt-body-md">잉크와 종이, verdigris 행동, periwinkle 근거. 전 토큰과 notting 패턴을 라이트·다크로 확인한다.</p>
+      </div>
+    </div>
+    <h3 class="sub nt-heading-3">브랜드 자산</h3>
+    <div class="brand-assets">
+      <div class="brand-stage"><img src="../assets/brand/logo-lockup.svg?v=1.0.0" alt="notting 로고" /></div>
+      <div class="brand-stage brand-stage--dark"><img src="../assets/brand/logo-lockup-inverse.svg?v=1.0.0" alt="notting 반전 로고" /></div>
+      <div class="brand-stage"><div class="favicon-row"><img src="../assets/brand/favicon-32.png?v=1.0.0" alt="파비콘 32" /><img src="../assets/brand/favicon-48.png?v=1.0.0" alt="파비콘 48" /><img src="../assets/brand/app-icon-512.png?v=1.0.0" alt="앱 아이콘" /></div></div>
+      <div class="brand-stage"><img class="mono-demo" src="../assets/brand/logo-mark-mono.svg?v=1.0.0" alt="단색 심볼" /></div>
+    </div>
+  </section>
+
+  <section id="color">
+    <h2 class="nt-heading-2">색</h2>
+    <p class="lead nt-body-sm">brand 5색 → 램프 6종(OKLCH) → 시맨틱 + 도메인 그룹 9종. 화면 코드는 시맨틱만 쓴다.</p>
+    <div class="brand-grid" id="brand-grid"></div>
+    <h3 class="sub nt-heading-3">램프</h3>
+    <div id="ramps"></div>
+    <h3 class="sub nt-heading-3">시맨틱 (라이트 / 다크)</h3>
+    <div class="grid-2">
+      <table class="tok nt-body-sm" id="sem-a"></table>
+      <table class="tok nt-body-sm" id="sem-b"></table>
+    </div>
+    <h3 class="sub nt-heading-3">도메인 그룹</h3>
+    <div class="row" id="domain-pills"></div>
+  </section>
+
+  <section id="type">
+    <h2 class="nt-heading-2">글자</h2>
+    <p class="lead nt-body-sm">UI 스타일 22종 + 문서 스타일(.nt-doc). 본문 UI 1.6, 문서 1.7.</p>
+    <div class="grid-2">
+      <div>
+        <h3 class="sub nt-heading-3" style="margin-top:0">UI</h3>
+        <div style="display:flex;flex-direction:column;gap:var(--nt-space-3)">
+          <div class="nt-display-sm">display-sm 36</div>
+          <div class="nt-heading-1">heading-1 30 · 앱 화면 제목</div>
+          <div class="nt-heading-2">heading-2 24 · 섹션·모달</div>
+          <div class="nt-heading-3">heading-3 20 · 카드·컬럼</div>
+          <div class="nt-heading-4">heading-4 18 · 패널 섹션</div>
+          <div class="nt-heading-5">heading-5 16 · 검색 결과 제목</div>
+          <div class="nt-body-md">body-md 16/1.6 · UI 본문. 문서는 Markdown 으로 안전하게 꺼낼 수 있고, AI 는 출처 있는 맥락을 가져간다.</div>
+          <div class="nt-body-sm" style="color:var(--nt-color-text-secondary)">body-sm 14 · 보조 설명·스니펫·속성 값</div>
+          <div class="nt-label-md">label-md 14/500 · 버튼·라벨·트리·이슈 제목</div>
+          <div class="nt-caption" style="color:var(--nt-color-text-tertiary)">caption 12 · 저장됨 14:30 · 속성 라벨</div>
+          <div class="nt-overline" style="color:var(--nt-color-text-tertiary)">overline · workspace</div>
+          <div class="nt-mono-label" style="color:var(--nt-color-text-secondary)">mono-label · NT-123 · a1b2c3 · …/adr/0001-document-model.md</div>
+          <div><kbd>⌘</kbd><kbd>K</kbd> <span class="nt-caption" style="color:var(--nt-color-text-tertiary)">kbd 11 mono</span></div>
+          <div class="nt-numeric">numeric 1,234,567 · tabular</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="sub nt-heading-3" style="margin-top:0">문서 (.nt-doc)</h3>
+        <div class="card" style="padding:var(--nt-space-6)">
+          <div class="nt-prose-title" style="margin-bottom:var(--nt-space-6)">Notting 초기 기획 및 설계</div>
+          <article class="nt-doc">
+            <h1>1. 결론</h1>
+            <p>Notting 은 범용적인 <strong>Notion 복제</strong>가 아니다. 첫 제품은 편집·소유권·근거 세 계약에 집중한다. 본문은 16px 에 행간 1.7, 단어 중간에서 줄이 끊기지 않는다.</p>
+            <h2>7.1 lossless 의 정확한 정의</h2>
+            <ul><li>Semantic round-trip: AST 비교에서 의미 동등</li><li>Notting bundle round-trip: 고유 블록·속성·ID 까지 복원<ul><li>사이드카는 Markdown 에 표현할 수 없는 것만</li></ul></li></ul>
+            <ul data-type="taskList"><li data-checked="true"><input type="checkbox" checked /><div>fixture 기반 왕복 테스트</div></li><li><input type="checkbox" /><div>Tiptap adapter</div></li></ul>
+            <blockquote>지원하지 않는 요소는 손실을 숨기지 않는다.</blockquote>
+            <p>인라인 코드 <code>schemaVersion</code> 은 코럴, 링크는 <a href="#">밑줄과 verdigris</a>. 근거 칩은 문장 끝에 붙는다<a class="nt-cite" href="#">1</a><a class="nt-cite nt-cite--stale" href="#">2</a></p>
+            <h3>8.2 Document AST</h3>
+            <pre><code><span class="token keyword">type</span> <span class="token function">Block</span> = {
+  id: <span class="token keyword">string</span>;           <span class="token comment">// 안정 ID</span>
+  type: BlockType;
+  attrs: Record&lt;<span class="token keyword">string</span>, <span class="token keyword">unknown</span>&gt;;
+  children?: Block[];   <span class="token comment">// 최대 <span class="token number">5</span>단계</span>
+};</code></pre>
+            <div class="nt-callout nt-callout--ai"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--nt-color-ai-icon)"><path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/></svg><div><span class="ai-badge">✦ AI</span> 요약: AST 는 editor·API·Markdown·search 가 공유하는 제품 계약이다.</div></div>
+            <div class="nt-callout nt-callout--warning"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--nt-color-status-warning-icon)"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div>plain Markdown 으로 내보내면 이 콜아웃은 인용으로 대체된다.</div></div>
+            <details><summary>토글 블록 — 저장 전략</summary><p>pages 와 document_revisions 를 정규화하고 AST snapshot 은 JSONB 로 저장한다.</p></details>
+            <table><thead><tr><th>개념</th><th>책임</th></tr></thead><tbody><tr><td>Revision</td><td>append 중심</td></tr><tr><td>Chunk</td><td>검색용 파생 단위</td></tr></tbody></table>
+            <hr />
+            <figure><div style="aspect-ratio:16/9;background:var(--nt-component-block-image-placeholder-bg);border-radius:var(--nt-component-block-image-radius)"></div><figcaption>이미지 블록 · 캡션은 prose-caption</figcaption></figure>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="space">
+    <h2 class="nt-heading-2">간격 · 모양 · 깊이</h2>
+    <p class="lead nt-body-sm">4px 그리드, radius 7단계, 그림자(정지 카드는 테두리), 그라데이션 6종.</p>
+    <div class="space-demo" id="space-demo"></div>
+    <h3 class="sub nt-heading-3">radius</h3>
+    <div class="radius-demo"><div style="border-radius:var(--nt-radius-xs)">xs</div><div style="border-radius:var(--nt-radius-sm)">sm</div><div style="border-radius:var(--nt-radius-md)">md</div><div style="border-radius:var(--nt-radius-lg)">lg</div><div style="border-radius:var(--nt-radius-xl)">xl</div><div style="border-radius:var(--nt-radius-2xl)">2xl</div><div style="border-radius:var(--nt-radius-full)">full</div></div>
+    <h3 class="sub nt-heading-3">shadow</h3>
+    <div class="shadow-demo"><div style="box-shadow:var(--nt-shadow-xs)">xs</div><div style="box-shadow:var(--nt-shadow-sm)">sm</div><div style="box-shadow:var(--nt-shadow-md)">md</div><div style="box-shadow:var(--nt-shadow-lg)">lg</div><div style="box-shadow:var(--nt-shadow-inner)">inner</div><div style="box-shadow:var(--nt-shadow-brand)">brand</div><div style="box-shadow:var(--nt-shadow-ai)">ai</div></div>
+    <h3 class="sub nt-heading-3">gradient</h3>
+    <div class="grid">
+      <div class="grad" style="background:var(--nt-gradient-brand);color:var(--nt-color-text-on-brand)">brand</div>
+      <div class="grad" style="background:var(--nt-gradient-context);color:var(--nt-neutral-950)">context</div>
+      <div class="grad" style="background:var(--nt-gradient-paper);border:1px solid var(--nt-color-border-default)">paper</div>
+      <div class="grad" style="background:var(--nt-gradient-ink);color:var(--nt-teal-300)">ink</div>
+      <div class="grad" style="background:var(--nt-gradient-scrim-bottom);color:var(--nt-base-white)">scrim-bottom</div>
+    </div>
+  </section>
+
+  <section id="components">
+    <h2 class="nt-heading-2">컴포넌트</h2>
+    <p class="lead nt-body-sm">범용 16종 중 대표. notting 전용은 아래 섹션.</p>
+    <h3 class="sub nt-heading-3">Button — primary 1 + ai 1 은 나란히 허용</h3>
+    <div class="row">
+      <button class="btn btn--primary">저장</button>
+      <button class="btn btn--ai"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/></svg>물어보기</button>
+      <button class="btn btn--secondary">미리보기</button>
+      <button class="btn btn--ghost">취소</button>
+      <button class="btn btn--danger">영구 삭제</button>
+      <button class="btn btn--danger-ghost btn--sm">휴지통</button>
+      <button class="btn btn--primary" disabled>비활성</button>
+      <button class="btn btn--secondary btn--sm btn--icon" aria-label="더보기">⋯</button>
+    </div>
+    <div class="row" style="margin-top:var(--nt-space-3)"><button class="btn btn--primary btn--xs">xs 24</button><button class="btn btn--primary btn--sm">sm 32</button><button class="btn btn--primary">md 40</button><button class="btn btn--primary btn--lg">lg 48</button></div>
+    <h3 class="sub nt-heading-3">Input</h3>
+    <div class="grid">
+      <div class="field"><label>워크스페이스 이름</label><input class="input" placeholder="예: notting-core" /><div class="help">URL 에 쓰여요</div></div>
+      <div class="field"><label>이메일</label><input class="input input--error" value="hong@" /><div class="help help--error">이메일 형식이 아니에요</div></div>
+    </div>
+    <h3 class="sub nt-heading-3">Badge · Status pill · AI badge</h3>
+    <div class="row" id="pills"></div>
+    <h3 class="sub nt-heading-3">Alert · Card</h3>
+    <div class="grid">
+      <div class="alert alert--success">✓ 40개 문서를 가져왔어요 · 손실 없음</div>
+      <div class="alert alert--warning">⚠ callout 2 · toggle 1 이 대체 표현으로 나가요 · 보고서 보기</div>
+      <div class="alert alert--danger">✕ 저장하지 못했어요 · 다시 시도</div>
+      <div class="alert alert--info">ⓘ 최신 변경이 아직 검색에 반영되지 않았을 수 있어요</div>
+      <div class="alert alert--ai">✦ 이 문서와 관련된 ADR 2개를 찾았어요 · 보기</div>
+      <div class="card"><h4 class="nt-heading-5">카드 — 테두리, 그림자 없음</h4><p class="nt-body-sm">클릭 가능한 카드만 hover 에 shadow.md 가 붙는다.</p></div>
+    </div>
+    <h3 class="sub nt-heading-3">Skeleton</h3>
+    <div class="card" style="display:flex;flex-direction:column;gap:var(--nt-space-3)"><div class="skel" style="width:40%;height:var(--nt-font-size-3xl)"></div><div class="skel"></div><div class="skel"></div><div class="skel" style="width:60%"></div></div>
+  </section>
+
+  <section id="shell">
+    <h2 class="nt-heading-2">앱 셸 — 사이드바 · 툴바 · 에디터 · 패널</h2>
+    <p class="lead nt-body-sm">크롬은 canvas(종이), 문서는 default(흰). 블록 핸들은 hover 에만. 우측 패널의 Ask 답변은 AI 면.</p>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="ws">◫ winterholic <span style="color:var(--nt-color-text-tertiary);font-weight:400">⌄</span></div>
+        <div class="search"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>검색<kbd>⌘K</kbd></div>
+        <div class="tree-sec nt-overline" style="color:var(--nt-color-text-tertiary);margin-top:0">즐겨찾기</div>
+        <div class="tree-item">📐 아키텍처</div>
+        <div class="tree-sec nt-overline" style="color:var(--nt-color-text-tertiary)">워크스페이스</div>
+        <div class="tree-item">▾ 📁 projects</div>
+        <div class="tree-item l1">▾ 📗 notting</div>
+        <div class="tree-item l2 active">📐 아키텍처</div>
+        <div class="tree-item l2">▸ ⚖ adr</div>
+        <div class="tree-item l2">🗓 회의록 2026-09-12</div>
+        <div class="tree-item l1">▸ ◎ 이슈</div>
+        <div class="tree-item">📄 README</div>
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:var(--nt-space-1)"><div class="tree-item">⚙ 설정</div><div class="tree-item">🗑 휴지통</div></div>
+      </aside>
+      <div class="main">
+        <div class="toolbar">
+          <button class="btn btn--ghost btn--sm btn--icon" aria-label="사이드바">☰</button>
+          <div class="crumb"><span>◫ winterholic</span><span class="sep">›</span><span>📗 notting</span><span class="sep">›</span><span class="cur">📐 아키텍처</span></div>
+          <div class="save">✓ 저장됨</div>
+          <button class="btn btn--ghost btn--sm">공유</button>
+          <button class="btn btn--ai btn--sm">✦ Ask</button>
+          <button class="btn btn--ghost btn--sm btn--icon" aria-label="더보기">⋯</button>
+        </div>
+        <div class="editor-wrap">
+          <div class="editor">
+            <div style="font-size:var(--nt-size-avatar-lg);line-height:1;margin-bottom:var(--nt-component-editor-icon-gap)">📐</div>
+            <h1 class="nt-prose-title title">아키텍처</h1>
+            <div class="props">
+              <div class="prop"><div class="k">◎ 상태</div><div class="v"><span class="pill" style="background:var(--nt-color-decision-accepted-bg);color:var(--nt-color-decision-accepted-text)"><span class="dot" style="background:var(--nt-color-decision-accepted-solid)"></span>Accepted</span></div></div>
+              <div class="prop"><div class="k">👤 작성자</div><div class="v"><span class="avatar" style="margin:0">W</span> winterholic</div></div>
+              <div class="prop"><div class="k">🔗 관련 이슈</div><div class="v empty">비어 있음</div></div>
+              <div class="prop"><div class="k"># revision</div><div class="v nt-mono-label" style="color:var(--nt-color-text-secondary)">a1b2c3 · 2026.09.20 14:30</div></div>
+            </div>
+            <article class="nt-doc">
+              <div class="block"><div class="handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg></div><h2>9. AI Context Engine</h2></div>
+              <div class="block"><div class="handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg></div><p data-cited>초기 답은 지식 그래프나 에이전트 루프가 아니라, <strong>재현 가능한 하이브리드 검색 파이프라인</strong>이다. 블록에 마우스를 올리면 왼쪽 gutter 에 핸들이 나타난다.</p></div>
+              <div class="block"><div class="handle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg></div><pre><code>Document revision committed
+  → affected sections detected
+  → chunks rebuilt
+  → full-text index + embedding updated
+  → answer with citations</code></pre></div>
+              <div class="block"><p class="empty-block">명령은 '/', 텍스트는 그냥 입력</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <aside class="panel">
+        <div class="panel-head"><div class="seg"><span class="on">Ask</span><span>속성</span><span>백링크</span><span>revision</span></div><button class="btn btn--ghost btn--sm btn--icon" aria-label="닫기" style="margin-left:auto">✕</button></div>
+        <div class="panel-body">
+          <div><div class="nt-overline" style="color:var(--nt-color-text-tertiary)">나</div><div class="q">왜 JSONB 로 저장하기로 했지?</div></div>
+          <div class="ai-answer">
+            <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/></svg>AI 답변 · 이 페이지 · 방금<button class="btn btn--ghost btn--xs">복사</button></div>
+            <article class="nt-doc"><p>block 마다 행을 만드는 방식은 순서 변경과 에디터 저장을 복잡하게 하므로 첫 선택으로 쓰지 않는다<a class="nt-cite" href="#">1</a>. 조회가 필요한 개념은 별도 테이블로 파생한다<a class="nt-cite" href="#">2</a>.</p></article>
+            <div class="sources"><div class="src"><span class="n">[1]</span><span class="t">아키텍처</span><span class="path">§8.3</span></div><div class="src"><span class="n">[2]</span><span class="t">아키텍처</span><span class="path">§8.4</span></div></div>
+          </div>
+          <div class="ask"><input class="input" placeholder="이 페이지에 대해 물어보세요" /><button class="btn btn--ai">✦</button></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="ai">
+    <h2 class="nt-heading-2">AI · 근거 · Context Pack</h2>
+    <p class="lead nt-body-sm">스트리밍 중엔 커서 + ai 글로우. 근거 없으면 중립 면. Context Pack 은 상단 context 그라데이션 바와 revision 고정.</p>
+    <div class="grid-2">
+      <div style="display:flex;flex-direction:column;gap:var(--nt-space-4)">
+        <div class="ai-answer ai-answer--streaming">
+          <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.6L19.5 10.5 13.9 12.4 12 18l-1.9-5.6L4.5 10.5l5.6-1.9z"/></svg>AI 답변 · 워크스페이스<button class="btn btn--ghost btn--xs">중지</button></div>
+          <article class="nt-doc"><p>Gate 0 은 지원 fixture 에서 의미 손실 0건, 미지원 요소는 보고서에 전부<a class="nt-cite" href="#">1</a> 표시되어야 통과한다. 이 Gate 를 못 넘으면<span class="stream-caret"></span></p></article>
+        </div>
+        <div class="ai-answer ai-answer--insufficient">
+          <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8.5 8.5l5 5m0-5-5 5"/></svg>근거 부족</div>
+          <article class="nt-doc"><p>워크스페이스에서 "배포 파이프라인" 에 대한 근거를 찾지 못했어요. 이런 검색어는 어떨까요: <a href="#">인프라</a>, <a href="#">CI</a></p></article>
+          <div class="row" style="margin-top:var(--nt-space-3)"><button class="btn btn--secondary btn--sm">일반 지식으로 답하기</button></div>
+        </div>
+        <div class="ai-answer" style="background:var(--nt-component-ai-answer-conflict-bg);border-color:var(--nt-color-diff-conflict-border)">
+          <div class="lbl"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3v12a3 3 0 0 1-3 3H6M6 21V9M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>두 문서가 다르게 말해요</div>
+          <div class="sources" style="border:0;padding:0;margin:0"><div class="src"><span class="n">[1]</span><span class="t">아키텍처 §8.3 — JSONB snapshot</span><span class="path">09.18</span></div><div class="src"><span class="n">[2]</span><span class="t">회의록 09-12 — block 행 저장 검토</span><span class="path">09.12</span></div></div>
+          <div class="row" style="margin-top:var(--nt-space-2)"><span class="nt-caption" style="color:var(--nt-color-text-secondary)">어느 쪽이 맞나요?</span><button class="btn btn--secondary btn--xs">[1]</button><button class="btn btn--secondary btn--xs">[2]</button></div>
+        </div>
+      </div>
+      <div class="cp">
+        <div class="cp-bar"></div>
+        <div class="cp-body">
+          <div class="cp-head"><span class="nt-heading-5">NT-42 인덱싱 파이프라인 재설계</span><span class="rev nt-mono-label" style="color:var(--nt-color-text-tertiary)">rev a1b2c3</span></div>
+          <div class="nt-caption" style="color:var(--nt-color-text-tertiary);margin-bottom:var(--nt-space-3)">문서 3 · 결정 1 · 이슈 2 · 2026.09.20 14:30 기준</div>
+          <div class="cp-item"><input type="checkbox" checked />📐 아키텍처 › 9 AI Context Engine<span class="why">같은 컴포넌트</span></div>
+          <div class="cp-item"><input type="checkbox" checked />⚖ ADR-0003 하이브리드 검색<span class="why">이슈에서 링크됨</span></div>
+          <div class="cp-item off"><input type="checkbox" />🗓 회의록 2026-09-12<span class="why">유사도 0.71 · 제외됨</span></div>
+          <div class="cp-item"><input type="checkbox" checked />◎ NT-40 chunk 경계 규칙<span class="why">의존 이슈</span></div>
+          <div class="row" style="margin-top:var(--nt-space-4)"><button class="btn btn--secondary btn--sm">복사</button><button class="btn btn--secondary btn--sm">CLI 명령</button><button class="btn btn--ai btn--sm" style="margin-left:auto">✦ 다시 만들기</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roundtrip">
+    <h2 class="nt-heading-2">왕복 보고서 · diff · 충돌</h2>
+    <p class="lead nt-body-sm">손실은 코럴 + 도트 + 숫자. 등급 5종. diff 는 색 + 기호.</p>
+    <div class="grid-2">
+      <div class="report">
+        <div class="rep-sum">
+          <div><span class="l"><i style="background:var(--nt-color-fidelity-lossless-solid)"></i>무손실</span><span class="nt-numeric">18</span></div>
+          <div><span class="l"><i style="background:var(--nt-color-fidelity-normalized-solid)"></i>정규화</span><span class="nt-numeric">3</span></div>
+          <div><span class="l"><i style="background:var(--nt-color-fidelity-degraded-solid)"></i>대체 표현</span><span class="nt-numeric">2</span></div>
+          <div><span class="l"><i style="background:var(--nt-color-fidelity-dropped-solid)"></i>손실</span><span class="nt-numeric">1</span></div>
+        </div>
+        <div class="rep-g"><i style="width:var(--nt-component-report-severity-dot);height:var(--nt-component-report-severity-dot);border-radius:var(--nt-radius-full);background:var(--nt-color-fidelity-dropped-solid)"></i>손실 1</div>
+        <div class="rep-r" style="background:var(--nt-color-fidelity-dropped-bg);color:var(--nt-color-fidelity-dropped-text)"><i style="background:var(--nt-color-fidelity-dropped-solid)"></i><span class="path">assets/diagram.svg</span><span class="msg">자산을 찾지 못했어요 · 블록은 경로를 유지한 채 placeholder</span><button class="btn btn--ghost btn--xs">원문</button></div>
+        <div class="rep-g"><i style="width:var(--nt-component-report-severity-dot);height:var(--nt-component-report-severity-dot);border-radius:var(--nt-radius-full);background:var(--nt-color-fidelity-degraded-solid)"></i>대체 표현 2</div>
+        <div class="rep-r"><i style="background:var(--nt-color-fidelity-degraded-solid)"></i><span class="path">adr/0001.md:42</span><span class="msg">callout → 인용 블록으로 대체</span><button class="btn btn--ghost btn--xs">원문</button></div>
+        <div class="rep-r"><i style="background:var(--nt-color-fidelity-degraded-solid)"></i><span class="path">adr/0001.md:88</span><span class="msg">toggle → 제목 + 들여쓴 본문</span><button class="btn btn--ghost btn--xs">원문</button></div>
+        <div class="rep-g"><i style="width:var(--nt-component-report-severity-dot);height:var(--nt-component-report-severity-dot);border-radius:var(--nt-radius-full);background:var(--nt-color-fidelity-opaque-solid)"></i>보존(opaque) 0 · 정규화 3 · 무손실 18 ▸</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--nt-space-4)">
+        <div class="diff">
+          <div class="dl"><div class="g"> </div><div class="c">chunks 는 heading/section 경계를 우선한다.</div></div>
+          <div class="dl dl--del"><div class="g">−</div><div class="c">고정 토큰 수로 문장 중간을 자른다.</div></div>
+          <div class="dl dl--add"><div class="g">+</div><div class="c">작은 section 은 합치고 큰 section 은 overlap 을 두어 나눈다.</div></div>
+          <div class="dl dl--chg"><div class="g">~</div><div class="c">각 chunk 에 title 과 heading path 를 metadata 로 붙인다.</div></div>
+        </div>
+        <div class="conflict">
+          <div class="acts">✦ 충돌 1 · 사람이 골라야 해요<span style="margin-left:auto;display:flex;gap:var(--nt-space-2)"><button class="btn btn--secondary btn--xs">서버 유지</button><button class="btn btn--secondary btn--xs">내 것 유지</button><button class="btn btn--secondary btn--xs">둘 다</button></span></div>
+          <div class="dl dl--del"><div class="g">−</div><div class="c">rerank 는 기본 활성</div></div>
+          <div class="dl dl--add"><div class="g">+</div><div class="c">rerank 는 eval 로 이득이 입증될 때만</div></div>
+        </div>
+        <div class="row"><span class="save" style="margin:0;color:var(--nt-component-save-indicator-conflict)">⑂ 다른 revision 있음 · 비교</span><span class="save" style="margin:0;color:var(--nt-component-save-indicator-offline)">☁ 오프라인 · 이 기기에 보관</span><span class="save" style="margin:0;color:var(--nt-component-save-indicator-error)">✕ 저장 실패 · 다시 시도</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="issues">
+    <h2 class="nt-heading-2">이슈 보드 (Phase 2)</h2>
+    <p class="lead nt-body-sm">상태 6종은 workflow 색 + 아이콘. 컬럼 canvas, 카드 default, 카드 사이 8.</p>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section id="menus">
+    <h2 class="nt-heading-2">슬래시 메뉴 · 커맨드 팔레트</h2>
+    <p class="lead nt-body-sm">AI 항목은 타일 ai.bg + sparkles. 팔레트 첫 항목은 문장이면 Ask 로.</p>
+    <div class="grid-2">
+      <div class="slash">
+        <div class="g nt-overline">기본 블록</div>
+        <div class="it sel"><div class="tile">¶</div><div class="tx"><b>텍스트</b><small>그냥 문단</small></div></div>
+        <div class="it"><div class="tile">H1</div><div class="tx"><b>제목 1</b><small># 큰 섹션 제목</small></div></div>
+        <div class="it"><div class="tile">☐</div><div class="tx"><b>할 일</b><small>- [ ] 체크 목록</small></div></div>
+        <div class="it"><div class="tile">&lt;/&gt;</div><div class="tx"><b>코드</b><small>```lang</small></div></div>
+        <div class="g nt-overline">AI</div>
+        <div class="it"><div class="tile tile--ai">✦</div><div class="tx"><b>요약 넣기 <span class="ai-badge">AI</span></b><small>이 페이지 요약을 콜아웃으로</small></div></div>
+        <div class="it"><div class="tile tile--ai">✦</div><div class="tx"><b>관련 문서 찾기</b><small>근거 있는 링크 제안</small></div></div>
+      </div>
+      <div class="palette">
+        <div class="in">🔍 왜 hybrid 검색을 골랐지?</div>
+        <div style="padding:var(--nt-space-1) 0">
+          <div class="it it--ai sel">✦ '왜 hybrid 검색을 골랐지?' 를 워크스페이스에 물어보기</div>
+          <div class="g nt-overline" style="padding:var(--nt-space-2) var(--nt-space-4);color:var(--nt-color-text-tertiary)">페이지</div>
+          <div class="it">⚖ ADR-0003 하이브리드 검색 채택<span class="path">projects/notting/adr</span></div>
+          <div class="it">📐 아키텍처 › 9.2 Retrieval 신호<span class="path">projects/notting</span></div>
+          <div class="it">◎ NT-40 chunk 경계 규칙<span class="path">이슈</span></div>
+        </div>
+        <div class="ft"><span><kbd>↑</kbd><kbd>↓</kbd> 이동</span><span><kbd>↵</kbd> 열기</span><span><kbd>esc</kbd> 닫기</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // 모든 값은 CSS 변수에서 읽는다(hex 리터럴 없음). 다크 값은 data-theme 을 잠깐 바꿔 읽는다(동기라 페인트 없음).
+  const root = document.documentElement;
+  const readAll = () => { const cs = getComputedStyle(root); return (n) => cs.getPropertyValue(n).trim(); };
+  const saved = root.dataset.theme;
+  root.dataset.theme = 'light'; const L = readAll(); const lightVals = {};
+  root.dataset.theme = 'dark'; const D = readAll(); const darkVals = {};
+  if (saved) root.dataset.theme = saved; else delete root.dataset.theme;
+  const v = (n) => { if (!(n in lightVals)) lightVals[n] = L(n); return lightVals[n]; };
+  const dv = (n) => { if (!(n in darkVals)) darkVals[n] = D(n); return darkVals[n]; };
+  const $ = (s) => document.querySelector(s);
+  document.getElementById('theme').onclick = () => {
+    const cur = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next; try { localStorage.setItem('nt-theme', next); } catch {}
+  };
+  // brand
+  const brandNames = { paper: 'Floral White · 캔버스', ink: 'Black · 잉크', verdigris: 'Verdigris · 주색', periwinkle: 'Soft Periwinkle · AI', coral: 'Vibrant Coral · 위험' };
+  $('#brand-grid').innerHTML = Object.entries(brandNames).map(([k, n]) => `<div class="brand-card"><div class="c" style="background:var(--nt-brand-${k})"></div><div class="t"><div class="nt-label-md">${n}</div><code>brand.${k} ${v(`--nt-brand-${k}`)}</code></div></div>`).join('');
+  // ramps
+  const anchors = { teal: 500, periwinkle: 400, coral: 400, neutral: 500, green: 500, amber: 400 };
+  const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+  $('#ramps').innerHTML = Object.entries(anchors).map(([r, a]) => `<div class="ramp"><span class="name nt-body-sm">${r}</span>${steps.map((s) => `<div class="swatch ${s === a ? 'anchor' : ''}" style="background:var(--nt-${r}-${s});color:${s >= 500 ? 'var(--nt-base-white)' : 'var(--nt-neutral-950)'}" title="${r}.${s} ${v(`--nt-${r}-${s}`)}">${s}</div>`).join('')}</div>`).join('');
+  // semantic tables
+  const groups = {
+    surface: ['canvas', 'default', 'raised', 'sunken', 'overlay', 'inverse', 'brand', 'brand-subtle', 'disabled'],
+    text: ['primary', 'secondary', 'tertiary', 'placeholder', 'disabled', 'inverse', 'on-brand', 'brand', 'link', 'link-hover', 'success', 'warning', 'danger', 'info', 'ai'],
+    border: ['subtle', 'default', 'strong', 'input-strict', 'brand', 'focus', 'danger', 'ai', 'inverse'],
+    interactive: ['focus-ring', 'selected-bg', 'selected-border', 'selected-text', 'hover-overlay', 'pressed-overlay'],
+    ai: ['bg', 'border', 'text', 'icon', 'solid', 'on-solid', 'stream'],
+    citation: ['bg', 'bg-hover', 'text', 'marker', 'stale-bg', 'stale-text'],
+    mark: ['highlight', 'highlight-text', 'selection', 'block-hover', 'drop-indicator'],
+    code: ['bg', 'bg-inline', 'text', 'comment', 'punctuation', 'keyword', 'string', 'number', 'function', 'line-number', 'line-highlight'],
+  };
+  const rows = (gs) => gs.flatMap((g) => groups[g].map((k) => { const n = `--nt-color-${g}-${k}`; const l = v(n), d = dv(n); return `<tr><td><span class="chip" style="background:var(${n})"></span><code>${g}.${k}</code></td><td><code>${l}</code></td><td><code>${d === l ? '=' : d}</code></td></tr>`; }));
+  $('#sem-a').innerHTML = '<tr><th>토큰</th><th>라이트</th><th>다크</th></tr>' + rows(['surface', 'text', 'border', 'interactive']).join('');
+  $('#sem-b').innerHTML = '<tr><th>토큰</th><th>라이트</th><th>다크</th></tr>' + rows(['ai', 'citation', 'mark', 'code']).join('');
+  // domain pills
+  const pill = (g, k, label, extra = '') => `<span class="pill ${extra}" style="background:var(--nt-color-${g}-${k}-bg);color:var(--nt-color-${g}-${k}-text)"><span class="dot" style="background:var(--nt-color-${g}-${k}-solid)"></span>${label}</span>`;
+  const wf = ['backlog', 'todo', 'in-progress', 'review', 'done', 'canceled'];
+  const dec = ['proposed', 'accepted', 'deprecated', 'superseded', 'rejected'];
+  const fid = ['lossless', 'normalized', 'degraded', 'dropped', 'opaque'];
+  const grp = (g, keys) => keys.map((k) => pill(g, k, `${g} · ${k}`, k === 'canceled' ? 'pill--canceled' : '')).join('');
+  $('#domain-pills').innerHTML = grp('workflow', wf) + grp('decision', dec) + grp('fidelity', fid);
+  $('#pills').innerHTML = ['success', 'warning', 'danger', 'info', 'neutral'].map((s) => `<span class="badge" style="background:var(--nt-color-status-${s}-solid);color:var(--nt-color-status-${s}-on-solid)">${s}</span>`).join('') + wf.map((k) => pill('workflow', k, k, k === 'canceled' ? 'pill--canceled' : '')).join('') + '<span class="ai-badge">✦ AI</span><span class="badge" style="background:var(--nt-color-status-neutral-bg);color:var(--nt-color-status-neutral-text);border-radius:var(--nt-component-badge-radius-square)">.md</span>';
+  // spacing
+  $('#space-demo').innerHTML = ['1', '2', '3', '4', '5', '6', '8', '10', '12', '16', '20', '24'].map((k) => `<div style="--w:var(--nt-space-${k})" title="space.${k} ${v(`--nt-space-${k}`)}"></div>`).join('');
+  // board
+  const cols = [['backlog', 'Backlog', 1], ['todo', 'Todo', 2], ['in-progress', 'In Progress', 2], ['review', 'Review', 1], ['done', 'Done', 1], ['canceled', 'Canceled', 1]];
+  const cards = { backlog: [['NT-51', 'Cycle 자동 생성 검토', 'low', 'H']], todo: [['NT-44', 'export 전 compatibility report', 'high', 'W'], ['NT-45', 'Copy as Markdown 손실 토스트', 'medium', 'W']], 'in-progress': [['NT-42', '인덱싱 파이프라인 재설계', 'urgent', 'W'], ['NT-40', 'chunk 경계 규칙', 'medium', 'H']], review: [['NT-38', 'Tiptap ↔ AST adapter', 'high', 'W']], done: [['NT-30', 'fixture 왕복 테스트', 'medium', 'W']], canceled: [['NT-12', 'GraphRAG 스파이크', 'none', 'H']] };
+  const bars = { urgent: 4, high: 3, medium: 2, low: 1, none: 0 };
+  $('#board').innerHTML = cols.map(([k, n, c]) => `<div class="col"><div class="col-h"><span class="dot" style="background:var(--nt-color-workflow-${k}-solid)"></span>${n}<span class="cnt">${c}</span><button class="btn btn--ghost btn--xs btn--icon" style="margin-left:auto" aria-label="추가">+</button></div>${(cards[k] || []).map(([key, t, p, a]) => `<div class="issue"><div class="key">${key}<span class="pr">${[1, 2, 3, 4].map((i) => `<i style="height:calc(var(--nt-space-1) * ${i} * 0.75);${i <= bars[p] ? `background:var(--nt-color-priority-${p})` : ''}"></i>`).join('')}</span></div><div class="t" ${k === 'canceled' ? 'style="text-decoration:line-through;color:var(--nt-color-text-tertiary)"' : ''}>${t}</div><div class="m">${pill('workflow', k, n, k === 'canceled' ? 'pill--canceled' : '')}<span class="avatar">${a}</span></div></div>`).join('')}</div>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "coolors 후보 'Floral White · Black · Vibrant Coral · Verdigris · Soft Periwinkle' 5색 그대로. 램프(palette.json)의 앵커이자 브랜드 문서에서 부르는 이름. 사용처 코드는 이 토큰을 직접 참조하지 않고 시맨틱 토큰을 거친다.",
+    "paper":      { "$value": "#FBFBF2", "$description": "Floral White · 앱 크롬(사이드바·패널) 캔버스. 페이지 본문은 white" },
+    "ink":        { "$value": "#0A0908", "$description": "Black · 잉크. 반전 면(툴팁·토스트)·로고·오버레이 재료. 본문 글자는 neutral.900 (순검정은 흰 면에서 진동)" },
+    "verdigris":  { "$value": "#1EA896", "$description": "Verdigris · 브랜드 주색(= teal.500). 글자·버튼 배경에는 600 이상" },
+    "periwinkle": { "$value": "#9395D3", "$description": "Soft Periwinkle · AI·근거·Context Pack 의 색(= periwinkle.400). 사람이 쓴 것과 AI 가 만든 것을 색으로 가른다" },
+    "coral":      { "$value": "#FF715B", "$description": "Vibrant Coral · 위험·오류·손실(= coral.400). 장식 금지, 상태 전용" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}
