@@ -272,7 +272,7 @@
 
     "inline-code": {
       "bg": { "$value": "{color.code.bg-inline}", "$type": "color" },
-      "text": { "$value": "{color.code.string}", "$type": "color", "$description": "인라인 코드는 코럴 700 으로 본문과 구분(Notion·GitHub 관행). 7.41:1" },
+      "text": { "$value": "{color.code.string}", "$type": "color", "$description": "인라인 코드는 코럴 700 으로 본문과 구분(문서·코드 도구 관행). 7.41:1" },
       "radius": { "$value": "{radius.xs}", "$type": "dimension" },
       "padding-x": { "$value": "{space.1}", "$type": "dimension" }
     },

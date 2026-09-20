@@ -1,6 +1,6 @@
 # notting
 
-notting("Notion for humans, Markdown for tools, context for agents")의 디자인 시스템. 개발자용 문서 워크스페이스 — 블록 에디터, Markdown 왕복, 근거 있는 AI 답변, Context Pack, 이슈·ADR 까지 한 벌로 답한다.
+notting("Documents for humans, Markdown for tools, context for agents")의 디자인 시스템. 개발자용 문서 워크스페이스 — 블록 에디터, Markdown 왕복, 근거 있는 AI 답변, Context Pack, 이슈·ADR 까지 한 벌로 답한다.
 **개발하다 막히면 [`docs/00-decision-guide.md`](docs/00-decision-guide.md) 를 연다.** 상황 → 토큰 → 값이 표로 있다. notting 개념(블록·근거·왕복·Pack)은 [`docs/15-product-mapping.md`](docs/15-product-mapping.md).
 
 ## 한눈에

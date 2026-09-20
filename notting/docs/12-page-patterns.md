@@ -168,7 +168,7 @@ canvas 배경, lg 이상 좌 50% gradient.brand 패널(제목은 어두운 시�
 ```
 헤더 64 (스크롤 시 blur) — 로고 · 내비 label-md · 우측 secondary "로그인" + primary "시작하기"
 히어로 (상하 80 / 128), 컨테이너 lg, 가운데
-  overline text.brand "Notion for humans, Markdown for tools, context for agents"
+  overline text.brand "Documents for humans, Markdown for tools, context for agents"
   display-lg 2줄 이내 · body-lg secondary · 버튼 primary xl + ghost xl
   목업 (위 64) radius 2xl shadow xl — 에디터 + Ask 패널이 보이는 장면
 섹션 (64 / 96), 번갈아 canvas / gradient.paper

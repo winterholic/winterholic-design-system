@@ -4,7 +4,7 @@
 
 coolors 후보 7개 중 **"Floral White · Black · Vibrant Coral · Verdigris · Soft Periwinkle"** 조합을 골랐고, 주색은 **Verdigris `#1EA896`** 이다.
 
-notting 은 "Notion for humans, Markdown for tools, context for agents" — 개발자가 문서를 쓰고, Markdown 으로 꺼내고, AI 가 근거를 달아 읽는 워크스페이스다. 색이 해야 할 일이 세 가지였다.
+notting 은 "Documents for humans, Markdown for tools, context for agents" — 개발자가 문서를 쓰고, Markdown 으로 꺼내고, AI 가 근거를 달아 읽는 워크스페이스다. 색이 해야 할 일이 세 가지였다.
 
 1. **오래 읽고 쓰는 화면**이라 본문은 종이와 잉크여야 한다. 채도 높은 면은 작아야 한다.
 2. **사람이 쓴 것과 AI 가 만든 것을 색으로 갈라야 한다.** "AI is a reader first" — 답변·제안·Context Pack 은 문서와 다른 색을 가져야 사용자가 출처를 헷갈리지 않는다.
@@ -30,7 +30,7 @@ notting 은 "Notion for humans, Markdown for tools, context for agents" — 개�
 | 6 Wheat · Dusty Rose | 따뜻한 중간톤 | 상태색(성공·경고)과 hue 가 붙어 기능색이 섞인다 |
 | 7 Strawberry Red | 빨강 | 주색이 곧 오류색이 된다. 삭제 버튼과 저장 버튼이 같은 색 |
 
-Verdigris 는 Notion(흑백)·Linear(보라)·GitHub(검정)·Obsidian(보라) 어느 것과도 겹치지 않고, 성공 초록(hue 140)과 30° 이상 떨어져 있어 상태색과 섞이지 않는다.
+Verdigris 는 흔한 흑백 문서 도구나 보라색 개발 도구와 시각적으로 겹치지 않고, 성공 초록(hue 140)과 30° 이상 떨어져 있어 상태색과 섞이지 않는다.
 
 ### 상태색 보강
 후보에 없는 두 색을 더했다. 성공 **Leaf Green `#2F9E44`** (teal 과 구분되도록 노란 기운의 초록), 경고 **Marigold `#E0A100`** (검색 하이라이트·진행 중 상태와 공유). 중립은 잉크에서 뽑은 **Warm Stone** (hue 80, 채도를 1/3 로 낮춘 `stone` 곡선) — 종이 위 따뜻한 회색이다.

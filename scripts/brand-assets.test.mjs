@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { basename, join } from "node:path";
 import { spawnSync } from "node:child_process";
 import test from "node:test";
@@ -185,6 +185,20 @@ if (system === "memoir") {
 }
 
 if (system === "notting") {
+  test("notting: 브랜드 문구가 특정 외부 서비스명에 기대지 않는다", () => {
+    const forbiddenNames = ["Not" + "ion", "노" + "션"];
+    const textExtensions = new Set([".md", ".html", ".json", ".css", ".js", ".mjs", ".svg"]);
+    const files = readdirSync(root, { recursive: true, withFileTypes: true })
+      .filter((entry) => entry.isFile() && !entry.parentPath.includes("node_modules"))
+      .map((entry) => join(entry.parentPath, entry.name))
+      .filter((path) => [...textExtensions].some((extension) => path.endsWith(extension)));
+    const references = files.flatMap((path) => {
+      const content = readFileSync(path, "utf8");
+      return forbiddenNames.some((name) => content.toLowerCase().includes(name.toLowerCase())) ? [path] : [];
+    });
+    assert.deepEqual(references, [], `외부 서비스명이 남아 있습니다: ${references.join(", ")}`);
+  });
+
   test("notting: 기존 잉크 타일과 근거 마커 기하를 그대로 유지한다", () => {
     const mark = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
     assert.match(mark, /<rect x="0" y="0" width="512(?:\.0)?" height="512(?:\.0)?" rx="112(?:\.0)?" fill="#0A0908"/);
