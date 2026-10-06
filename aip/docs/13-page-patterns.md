@@ -8,6 +8,9 @@
 | Docs | `examples/docs.html` | 읽기 | 링크·현재 위치·코드 키워드만 |
 | MakeAIP | `examples/makeaip.html` | 중간(폼) | 선택된 옵션 면 + Generate |
 | Playground | `examples/playground.html` | 높음(도구) | Run 버튼·실행 노드 |
+| 프로젝트 소개 | `examples/showcase.html` | 낮음(이미지·서사) | 주 CTA·메타 |
+| 기술 프레젠테이션 | `examples/architecture.html` | 구조·설명 | Runtime·앵커 |
+| 기술 포트폴리오 | `examples/case-study.html` | 읽기·근거 | 주 CTA·메타 |
 | 전체 부품 | `examples/preview.html` | | |
 
 ## 1. 공통 셸
@@ -18,7 +21,7 @@
 
 ## 2. 홈페이지
 
-1. 히어로: eyebrow(모노) → `display-xl`(핵심 단어 하나에 형광펜) → `lead` → 버튼 둘(primary + secondary, lg) | 오른쪽 코드 목업(`.aip-code` + `shadow.lg`). 바탕 점 격자. 모바일은 세로 쌓기.
+1. 히어로: eyebrow(모노) → `display-xl`(핵심 단어 하나에 형광펜) → `lead` → 버튼 둘(primary + secondary, lg) | 오른쪽 3D Artwork(15·19)와 코드 목업(`.aip-code` + `shadow.lg`). 바탕 점 격자. 모바일은 세로 쌓기.
 2. 원칙: 카드 3장(eyebrow + 제목 + 본문). 아이콘 장식 없이 글로 말한다.
 3. 아키텍처: `.aip-flow` 한 줄 + 캡션. 색 문법을 문장으로 한 번 설명한다("Yellow is what you declare…").
 4. CTA 띠: `surface.brand` + 흰 글자 + 흰 버튼. 페이지에 하나.
@@ -106,3 +109,7 @@
 ## 7. 오류·빈 페이지
 
 404: 헤더 + `.aip-container--sm` 가운데 → eyebrow `404` → `heading-1` "This page moved or never existed" → 검색 트리거 → 홈·문서 링크. 500: 같은 골격 + 상태 페이지 링크. 일러스트 없음.
+
+## 8. 오픈소스·포트폴리오 프레젠테이션
+
+마케팅·상세 구조·케이스 스터디는 [19 프레젠테이션](19-presentation.md)의 배포 컴포넌트와 세 템플릿을 쓴다. homepage의 코드 목업은 기본 예시이고 유일한 히어로 형태가 아니다. `home.html`에는 3D Artwork와 코드가 함께 있으며, `showcase.html`은 대형 cover 방식이다.

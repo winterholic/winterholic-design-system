@@ -16,15 +16,15 @@ AIP(Application Intent Protocol) 생태계 전체가 공유하는 디자인 시�
 | 스케일 | 4px 간격 · 글자 12~60px(하한 12) · 컨트롤 24/32/40/48 · radius 2/4/6/8/12/16 · 문서 본문 16/1.7 · 본문 열 720 |
 | 레이아웃 | 헤더 56/64 · 문서 사이드바 272 · TOC 224 · MakeAIP 설정 560 |
 | 다크 | Charcoal 계열 따뜻한 어둠. AIP Blue·Yellow 는 두 테마 같은 값. 컴포넌트에 `dark:` 없음 |
-| 컴포넌트 | **구현 포함**: `dist/components.css` + `dist/aip.js`(키보드·복사·다이얼로그·메뉴·툴팁·TOC·검색·테마). core 19 + 문서 15 + 앱 조각 |
-| 접근성 | 대비 310쌍(라이트·다크)을 빌드가 검사, 컴포넌트 CSS 에 하드코딩 값이 있으면 빌드 실패, 키보드 동작 검사 스크립트 |
+| 컴포넌트 | **구현 포함**: `dist/components.css` + `dist/aip.js`(키보드·복사·다이얼로그·메뉴·툴팁·TOC·검색·테마). core 19 + 문서 15 + 앱 조각 + 프레젠테이션 부품 |
+| 접근성 | 대비 312쌍(라이트·다크)을 빌드가 검사, 컴포넌트 CSS 에 하드코딩 값이 있으면 빌드 실패, 키보드 동작 검사 스크립트 |
 | AI 친화 | 시맨틱 HTML 계약, GFM alert 이름의 콜아웃, Shiki·Prism·hljs 연결, Mermaid classDef 생성, `CLAUDE.md` |
 
-미리보기: [`examples/preview.html`](examples/preview.html)(전 토큰·컴포넌트, 라이트·다크). 제품 템플릿: [`home`](examples/home.html) · [`docs`](examples/docs.html) · [`makeaip`](examples/makeaip.html) · [`playground`](examples/playground.html).
+미리보기: [`examples/preview.html`](examples/preview.html)(전 토큰·컴포넌트, 라이트·다크). 제품 템플릿: [`home`](examples/home.html) · [`docs`](examples/docs.html) · [`makeaip`](examples/makeaip.html) · [`playground`](examples/playground.html). 프레젠테이션: **[`showcase`](examples/showcase.html)** · [`architecture`](examples/architecture.html) · [`case-study`](examples/case-study.html).
 
 ## 설치
 
-`dist/` 만 가져가면 된다.
+UI는 `dist/`를 가져간다. 로고·3D 이미지·캐릭터를 쓰면 필요한 `assets/brand/`도 앱의 정적 자산 경로로 복사한다.
 
 ```html
 <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
@@ -80,16 +80,17 @@ tokens.color.code.bg.dark       // '#12131C'
 | [12 다이어그램](docs/12-diagrams.md) | 색=개념·모양=종류·선=흐름, Flow·SVG·Mermaid | 구조 그림 |
 | [13 페이지 패턴](docs/13-page-patterns.md) | 홈·Docs(유형별)·MakeAIP·Playground·오류 | 새 화면 |
 | [14 운영](docs/14-governance.md) | 파일 구조, 변경 절차, 이름 규칙, 버전, 채택 기준, 한계 | 토큰·컴포넌트 추가 |
-| [15 브랜드 자산](docs/15-brand-assets.md) | 심볼·락업·파비콘·히어로 | 브랜딩 |
+| [15 브랜드 자산](docs/15-brand-assets.md) | 심볼·락업·파비콘·히어로·3D 2종·Aipi 캐릭터·전체 제작 프롬프트 | 브랜딩 |
 | [16 상황 사전](docs/16-situations.md) | A~M 상황별 답 | 애매할 때 |
 | [17 제품 매핑](docs/17-product-mapping.md) | AIP 약속·개념·제품 → 시각 규칙 | AIP 개념이 화면에서 뭐가 되나 |
 | [18 설계 검토](docs/18-design-review.md) | 결정·대안·렌더 검토에서 고친 것 | 왜 이렇게 됐나 |
+| [19 프레젠테이션](docs/19-presentation.md) | Showcase·Architecture·Case Study, Hero·Chapter·Comparison·Proof·설계 선택·진행 과정 | 오픈소스 소개·기술 포트폴리오 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트 규칙 요약 | AI 로 UI 를 만들 때 |
 
 ## 빌드·검사
 
 ```bash
-npm run build      # = node tokens/build.mjs. 참조·라이트/다크·대비 310쌍·컴포넌트 lint 실패 시 중단
+npm run build      # = node tokens/build.mjs. 참조·라이트/다크·대비 312쌍·컴포넌트 lint 실패 시 중단
 npm test           # 토큰·컴포넌트·문서·예제 정적 검사 + 브랜드 자산 검사(Python+Pillow 필요)
 npm run check:ui   # 실제 Chrome 으로 키보드·복사·가로 넘침 검사(playwright-core 필요)
 npm run brand      # 브랜드 자산 재생성(Python+Pillow)

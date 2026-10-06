@@ -167,6 +167,8 @@
 | 입력 → 결과 예시 | Example block | 코드 블록 + 문단 |
 | 알림 문단 | Callout 5종(GFM 이름) | 굵은 문단 |
 | 구조·흐름 그림 | Diagram(`data-role`) + 텍스트 설명 | 이미지만 |
+| 오픈소스 소개·포트폴리오 | Story Hero + Chapter + Comparison + Proof(19) | Docs에 이미지·카드를 무작정 추가 |
+| 3D 브랜드 이미지·캐릭터 | 승인 자산(15) + Artwork + HTML 캡션(19) | 생성 이미지로 실제 구조·UI 대체 |
 
 ## 8. 이 표에 없는 상황이면
 

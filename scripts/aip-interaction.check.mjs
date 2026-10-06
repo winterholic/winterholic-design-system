@@ -42,7 +42,8 @@ async function open(page, width = 1280, scheme = 'light') {
   return { p, ctx, errors };
 }
 
-for (const page of ['preview.html', 'docs.html', 'makeaip.html', 'home.html', 'playground.html']) {
+const templates = ['preview.html', 'docs.html', 'makeaip.html', 'home.html', 'playground.html', 'showcase.html', 'architecture.html', 'case-study.html'];
+for (const page of templates) {
   for (const width of [390, 768, 1280, 1440]) {
     await check(`${page} @${width}: 가로 넘침 0 · 스크립트 오류 0`, async () => {
       const { p, ctx, errors } = await open(page, width);
@@ -51,6 +52,52 @@ for (const page of ['preview.html', 'docs.html', 'makeaip.html', 'home.html', 'p
       assert.equal(overflow, 0, `가로 넘침 ${overflow}px`);
       assert.deepEqual(errors, []);
     });
+  }
+}
+
+for (const page of ['showcase.html', 'architecture.html', 'case-study.html']) {
+  for (const width of [390, 1280]) {
+    for (const theme of ['light', 'dark']) {
+      await check(`${page} @${width} ${theme}: 이미지 로드 · 본문 이동 · 테마 유지`, async () => {
+        const { p, ctx, errors } = await open(page, width);
+        assert.equal(await p.locator('h1').count(), 1, '프레젠테이션 제목 없음');
+        if (theme === 'dark') await p.click('[data-aip-theme-toggle]');
+        await p.locator('img').evaluateAll(async (images) => {
+          // 접힌 화면 밖의 lazy 이미지도 이 검사에서는 실제 디코딩을 확인한다.
+          images.forEach((img) => { img.loading = 'eager'; });
+          await Promise.all(images.map((img) => img.decode()));
+        });
+        assert.equal(await p.locator('main img').count() > 0, true);
+        assert.equal(await p.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0);
+        const clippedNodes = await p.locator('.aip-diagram__canvas').evaluateAll((canvases) => canvases.flatMap((canvas) => {
+          const bounds = canvas.getBoundingClientRect();
+          return [...canvas.querySelectorAll('.aip-node')].filter((node) => {
+            const rect = node.getBoundingClientRect();
+            return rect.left < bounds.left || rect.right > bounds.right;
+          }).map((node) => node.textContent);
+        }));
+        assert.deepEqual(clippedNodes, [], '설명 다이어그램의 노드가 잘렸다');
+        await p.locator('.aip-chapter-nav a').first().click();
+        const target = await p.locator('.aip-chapter-nav a').first().getAttribute('href');
+        assert.equal(await p.evaluate(() => location.hash), target);
+        assert.equal(await p.locator(target).isVisible(), true);
+        await p.reload();
+        assert.equal(await p.evaluate(() => document.documentElement.dataset.theme ?? 'light'), theme);
+        if (width === 390) {
+          const opener = p.locator('[data-aip-dialog-open="nav-drawer"]');
+          await opener.click();
+          assert.equal(await p.locator('#nav-drawer').evaluate((el) => el.open), true);
+          await p.keyboard.press('Escape');
+          assert.equal(await p.evaluate(() => document.activeElement === document.querySelector('[data-aip-dialog-open="nav-drawer"]')), true);
+        }
+        assert.deepEqual(errors, []);
+        if (process.env.AIP_SCREENSHOTS) {
+          await p.evaluate(() => { history.replaceState(null, '', location.pathname); window.scrollTo(0, 0); });
+          await p.screenshot({ path: join(process.env.AIP_SCREENSHOTS, `${page.replace('.html', '')}-${width}-${theme}.png`), fullPage: true });
+        }
+        await ctx.close();
+      });
+    }
   }
 }
 
@@ -164,7 +211,7 @@ await check('테마 버튼: 다크로 바꾸면 캔버스·aria-pressed 가 바�
 });
 
 await check('첫 Tab 은 본문 바로가기 링크다(모든 템플릿)', async () => {
-  for (const page of ['docs.html', 'makeaip.html', 'home.html', 'playground.html', 'preview.html']) {
+  for (const page of templates) {
     const { p, ctx } = await open(page);
     await p.keyboard.press('Tab');
     assert.equal(await p.evaluate(() => document.activeElement.className), 'aip-skip-link', page);

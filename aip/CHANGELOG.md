@@ -1,5 +1,16 @@
 # Changelog — AIP Design System
 
+## 1.1.0 — 2026-10-06
+
+오픈소스 소개와 기술 포트폴리오 프레젠테이션 구성 확장.
+
+- built-in image_gen으로 3D 브랜드 자산 3종 제작: 실제 투명 배경 Aipi, Intent→Runtime 히어로, 분해 레이어. 승인된 PNG·웹 제공 WebP·전체 프롬프트 보존.
+- `presentation.css`를 배포 `components.css`에 포함: Story Hero·Artwork·Project Meta·Chapter Nav·Chapter·Statement·Comparison·Feature Stage·Proof·Decision List·Milestones·Story Next.
+- 재사용 템플릿 3종: Showcase, Architecture, Case Study. 같은 토큰으로 라이트·다크·반응형 지원. 근거·조건·한계와 미측정 상태 포함.
+- 홈페이지와 전 부품 미리보기에서 3D 자산과 새 템플릿으로 연결.
+- 3D 금지 규칙을 요청에 맞춰 수정. 정확한 구조 설명은 다이어그램·HTML, 3D는 개념 이미지라는 구분 유지. docs/19 조립 계약과 브랜드·AI 규칙·문서 지도 갱신.
+- 형광펜 면의 보조 글자 대비 쌍 추가(총 312쌍). 브라우저 검사를 새 페이지·테마·이미지 로드·장 이동까지 확장.
+
 ## 1.0.0 — 2026-10-06
 
 첫 공개. AIP 생태계(홈페이지·Docs·MakeAIP·Playground·아키텍처 시각화)가 공유하는 foundation 과 컴포넌트.

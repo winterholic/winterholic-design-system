@@ -4,9 +4,10 @@
 
 ## 시작할 때
 1. `docs/00-decision-guide.md` 를 읽는다. 상황별 토큰·클래스가 표로 있다.
-2. 화면이 어느 제품인지 정하고 `examples/` 의 가장 가까운 템플릿(home·docs·makeaip·playground)을 복사해서 시작한다. 셸·간격은 `docs/13-page-patterns.md`.
+2. 화면이 어느 제품인지 정하고 `examples/` 의 가장 가까운 템플릿(home·docs·makeaip·playground·showcase·architecture·case-study)을 복사해서 시작한다. 셸·간격은 `docs/13-page-patterns.md`.
 3. 컴포넌트 마크업은 `docs/06-components.md`(core), 문서 화면이면 `docs/07-documentation.md`. 여기 있는 마크업 계약을 그대로 쓴다.
-4. 구조 그림이면 `docs/12-diagrams.md`. 상황이 애매하면 `docs/16-situations.md`.
+4. 오픈소스 소개·포트폴리오·기술 프레젠테이션이면 `docs/19-presentation.md`. 이미지·캐릭터는 `docs/15-brand-assets.md`의 자산과 배치 규칙을 쓴다. 3D 개념 이미지를 실제 구조나 제품 UI로 제시하지 않는다.
+5. 구조 그림이면 `docs/12-diagrams.md`. 상황이 애매하면 `docs/16-situations.md`.
 
 ## 반드시
 - 값은 **토큰만**: `var(--aip-…)`, 컴포넌트 클래스(`.aip-*`), Tailwind 프리셋, 또는 `tokens.js` 의 `.var`.

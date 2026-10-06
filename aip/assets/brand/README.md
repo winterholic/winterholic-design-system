@@ -14,3 +14,11 @@
 ```bash
 python3 build-brand-assets.py   # Pillow 필요
 ```
+
+## 3D·캐릭터 자산 (v1.1.0)
+
+`mascot-aipi.png/.webp`는 실제 투명 배경의 3D 캐릭터, `intent-runtime-3d.png/.webp`는 런타임 경계를 표현한 히어로, `runtime-layers-3d.png/.webp`는 분해 레이어 개념 이미지다. 웹에서는 WebP를 제공한다.
+
+이 세 이미지의 source는 승인된 PNG이고 `artwork-prompts.json`은 built-in image_gen으로 제작할 때 사용한 전체 프롬프트다. 로고 좌표와 생성 렌더를 혼용하지 않는다. `build-brand-assets.py`는 3D 파일을 재생성하거나 덮어쓰지 않는다.
+
+[Showcase](../../examples/showcase.html) · [Architecture](../../examples/architecture.html) · [Case Study](../../examples/case-study.html) · [조립 계약](../../docs/19-presentation.md).

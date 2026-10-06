@@ -1,4 +1,4 @@
-/* AIP components · 자동 생성 — components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: base → layout → button → form → navigation → overlay → content → docs → code → diagram → app → utilities */
+/* AIP components · 자동 생성 — components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: base → layout → button → form → navigation → overlay → content → docs → code → diagram → app → presentation → utilities */
 
 /* ===== base.css ===== */
 /* base — 모든 컴포넌트가 기대는 최소 규칙: 박스 모델, 접근성 유틸, 아이콘, 로딩 표시.
@@ -1198,6 +1198,79 @@ a.aip-card:hover .aip-card__title { color: var(--aip-color-text-link); }
 .aip-run-log [data-level="denied"] { color: var(--aip-color-text-danger); }
 .aip-run-log [data-level="warn"] { color: var(--aip-color-text-warning); }
 .aip-pane__header > .aip-tablist { align-self: stretch; border-bottom: 0; }
+
+/* ===== presentation.css ===== */
+/* 프레젠테이션도 배포 컴포넌트다. 예제 CSS를 복사하지 않고 조립할 수 있어야 한다. */
+.aip-story { overflow-wrap: anywhere; }
+.aip-story :is(h1, h2, h3, p, figure, dl) { margin: 0; }
+.aip-story section[id] { scroll-margin-top: var(--aip-size-layout-anchor-offset); }
+.aip-story-hero { padding-block: var(--aip-space-16); }
+.aip-story-hero__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-12); align-items: center; }
+.aip-story-hero__copy { display: flex; flex-direction: column; gap: var(--aip-space-6); min-width: 0; }
+.aip-story-hero__copy > .aip-lead { max-width: var(--aip-size-container-sm); }
+.aip-story-hero--cover .aip-story-hero__inner { grid-template-columns: minmax(0, 1fr); }
+.aip-story-hero--cover .aip-story-hero__copy { max-width: var(--aip-size-container-md); }
+.aip-story-hero--cover .aip-artwork > img { aspect-ratio: 21 / 9; object-fit: cover; }
+.aip-artwork { margin: 0; min-width: 0; display: flex; flex-direction: column; gap: var(--aip-space-3); }
+.aip-artwork > img { display: block; box-sizing: border-box; width: 100%; height: auto; border-radius: var(--aip-radius-2xl); }
+.aip-artwork > figcaption { color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-artwork--contain > img { aspect-ratio: 4 / 3; object-fit: contain; background: var(--aip-color-surface-subtle); padding: var(--aip-space-8); }
+.aip-project-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--aip-space-6); padding-block: var(--aip-space-6); border-block: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-project-meta dt { color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-xs); margin-bottom: var(--aip-space-2); }
+.aip-project-meta dd { margin: 0; font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-medium); }
+.aip-chapter-nav { border-block: var(--aip-border-width-hairline) solid var(--aip-color-border-default); background: var(--aip-color-surface-subtle); }
+.aip-chapter-nav__inner { display: flex; flex-wrap: wrap; gap: var(--aip-space-2) var(--aip-space-6); padding-block: var(--aip-space-3); }
+.aip-chapter-nav a { display: inline-flex; align-items: center; min-height: var(--aip-size-touch-target-min); gap: var(--aip-space-2); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); text-decoration: none; }
+.aip-chapter-nav a:hover { color: var(--aip-color-text-link); text-decoration: underline; }
+.aip-chapter-nav a > span { font-family: var(--aip-font-family-mono); color: var(--aip-color-text-brand); font-size: var(--aip-font-size-xs); }
+.aip-chapter { padding-block: var(--aip-space-16); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+.aip-chapter__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-8); }
+.aip-chapter__intro { display: flex; flex-direction: column; gap: var(--aip-space-4); min-width: 0; }
+.aip-chapter__body { min-width: 0; display: flex; flex-direction: column; gap: var(--aip-space-6); }
+/* 서론 옆의 좁은 본문 열에서도 흐름의 시작과 끝을 한눈에 읽어야 한다. */
+.aip-story .aip-flow > .aip-node { min-width: 0; flex: 1; }
+.aip-statement { margin: 0; padding: var(--aip-space-8); background: var(--aip-color-highlight-bg); border-left: var(--aip-border-width-accent) solid var(--aip-color-highlight-border); }
+.aip-statement p { font-size: var(--aip-font-size-2xl); line-height: var(--aip-font-line-height-snug); font-weight: var(--aip-font-weight-semibold); color: var(--aip-color-highlight-text); }
+.aip-statement cite { display: block; margin-top: var(--aip-space-4); font-size: var(--aip-font-size-sm); font-style: normal; color: var(--aip-color-text-secondary); }
+.aip-comparison { display: grid; grid-template-columns: minmax(0, 1fr); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); overflow: hidden; }
+.aip-comparison__side { display: flex; flex-direction: column; gap: var(--aip-space-4); padding: var(--aip-space-6); min-width: 0; background: var(--aip-color-surface-subtle); }
+.aip-comparison__side + .aip-comparison__side { background: var(--aip-color-surface-default); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-comparison ul { margin: 0; padding-left: var(--aip-space-5); }
+.aip-comparison li + li { margin-top: var(--aip-space-3); }
+.aip-feature-stage { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-8); align-items: center; }
+.aip-feature-stage__copy { display: flex; flex-direction: column; gap: var(--aip-space-4); min-width: 0; }
+.aip-feature-stage__visual { min-width: 0; }
+.aip-feature-stage--reverse { direction: ltr; }
+.aip-proof { padding: var(--aip-space-6); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); background: var(--aip-color-surface-default); border-radius: var(--aip-radius-lg); display: flex; flex-direction: column; gap: var(--aip-space-4); }
+.aip-proof__value { font-family: var(--aip-font-family-mono); font-weight: var(--aip-font-weight-semibold); font-size: var(--aip-font-size-2xl); line-height: var(--aip-font-line-height-snug); }
+.aip-proof__scope { border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); padding-top: var(--aip-space-4); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); }
+.aip-decision-list { list-style: none; padding: 0; margin: 0; }
+.aip-decision-list > li { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-4); padding-block: var(--aip-space-6); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-decision-list__reason { display: flex; flex-direction: column; gap: var(--aip-space-3); min-width: 0; }
+.aip-decision-list__reason > dl { display: grid; gap: var(--aip-space-3); }
+.aip-decision-list__reason dt { font-weight: var(--aip-font-weight-semibold); font-size: var(--aip-font-size-sm); }
+.aip-decision-list__reason dd { margin: var(--aip-space-1) 0 0; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); }
+.aip-milestones { list-style: none; margin: 0; padding: 0; }
+.aip-milestones > li { display: grid; grid-template-columns: var(--aip-space-8) minmax(0, 1fr); gap: var(--aip-space-4); padding-block: var(--aip-space-5); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-milestones__index { font-family: var(--aip-font-family-mono); color: var(--aip-color-text-brand); }
+.aip-milestones__body { display: flex; flex-direction: column; gap: var(--aip-space-2); }
+.aip-story-next { padding-block: var(--aip-space-16); background: var(--aip-color-surface-brand-subtle); }
+.aip-story-next__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--aip-space-8); }
+.aip-story-next__copy { display: flex; flex-direction: column; gap: var(--aip-space-4); max-width: var(--aip-size-container-sm); }
+@media (min-width: 768px) {
+  .aip-project-meta { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .aip-comparison { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aip-comparison__side + .aip-comparison__side { border-top: 0; border-left: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+  .aip-feature-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+  .aip-feature-stage--reverse .aip-feature-stage__copy { order: 2; }
+  .aip-decision-list > li { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--aip-space-8); }
+}
+@media (min-width: 1024px) {
+  .aip-story-hero { padding-block: var(--aip-space-24); }
+  .aip-story-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .aip-chapter { padding-block: var(--aip-space-24); }
+  .aip-chapter__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--aip-space-12); }
+}
 
 /* ===== utilities.css ===== */
 /* utilities — 마지막에 묶여 같은 명시도의 컴포넌트 규칙을 이긴다. 여기 있는 것 말고는 유틸을 만들지 않는다. */

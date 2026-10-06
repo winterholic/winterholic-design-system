@@ -104,6 +104,7 @@ const PAIRS = [
   ['color.highlight.text', 'color.highlight.bg', 4.5],
   ['color.highlight.icon', 'color.highlight.bg', 3],
   ['color.text.primary', 'color.highlight.bg', 4.5],
+  ['color.text.secondary', 'color.highlight.bg', 4.5],
   ['color.text.link', 'color.highlight.bg', 4.5],
   // 코드 — 구문 강조 전부 코드 면 위 4.5
   ...SYNTAX.map((c) => [`color.code.${c}`, 'color.code.bg', 4.5]),
@@ -162,7 +163,7 @@ const contrastReport = [...checkContrast(L, 'light'), ...checkContrast(D, 'dark'
 
 // 컴포넌트 CSS lint — 값은 전부 var(--aip-…) 로만. 미디어 쿼리 폭만 예외(CSS 변수를 못 쓴다)이고 breakpoint 토큰 값과 같아야 한다.
 const BREAKPOINTS = new Set([...L].filter(([k]) => k.startsWith('breakpoint.')).map(([, t]) => t.resolved));
-const COMPONENT_ORDER = ['base', 'layout', 'button', 'form', 'navigation', 'overlay', 'content', 'docs', 'code', 'diagram', 'app', 'utilities'];
+const COMPONENT_ORDER = ['base', 'layout', 'button', 'form', 'navigation', 'overlay', 'content', 'docs', 'code', 'diagram', 'app', 'presentation', 'utilities'];
 const componentFiles = readdirSync(COMPONENTS).filter((f) => f.endsWith('.css'));
 for (const f of componentFiles) if (!COMPONENT_ORDER.includes(f.replace('.css', ''))) errors.push(`components/${f} 가 COMPONENT_ORDER 에 없음`);
 const componentSources = COMPONENT_ORDER.filter((n) => componentFiles.includes(`${n}.css`)).map((n) => ({ name: n, css: readFileSync(join(COMPONENTS, `${n}.css`), 'utf8') }));

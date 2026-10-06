@@ -1,6 +1,6 @@
 {
   "name": "aip-design-system",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AIP(Application Intent Protocol) 디자인 시스템 — DTCG 토큰, CSS 변수, 컴포넌트 CSS·JS, prose.css, Tailwind 프리셋, Mermaid 테마, 문서",
   "type": "module",
   "private": true,

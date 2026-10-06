@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIP · Showcase (presentation template)</title>
+  <meta name="description" content="AIP의 문제와 구조를 브랜드 이미지, 비교, 근거로 설명하는 프레젠테이션 템플릿.">
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="aip-header">
+  <div class="aip-header__inner aip-container aip-container--lg">
+    <a class="aip-header__brand" href="home.html" aria-label="AIP 홈"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span><span class="aip-header__product">Showcase</span></a>
+    <nav class="aip-nav" aria-label="프레젠테이션">
+      <a class="aip-nav__link" href="showcase.html" aria-current="page">Showcase</a>
+      <a class="aip-nav__link" href="architecture.html" >Architecture</a>
+      <a class="aip-nav__link" href="case-study.html" >Case Study</a>
+    </nav>
+    <div class="aip-header__actions">
+      <a class="aip-button aip-button--sm aip-hide-below-md" href="preview.html">디자인시스템</a>
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="테마 전환"><svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <button class="aip-icon-button aip-icon-button--sm aip-header__menu" type="button" aria-label="메뉴 열기" data-aip-dialog-open="nav-drawer"><svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<main class="aip-story" id="main" tabindex="-1">
+<section class="aip-story-hero aip-story-hero--cover" aria-labelledby="hero-title"><div class="aip-container aip-container--lg aip-story-hero__inner"><div class="aip-story-hero__copy">
+  <p class="aip-mono-label aip-text-brand">AIP / Application Intent Protocol</p>
+  <h1 class="aip-display-xl" id="hero-title">한 번 정의한 의도에서,<br>애플리케이션까지.</h1>
+  <p class="aip-lead aip-text-secondary">데이터와 동작을 선언하면, 서버는 정책과 계약에 따라 실행합니다. 화면마다 반복하던 백엔드 구현을 공통 컴파일러와 런타임으로 옮기는 실험.</p>
+  <div class="aip-cluster aip-gap-3"><a class="aip-button aip-button--primary aip-button--lg" href="architecture.html">어떻게 작동하는지 보기</a><a class="aip-button aip-button--lg" href="case-study.html">설계 과정 읽기</a><span class="aip-badge aip-badge--experimental">프레젠테이션 예시</span></div>
+</div><figure class="aip-artwork"><img src="../assets/brand/intent-runtime-3d.webp" alt="" width="1672" height="941" loading="eager" decoding="async"><figcaption>의도 → 런타임 → 결과를 재료와 형태로 표현한 브랜드 이미지. 실제 실행 경로는 아래 구조 설명을 따릅니다.</figcaption></figure><dl class="aip-project-meta"><div><dt>분야</dt><dd>개발 도구 · 프로토콜</dd></div><div><dt>핵심 질문</dt><dd>반복 구현을 어디로 옮길까?</dd></div><div><dt>페이지 유형</dt><dd>오픈소스 프로젝트 소개</dd></div><div><dt>콘텐츠 상태</dt><dd>illustrative · 구성 예시</dd></div></dl></div></section><nav class="aip-chapter-nav" aria-label="이 페이지의 장"><div class="aip-container aip-container--lg aip-chapter-nav__inner"><a href="#problem"><span>01</span>풀려는 문제</a><a href="#shift"><span>02</span>달라지는 구조</a><a href="#mechanism"><span>03</span>작동 방식</a><a href="#evidence"><span>04</span>근거와 한계</a></div></nav><section class="aip-chapter" id="problem" aria-labelledby="problem-title"><div class="aip-container aip-container--lg aip-chapter__inner"><header class="aip-chapter__intro"><p class="aip-mono-label aip-text-brand">01</p><h2 class="aip-heading-1" id="problem-title">같은 규칙을 몇 번 쓰고 있나요?</h2><p class="aip-body-md aip-text-secondary">프로젝트의 출발점은 기능의 개수보다, 한 기능을 완성하기 위해 반복하는 경계입니다.</p></header><div class="aip-chapter__body"><blockquote class="aip-statement"><p>화면 하나가 늘 때마다,<br>계약과 검증도 다시 만들고 있다면.</p><cite>문제 제기 예시 · 수치로 입증된 효과를 뜻하지 않습니다.</cite></blockquote><p class="aip-body-md">Controller, DTO, validation, 권한, 트랜잭션, 오류 처리. 같은 의도를 여러 층에 옮겨 쓰면 수정할 지점도 늘어납니다. AIP가 다루려는 것은 이 반복입니다.</p></div></div></section>
+<section class="aip-chapter" id="shift" aria-labelledby="shift-title"><div class="aip-container aip-container--lg aip-chapter__inner"><header class="aip-chapter__intro"><p class="aip-mono-label aip-text-brand">02</p><h2 class="aip-heading-1" id="shift-title">구현의 책임이 이동합니다.</h2><p class="aip-body-md aip-text-secondary">무엇을 선언하고 무엇을 서버에 남기는지, 같은 기능을 기준으로 나란히 보여줍니다.</p></header><div class="aip-chapter__body"><div class="aip-comparison"><section class="aip-comparison__side" aria-labelledby="before-title"><p class="aip-mono-label aip-text-secondary">기존 방식 · 개념 비교</p><h3 class="aip-heading-2" id="before-title">기능마다 경로를 구현</h3><ul class="aip-body-md"><li>화면 요구를 요청·응답 계약으로 옮긴다.</li><li>권한과 검증을 구현 경로에 연결한다.</li><li>API 문서와 클라이언트 타입을 맞춘다.</li></ul></section><section class="aip-comparison__side" aria-labelledby="after-title"><p class="aip-mono-label aip-text-brand">AIP 방향 · 개념 비교</p><h3 class="aip-heading-2" id="after-title">공통 실행 경로로 연결</h3><ul class="aip-body-md"><li>데이터와 동작에 대한 의도를 정의한다.</li><li>정책과 계약을 서버가 검사한다.</li><li>생성 계약과 SDK로 호출 경계를 맞춘다.</li></ul></section></div><p class="aip-body-sm aip-text-secondary">개념 비교입니다. 코드량 감소나 성능 향상은 별도 측정이 필요합니다.</p></div></div></section>
+<section class="aip-chapter" id="mechanism" aria-labelledby="mechanism-title"><div class="aip-container aip-container--lg aip-chapter__inner"><header class="aip-chapter__intro"><p class="aip-mono-label aip-text-brand">03</p><h2 class="aip-heading-1" id="mechanism-title">선언은 가볍게.<br>실행은 엄격하게.</h2><p class="aip-body-md aip-text-secondary">이미지는 개념을 기억하게 하고, 흐름과 텍스트는 정확한 책임을 설명합니다.</p></header><div class="aip-chapter__body"><figure class="aip-artwork"><img src="../assets/brand/runtime-layers-3d.webp" alt="" width="1536" height="1024" loading="lazy" decoding="async"><figcaption>노랑은 의도, 파랑은 공통 런타임, 탱저린은 경계, Slate는 데이터의 시각적 은유입니다.</figcaption></figure><figure class="aip-diagram"><div class="aip-diagram__canvas"><ol class="aip-flow" aria-label="개념 실행 경로"><li class="aip-node" data-role="intent"><span class="aip-node__kind">intent</span>필요한 데이터·동작</li><li class="aip-node" data-role="permission"><span class="aip-node__kind">permission</span>서버 정책 검사</li><li class="aip-node" data-role="execution"><span class="aip-node__kind">execution</span>계획·실행</li><li class="aip-node" data-role="data"><span class="aip-node__kind">data</span>결과</li></ol></div><figcaption class="aip-diagram__caption">개념도: 호출자가 의도를 표현해도 서버 정책이 실행 여부를 결정합니다. 실제 제품 경로는 채택 버전의 명세를 확인하세요.</figcaption></figure></div></div></section>
+<section class="aip-chapter" id="evidence" aria-labelledby="evidence-title"><div class="aip-container aip-container--lg aip-chapter__inner"><header class="aip-chapter__intro"><p class="aip-mono-label aip-text-brand">04</p><h2 class="aip-heading-1" id="evidence-title">주장 옆에,<br>확인할 수 있는 근거.</h2><p class="aip-body-md aip-text-secondary">실행 결과와 성능 비교를 구분하고, 검증된 범위를 함께 공개합니다.</p></header><div class="aip-chapter__body"><div class="aip-grid aip-grid--2"><article class="aip-proof"><p class="aip-mono-label aip-text-brand">검증 자료</p><h3 class="aip-heading-2">실행 경로와 재현 절차</h3><p class="aip-body-md">실제 명령, 환경, 결과 파일을 이 자리에 연결하세요.</p><a class="aip-link" href="case-study.html#verification">근거를 배치하는 예시</a><p class="aip-proof__scope">게시 전 필수: 기준 커밋 · 실행일 · 명령 · 결과 · 남은 한계.</p></article><article class="aip-proof"><p class="aip-mono-label aip-text-secondary">성능 비교</p><p class="aip-proof__value">미측정</p><p class="aip-body-md">같은 workload로 측정한 뒤 값을 넣습니다. 임의의 배수나 사용자 수를 표시하지 않습니다.</p><p class="aip-proof__scope">조건: 데이터 크기 · 동시성 · 하드웨어 · warm/cold · p50/p95 · 오류율.</p></article></div></div></div></section>
+<section class="aip-story-next" aria-labelledby="next-title"><div class="aip-container aip-container--lg aip-story-next__inner"><div class="aip-story-next__copy"><h2 class="aip-display-md" id="next-title">안쪽 구조를 살펴보세요.</h2><p class="aip-body-md aip-text-secondary">컴파일, 계약, 실행의 책임을 한 단계씩 설명합니다.</p></div><a class="aip-button aip-button--lg" href="architecture.html">Architecture 읽기 <span aria-hidden="true">↗</span></a></div></section></main>
+<footer class="aip-container aip-container--lg aip-section"><div class="aip-cluster aip-cluster--between"><p class="aip-caption aip-text-secondary">AIP presentation template · illustrative · 제품 상태와 근거는 게시 전에 갱신하세요.</p><a class="aip-link" href="preview.html">모든 자산과 컴포넌트 보기</a></div></footer>
+<dialog class="aip-drawer" id="nav-drawer" aria-label="프레젠테이션 메뉴">
+  <div class="aip-drawer__header"><span class="aip-heading-3">AIP</span><button class="aip-icon-button" type="button" data-aip-dialog-close aria-label="메뉴 닫기"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="프레젠테이션"><a class="aip-nav__link" href="showcase.html">Showcase</a><a class="aip-nav__link" href="architecture.html">Architecture</a><a class="aip-nav__link" href="case-study.html">Case Study</a><a class="aip-nav__link" href="docs.html">Docs</a></nav></div>
+</dialog>
+</body>
+</html>

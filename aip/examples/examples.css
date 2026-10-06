@@ -25,6 +25,7 @@
 .ex-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--aip-space-4); margin: 0; padding: var(--aip-space-6); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); background: var(--aip-color-surface-default); text-align: center; }
 .ex-tile { min-height: calc(var(--aip-space-32) + var(--aip-space-12)); }
 .ex-tile > figcaption { color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-xs); line-height: var(--aip-font-line-height-normal); }
+.ex-tile > img { max-width: 100%; height: auto; }
 .ex-tile--ink { background: var(--aip-neutral-950); border-color: var(--aip-neutral-950); }
 .ex-tile--ink > figcaption { color: var(--aip-neutral-300); }
 .ex-mono-mark { color: var(--aip-color-text-primary); }

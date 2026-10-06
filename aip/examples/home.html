@@ -25,7 +25,7 @@
       <a class="aip-nav__link" href="docs.html">Docs</a>
       <a class="aip-nav__link" href="makeaip.html">MakeAIP</a>
       <a class="aip-nav__link" href="playground.html">Playground</a>
-      <a class="aip-nav__link" href="#principles">Principles</a>
+      <a class="aip-nav__link" href="showcase.html">Showcase</a>
     </nav>
     <div class="aip-header__actions">
       <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="Dark theme" data-aip-tooltip="Toggle theme"><svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
@@ -48,6 +48,8 @@
           <a class="aip-button aip-button--lg" href="makeaip.html"><svg class="aip-icon" aria-hidden="true"><use href="#i-package"/></svg>Create a project</a>
         </div>
       </div>
+      <div class="aip-stack aip-gap-6">
+      <figure class="aip-artwork"><img src="../assets/brand/intent-runtime-3d.webp" alt="" width="1672" height="941" fetchpriority="high"><figcaption>Intent → Runtime → Result · conceptual brand illustration.</figcaption></figure>
       <figure class="aip-code home-hero__code">
         <div class="aip-code__header"><span class="aip-code__title">orders.intent.ts</span><span class="aip-code__lang">illustrative</span></div>
 <pre class="aip-code__pre" tabindex="0"><code><span class="token keyword">export const</span> <span class="token function">listMyOrders</span> <span class="token operator">=</span> <span class="token function">intent</span><span class="token punctuation">({</span>
@@ -58,6 +60,7 @@
 <span class="token comment">// no new endpoint. the server's policy still decides.</span>
 <span class="token keyword">const</span> orders <span class="token operator">=</span> <span class="token keyword">await</span> aip<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>listMyOrders<span class="token punctuation">);</span></code></pre>
       </figure>
+      </div>
     </div>
   </section>
 
@@ -107,7 +110,7 @@
 
 <dialog class="aip-drawer" id="nav-drawer" aria-label="Main navigation">
   <div class="aip-drawer__header"><span class="aip-header__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></span><button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
-  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="Main"><a class="aip-nav__link" href="docs.html">Docs</a><a class="aip-nav__link" href="makeaip.html">MakeAIP</a><a class="aip-nav__link" href="playground.html">Playground</a></nav></div>
+  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="Main"><a class="aip-nav__link" href="docs.html">Docs</a><a class="aip-nav__link" href="makeaip.html">MakeAIP</a><a class="aip-nav__link" href="playground.html">Playground</a><a class="aip-nav__link" href="showcase.html">Showcase</a></nav></div>
 </dialog>
 </body>
 </html>

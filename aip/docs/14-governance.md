@@ -19,14 +19,14 @@ aip/
 │  ├─ scripts/ramp.mjs · palette-from-anchors.mjs
 │  ├─ build.mjs               src + components → tokens.json + dist/*
 │  └─ tokens.json · tokens.dark.json (생성물)
-├─ components/                ★ 컴포넌트 구현(CSS 12 + aip.js). 빌드가 lint 후 dist 로 묶는다
+├─ components/                ★ 컴포넌트 구현(CSS 13 + aip.js). 빌드가 lint 후 dist 로 묶는다
 ├─ dist/                      생성물. 소비 앱은 여기만 가져간다
 │  tokens.css · typography.css · prose.css · components.css · aip.js
 │  tokens.js · tokens.d.ts · tokens.global.js · tailwind.preset.cjs · tokens.scss · tokens.figma.json
 │  diagram.mermaid.json · contrast-report.json
-├─ docs/ 00~18                정답지
-├─ examples/                  preview + 제품 템플릿 4종
-└─ assets/brand/              로고·파비콘·앱 아이콘·히어로 + 생성 스크립트
+├─ docs/ 00~19                정답지
+├─ examples/                  preview + 제품 템플릿 4종 + 프레젠테이션 3종
+└─ assets/brand/              로고·파비콘·앱 아이콘·히어로·3D·캐릭터 + 생성 스크립트·프롬프트
 ```
 
 ## 2. 바꾸는 절차
