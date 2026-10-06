@@ -1,0 +1,97 @@
+/* navigation — Header(제품 공통 상단) · Nav · Breadcrumb · Pagination · Tabs.
+   네 제품(홈페이지·Docs·MakeAIP·Playground)이 같은 헤더를 쓴다. 높이·로고·검색 자리가 같아야 한 생태계로 읽힌다. */
+
+.aip-header {
+  position: sticky; top: 0; z-index: var(--aip-z-index-sticky);
+  background: var(--aip-component-header-bg);
+  border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-header-border);
+}
+.aip-header__inner {
+  display: flex; align-items: center; gap: var(--aip-component-header-gap);
+  height: var(--aip-component-header-height);
+}
+@media (min-width: 1024px) { .aip-header__inner { height: var(--aip-component-header-height-lg); } }
+.aip-header__brand {
+  display: inline-flex; align-items: center; gap: var(--aip-space-2); flex: none;
+  color: var(--aip-color-text-primary); text-decoration: none; border-radius: var(--aip-radius-sm);
+  font: var(--aip-font-weight-bold) var(--aip-font-size-lg) / 1 var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-tight);
+}
+.aip-header__brand > img, .aip-header__brand > svg { width: var(--aip-size-icon-lg); height: var(--aip-size-icon-lg); }
+/* 제품 이름: "AIP / Docs" — 같은 브랜드 아래의 어느 제품인지 */
+.aip-header__product { display: inline-flex; align-items: center; gap: var(--aip-space-2); color: var(--aip-color-text-secondary); font: var(--aip-font-weight-medium) var(--aip-font-size-md) / 1 var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-normal); }
+.aip-header__product::before { content: "/"; color: var(--aip-color-border-strong); font-family: var(--aip-font-family-mono); font-weight: var(--aip-font-weight-regular); }
+.aip-header__actions { display: flex; align-items: center; gap: var(--aip-space-2); margin-left: auto; }
+.aip-header__menu { display: inline-flex; }
+@media (min-width: 1024px) { .aip-header__menu { display: none; } }
+
+/* Nav — 헤더 안 주 내비. lg 미만에서는 숨기고 메뉴 버튼 → 드로어 */
+.aip-nav { display: none; align-items: center; gap: var(--aip-component-header-nav-gap); }
+@media (min-width: 1024px) { .aip-nav { display: flex; } }
+.aip-nav__link {
+  position: relative; display: inline-flex; align-items: center; height: var(--aip-size-control-sm); padding-inline: var(--aip-space-3);
+  border-radius: var(--aip-radius-sm); color: var(--aip-color-text-secondary); text-decoration: none;
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-nav__link:hover { color: var(--aip-color-text-primary); background: var(--aip-color-interactive-hover-overlay); }
+.aip-nav__link[aria-current] { color: var(--aip-color-text-primary); }
+/* 현재 위치: 헤더 바닥선에 붙는 2px 파랑 — 색만이 아니라 위치 표시로도 말한다 */
+.aip-nav__link[aria-current]::after {
+  content: ""; position: absolute; left: var(--aip-space-3); right: var(--aip-space-3);
+  bottom: calc((var(--aip-size-control-sm) - var(--aip-component-header-height-lg)) / 2);
+  height: var(--aip-border-width-strong); background: var(--aip-color-border-brand);
+}
+/* 드로어 안(세로) 내비 */
+.aip-nav--vertical { display: flex; flex-direction: column; align-items: stretch; gap: var(--aip-space-0-5); }
+.aip-nav--vertical .aip-nav__link { height: var(--aip-size-control-md); font-size: var(--aip-font-size-md); }
+.aip-nav--vertical .aip-nav__link[aria-current] { background: var(--aip-color-interactive-selected-bg); color: var(--aip-color-interactive-selected-text); }
+.aip-nav--vertical .aip-nav__link[aria-current]::after { display: none; }
+
+/* Breadcrumb — 경로처럼 읽힌다: Docs / Concepts / Intent */
+.aip-breadcrumb > ol { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-breadcrumb-gap); margin: 0; padding: 0; list-style: none; }
+.aip-breadcrumb li { display: inline-flex; align-items: center; gap: var(--aip-component-breadcrumb-gap); min-width: 0; color: var(--aip-color-text-secondary); font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-breadcrumb li + li::before { content: "/"; color: var(--aip-component-breadcrumb-separator); font-family: var(--aip-font-family-mono); }
+.aip-breadcrumb a { color: inherit; text-decoration: none; border-radius: var(--aip-radius-xs); }
+.aip-breadcrumb a:hover { color: var(--aip-color-text-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.aip-breadcrumb [aria-current="page"] { color: var(--aip-color-text-primary); font-weight: var(--aip-font-weight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 모바일: 마지막 두 단계만 */
+@media (max-width: 767px) { .aip-breadcrumb li:not(:nth-last-child(-n + 2)) { display: none; } }
+
+/* Pagination — 검색 결과·Changelog 목록. 문서 페이지 사이 이동은 Pager(docs.css) */
+.aip-pagination > ul { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-pagination-gap); margin: 0; padding: 0; list-style: none; }
+.aip-pagination__item {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--aip-space-1);
+  min-width: var(--aip-component-pagination-item); height: var(--aip-component-pagination-item); padding-inline: var(--aip-space-2);
+  border-radius: var(--aip-radius-sm); color: var(--aip-color-text-secondary); text-decoration: none;
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans); font-variant-numeric: tabular-nums;
+}
+.aip-pagination__item:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-pagination__item[aria-current="page"] { background: var(--aip-color-interactive-selected-bg); color: var(--aip-color-interactive-selected-text); box-shadow: inset 0 0 0 var(--aip-border-width-hairline) var(--aip-color-interactive-selected-border); }
+.aip-pagination__item[aria-disabled="true"] { color: var(--aip-color-text-disabled); pointer-events: none; }
+.aip-pagination__gap { color: var(--aip-color-text-tertiary); padding-inline: var(--aip-space-1); }
+
+/* Tabs — role="tablist"/"tab"/"tabpanel". 같은 페이지 안 내용 전환. 페이지 이동이면 Nav. aip.js 가 화살표 키를 붙인다 */
+.aip-tablist {
+  display: flex; gap: var(--aip-component-tabs-gap);
+  border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-tabs-border);
+  overflow-x: auto; scrollbar-width: none;
+}
+.aip-tablist::-webkit-scrollbar { display: none; }
+.aip-tab {
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--aip-space-2);
+  height: var(--aip-component-tabs-height); padding: 0; margin: 0;
+  border: 0; background: none; cursor: pointer; color: var(--aip-component-tabs-text);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-tab:hover { color: var(--aip-component-tabs-text-active); }
+.aip-tab[aria-selected="true"] { color: var(--aip-component-tabs-text-active); }
+.aip-tab::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: calc(-1 * var(--aip-border-width-hairline));
+  height: var(--aip-component-tabs-indicator); background: var(--aip-component-tabs-indicator-color);
+  transform: scaleX(0); transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-tab[aria-selected="true"]::after { transform: scaleX(1); }
+.aip-tab:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); border-radius: var(--aip-radius-sm); }
+.aip-tabpanel { padding-top: var(--aip-component-tabs-panel-gap); }
+.aip-tabpanel:focus-visible { outline-offset: var(--aip-space-1); border-radius: var(--aip-radius-sm); }

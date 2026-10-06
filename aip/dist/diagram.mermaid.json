@@ -1,0 +1,81 @@
+{
+  "light": {
+    "theme": "base",
+    "themeVariables": {
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system",
+      "fontSize": "14px",
+      "background": "#F7F7F4",
+      "primaryColor": "#F1F8FF",
+      "primaryBorderColor": "#1C77C3",
+      "primaryTextColor": "#0C4676",
+      "lineColor": "#5B5A52",
+      "textColor": "#3D3B30",
+      "secondaryColor": "#EDEDEA",
+      "tertiaryColor": "#F5F6FC",
+      "clusterBkg": "#F7F7F4",
+      "clusterBorder": "#93C8FD",
+      "edgeLabelBackground": "#F7F7F4",
+      "noteBkgColor": "#FEF9CB",
+      "noteBorderColor": "#D2C658",
+      "noteTextColor": "#3D3B30"
+    },
+    "classDefs": {
+      "intent": "fill:#F5E663,stroke:#948B44,color:#3D3B30,stroke-width:1px",
+      "runtime": "fill:#F1F8FF,stroke:#1C77C3,color:#0C4676,stroke-width:1px",
+      "execution": "fill:#1C77C3,stroke:#0A5C9C,color:#FFFFFF,stroke-width:1px",
+      "permission": "fill:#FFE7DE,stroke:#B7775E,color:#5B3A2E,stroke-width:1px",
+      "frontend": "fill:#F5F6FC,stroke:#868896,color:#404352,stroke-width:1px",
+      "backend": "fill:#EDEDEA,stroke:#727069,color:#323029,stroke-width:1px",
+      "data": "fill:#4D5061,stroke:#404352,color:#FFFFFF,stroke-width:1px",
+      "external": "fill:#FFFFFF,stroke:#8A8983,color:#5B5A52,stroke-width:1px,stroke-dasharray:6 4",
+      "note": "fill:#FEF9CB,stroke:#D2C658,color:#3D3B30,stroke-width:1px"
+    },
+    "linkStyles": {
+      "default": "stroke:#5B5A52,stroke-width:1.5px",
+      "muted": "stroke:#8A8983,stroke-width:1.5px,stroke-dasharray:6 4",
+      "emphasis": "stroke:#1C77C3,stroke-width:2px",
+      "allow": "stroke:#1C8457,stroke-width:1.5px",
+      "reject": "stroke:#C62948,stroke-width:1.5px,stroke-dasharray:6 4"
+    }
+  },
+  "dark": {
+    "theme": "base",
+    "themeVariables": {
+      "fontFamily": "\"Pretendard Variable\", Pretendard, -apple-system",
+      "fontSize": "14px",
+      "background": "#15140F",
+      "primaryColor": "#202B31",
+      "primaryBorderColor": "#6DABE9",
+      "primaryTextColor": "#E0EFFE",
+      "lineColor": "#C3C3BE",
+      "textColor": "#EDEDEA",
+      "secondaryColor": "#323029",
+      "tertiaryColor": "#252733",
+      "clusterBkg": "#15140F",
+      "clusterBorder": "#0A5C9C",
+      "edgeLabelBackground": "#15140F",
+      "noteBkgColor": "#3A3622",
+      "noteBorderColor": "#78723B",
+      "noteTextColor": "#FEF9CB"
+    },
+    "classDefs": {
+      "intent": "fill:#F5E663,stroke:#D2C658,color:#211F19,stroke-width:1px",
+      "runtime": "fill:#202B31,stroke:#6DABE9,color:#E0EFFE,stroke-width:1px",
+      "execution": "fill:#1C77C3,stroke:#6DABE9,color:#FFFFFF,stroke-width:1px",
+      "permission": "fill:#3B2F25,stroke:#DD9072,color:#FFE7DE,stroke-width:1px",
+      "frontend": "fill:#252733,stroke:#A3A5B1,color:#EBECF3,stroke-width:1px",
+      "backend": "fill:#323029,stroke:#8A8983,color:#EDEDEA,stroke-width:1px",
+      "data": "fill:#4D5061,stroke:#A3A5B1,color:#FFFFFF,stroke-width:1px",
+      "external": "fill:#15140F,stroke:#8A8983,color:#C3C3BE,stroke-width:1px,stroke-dasharray:6 4",
+      "note": "fill:#3A3622,stroke:#78723B,color:#FEF9CB,stroke-width:1px"
+    },
+    "linkStyles": {
+      "default": "stroke:#C3C3BE,stroke-width:1.5px",
+      "muted": "stroke:#8A8983,stroke-width:1.5px,stroke-dasharray:6 4",
+      "emphasis": "stroke:#6DABE9,stroke-width:2px",
+      "allow": "stroke:#74B792,stroke-width:1.5px",
+      "reject": "stroke:#F37D87,stroke-width:1.5px,stroke-dasharray:6 4"
+    }
+  },
+  "usage": "flowchart 맨 아래에 classDef 를 붙인다: classDef intent fill:#F5E663,stroke:#948B44,color:#3D3B30,stroke-width:1px … 그리고 class A intent"
+}

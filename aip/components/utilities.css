@@ -1,0 +1,11 @@
+/* utilities — 마지막에 묶여 같은 명시도의 컴포넌트 규칙을 이긴다. 여기 있는 것 말고는 유틸을 만들지 않는다. */
+
+/* 글자색 유틸 — typography 클래스는 색을 정하지 않으므로 짝지어 쓴다(예: .aip-doc-lead + .aip-text-secondary) */
+.aip-text-primary { color: var(--aip-color-text-primary); }
+.aip-text-secondary { color: var(--aip-color-text-secondary); }
+.aip-text-tertiary { color: var(--aip-color-text-tertiary); }
+.aip-text-brand { color: var(--aip-color-text-brand); }
+
+/* 화면 폭에 따라 숨기기 — 두 단계만. 내용을 숨기기 전에 접기·드로어를 먼저 검토한다 */
+@media (max-width: 767px) { .aip-hide-below-md { display: none; } }
+@media (max-width: 1023px) { .aip-hide-below-lg { display: none; } }

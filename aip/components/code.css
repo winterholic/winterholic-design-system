@@ -1,0 +1,97 @@
+/* code — Code Block · Code Tabs · Copy button · Inline Code(UI 용).
+   코드 면은 두 테마 모두 Slate 다. 문서(종이)와 코드(slate)가 한눈에 갈린다.
+   복사는 '보이는 그대로' 가 아니라 '실행할 그대로' 를 복사한다 — 줄 번호·셸 프롬프트($)는 복사에서 빠진다(aip.js). */
+
+.aip-code {
+  --aip-_code-hover: color-mix(in srgb, var(--aip-color-code-text) 10%, transparent);
+  position: relative; margin: 0; min-width: 0;
+  border: var(--aip-border-width-hairline) solid var(--aip-component-code-block-border); border-radius: var(--aip-component-code-block-radius);
+  background: var(--aip-component-code-block-bg); color: var(--aip-color-code-text); overflow: hidden;
+}
+.aip-code__header {
+  display: flex; align-items: center; gap: var(--aip-space-2);
+  min-height: var(--aip-component-code-block-header-height); padding: 0 var(--aip-space-2) 0 var(--aip-component-code-block-padding-x);
+  background: var(--aip-component-code-block-header-bg); border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-code-block-border);
+}
+.aip-code__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--aip-color-code-text); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); font-variant-ligatures: none; }
+.aip-code__lang { color: var(--aip-color-code-text-muted); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); text-transform: lowercase; }
+.aip-code__header > :last-child { margin-left: auto; }
+.aip-code__pre {
+  margin: 0; padding: var(--aip-component-code-block-padding-y) var(--aip-component-code-block-padding-x);
+  overflow-x: auto; tab-size: 2;
+  font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); font-variant-ligatures: none;
+  color: var(--aip-color-code-text); background: transparent;
+}
+.aip-code__pre > code { display: block; min-width: fit-content; font: inherit; background: none; padding: 0; color: inherit; }
+.aip-code__pre:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); }
+/* 헤더가 없을 때 복사 버튼은 오른쪽 위에 떠 있고, hover·포커스에만 보인다(터치 기기에서는 항상) */
+.aip-code > .aip-copy { position: absolute; top: var(--aip-space-2); right: var(--aip-space-2); z-index: var(--aip-z-index-raised); background: var(--aip-component-code-block-bg); opacity: 0; }
+.aip-code:hover > .aip-copy, .aip-code > .aip-copy:focus-visible, .aip-code > .aip-copy[data-copied] { opacity: 1; }
+@media (hover: none) { .aip-code > .aip-copy { opacity: 1; } }
+
+/* 줄 단위 표시: <span class="aip-code__line" data-highlight | data-diff="+"|"-">. 줄 번호는 pre[data-line-numbers] */
+.aip-code__line {
+  /* inline-block: 줄 사이의 실제 개행 문자가 줄바꿈을 맡는다(block 이면 빈 줄이 하나 더 생긴다). 배경은 코드 면 끝까지 */
+  display: inline-block; position: relative; box-sizing: border-box; min-width: calc(100% + 2 * var(--aip-component-code-block-padding-x));
+  margin-inline: calc(-1 * var(--aip-component-code-block-padding-x)); padding-inline: var(--aip-component-code-block-padding-x);
+}
+.aip-code__line[data-highlight] { background: var(--aip-color-code-line-highlight); box-shadow: inset var(--aip-border-width-accent) 0 0 var(--aip-color-code-line-highlight-marker); }
+.aip-code__line[data-diff="+"] { background: var(--aip-color-code-added-bg); }
+.aip-code__line[data-diff="-"] { background: var(--aip-color-code-removed-bg); }
+.aip-code__line[data-diff]::before { position: absolute; left: var(--aip-space-1); user-select: none; font-weight: var(--aip-font-weight-semibold); }
+.aip-code__line[data-diff="+"]::before { content: "+"; color: var(--aip-color-code-added-sign); }
+.aip-code__line[data-diff="-"]::before { content: "−"; color: var(--aip-color-code-removed-sign); }
+.aip-code__pre[data-line-numbers] { counter-reset: aip-line; padding-left: 0; }
+.aip-code__pre[data-line-numbers] .aip-code__line { margin-left: 0; min-width: calc(100% + var(--aip-component-code-block-padding-x)); padding-left: calc(var(--aip-component-code-block-line-number-width) + var(--aip-space-3)); counter-increment: aip-line; }
+.aip-code__pre[data-line-numbers] .aip-code__line::after {
+  content: counter(aip-line); position: absolute; left: 0; width: var(--aip-component-code-block-line-number-width); text-align: right;
+  color: var(--aip-color-code-line-number); user-select: none;
+}
+.aip-code__prompt { color: var(--aip-color-code-comment); user-select: none; }
+.aip-code__prompt::after { content: " "; }
+
+/* 접힘: 긴 코드는 max-height 에서 잘리고 아래에 '모두 보기' */
+.aip-code[data-collapsed] .aip-code__pre { max-height: var(--aip-component-code-block-max-height); overflow-y: hidden; }
+.aip-code__expand {
+  display: none; position: absolute; left: 0; right: 0; bottom: 0; justify-content: center; align-items: flex-end;
+  padding: var(--aip-space-10) 0 var(--aip-space-3);
+  background: linear-gradient(to bottom, transparent, var(--aip-component-code-block-bg) 70%);
+}
+.aip-code[data-collapsed] .aip-code__expand { display: flex; }
+.aip-code__expand > button { border: var(--aip-border-width-hairline) solid color-mix(in srgb, var(--aip-color-code-text) 25%, transparent); border-radius: var(--aip-radius-full); background: var(--aip-component-code-block-header-bg); color: var(--aip-color-code-text); height: var(--aip-size-control-xs); padding-inline: var(--aip-space-3); cursor: pointer; font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans); }
+
+/* Copy button — 코드 면 위의 고스트 버튼. 성공하면 1.6초간 '복사됨' + 체크(aria-live 로도 알린다) */
+.aip-copy {
+  display: inline-flex; align-items: center; gap: var(--aip-space-1-5); flex: none;
+  height: var(--aip-size-control-xs); padding-inline: var(--aip-space-2);
+  border: 0; border-radius: var(--aip-radius-sm); background: transparent; cursor: pointer;
+  color: var(--aip-color-code-text-muted); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans);
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), opacity var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-copy:hover { background: var(--aip-_code-hover, var(--aip-color-interactive-hover-overlay)); color: var(--aip-color-code-text); }
+.aip-copy > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-copy__done { display: none; }
+.aip-copy[data-copied] { color: var(--aip-color-code-added-sign); }
+.aip-copy[data-copied] .aip-copy__idle { display: none; }
+.aip-copy[data-copied] .aip-copy__done { display: inline-flex; }
+@media (pointer: coarse) { .aip-copy { position: relative; } .aip-copy::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); } }
+/* 코드 면 밖(밝은 면)에서 쓰는 복사 버튼 */
+.aip-copy--surface { color: var(--aip-color-text-secondary); }
+.aip-copy--surface:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-copy--surface[data-copied] { color: var(--aip-color-text-success); }
+
+/* Code Tabs — 같은 내용을 언어별로(TypeScript · Python). data-aip-sync 로 묶인 탭은 페이지 전체가 함께 바뀌고 선택이 기억된다 */
+.aip-code-tabs__list { display: flex; align-self: stretch; gap: var(--aip-space-1); min-width: 0; overflow-x: auto; scrollbar-width: none; margin-left: calc(-1 * var(--aip-space-2)); }
+.aip-code-tabs__list::-webkit-scrollbar { display: none; }
+.aip-code-tabs__tab {
+  position: relative; flex: none; display: inline-flex; align-items: center; padding-inline: var(--aip-space-2);
+  border: 0; background: none; cursor: pointer; color: var(--aip-color-code-text-muted);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-code-tabs__tab:hover { color: var(--aip-color-code-text); }
+.aip-code-tabs__tab[aria-selected="true"] { color: var(--aip-color-code-text); }
+.aip-code-tabs__tab[aria-selected="true"]::after { content: ""; position: absolute; left: var(--aip-space-2); right: var(--aip-space-2); bottom: 0; height: var(--aip-border-width-strong); background: var(--aip-color-code-function); }
+.aip-code-tabs__tab:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); border-radius: var(--aip-radius-sm); }
+.aip-code-tabs [role="tabpanel"]:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); }
+.aip-code ::selection { background: var(--aip-color-code-selection); }

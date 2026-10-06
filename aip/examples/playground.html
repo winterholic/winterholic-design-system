@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIP Playground (template)</title>
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#editor">Skip to editor</a>
+<header class="aip-header">
+  <div class="aip-header__inner aip-container aip-container--full">
+    <a class="aip-header__brand" href="home.html" aria-label="AIP home"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span><span class="aip-header__product">Playground</span></a>
+    <nav class="aip-nav" aria-label="Main">
+      <a class="aip-nav__link" href="docs.html">Docs</a>
+      <a class="aip-nav__link" href="makeaip.html">MakeAIP</a>
+      <a class="aip-nav__link" href="playground.html" aria-current="page">Playground</a>
+    </nav>
+    <div class="aip-header__actions">
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="Dark theme" data-aip-tooltip="Toggle theme"><svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <button class="aip-icon-button aip-icon-button--sm aip-header__menu" type="button" aria-label="Open navigation" data-aip-dialog-open="nav-drawer"><svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="aip-workbench" aria-label="Playground">
+  <div class="aip-toolbar" role="toolbar" aria-label="Playground actions">
+    <button class="aip-button aip-button--primary aip-button--sm" type="button" id="run" data-aip-tooltip="Run" data-aip-tooltip-kbd="⌘↵"><svg class="aip-icon" aria-hidden="true"><use href="#i-play"/></svg>Run</button>
+    <span class="aip-select aip-select--sm"><select aria-label="Acting as"><option>as alice (owner)</option><option>as bob (other user)</option><option>anonymous</option></select></span>
+    <span class="aip-toolbar__divider" aria-hidden="true"></span>
+    <button class="aip-icon-button aip-icon-button--sm" type="button" aria-label="Reset example" data-aip-tooltip="Reset example"><svg class="aip-icon" aria-hidden="true"><use href="#i-reset"/></svg></button>
+    <button class="aip-icon-button aip-icon-button--sm" type="button" aria-label="Copy share link" data-aip-copy="#share-url" data-aip-copied-label="Share link copied" data-aip-tooltip="Copy share link"><svg class="aip-icon" aria-hidden="true"><use href="#i-link"/></svg></button>
+    <span class="aip-sr-only" id="share-url">https://play.aip.dev/s/7f3a9c</span>
+    <span class="aip-toolbar__spacer"></span>
+    <span class="aip-badge aip-badge--experimental aip-hide-below-md">sandbox · nothing is saved</span>
+  </div>
+
+  <div class="aip-panes">
+    <section class="aip-pane" aria-labelledby="ed-title">
+      <div class="aip-pane__header"><h2 class="aip-pane__title" id="ed-title">intent.ts</h2><span class="aip-code__lang aip-text-tertiary">illustrative</span></div>
+      <div class="aip-pane__body aip-pane__body--code">
+        <label class="aip-sr-only" for="editor">Intent source</label>
+        <textarea class="aip-editor" id="editor" spellcheck="false">export const listMyOrders = intent({
+  read: "orders",
+  where: { owner: "$actor" },
+  limit: 20,
+});</textarea>
+      </div>
+    </section>
+    <section class="aip-pane" aria-label="Output">
+      <div class="aip-pane__header">
+        <div class="aip-tablist" role="tablist" aria-label="Output">
+          <button class="aip-tab" role="tab" id="o-t1" aria-controls="o-p1" aria-selected="true">Result</button>
+          <button class="aip-tab" role="tab" id="o-t2" aria-controls="o-p2" aria-selected="false">Plan</button>
+          <button class="aip-tab" role="tab" id="o-t3" aria-controls="o-p3" aria-selected="false">Log <span class="aip-badge aip-badge--count">3</span></button>
+        </div>
+      </div>
+      <div class="aip-pane__body">
+        <div role="tabpanel" id="o-p1" aria-labelledby="o-t1" class="aip-pane__body--padded aip-stack aip-gap-4">
+          <p class="aip-status aip-status--success" role="status"><svg class="aip-icon" aria-hidden="true"><use href="#i-circle-check"/></svg>200 · 2 rows · 14 ms</p>
+          <div class="aip-table-wrap" role="region" aria-label="Result rows" tabindex="0">
+            <table class="aip-table">
+              <thead><tr><th scope="col">id</th><th scope="col">owner</th><th scope="col" class="aip-table__num">total</th></tr></thead>
+              <tbody><tr><td><code>ord_19</code></td><td>alice</td><td class="aip-table__num">42.00</td></tr><tr><td><code>ord_23</code></td><td>alice</td><td class="aip-table__num">18.50</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div role="tabpanel" id="o-p2" aria-labelledby="o-t2" hidden>
+          <figure class="aip-code"><pre class="aip-code__pre"><code><span class="token keyword">SELECT</span> id<span class="token punctuation">,</span> owner<span class="token punctuation">,</span> total <span class="token keyword">FROM</span> orders
+<span class="token keyword">WHERE</span> owner <span class="token operator">=</span> <span class="token string">$1</span> <span class="token comment">-- actor from session</span>
+<span class="token keyword">LIMIT</span> <span class="token number">20</span></code></pre></figure>
+        </div>
+        <div role="tabpanel" id="o-p3" aria-labelledby="o-t3" hidden>
+          <ol class="aip-run-log">
+            <li><span class="aip-run-log__time">12:04:01</span><span data-level="ok">allow · policy orders.owner</span></li>
+            <li><span class="aip-run-log__time">12:03:44</span><span data-level="denied">deny · actor bob is not owner</span></li>
+            <li><span class="aip-run-log__time">12:03:30</span><span data-level="warn">input · unknown key "ownerId" ignored</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="aip-statusbar" role="status"><span>runtime 0.4.0</span><span>ts · utf-8</span><span>Ln 3, Col 14</span></div>
+</main>
+
+<dialog class="aip-drawer" id="nav-drawer" aria-label="Main navigation">
+  <div class="aip-drawer__header"><span class="aip-header__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></span><button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="Main"><a class="aip-nav__link" href="docs.html">Docs</a><a class="aip-nav__link" href="makeaip.html">MakeAIP</a><a class="aip-nav__link" href="playground.html" aria-current="page">Playground</a></nav></div>
+</dialog>
+</body>
+</html>

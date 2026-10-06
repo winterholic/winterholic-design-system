@@ -1,0 +1,68 @@
+/* base — 모든 컴포넌트가 기대는 최소 규칙: 박스 모델, 접근성 유틸, 아이콘, 로딩 표시.
+   값은 전부 var(--aip-…). 이 파일을 포함한 components/*.css 는 빌드가 lint 한다(hex·px·ms·z-index 숫자 금지). */
+
+:where([class^="aip-"], [class*=" aip-"]),
+:where([class^="aip-"], [class*=" aip-"])::before,
+:where([class^="aip-"], [class*=" aip-"])::after { box-sizing: border-box; }
+
+/* 화면에는 숨기고 스크린 리더에는 읽힌다 */
+.aip-sr-only {
+  position: absolute; width: var(--aip-space-px); height: var(--aip-space-px); padding: 0; margin: calc(-1 * var(--aip-space-px));
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 키보드 첫 Tab 에 나타나는 본문 바로가기. 모든 제품 페이지의 첫 요소 */
+.aip-skip-link {
+  position: absolute; left: var(--aip-space-4); top: var(--aip-space-2);
+  z-index: var(--aip-z-index-tooltip);
+  padding: var(--aip-space-2) var(--aip-space-4);
+  border-radius: var(--aip-radius-md);
+  background: var(--aip-color-surface-inverse); color: var(--aip-color-text-inverse);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  transform: translateY(-200%);
+  transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-skip-link:focus-visible { transform: none; }
+
+/* 아이콘(Lucide 인라인 SVG). 크기는 부모 컴포넌트가 정하고, 단독이면 md */
+.aip-icon {
+  flex: none; width: var(--aip-_icon, var(--aip-size-icon-md)); height: var(--aip-_icon, var(--aip-size-icon-md));
+  stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none;
+}
+.aip-icon--xs { --aip-_icon: var(--aip-size-icon-xs); }
+.aip-icon--sm { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-icon--lg { --aip-_icon: var(--aip-size-icon-lg); }
+.aip-icon--xl { --aip-_icon: var(--aip-size-icon-xl); }
+
+/* 터치 영역 확장 — 시각 크기가 44 보다 작은 컨트롤에 건다 */
+@media (pointer: coarse) {
+  .aip-hit { position: relative; }
+  .aip-hit::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); }
+}
+
+/* 스피너 — 1초 안쪽 대기. 300ms 가 지나야 보이게 하는 것은 호출부 책임(docs/08 §1) */
+.aip-spinner {
+  display: inline-block; flex: none;
+  width: var(--aip-_icon, var(--aip-size-icon-md)); height: var(--aip-_icon, var(--aip-size-icon-md));
+  border: var(--aip-border-width-strong) solid currentColor; border-right-color: transparent;
+  border-radius: var(--aip-radius-full);
+  animation: aip-spin calc(var(--aip-motion-duration-slow) * 3) var(--aip-motion-easing-linear) infinite;
+}
+.aip-spinner--sm { --aip-_icon: var(--aip-size-icon-sm); }
+@keyframes aip-spin { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) {
+  .aip-spinner { animation-duration: var(--aip-motion-duration-feedback); }
+}
+
+/* 스켈레톤 — 실제와 같은 개수·모양으로. 깜빡임 없이 정지(장식 애니메이션 금지 원칙) */
+.aip-skeleton {
+  display: block; border-radius: var(--aip-radius-sm);
+  background: var(--aip-color-surface-sunken);
+}
+.aip-skeleton--text { height: 0.8em; margin-block: 0.45em; }
+.aip-skeleton--text:last-child { width: 60%; }
+
+/* 구분선 */
+.aip-divider { border: 0; border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); margin-block: var(--aip-space-6); }
+.aip-divider--subtle { border-top-color: var(--aip-color-border-subtle); margin-block: var(--aip-space-4); }
+

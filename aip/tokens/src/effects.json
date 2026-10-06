@@ -1,0 +1,55 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "고도(elevation). AIP 는 선이 구조를 만들고 그림자는 '떠 있는 것' 에만 쓴다 — 카드·코드 블록·콜아웃에는 그림자가 없다. 그림자 색은 Charcoal 계열. 색 글로우(브랜드 빛 번짐)는 없다. 다크는 shadow-dark 로 갈아 끼운다.",
+    "xs": { "$value": [{ "color": "#211F190F", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }], "$description": "세그먼트 활성 항목·스위치 손잡이" },
+    "sm": { "$value": [
+      { "color": "#211F1914", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" },
+      { "color": "#211F190A", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "-1px" }
+    ], "$description": "클릭 가능한 카드 hover·sticky 헤더가 스크롤로 떠올랐을 때" },
+    "md": { "$value": [
+      { "color": "#211F191A", "offsetX": "0px", "offsetY": "6px", "blur": "16px", "spread": "-4px" },
+      { "color": "#211F190F", "offsetX": "0px", "offsetY": "2px", "blur": "4px", "spread": "-2px" }
+    ], "$description": "드롭다운·셀렉트 목록·팝오버·툴팁" },
+    "lg": { "$value": [
+      { "color": "#211F1929", "offsetX": "0px", "offsetY": "16px", "blur": "40px", "spread": "-8px" },
+      { "color": "#211F190F", "offsetX": "0px", "offsetY": "4px", "blur": "8px", "spread": "-4px" }
+    ], "$description": "다이얼로그·검색 팔레트·모바일 드로어·토스트" }
+  },
+
+  "shadow-dark": {
+    "$type": "shadow",
+    "$description": "다크 그림자. 배경이 어두워 alpha 를 올리고, 면 밝기(raised)가 고도의 주 신호가 된다.",
+    "xs": { "$value": [{ "color": "#00000040", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }] },
+    "sm": { "$value": [{ "color": "#00000059", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" }] },
+    "md": { "$value": [{ "color": "#00000073", "offsetX": "0px", "offsetY": "8px", "blur": "20px", "spread": "-4px" }] },
+    "lg": { "$value": [{ "color": "#0000008C", "offsetX": "0px", "offsetY": "20px", "blur": "48px", "spread": "-8px" }] }
+  },
+
+  "pattern": {
+    "$description": "AIP 의 유일한 배경 장식인 제도용 점 격자. 히어로·다이어그램 컨테이너·빈 Playground 에만. 색은 color.diagram.grid.",
+    "grid-size": { "$value": "24px", "$type": "dimension", "$description": "점 간격 = space.6" },
+    "grid-dot":  { "$value": "1px",  "$type": "dimension", "$description": "점 반지름" }
+  },
+
+  "opacity": {
+    "$type": "number",
+    "disabled": { "$value": 0.45, "$description": "비활성 요소 전체(아이콘 포함)에 거는 값. 색 토큰 action.disabled 가 있으면 그쪽이 먼저" },
+    "muted":    { "$value": 0.65, "$description": "선택 해제된 옵션의 설명·접힌 항목 미리보기" }
+  },
+
+  "z-index": {
+    "$type": "number",
+    "$description": "레이어 순서. 임의 z-index(999 등) 금지. 같은 층 안의 순서는 DOM 순서로 해결한다.",
+    "hide":     { "$value": -1 },
+    "base":     { "$value": 0 },
+    "raised":   { "$value": 10,   "$description": "코드 블록 복사 버튼·앵커 링크·sticky TOC" },
+    "sticky":   { "$value": 1000, "$description": "헤더·sticky 탭 바·MakeAIP 생성 바" },
+    "dropdown": { "$value": 1100, "$description": "드롭다운·셀렉트 목록(헤더 안에서 열려도 헤더 위)" },
+    "overlay":  { "$value": 1200, "$description": "스크림" },
+    "modal":    { "$value": 1300, "$description": "다이얼로그·검색 팔레트·모바일 드로어" },
+    "popover":  { "$value": 1400, "$description": "다이얼로그 안에서 열리는 드롭다운" },
+    "toast":    { "$value": 1500 },
+    "tooltip":  { "$value": 1600 }
+  }
+}

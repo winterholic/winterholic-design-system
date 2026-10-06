@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Intents · AIP Docs (template)</title>
+  <meta name="description" content="An intent declares what the caller needs. The AIP Runtime decides whether and how to run it.">
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/prose.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <link rel="stylesheet" href="examples.css">
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#main">Skip to content</a>
+
+<header class="aip-header">
+  <div class="aip-header__inner aip-container aip-container--full">
+    <a class="aip-header__brand" href="home.html" aria-label="AIP home">
+      <img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span>
+      <span class="aip-header__product">Docs</span>
+    </a>
+    <nav class="aip-nav" aria-label="Main">
+      <a class="aip-nav__link" href="docs.html" aria-current="page">Docs</a>
+      <a class="aip-nav__link" href="docs.html#reference">Reference</a>
+      <a class="aip-nav__link" href="makeaip.html">MakeAIP</a>
+      <a class="aip-nav__link" href="playground.html">Playground</a>
+    </nav>
+    <div class="aip-header__actions">
+      <button class="aip-search-trigger" type="button" data-aip-search-open>
+        <svg class="aip-icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <span>Search docs</span>
+        <kbd>⌘K</kbd>
+      </button>
+      <div class="aip-dropdown aip-hide-below-md">
+        <button class="aip-button aip-button--sm aip-button--ghost" type="button" aria-haspopup="menu" aria-controls="version-menu">
+          <span class="aip-version" data-aip-menu-value>v0.4</span>
+          <svg class="aip-icon" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          <span class="aip-sr-only">Documentation version</span>
+        </button>
+        <div class="aip-menu aip-menu--end" id="version-menu" role="menu" aria-label="Documentation version">
+          <p class="aip-menu__label" role="presentation">Version</p>
+          <button class="aip-menu__item" role="menuitemradio" aria-checked="true" data-value="v0.4">v0.4 <span class="aip-menu__meta">latest</span></button>
+          <button class="aip-menu__item" role="menuitemradio" aria-checked="false" data-value="v0.3">v0.3</button>
+          <hr class="aip-menu__separator">
+          <a class="aip-menu__item" role="menuitem" href="#">All versions</a>
+        </div>
+      </div>
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="Dark theme" data-aip-tooltip="Toggle theme">
+        <svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="aip-icon-button aip-icon-button--sm aip-hide-below-md" href="#" aria-label="AIP on GitHub" data-aip-tooltip="AIP on GitHub">
+        <svg class="aip-icon" aria-hidden="true"><use href="#i-github"/></svg>
+      </a>
+      <button class="aip-icon-button aip-icon-button--sm aip-header__menu" type="button" aria-label="Open navigation" data-aip-dialog-open="nav-drawer">
+        <svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- 모바일: 문서 목차를 여는 바 -->
+<div class="aip-docs__mobilebar">
+  <button class="aip-button aip-button--sm aip-button--ghost" type="button" data-aip-dialog-open="docs-drawer">
+    <svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg> Menu
+  </button>
+  <nav class="aip-breadcrumb" aria-label="Breadcrumb">
+    <ol><li><a href="#">Concepts</a></li><li><span aria-current="page">Intents</span></li></ol>
+  </nav>
+</div>
+
+<div class="aip-docs">
+  <aside class="aip-docs__sidebar">
+    <nav class="aip-sidebar" aria-label="Documentation">
+      <div>
+        <p class="aip-sidebar__title" id="sb-start">Get started</p>
+        <ul aria-labelledby="sb-start">
+          <li><a class="aip-sidebar__link" href="#">Introduction</a></li>
+          <li><a class="aip-sidebar__link" href="#">Quick Start</a></li>
+          <li><a class="aip-sidebar__link" href="makeaip.html">Create a project <span class="aip-badge">MakeAIP</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="aip-sidebar__title" id="sb-concepts">Concepts</p>
+        <ul aria-labelledby="sb-concepts">
+          <li><a class="aip-sidebar__link" href="#">Overview</a></li>
+          <li><a class="aip-sidebar__link" href="docs.html" aria-current="page">Intents</a></li>
+          <li><a class="aip-sidebar__link" href="#">Runtime</a></li>
+          <li>
+            <details open>
+              <summary class="aip-sidebar__link">Permissions</summary>
+              <ul>
+                <li><a class="aip-sidebar__link" href="#">Policies</a></li>
+                <li><a class="aip-sidebar__link" href="#">Actors</a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a class="aip-sidebar__link" href="#">Extensions <span class="aip-badge aip-badge--experimental">experimental</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="aip-sidebar__title" id="sb-ref">Reference</p>
+        <ul aria-labelledby="sb-ref">
+          <li><a class="aip-sidebar__link" href="#">Specification</a></li>
+          <li><a class="aip-sidebar__link" href="#">JavaScript SDK</a></li>
+          <li><a class="aip-sidebar__link" href="#">Python SDK</a></li>
+          <li><a class="aip-sidebar__link" href="#">Security</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="aip-docs__body">
+    <main class="aip-docs__main" id="main" tabindex="-1">
+      <div class="aip-docs__head">
+        <nav class="aip-breadcrumb aip-hide-below-md" aria-label="Breadcrumb">
+          <ol><li><a href="#">Docs</a></li><li><a href="#">Concepts</a></li><li><span aria-current="page">Intents</span></li></ol>
+        </nav>
+        <h1 class="aip-doc-title">Intents</h1>
+        <p class="aip-doc-lead aip-text-secondary">An intent declares <em>what</em> the caller needs. The AIP Runtime decides <em>whether</em> and <em>how</em> to run it — the server keeps the final say.</p>
+        <div class="aip-docs__meta">
+          <span class="aip-cluster aip-gap-1"><span class="aip-version">v0.4.0</span><span class="aip-badge aip-badge--beta">beta</span></span>
+          <span>Updated 2026.10.06</span>
+          <a class="aip-link" href="#">Edit this page</a>
+          <a class="aip-link" href="#">View as Markdown</a>
+        </div>
+      </div>
+
+      <aside class="aip-callout aip-callout--important ex-sample-note" role="note">
+        <svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-highlighter"/></svg>
+        <div class="aip-callout__body"><strong class="aip-callout__title">Template content</strong><p>This page demonstrates the design system. The code is illustrative only — AIP's definition syntax is still open and is not decided here.</p></div>
+      </aside>
+
+      <details class="aip-toc-disclosure">
+        <summary>On this page</summary>
+        <nav class="aip-toc" aria-label="On this page (collapsed)">
+          <ol>
+            <li><a class="aip-toc__link" href="#declaring">Declaring an intent</a></li>
+            <li><a class="aip-toc__link" href="#authority" data-level="2">Who decides</a></li>
+            <li><a class="aip-toc__link" href="#authority-flow" data-level="3">Request flow</a></li>
+            <li><a class="aip-toc__link" href="#spec">Specification</a></li>
+            <li><a class="aip-toc__link" href="#reference">Reference</a></li>
+          </ol>
+        </nav>
+      </details>
+
+      <article class="aip-doc">
+        <p>Most applications re-implement the same backend endpoints again and again. In AIP, the caller expresses the data and action it needs as an <strong>intent</strong>, and the <a href="#">AIP Runtime</a> runs it inside the contract the server allows. You don't add an API per screen — you declare <mark>what the screen needs</mark>.</p>
+
+        <h2 id="declaring">Declaring an intent <a class="aip-anchor" href="#declaring"><span class="aip-sr-only">Section link: Declaring an intent</span>#</a></h2>
+        <p>Declare the intent next to the code that uses it. The same intent can be written in TypeScript or Python; pick a language once and every example on the site follows.</p>
+
+        <div class="aip-code aip-code-tabs" data-aip-sync="language">
+          <div class="aip-code__header">
+            <div class="aip-code-tabs__list" role="tablist" aria-label="Language">
+              <button class="aip-code-tabs__tab" role="tab" id="t-ts" aria-controls="p-ts" aria-selected="true" data-aip-sync-value="ts">TypeScript</button>
+              <button class="aip-code-tabs__tab" role="tab" id="t-py" aria-controls="p-py" aria-selected="false" data-aip-sync-value="py">Python</button>
+            </div>
+            <button class="aip-copy" type="button" data-aip-copy aria-label="Copy code">
+              <span class="aip-copy__idle"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></span>
+              <span class="aip-copy__done"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              <span class="aip-copy__idle">Copy</span><span class="aip-copy__done">Copied</span>
+            </button>
+          </div>
+          <div role="tabpanel" id="p-ts" aria-labelledby="t-ts">
+<pre class="aip-code__pre" tabindex="0"><code><span class="token comment">// orders.intent.ts — illustrative syntax</span>
+<span class="token keyword">export const</span> <span class="token function">listMyOrders</span> <span class="token operator">=</span> <span class="token function">intent</span><span class="token punctuation">({</span>
+  read<span class="token punctuation">:</span> <span class="token string">"orders"</span><span class="token punctuation">,</span>
+  where<span class="token punctuation">:</span> <span class="token punctuation">{</span> owner<span class="token punctuation">:</span> <span class="token string">"$actor"</span> <span class="token punctuation">},</span>
+  limit<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+<span class="token punctuation">});</span></code></pre>
+          </div>
+          <div role="tabpanel" id="p-py" aria-labelledby="t-py" hidden>
+<pre class="aip-code__pre" tabindex="0"><code><span class="token comment"># orders_intent.py — illustrative syntax</span>
+list_my_orders <span class="token operator">=</span> <span class="token function">intent</span><span class="token punctuation">(</span>
+    read<span class="token operator">=</span><span class="token string">"orders"</span><span class="token punctuation">,</span>
+    where<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">"owner"</span><span class="token punctuation">:</span> <span class="token string">"$actor"</span><span class="token punctuation">},</span>
+    limit<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>
+<span class="token punctuation">)</span></code></pre>
+          </div>
+        </div>
+
+        <p>Install the SDK first. Copying the command leaves the <code>$</code> prompt out.</p>
+        <figure class="aip-code">
+          <div class="aip-code__header"><span class="aip-code__lang">shell</span>
+            <button class="aip-copy" type="button" data-aip-copy aria-label="Copy command">
+              <span class="aip-copy__idle"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></span>
+              <span class="aip-copy__done"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              <span class="aip-copy__idle">Copy</span><span class="aip-copy__done">Copied</span>
+            </button>
+          </div>
+<pre class="aip-code__pre" tabindex="0"><code><span class="aip-code__prompt">$</span>npm install @aip/client</code></pre>
+        </figure>
+
+        <div class="markdown-alert markdown-alert-note">
+          <p class="markdown-alert-title"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>Note</p>
+          <p>This callout came from plain Markdown — <code>&gt; [!NOTE]</code>. The renderer's <code>.markdown-alert</code> output is styled as an AIP callout without extra markup.</p>
+        </div>
+
+        <h2 id="authority">Who decides <a class="aip-anchor" href="#authority"><span class="aip-sr-only">Section link: Who decides</span>#</a></h2>
+        <p>The caller is free to <em>ask</em>; the server keeps the authority to <em>run</em>. Every intent passes the permission policy before the Runtime executes it, and the policy sees the authenticated actor — never a value the caller sent.</p>
+
+        <h3 id="authority-flow">Request flow <a class="aip-anchor" href="#authority-flow"><span class="aip-sr-only">Section link: Request flow</span>#</a></h3>
+        <figure class="aip-diagram">
+          <div class="aip-diagram__canvas" role="img" aria-labelledby="fig1-cap" aria-describedby="fig1-text" tabindex="0">
+            <svg viewBox="0 0 760 300" style="--aip-_min: 640px" aria-hidden="true">
+              <defs>
+                <marker id="ah-default" data-edge="default" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+                <marker id="ah-emphasis" data-edge="emphasis" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+                <marker id="ah-allow" data-edge="allow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+                <marker id="ah-reject" data-edge="reject" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+                <marker id="ah-muted" data-edge="muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"/></marker>
+              </defs>
+              <rect class="aip-svg-zone" x="326" y="28" width="300" height="236" rx="10"/>
+              <text class="aip-svg-zone-label" x="342" y="50">AIP RUNTIME</text>
+
+              <g data-role="frontend"><rect x="16" y="96" width="128" height="60" rx="6"/><text x="80" y="122" text-anchor="middle">Frontend</text><text class="aip-svg-meta" x="80" y="142" text-anchor="middle">caller</text></g>
+              <g data-role="intent"><rect x="176" y="96" width="120" height="60" rx="6"/><text x="236" y="122" text-anchor="middle">Intent</text><text class="aip-svg-meta" x="236" y="142" text-anchor="middle">declared</text></g>
+              <g data-role="permission"><rect x="342" y="96" width="124" height="60" rx="6"/><text x="404" y="122" text-anchor="middle">Permission</text><text class="aip-svg-meta" x="404" y="142" text-anchor="middle">policy</text></g>
+              <g data-role="execution"><rect x="490" y="96" width="120" height="60" rx="6"/><text x="550" y="122" text-anchor="middle">Execution</text><text class="aip-svg-meta" x="550" y="142" text-anchor="middle">plan · run</text></g>
+              <g data-role="data"><path d="M490 196 a60 10 0 0 1 120 0 v40 a60 10 0 0 1 -120 0 z"/><path d="M490 196 a60 10 0 0 0 120 0" fill="none"/><text x="550" y="232" text-anchor="middle">Data</text></g>
+              <g data-role="external"><rect x="652" y="96" width="96" height="60" rx="6"/><text x="700" y="122" text-anchor="middle">External</text><text class="aip-svg-meta" x="700" y="142" text-anchor="middle">API · queue</text></g>
+
+              <path data-edge="default" d="M144 126 H170" marker-end="url(#ah-default)"/>
+              <path data-edge="emphasis" d="M296 126 H336" marker-end="url(#ah-emphasis)"/>
+              <path data-edge="allow" d="M466 126 H484" marker-end="url(#ah-allow)"/>
+              <path data-edge="default" d="M550 156 V184" marker-end="url(#ah-default)"/>
+              <path data-edge="muted" d="M610 126 H646" marker-end="url(#ah-muted)"/>
+              <path data-edge="reject" d="M404 156 V280 H80 V162" marker-end="url(#ah-reject)"/>
+              <rect class="aip-svg-label-bg" x="214" y="270" width="96" height="20"/>
+              <text class="aip-svg-label" x="262" y="284" text-anchor="middle">deny · 403</text>
+              <rect class="aip-svg-label-bg" x="452" y="104" width="44" height="16"/>
+              <text class="aip-svg-label" x="475" y="116" text-anchor="middle">allow</text>
+            </svg>
+          </div>
+          <figcaption class="aip-diagram__caption" id="fig1-cap"><b>Figure 1.</b> An intent passes the permission policy before the Runtime executes it.</figcaption>
+          <ul class="aip-diagram__legend" aria-label="Legend">
+            <li><span class="aip-diagram__swatch" data-role="frontend"></span>Frontend</li>
+            <li><span class="aip-diagram__swatch" data-role="intent"></span>Intent</li>
+            <li><span class="aip-diagram__swatch" data-role="permission"></span>Permission</li>
+            <li><span class="aip-diagram__swatch" data-role="execution"></span>Execution</li>
+            <li><span class="aip-diagram__swatch" data-role="data"></span>Data</li>
+            <li><span class="aip-diagram__swatch" data-role="external"></span>External</li>
+            <li><span class="aip-diagram__swatch" data-edge="reject"></span>Denied</li>
+          </ul>
+          <details class="aip-diagram__text" id="fig1-text">
+            <summary>Text description</summary>
+            <ol>
+              <li>The frontend sends a declared intent to the AIP Runtime.</li>
+              <li>The permission policy checks the authenticated actor. If it denies, the caller receives 403 and nothing runs.</li>
+              <li>If it allows, the Runtime plans and executes the intent against the data store, and may call external systems.</li>
+            </ol>
+          </details>
+        </figure>
+
+        <aside class="aip-callout aip-callout--warning" role="note">
+          <svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-warning"/></svg>
+          <div class="aip-callout__body"><strong class="aip-callout__title">Warning</strong><p>Never trust an actor id sent by the caller. The policy reads the actor from the verified session.</p></div>
+        </aside>
+
+        <h2 id="spec" data-section="§ 3.2">Specification <a class="aip-anchor" href="#spec"><span class="aip-sr-only">Section link: Specification</span>#</a></h2>
+        <section class="aip-spec" aria-labelledby="spec-intent">
+          <header class="aip-spec__header">
+            <span class="aip-spec__kind">Spec</span>
+            <h3 class="aip-spec__title" id="spec-intent">Intent request</h3>
+            <span class="aip-badge aip-badge--beta">beta</span>
+            <span class="aip-spec__id">aip.intent/v1</span>
+          </header>
+          <dl class="aip-spec__fields">
+            <div class="aip-spec__field"><dt>name</dt><dd>Stable identifier. Lowercase, dot-separated.</dd></div>
+            <div class="aip-spec__field"><dt>input</dt><dd>Values the caller provides. Validated before the policy runs.</dd></div>
+            <div class="aip-spec__field"><dt>actor</dt><dd>Resolved by the server from the session. Never part of <code class="aip-code-inline">input</code>.</dd></div>
+          </dl>
+          <div class="aip-spec__body">
+            <p>The Runtime <span class="aip-rfc">MUST</span> evaluate the permission policy before executing an intent. A policy <span class="aip-rfc">SHOULD</span> be deterministic for the same actor and input. The caller <span class="aip-rfc">MAY</span> retry a denied intent only after its session changes.</p>
+          </div>
+        </section>
+
+        <figure class="aip-example">
+          <figcaption class="aip-example__label"><span class="aip-example__tag">Example</span> A denied request</figcaption>
+          <div class="aip-example__body">
+            <figure class="aip-code">
+<pre class="aip-code__pre" tabindex="0"><code><span class="aip-code__line"><span class="token keyword">await</span> client<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>listMyOrders<span class="token punctuation">,</span> <span class="token punctuation">{</span> owner<span class="token punctuation">:</span> <span class="token string">"someone-else"</span> <span class="token punctuation">})</span></span>
+<span class="aip-code__line" data-highlight><span class="token comment">// owner is resolved by the server — this field is ignored</span></span></code></pre>
+              <button class="aip-copy" type="button" data-aip-copy aria-label="Copy code">
+                <span class="aip-copy__idle"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></span>
+                <span class="aip-copy__done"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg></span>
+              </button>
+            </figure>
+          </div>
+          <div class="aip-example__result">
+            <p class="aip-example__result-label">Result</p>
+            <p><span class="aip-status aip-status--danger"><svg class="aip-icon" aria-hidden="true"><use href="#i-circle-x"/></svg>403 · PERMISSION_DENIED</span></p>
+          </div>
+        </figure>
+
+        <h2 id="reference">Reference <a class="aip-anchor" href="#reference"><span class="aip-sr-only">Section link: Reference</span>#</a></h2>
+        <div class="aip-ref-head"><h3 id="ref-run"><code>client.run()</code></h3><span class="aip-badge aip-badge--stable">stable</span><span class="aip-since">since v0.2</span></div>
+        <pre class="aip-signature"><span class="aip-signature__name">run</span>(intent: Intent, input?: Input, options?: RunOptions): Promise&lt;Result&gt;</pre>
+        <dl class="aip-params">
+          <div class="aip-param">
+            <dt class="aip-param__head" id="ref-run-intent"><code class="aip-param__name">intent</code><span class="aip-param__type">Intent</span><span class="aip-param__required">required</span></dt>
+            <dd class="aip-param__desc"><p>The declared intent to run.</p></dd>
+          </div>
+          <div class="aip-param">
+            <dt class="aip-param__head" id="ref-run-input"><code class="aip-param__name">input</code><span class="aip-param__type">Record&lt;string, unknown&gt;</span><span class="aip-param__optional">optional</span></dt>
+            <dd class="aip-param__desc"><p>Values the intent accepts. Unknown keys are rejected.</p></dd>
+          </div>
+          <div class="aip-param">
+            <dt class="aip-param__head" id="ref-run-options"><code class="aip-param__name">options</code><span class="aip-param__type">RunOptions</span><span class="aip-param__optional">optional</span></dt>
+            <dd class="aip-param__desc">
+              <p>Per-call settings.</p>
+              <details class="aip-params-nested">
+                <summary>Show 2 properties</summary>
+                <dl class="aip-params">
+                  <div class="aip-param"><dt class="aip-param__head"><code class="aip-param__name">timeoutMs</code><span class="aip-param__type">number</span><span class="aip-param__optional">optional</span></dt><dd class="aip-param__desc"><p>Abort after this many milliseconds.</p><p class="aip-param__default">Default: <code>10000</code></p></dd></div>
+                  <div class="aip-param"><dt class="aip-param__head"><code class="aip-param__name">idempotencyKey</code><span class="aip-param__type">string</span><span class="aip-param__optional">optional</span><span class="aip-badge aip-badge--experimental">experimental</span></dt><dd class="aip-param__desc"><p>Replays the first result for the same key.</p></dd></div>
+                </dl>
+              </details>
+            </dd>
+          </div>
+        </dl>
+
+        <p>Status codes the Runtime returns:</p>
+        <div class="aip-table-wrap" role="region" aria-label="Status codes" tabindex="0">
+          <table>
+            <thead><tr><th scope="col">Code</th><th scope="col">Meaning</th><th scope="col">Retry</th></tr></thead>
+            <tbody>
+              <tr><td><code>200</code></td><td>Executed</td><td>—</td></tr>
+              <tr><td><code>403</code></td><td>Denied by the permission policy</td><td>After the session changes</td></tr>
+              <tr><td><code>422</code></td><td>Input failed validation</td><td>After fixing input</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <nav class="aip-pager" aria-label="Previous and next page">
+        <a class="aip-pager__link" href="#"><span class="aip-pager__dir">← Previous</span><span class="aip-pager__title">Overview</span></a>
+        <a class="aip-pager__link aip-pager__link--next" href="#"><span class="aip-pager__dir">Next →</span><span class="aip-pager__title">Runtime</span></a>
+      </nav>
+    </main>
+
+    <aside class="aip-docs__toc">
+      <nav class="aip-toc" aria-labelledby="toc-title">
+        <p class="aip-toc__title" id="toc-title">On this page</p>
+        <ol>
+          <li><a class="aip-toc__link" href="#declaring">Declaring an intent</a></li>
+          <li><a class="aip-toc__link" href="#authority">Who decides</a></li>
+          <li><a class="aip-toc__link" href="#authority-flow" data-level="3">Request flow</a></li>
+          <li><a class="aip-toc__link" href="#spec">Specification</a></li>
+          <li><a class="aip-toc__link" href="#reference">Reference</a></li>
+        </ol>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+<!-- 모바일 문서 내비 드로어 -->
+<dialog class="aip-drawer" id="docs-drawer" aria-label="Documentation navigation">
+  <div class="aip-drawer__header">
+    <span class="aip-label">Documentation</span>
+    <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="aip-drawer__body">
+    <nav class="aip-sidebar" aria-label="Documentation">
+      <div><p class="aip-sidebar__title">Concepts</p><ul><li><a class="aip-sidebar__link" href="#">Overview</a></li><li><a class="aip-sidebar__link" href="docs.html" aria-current="page">Intents</a></li><li><a class="aip-sidebar__link" href="#">Runtime</a></li><li><a class="aip-sidebar__link" href="#">Permissions</a></li></ul></div>
+      <div><p class="aip-sidebar__title">Reference</p><ul><li><a class="aip-sidebar__link" href="#">Specification</a></li><li><a class="aip-sidebar__link" href="#">JavaScript SDK</a></li><li><a class="aip-sidebar__link" href="#">Python SDK</a></li></ul></div>
+    </nav>
+  </div>
+</dialog>
+<dialog class="aip-drawer" id="nav-drawer" aria-label="Main navigation">
+  <div class="aip-drawer__header">
+    <span class="aip-header__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></span>
+    <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="aip-drawer__body">
+    <nav class="aip-nav aip-nav--vertical" aria-label="Main">
+      <a class="aip-nav__link" href="docs.html" aria-current="page">Docs</a>
+      <a class="aip-nav__link" href="docs.html#reference">Reference</a>
+      <a class="aip-nav__link" href="makeaip.html">MakeAIP</a>
+      <a class="aip-nav__link" href="playground.html">Playground</a>
+    </nav>
+  </div>
+</dialog>
+
+<!-- 검색 -->
+<dialog class="aip-search" aria-label="Search documentation">
+  <div class="aip-search__field">
+    <svg class="aip-icon" aria-hidden="true"><use href="#i-search"/></svg>
+    <input class="aip-search__input" type="search" placeholder="Search docs" aria-label="Search docs" autocomplete="off" spellcheck="false">
+    <kbd>esc</kbd>
+  </div>
+  <ul class="aip-search__results">
+    <li class="aip-search__group" role="presentation">Concepts</li>
+    <li><a class="aip-search__result" href="#declaring"><span class="aip-search__title">Declaring an intent</span><span class="aip-search__path">docs / concepts / intents</span></a></li>
+    <li><a class="aip-search__result" href="#authority"><span class="aip-search__title">Who decides — permission policy</span><span class="aip-search__path">docs / concepts / intents</span></a></li>
+    <li><a class="aip-search__result" href="#"><span class="aip-search__title">Runtime</span><span class="aip-search__path">docs / concepts / runtime</span></a></li>
+    <li class="aip-search__group" role="presentation">Reference</li>
+    <li><a class="aip-search__result" href="#ref-run"><span class="aip-search__title">client.run()</span><span class="aip-search__path">reference / javascript-sdk</span></a></li>
+    <li><a class="aip-search__result" href="#spec"><span class="aip-search__title">Intent request · aip.intent/v1</span><span class="aip-search__path">reference / specification § 3.2</span></a></li>
+  </ul>
+  <p class="aip-search__empty" hidden>No results for “<span data-aip-search-query></span>”. Try a concept name like <em>intent</em> or <em>policy</em>.</p>
+  <div class="aip-search__footer"><span><kbd>↑</kbd><kbd>↓</kbd> move</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+</dialog>
+</body>
+</html>

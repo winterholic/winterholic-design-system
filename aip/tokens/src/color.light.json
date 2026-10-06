@@ -1,0 +1,240 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(라이트). 화면 코드는 이 그룹만 참조한다. 값은 palette.json·brand.json 원시 토큰을 가리킨다. 범용 그룹(surface·text·border·action·status·interactive) + AIP 도메인 그룹(highlight·code·lifecycle·diagram) + 장식(accent·chart).",
+
+    "surface": {
+      "$description": "면. 문서가 주인공이라 기본 면은 흰색이고, 크롬(사이드바·헤더 띠)은 subtle 로 한 단계만 내린다. 코드 면은 code.bg(slate)라 여기 없다.",
+      "canvas":       { "$value": "{base.white}",    "$description": "body. 문서 본문이 놓이는 바탕. 한 페이지에 한 번" },
+      "subtle":       { "$value": "{neutral.50}",    "$description": "문서 사이드바·모바일 내비 시트·섹션 띠(랜딩)·표 줄무늬. canvas 와 한 단계 차이" },
+      "default":      { "$value": "{base.white}",    "$description": "카드·인풋·표·탭 패널. canvas 위에서는 테두리로 구분한다" },
+      "raised":       { "$value": "{base.white}",    "$description": "떠 있는 면(드롭다운·다이얼로그·툴팁 제외 팝오버·검색 팔레트). default 와 같은 색, shadow 로 구분" },
+      "sunken":       { "$value": "{neutral.100}",   "$description": "안으로 들어간 면(표 헤더·kbd·세그먼트 트랙·스켈레톤·인라인 코드)" },
+      "overlay":      { "$value": "#211F1980",       "$description": "다이얼로그·모바일 내비 뒤 스크림. neutral.950 50%" },
+      "inverse":      { "$value": "{neutral.900}",   "$description": "반전 면(툴팁·토스트). 위 글자 text.inverse" },
+      "brand":        { "$value": "{brand.blue}",    "$description": "브랜드 면(랜딩 CTA 띠·MakeAIP 생성 바). 위 글자 white 4.69:1. 두 테마 같은 값" },
+      "brand-subtle": { "$value": "{blue.50}",       "$description": "브랜드 기운만 있는 옅은 면(선택된 옵션 카드·활성 내비 항목·안내 카드)" },
+      "disabled":     { "$value": "{neutral.100}",   "$description": "비활성 컨트롤 배경" }
+    },
+
+    "text": {
+      "$description": "글자색. canvas·default(흰색)와 subtle(neutral.50) 위에서 등급이 유지되도록 정했다. sunken 위에는 primary·secondary 만.",
+      "primary":     { "$value": "{brand.charcoal}", "$description": "본문·제목. AIP Charcoal 그대로. 흰 배경 11.25:1. 순검정은 쓰지 않는다" },
+      "secondary":   { "$value": "{neutral.700}",    "$description": "설명·메타·파라미터 설명·사이드바 항목. 6.93:1" },
+      "tertiary":    { "$value": "{neutral.600}",    "$description": "캡션·타임스탬프·TOC 비활성 항목·줄 번호 외 보조. 4.96:1 — AA 하한. sunken 위 금지" },
+      "placeholder": { "$value": "{neutral.600}",    "$description": "인풋 플레이스홀더. tertiary 와 같은 값" },
+      "disabled":    { "$value": "{neutral.400}",    "$description": "비활성. 대비 예외(WCAG 1.4.3 비활성 제외)" },
+      "inverse":     { "$value": "{neutral.50}",     "$description": "inverse 면 위" },
+      "on-brand":    { "$value": "{base.white}",     "$description": "surface.brand·action.primary 위. 4.69:1" },
+      "brand":       { "$value": "{blue.700}",       "$description": "브랜드색 글자(활성 내비·활성 탭·현재 TOC 항목·eyebrow). 6.94:1. 원색 blue.600 은 흰 면 4.69 라 subtle 위에서 4.5 를 못 지킨다" },
+      "link":        { "$value": "{blue.700}",       "$description": "링크. 문서 본문 링크는 밑줄 동반" },
+      "link-hover":  { "$value": "{blue.800}" },
+      "success":     { "$value": "{green.700}",      "$description": "6.65:1" },
+      "warning":     { "$value": "{tangerine.700}",  "$description": "7.17:1. tangerine 원색은 1.98 로 글자 불가" },
+      "danger":      { "$value": "{red.700}",        "$description": "7.66:1" },
+      "info":        { "$value": "{blue.700}" }
+    },
+
+    "border": {
+      "$description": "테두리. 문서 화면은 선이 구조를 만든다(그림자보다 선). 다만 굵기는 hairline 하나로 통일한다.",
+      "subtle":  { "$value": "{neutral.100}", "$description": "구획 구분선(사이드바 그룹 사이·표 행 사이·TOC 가이드선)" },
+      "default": { "$value": "{neutral.200}", "$description": "카드·표 외곽·헤더 하단선·다이어그램 컨테이너. 장식 선(3:1 요구 없음)" },
+      "strong":  { "$value": "{neutral.500}", "$description": "인풋·셀렉트·체크박스·라디오 외곽선. 컴포넌트 경계라 3:1 (3.51) 을 지킨다" },
+      "brand":   { "$value": "{brand.blue}",  "$description": "선택·활성 표시(선택된 옵션 카드·활성 탭 밑줄)" },
+      "focus":   { "$value": "{brand.blue}",  "$description": "포커스 링. 두께·오프셋은 focus 토큰" },
+      "danger":  { "$value": "{red.600}",     "$description": "오류 인풋. 5.51" },
+      "inverse": { "$value": "#FFFFFF29",     "$description": "inverse·brand 면 위 구분선. white 16%" }
+    },
+
+    "action": {
+      "$description": "버튼. variant 는 네 개뿐이다 — primary(주 목적 1개)·secondary(대안)·ghost(도구)·danger(파괴). 링크처럼 보이는 버튼은 Link 컴포넌트.",
+      "primary": {
+        "bg":        { "$value": "{brand.blue}", "$description": "AIP Blue 그대로. 흰 글자 4.69:1. 두 테마 같은 값 — 브랜드가 테마를 건너도 같은 색으로 보인다" },
+        "bg-hover":  { "$value": "{blue.700}" },
+        "bg-active": { "$value": "{blue.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "secondary": {
+        "bg":        { "$value": "{base.white}" },
+        "bg-hover":  { "$value": "{neutral.50}" },
+        "bg-active": { "$value": "{neutral.100}" },
+        "border":    { "$value": "{neutral.300}" },
+        "text":      { "$value": "{brand.charcoal}" }
+      },
+      "ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{neutral.100}" },
+        "bg-active": { "$value": "{neutral.200}" },
+        "text":      { "$value": "{brand.charcoal}" }
+      },
+      "danger": {
+        "bg":        { "$value": "{red.600}", "$description": "흰 글자 5.51:1" },
+        "bg-hover":  { "$value": "{red.700}" },
+        "bg-active": { "$value": "{red.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "disabled": {
+        "bg":     { "$value": "{neutral.100}" },
+        "text":   { "$value": "{neutral.400}" },
+        "border": { "$value": "{neutral.200}" }
+      }
+    },
+
+    "status": {
+      "$description": "상태 피드백 4종 + neutral. bg/border/text/icon 은 배너·콜아웃·인라인, solid/on-solid 는 배지·도트. 색만으로 말하지 않는다 — 아이콘과 문구가 항상 같이 간다.",
+      "info": {
+        "bg":     { "$value": "{blue.50}" },
+        "border": { "$value": "{blue.200}" },
+        "text":   { "$value": "{blue.700}" },
+        "icon":   { "$value": "{brand.blue}" },
+        "solid":  { "$value": "{brand.blue}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "success": {
+        "bg":     { "$value": "{green.50}" },
+        "border": { "$value": "{green.200}" },
+        "text":   { "$value": "{green.700}" },
+        "icon":   { "$value": "{green.600}" },
+        "solid":  { "$value": "{green.600}", "$description": "흰 글자 4.68:1" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "warning": {
+        "bg":     { "$value": "{tangerine.100}", "$description": "tangerine.50 은 red.50 과 거의 같아 보여 한 단계 올렸다(렌더 비교로 확인)" },
+        "border": { "$value": "{brand.tangerine}", "$description": "AIP Tangerine 원색이 경고의 테두리·강조 바가 된다" },
+        "text":   { "$value": "{tangerine.800}" },
+        "icon":   { "$value": "{tangerine.600}" },
+        "solid":  { "$value": "{brand.tangerine}", "$description": "밝은 면이라 어두운 글자를 얹는다 — 흰 글자 금지(1.98)" },
+        "on-solid": { "$value": "{neutral.900}" }
+      },
+      "danger": {
+        "bg":     { "$value": "{red.50}" },
+        "border": { "$value": "{red.200}" },
+        "text":   { "$value": "{red.700}" },
+        "icon":   { "$value": "{red.600}" },
+        "solid":  { "$value": "{red.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      },
+      "neutral": {
+        "bg":     { "$value": "{neutral.100}" },
+        "border": { "$value": "{neutral.200}" },
+        "text":   { "$value": "{neutral.700}" },
+        "icon":   { "$value": "{neutral.600}" },
+        "solid":  { "$value": "{neutral.600}" },
+        "on-solid": { "$value": "{base.white}" }
+      }
+    },
+
+    "highlight": {
+      "$description": "AIP Yellow 의 자리. 형광펜처럼 '여기를 보라' 는 표시 — 본문 mark·검색 히트·Important 콜아웃·Example 탭. 상태(경고)가 아니다. 노란 면 위 글자는 언제나 charcoal.",
+      "mark":      { "$value": "{brand.yellow}",   "$description": "본문 <mark>·검색 히트. AIP Yellow 원색. 위 글자 mark-text 8.8:1" },
+      "mark-text": { "$value": "{brand.charcoal}" },
+      "bg":        { "$value": "{yellow.50}",      "$description": "Important 콜아웃·Example 블록 헤더 면" },
+      "border":    { "$value": "{yellow.300}",     "$description": "Important 콜아웃 강조 바·Example 탭 마커. 장식(아이콘이 3:1 을 진다)" },
+      "text":      { "$value": "{brand.charcoal}", "$description": "노란 면 위 제목·라벨. 노랑을 어둡게 내린 올리브 글자는 쓰지 않는다" },
+      "icon":      { "$value": "{brand.charcoal}" }
+    },
+
+    "code": {
+      "$description": "코드 면은 두 테마 모두 AIP Slate 계열의 어두운 면이다(코드 = slate, 문서 = 종이). 그래서 Tangerine·Yellow 같은 밝은 브랜드 색이 여기서 구문 강조 글자로 살아난다. 인라인 코드는 본문 흐름 안이라 밝은 칩.",
+      "bg":             { "$value": "{slate.900}",  "$description": "코드 블록·Playground 에디터·생성 결과 미리보기" },
+      "bg-header":      { "$value": "{slate.950}",  "$description": "코드 블록 헤더(파일명·언어·복사)·코드 탭 바" },
+      "border":         { "$value": "{slate.900}",  "$description": "라이트에서는 면과 같은 색(경계 없음). 다크에서 캔버스와 가르는 선" },
+      "text":           { "$value": "{slate.100}" },
+      "text-muted":     { "$value": "{slate.300}",  "$description": "헤더의 파일명·언어 라벨" },
+      "comment":        { "$value": "{slate.400}" },
+      "keyword":        { "$value": "{blue.300}" },
+      "string":         { "$value": "{brand.tangerine}" },
+      "function":       { "$value": "{brand.yellow}", "$description": "함수·intent 이름. AIP Yellow" },
+      "number":         { "$value": "{red.300}" },
+      "type":           { "$value": "{green.300}" },
+      "punctuation":    { "$value": "{slate.300}" },
+      "line-number":    { "$value": "{slate.500}",  "$description": "비텍스트 취급 3:1" },
+      "line-highlight": { "$value": "#F5E66324",    "$description": "강조 줄. AIP Yellow 14% — 형광펜 언어를 코드 안에서도 유지" },
+      "line-highlight-marker": { "$value": "{brand.yellow}", "$description": "강조 줄 왼쪽 2px 마커" },
+      "added-bg":       { "$value": "#1C845733",    "$description": "diff 추가 줄. green.600 20%" },
+      "added-sign":     { "$value": "{green.300}" },
+      "removed-bg":     { "$value": "#C6294833",    "$description": "diff 삭제 줄. red.600 20%" },
+      "removed-sign":   { "$value": "{red.300}" },
+      "selection":      { "$value": "#93C8FD40",    "$description": "코드 안 텍스트 선택. blue.300 25%" },
+      "bg-inline":      { "$value": "{neutral.100}", "$description": "인라인 코드 칩. 본문 면 위" },
+      "text-inline":    { "$value": "{neutral.900}" }
+    },
+
+    "lifecycle": {
+      "$description": "API·기능·문서의 성숙도 배지(Version badge 옆, API Reference 항목). 색 + 단어가 같이 간다.",
+      "stable":       { "bg": { "$value": "{green.50}" },     "border": { "$value": "{green.200}" },     "text": { "$value": "{green.700}" } },
+      "beta":         { "bg": { "$value": "{blue.50}" },      "border": { "$value": "{blue.200}" },      "text": { "$value": "{blue.700}" } },
+      "experimental": { "bg": { "$value": "{tangerine.100}" }, "border": { "$value": "{tangerine.300}" }, "text": { "$value": "{tangerine.800}" } },
+      "deprecated":   { "bg": { "$value": "{red.50}" },       "border": { "$value": "{red.200}" },       "text": { "$value": "{red.700}" } }
+    },
+
+    "diagram": {
+      "$description": "아키텍처·흐름 다이어그램의 개념 색. 색은 '개념', 모양은 '종류', 선은 '흐름'을 말한다(docs/12). 개념마다 (fill, stroke, text) 가 고정이라 어떤 문서의 어떤 그림에서도 Intent 는 노랑, Runtime 은 파랑이다. 상태색(빨강·초록)은 선(거부·허용)에만 쓴다.",
+      "canvas":   { "$value": "{neutral.50}",  "$description": "다이어그램 컨테이너 바탕" },
+      "grid":     { "$value": "{neutral.200}", "$description": "바탕 점 격자(장식)" },
+      "zone-bg":  { "$value": "#1C77C30D",     "$description": "경계 영역(예: AIP Server) 면. AIP Blue 5%" },
+      "zone-border": { "$value": "{blue.300}", "$description": "경계 영역 점선" },
+      "intent":     { "fill": { "$value": "{brand.yellow}" },   "stroke": { "$value": "{yellow.500}" },    "text": { "$value": "{brand.charcoal}" }, "$description": "Intent — 호출자가 선언한 의도. 형광펜 노랑 = 가장 먼저 봐야 할 것" },
+      "runtime":    { "fill": { "$value": "{blue.50}" },        "stroke": { "$value": "{brand.blue}" },    "text": { "$value": "{blue.800}" },       "$description": "AIP Runtime — 해석·실행 환경. AIP Blue = AIP 자체" },
+      "execution":  { "fill": { "$value": "{brand.blue}" },     "stroke": { "$value": "{blue.700}" },      "text": { "$value": "{base.white}" },     "$description": "Execution — Runtime 안에서 일어나는 실행 단계. 같은 파랑의 채움형" },
+      "permission": { "fill": { "$value": "{tangerine.100}" },  "stroke": { "$value": "{tangerine.500}" }, "text": { "$value": "{tangerine.800}" },  "$description": "Permission·Policy — 서버의 최종 권한 판단. Tangerine = 경계" },
+      "frontend":   { "fill": { "$value": "{slate.50}" },       "stroke": { "$value": "{slate.500}" },     "text": { "$value": "{slate.800}" },      "$description": "Frontend·Caller — 의도를 표현하는 쪽" },
+      "backend":    { "fill": { "$value": "{neutral.100}" },    "stroke": { "$value": "{neutral.600}" },   "text": { "$value": "{neutral.900}" },    "$description": "Backend·Server 정의(계약·정책을 쓰는 곳)" },
+      "data":       { "fill": { "$value": "{brand.slate}" },    "stroke": { "$value": "{slate.800}" },     "text": { "$value": "{base.white}" },     "$description": "Data store. AIP Slate 채움 + 원통 모양" },
+      "external":   { "fill": { "$value": "{base.white}" },     "stroke": { "$value": "{neutral.500}" },   "text": { "$value": "{neutral.700}" },    "$description": "External System. 점선 테두리 — AIP 경계 밖" },
+      "note":       { "fill": { "$value": "{yellow.50}" },      "stroke": { "$value": "{yellow.300}" },    "text": { "$value": "{brand.charcoal}" }, "$description": "주석(annotation). 메모지" },
+      "edge": {
+        "default": { "$value": "{neutral.700}", "$description": "일반 흐름" },
+        "muted":   { "$value": "{neutral.500}", "$description": "보조·비동기 흐름(점선과 함께)" },
+        "emphasis":{ "$value": "{brand.blue}",  "$description": "지금 설명 중인 경로 하나" },
+        "allow":   { "$value": "{green.600}",   "$description": "권한 통과" },
+        "reject":  { "$value": "{red.600}",     "$description": "권한 거부·실패(점선 + ✕ 라벨)" },
+        "label":   { "$value": "{neutral.700}", "$description": "선 위 라벨 글자" }
+      }
+    },
+
+    "interactive": {
+      "$description": "선택·호버·포커스.",
+      "focus-ring":      { "$value": "{brand.blue}" },
+      "selected-bg":     { "$value": "{blue.50}" },
+      "selected-border": { "$value": "{brand.blue}" },
+      "selected-text":   { "$value": "{blue.800}" },
+      "hover-overlay":   { "$value": "#3D3B300F", "$description": "어떤 면 위에도 얹는 호버 덧칠. charcoal 6%" },
+      "pressed-overlay": { "$value": "#3D3B301F", "$description": "charcoal 12%" },
+      "selection":       { "$value": "{blue.100}", "$description": "본문 텍스트 선택(::selection)" }
+    },
+
+    "accent": {
+      "$description": "장식·브랜드 표현 전용(랜딩 일러스트·로고·히어로 격자·빈 상태). 글자색·상태색으로 쓰지 않는다.",
+      "blue":      { "$value": "{brand.blue}" },
+      "tangerine": { "$value": "{brand.tangerine}" },
+      "yellow":    { "$value": "{brand.yellow}" },
+      "charcoal":  { "$value": "{brand.charcoal}" },
+      "slate":     { "$value": "{brand.slate}" }
+    },
+
+    "chart": {
+      "$description": "데이터 시각화(벤치마크·사용량). categorical 은 순서대로(1→6). 3개 이하면 1·2·4.",
+      "categorical": {
+        "1": { "$value": "{brand.blue}" },
+        "2": { "$value": "{tangerine.400}" },
+        "3": { "$value": "{slate.500}" },
+        "4": { "$value": "{yellow.500}" },
+        "5": { "$value": "{green.500}" },
+        "6": { "$value": "{blue.300}" }
+      },
+      "sequential": {
+        "1": { "$value": "{blue.100}" },
+        "2": { "$value": "{blue.200}" },
+        "3": { "$value": "{blue.300}" },
+        "4": { "$value": "{blue.400}" },
+        "5": { "$value": "{blue.500}" },
+        "6": { "$value": "{blue.600}" },
+        "7": { "$value": "{blue.700}" }
+      },
+      "grid":  { "$value": "{neutral.200}" },
+      "axis":  { "$value": "{neutral.600}" },
+      "label": { "$value": "{neutral.700}" }
+    }
+  }
+}

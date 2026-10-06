@@ -1,0 +1,91 @@
+/* AIP prose · 자동 생성 — .aip-doc 안의 문서 본문. Markdown 렌더 결과(h2·p·ul·pre·table·GFM alert)를 클래스 없이 받는다. 값은 전부 토큰(docs/07). */
+.aip-doc { max-width: var(--aip-size-container-prose); color: var(--aip-color-text-primary); font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-md); line-height: var(--aip-font-line-height-prose); overflow-wrap: break-word; }
+.aip-doc > * { margin-block: 0; }
+.aip-doc > * + * { margin-top: var(--aip-component-doc-block-gap); }
+.aip-doc > :is(pre, figure, table, details, blockquote, .aip-code, .aip-code-tabs, .aip-callout, .markdown-alert, .aip-spec, .aip-example, .aip-params, .aip-diagram, .aip-table-wrap, .aip-signature) { margin-block: var(--aip-component-doc-figure-gap); }
+.aip-doc > :first-child { margin-top: 0; }
+.aip-doc > :last-child { margin-bottom: 0; }
+
+/* 제목. h2 는 위에 hairline 을 둔다 — 명세서의 절 구분처럼 */
+.aip-doc :is(h1, h2, h3, h4) { color: var(--aip-color-text-primary); scroll-margin-top: var(--aip-size-layout-anchor-offset); text-wrap: balance; }
+.aip-doc h1 { font-size: var(--aip-font-size-4xl); font-weight: var(--aip-font-weight-bold); line-height: var(--aip-font-line-height-snug); letter-spacing: var(--aip-font-letter-spacing-tight); }
+.aip-doc h2 { font-size: var(--aip-font-size-2xl); font-weight: var(--aip-font-weight-semibold); line-height: var(--aip-font-line-height-heading); letter-spacing: var(--aip-font-letter-spacing-snug); margin-top: var(--aip-component-doc-h2-gap); padding-top: var(--aip-space-6); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-doc h3 { font-size: var(--aip-font-size-xl); font-weight: var(--aip-font-weight-semibold); line-height: var(--aip-font-line-height-heading); letter-spacing: var(--aip-font-letter-spacing-snug); margin-top: var(--aip-component-doc-h3-gap); }
+.aip-doc h4 { font-size: var(--aip-font-size-md); font-weight: var(--aip-font-weight-semibold); line-height: var(--aip-font-line-height-normal); margin-top: var(--aip-component-doc-h4-gap); }
+.aip-doc > :is(h2, h3, h4) + * { margin-top: var(--aip-component-doc-heading-after); }
+.aip-doc > h2:first-child { border-top: 0; padding-top: 0; }
+.aip-doc :is(h2, h3, h4) code { font-size: 0.9em; }
+.aip-doc :is(h2, h3)[data-section]::before { content: attr(data-section); margin-right: var(--aip-space-3); font-family: var(--aip-font-family-mono); font-size: 0.75em; font-weight: var(--aip-font-weight-medium); color: var(--aip-color-text-tertiary); letter-spacing: var(--aip-font-letter-spacing-normal); }
+/* 앵커 링크: 제목 끝의 #. hover·포커스에 보이고, 터치 기기에서는 항상 보인다 */
+.aip-doc .aip-anchor { display: inline-block; margin-left: var(--aip-space-2); padding-inline: var(--aip-space-1); border-radius: var(--aip-radius-sm); color: var(--aip-color-text-tertiary); font-family: var(--aip-font-family-mono); font-weight: var(--aip-font-weight-regular); text-decoration: none; opacity: 0; transition: opacity var(--aip-motion-duration-fast) var(--aip-motion-easing-standard); }
+.aip-doc :is(h2, h3, h4):hover .aip-anchor, .aip-doc .aip-anchor:focus-visible { opacity: 1; }
+.aip-doc .aip-anchor:hover { color: var(--aip-color-text-link); }
+@media (hover: none) { .aip-doc .aip-anchor { opacity: 1; } }
+
+/* 문단·목록·강조 */
+.aip-doc strong { font-weight: var(--aip-font-weight-semibold); }
+.aip-doc a { color: var(--aip-color-text-link); text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.2em; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+.aip-doc a:hover { color: var(--aip-color-text-link-hover); text-decoration-color: currentColor; }
+.aip-doc :is(ul, ol) { padding-left: var(--aip-component-doc-list-indent); }
+.aip-doc li + li, .aip-doc li > :is(ul, ol) { margin-top: var(--aip-component-doc-list-gap); }
+.aip-doc li::marker { color: var(--aip-color-text-tertiary); }
+.aip-doc ol > li::marker { font-family: var(--aip-font-family-mono); font-size: 0.875em; }
+.aip-doc blockquote { padding-left: var(--aip-space-4); border-left: var(--aip-border-width-accent) solid var(--aip-color-border-default); color: var(--aip-color-text-secondary); }
+.aip-doc hr { border: 0; border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); margin-block: var(--aip-space-10); }
+.aip-doc mark { background: var(--aip-color-highlight-mark); color: var(--aip-color-highlight-mark-text); padding-inline: 0.15em; border-radius: var(--aip-radius-xs); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.aip-doc img { max-width: 100%; height: auto; border-radius: var(--aip-radius-lg); }
+.aip-doc figcaption { margin-top: var(--aip-space-2); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-normal); color: var(--aip-color-text-secondary); }
+.aip-doc dl > dt { font-weight: var(--aip-font-weight-semibold); }
+.aip-doc dl > dd { margin: var(--aip-space-1) 0 var(--aip-space-3) var(--aip-space-4); color: var(--aip-color-text-secondary); }
+
+/* 인라인 코드 */
+.aip-doc :not(pre) > code:not([class]), .aip-code-inline { font-family: var(--aip-font-family-mono); font-size: var(--aip-component-inline-code-size); padding: 0.15em var(--aip-component-inline-code-padding-x); border-radius: var(--aip-component-inline-code-radius); background: var(--aip-component-inline-code-bg); color: var(--aip-component-inline-code-text); font-variant-ligatures: none; overflow-wrap: anywhere; }
+.aip-doc a > code { color: inherit; }
+
+/* 코드 블록(Markdown 의 맨 pre). 컴포넌트 .aip-code 를 쓰면 헤더·복사·줄 번호가 붙는다 */
+.aip-doc pre { padding: var(--aip-component-code-block-padding-y) var(--aip-component-code-block-padding-x); border-radius: var(--aip-component-code-block-radius); background: var(--aip-component-code-block-bg); border: var(--aip-border-width-hairline) solid var(--aip-component-code-block-border); color: var(--aip-color-code-text); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); overflow-x: auto; tab-size: 2; }
+.aip-doc pre code { font-size: inherit; padding: 0; background: none; color: inherit; border-radius: 0; }
+.aip-doc pre ::selection, .aip-code ::selection { background: var(--aip-color-code-selection); }
+
+/* 구문 강조 — 외부 테마 CSS 없이 이 매핑만 쓴다. Prism(.token)·highlight.js(.hljs-)·Shiki(css-variables 테마) */
+.aip-doc pre {
+  --shiki-foreground: var(--aip-color-code-text); --shiki-background: var(--aip-color-code-bg);
+  --shiki-token-keyword: var(--aip-color-code-keyword); --shiki-token-string: var(--aip-color-code-string); --shiki-token-string-expression: var(--aip-color-code-string);
+  --shiki-token-function: var(--aip-color-code-function); --shiki-token-constant: var(--aip-color-code-number); --shiki-token-comment: var(--aip-color-code-comment);
+  --shiki-token-parameter: var(--aip-color-code-text); --shiki-token-punctuation: var(--aip-color-code-punctuation); --shiki-token-link: var(--aip-color-code-keyword);
+}
+.aip-doc pre :is(.token.comment, .token.prolog, .hljs-comment) { color: var(--aip-color-code-comment); font-style: italic; }
+.aip-doc pre :is(.token.keyword, .token.atrule, .token.important, .hljs-keyword, .hljs-built_in, .hljs-literal) { color: var(--aip-color-code-keyword); }
+.aip-doc pre :is(.token.string, .token.char, .token.attr-value, .token.template-string, .hljs-string, .hljs-attr) { color: var(--aip-color-code-string); }
+.aip-doc pre :is(.token.function, .hljs-title) { color: var(--aip-color-code-function); }
+.aip-doc pre :is(.token.number, .token.boolean, .token.constant, .hljs-number) { color: var(--aip-color-code-number); }
+.aip-doc pre :is(.token.class-name, .token.builtin, .hljs-type, .hljs-title.class_) { color: var(--aip-color-code-type); }
+.aip-doc pre :is(.token.punctuation, .token.operator, .hljs-punctuation, .hljs-operator) { color: var(--aip-color-code-punctuation); }
+
+/* 표 */
+.aip-doc table { width: 100%; border-collapse: collapse; font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-doc th, .aip-doc td { padding: var(--aip-space-2) var(--aip-space-3); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); text-align: left; vertical-align: top; }
+.aip-doc th { font-weight: var(--aip-font-weight-medium); color: var(--aip-color-text-secondary); border-bottom-color: var(--aip-color-border-default); white-space: nowrap; }
+.aip-doc td > code { white-space: nowrap; }
+
+/* 접힘(FAQ·긴 예시) */
+.aip-doc details { border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); padding: var(--aip-space-3) var(--aip-space-4); }
+.aip-doc details > summary { cursor: pointer; font-weight: var(--aip-font-weight-medium); }
+.aip-doc details[open] > summary { margin-bottom: var(--aip-space-3); }
+
+/* GFM alert(> [!NOTE] 등) — 렌더러가 내는 .markdown-alert 를 AIP 콜아웃과 같은 모양으로 받는다(docs/07 §3) */
+.aip-doc .markdown-alert-note { --aip-_callout-bg: var(--aip-color-status-info-bg); --aip-_callout-bar: var(--aip-color-status-info-border); --aip-_callout-icon: var(--aip-color-status-info-icon); --aip-_callout-title: var(--aip-color-status-info-text); }
+.aip-doc .markdown-alert-tip { --aip-_callout-bg: var(--aip-color-status-success-bg); --aip-_callout-bar: var(--aip-color-status-success-border); --aip-_callout-icon: var(--aip-color-status-success-icon); --aip-_callout-title: var(--aip-color-status-success-text); }
+.aip-doc .markdown-alert-important { --aip-_callout-bg: var(--aip-color-highlight-bg); --aip-_callout-bar: var(--aip-color-highlight-border); --aip-_callout-icon: var(--aip-color-highlight-icon); --aip-_callout-title: var(--aip-color-highlight-text); }
+.aip-doc .markdown-alert-warning { --aip-_callout-bg: var(--aip-color-status-warning-bg); --aip-_callout-bar: var(--aip-color-status-warning-border); --aip-_callout-icon: var(--aip-color-status-warning-icon); --aip-_callout-title: var(--aip-color-status-warning-text); }
+.aip-doc .markdown-alert-caution { --aip-_callout-bg: var(--aip-color-status-danger-bg); --aip-_callout-bar: var(--aip-color-status-danger-border); --aip-_callout-icon: var(--aip-color-status-danger-icon); --aip-_callout-title: var(--aip-color-status-danger-text); }
+.aip-doc .markdown-alert { padding: var(--aip-component-callout-padding); border-radius: var(--aip-component-callout-radius); background: var(--aip-_callout-bg, var(--aip-color-status-info-bg)); box-shadow: inset var(--aip-component-callout-bar) 0 0 var(--aip-_callout-bar, var(--aip-color-status-info-border)); }
+.aip-doc .markdown-alert > * + * { margin-top: var(--aip-space-2); }
+.aip-doc .markdown-alert > :first-child { margin-top: 0; }
+.aip-doc .markdown-alert-title { display: flex; align-items: center; gap: var(--aip-space-2); font-weight: var(--aip-font-weight-semibold); color: var(--aip-_callout-title); }
+.aip-doc .markdown-alert-title svg { width: var(--aip-size-icon-sm); height: var(--aip-size-icon-sm); fill: var(--aip-_callout-icon); }
+
+@media (max-width: 767px) {
+  .aip-doc h1 { font-size: var(--aip-font-size-3xl); }
+  .aip-doc h3 { font-size: var(--aip-font-size-lg); }
+}

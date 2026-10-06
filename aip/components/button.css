@@ -1,0 +1,103 @@
+/* button — Button · Icon Button · Link.
+   기본값이 정답이다: .aip-button 하나면 secondary·md. primary 는 화면의 주 목적 하나에만 명시한다.
+   variant 4개(primary·secondary·ghost·danger) × size 4개(xs·sm·md·lg). 상태는 :hover·:active·:focus-visible·disabled·aria-busy. */
+
+.aip-button, .aip-icon-button {
+  --aip-_h: var(--aip-component-button-md-height);
+  --aip-_px: var(--aip-component-button-md-padding-x);
+  --aip-_icon: var(--aip-component-button-md-icon);
+  --aip-_radius: var(--aip-component-button-md-radius);
+  --aip-_bg: var(--aip-color-action-secondary-bg);
+  --aip-_bg-hover: var(--aip-color-action-secondary-bg-hover);
+  --aip-_bg-active: var(--aip-color-action-secondary-bg-active);
+  --aip-_fg: var(--aip-color-action-secondary-text);
+  --aip-_border: var(--aip-color-action-secondary-border);
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--aip-component-button-gap);
+  height: var(--aip-_h); padding-inline: var(--aip-_px);
+  border: var(--aip-border-width-hairline) solid var(--aip-_border); border-radius: var(--aip-_radius);
+  background: var(--aip-_bg); color: var(--aip-_fg);
+  font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-medium); line-height: var(--aip-font-line-height-none);
+  white-space: nowrap; text-decoration: none; cursor: pointer; user-select: none;
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-button { min-width: var(--aip-component-button-min-width); }
+.aip-button:hover, .aip-icon-button:hover { background: var(--aip-_bg-hover); }
+.aip-button:active, .aip-icon-button:active { background: var(--aip-_bg-active); }
+.aip-button > .aip-icon, .aip-icon-button > .aip-icon { width: var(--aip-_icon); height: var(--aip-_icon); }
+
+/* variant */
+.aip-button--primary {
+  --aip-_bg: var(--aip-color-action-primary-bg); --aip-_bg-hover: var(--aip-color-action-primary-bg-hover); --aip-_bg-active: var(--aip-color-action-primary-bg-active);
+  --aip-_fg: var(--aip-color-action-primary-text); --aip-_border: var(--aip-color-action-primary-bg);
+}
+.aip-button--ghost, .aip-icon-button {
+  --aip-_bg: var(--aip-color-action-ghost-bg); --aip-_bg-hover: var(--aip-color-action-ghost-bg-hover); --aip-_bg-active: var(--aip-color-action-ghost-bg-active);
+  --aip-_fg: var(--aip-color-action-ghost-text); --aip-_border: transparent;
+}
+.aip-button--danger {
+  --aip-_bg: var(--aip-color-action-danger-bg); --aip-_bg-hover: var(--aip-color-action-danger-bg-hover); --aip-_bg-active: var(--aip-color-action-danger-bg-active);
+  --aip-_fg: var(--aip-color-action-danger-text); --aip-_border: var(--aip-color-action-danger-bg);
+}
+.aip-icon-button--secondary {
+  --aip-_bg: var(--aip-color-action-secondary-bg); --aip-_bg-hover: var(--aip-color-action-secondary-bg-hover); --aip-_bg-active: var(--aip-color-action-secondary-bg-active);
+  --aip-_fg: var(--aip-color-action-secondary-text); --aip-_border: var(--aip-color-action-secondary-border);
+}
+
+/* size */
+.aip-button--xs, .aip-icon-button--xs { --aip-_h: var(--aip-component-button-xs-height); --aip-_px: var(--aip-component-button-xs-padding-x); --aip-_icon: var(--aip-component-button-xs-icon); --aip-_radius: var(--aip-component-button-xs-radius); font-size: var(--aip-font-size-xs); }
+.aip-button--sm, .aip-icon-button--sm { --aip-_h: var(--aip-component-button-sm-height); --aip-_px: var(--aip-component-button-sm-padding-x); --aip-_icon: var(--aip-component-button-sm-icon); --aip-_radius: var(--aip-component-button-sm-radius); }
+.aip-button--lg, .aip-icon-button--lg { --aip-_h: var(--aip-component-button-lg-height); --aip-_px: var(--aip-component-button-lg-padding-x); --aip-_icon: var(--aip-component-button-lg-icon); --aip-_radius: var(--aip-component-button-lg-radius); font-size: var(--aip-font-size-md); }
+.aip-button--xs, .aip-button--sm { min-width: 0; }
+.aip-button--block { display: flex; width: 100%; }
+
+/* Icon Button — 정사각형. aria-label 필수(빌드 테스트가 examples 를 검사한다) */
+.aip-icon-button { width: var(--aip-_h); padding: 0; flex: none; }
+@media (pointer: coarse) {
+  .aip-icon-button--xs::after, .aip-icon-button--sm::after, .aip-button--xs::after, .aip-button--sm::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); }
+}
+
+/* 비활성: 네이티브 disabled 또는 aria-disabled(툴팁으로 이유를 보여줘야 할 때 — 포커스가 남는다) */
+:is(.aip-button, .aip-icon-button):is(:disabled, [aria-disabled="true"]):not([aria-busy="true"]) {
+  --aip-_bg: var(--aip-color-action-disabled-bg); --aip-_bg-hover: var(--aip-color-action-disabled-bg); --aip-_bg-active: var(--aip-color-action-disabled-bg);
+  --aip-_fg: var(--aip-color-action-disabled-text); --aip-_border: var(--aip-color-action-disabled-border);
+  cursor: not-allowed;
+}
+:is(.aip-button--ghost, .aip-icon-button:not(.aip-icon-button--secondary)):is(:disabled, [aria-disabled="true"]) { --aip-_bg: transparent; --aip-_bg-hover: transparent; --aip-_bg-active: transparent; --aip-_border: transparent; }
+
+/* 로딩: 폭을 유지한 채 라벨 자리에 스피너. aria-busy="true" + disabled 를 함께 건다 */
+:is(.aip-button, .aip-icon-button)[aria-busy="true"] { color: transparent; cursor: progress; }
+:is(.aip-button, .aip-icon-button)[aria-busy="true"]::before {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: var(--aip-_icon); height: var(--aip-_icon);
+  border: var(--aip-border-width-strong) solid var(--aip-_fg); border-right-color: transparent; border-radius: var(--aip-radius-full);
+  animation: aip-spin calc(var(--aip-motion-duration-slow) * 3) var(--aip-motion-easing-linear) infinite;
+}
+:is(.aip-button, .aip-icon-button)[aria-busy="true"] > * { visibility: hidden; }
+
+/* 같은 줄 버튼 묶음 */
+.aip-button-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-button-group-gap); }
+.aip-button-group--end { justify-content: flex-end; }
+
+/* Link — 문장 안 링크(.aip-link)와 단독 링크(--standalone, 화살표 동반) 두 가지 */
+.aip-link {
+  color: var(--aip-color-text-link); text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  border-radius: var(--aip-radius-xs);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), text-decoration-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-link:hover { color: var(--aip-color-text-link-hover); text-decoration-color: currentColor; }
+.aip-link--standalone {
+  display: inline-flex; align-items: center; gap: var(--aip-space-1);
+  font-weight: var(--aip-font-weight-medium); text-decoration: none;
+}
+.aip-link--standalone::after { content: "→"; transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard); }
+.aip-link--standalone:hover { text-decoration: underline; }
+.aip-link--standalone:hover::after { transform: translateX(var(--aip-space-0-5)); }
+/* 외부 링크: 새 탭이면 ↗ 와 스크린 리더 문구(.aip-sr-only "(새 탭)")를 함께 넣는다 */
+.aip-link[target="_blank"]::after { content: "↗"; margin-left: var(--aip-space-0-5); font-size: 0.875em; text-decoration: none; display: inline-block; }
+
+/* 테마 전환 버튼: 아이콘 두 개를 넣고 aria-pressed(다크=true)로 하나만 보인다 */
+[data-aip-theme-toggle] .aip-theme-toggle__to-light { display: none; }
+[data-aip-theme-toggle][aria-pressed="true"] .aip-theme-toggle__to-light { display: block; }
+[data-aip-theme-toggle][aria-pressed="true"] .aip-theme-toggle__to-dark { display: none; }

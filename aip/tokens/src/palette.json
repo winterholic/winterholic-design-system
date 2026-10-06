@@ -1,0 +1,800 @@
+{
+  "blue": {
+    "50": {
+      "$value": "#F1F8FF",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.61
+        }
+      }
+    },
+    "100": {
+      "$value": "#E0EFFE",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.95
+        }
+      }
+    },
+    "200": {
+      "$value": "#C1DEFC",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.12
+        }
+      }
+    },
+    "300": {
+      "$value": "#93C8FD",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.76,
+          "onBlack": 11.92
+        }
+      }
+    },
+    "400": {
+      "$value": "#6DABE9",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.43,
+          "onBlack": 8.65
+        }
+      }
+    },
+    "500": {
+      "$value": "#448ED3",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.47,
+          "onBlack": 6.06
+        }
+      }
+    },
+    "600": {
+      "$value": "#1C77C3",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 4.69,
+          "onBlack": 4.48
+        }
+      }
+    },
+    "700": {
+      "$value": "#0A5C9C",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 6.94,
+          "onBlack": 3.02
+        }
+      }
+    },
+    "800": {
+      "$value": "#0C4676",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 9.75,
+          "onBlack": 2.15
+        }
+      }
+    },
+    "900": {
+      "$value": "#013259",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.11,
+          "onBlack": 1.6
+        }
+      }
+    },
+    "950": {
+      "$value": "#00203D",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.48,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "AIP Blue · 브랜드 주색·주 액션·링크·활성·포커스·정보. 흰 배경 4.69:1 이라 600 이 곧 버튼 배경 · 앵커 #1C77C3 @600"
+  },
+  "tangerine": {
+    "50": {
+      "$value": "#FFF4F0",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.45
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFE7DE",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.74
+        }
+      }
+    },
+    "200": {
+      "$value": "#FECFBD",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.41,
+          "onBlack": 14.87
+        }
+      }
+    },
+    "300": {
+      "$value": "#FAA381",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.98,
+          "onBlack": 10.62
+        }
+      }
+    },
+    "400": {
+      "$value": "#DD9072",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.53,
+          "onBlack": 8.31
+        }
+      }
+    },
+    "500": {
+      "$value": "#B7775E",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.61,
+          "onBlack": 5.81
+        }
+      }
+    },
+    "600": {
+      "$value": "#96614D",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 5.1,
+          "onBlack": 4.11
+        }
+      }
+    },
+    "700": {
+      "$value": "#784D3D",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 7.17,
+          "onBlack": 2.93
+        }
+      }
+    },
+    "800": {
+      "$value": "#5B3A2E",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 10.05,
+          "onBlack": 2.09
+        }
+      }
+    },
+    "900": {
+      "$value": "#412A20",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.32,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "950": {
+      "$value": "#2B1B14",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.54,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "AIP Tangerine · 보조 강조·경고(warning)·다이어그램 permission. 원색은 글자 불가(1.98:1) · 앵커 #FAA381 @300"
+  },
+  "yellow": {
+    "50": {
+      "$value": "#FEF9CB",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.63
+        }
+      }
+    },
+    "100": {
+      "$value": "#F4EFC1",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.96
+        }
+      }
+    },
+    "200": {
+      "$value": "#F5E663",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.28,
+          "onBlack": 16.38
+        }
+      }
+    },
+    "300": {
+      "$value": "#D2C658",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.76,
+          "onBlack": 11.96
+        }
+      }
+    },
+    "400": {
+      "$value": "#B3A94F",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.41,
+          "onBlack": 8.7
+        }
+      }
+    },
+    "500": {
+      "$value": "#948B44",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.48,
+          "onBlack": 6.04
+        }
+      }
+    },
+    "600": {
+      "$value": "#78723B",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 4.92,
+          "onBlack": 4.27
+        }
+      }
+    },
+    "700": {
+      "$value": "#605B32",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 6.91,
+          "onBlack": 3.04
+        }
+      }
+    },
+    "800": {
+      "$value": "#484529",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 9.73,
+          "onBlack": 2.16
+        }
+      }
+    },
+    "900": {
+      "$value": "#333120",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.12,
+          "onBlack": 1.6
+        }
+      }
+    },
+    "950": {
+      "$value": "#222010",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.38,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "AIP Yellow · 형광펜(highlight)·Important·Example·다이어그램 intent. 원색은 면 전용(1.28:1) · 앵커 #F5E663 @200"
+  },
+  "neutral": {
+    "50": {
+      "$value": "#F7F7F4",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.57
+        }
+      }
+    },
+    "100": {
+      "$value": "#EDEDEA",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.9
+        }
+      }
+    },
+    "200": {
+      "$value": "#DBDBD7",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.13
+        }
+      }
+    },
+    "300": {
+      "$value": "#C3C3BE",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.77,
+          "onBlack": 11.87
+        }
+      }
+    },
+    "400": {
+      "$value": "#A7A6A1",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.44,
+          "onBlack": 8.61
+        }
+      }
+    },
+    "500": {
+      "$value": "#8A8983",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.51,
+          "onBlack": 5.99
+        }
+      }
+    },
+    "600": {
+      "$value": "#727069",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 4.96,
+          "onBlack": 4.24
+        }
+      }
+    },
+    "700": {
+      "$value": "#5B5A52",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 6.93,
+          "onBlack": 3.03
+        }
+      }
+    },
+    "800": {
+      "$value": "#3D3B30",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 11.25,
+          "onBlack": 1.87
+        }
+      }
+    },
+    "900": {
+      "$value": "#323029",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.2,
+          "onBlack": 1.59
+        }
+      }
+    },
+    "925": {
+      "$value": "#292821",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 14.79,
+          "onBlack": 1.42
+        }
+      }
+    },
+    "950": {
+      "$value": "#211F19",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.47,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "975": {
+      "$value": "#15140F",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 18.44,
+          "onBlack": 1.14
+        }
+      }
+    },
+    "$description": "AIP Charcoal · 라이트 테마의 글자·테두리·면, 다크 테마의 면. 800 = 본문 글자 · 앵커 #3D3B30 @800"
+  },
+  "slate": {
+    "50": {
+      "$value": "#F5F6FC",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.47
+        }
+      }
+    },
+    "100": {
+      "$value": "#EBECF3",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.82
+        }
+      }
+    },
+    "200": {
+      "$value": "#D9DAE2",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.08
+        }
+      }
+    },
+    "300": {
+      "$value": "#C0C2CC",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.78,
+          "onBlack": 11.83
+        }
+      }
+    },
+    "400": {
+      "$value": "#A3A5B1",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.45,
+          "onBlack": 8.57
+        }
+      }
+    },
+    "500": {
+      "$value": "#868896",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.51,
+          "onBlack": 5.98
+        }
+      }
+    },
+    "600": {
+      "$value": "#6C6F7E",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 4.98,
+          "onBlack": 4.21
+        }
+      }
+    },
+    "700": {
+      "$value": "#4D5061",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 7.97,
+          "onBlack": 2.64
+        }
+      }
+    },
+    "800": {
+      "$value": "#404352",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 9.8,
+          "onBlack": 2.14
+        }
+      }
+    },
+    "900": {
+      "$value": "#2D2F3C",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.26,
+          "onBlack": 1.58
+        }
+      }
+    },
+    "925": {
+      "$value": "#252733",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 14.82,
+          "onBlack": 1.42
+        }
+      }
+    },
+    "950": {
+      "$value": "#1D1E29",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.54,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "975": {
+      "$value": "#12131C",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 18.49,
+          "onBlack": 1.14
+        }
+      }
+    },
+    "$description": "AIP Slate · 코드 면(두 테마 공통)·보조 어두운 요소 · 앵커 #4D5061 @700"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFF4F4",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.5
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE6E7",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.69
+        }
+      }
+    },
+    "200": {
+      "$value": "#FDCDCF",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.81
+        }
+      }
+    },
+    "300": {
+      "$value": "#FBA9AD",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.38
+        }
+      }
+    },
+    "400": {
+      "$value": "#F37D87",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.59,
+          "onBlack": 8.09
+        }
+      }
+    },
+    "500": {
+      "$value": "#DC5565",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.8,
+          "onBlack": 5.53
+        }
+      }
+    },
+    "600": {
+      "$value": "#C62948",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 5.51,
+          "onBlack": 3.81
+        }
+      }
+    },
+    "700": {
+      "$value": "#A31837",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 7.66,
+          "onBlack": 2.74
+        }
+      }
+    },
+    "800": {
+      "$value": "#810627",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 10.56,
+          "onBlack": 1.99
+        }
+      }
+    },
+    "900": {
+      "$value": "#5E061B",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 13.84,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#400310",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.96,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Signal Red · 위험·오류·파괴·거부(denied). 브랜드 장식 금지 · 앵커 #C62948 @600"
+  },
+  "green": {
+    "50": {
+      "$value": "#E4FFEE",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.06,
+          "onBlack": 19.84
+        }
+      }
+    },
+    "100": {
+      "$value": "#D0F8E0",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.15,
+          "onBlack": 18.19
+        }
+      }
+    },
+    "200": {
+      "$value": "#B9E8CC",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.36,
+          "onBlack": 15.48
+        }
+      }
+    },
+    "300": {
+      "$value": "#9AD2B2",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 1.72,
+          "onBlack": 12.24
+        }
+      }
+    },
+    "400": {
+      "$value": "#74B792",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 2.35,
+          "onBlack": 8.93
+        }
+      }
+    },
+    "500": {
+      "$value": "#4B9C73",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 3.33,
+          "onBlack": 6.3
+        }
+      }
+    },
+    "600": {
+      "$value": "#1C8457",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 4.68,
+          "onBlack": 4.49
+        }
+      }
+    },
+    "700": {
+      "$value": "#0B6A44",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 6.65,
+          "onBlack": 3.16
+        }
+      }
+    },
+    "800": {
+      "$value": "#0D5133",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 9.37,
+          "onBlack": 2.24
+        }
+      }
+    },
+    "900": {
+      "$value": "#003B23",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 12.73,
+          "onBlack": 1.65
+        }
+      }
+    },
+    "950": {
+      "$value": "#002715",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 16.14,
+          "onBlack": 1.3
+        }
+      }
+    },
+    "$description": "Signal Green · 성공·허용(allowed)·Tip · 앵커 #1C8457 @600"
+  },
+  "dark-tint": {
+    "$description": "다크 상태 면. <색>.600 을 neutral.950(#211F19)에 14% 섞은 값. 직접 쓰지 않고 color.dark.json 의 status·lifecycle·selected 면이 참조한다",
+    "blue": {
+      "$value": "#202B31",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 14.47,
+          "onBlack": 1.45
+        }
+      }
+    },
+    "green": {
+      "$value": "#202D22",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 14.38,
+          "onBlack": 1.46
+        }
+      }
+    },
+    "red": {
+      "$value": "#382020",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 15.05,
+          "onBlack": 1.4
+        }
+      }
+    },
+    "tangerine": {
+      "$value": "#3B2F25",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 12.97,
+          "onBlack": 1.62
+        }
+      }
+    },
+    "yellow": {
+      "$value": "#3A3622",
+      "$extensions": {
+        "aip.contrast": {
+          "onWhite": 12.13,
+          "onBlack": 1.73
+        }
+      }
+    }
+  }
+}

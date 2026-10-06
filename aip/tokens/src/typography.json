@@ -1,0 +1,95 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "sans-serif"],
+        "$description": "UI·문서 본문·마케팅 제목 전부. 한 서체로 한글과 라틴의 굵기·x-height 가 맞는다. 개발자 도구라고 UI 를 모노로 만들지 않는다. CDN: https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "JetBrains Mono Variable", "D2Coding", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", "monospace"],
+        "$description": "코드·인라인 코드·식별자(파라미터 이름·타입·버전·경로)·kbd·eyebrow. 리거처는 끈다(명세의 != 가 ≠ 로 보이면 안 된다). CDN: https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css"
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "$description": "4단계만. 300 이하는 한글 본문 가독성이 떨어지고, 800 이상은 Pretendard 에서 지나치게 무겁다.",
+      "regular":  { "$value": 400, "$description": "본문·코드" },
+      "medium":   { "$value": 500, "$description": "라벨·버튼·사이드바 항목·파라미터 이름" },
+      "semibold": { "$value": 600, "$description": "문서 h2~h4·카드 제목·활성 항목·eyebrow" },
+      "bold":     { "$value": 700, "$description": "display·문서 제목·앱 화면 제목" }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "1rem = 16px. 12px 아래로 내려가지 않는다(xs 가 하한) — 장시간 읽는 제품이다.",
+      "xs":  { "$value": "0.75rem",  "$description": "12px · 캡션·배지·eyebrow·kbd·mono-label" },
+      "sm":  { "$value": "0.875rem", "$description": "14px · 보조 본문·라벨·사이드바·TOC·코드" },
+      "md":  { "$value": "1rem",     "$description": "16px · 본문 기본·문서 본문·인풋" },
+      "lg":  { "$value": "1.125rem", "$description": "18px · 문서 lead·강조 본문·UI heading-3" },
+      "xl":  { "$value": "1.25rem",  "$description": "20px · 문서 h3·마케팅 lead" },
+      "2xl": { "$value": "1.5rem",   "$description": "24px · 문서 h2·다이얼로그 제목·UI heading-2" },
+      "3xl": { "$value": "1.875rem", "$description": "30px · UI heading-1·모바일 문서 제목" },
+      "4xl": { "$value": "2.25rem",  "$description": "36px · 문서 제목·display-md" },
+      "5xl": { "$value": "3rem",     "$description": "48px · display-lg(랜딩 섹션 제목)" },
+      "6xl": { "$value": "3.75rem",  "$description": "60px · display-xl(히어로)" }
+    },
+    "line-height": {
+      "$type": "number",
+      "$description": "단위 없는 배수.",
+      "none":    { "$value": 1,    "$description": "한 줄 라벨·kbd·숫자 타일" },
+      "tight":   { "$value": 1.1,  "$description": "display" },
+      "snug":    { "$value": 1.25, "$description": "문서 제목·UI 제목" },
+      "heading": { "$value": 1.35, "$description": "문서 h2~h4" },
+      "normal":  { "$value": 1.5,  "$description": "라벨·버튼·캡션·짧은 UI 텍스트" },
+      "relaxed": { "$value": 1.6,  "$description": "UI 본문·코드" },
+      "prose":   { "$value": 1.7,  "$description": "문서 본문. 한·영 혼용 긴 글 기준" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tighter": { "$value": "-0.035em", "$description": "display" },
+      "tight":   { "$value": "-0.02em",  "$description": "문서 제목·UI heading-1·2" },
+      "snug":    { "$value": "-0.01em",  "$description": "문서 h2~h3·lead" },
+      "normal":  { "$value": "0em",      "$description": "본문·라벨·코드" },
+      "wide":    { "$value": "0.06em",   "$description": "eyebrow(대문자 모노)" }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+    "$description": "역할별 완성 스타일. 화면의 글자는 이 이름 중 하나로만 놓는다(개별 size·weight 조합 금지). 네 묶음: 마케팅(display-*·lead), 문서(doc-*), UI(heading-*·body-*·label-*·caption), 코드·식별자(code·mono-label·kbd·eyebrow).",
+
+    "display-xl": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.6xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "홈페이지 히어로 한 줄. 모바일은 display-md 크기로 내려간다" },
+    "display-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.5xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.tight}", "letterSpacing": "{font.letter-spacing.tighter}" }, "$description": "랜딩 섹션 제목. 모바일 3xl" },
+    "display-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "랜딩 소제목·CTA 띠 제목·MakeAIP 히어로" },
+    "lead":       { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "랜딩 히어로·섹션 아래 설명 문단. text.secondary 와 짝" },
+
+    "doc-title": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "문서 페이지 제목(h1). 페이지당 1개. 모바일 30px" },
+    "doc-lead":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "제목 아래 한두 문장 요약. text.secondary. AI 에이전트가 페이지 요지를 여기서 읽는다" },
+    "doc-h2":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "문서 ## — 위 space.10 + hairline. 앵커 링크" },
+    "doc-h3":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "문서 ### — 위 space.8" },
+    "doc-h4":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "문서 #### — API Reference 의 개별 항목. 위 space.6. 그 아래 단계는 없다" },
+    "doc-body":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.prose}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "문서 본문·목록·콜아웃 본문. 16/1.7. 문서 본문 글자는 줄이지 않는다" },
+    "doc-caption": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "그림·표·다이어그램 캡션. text.secondary" },
+
+    "heading-1": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.3xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "앱 화면 제목(MakeAIP·Playground·검색 결과). 화면당 1개. 문서 제목은 doc-title" },
+    "heading-2": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "다이얼로그 제목·앱 섹션 제목" },
+    "heading-3": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "카드 제목·설정 그룹 제목(MakeAIP 'Runtime')" },
+    "heading-4": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "작은 카드 제목·검색 결과 제목·옵션 카드 제목" },
+
+    "body-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "랜딩 피처 설명·빈 상태 본문" },
+    "body-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "UI 본문 기본. 모르면 이것. 문서 본문은 doc-body" },
+    "body-sm": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "보조 설명·파라미터 설명·옵션 카드 설명·표 본문·검색 스니펫" },
+
+    "label-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "lg 버튼·헤더 내비 항목" },
+    "label-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "md·sm 버튼·폼 라벨·탭·사이드바 항목·표 헤더. 기본" },
+    "label-sm": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "xs 버튼·배지·칩" },
+    "caption":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "도움말·타임스탬프·각주. text.tertiary 와 짝" },
+
+    "eyebrow":    { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "제목 위 분류 라벨(랜딩 섹션 '01 — INTENT', 사이드바 그룹명, 문서 카테고리). 대문자. 모노가 '명세' 의 표식이 되는 유일한 장식 자리" },
+    "code":       { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "코드 블록·코드 미리보기·Playground 에디터. 14/1.6. 인라인 코드는 0.875em 으로 본문에 맞춘다" },
+    "code-sm":    { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "좁은 열의 코드(MakeAIP 파일 트리 미리보기·툴팁 안 코드)" },
+    "mono-label": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "식별자: 파라미터 타입·버전(v0.3.1)·파일 경로·스펙 ID·단축키 외 기계값. text.secondary 와 짝" },
+    "kbd":        { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "단축키(⌘K)" },
+    "numeric":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "표 수치·벤치마크. tabular-nums 를 함께 건다" }
+  }
+}

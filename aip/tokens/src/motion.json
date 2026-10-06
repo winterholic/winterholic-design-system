@@ -1,0 +1,27 @@
+{
+  "motion": {
+    "$description": "모션은 상태 변화를 설명할 때만 쓴다. 장식 애니메이션·스크롤 연출·반짝임은 없다. prefers-reduced-motion 이면 duration 이 0 이 된다(tokens.css 가 처리).",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "0ms",    "$description": "reduced-motion 대체값" },
+      "fast":    { "$value": "120ms",  "$description": "hover 색 변화·체크·스위치·탭 인디케이터" },
+      "normal":  { "$value": "180ms",  "$description": "드롭다운·툴팁·아코디언·사이드바 그룹 펼침. 기본" },
+      "slow":    { "$value": "240ms",  "$description": "다이얼로그·드로어 진입" },
+      "tooltip-delay": { "$value": "400ms",  "$description": "툴팁이 뜨기까지 대기(포커스는 즉시)" },
+      "feedback":      { "$value": "1600ms", "$description": "'복사됨' 같은 확인 상태가 원래대로 돌아가기까지" },
+      "toast":         { "$value": "5000ms", "$description": "토스트 자동 닫힘. 액션이 있으면 자동으로 닫지 않는다" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "standard": { "$value": [0.2, 0, 0, 1], "$description": "화면 안에서 바뀌는 것 전부. 기본" },
+      "enter":    { "$value": [0, 0, 0, 1],   "$description": "들어오는 것(다이얼로그·드로어·드롭다운·토스트)" },
+      "exit":     { "$value": [0.4, 0, 1, 1], "$description": "나가는 것. 진입보다 짧게(normal 이하)" },
+      "linear":   { "$value": [0, 0, 1, 1],   "$description": "스피너·진행 바처럼 끝없이 도는 것" }
+    },
+    "distance": {
+      "$type": "dimension",
+      "sm": { "$value": "4px",  "$description": "드롭다운·툴팁 fade+slide" },
+      "md": { "$value": "8px",  "$description": "토스트·다이얼로그" }
+    }
+  }
+}

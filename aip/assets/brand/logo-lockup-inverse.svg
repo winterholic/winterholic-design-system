@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 158 64" role="img" aria-label="AIP 로고">
+  <title>AIP 로고</title>
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#FFFFFF"/>
+  <rect x="18.75" y="33.75" width="26.5" height="6" rx="0.75" fill="#F5E663"/>
+  <path d="M16.75 49 L30 14 L34 14 L47.25 49 L39.75 49 L32 28.5 L24.25 49 Z" fill="#1C77C3"/>
+  <path d="M86 49 L98.8714 15 L102.757 15 L115.629 49 L108.343 49 L100.814 29.0857 L93.2857 49 Z" fill="#FFFFFF"/>
+  <rect x="93.5286" y="36.08" width="14.5714" height="6.3" fill="#FFFFFF"/>
+  <rect x="120.629" y="15" width="7" height="34" fill="#FFFFFF"/>
+  <rect x="135.629" y="15" width="7" height="34" fill="#FFFFFF"/>
+  <path d="M135.629 15 H145.629 A9.86 9.86 0 0 1 145.629 34.72 H135.629 Z M142.629 22 V27.72 H145.629 A2.86 2.86 0 0 0 145.629 22 Z" fill="#FFFFFF" fill-rule="evenodd"/>
+</svg>

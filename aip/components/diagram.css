@@ -1,0 +1,76 @@
+/* diagram — Architecture Diagram Container · Flow(HTML 다이어그램) · SVG 역할 클래스 · Legend.
+   문법: 색 = 개념(data-role), 모양 = 종류, 선 = 흐름(data-edge). 같은 개념은 어느 그림에서도 같은 색이다(docs/12).
+   그림만으로 정보를 전하지 않는다 — 캡션 + 텍스트 설명(details)이 항상 함께 간다. */
+
+/* 역할 → 지역 변수. HTML 노드·SVG 도형·범례 견본이 같은 변수를 읽는다 */
+[data-role="intent"]     { --aip-_fill: var(--aip-color-diagram-intent-fill);     --aip-_stroke: var(--aip-color-diagram-intent-stroke);     --aip-_text: var(--aip-color-diagram-intent-text); }
+[data-role="runtime"]    { --aip-_fill: var(--aip-color-diagram-runtime-fill);    --aip-_stroke: var(--aip-color-diagram-runtime-stroke);    --aip-_text: var(--aip-color-diagram-runtime-text); }
+[data-role="execution"]  { --aip-_fill: var(--aip-color-diagram-execution-fill);  --aip-_stroke: var(--aip-color-diagram-execution-stroke);  --aip-_text: var(--aip-color-diagram-execution-text); }
+[data-role="permission"] { --aip-_fill: var(--aip-color-diagram-permission-fill); --aip-_stroke: var(--aip-color-diagram-permission-stroke); --aip-_text: var(--aip-color-diagram-permission-text); }
+[data-role="frontend"]   { --aip-_fill: var(--aip-color-diagram-frontend-fill);   --aip-_stroke: var(--aip-color-diagram-frontend-stroke);   --aip-_text: var(--aip-color-diagram-frontend-text); }
+[data-role="backend"]    { --aip-_fill: var(--aip-color-diagram-backend-fill);    --aip-_stroke: var(--aip-color-diagram-backend-stroke);    --aip-_text: var(--aip-color-diagram-backend-text); }
+[data-role="data"]       { --aip-_fill: var(--aip-color-diagram-data-fill);       --aip-_stroke: var(--aip-color-diagram-data-stroke);       --aip-_text: var(--aip-color-diagram-data-text); }
+[data-role="external"]   { --aip-_fill: var(--aip-color-diagram-external-fill);   --aip-_stroke: var(--aip-color-diagram-external-stroke);   --aip-_text: var(--aip-color-diagram-external-text); --aip-_dash: dashed; }
+[data-role="note"]       { --aip-_fill: var(--aip-color-diagram-note-fill);       --aip-_stroke: var(--aip-color-diagram-note-stroke);       --aip-_text: var(--aip-color-diagram-note-text); }
+[data-edge]              { --aip-_edge: var(--aip-color-diagram-edge-default); }
+[data-edge="muted"]      { --aip-_edge: var(--aip-color-diagram-edge-muted); }
+[data-edge="emphasis"]   { --aip-_edge: var(--aip-color-diagram-edge-emphasis); }
+[data-edge="allow"]      { --aip-_edge: var(--aip-color-diagram-edge-allow); }
+[data-edge="reject"]     { --aip-_edge: var(--aip-color-diagram-edge-reject); }
+
+/* 컨테이너 */
+.aip-diagram { margin: 0; min-width: 0; }
+.aip-diagram__canvas {
+  position: relative; overflow-x: auto; padding: var(--aip-component-diagram-padding);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-diagram-border); border-radius: var(--aip-component-diagram-radius);
+  background-color: var(--aip-component-diagram-bg);
+  background-image: radial-gradient(circle, var(--aip-color-diagram-grid) var(--aip-pattern-grid-dot), transparent calc(var(--aip-pattern-grid-dot) + var(--aip-space-px)));
+  background-size: var(--aip-pattern-grid-size) var(--aip-pattern-grid-size);
+  background-position: center;
+  font-family: var(--aip-font-family-sans);
+}
+.aip-diagram__canvas > svg { display: block; width: 100%; height: auto; min-width: var(--aip-_min, 0); margin-inline: auto; overflow: visible; }
+.aip-diagram__canvas:focus-visible { outline-offset: var(--aip-focus-ring-offset); }
+.aip-diagram__caption { margin-top: var(--aip-space-2); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-normal); }
+.aip-diagram__caption > b { color: var(--aip-color-text-primary); font-weight: var(--aip-font-weight-semibold); }
+.aip-diagram__legend { display: flex; flex-wrap: wrap; gap: var(--aip-space-2) var(--aip-component-diagram-legend-gap); margin: var(--aip-space-3) 0 0; padding: 0; list-style: none; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-xs); }
+.aip-diagram__legend > li { display: inline-flex; align-items: center; gap: var(--aip-space-1-5); }
+.aip-diagram__swatch { width: var(--aip-size-icon-sm); height: var(--aip-size-icon-xs); flex: none; border-radius: var(--aip-radius-xs); background: var(--aip-_fill); border: var(--aip-border-width-hairline) var(--aip-_dash, solid) var(--aip-_stroke); }
+.aip-diagram__swatch[data-edge] { height: var(--aip-border-width-strong); border: 0; border-radius: 0; background: var(--aip-_edge); }
+.aip-diagram__text { margin-top: var(--aip-space-3); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-diagram__text > summary { cursor: pointer; color: var(--aip-color-text-link); font-weight: var(--aip-font-weight-medium); width: fit-content; border-radius: var(--aip-radius-xs); }
+.aip-diagram__text > :not(summary) { margin: var(--aip-space-2) 0 0; }
+
+/* SVG 안에서: <g data-role="runtime"><rect/><text/></g>, <path data-edge="reject"/>. 좌표·모양은 그림이, 색·선은 토큰이 */
+.aip-diagram svg [data-role] :is(rect, circle, ellipse, polygon, path:not([data-edge])) { fill: var(--aip-_fill); stroke: var(--aip-_stroke); stroke-width: var(--aip-component-diagram-node-stroke); }
+.aip-diagram svg [data-role="external"] :is(rect, circle, ellipse, polygon, path:not([data-edge])) { stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg [data-role] text { fill: var(--aip-_text); font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-medium); }
+.aip-diagram svg [data-role] text.aip-svg-meta { font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); font-weight: var(--aip-font-weight-regular); }
+.aip-diagram svg [data-edge] { fill: none; stroke: var(--aip-_edge); stroke-width: var(--aip-component-diagram-edge-width); stroke-linecap: round; stroke-linejoin: round; }
+.aip-diagram svg [data-edge="emphasis"] { stroke-width: var(--aip-border-width-strong); }
+.aip-diagram svg [data-edge="muted"], .aip-diagram svg [data-edge="reject"] { stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg marker[data-edge] path { fill: var(--aip-_edge); stroke: none; }
+.aip-diagram svg .aip-svg-label { fill: var(--aip-color-diagram-edge-label); font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); }
+.aip-diagram svg .aip-svg-label-bg { fill: var(--aip-component-diagram-bg); }
+.aip-diagram svg .aip-svg-zone { fill: var(--aip-color-diagram-zone-bg); stroke: var(--aip-color-diagram-zone-border); stroke-width: var(--aip-component-diagram-node-stroke); stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg .aip-svg-zone-label { fill: var(--aip-color-text-brand); font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); font-weight: var(--aip-font-weight-semibold); letter-spacing: var(--aip-font-letter-spacing-wide); }
+
+/* Flow — SVG 없이 HTML 로 그리는 한 줄 흐름. <ol class="aip-flow"><li class="aip-node" data-role> … 순서가 곧 의미라 목록이다 */
+.aip-flow { display: flex; flex-direction: column; align-items: stretch; gap: var(--aip-space-6); margin: 0; padding: 0; list-style: none; counter-reset: aip-flow; }
+@media (min-width: 768px) { .aip-flow { flex-direction: row; align-items: center; justify-content: center; gap: var(--aip-space-8); } }
+.aip-flow > li { position: relative; }
+.aip-flow > li + li::before {
+  content: var(--aip-_arrow, "↓"); position: absolute; left: 50%; top: calc(-1 * var(--aip-space-6)); width: var(--aip-space-6); height: var(--aip-space-6);
+  transform: translateX(-50%); display: grid; place-items: center;
+  color: var(--aip-_edge, var(--aip-color-diagram-edge-default)); font: var(--aip-font-weight-regular) var(--aip-font-size-md) / 1 var(--aip-font-family-mono);
+}
+@media (min-width: 768px) { .aip-flow > li + li::before { --aip-_arrow: "→"; left: calc(-1 * var(--aip-space-8)); top: 50%; width: var(--aip-space-8); transform: translateY(-50%); } }
+.aip-node {
+  display: flex; flex-direction: column; gap: var(--aip-space-0-5);
+  min-width: var(--aip-component-option-card-min-width); padding: var(--aip-component-diagram-node-padding-y) var(--aip-component-diagram-node-padding-x);
+  border: var(--aip-component-diagram-node-stroke) var(--aip-_dash, solid) var(--aip-_stroke, var(--aip-color-border-default)); border-radius: var(--aip-component-diagram-node-radius);
+  background: var(--aip-_fill, var(--aip-color-surface-default)); color: var(--aip-_text, var(--aip-color-text-primary));
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); text-align: center;
+}
+.aip-node__kind { font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; opacity: var(--aip-opacity-muted); }
+.aip-node[data-role="data"] { border-radius: var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) / var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl); }

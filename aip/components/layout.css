@@ -1,0 +1,56 @@
+/* layout — 페이지를 짜는 4개의 원시 요소. 제품 셸(문서 3열·MakeAIP 2열·Playground 분할)은 docs.css·app.css 가 이 위에 만든다.
+   container(폭) · stack(세로 간격) · cluster(가로 나열) · grid(반응형 열). 간격은 modifier 로 고르고 임의 값을 넣지 않는다. */
+
+.aip-container {
+  width: 100%; max-width: var(--aip-_max, var(--aip-size-container-xl));
+  margin-inline: auto; padding-inline: var(--aip-size-layout-page-gutter);
+}
+.aip-container--prose { --aip-_max: calc(var(--aip-size-container-prose) + 2 * var(--aip-size-layout-page-gutter-lg)); }
+.aip-container--sm { --aip-_max: var(--aip-size-container-sm); }
+.aip-container--md { --aip-_max: var(--aip-size-container-md); }
+.aip-container--lg { --aip-_max: var(--aip-size-container-lg); }
+@media (min-width: 768px) { .aip-container { padding-inline: var(--aip-size-layout-page-gutter-md); } }
+@media (min-width: 1024px) { .aip-container { padding-inline: var(--aip-size-layout-page-gutter-lg); } }
+
+/* stack: 세로로 쌓고 사이만 띄운다. 기본 space.4 */
+.aip-stack { display: flex; flex-direction: column; gap: var(--aip-_gap, var(--aip-space-4)); }
+.aip-stack > * { margin-block: 0; }
+
+/* cluster: 가로로 나열, 넘치면 줄바꿈. 기본 space.2 */
+.aip-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-_gap, var(--aip-space-2)); }
+.aip-cluster--between { justify-content: space-between; }
+.aip-cluster--end { justify-content: flex-end; }
+.aip-cluster--nowrap { flex-wrap: nowrap; }
+
+/* 간격 modifier — stack·cluster·grid 공통. 이 여섯 단계 밖은 없다 */
+.aip-gap-1 { --aip-_gap: var(--aip-space-1); }
+.aip-gap-2 { --aip-_gap: var(--aip-space-2); }
+.aip-gap-3 { --aip-_gap: var(--aip-space-3); }
+.aip-gap-4 { --aip-_gap: var(--aip-space-4); }
+.aip-gap-6 { --aip-_gap: var(--aip-space-6); }
+.aip-gap-8 { --aip-_gap: var(--aip-space-8); }
+.aip-gap-12 { --aip-_gap: var(--aip-space-12); }
+
+/* grid: 모바일 1열 → md 2열 → lg 지정 열. 카드 그리드·피처 그리드·옵션 카드 묶음 */
+.aip-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-_gap, var(--aip-space-4)); }
+@media (min-width: 768px) {
+  .aip-grid { --aip-_gap-md: var(--aip-space-6); gap: var(--aip-_gap, var(--aip-_gap-md)); }
+  .aip-grid--2, .aip-grid--3, .aip-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .aip-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aip-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* 내용 폭에 맞춰 자동으로 채우는 그리드(옵션 카드처럼 개수가 바뀌는 묶음) */
+.aip-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--aip-component-option-card-min-width)), 1fr)); }
+@media (min-width: 768px) { .aip-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--aip-component-option-card-min-width)), 1fr)); } }
+
+/* 섹션 리듬(랜딩·앱) */
+.aip-section { padding-block: var(--aip-space-16); }
+@media (min-width: 1024px) { .aip-section { padding-block: var(--aip-space-24); } }
+.aip-section--subtle { background: var(--aip-color-surface-subtle); }
+.aip-section + .aip-section:not(.aip-section--subtle) { border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+
+/* 전폭 컨테이너(문서·Playground 헤더처럼 사이드바가 화면 끝에 붙는 셸) */
+.aip-container--full { --aip-_max: none; }
+

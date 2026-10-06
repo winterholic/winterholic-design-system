@@ -1,0 +1,2482 @@
+[
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 11.25,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 11.25,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.subtle",
+    "ratio": 10.48,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.raised",
+    "ratio": 11.25,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.subtle",
+    "ratio": 6.46,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.raised",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.subtle",
+    "ratio": 4.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.raised",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.subtle",
+    "ratio": 4.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.raised",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.subtle",
+    "ratio": 6.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.surface.raised",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.canvas",
+    "ratio": 9.75,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.default",
+    "ratio": 9.75,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.subtle",
+    "ratio": 9.09,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.raised",
+    "ratio": 9.75,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.subtle",
+    "ratio": 6.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.raised",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.canvas",
+    "ratio": 6.65,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.default",
+    "ratio": 6.65,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.subtle",
+    "ratio": 6.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.success",
+    "bg": "color.surface.raised",
+    "ratio": 6.65,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.canvas",
+    "ratio": 7.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.default",
+    "ratio": 7.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.subtle",
+    "ratio": 6.68,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.warning",
+    "bg": "color.surface.raised",
+    "ratio": 7.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 7.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 7.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.subtle",
+    "ratio": 7.13,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.danger",
+    "bg": "color.surface.raised",
+    "ratio": 7.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.canvas",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.default",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.subtle",
+    "ratio": 6.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.info",
+    "bg": "color.surface.raised",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.sunken",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.sunken",
+    "ratio": 5.91,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.surface.brand-subtle",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.brand",
+    "bg": "color.surface.brand-subtle",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 12.3,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 11.25,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-hover",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 5.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg-hover",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg-hover",
+    "ratio": 10.48,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-hover",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg-hover",
+    "ratio": 7.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg-active",
+    "ratio": 9.75,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg-active",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-active",
+    "ratio": 8.1,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg-active",
+    "ratio": 10.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.action.primary.bg",
+    "bg": "color.surface.canvas",
+    "ratio": 4.69,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.status.info.bg",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.status.info.bg",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 4.38,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 6.28,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.status.success.bg",
+    "ratio": 10.63,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.status.success.bg",
+    "ratio": 6.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 4.42,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 4.68,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 8.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.status.warning.bg",
+    "ratio": 9.5,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.status.warning.bg",
+    "ratio": 5.87,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 4.31,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 6.68,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 7.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.status.danger.bg",
+    "ratio": 10.45,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.status.danger.bg",
+    "ratio": 6.45,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 5.12,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 5.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 5.91,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.status.neutral.bg",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.status.neutral.bg",
+    "ratio": 5.92,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 4.23,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.highlight.mark-text",
+    "bg": "color.highlight.mark",
+    "ratio": 8.78,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.highlight.text",
+    "bg": "color.highlight.bg",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.highlight.icon",
+    "bg": "color.highlight.bg",
+    "ratio": 10.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.highlight.bg",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.link",
+    "bg": "color.highlight.bg",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.text",
+    "bg": "color.code.bg",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.comment",
+    "bg": "color.code.bg",
+    "ratio": 5.41,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.keyword",
+    "bg": "color.code.bg",
+    "ratio": 7.53,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.string",
+    "bg": "color.code.bg",
+    "ratio": 6.71,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.function",
+    "bg": "color.code.bg",
+    "ratio": 10.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.number",
+    "bg": "color.code.bg",
+    "ratio": 7.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.type",
+    "bg": "color.code.bg",
+    "ratio": 7.73,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.punctuation",
+    "bg": "color.code.bg",
+    "ratio": 7.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.text",
+    "bg": "color.code.bg-header",
+    "ratio": 14.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.text-muted",
+    "bg": "color.code.bg-header",
+    "ratio": 9.32,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.line-number",
+    "bg": "color.code.bg",
+    "ratio": 3.77,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.added-sign",
+    "bg": "color.code.bg",
+    "ratio": 7.73,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.removed-sign",
+    "bg": "color.code.bg",
+    "ratio": 7.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.code.text-inline",
+    "bg": "color.code.bg-inline",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.lifecycle.stable.text",
+    "bg": "color.lifecycle.stable.bg",
+    "ratio": 6.28,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.lifecycle.beta.text",
+    "bg": "color.lifecycle.beta.bg",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.lifecycle.experimental.text",
+    "bg": "color.lifecycle.experimental.bg",
+    "ratio": 8.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.lifecycle.deprecated.text",
+    "bg": "color.lifecycle.deprecated.bg",
+    "ratio": 7.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.intent.text",
+    "bg": "color.diagram.intent.fill",
+    "ratio": 8.78,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.runtime.text",
+    "bg": "color.diagram.runtime.fill",
+    "ratio": 9.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.execution.text",
+    "bg": "color.diagram.execution.fill",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.permission.text",
+    "bg": "color.diagram.permission.fill",
+    "ratio": 8.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.frontend.text",
+    "bg": "color.diagram.frontend.fill",
+    "ratio": 9.09,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.backend.text",
+    "bg": "color.diagram.backend.fill",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.data.text",
+    "bg": "color.diagram.data.fill",
+    "ratio": 7.97,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.external.text",
+    "bg": "color.diagram.external.fill",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.note.text",
+    "bg": "color.diagram.note.fill",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.intent.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 3.24,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.runtime.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 4.37,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.execution.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 6.47,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.permission.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 3.37,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.frontend.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 3.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.backend.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 4.62,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.data.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 9.13,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.external.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 3.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.default",
+    "bg": "color.diagram.canvas",
+    "ratio": 6.46,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.muted",
+    "bg": "color.diagram.canvas",
+    "ratio": 3.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.emphasis",
+    "bg": "color.diagram.canvas",
+    "ratio": 4.37,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.allow",
+    "bg": "color.diagram.canvas",
+    "ratio": 4.36,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.reject",
+    "bg": "color.diagram.canvas",
+    "ratio": 5.13,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.diagram.edge.label",
+    "bg": "color.diagram.canvas",
+    "ratio": 6.46,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.canvas",
+    "ratio": 4.69,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.subtle",
+    "ratio": 4.37,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.raised",
+    "ratio": 4.69,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.interactive.selected-text",
+    "bg": "color.interactive.selected-bg",
+    "ratio": 9.11,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.border.strong",
+    "bg": "color.surface.default",
+    "ratio": 3.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.border.strong",
+    "bg": "color.surface.subtle",
+    "ratio": 3.27,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.border.brand",
+    "bg": "color.surface.default",
+    "ratio": 4.69,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.border.danger",
+    "bg": "color.surface.default",
+    "ratio": 5.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.primary",
+    "bg": "color.interactive.selection",
+    "ratio": 9.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.sidebar.item-active-text",
+    "bg": "component.sidebar.item-active-bg",
+    "ratio": 6.49,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.toc.text",
+    "bg": "color.surface.canvas",
+    "ratio": 4.96,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.toc.text-active",
+    "bg": "color.surface.canvas",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.kbd.text",
+    "bg": "component.kbd.bg",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.tooltip.text",
+    "bg": "component.tooltip.bg",
+    "ratio": 12.3,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.choice.switch-track",
+    "bg": "color.surface.default",
+    "ratio": 3.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.choice.bg-checked",
+    "bg": "color.surface.default",
+    "ratio": 4.69,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.example.label-text",
+    "bg": "component.example.label-bg",
+    "ratio": 10.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.option-card.border-selected",
+    "bg": "component.option-card.bg-selected",
+    "ratio": 4.38,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.text.secondary",
+    "bg": "component.option-card.bg-selected",
+    "ratio": 6.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "component.param.type",
+    "bg": "color.surface.canvas",
+    "ratio": 6.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "light",
+    "fg": "color.chart.axis",
+    "bg": "color.surface.canvas",
+    "ratio": 4.96,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.canvas",
+    "ratio": 14.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.default",
+    "ratio": 14.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.subtle",
+    "ratio": 15.72,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.raised",
+    "ratio": 12.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.canvas",
+    "ratio": 9.31,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.default",
+    "ratio": 9.31,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.subtle",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.raised",
+    "ratio": 8.36,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.canvas",
+    "ratio": 6.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.default",
+    "ratio": 6.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.subtle",
+    "ratio": 7.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.tertiary",
+    "bg": "color.surface.raised",
+    "ratio": 6.07,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.canvas",
+    "ratio": 6.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.default",
+    "ratio": 6.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.subtle",
+    "ratio": 7.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.placeholder",
+    "bg": "color.surface.raised",
+    "ratio": 6.07,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.canvas",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.default",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.subtle",
+    "ratio": 10.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.surface.raised",
+    "ratio": 8.4,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.canvas",
+    "ratio": 11.86,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.default",
+    "ratio": 11.86,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.subtle",
+    "ratio": 13.28,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link-hover",
+    "bg": "color.surface.raised",
+    "ratio": 10.65,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.canvas",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.default",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.subtle",
+    "ratio": 10.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.raised",
+    "ratio": 8.4,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.canvas",
+    "ratio": 9.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.default",
+    "ratio": 9.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.subtle",
+    "ratio": 10.74,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.success",
+    "bg": "color.surface.raised",
+    "ratio": 8.62,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.canvas",
+    "ratio": 8.33,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.default",
+    "ratio": 8.33,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.subtle",
+    "ratio": 9.33,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.warning",
+    "bg": "color.surface.raised",
+    "ratio": 7.48,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.canvas",
+    "ratio": 8.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.default",
+    "ratio": 8.93,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.subtle",
+    "ratio": 9.99,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.danger",
+    "bg": "color.surface.raised",
+    "ratio": 8.02,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.canvas",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.default",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.subtle",
+    "ratio": 10.47,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.info",
+    "bg": "color.surface.raised",
+    "ratio": 8.4,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.sunken",
+    "ratio": 15.72,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "color.surface.sunken",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.surface.brand-subtle",
+    "ratio": 12.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.brand",
+    "bg": "color.surface.brand-subtle",
+    "ratio": 8.21,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.inverse",
+    "bg": "color.surface.inverse",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.on-brand",
+    "bg": "color.surface.brand",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg",
+    "ratio": 12.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-hover",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg",
+    "ratio": 5.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg-hover",
+    "ratio": 6.94,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg-hover",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-hover",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg-hover",
+    "ratio": 7.66,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.text",
+    "bg": "color.action.primary.bg-active",
+    "ratio": 9.75,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.secondary.text",
+    "bg": "color.action.secondary.bg-active",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.ghost.text",
+    "bg": "color.action.ghost.bg-active",
+    "ratio": 9.59,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.danger.text",
+    "bg": "color.action.danger.bg-active",
+    "ratio": 10.56,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.action.primary.bg",
+    "bg": "color.surface.canvas",
+    "ratio": 3.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.text",
+    "bg": "color.status.info.bg",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.status.info.bg",
+    "ratio": 12.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.status.info.bg",
+    "ratio": 8.21,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.icon",
+    "bg": "color.status.info.bg",
+    "ratio": 5.96,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.info.on-solid",
+    "bg": "color.status.info.solid",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.text",
+    "bg": "color.status.success.bg",
+    "ratio": 10.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.status.success.bg",
+    "ratio": 12.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.status.success.bg",
+    "ratio": 8.17,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.icon",
+    "bg": "color.status.success.bg",
+    "ratio": 6.12,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.success.on-solid",
+    "bg": "color.status.success.solid",
+    "ratio": 4.68,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.text",
+    "bg": "color.status.warning.bg",
+    "ratio": 9.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.status.warning.bg",
+    "ratio": 11.06,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.status.warning.bg",
+    "ratio": 7.36,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.icon",
+    "bg": "color.status.warning.bg",
+    "ratio": 6.56,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.warning.on-solid",
+    "bg": "color.status.warning.solid",
+    "ratio": 6.68,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.text",
+    "bg": "color.status.danger.bg",
+    "ratio": 10.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.status.danger.bg",
+    "ratio": 12.83,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.status.danger.bg",
+    "ratio": 8.54,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.icon",
+    "bg": "color.status.danger.bg",
+    "ratio": 5.8,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.danger.on-solid",
+    "bg": "color.status.danger.solid",
+    "ratio": 5.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.text",
+    "bg": "color.status.neutral.bg",
+    "ratio": 9.51,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.status.neutral.bg",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.status.neutral.bg",
+    "ratio": 7.5,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.icon",
+    "bg": "color.status.neutral.bg",
+    "ratio": 5.42,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.status.neutral.on-solid",
+    "bg": "color.status.neutral.solid",
+    "ratio": 4.7,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.highlight.mark-text",
+    "bg": "color.highlight.mark",
+    "ratio": 12.85,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.highlight.text",
+    "bg": "color.highlight.bg",
+    "ratio": 11.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.highlight.icon",
+    "bg": "color.highlight.bg",
+    "ratio": 9.47,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.highlight.bg",
+    "ratio": 10.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.link",
+    "bg": "color.highlight.bg",
+    "ratio": 6.89,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.text",
+    "bg": "color.code.bg",
+    "ratio": 15.7,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.comment",
+    "bg": "color.code.bg",
+    "ratio": 7.55,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.keyword",
+    "bg": "color.code.bg",
+    "ratio": 10.5,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.string",
+    "bg": "color.code.bg",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.function",
+    "bg": "color.code.bg",
+    "ratio": 14.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.number",
+    "bg": "color.code.bg",
+    "ratio": 10.02,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.type",
+    "bg": "color.code.bg",
+    "ratio": 10.77,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.punctuation",
+    "bg": "color.code.bg",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.text",
+    "bg": "color.code.bg-header",
+    "ratio": 14.04,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.text-muted",
+    "bg": "color.code.bg-header",
+    "ratio": 9.32,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.line-number",
+    "bg": "color.code.bg",
+    "ratio": 5.26,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.added-sign",
+    "bg": "color.code.bg",
+    "ratio": 10.77,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.removed-sign",
+    "bg": "color.code.bg",
+    "ratio": 10.02,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.code.text-inline",
+    "bg": "color.code.bg-inline",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.lifecycle.stable.text",
+    "bg": "color.lifecycle.stable.bg",
+    "ratio": 10.6,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.lifecycle.beta.text",
+    "bg": "color.lifecycle.beta.bg",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.lifecycle.experimental.text",
+    "bg": "color.lifecycle.experimental.bg",
+    "ratio": 9.19,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.lifecycle.deprecated.text",
+    "bg": "color.lifecycle.deprecated.bg",
+    "ratio": 10.61,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.intent.text",
+    "bg": "color.diagram.intent.fill",
+    "ratio": 12.85,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.runtime.text",
+    "bg": "color.diagram.runtime.fill",
+    "ratio": 12.37,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.execution.text",
+    "bg": "color.diagram.execution.fill",
+    "ratio": 4.69,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.permission.text",
+    "bg": "color.diagram.permission.fill",
+    "ratio": 10.95,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.frontend.text",
+    "bg": "color.diagram.frontend.fill",
+    "ratio": 12.58,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.backend.text",
+    "bg": "color.diagram.backend.fill",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.data.text",
+    "bg": "color.diagram.data.fill",
+    "ratio": 7.97,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.external.text",
+    "bg": "color.diagram.external.fill",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.note.text",
+    "bg": "color.diagram.note.fill",
+    "ratio": 11.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.intent.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 10.5,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.runtime.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.6,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.execution.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.6,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.permission.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.29,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.frontend.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.53,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.backend.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 5.26,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.data.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.53,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.external.stroke",
+    "bg": "color.diagram.canvas",
+    "ratio": 5.26,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.default",
+    "bg": "color.diagram.canvas",
+    "ratio": 10.42,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.muted",
+    "bg": "color.diagram.canvas",
+    "ratio": 5.26,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.emphasis",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.6,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.allow",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.84,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.reject",
+    "bg": "color.diagram.canvas",
+    "ratio": 7.11,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.diagram.edge.label",
+    "bg": "color.diagram.canvas",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.canvas",
+    "ratio": 6.79,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.subtle",
+    "ratio": 7.6,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.focus-ring",
+    "bg": "color.surface.raised",
+    "ratio": 6.09,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.interactive.selected-text",
+    "bg": "color.interactive.selected-bg",
+    "ratio": 10.42,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.border.strong",
+    "bg": "color.surface.default",
+    "ratio": 3.32,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.border.strong",
+    "bg": "color.surface.subtle",
+    "ratio": 3.72,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.border.brand",
+    "bg": "color.surface.default",
+    "ratio": 6.79,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.border.danger",
+    "bg": "color.surface.default",
+    "ratio": 6.35,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.primary",
+    "bg": "color.interactive.selection",
+    "ratio": 8.31,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.sidebar.item-active-text",
+    "bg": "component.sidebar.item-active-bg",
+    "ratio": 8.21,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.toc.text",
+    "bg": "color.surface.canvas",
+    "ratio": 6.76,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.toc.text-active",
+    "bg": "color.surface.canvas",
+    "ratio": 9.35,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.kbd.text",
+    "bg": "component.kbd.bg",
+    "ratio": 9.31,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.tooltip.text",
+    "bg": "component.tooltip.bg",
+    "ratio": 11.26,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.choice.switch-track",
+    "bg": "color.surface.default",
+    "ratio": 3.32,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.choice.bg-checked",
+    "bg": "color.surface.default",
+    "ratio": 3.51,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.example.label-text",
+    "bg": "component.example.label-bg",
+    "ratio": 11.34,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.option-card.border-selected",
+    "bg": "component.option-card.bg-selected",
+    "ratio": 5.96,
+    "min": 3,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.text.secondary",
+    "bg": "component.option-card.bg-selected",
+    "ratio": 8.18,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "component.param.type",
+    "bg": "color.surface.canvas",
+    "ratio": 9.31,
+    "min": 4.5,
+    "pass": true
+  },
+  {
+    "mode": "dark",
+    "fg": "color.chart.axis",
+    "bg": "color.surface.canvas",
+    "ratio": 6.76,
+    "min": 3,
+    "pass": true
+  }
+]

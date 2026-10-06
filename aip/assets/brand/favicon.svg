@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="64" height="64" role="img" aria-label="AIP 파비콘">
+  <title>AIP 파비콘</title>
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="#1C77C3"/>
+  <rect x="150" y="270" width="212" height="48" rx="6" fill="#F5E663"/>
+  <path d="M134 392 L240 112 L272 112 L378 392 L318 392 L256 228 L194 392 Z" fill="#FFFFFF"/>
+</svg>

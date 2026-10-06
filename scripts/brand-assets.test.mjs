@@ -7,7 +7,10 @@ import test from "node:test";
 const root = process.cwd();
 const system = basename(root);
 const brandDir = join(root, "assets", "brand");
-const expectedSystems = new Set(["stock-gosu", "memoir", "notting"]);
+const expectedSystems = new Set(["stock-gosu", "memoir", "notting", "aip"]);
+// Windows 는 python, macOS·Linux 는 보통 python3 만 있다. Pillow 가 깔린 인터프리터를 PYTHON 으로 지정할 수 있다.
+const python = process.env.PYTHON ?? (process.platform === "win32" ? "python" : "python3");
+const brandDoc = readdirSync(join(root, "docs")).find((name) => /^\d+-brand-assets\.md$/.test(name));
 
 assert.ok(expectedSystems.has(system), `지원하지 않는 디자인 시스템: ${system}`);
 
@@ -28,14 +31,14 @@ const requiredAssets = [
   "README.md",
 ];
 
-if (system === "notting") {
+if (system === "notting" || system === "aip") {
   requiredAssets.push(
     "apple-touch-icon-180.png",
     "app-icon-maskable-512.png",
-    "mascot.png",
-    "mascot.webp",
-    "mascot-avatar-512.png",
   );
+}
+if (system === "notting") {
+  requiredAssets.push("mascot.png", "mascot.webp", "mascot-avatar-512.png");
 }
 
 function readPngSize(path) {
@@ -54,7 +57,7 @@ function readAlphaOccupancy(path) {
     "h=(box[3]-box[1])/im.height if box else 0",
     "print(json.dumps({'width':w,'height':h}))",
   ].join(";");
-  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  const result = spawnSync(python, ["-c", script, path], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
@@ -67,7 +70,7 @@ function readCornerAlpha(path) {
     "points=((0,0),(im.width-1,0),(0,im.height-1),(im.width-1,im.height-1))",
     "print(json.dumps([im.getpixel(point)[3] for point in points]))",
   ].join(";");
-  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  const result = spawnSync(python, ["-c", script, path], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
@@ -83,7 +86,7 @@ function readEmbeddedSvgOccupancy(path) {
     "box=im.getchannel('A').getbbox()",
     "print(json.dumps({'width':((box[2]-box[0])/im.width*w)/64,'height':((box[3]-box[1])/im.height*h)/64}))",
   ].join(";");
-  const result = spawnSync("python", ["-c", script, path], { encoding: "utf8" });
+  const result = spawnSync(python, ["-c", script, path], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
@@ -100,7 +103,7 @@ function readIcoContentOccupancy(path, background) {
     "box=mask.getbbox()",
     "print(json.dumps({'width':(box[2]-box[0])/im.width,'height':(box[3]-box[1])/im.height}))",
   ].join(";");
-  const result = spawnSync("python", ["-c", script, path, background.join(",")], { encoding: "utf8" });
+  const result = spawnSync(python, ["-c", script, path, background.join(",")], { encoding: "utf8" });
   assert.equal(result.status, 0, result.stderr);
   return JSON.parse(result.stdout);
 }
@@ -215,22 +218,55 @@ if (system === "notting") {
   });
 
   test("notting: 문서와 preview가 캐릭터 시스템을 실제로 소개한다", () => {
-    const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");
+    const doc = readFileSync(join(root, "docs", brandDoc), "utf8");
     const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
     for (const name of ["mascot.png", "mascot-avatar-512.png", "app-icon-maskable-512.png", "apple-touch-icon-180.png"]) {
-      assert.ok(doc.includes(name), `14-brand-assets.md에 ${name}이 없습니다.`);
+      assert.ok(doc.includes(name), `${brandDoc}에 ${name}이 없습니다.`);
       assert.ok(preview.includes(name), `preview가 ${name}을 보여주지 않습니다.`);
     }
   });
 }
 
+if (system === "aip") {
+  test("aip: 심볼은 Blue 타일 + Λ 다각형 + Yellow 형광펜 막대 기하를 유지한다", () => {
+    const mark = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
+    assert.match(mark, /<rect x="0" y="0" width="512" height="512" rx="112" fill="#1C77C3"\/>/);
+    assert.match(mark, /<rect x="150" y="270" width="212" height="48" rx="6" fill="#F5E663"\/>/);
+    assert.match(mark, /<path d="M134 392 L240 112 L272 112 L378 392 L318 392 L256 228 L194 392 Z" fill="#FFFFFF"\/>/);
+    // 형광펜 막대는 Λ 보다 먼저 그려져 다리 뒤에 깔린다
+    assert.ok(mark.indexOf('fill="#F5E663"') < mark.indexOf('fill="#FFFFFF"'));
+  });
+
+  test("aip: 워드마크는 글꼴이 아니라 도형이다(폰트 없는 환경에서도 같은 모양)", () => {
+    for (const file of ["logo-lockup.svg", "logo-lockup-inverse.svg"]) {
+      const svg = readFileSync(join(brandDir, file), "utf8");
+      assert.doesNotMatch(svg, /<text\b/, `${file}에 text 요소가 있습니다.`);
+    }
+  });
+
+  test("aip: 설치 아이콘은 용도별 크기와 투명도를 지킨다", () => {
+    assert.deepEqual(readPngSize(join(brandDir, "apple-touch-icon-180.png")), { width: 180, height: 180 });
+    assert.deepEqual(readPngSize(join(brandDir, "app-icon-maskable-512.png")), { width: 512, height: 512 });
+    assert.deepEqual(readCornerAlpha(join(brandDir, "app-icon-512.png")), [0, 0, 0, 0]);
+    assert.deepEqual(readCornerAlpha(join(brandDir, "app-icon-maskable-512.png")), [255, 255, 255, 255]);
+  });
+
+  test("aip: 브랜드 자산의 hex 는 tokens/src/brand.json 과 같다", () => {
+    const brand = JSON.parse(readFileSync(join(root, "tokens", "src", "brand.json"), "utf8")).brand;
+    const script = readFileSync(join(brandDir, "build-brand-assets.py"), "utf8");
+    for (const [name, token] of Object.entries(brand).filter(([key]) => !key.startsWith("$"))) {
+      assert.ok(script.includes(`"${token.$value}"`), `build-brand-assets.py 에 brand.${name} ${token.$value} 가 없습니다.`);
+    }
+  });
+}
+
 test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연결한다`, () => {
-  const doc = readFileSync(join(root, "docs", "14-brand-assets.md"), "utf8");
+  const doc = readFileSync(join(root, "docs", brandDoc), "utf8");
   const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
   const brandReadme = readFileSync(join(brandDir, "README.md"), "utf8");
 
   for (const name of ["logo-mark.svg", "logo-lockup.svg", "favicon.svg", "app-icon-512.png", "brand-hero.png"]) {
-    assert.ok(doc.includes(name), `14-brand-assets.md에 ${name}이 없습니다.`);
+    assert.ok(doc.includes(name), `${brandDoc}에 ${name}이 없습니다.`);
   }
   assert.ok(preview.includes("logo-lockup.svg"), "preview가 새 로크업을 사용하지 않습니다.");
   assert.ok(preview.includes("brand-hero.webp"), "preview가 브랜드 히어로를 사용하지 않습니다.");
@@ -243,11 +279,14 @@ test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연
 });
 
 test(`${system}: 브랜드 히어로 글자색은 테마 반전과 독립적이다`, () => {
-  const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
+  // aip 는 예제 전용 스타일을 examples.css 로 분리했다
+  const preview = readFileSync(join(root, "examples", "preview.html"), "utf8") + (existsSync(join(root, "examples", "examples.css")) ? readFileSync(join(root, "examples", "examples.css"), "utf8") : "");
   const rule = system === "stock-gosu"
     ? /\.hero\s*\{[^}]*color:\s*var\(--sg-base-white\)/s
     : system === "memoir"
       ? /\.brand-hero\s*\{[^}]*color:\s*var\(--mm-brand-ink\)/s
-      : /\.hero\s*\{[^}]*color:\s*var\(--nt-color-text-on-brand\)/s;
+      : system === "aip"
+        ? /\.brand-hero\s*\{[^}]*color:\s*var\(--aip-base-white\)/s
+        : /\.hero\s*\{[^}]*color:\s*var\(--nt-color-text-on-brand\)/s;
   assert.match(preview, rule, "브랜드 히어로 글자색이 다크 테마에서 반전될 수 있습니다.");
 });

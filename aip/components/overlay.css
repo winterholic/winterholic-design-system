@@ -1,0 +1,86 @@
+/* overlay — Tooltip · Dropdown(Menu) · Dialog · Drawer. 떠 있는 것만 그림자를 갖는다.
+   Dialog·Drawer 는 네이티브 <dialog>(showModal)라 포커스 가두기·Esc·배경 inert 를 브라우저가 처리한다. 열고 닫는 연결은 aip.js. */
+
+/* Tooltip — 보충 설명만. 꼭 알아야 하는 정보를 툴팁에 숨기지 않는다. aip.js 가 [data-aip-tooltip] 에서 만든다 */
+.aip-tooltip {
+  position: fixed; z-index: var(--aip-z-index-tooltip);
+  max-width: var(--aip-component-tooltip-max-width);
+  padding: var(--aip-component-tooltip-padding-y) var(--aip-component-tooltip-padding-x);
+  border-radius: var(--aip-component-tooltip-radius);
+  background: var(--aip-component-tooltip-bg); color: var(--aip-component-tooltip-text);
+  font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  box-shadow: var(--aip-shadow-md); pointer-events: none;
+  opacity: 0; transform: translateY(var(--aip-motion-distance-sm));
+  transition: opacity var(--aip-motion-duration-fast) var(--aip-motion-easing-enter), transform var(--aip-motion-duration-fast) var(--aip-motion-easing-enter);
+}
+.aip-tooltip[data-open] { opacity: 1; transform: none; pointer-events: auto; }
+.aip-tooltip kbd { margin-left: var(--aip-space-2); background: transparent; color: inherit; border-color: color-mix(in srgb, currentColor 35%, transparent); box-shadow: none; }
+
+/* Dropdown — 트리거(aria-haspopup="menu" aria-expanded) + 목록(role="menu"). 셀렉트처럼 값을 고르는 건 네이티브 Select 가 먼저 */
+.aip-dropdown { position: relative; display: inline-block; }
+.aip-menu {
+  position: absolute; z-index: var(--aip-z-index-dropdown); top: calc(100% + var(--aip-component-menu-offset)); left: 0;
+  min-width: var(--aip-component-menu-min-width); max-height: var(--aip-component-menu-max-height); overflow-y: auto;
+  margin: 0; padding: var(--aip-component-menu-padding); list-style: none;
+  border: var(--aip-border-width-hairline) solid var(--aip-component-menu-border); border-radius: var(--aip-component-menu-radius);
+  background: var(--aip-component-menu-bg); box-shadow: var(--aip-shadow-md);
+  transform-origin: top left; animation: aip-menu-in var(--aip-motion-duration-normal) var(--aip-motion-easing-enter);
+}
+.aip-menu[hidden] { display: none; }
+.aip-menu--end { left: auto; right: 0; transform-origin: top right; }
+@keyframes aip-menu-in { from { opacity: 0; transform: translateY(calc(-1 * var(--aip-motion-distance-sm))); } }
+.aip-menu__item {
+  display: flex; align-items: center; gap: var(--aip-space-2); width: 100%;
+  min-height: var(--aip-component-menu-item-height); padding: 0 var(--aip-component-menu-item-padding-x);
+  border: 0; border-radius: var(--aip-component-menu-item-radius); background: none;
+  color: var(--aip-color-text-primary); text-align: left; text-decoration: none; cursor: pointer;
+  font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+}
+.aip-menu__item > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); color: var(--aip-color-text-secondary); }
+.aip-menu__item:hover, .aip-menu__item:focus-visible { background: var(--aip-color-interactive-hover-overlay); outline: none; }
+.aip-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--aip-focus-ring-width) var(--aip-color-interactive-focus-ring); }
+.aip-menu__item[aria-checked="true"], .aip-menu__item[aria-current] { color: var(--aip-color-interactive-selected-text); font-weight: var(--aip-font-weight-medium); }
+.aip-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--aip-color-text-brand); }
+.aip-menu__item--danger { color: var(--aip-color-text-danger); }
+.aip-menu__item[aria-disabled="true"] { color: var(--aip-color-text-disabled); cursor: not-allowed; }
+.aip-menu__meta { margin-left: auto; color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); }
+.aip-menu__label { padding: var(--aip-space-2) var(--aip-component-menu-item-padding-x) var(--aip-space-1); color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-menu__separator { height: var(--aip-border-width-hairline); margin: var(--aip-space-1) calc(-1 * var(--aip-component-menu-padding)); background: var(--aip-color-border-subtle); border: 0; }
+
+/* Dialog */
+.aip-dialog {
+  width: min(calc(100vw - 2 * var(--aip-size-layout-page-gutter)), var(--aip-_w, var(--aip-component-dialog-width-md)));
+  max-height: calc(100dvh - 2 * var(--aip-space-8));
+  padding: 0; border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-component-dialog-radius);
+  background: var(--aip-component-dialog-bg); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-lg);
+}
+.aip-dialog[open] { display: flex; flex-direction: column; animation: aip-dialog-in var(--aip-motion-duration-slow) var(--aip-motion-easing-enter); }
+.aip-dialog::backdrop { background: var(--aip-color-surface-overlay); }
+.aip-dialog--sm { --aip-_w: var(--aip-component-dialog-width-sm); }
+.aip-dialog--lg { --aip-_w: var(--aip-component-dialog-width-lg); }
+@keyframes aip-dialog-in { from { opacity: 0; transform: translateY(var(--aip-motion-distance-md)); } }
+.aip-dialog__header { display: flex; align-items: flex-start; gap: var(--aip-space-3); padding: var(--aip-component-dialog-padding) var(--aip-component-dialog-padding) 0; }
+.aip-dialog__title { flex: 1; margin: 0; font: var(--aip-font-weight-semibold) var(--aip-font-size-xl) / var(--aip-font-line-height-heading) var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-snug); }
+.aip-dialog__header > .aip-icon-button { margin: calc(-1 * var(--aip-space-1)) calc(-1 * var(--aip-space-2)) 0 0; }
+.aip-dialog__body { flex: 1; overflow-y: auto; padding: var(--aip-component-dialog-gap) var(--aip-component-dialog-padding); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-dialog__footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--aip-space-3); padding: 0 var(--aip-component-dialog-padding) var(--aip-component-dialog-padding); }
+@media (max-width: 639px) {
+  .aip-dialog { --aip-component-dialog-padding: var(--aip-component-dialog-padding-mobile); }
+  .aip-dialog__footer > .aip-button { flex: 1; }
+}
+
+/* Drawer — 모바일 내비·문서 사이드바. 왼쪽에서 들어오는 <dialog> */
+.aip-drawer {
+  position: fixed; inset: 0 auto 0 0; width: min(85vw, var(--aip-size-layout-drawer)); max-width: none; height: 100dvh; max-height: none; margin: 0;
+  padding: 0; border: 0; border-right: var(--aip-border-width-hairline) solid var(--aip-color-border-default);
+  background: var(--aip-color-surface-raised); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-lg);
+}
+.aip-drawer[open] { display: flex; flex-direction: column; animation: aip-drawer-in var(--aip-motion-duration-slow) var(--aip-motion-easing-enter); }
+.aip-drawer::backdrop { background: var(--aip-color-surface-overlay); }
+@keyframes aip-drawer-in { from { transform: translateX(-100%); } }
+.aip-drawer__header { display: flex; align-items: center; justify-content: space-between; gap: var(--aip-space-3); height: var(--aip-size-layout-header); padding-inline: var(--aip-space-4); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); flex: none; }
+.aip-drawer__body { flex: 1; overflow-y: auto; padding: var(--aip-space-4); overscroll-behavior: contain; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aip-dialog[open], .aip-drawer[open], .aip-menu { animation: none; }
+}

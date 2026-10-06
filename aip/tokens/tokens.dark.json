@@ -1,0 +1,649 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(다크). 경로는 라이트와 1:1 이다(빌드가 검사). 반전이 아니라 재배치: 면은 Charcoal 계열의 따뜻한 어둠(neutral.975~900), 코드는 여전히 Slate, AIP Blue 버튼·Yellow 형광펜은 두 테마에서 같은 값이다.",
+    "surface": {
+      "canvas": {
+        "$value": "{neutral.950}"
+      },
+      "subtle": {
+        "$value": "{neutral.975}",
+        "$description": "사이드바는 캔버스보다 한 단계 깊게. 다크에서는 '내려간 크롬' 이 덜 시끄럽다"
+      },
+      "default": {
+        "$value": "{neutral.950}"
+      },
+      "raised": {
+        "$value": "{neutral.925}",
+        "$description": "떠 있는 면은 밝아진다. 다크에서 고도의 주 신호"
+      },
+      "sunken": {
+        "$value": "{neutral.975}"
+      },
+      "overlay": {
+        "$value": "#000000A3",
+        "$description": "black 64%"
+      },
+      "inverse": {
+        "$value": "{neutral.100}"
+      },
+      "brand": {
+        "$value": "{brand.blue}",
+        "$description": "라이트와 같은 AIP Blue"
+      },
+      "brand-subtle": {
+        "$value": "{dark-tint.blue}"
+      },
+      "disabled": {
+        "$value": "{neutral.900}"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "{neutral.100}"
+      },
+      "secondary": {
+        "$value": "{neutral.300}"
+      },
+      "tertiary": {
+        "$value": "{neutral.400}"
+      },
+      "placeholder": {
+        "$value": "{neutral.400}"
+      },
+      "disabled": {
+        "$value": "{neutral.600}"
+      },
+      "inverse": {
+        "$value": "{neutral.900}"
+      },
+      "on-brand": {
+        "$value": "{base.white}"
+      },
+      "brand": {
+        "$value": "{blue.300}"
+      },
+      "link": {
+        "$value": "{blue.300}"
+      },
+      "link-hover": {
+        "$value": "{blue.200}"
+      },
+      "success": {
+        "$value": "{green.300}"
+      },
+      "warning": {
+        "$value": "{brand.tangerine}"
+      },
+      "danger": {
+        "$value": "{red.300}"
+      },
+      "info": {
+        "$value": "{blue.300}"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$value": "{neutral.925}"
+      },
+      "default": {
+        "$value": "{neutral.800}"
+      },
+      "strong": {
+        "$value": "{neutral.600}"
+      },
+      "brand": {
+        "$value": "{blue.400}"
+      },
+      "focus": {
+        "$value": "{blue.400}"
+      },
+      "danger": {
+        "$value": "{red.400}"
+      },
+      "inverse": {
+        "$value": "#21201929",
+        "$description": "inverse(밝은) 면 위 구분선. neutral.950 16%"
+      }
+    },
+    "action": {
+      "primary": {
+        "bg": {
+          "$value": "{brand.blue}",
+          "$description": "라이트와 같은 값. hover 도 밝아지지 않고 어두워진다 — 흰 글자 대비를 지키기 위해(blue.500 은 3.47)"
+        },
+        "bg-hover": {
+          "$value": "{blue.700}"
+        },
+        "bg-active": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "secondary": {
+        "bg": {
+          "$value": "{neutral.925}"
+        },
+        "bg-hover": {
+          "$value": "{neutral.900}"
+        },
+        "bg-active": {
+          "$value": "{neutral.800}"
+        },
+        "border": {
+          "$value": "{neutral.700}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "ghost": {
+        "bg": {
+          "$value": "{base.transparent}"
+        },
+        "bg-hover": {
+          "$value": "{neutral.900}"
+        },
+        "bg-active": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{red.600}"
+        },
+        "bg-hover": {
+          "$value": "{red.700}"
+        },
+        "bg-active": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "disabled": {
+        "bg": {
+          "$value": "{neutral.900}"
+        },
+        "text": {
+          "$value": "{neutral.600}"
+        },
+        "border": {
+          "$value": "{neutral.800}"
+        }
+      }
+    },
+    "status": {
+      "info": {
+        "bg": {
+          "$value": "{dark-tint.blue}"
+        },
+        "border": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{blue.200}"
+        },
+        "icon": {
+          "$value": "{blue.400}"
+        },
+        "solid": {
+          "$value": "{brand.blue}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "success": {
+        "bg": {
+          "$value": "{dark-tint.green}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "text": {
+          "$value": "{green.200}"
+        },
+        "icon": {
+          "$value": "{green.400}"
+        },
+        "solid": {
+          "$value": "{green.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$value": "{dark-tint.tangerine}"
+        },
+        "border": {
+          "$value": "{tangerine.700}"
+        },
+        "text": {
+          "$value": "{tangerine.200}"
+        },
+        "icon": {
+          "$value": "{brand.tangerine}"
+        },
+        "solid": {
+          "$value": "{brand.tangerine}"
+        },
+        "on-solid": {
+          "$value": "{neutral.900}"
+        }
+      },
+      "danger": {
+        "bg": {
+          "$value": "{dark-tint.red}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{red.200}"
+        },
+        "icon": {
+          "$value": "{red.400}"
+        },
+        "solid": {
+          "$value": "{red.600}"
+        },
+        "on-solid": {
+          "$value": "{base.white}"
+        }
+      },
+      "neutral": {
+        "bg": {
+          "$value": "{neutral.900}"
+        },
+        "border": {
+          "$value": "{neutral.800}"
+        },
+        "text": {
+          "$value": "{neutral.200}"
+        },
+        "icon": {
+          "$value": "{neutral.400}"
+        },
+        "solid": {
+          "$value": "{neutral.500}"
+        },
+        "on-solid": {
+          "$value": "{neutral.950}"
+        }
+      }
+    },
+    "highlight": {
+      "mark": {
+        "$value": "{brand.yellow}",
+        "$description": "형광펜은 다크에서도 같은 노랑"
+      },
+      "mark-text": {
+        "$value": "{neutral.950}"
+      },
+      "bg": {
+        "$value": "{dark-tint.yellow}"
+      },
+      "border": {
+        "$value": "{yellow.600}"
+      },
+      "text": {
+        "$value": "{yellow.50}"
+      },
+      "icon": {
+        "$value": "{brand.yellow}"
+      }
+    },
+    "code": {
+      "bg": {
+        "$value": "{slate.975}",
+        "$description": "캔버스(따뜻한 어둠)보다 깊은 차가운 면 + 테두리"
+      },
+      "bg-header": {
+        "$value": "{slate.950}"
+      },
+      "border": {
+        "$value": "{slate.800}"
+      },
+      "text": {
+        "$value": "{slate.100}"
+      },
+      "text-muted": {
+        "$value": "{slate.300}"
+      },
+      "comment": {
+        "$value": "{slate.400}"
+      },
+      "keyword": {
+        "$value": "{blue.300}"
+      },
+      "string": {
+        "$value": "{brand.tangerine}"
+      },
+      "function": {
+        "$value": "{brand.yellow}"
+      },
+      "number": {
+        "$value": "{red.300}"
+      },
+      "type": {
+        "$value": "{green.300}"
+      },
+      "punctuation": {
+        "$value": "{slate.300}"
+      },
+      "line-number": {
+        "$value": "{slate.500}"
+      },
+      "line-highlight": {
+        "$value": "#F5E6631F"
+      },
+      "line-highlight-marker": {
+        "$value": "{brand.yellow}"
+      },
+      "added-bg": {
+        "$value": "#1C84572E"
+      },
+      "added-sign": {
+        "$value": "{green.300}"
+      },
+      "removed-bg": {
+        "$value": "#C629482E"
+      },
+      "removed-sign": {
+        "$value": "{red.300}"
+      },
+      "selection": {
+        "$value": "#93C8FD40"
+      },
+      "bg-inline": {
+        "$value": "{neutral.900}"
+      },
+      "text-inline": {
+        "$value": "{neutral.100}"
+      }
+    },
+    "lifecycle": {
+      "stable": {
+        "bg": {
+          "$value": "{dark-tint.green}"
+        },
+        "border": {
+          "$value": "{green.800}"
+        },
+        "text": {
+          "$value": "{green.200}"
+        }
+      },
+      "beta": {
+        "bg": {
+          "$value": "{dark-tint.blue}"
+        },
+        "border": {
+          "$value": "{blue.800}"
+        },
+        "text": {
+          "$value": "{blue.200}"
+        }
+      },
+      "experimental": {
+        "bg": {
+          "$value": "{dark-tint.tangerine}"
+        },
+        "border": {
+          "$value": "{tangerine.700}"
+        },
+        "text": {
+          "$value": "{tangerine.200}"
+        }
+      },
+      "deprecated": {
+        "bg": {
+          "$value": "{dark-tint.red}"
+        },
+        "border": {
+          "$value": "{red.800}"
+        },
+        "text": {
+          "$value": "{red.200}"
+        }
+      }
+    },
+    "diagram": {
+      "canvas": {
+        "$value": "{neutral.975}"
+      },
+      "grid": {
+        "$value": "{neutral.900}"
+      },
+      "zone-bg": {
+        "$value": "#1C77C314"
+      },
+      "zone-border": {
+        "$value": "{blue.700}"
+      },
+      "intent": {
+        "fill": {
+          "$value": "{brand.yellow}"
+        },
+        "stroke": {
+          "$value": "{yellow.300}"
+        },
+        "text": {
+          "$value": "{neutral.950}"
+        }
+      },
+      "runtime": {
+        "fill": {
+          "$value": "{dark-tint.blue}"
+        },
+        "stroke": {
+          "$value": "{blue.400}"
+        },
+        "text": {
+          "$value": "{blue.100}"
+        }
+      },
+      "execution": {
+        "fill": {
+          "$value": "{brand.blue}"
+        },
+        "stroke": {
+          "$value": "{blue.400}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "permission": {
+        "fill": {
+          "$value": "{dark-tint.tangerine}"
+        },
+        "stroke": {
+          "$value": "{tangerine.400}"
+        },
+        "text": {
+          "$value": "{tangerine.100}"
+        }
+      },
+      "frontend": {
+        "fill": {
+          "$value": "{slate.925}"
+        },
+        "stroke": {
+          "$value": "{slate.400}"
+        },
+        "text": {
+          "$value": "{slate.100}"
+        }
+      },
+      "backend": {
+        "fill": {
+          "$value": "{neutral.900}"
+        },
+        "stroke": {
+          "$value": "{neutral.500}"
+        },
+        "text": {
+          "$value": "{neutral.100}"
+        }
+      },
+      "data": {
+        "fill": {
+          "$value": "{brand.slate}"
+        },
+        "stroke": {
+          "$value": "{slate.400}"
+        },
+        "text": {
+          "$value": "{base.white}"
+        }
+      },
+      "external": {
+        "fill": {
+          "$value": "{neutral.975}"
+        },
+        "stroke": {
+          "$value": "{neutral.500}"
+        },
+        "text": {
+          "$value": "{neutral.300}"
+        }
+      },
+      "note": {
+        "fill": {
+          "$value": "{dark-tint.yellow}"
+        },
+        "stroke": {
+          "$value": "{yellow.600}"
+        },
+        "text": {
+          "$value": "{yellow.50}"
+        }
+      },
+      "edge": {
+        "default": {
+          "$value": "{neutral.300}"
+        },
+        "muted": {
+          "$value": "{neutral.500}"
+        },
+        "emphasis": {
+          "$value": "{blue.400}"
+        },
+        "allow": {
+          "$value": "{green.400}"
+        },
+        "reject": {
+          "$value": "{red.400}"
+        },
+        "label": {
+          "$value": "{neutral.300}"
+        }
+      }
+    },
+    "interactive": {
+      "focus-ring": {
+        "$value": "{blue.400}"
+      },
+      "selected-bg": {
+        "$value": "{dark-tint.blue}"
+      },
+      "selected-border": {
+        "$value": "{blue.400}"
+      },
+      "selected-text": {
+        "$value": "{blue.200}"
+      },
+      "hover-overlay": {
+        "$value": "#FFFFFF0F"
+      },
+      "pressed-overlay": {
+        "$value": "#FFFFFF1F"
+      },
+      "selection": {
+        "$value": "{blue.800}"
+      }
+    },
+    "accent": {
+      "blue": {
+        "$value": "{brand.blue}"
+      },
+      "tangerine": {
+        "$value": "{brand.tangerine}"
+      },
+      "yellow": {
+        "$value": "{brand.yellow}"
+      },
+      "charcoal": {
+        "$value": "{neutral.300}",
+        "$description": "다크에서 charcoal 장식은 어둠에 묻히므로 밝은 중립으로 대체"
+      },
+      "slate": {
+        "$value": "{slate.400}"
+      }
+    },
+    "chart": {
+      "categorical": {
+        "1": {
+          "$value": "{blue.400}"
+        },
+        "2": {
+          "$value": "{brand.tangerine}"
+        },
+        "3": {
+          "$value": "{slate.300}"
+        },
+        "4": {
+          "$value": "{brand.yellow}"
+        },
+        "5": {
+          "$value": "{green.400}"
+        },
+        "6": {
+          "$value": "{blue.200}"
+        }
+      },
+      "sequential": {
+        "1": {
+          "$value": "{blue.900}"
+        },
+        "2": {
+          "$value": "{blue.800}"
+        },
+        "3": {
+          "$value": "{blue.700}"
+        },
+        "4": {
+          "$value": "{blue.600}"
+        },
+        "5": {
+          "$value": "{blue.500}"
+        },
+        "6": {
+          "$value": "{blue.400}"
+        },
+        "7": {
+          "$value": "{blue.300}"
+        }
+      },
+      "grid": {
+        "$value": "{neutral.900}"
+      },
+      "axis": {
+        "$value": "{neutral.400}"
+      },
+      "label": {
+        "$value": "{neutral.300}"
+      }
+    }
+  }
+}

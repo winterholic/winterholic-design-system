@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIP Design System · Preview</title>
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/brand/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../assets/brand/apple-touch-icon-180.png">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/prose.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <link rel="stylesheet" href="examples.css">
+  <script src="../dist/tokens.global.js"></script>
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<header class="aip-header">
+  <div class="aip-header__inner aip-container">
+    <a class="aip-header__brand" href="#brand" aria-label="AIP Design System">
+      <img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span>
+      <span class="aip-header__product">Design System</span>
+    </a>
+    <nav class="aip-nav" aria-label="미리보기 목차">
+      <a class="aip-nav__link" href="#color">Color</a>
+      <a class="aip-nav__link" href="#type">Type</a>
+      <a class="aip-nav__link" href="#components">Components</a>
+      <a class="aip-nav__link" href="#docs">Docs</a>
+      <a class="aip-nav__link" href="#diagram">Diagram</a>
+    </nav>
+    <div class="aip-header__actions">
+      <a class="aip-button aip-button--sm aip-hide-below-md" href="docs.html">템플릿 보기</a>
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="다크 테마" data-aip-tooltip="테마 전환">
+        <svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- 브랜드 -->
+<section class="aip-section ex-section" id="brand" aria-labelledby="brand-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <div class="brand-hero">
+      <img class="brand-hero__img" src="../assets/brand/brand-hero.webp" alt="">
+      <div class="brand-hero__copy">
+        <p class="aip-eyebrow">AIP Design System · v1.0.0</p>
+        <h1 class="aip-display-lg" id="brand-title">Clear rules.<br>Good defaults.</h1>
+        <p class="aip-lead">홈페이지 · Docs · MakeAIP · Playground · 아키텍처 그림이 함께 쓰는 하나의 기반.</p>
+      </div>
+    </div>
+    <div class="aip-grid aip-grid--3">
+      <figure class="ex-tile"><img src="../assets/brand/logo-mark.svg" alt="AIP 심볼" width="96" height="96"><figcaption><code>logo-mark.svg</code> · Λ + 형광펜 막대</figcaption></figure>
+      <figure class="ex-tile"><img src="../assets/brand/logo-lockup.svg" alt="AIP 로고" height="48"><figcaption><code>logo-lockup.svg</code> · 밝은 면</figcaption></figure>
+      <figure class="ex-tile ex-tile--ink"><img src="../assets/brand/logo-lockup-inverse.svg" alt="AIP 로고(어두운 면)" height="48"><figcaption><code>logo-lockup-inverse.svg</code> · 어두운 면</figcaption></figure>
+      <figure class="ex-tile"><span class="ex-mono-mark"><img src="../assets/brand/logo-mark-mono.svg" alt="AIP 단색 심볼" width="64" height="64"></span><figcaption><code>logo-mark-mono.svg</code> · currentColor</figcaption></figure>
+      <figure class="ex-tile"><span class="aip-cluster aip-gap-4"><img src="../assets/brand/favicon-16.png" alt="16px" width="16" height="16"><img src="../assets/brand/favicon-32.png" alt="32px" width="32" height="32"><img src="../assets/brand/favicon-48.png" alt="48px" width="48" height="48"><img src="../assets/brand/favicon.svg" alt="SVG 파비콘" width="48" height="48"></span><figcaption><code>favicon-16/32/48.png</code> · <code>favicon.svg</code> · <code>favicon.ico</code></figcaption></figure>
+      <figure class="ex-tile"><span class="aip-cluster aip-gap-4"><img src="../assets/brand/app-icon-512.png" alt="앱 아이콘" width="64" height="64"><img src="../assets/brand/app-icon-maskable-512.png" alt="maskable 앱 아이콘" width="64" height="64"><img src="../assets/brand/apple-touch-icon-180.png" alt="Apple touch 아이콘" width="64" height="64"></span><figcaption><code>app-icon-512.png</code> · <code>app-icon-maskable-512.png</code> · <code>apple-touch-icon-180.png</code></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 색 -->
+<section class="aip-section aip-section--subtle" id="color" aria-labelledby="color-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">01 — Color</p><h2 class="aip-heading-1" id="color-title">Brand 5색은 재료, 화면은 시맨틱</h2><p class="aip-body-md aip-text-secondary">위는 브랜드 원색, 아래는 OKLCH 로 파생한 램프 7종. 표는 <code class="aip-code-inline">dist/tokens.global.js</code> 에서 그리므로 토큰과 어긋날 수 없다.</p></header>
+    <div class="ex-brand-swatches" data-ex="brand"></div>
+    <div class="ex-ramps" data-ex="ramps"></div>
+    <h3 class="aip-heading-3">시맨틱 — 지금 테마의 값</h3>
+    <div class="ex-semantic" data-ex="semantic"></div>
+  </div>
+</section>
+
+<!-- 타입 -->
+<section class="aip-section" id="type" aria-labelledby="type-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">02 — Typography</p><h2 class="aip-heading-1" id="type-title">본문은 Pretendard, 코드와 식별자만 모노</h2></header>
+    <div class="ex-type" data-ex="type"></div>
+  </div>
+</section>
+
+<!-- 간격·모양 -->
+<section class="aip-section aip-section--subtle" id="scale" aria-labelledby="scale-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">03 — Scale</p><h2 class="aip-heading-1" id="scale-title">4px 그리드 · 작은 radius · 떠 있는 것만 그림자</h2></header>
+    <div class="aip-grid aip-grid--3">
+      <div class="aip-card"><p class="aip-card__title">space</p><div class="ex-scale" data-ex="space"></div></div>
+      <div class="aip-card"><p class="aip-card__title">radius</p><div class="ex-radius" data-ex="radius"></div></div>
+      <div class="aip-card"><p class="aip-card__title">shadow · z-index</p><div class="ex-shadow" data-ex="shadow"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 컴포넌트 -->
+<section class="aip-section" id="components" aria-labelledby="comp-title">
+  <div class="aip-container aip-stack aip-gap-12">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">04 — Components</p><h2 class="aip-heading-1" id="comp-title">기본값이 정답인 컴포넌트</h2><p class="aip-body-md aip-text-secondary">클래스 하나면 기본(secondary·md)이다. 다른 것이 필요할 때만 modifier 를 더한다.</p></header>
+
+    <div class="ex-block">
+      <h3 class="aip-heading-3">Button · Icon Button · Link</h3>
+      <div class="ex-row">
+        <button class="aip-button aip-button--primary" type="button">Generate project</button>
+        <button class="aip-button" type="button">Secondary</button>
+        <button class="aip-button aip-button--ghost" type="button">Ghost</button>
+        <button class="aip-button aip-button--danger" type="button">Delete</button>
+        <button class="aip-button" type="button" disabled>Disabled</button>
+        <button class="aip-button aip-button--primary" type="button" aria-busy="true" disabled><span>Saving</span></button>
+      </div>
+      <div class="ex-row">
+        <button class="aip-button aip-button--primary aip-button--lg" type="button"><svg class="aip-icon" aria-hidden="true"><use href="#i-download"/></svg>Download .zip</button>
+        <button class="aip-button aip-button--primary" type="button">md</button>
+        <button class="aip-button aip-button--sm" type="button">sm</button>
+        <button class="aip-button aip-button--xs" type="button">xs</button>
+        <button class="aip-icon-button" type="button" aria-label="더 보기" data-aip-tooltip="더 보기"><svg class="aip-icon" aria-hidden="true"><use href="#i-more"/></svg></button>
+        <button class="aip-icon-button aip-icon-button--secondary" type="button" aria-label="복사" data-aip-tooltip="복사" data-aip-tooltip-kbd="⌘C"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+        <button class="aip-icon-button aip-icon-button--sm" type="button" aria-label="닫기"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
+      <p class="aip-body-md">문장 안의 <a class="aip-link" href="#">링크</a>, 단독 링크 <a class="aip-link aip-link--standalone" href="#">Read the spec</a>, 새 탭 <a class="aip-link" href="#" target="_blank" rel="noopener">GitHub<span class="aip-sr-only"> (새 탭)</span></a>.</p>
+    </div>
+
+    <div class="ex-block">
+      <h3 class="aip-heading-3">Input · Textarea · Select · Checkbox · Radio · Switch · Segmented</h3>
+      <div class="aip-grid aip-grid--2">
+        <div>
+          <div class="aip-field"><label class="aip-label" for="f-name">Project name</label><input class="aip-input" id="f-name" value="aip-starter" aria-describedby="f-name-h"><p class="aip-help" id="f-name-h">Lowercase letters, numbers and dashes.</p></div>
+          <div class="aip-field"><label class="aip-label" for="f-pkg">Package</label><input class="aip-input aip-input--mono" id="f-pkg" value="com.example!" aria-invalid="true" aria-describedby="f-pkg-e"><p class="aip-error" id="f-pkg-e"><svg class="aip-icon" aria-hidden="true"><use href="#i-circle-x"/></svg>Use letters, numbers and dots only.</p></div>
+          <div class="aip-field"><label class="aip-label" for="f-db">Database</label><span class="aip-select"><select id="f-db"><option>PostgreSQL</option><option>MySQL</option><option>SQLite</option></select></span></div>
+          <div class="aip-field"><label class="aip-label" for="f-search">Filter <span class="aip-label__optional">optional</span></label><span class="aip-input-wrap"><svg class="aip-icon" aria-hidden="true"><use href="#i-search"/></svg><input class="aip-input aip-input--sm" id="f-search" type="search" placeholder="e.g. auth"></span></div>
+          <div class="aip-field"><label class="aip-label" for="f-desc">Description</label><textarea class="aip-textarea" id="f-desc">A starter for intent-driven apps.</textarea></div>
+          <div class="aip-field"><label class="aip-label" for="f-ro">Generated id</label><input class="aip-input aip-input--mono" id="f-ro" value="prj_7f3a9c" readonly></div>
+        </div>
+        <div class="aip-stack aip-gap-6">
+          <fieldset class="aip-fieldset"><legend>Features</legend>
+            <div class="aip-choices">
+              <label class="aip-checkbox"><input type="checkbox" checked> Authentication</label>
+              <label class="aip-checkbox"><input type="checkbox"> <span>Audit log<span class="aip-choice__desc">Record every executed intent.</span></span></label>
+              <label class="aip-checkbox"><input type="checkbox" disabled> Realtime (coming soon)</label>
+            </div>
+          </fieldset>
+          <fieldset class="aip-fieldset"><legend>Runtime</legend>
+            <div class="aip-choices aip-choices--inline">
+              <label class="aip-radio"><input type="radio" name="rt" checked> Node.js</label>
+              <label class="aip-radio"><input type="radio" name="rt"> Python</label>
+              <label class="aip-radio"><input type="radio" name="rt"> Embedded</label>
+            </div>
+          </fieldset>
+          <label class="aip-switch"><input type="checkbox" role="switch" checked> Include example intents</label>
+          <div class="aip-segmented" role="radiogroup" aria-label="Language">
+            <label><input type="radio" name="lang" checked>TypeScript</label>
+            <label><input type="radio" name="lang">Python</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3 class="aip-heading-3">Tabs · Breadcrumb · Pagination</h3>
+      <div>
+        <div class="aip-tablist" role="tablist" aria-label="Project view">
+          <button class="aip-tab" role="tab" id="tb-1" aria-controls="tp-1" aria-selected="true">Overview</button>
+          <button class="aip-tab" role="tab" id="tb-2" aria-controls="tp-2" aria-selected="false">Intents <span class="aip-badge aip-badge--count">12</span></button>
+          <button class="aip-tab" role="tab" id="tb-3" aria-controls="tp-3" aria-selected="false">Policies</button>
+        </div>
+        <div class="aip-tabpanel" role="tabpanel" id="tp-1" aria-labelledby="tb-1" tabindex="0"><p class="aip-body-sm aip-text-secondary">← → 키로 탭을 옮긴다. 선택이 곧 활성화다.</p></div>
+        <div class="aip-tabpanel" role="tabpanel" id="tp-2" aria-labelledby="tb-2" tabindex="0" hidden><p class="aip-body-sm aip-text-secondary">12 intents declared.</p></div>
+        <div class="aip-tabpanel" role="tabpanel" id="tp-3" aria-labelledby="tb-3" tabindex="0" hidden><p class="aip-body-sm aip-text-secondary">3 policies.</p></div>
+      </div>
+      <div class="ex-row ex-row--between">
+        <nav class="aip-breadcrumb" aria-label="Breadcrumb"><ol><li><a href="#">Docs</a></li><li><a href="#">Reference</a></li><li><a href="#">JavaScript SDK</a></li><li><span aria-current="page">client.run()</span></li></ol></nav>
+        <nav class="aip-pagination" aria-label="Pagination"><ul>
+          <li><a class="aip-pagination__item" href="#" aria-label="Previous page"><svg class="aip-icon aip-icon--sm" aria-hidden="true"><use href="#i-chevron-left"/></svg></a></li>
+          <li><a class="aip-pagination__item" href="#">1</a></li>
+          <li><a class="aip-pagination__item" href="#" aria-current="page">2</a></li>
+          <li><a class="aip-pagination__item" href="#">3</a></li>
+          <li><span class="aip-pagination__gap">…</span></li>
+          <li><a class="aip-pagination__item" href="#">12</a></li>
+          <li><a class="aip-pagination__item" href="#" aria-label="Next page"><svg class="aip-icon aip-icon--sm" aria-hidden="true"><use href="#i-chevron-right"/></svg></a></li>
+        </ul></nav>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3 class="aip-heading-3">Tooltip · Dropdown · Dialog</h3>
+      <div class="ex-row">
+        <button class="aip-button" type="button" data-aip-tooltip="Runs in a sandbox. Nothing is saved.">Hover or focus me</button>
+        <div class="aip-dropdown">
+          <button class="aip-button" type="button" aria-haspopup="menu" aria-controls="ex-menu">Actions <svg class="aip-icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+          <div class="aip-menu" id="ex-menu" role="menu" aria-label="Actions">
+            <button class="aip-menu__item" role="menuitem"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg>Duplicate <span class="aip-menu__meta">⌘D</span></button>
+            <button class="aip-menu__item" role="menuitem"><svg class="aip-icon" aria-hidden="true"><use href="#i-link"/></svg>Copy link</button>
+            <button class="aip-menu__item" role="menuitem" aria-disabled="true"><svg class="aip-icon" aria-hidden="true"><use href="#i-download"/></svg>Export (no changes)</button>
+            <hr class="aip-menu__separator">
+            <button class="aip-menu__item aip-menu__item--danger" role="menuitem">Delete project</button>
+          </div>
+        </div>
+        <button class="aip-button aip-button--danger" type="button" data-aip-dialog-open="ex-dialog">Delete project…</button>
+      </div>
+      <dialog class="aip-dialog aip-dialog--sm" id="ex-dialog" aria-labelledby="ex-dialog-t" aria-describedby="ex-dialog-d">
+        <div class="aip-dialog__header"><h2 class="aip-dialog__title" id="ex-dialog-t">Delete “aip-starter”?</h2><button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="닫기"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+        <div class="aip-dialog__body" id="ex-dialog-d"><p>This removes 12 intents and 3 policies. This cannot be undone.</p></div>
+        <div class="aip-dialog__footer"><button class="aip-button" type="button" data-aip-dialog-close>Cancel</button><button class="aip-button aip-button--danger" type="button" data-aip-dialog-close>Delete project</button></div>
+      </dialog>
+    </div>
+
+    <div class="ex-block">
+      <h3 class="aip-heading-3">Badge · Card · Callout · Empty · Status · Loading</h3>
+      <div class="ex-row">
+        <span class="aip-badge">neutral</span><span class="aip-badge aip-badge--info">info</span><span class="aip-badge aip-badge--success"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg>passed</span><span class="aip-badge aip-badge--warning">warning</span><span class="aip-badge aip-badge--danger">failed</span>
+        <span class="aip-version">v0.4.0</span><span class="aip-badge aip-badge--stable">stable</span><span class="aip-badge aip-badge--beta">beta</span><span class="aip-badge aip-badge--experimental">experimental</span><span class="aip-badge aip-badge--deprecated">deprecated</span><span class="aip-badge aip-badge--count">3</span>
+      </div>
+      <div class="aip-grid aip-grid--3">
+        <div class="aip-card"><p class="aip-card__eyebrow">Concept</p><p class="aip-card__title">Intent</p><p class="aip-card__body">What the caller needs, declared next to the code that uses it.</p></div>
+        <a class="aip-card" href="#"><p class="aip-card__eyebrow">Guide</p><p class="aip-card__title">Write your first policy →</p><p class="aip-card__body">Clickable cards are links. Hover shows the only shadow a card gets.</p></a>
+        <div class="aip-card"><p class="aip-card__title">Loading</p><div><span class="aip-skeleton aip-skeleton--text"></span><span class="aip-skeleton aip-skeleton--text"></span><span class="aip-skeleton aip-skeleton--text"></span></div><span class="aip-status"><span class="aip-spinner aip-spinner--sm" aria-hidden="true"></span>Indexing…</span></div>
+      </div>
+      <div class="aip-stack aip-gap-3">
+        <aside class="aip-callout aip-callout--note" role="note"><svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-info"/></svg><div class="aip-callout__body"><strong class="aip-callout__title">Note</strong><p>Useful information. Maps to <code>&gt; [!NOTE]</code>.</p></div></aside>
+        <aside class="aip-callout aip-callout--tip" role="note"><svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-tip"/></svg><div class="aip-callout__body"><strong class="aip-callout__title">Tip</strong><p>Helpful advice for doing things better.</p></div></aside>
+        <aside class="aip-callout aip-callout--important" role="note"><svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-highlighter"/></svg><div class="aip-callout__body"><strong class="aip-callout__title">Important</strong><p>Key information — the yellow highlighter.</p></div></aside>
+        <aside class="aip-callout aip-callout--warning" role="note"><svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-warning"/></svg><div class="aip-callout__body"><strong class="aip-callout__title">Warning</strong><p>Needs attention to avoid problems.</p></div></aside>
+        <aside class="aip-callout aip-callout--caution" role="note"><svg class="aip-icon aip-callout__icon" aria-hidden="true"><use href="#i-caution"/></svg><div class="aip-callout__body"><strong class="aip-callout__title">Caution</strong><p>Risk of data loss or a security problem.</p></div></aside>
+      </div>
+      <div class="aip-empty"><svg class="aip-icon" aria-hidden="true"><use href="#i-inbox"/></svg><p class="aip-empty__title">No intents yet</p><p>Declare one to see it here, or start from a template.</p><button class="aip-button aip-button--primary" type="button">Create intent</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- 문서 컴포넌트 -->
+<section class="aip-section aip-section--subtle" id="docs" aria-labelledby="docs-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">05 — Documentation</p><h2 class="aip-heading-1" id="docs-title">문서 = 종이, 코드 = Slate</h2><p class="aip-body-md aip-text-secondary">전체 조립은 <a class="aip-link" href="docs.html">docs.html 템플릿</a>. 여기서는 부품만.</p></header>
+    <div class="aip-grid aip-grid--2">
+      <div class="aip-stack aip-gap-6">
+        <figure class="aip-code">
+          <div class="aip-code__header"><span class="aip-code__title">src/intents/orders.ts</span>
+            <button class="aip-copy" type="button" data-aip-copy aria-label="코드 복사"><span class="aip-copy__idle"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="aip-copy__done"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="aip-copy__idle">Copy</span><span class="aip-copy__done">Copied</span></button>
+          </div>
+<pre class="aip-code__pre" data-line-numbers tabindex="0"><code><span class="aip-code__line"><span class="token keyword">export const</span> <span class="token function">listMyOrders</span> <span class="token operator">=</span> <span class="token function">intent</span><span class="token punctuation">({</span></span>
+<span class="aip-code__line" data-diff="-">  read<span class="token punctuation">:</span> <span class="token string">"order"</span><span class="token punctuation">,</span></span>
+<span class="aip-code__line" data-diff="+">  read<span class="token punctuation">:</span> <span class="token string">"orders"</span><span class="token punctuation">,</span></span>
+<span class="aip-code__line" data-highlight>  limit<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token comment">// highlighted line</span></span>
+<span class="aip-code__line"><span class="token punctuation">});</span></span></code></pre>
+        </figure>
+        <p class="aip-body-md">UI 안 인라인 코드 <code class="aip-code-inline">aip.intent/v1</code> · 단축키 <kbd>⌘</kbd><kbd>K</kbd> · 형광펜 <mark class="ex-mark">highlight</mark></p>
+        <div class="aip-ref-head"><h3 class="aip-heading-4"><code class="aip-code-inline">client.run()</code></h3><span class="aip-badge aip-badge--stable">stable</span><span class="aip-since">since v0.2</span></div>
+        <pre class="aip-signature"><span class="aip-signature__name">run</span>(intent: Intent, input?: Input): Promise&lt;Result&gt;</pre>
+        <dl class="aip-params">
+          <div class="aip-param"><dt class="aip-param__head"><code class="aip-param__name">intent</code><span class="aip-param__type">Intent</span><span class="aip-param__required">required</span></dt><dd class="aip-param__desc"><p>The declared intent to run.</p></dd></div>
+          <div class="aip-param"><dt class="aip-param__head"><code class="aip-param__name">limit</code><span class="aip-param__type">number</span><span class="aip-param__optional">optional</span></dt><dd class="aip-param__desc"><p>Maximum rows.</p><p class="aip-param__default">Default: <code>20</code></p></dd></div>
+        </dl>
+      </div>
+      <div class="aip-stack aip-gap-6">
+        <section class="aip-spec" aria-labelledby="pv-spec">
+          <header class="aip-spec__header"><span class="aip-spec__kind">Spec</span><h3 class="aip-spec__title" id="pv-spec">Intent request</h3><span class="aip-spec__id">aip.intent/v1</span></header>
+          <dl class="aip-spec__fields"><div class="aip-spec__field"><dt>name</dt><dd>Stable identifier.</dd></div><div class="aip-spec__field"><dt>actor</dt><dd>Resolved by the server.</dd></div></dl>
+          <div class="aip-spec__body"><p>The Runtime <span class="aip-rfc">MUST</span> evaluate the policy first.</p></div>
+        </section>
+        <figure class="aip-example">
+          <figcaption class="aip-example__label"><span class="aip-example__tag">Example</span> Allowed request</figcaption>
+          <div class="aip-example__body"><p class="aip-body-sm">Run the intent as the signed-in user.</p></div>
+          <div class="aip-example__result"><p class="aip-example__result-label">Result</p><p><span class="aip-status aip-status--success"><svg class="aip-icon" aria-hidden="true"><use href="#i-circle-check"/></svg>200 · 3 rows</span></p></div>
+        </figure>
+        <div class="aip-grid aip-grid--2 aip-gap-4">
+          <nav class="aip-sidebar ex-panel" aria-label="Sidebar 예시"><div><p class="aip-sidebar__title">Concepts</p><ul><li><a class="aip-sidebar__link" href="#">Overview</a></li><li><a class="aip-sidebar__link" href="#" aria-current="page">Intents</a></li><li><a class="aip-sidebar__link" href="#">Runtime</a></li></ul></div></nav>
+          <nav class="aip-toc ex-panel" aria-label="TOC 예시"><p class="aip-toc__title">On this page</p><ol><li><a class="aip-toc__link" href="#docs">Declaring</a></li><li><a class="aip-toc__link" href="#docs" data-level="3" aria-current="true">Request flow</a></li><li><a class="aip-toc__link" href="#docs">Reference</a></li></ol></nav>
+        </div>
+        <nav class="aip-pager" aria-label="Pager 예시"><a class="aip-pager__link" href="#"><span class="aip-pager__dir">← Previous</span><span class="aip-pager__title">Overview</span></a><a class="aip-pager__link aip-pager__link--next" href="#"><span class="aip-pager__dir">Next →</span><span class="aip-pager__title">Runtime</span></a></nav>
+        <button class="aip-search-trigger" type="button" onclick="location.href='docs.html'"><svg class="aip-icon" aria-hidden="true"><use href="#i-search"/></svg><span>Search docs</span><kbd>⌘K</kbd></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 다이어그램 -->
+<section class="aip-section" id="diagram" aria-labelledby="dg-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">06 — Diagram</p><h2 class="aip-heading-1" id="dg-title">색은 개념, 모양은 종류, 선은 흐름</h2></header>
+    <figure class="aip-diagram">
+      <div class="aip-diagram__canvas">
+        <ol class="aip-flow" aria-label="Intent 흐름">
+          <li class="aip-node" data-role="frontend"><span class="aip-node__kind">frontend</span>Screen</li>
+          <li class="aip-node" data-role="intent"><span class="aip-node__kind">intent</span>listMyOrders</li>
+          <li class="aip-node" data-role="permission"><span class="aip-node__kind">permission</span>owner = actor</li>
+          <li class="aip-node" data-role="execution" data-edge="allow"><span class="aip-node__kind">execution</span>plan · run</li>
+          <li class="aip-node" data-role="data"><span class="aip-node__kind">data</span>orders</li>
+        </ol>
+      </div>
+      <figcaption class="aip-diagram__caption"><b>Flow.</b> SVG 없이 HTML 목록으로 그린 한 줄 흐름 — 순서가 의미라 <code class="aip-code-inline">&lt;ol&gt;</code>.</figcaption>
+      <ul class="aip-diagram__legend" aria-label="개념 색 전체">
+        <li><span class="aip-diagram__swatch" data-role="intent"></span>Intent</li><li><span class="aip-diagram__swatch" data-role="runtime"></span>Runtime</li><li><span class="aip-diagram__swatch" data-role="execution"></span>Execution</li><li><span class="aip-diagram__swatch" data-role="permission"></span>Permission</li><li><span class="aip-diagram__swatch" data-role="frontend"></span>Frontend</li><li><span class="aip-diagram__swatch" data-role="backend"></span>Backend</li><li><span class="aip-diagram__swatch" data-role="data"></span>Data</li><li><span class="aip-diagram__swatch" data-role="external"></span>External</li><li><span class="aip-diagram__swatch" data-role="note"></span>Note</li>
+        <li><span class="aip-diagram__swatch" data-edge="default"></span>flow</li><li><span class="aip-diagram__swatch" data-edge="emphasis"></span>emphasis</li><li><span class="aip-diagram__swatch" data-edge="allow"></span>allow</li><li><span class="aip-diagram__swatch" data-edge="reject"></span>reject</li>
+      </ul>
+    </figure>
+    <p class="aip-body-sm aip-text-secondary">SVG 아키텍처 그림은 <a class="aip-link" href="docs.html#authority-flow">docs.html Figure 1</a>, Mermaid 는 <code class="aip-code-inline">dist/diagram.mermaid.json</code> 의 classDef.</p>
+  </div>
+</section>
+
+<!-- 제품 조각 -->
+<section class="aip-section aip-section--subtle" id="products" aria-labelledby="pr-title">
+  <div class="aip-container aip-stack aip-gap-8">
+    <header class="ex-head"><p class="aip-eyebrow aip-text-brand">07 — Products</p><h2 class="aip-heading-1" id="pr-title">같은 언어, 다른 밀도</h2></header>
+    <div class="aip-grid aip-grid--3">
+      <a class="aip-card" href="home.html"><p class="aip-card__eyebrow">Website</p><p class="aip-card__title">home.html</p><p class="aip-card__body">히어로 · 원칙 · 아키텍처 · CTA</p></a>
+      <a class="aip-card" href="docs.html"><p class="aip-card__eyebrow">Documentation</p><p class="aip-card__title">docs.html</p><p class="aip-card__body">3열 셸 · 검색 · 코드 탭 · 스펙 · 다이어그램</p></a>
+      <a class="aip-card" href="makeaip.html"><p class="aip-card__eyebrow">MakeAIP</p><p class="aip-card__title">makeaip.html</p><p class="aip-card__body">옵션 카드 · 파일 트리 · 생성 바</p></a>
+      <a class="aip-card" href="playground.html"><p class="aip-card__eyebrow">Playground</p><p class="aip-card__title">playground.html</p><p class="aip-card__body">툴바 · 에디터 | 결과 · 상태 바</p></a>
+    </div>
+    <div class="aip-grid aip-grid--auto">
+      <label class="aip-option"><input type="radio" name="pv-rt" checked><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-cpu"/></svg><span class="aip-option__title">Node.js</span></span><span class="aip-option__desc">JS/TS extensions.</span><span class="aip-option__meta"><span class="aip-version">22 LTS</span></span></label>
+      <label class="aip-option"><input type="radio" name="pv-rt"><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-cpu"/></svg><span class="aip-option__title">Python</span></span><span class="aip-option__desc">Python extensions.</span><span class="aip-option__meta"><span class="aip-version">3.13</span></span></label>
+      <label class="aip-option"><input type="radio" name="pv-rt" disabled><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-cpu"/></svg><span class="aip-option__title">Embedded</span></span><span class="aip-option__desc">Not available yet.</span></label>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+/* 토큰 표 렌더 — dist/tokens.global.js(window.AIP_TOKENS)만 읽는다. 색은 var() 로 칠해 테마가 바뀌면 같이 바뀐다 */
+(function () {
+  const T = window.AIP_TOKENS;
+  if (!T) return;
+  const el = (sel) => document.querySelector(`[data-ex="${sel}"]`);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const leaf = (o) => o && 'var' in o && 'value' in o;
+  el('brand').innerHTML = Object.entries(T.brand).map(([k, t]) => `<div class="ex-brand"><span class="ex-brand__chip" style="background:${t.var}"></span><span class="ex-brand__name">AIP ${k[0].toUpperCase() + k.slice(1)}</span><code>${t.value}</code></div>`).join('');
+  const ramps = ['blue', 'tangerine', 'yellow', 'neutral', 'slate', 'red', 'green'];
+  el('ramps').innerHTML = ramps.map((r) => `<div class="ex-ramp"><span class="ex-ramp__name">${r}</span>${Object.entries(T[r]).filter(([, t]) => leaf(t)).map(([s, t]) => `<span class="ex-ramp__step" style="background:${t.var}" title="${r}.${s} ${t.value}"><span>${s}</span></span>`).join('')}</div>`).join('');
+  const groups = ['surface', 'text', 'border', 'action', 'status', 'highlight', 'code', 'lifecycle', 'diagram', 'interactive'];
+  const flat = (node, path = []) => leaf(node) ? [[path.join('.'), node]] : Object.entries(node).flatMap(([k, v]) => flat(v, [...path, k]));
+  el('semantic').innerHTML = groups.map((g) => `<details class="ex-group"${['surface', 'text', 'diagram'].includes(g) ? ' open' : ''}><summary>color.${g}</summary><div class="ex-swatches">${flat(T.color[g], [g]).map(([p, t]) => `<div class="ex-swatch"><span class="ex-swatch__chip" style="background:${t.var}"></span><code>${esc(p)}</code><span class="ex-swatch__val">${esc(t.value)}${t.dark ? ' · ' + esc(t.dark) : ''}</span></div>`).join('')}</div></details>`).join('');
+  const sample = { display: 'Clear rules', lead: 'Good defaults behind clear rules.', doc: 'Intents', heading: 'Runtime', body: 'The caller asks; the server decides. 호출자는 요청하고 서버가 결정한다.', label: 'Generate project', caption: 'Updated 2026.10.06', eyebrow: '01 — Intent', code: 'intent({ read: "orders" })', 'mono-label': 'aip.intent/v1', kbd: '⌘K', numeric: '1,284 ms' };
+  el('type').innerHTML = Object.entries(T.typography).map(([name, t]) => {
+    const key = Object.keys(sample).find((k) => name.startsWith(k)) || 'body';
+    const v = t.value;
+    return `<div class="ex-type__row"><div class="ex-type__meta"><code>.aip-${name}</code><span>${parseFloat(v.fontSize) * 16}px · ${v.fontWeight} · ${v.lineHeight}</span></div><p class="aip-${name} ex-type__sample">${esc(sample[key])}</p></div>`;
+  }).join('');
+  el('space').innerHTML = Object.entries(T.space).filter(([, t]) => leaf(t) && parseFloat(t.value) >= 4).sort((a, b) => parseFloat(a[1].value) - parseFloat(b[1].value)).map(([k, t]) => `<div class="ex-bar"><code>space.${k}</code><span class="ex-bar__fill" style="width:${t.var}"></span><span>${t.value}</span></div>`).join('');
+  el('radius').innerHTML = Object.entries(T.radius).filter(([k]) => k !== 'full').map(([k, t]) => `<div class="ex-radius__item"><span style="border-radius:${t.var}"></span><code>${k} · ${t.value}</code></div>`).join('');
+  el('shadow').innerHTML = Object.entries(T.shadow).map(([k, t]) => `<div class="ex-shadow__item" style="box-shadow:${t.var}"><code>shadow.${k}</code></div>`).join('') + `<p class="aip-caption aip-text-tertiary">z-index: ${Object.entries(T['z-index']).map(([k, t]) => `${k} ${t.value}`).join(' · ')}</p>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIP · Application Intent Protocol (template)</title>
+  <meta name="description" content="Declare what your app needs. AIP runs it inside the rules your server sets.">
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <link rel="stylesheet" href="examples.css">
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#main">Skip to content</a>
+<header class="aip-header">
+  <div class="aip-header__inner aip-container aip-container--lg">
+    <a class="aip-header__brand" href="home.html" aria-label="AIP home"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></a>
+    <nav class="aip-nav" aria-label="Main">
+      <a class="aip-nav__link" href="docs.html">Docs</a>
+      <a class="aip-nav__link" href="makeaip.html">MakeAIP</a>
+      <a class="aip-nav__link" href="playground.html">Playground</a>
+      <a class="aip-nav__link" href="#principles">Principles</a>
+    </nav>
+    <div class="aip-header__actions">
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="Dark theme" data-aip-tooltip="Toggle theme"><svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <a class="aip-button aip-button--sm aip-hide-below-md" href="#"><svg class="aip-icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub</a>
+      <a class="aip-button aip-button--sm aip-button--primary" href="docs.html">Get started</a>
+      <button class="aip-icon-button aip-icon-button--sm aip-header__menu" type="button" aria-label="Open navigation" data-aip-dialog-open="nav-drawer"><svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="home-hero" aria-labelledby="hero-title">
+    <div class="aip-container aip-container--lg home-hero__inner">
+      <div class="home-hero__copy">
+        <p class="aip-eyebrow aip-text-brand">Application Intent Protocol · open source</p>
+        <h1 class="aip-display-xl" id="hero-title">Declare what your app <mark class="home-mark">needs</mark>.</h1>
+        <p class="aip-lead aip-text-secondary">Stop writing an endpoint per screen. The caller expresses the data and action it needs; the AIP Runtime runs it inside the rules your server sets.</p>
+        <div class="aip-cluster aip-gap-3">
+          <a class="aip-button aip-button--primary aip-button--lg" href="docs.html">Read the docs</a>
+          <a class="aip-button aip-button--lg" href="makeaip.html"><svg class="aip-icon" aria-hidden="true"><use href="#i-package"/></svg>Create a project</a>
+        </div>
+      </div>
+      <figure class="aip-code home-hero__code">
+        <div class="aip-code__header"><span class="aip-code__title">orders.intent.ts</span><span class="aip-code__lang">illustrative</span></div>
+<pre class="aip-code__pre" tabindex="0"><code><span class="token keyword">export const</span> <span class="token function">listMyOrders</span> <span class="token operator">=</span> <span class="token function">intent</span><span class="token punctuation">({</span>
+  read<span class="token punctuation">:</span> <span class="token string">"orders"</span><span class="token punctuation">,</span>
+  where<span class="token punctuation">:</span> <span class="token punctuation">{</span> owner<span class="token punctuation">:</span> <span class="token string">"$actor"</span> <span class="token punctuation">},</span>
+<span class="token punctuation">});</span>
+
+<span class="token comment">// no new endpoint. the server's policy still decides.</span>
+<span class="token keyword">const</span> orders <span class="token operator">=</span> <span class="token keyword">await</span> aip<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>listMyOrders<span class="token punctuation">);</span></code></pre>
+      </figure>
+    </div>
+  </section>
+
+  <section class="aip-section aip-section--subtle" id="principles" aria-labelledby="pr-title">
+    <div class="aip-container aip-container--lg aip-stack aip-gap-12">
+      <div class="ex-head"><p class="aip-eyebrow aip-text-brand">01 — Principles</p><h2 class="aip-display-md" id="pr-title">Strict inside. Simple outside.</h2></div>
+      <div class="aip-grid aip-grid--3">
+        <div class="aip-card aip-card--lg"><p class="aip-card__eyebrow">Freedom to ask</p><p class="aip-card__title">Callers express intent</p><p class="aip-card__body">Data and actions are declared next to the code that needs them — not hidden behind one more endpoint.</p></div>
+        <div class="aip-card aip-card--lg"><p class="aip-card__eyebrow">Authority to run</p><p class="aip-card__title">The server decides</p><p class="aip-card__body">Every intent passes the server's policy. Authentication, rules and integrity stay on the server.</p></div>
+        <div class="aip-card aip-card--lg"><p class="aip-card__eyebrow">Clear defaults</p><p class="aip-card__title">One obvious way</p><p class="aip-card__body">Predictable structure that people and AI coding agents read the same way.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aip-section" aria-labelledby="arch-title">
+    <div class="aip-container aip-container--lg aip-stack aip-gap-8">
+      <div class="ex-head"><p class="aip-eyebrow aip-text-brand">02 — Architecture</p><h2 class="aip-display-md" id="arch-title">One request, one path</h2><p class="aip-lead aip-text-secondary">Yellow is what you declare. Blue is AIP. Tangerine is the line the server never lets you cross.</p></div>
+      <figure class="aip-diagram">
+        <div class="aip-diagram__canvas">
+          <ol class="aip-flow" aria-label="Request path">
+            <li class="aip-node" data-role="frontend"><span class="aip-node__kind">frontend</span>Your screen</li>
+            <li class="aip-node" data-role="intent"><span class="aip-node__kind">intent</span>listMyOrders</li>
+            <li class="aip-node" data-role="permission" data-edge="emphasis"><span class="aip-node__kind">permission</span>owner = actor</li>
+            <li class="aip-node" data-role="execution" data-edge="allow"><span class="aip-node__kind">execution</span>plan · run</li>
+            <li class="aip-node" data-role="data"><span class="aip-node__kind">data</span>orders</li>
+          </ol>
+        </div>
+        <figcaption class="aip-diagram__caption">The caller sends a declared intent; the permission policy checks the authenticated actor before anything runs.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-cta" aria-labelledby="cta-title">
+    <div class="aip-container aip-container--lg home-cta__inner">
+      <div class="aip-stack aip-gap-3"><h2 class="aip-display-md" id="cta-title">Start with a working project.</h2><p class="aip-body-lg">Pick a runtime, a database and a language. Download, run, read the code.</p></div>
+      <a class="aip-button aip-button--lg home-cta__button" href="makeaip.html">Open MakeAIP <svg class="aip-icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="home-footer">
+  <div class="aip-container aip-container--lg aip-cluster aip-cluster--between">
+    <span class="aip-cluster aip-gap-2"><img src="../assets/brand/logo-mark-mono.svg" alt="" width="20" height="20" class="home-footer__mark"><span class="aip-caption aip-text-tertiary">AIP is open source. License to be decided.</span></span>
+    <nav class="aip-cluster aip-gap-4" aria-label="Footer"><a class="aip-link" href="docs.html">Docs</a><a class="aip-link" href="#">GitHub</a><a class="aip-link" href="preview.html">Design system</a></nav>
+  </div>
+</footer>
+
+<dialog class="aip-drawer" id="nav-drawer" aria-label="Main navigation">
+  <div class="aip-drawer__header"><span class="aip-header__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></span><button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="Main"><a class="aip-nav__link" href="docs.html">Docs</a><a class="aip-nav__link" href="makeaip.html">MakeAIP</a><a class="aip-nav__link" href="playground.html">Playground</a></nav></div>
+</dialog>
+</body>
+</html>

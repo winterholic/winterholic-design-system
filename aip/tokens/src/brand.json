@@ -1,0 +1,17 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "AIP Brand Palette 5색 그대로. 램프(palette.json)의 앵커이자 브랜드 문서·로고에서 부르는 이름이다. 화면 코드는 이 토큰을 직접 참조하지 않고 시맨틱 토큰(color.*)을 거친다. 이 5색을 UI 에 그대로 칠하는 것이 아니라, 여기서 중립·면·글자·상태·다이어그램 색을 파생한다(docs/01).",
+    "blue":      { "$value": "#1C77C3", "$description": "AIP Blue · 주색(= blue.600). 주 액션·링크·활성·포커스·AIP 자체를 나타내는 시각 언어. 흰 배경 4.69:1 로 버튼 배경에 그대로 쓴다. 두 테마에서 같은 값" },
+    "tangerine": { "$value": "#FAA381", "$description": "AIP Tangerine · 보조 강조(= tangerine.300). 다이어그램 permission·개념 구분·경고 면. 흰 배경 1.98:1 이라 글자 불가" },
+    "yellow":    { "$value": "#F5E663", "$description": "AIP Yellow · 형광펜(= yellow.200). highlight·Important·Example 탭·다이어그램 intent. 흰 배경 1.28:1 이라 면 전용, 위 글자는 charcoal" },
+    "charcoal":  { "$value": "#3D3B30", "$description": "AIP Charcoal · 강한 중립(= neutral.800). 라이트 테마 본문 글자·구조선·로고 워드마크·다크 테마 면의 색상(hue) 기준" },
+    "slate":     { "$value": "#4D5061", "$description": "AIP Slate · 보조 어두운 중립(= slate.700). 코드 블록 면의 색상 기준(두 테마 공통)·보조 어두운 요소" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

@@ -1,0 +1,1229 @@
+/* AIP components · 자동 생성 — components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: base → layout → button → form → navigation → overlay → content → docs → code → diagram → app → utilities */
+
+/* ===== base.css ===== */
+/* base — 모든 컴포넌트가 기대는 최소 규칙: 박스 모델, 접근성 유틸, 아이콘, 로딩 표시.
+   값은 전부 var(--aip-…). 이 파일을 포함한 components/*.css 는 빌드가 lint 한다(hex·px·ms·z-index 숫자 금지). */
+
+:where([class^="aip-"], [class*=" aip-"]),
+:where([class^="aip-"], [class*=" aip-"])::before,
+:where([class^="aip-"], [class*=" aip-"])::after { box-sizing: border-box; }
+
+/* 화면에는 숨기고 스크린 리더에는 읽힌다 */
+.aip-sr-only {
+  position: absolute; width: var(--aip-space-px); height: var(--aip-space-px); padding: 0; margin: calc(-1 * var(--aip-space-px));
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 키보드 첫 Tab 에 나타나는 본문 바로가기. 모든 제품 페이지의 첫 요소 */
+.aip-skip-link {
+  position: absolute; left: var(--aip-space-4); top: var(--aip-space-2);
+  z-index: var(--aip-z-index-tooltip);
+  padding: var(--aip-space-2) var(--aip-space-4);
+  border-radius: var(--aip-radius-md);
+  background: var(--aip-color-surface-inverse); color: var(--aip-color-text-inverse);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  transform: translateY(-200%);
+  transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-skip-link:focus-visible { transform: none; }
+
+/* 아이콘(Lucide 인라인 SVG). 크기는 부모 컴포넌트가 정하고, 단독이면 md */
+.aip-icon {
+  flex: none; width: var(--aip-_icon, var(--aip-size-icon-md)); height: var(--aip-_icon, var(--aip-size-icon-md));
+  stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none;
+}
+.aip-icon--xs { --aip-_icon: var(--aip-size-icon-xs); }
+.aip-icon--sm { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-icon--lg { --aip-_icon: var(--aip-size-icon-lg); }
+.aip-icon--xl { --aip-_icon: var(--aip-size-icon-xl); }
+
+/* 터치 영역 확장 — 시각 크기가 44 보다 작은 컨트롤에 건다 */
+@media (pointer: coarse) {
+  .aip-hit { position: relative; }
+  .aip-hit::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); }
+}
+
+/* 스피너 — 1초 안쪽 대기. 300ms 가 지나야 보이게 하는 것은 호출부 책임(docs/08 §1) */
+.aip-spinner {
+  display: inline-block; flex: none;
+  width: var(--aip-_icon, var(--aip-size-icon-md)); height: var(--aip-_icon, var(--aip-size-icon-md));
+  border: var(--aip-border-width-strong) solid currentColor; border-right-color: transparent;
+  border-radius: var(--aip-radius-full);
+  animation: aip-spin calc(var(--aip-motion-duration-slow) * 3) var(--aip-motion-easing-linear) infinite;
+}
+.aip-spinner--sm { --aip-_icon: var(--aip-size-icon-sm); }
+@keyframes aip-spin { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) {
+  .aip-spinner { animation-duration: var(--aip-motion-duration-feedback); }
+}
+
+/* 스켈레톤 — 실제와 같은 개수·모양으로. 깜빡임 없이 정지(장식 애니메이션 금지 원칙) */
+.aip-skeleton {
+  display: block; border-radius: var(--aip-radius-sm);
+  background: var(--aip-color-surface-sunken);
+}
+.aip-skeleton--text { height: 0.8em; margin-block: 0.45em; }
+.aip-skeleton--text:last-child { width: 60%; }
+
+/* 구분선 */
+.aip-divider { border: 0; border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); margin-block: var(--aip-space-6); }
+.aip-divider--subtle { border-top-color: var(--aip-color-border-subtle); margin-block: var(--aip-space-4); }
+
+/* ===== layout.css ===== */
+/* layout — 페이지를 짜는 4개의 원시 요소. 제품 셸(문서 3열·MakeAIP 2열·Playground 분할)은 docs.css·app.css 가 이 위에 만든다.
+   container(폭) · stack(세로 간격) · cluster(가로 나열) · grid(반응형 열). 간격은 modifier 로 고르고 임의 값을 넣지 않는다. */
+
+.aip-container {
+  width: 100%; max-width: var(--aip-_max, var(--aip-size-container-xl));
+  margin-inline: auto; padding-inline: var(--aip-size-layout-page-gutter);
+}
+.aip-container--prose { --aip-_max: calc(var(--aip-size-container-prose) + 2 * var(--aip-size-layout-page-gutter-lg)); }
+.aip-container--sm { --aip-_max: var(--aip-size-container-sm); }
+.aip-container--md { --aip-_max: var(--aip-size-container-md); }
+.aip-container--lg { --aip-_max: var(--aip-size-container-lg); }
+@media (min-width: 768px) { .aip-container { padding-inline: var(--aip-size-layout-page-gutter-md); } }
+@media (min-width: 1024px) { .aip-container { padding-inline: var(--aip-size-layout-page-gutter-lg); } }
+
+/* stack: 세로로 쌓고 사이만 띄운다. 기본 space.4 */
+.aip-stack { display: flex; flex-direction: column; gap: var(--aip-_gap, var(--aip-space-4)); }
+.aip-stack > * { margin-block: 0; }
+
+/* cluster: 가로로 나열, 넘치면 줄바꿈. 기본 space.2 */
+.aip-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-_gap, var(--aip-space-2)); }
+.aip-cluster--between { justify-content: space-between; }
+.aip-cluster--end { justify-content: flex-end; }
+.aip-cluster--nowrap { flex-wrap: nowrap; }
+
+/* 간격 modifier — stack·cluster·grid 공통. 이 여섯 단계 밖은 없다 */
+.aip-gap-1 { --aip-_gap: var(--aip-space-1); }
+.aip-gap-2 { --aip-_gap: var(--aip-space-2); }
+.aip-gap-3 { --aip-_gap: var(--aip-space-3); }
+.aip-gap-4 { --aip-_gap: var(--aip-space-4); }
+.aip-gap-6 { --aip-_gap: var(--aip-space-6); }
+.aip-gap-8 { --aip-_gap: var(--aip-space-8); }
+.aip-gap-12 { --aip-_gap: var(--aip-space-12); }
+
+/* grid: 모바일 1열 → md 2열 → lg 지정 열. 카드 그리드·피처 그리드·옵션 카드 묶음 */
+.aip-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-_gap, var(--aip-space-4)); }
+@media (min-width: 768px) {
+  .aip-grid { --aip-_gap-md: var(--aip-space-6); gap: var(--aip-_gap, var(--aip-_gap-md)); }
+  .aip-grid--2, .aip-grid--3, .aip-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .aip-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .aip-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* 내용 폭에 맞춰 자동으로 채우는 그리드(옵션 카드처럼 개수가 바뀌는 묶음) */
+.aip-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--aip-component-option-card-min-width)), 1fr)); }
+@media (min-width: 768px) { .aip-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--aip-component-option-card-min-width)), 1fr)); } }
+
+/* 섹션 리듬(랜딩·앱) */
+.aip-section { padding-block: var(--aip-space-16); }
+@media (min-width: 1024px) { .aip-section { padding-block: var(--aip-space-24); } }
+.aip-section--subtle { background: var(--aip-color-surface-subtle); }
+.aip-section + .aip-section:not(.aip-section--subtle) { border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+
+/* 전폭 컨테이너(문서·Playground 헤더처럼 사이드바가 화면 끝에 붙는 셸) */
+.aip-container--full { --aip-_max: none; }
+
+/* ===== button.css ===== */
+/* button — Button · Icon Button · Link.
+   기본값이 정답이다: .aip-button 하나면 secondary·md. primary 는 화면의 주 목적 하나에만 명시한다.
+   variant 4개(primary·secondary·ghost·danger) × size 4개(xs·sm·md·lg). 상태는 :hover·:active·:focus-visible·disabled·aria-busy. */
+
+.aip-button, .aip-icon-button {
+  --aip-_h: var(--aip-component-button-md-height);
+  --aip-_px: var(--aip-component-button-md-padding-x);
+  --aip-_icon: var(--aip-component-button-md-icon);
+  --aip-_radius: var(--aip-component-button-md-radius);
+  --aip-_bg: var(--aip-color-action-secondary-bg);
+  --aip-_bg-hover: var(--aip-color-action-secondary-bg-hover);
+  --aip-_bg-active: var(--aip-color-action-secondary-bg-active);
+  --aip-_fg: var(--aip-color-action-secondary-text);
+  --aip-_border: var(--aip-color-action-secondary-border);
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--aip-component-button-gap);
+  height: var(--aip-_h); padding-inline: var(--aip-_px);
+  border: var(--aip-border-width-hairline) solid var(--aip-_border); border-radius: var(--aip-_radius);
+  background: var(--aip-_bg); color: var(--aip-_fg);
+  font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-medium); line-height: var(--aip-font-line-height-none);
+  white-space: nowrap; text-decoration: none; cursor: pointer; user-select: none;
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-button { min-width: var(--aip-component-button-min-width); }
+.aip-button:hover, .aip-icon-button:hover { background: var(--aip-_bg-hover); }
+.aip-button:active, .aip-icon-button:active { background: var(--aip-_bg-active); }
+.aip-button > .aip-icon, .aip-icon-button > .aip-icon { width: var(--aip-_icon); height: var(--aip-_icon); }
+
+/* variant */
+.aip-button--primary {
+  --aip-_bg: var(--aip-color-action-primary-bg); --aip-_bg-hover: var(--aip-color-action-primary-bg-hover); --aip-_bg-active: var(--aip-color-action-primary-bg-active);
+  --aip-_fg: var(--aip-color-action-primary-text); --aip-_border: var(--aip-color-action-primary-bg);
+}
+.aip-button--ghost, .aip-icon-button {
+  --aip-_bg: var(--aip-color-action-ghost-bg); --aip-_bg-hover: var(--aip-color-action-ghost-bg-hover); --aip-_bg-active: var(--aip-color-action-ghost-bg-active);
+  --aip-_fg: var(--aip-color-action-ghost-text); --aip-_border: transparent;
+}
+.aip-button--danger {
+  --aip-_bg: var(--aip-color-action-danger-bg); --aip-_bg-hover: var(--aip-color-action-danger-bg-hover); --aip-_bg-active: var(--aip-color-action-danger-bg-active);
+  --aip-_fg: var(--aip-color-action-danger-text); --aip-_border: var(--aip-color-action-danger-bg);
+}
+.aip-icon-button--secondary {
+  --aip-_bg: var(--aip-color-action-secondary-bg); --aip-_bg-hover: var(--aip-color-action-secondary-bg-hover); --aip-_bg-active: var(--aip-color-action-secondary-bg-active);
+  --aip-_fg: var(--aip-color-action-secondary-text); --aip-_border: var(--aip-color-action-secondary-border);
+}
+
+/* size */
+.aip-button--xs, .aip-icon-button--xs { --aip-_h: var(--aip-component-button-xs-height); --aip-_px: var(--aip-component-button-xs-padding-x); --aip-_icon: var(--aip-component-button-xs-icon); --aip-_radius: var(--aip-component-button-xs-radius); font-size: var(--aip-font-size-xs); }
+.aip-button--sm, .aip-icon-button--sm { --aip-_h: var(--aip-component-button-sm-height); --aip-_px: var(--aip-component-button-sm-padding-x); --aip-_icon: var(--aip-component-button-sm-icon); --aip-_radius: var(--aip-component-button-sm-radius); }
+.aip-button--lg, .aip-icon-button--lg { --aip-_h: var(--aip-component-button-lg-height); --aip-_px: var(--aip-component-button-lg-padding-x); --aip-_icon: var(--aip-component-button-lg-icon); --aip-_radius: var(--aip-component-button-lg-radius); font-size: var(--aip-font-size-md); }
+.aip-button--xs, .aip-button--sm { min-width: 0; }
+.aip-button--block { display: flex; width: 100%; }
+
+/* Icon Button — 정사각형. aria-label 필수(빌드 테스트가 examples 를 검사한다) */
+.aip-icon-button { width: var(--aip-_h); padding: 0; flex: none; }
+@media (pointer: coarse) {
+  .aip-icon-button--xs::after, .aip-icon-button--sm::after, .aip-button--xs::after, .aip-button--sm::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); }
+}
+
+/* 비활성: 네이티브 disabled 또는 aria-disabled(툴팁으로 이유를 보여줘야 할 때 — 포커스가 남는다) */
+:is(.aip-button, .aip-icon-button):is(:disabled, [aria-disabled="true"]):not([aria-busy="true"]) {
+  --aip-_bg: var(--aip-color-action-disabled-bg); --aip-_bg-hover: var(--aip-color-action-disabled-bg); --aip-_bg-active: var(--aip-color-action-disabled-bg);
+  --aip-_fg: var(--aip-color-action-disabled-text); --aip-_border: var(--aip-color-action-disabled-border);
+  cursor: not-allowed;
+}
+:is(.aip-button--ghost, .aip-icon-button:not(.aip-icon-button--secondary)):is(:disabled, [aria-disabled="true"]) { --aip-_bg: transparent; --aip-_bg-hover: transparent; --aip-_bg-active: transparent; --aip-_border: transparent; }
+
+/* 로딩: 폭을 유지한 채 라벨 자리에 스피너. aria-busy="true" + disabled 를 함께 건다 */
+:is(.aip-button, .aip-icon-button)[aria-busy="true"] { color: transparent; cursor: progress; }
+:is(.aip-button, .aip-icon-button)[aria-busy="true"]::before {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: var(--aip-_icon); height: var(--aip-_icon);
+  border: var(--aip-border-width-strong) solid var(--aip-_fg); border-right-color: transparent; border-radius: var(--aip-radius-full);
+  animation: aip-spin calc(var(--aip-motion-duration-slow) * 3) var(--aip-motion-easing-linear) infinite;
+}
+:is(.aip-button, .aip-icon-button)[aria-busy="true"] > * { visibility: hidden; }
+
+/* 같은 줄 버튼 묶음 */
+.aip-button-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-button-group-gap); }
+.aip-button-group--end { justify-content: flex-end; }
+
+/* Link — 문장 안 링크(.aip-link)와 단독 링크(--standalone, 화살표 동반) 두 가지 */
+.aip-link {
+  color: var(--aip-color-text-link); text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  border-radius: var(--aip-radius-xs);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), text-decoration-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-link:hover { color: var(--aip-color-text-link-hover); text-decoration-color: currentColor; }
+.aip-link--standalone {
+  display: inline-flex; align-items: center; gap: var(--aip-space-1);
+  font-weight: var(--aip-font-weight-medium); text-decoration: none;
+}
+.aip-link--standalone::after { content: "→"; transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard); }
+.aip-link--standalone:hover { text-decoration: underline; }
+.aip-link--standalone:hover::after { transform: translateX(var(--aip-space-0-5)); }
+/* 외부 링크: 새 탭이면 ↗ 와 스크린 리더 문구(.aip-sr-only "(새 탭)")를 함께 넣는다 */
+.aip-link[target="_blank"]::after { content: "↗"; margin-left: var(--aip-space-0-5); font-size: 0.875em; text-decoration: none; display: inline-block; }
+
+/* 테마 전환 버튼: 아이콘 두 개를 넣고 aria-pressed(다크=true)로 하나만 보인다 */
+[data-aip-theme-toggle] .aip-theme-toggle__to-light { display: none; }
+[data-aip-theme-toggle][aria-pressed="true"] .aip-theme-toggle__to-light { display: block; }
+[data-aip-theme-toggle][aria-pressed="true"] .aip-theme-toggle__to-dark { display: none; }
+
+/* ===== form.css ===== */
+/* form — Field(라벨·도움말·오류) · Input · Textarea · Select · Checkbox · Radio · Switch · Segmented.
+   전부 네이티브 요소 위에 얹는다(접근성·자동완성·모바일 키보드를 공짜로 얻는다). 라벨은 항상 보인다 — 플레이스홀더는 라벨이 아니다. */
+
+.aip-field { display: flex; flex-direction: column; gap: var(--aip-component-input-label-gap); min-width: 0; }
+.aip-field + .aip-field:not(.aip-grid > *, .aip-cluster > *, .aip-stack > *) { margin-top: var(--aip-component-input-field-gap); }
+.aip-label { color: var(--aip-color-text-primary); font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-label__optional { margin-left: var(--aip-space-1); color: var(--aip-color-text-tertiary); font-weight: var(--aip-font-weight-regular); }
+.aip-help, .aip-error {
+  display: flex; align-items: flex-start; gap: var(--aip-space-1-5);
+  margin-top: calc(var(--aip-component-input-help-gap) - var(--aip-component-input-label-gap));
+  font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  color: var(--aip-color-text-tertiary);
+}
+.aip-error { color: var(--aip-color-text-danger); }
+.aip-error > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); }
+
+/* Input · Textarea · Select 공통 상자 */
+.aip-input, .aip-textarea, .aip-select > select {
+  --aip-_h: var(--aip-size-control-md);
+  width: 100%; min-width: 0; height: var(--aip-_h);
+  padding-inline: var(--aip-component-input-padding-x);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-input-border); border-radius: var(--aip-component-input-radius);
+  background: var(--aip-component-input-bg); color: var(--aip-color-text-primary);
+  font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-md); line-height: var(--aip-font-line-height-normal);
+  transition: border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), box-shadow var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-input::placeholder, .aip-textarea::placeholder { color: var(--aip-color-text-placeholder); opacity: 1; }
+:is(.aip-input, .aip-textarea, .aip-select > select):hover { border-color: var(--aip-component-input-border-hover); }
+/* 포커스: 테두리 색 + 안쪽 1px 를 더해 2px 로 보이게 한다(바깥 링 대신 — 인풋은 줄지어 놓여 링이 겹친다) */
+:is(.aip-input, .aip-textarea, .aip-select > select):focus-visible {
+  outline: none; border-color: var(--aip-component-input-border-focus);
+  box-shadow: inset 0 0 0 var(--aip-border-width-hairline) var(--aip-component-input-border-focus);
+}
+:is(.aip-input, .aip-textarea, .aip-select > select)[aria-invalid="true"] { border-color: var(--aip-component-input-border-error); }
+:is(.aip-input, .aip-textarea, .aip-select > select)[aria-invalid="true"]:focus-visible { box-shadow: inset 0 0 0 var(--aip-border-width-hairline) var(--aip-component-input-border-error); }
+:is(.aip-input, .aip-textarea, .aip-select > select):disabled { background: var(--aip-color-surface-disabled); color: var(--aip-color-text-disabled); border-color: var(--aip-color-action-disabled-border); cursor: not-allowed; }
+:is(.aip-input, .aip-textarea):read-only:not(:disabled) { background: var(--aip-color-surface-subtle); border-style: dashed; }
+.aip-input--sm, .aip-select--sm > select { --aip-_h: var(--aip-size-control-sm); font-size: var(--aip-font-size-sm); }
+.aip-input--lg, .aip-select--lg > select { --aip-_h: var(--aip-size-control-lg); padding-inline: var(--aip-space-4); }
+.aip-input--mono { font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-sm); font-variant-ligatures: none; }
+
+.aip-textarea {
+  height: auto; min-height: var(--aip-component-input-textarea-min-height);
+  padding-block: var(--aip-space-2); line-height: var(--aip-font-line-height-relaxed); resize: vertical;
+}
+
+/* Select — 래퍼(.aip-select) 안에 네이티브 select. 화살표는 currentColor 마스크라 다크에서도 토큰 색 */
+.aip-select { position: relative; display: block; min-width: 0; }
+.aip-select > select { appearance: none; padding-right: calc(var(--aip-component-input-padding-x) + var(--aip-size-icon-sm) + var(--aip-space-2)); cursor: pointer; }
+.aip-select::after {
+  content: ""; position: absolute; top: 50%; right: var(--aip-component-input-padding-x);
+  width: var(--aip-size-icon-sm); height: var(--aip-size-icon-sm); transform: translateY(-50%); pointer-events: none;
+  background: var(--aip-color-text-secondary);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* 앞에 아이콘이 붙는 인풋(검색·필터) */
+.aip-input-wrap { position: relative; display: block; min-width: 0; }
+.aip-input-wrap > .aip-icon { position: absolute; top: 50%; left: var(--aip-component-input-padding-x); transform: translateY(-50%); --aip-_icon: var(--aip-size-icon-sm); color: var(--aip-color-text-tertiary); pointer-events: none; }
+.aip-input-wrap > .aip-input { padding-left: calc(var(--aip-component-input-padding-x) + var(--aip-size-icon-sm) + var(--aip-component-input-affix-gap)); }
+
+/* 선택지 묶음 — fieldset + legend 가 정답(스크린 리더가 그룹 이름을 읽는다) */
+.aip-fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+/* legend 는 float 로 일반 블록처럼 흐르게 한다(테두리 위에 걸치는 기본 렌더링 방지). 글자는 :where 라 typography 클래스가 이긴다 */
+.aip-fieldset > legend { float: left; width: 100%; padding: 0; margin-bottom: var(--aip-space-3); color: var(--aip-color-text-primary); }
+:where(.aip-fieldset > legend) { font: var(--aip-font-weight-semibold) var(--aip-font-size-md) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-fieldset > legend + * { clear: both; }
+.aip-fieldset__help { margin: calc(-1 * var(--aip-space-2)) 0 var(--aip-space-3); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-choices { display: flex; flex-direction: column; gap: var(--aip-component-choice-group-gap); }
+.aip-choices--inline { flex-direction: row; flex-wrap: wrap; gap: var(--aip-space-3) var(--aip-space-6); }
+
+/* Checkbox · Radio · Switch — <label class="aip-checkbox"><input type="checkbox"> 라벨</label>. 라벨 전체가 클릭 영역 */
+.aip-checkbox, .aip-radio, .aip-switch {
+  position: relative; display: inline-flex; align-items: flex-start; gap: var(--aip-component-choice-label-gap);
+  min-height: var(--aip-size-control-xs);
+  color: var(--aip-color-text-primary); font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  cursor: pointer;
+}
+.aip-checkbox > input, .aip-radio > input, .aip-switch > input {
+  appearance: none; flex: none; margin: 0; position: relative;
+  /* 글자 첫 줄 가운데에 맞춘다: (줄 높이 − 상자) / 2 */
+  margin-top: calc((var(--aip-font-size-sm) * var(--aip-font-line-height-normal) - var(--aip-component-choice-size)) / 2);
+  width: var(--aip-component-choice-size); height: var(--aip-component-choice-size);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-choice-border);
+  background: var(--aip-color-surface-default); cursor: inherit;
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-checkbox > input { border-radius: var(--aip-component-choice-radius); }
+.aip-radio > input { border-radius: var(--aip-radius-full); }
+.aip-checkbox > input::before {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 70%; height: 70%;
+  background: var(--aip-component-choice-mark);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0); transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-checkbox > input:indeterminate::before { clip-path: inset(40% 0); }
+.aip-radio > input::before {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 45%; height: 45%; border-radius: var(--aip-radius-full);
+  background: var(--aip-component-choice-mark); transform: scale(0); transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+:is(.aip-checkbox, .aip-radio) > input:is(:checked, :indeterminate) { background: var(--aip-component-choice-bg-checked); border-color: var(--aip-component-choice-bg-checked); }
+:is(.aip-checkbox, .aip-radio) > input:is(:checked, :indeterminate)::before { transform: scale(1); }
+:is(.aip-checkbox, .aip-radio, .aip-switch) > input:focus-visible { outline: var(--aip-focus-ring-width) solid var(--aip-color-interactive-focus-ring); outline-offset: var(--aip-focus-ring-offset); }
+:is(.aip-checkbox, .aip-radio, .aip-switch):has(> input:disabled) { color: var(--aip-color-text-disabled); cursor: not-allowed; }
+:is(.aip-checkbox, .aip-radio, .aip-switch) > input:disabled { background: var(--aip-color-surface-disabled); border-color: var(--aip-color-action-disabled-border); }
+.aip-choice__desc { display: block; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); }
+
+/* Switch — 즉시 반영되는 설정(테마·자동 저장). 제출해야 반영되면 Checkbox */
+.aip-switch > input {
+  width: var(--aip-component-choice-switch-width); height: var(--aip-component-choice-switch-height);
+  margin-top: calc((var(--aip-font-size-sm) * var(--aip-font-line-height-normal) - var(--aip-component-choice-switch-height)) / 2);
+  border: 0; border-radius: var(--aip-radius-full); background: var(--aip-component-choice-switch-track);
+}
+.aip-switch > input::before {
+  content: ""; position: absolute; top: 50%; left: calc((var(--aip-component-choice-switch-height) - var(--aip-component-choice-switch-thumb)) / 2);
+  width: var(--aip-component-choice-switch-thumb); height: var(--aip-component-choice-switch-thumb);
+  border-radius: var(--aip-radius-full); background: var(--aip-component-choice-switch-thumb-color); box-shadow: var(--aip-shadow-xs);
+  transform: translateY(-50%); transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-switch > input:checked { background: var(--aip-component-choice-bg-checked); }
+.aip-switch > input:checked::before { transform: translate(calc(var(--aip-component-choice-switch-width) - var(--aip-component-choice-switch-height)), -50%); }
+
+/* Segmented — 2~4개의 짧은 상호 배타 옵션(언어 TS·Python, 보기 방식). 네이티브 라디오를 숨겨 키보드 동작을 그대로 쓴다 */
+.aip-segmented {
+  display: inline-flex; align-self: flex-start; width: fit-content; gap: var(--aip-space-0-5); padding: var(--aip-component-segmented-padding);
+  border-radius: var(--aip-component-segmented-radius); background: var(--aip-component-segmented-track);
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle);
+}
+.aip-segmented > label {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--aip-space-1-5);
+  height: calc(var(--aip-component-segmented-height) - 2 * var(--aip-component-segmented-padding)); padding-inline: var(--aip-space-3);
+  border-radius: calc(var(--aip-component-segmented-radius) - var(--aip-component-segmented-padding));
+  color: var(--aip-color-text-secondary); font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  cursor: pointer; white-space: nowrap;
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-segmented > label > input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; }
+.aip-segmented > label:hover { color: var(--aip-color-text-primary); }
+.aip-segmented > label:has(> input:checked) { background: var(--aip-component-segmented-thumb); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-xs); }
+.aip-segmented > label:has(> input:focus-visible) { outline: var(--aip-focus-ring-width) solid var(--aip-color-interactive-focus-ring); outline-offset: var(--aip-space-px); }
+
+/* ===== navigation.css ===== */
+/* navigation — Header(제품 공통 상단) · Nav · Breadcrumb · Pagination · Tabs.
+   네 제품(홈페이지·Docs·MakeAIP·Playground)이 같은 헤더를 쓴다. 높이·로고·검색 자리가 같아야 한 생태계로 읽힌다. */
+
+.aip-header {
+  position: sticky; top: 0; z-index: var(--aip-z-index-sticky);
+  background: var(--aip-component-header-bg);
+  border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-header-border);
+}
+.aip-header__inner {
+  display: flex; align-items: center; gap: var(--aip-component-header-gap);
+  height: var(--aip-component-header-height);
+}
+@media (min-width: 1024px) { .aip-header__inner { height: var(--aip-component-header-height-lg); } }
+.aip-header__brand {
+  display: inline-flex; align-items: center; gap: var(--aip-space-2); flex: none;
+  color: var(--aip-color-text-primary); text-decoration: none; border-radius: var(--aip-radius-sm);
+  font: var(--aip-font-weight-bold) var(--aip-font-size-lg) / 1 var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-tight);
+}
+.aip-header__brand > img, .aip-header__brand > svg { width: var(--aip-size-icon-lg); height: var(--aip-size-icon-lg); }
+/* 제품 이름: "AIP / Docs" — 같은 브랜드 아래의 어느 제품인지 */
+.aip-header__product { display: inline-flex; align-items: center; gap: var(--aip-space-2); color: var(--aip-color-text-secondary); font: var(--aip-font-weight-medium) var(--aip-font-size-md) / 1 var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-normal); }
+.aip-header__product::before { content: "/"; color: var(--aip-color-border-strong); font-family: var(--aip-font-family-mono); font-weight: var(--aip-font-weight-regular); }
+.aip-header__actions { display: flex; align-items: center; gap: var(--aip-space-2); margin-left: auto; }
+.aip-header__menu { display: inline-flex; }
+@media (min-width: 1024px) { .aip-header__menu { display: none; } }
+
+/* Nav — 헤더 안 주 내비. lg 미만에서는 숨기고 메뉴 버튼 → 드로어 */
+.aip-nav { display: none; align-items: center; gap: var(--aip-component-header-nav-gap); }
+@media (min-width: 1024px) { .aip-nav { display: flex; } }
+.aip-nav__link {
+  position: relative; display: inline-flex; align-items: center; height: var(--aip-size-control-sm); padding-inline: var(--aip-space-3);
+  border-radius: var(--aip-radius-sm); color: var(--aip-color-text-secondary); text-decoration: none;
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-nav__link:hover { color: var(--aip-color-text-primary); background: var(--aip-color-interactive-hover-overlay); }
+.aip-nav__link[aria-current] { color: var(--aip-color-text-primary); }
+/* 현재 위치: 헤더 바닥선에 붙는 2px 파랑 — 색만이 아니라 위치 표시로도 말한다 */
+.aip-nav__link[aria-current]::after {
+  content: ""; position: absolute; left: var(--aip-space-3); right: var(--aip-space-3);
+  bottom: calc((var(--aip-size-control-sm) - var(--aip-component-header-height-lg)) / 2);
+  height: var(--aip-border-width-strong); background: var(--aip-color-border-brand);
+}
+/* 드로어 안(세로) 내비 */
+.aip-nav--vertical { display: flex; flex-direction: column; align-items: stretch; gap: var(--aip-space-0-5); }
+.aip-nav--vertical .aip-nav__link { height: var(--aip-size-control-md); font-size: var(--aip-font-size-md); }
+.aip-nav--vertical .aip-nav__link[aria-current] { background: var(--aip-color-interactive-selected-bg); color: var(--aip-color-interactive-selected-text); }
+.aip-nav--vertical .aip-nav__link[aria-current]::after { display: none; }
+
+/* Breadcrumb — 경로처럼 읽힌다: Docs / Concepts / Intent */
+.aip-breadcrumb > ol { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-breadcrumb-gap); margin: 0; padding: 0; list-style: none; }
+.aip-breadcrumb li { display: inline-flex; align-items: center; gap: var(--aip-component-breadcrumb-gap); min-width: 0; color: var(--aip-color-text-secondary); font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-breadcrumb li + li::before { content: "/"; color: var(--aip-component-breadcrumb-separator); font-family: var(--aip-font-family-mono); }
+.aip-breadcrumb a { color: inherit; text-decoration: none; border-radius: var(--aip-radius-xs); }
+.aip-breadcrumb a:hover { color: var(--aip-color-text-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.aip-breadcrumb [aria-current="page"] { color: var(--aip-color-text-primary); font-weight: var(--aip-font-weight-medium); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* 모바일: 마지막 두 단계만 */
+@media (max-width: 767px) { .aip-breadcrumb li:not(:nth-last-child(-n + 2)) { display: none; } }
+
+/* Pagination — 검색 결과·Changelog 목록. 문서 페이지 사이 이동은 Pager(docs.css) */
+.aip-pagination > ul { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-component-pagination-gap); margin: 0; padding: 0; list-style: none; }
+.aip-pagination__item {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--aip-space-1);
+  min-width: var(--aip-component-pagination-item); height: var(--aip-component-pagination-item); padding-inline: var(--aip-space-2);
+  border-radius: var(--aip-radius-sm); color: var(--aip-color-text-secondary); text-decoration: none;
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans); font-variant-numeric: tabular-nums;
+}
+.aip-pagination__item:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-pagination__item[aria-current="page"] { background: var(--aip-color-interactive-selected-bg); color: var(--aip-color-interactive-selected-text); box-shadow: inset 0 0 0 var(--aip-border-width-hairline) var(--aip-color-interactive-selected-border); }
+.aip-pagination__item[aria-disabled="true"] { color: var(--aip-color-text-disabled); pointer-events: none; }
+.aip-pagination__gap { color: var(--aip-color-text-tertiary); padding-inline: var(--aip-space-1); }
+
+/* Tabs — role="tablist"/"tab"/"tabpanel". 같은 페이지 안 내용 전환. 페이지 이동이면 Nav. aip.js 가 화살표 키를 붙인다 */
+.aip-tablist {
+  display: flex; gap: var(--aip-component-tabs-gap);
+  border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-tabs-border);
+  overflow-x: auto; scrollbar-width: none;
+}
+.aip-tablist::-webkit-scrollbar { display: none; }
+.aip-tab {
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--aip-space-2);
+  height: var(--aip-component-tabs-height); padding: 0; margin: 0;
+  border: 0; background: none; cursor: pointer; color: var(--aip-component-tabs-text);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-tab:hover { color: var(--aip-component-tabs-text-active); }
+.aip-tab[aria-selected="true"] { color: var(--aip-component-tabs-text-active); }
+.aip-tab::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: calc(-1 * var(--aip-border-width-hairline));
+  height: var(--aip-component-tabs-indicator); background: var(--aip-component-tabs-indicator-color);
+  transform: scaleX(0); transition: transform var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-tab[aria-selected="true"]::after { transform: scaleX(1); }
+.aip-tab:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); border-radius: var(--aip-radius-sm); }
+.aip-tabpanel { padding-top: var(--aip-component-tabs-panel-gap); }
+.aip-tabpanel:focus-visible { outline-offset: var(--aip-space-1); border-radius: var(--aip-radius-sm); }
+
+/* ===== overlay.css ===== */
+/* overlay — Tooltip · Dropdown(Menu) · Dialog · Drawer. 떠 있는 것만 그림자를 갖는다.
+   Dialog·Drawer 는 네이티브 <dialog>(showModal)라 포커스 가두기·Esc·배경 inert 를 브라우저가 처리한다. 열고 닫는 연결은 aip.js. */
+
+/* Tooltip — 보충 설명만. 꼭 알아야 하는 정보를 툴팁에 숨기지 않는다. aip.js 가 [data-aip-tooltip] 에서 만든다 */
+.aip-tooltip {
+  position: fixed; z-index: var(--aip-z-index-tooltip);
+  max-width: var(--aip-component-tooltip-max-width);
+  padding: var(--aip-component-tooltip-padding-y) var(--aip-component-tooltip-padding-x);
+  border-radius: var(--aip-component-tooltip-radius);
+  background: var(--aip-component-tooltip-bg); color: var(--aip-component-tooltip-text);
+  font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  box-shadow: var(--aip-shadow-md); pointer-events: none;
+  opacity: 0; transform: translateY(var(--aip-motion-distance-sm));
+  transition: opacity var(--aip-motion-duration-fast) var(--aip-motion-easing-enter), transform var(--aip-motion-duration-fast) var(--aip-motion-easing-enter);
+}
+.aip-tooltip[data-open] { opacity: 1; transform: none; pointer-events: auto; }
+.aip-tooltip kbd { margin-left: var(--aip-space-2); background: transparent; color: inherit; border-color: color-mix(in srgb, currentColor 35%, transparent); box-shadow: none; }
+
+/* Dropdown — 트리거(aria-haspopup="menu" aria-expanded) + 목록(role="menu"). 셀렉트처럼 값을 고르는 건 네이티브 Select 가 먼저 */
+.aip-dropdown { position: relative; display: inline-block; }
+.aip-menu {
+  position: absolute; z-index: var(--aip-z-index-dropdown); top: calc(100% + var(--aip-component-menu-offset)); left: 0;
+  min-width: var(--aip-component-menu-min-width); max-height: var(--aip-component-menu-max-height); overflow-y: auto;
+  margin: 0; padding: var(--aip-component-menu-padding); list-style: none;
+  border: var(--aip-border-width-hairline) solid var(--aip-component-menu-border); border-radius: var(--aip-component-menu-radius);
+  background: var(--aip-component-menu-bg); box-shadow: var(--aip-shadow-md);
+  transform-origin: top left; animation: aip-menu-in var(--aip-motion-duration-normal) var(--aip-motion-easing-enter);
+}
+.aip-menu[hidden] { display: none; }
+.aip-menu--end { left: auto; right: 0; transform-origin: top right; }
+@keyframes aip-menu-in { from { opacity: 0; transform: translateY(calc(-1 * var(--aip-motion-distance-sm))); } }
+.aip-menu__item {
+  display: flex; align-items: center; gap: var(--aip-space-2); width: 100%;
+  min-height: var(--aip-component-menu-item-height); padding: 0 var(--aip-component-menu-item-padding-x);
+  border: 0; border-radius: var(--aip-component-menu-item-radius); background: none;
+  color: var(--aip-color-text-primary); text-align: left; text-decoration: none; cursor: pointer;
+  font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+}
+.aip-menu__item > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); color: var(--aip-color-text-secondary); }
+.aip-menu__item:hover, .aip-menu__item:focus-visible { background: var(--aip-color-interactive-hover-overlay); outline: none; }
+.aip-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--aip-focus-ring-width) var(--aip-color-interactive-focus-ring); }
+.aip-menu__item[aria-checked="true"], .aip-menu__item[aria-current] { color: var(--aip-color-interactive-selected-text); font-weight: var(--aip-font-weight-medium); }
+.aip-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--aip-color-text-brand); }
+.aip-menu__item--danger { color: var(--aip-color-text-danger); }
+.aip-menu__item[aria-disabled="true"] { color: var(--aip-color-text-disabled); cursor: not-allowed; }
+.aip-menu__meta { margin-left: auto; color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); }
+.aip-menu__label { padding: var(--aip-space-2) var(--aip-component-menu-item-padding-x) var(--aip-space-1); color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-menu__separator { height: var(--aip-border-width-hairline); margin: var(--aip-space-1) calc(-1 * var(--aip-component-menu-padding)); background: var(--aip-color-border-subtle); border: 0; }
+
+/* Dialog */
+.aip-dialog {
+  width: min(calc(100vw - 2 * var(--aip-size-layout-page-gutter)), var(--aip-_w, var(--aip-component-dialog-width-md)));
+  max-height: calc(100dvh - 2 * var(--aip-space-8));
+  padding: 0; border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-component-dialog-radius);
+  background: var(--aip-component-dialog-bg); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-lg);
+}
+.aip-dialog[open] { display: flex; flex-direction: column; animation: aip-dialog-in var(--aip-motion-duration-slow) var(--aip-motion-easing-enter); }
+.aip-dialog::backdrop { background: var(--aip-color-surface-overlay); }
+.aip-dialog--sm { --aip-_w: var(--aip-component-dialog-width-sm); }
+.aip-dialog--lg { --aip-_w: var(--aip-component-dialog-width-lg); }
+@keyframes aip-dialog-in { from { opacity: 0; transform: translateY(var(--aip-motion-distance-md)); } }
+.aip-dialog__header { display: flex; align-items: flex-start; gap: var(--aip-space-3); padding: var(--aip-component-dialog-padding) var(--aip-component-dialog-padding) 0; }
+.aip-dialog__title { flex: 1; margin: 0; font: var(--aip-font-weight-semibold) var(--aip-font-size-xl) / var(--aip-font-line-height-heading) var(--aip-font-family-sans); letter-spacing: var(--aip-font-letter-spacing-snug); }
+.aip-dialog__header > .aip-icon-button { margin: calc(-1 * var(--aip-space-1)) calc(-1 * var(--aip-space-2)) 0 0; }
+.aip-dialog__body { flex: 1; overflow-y: auto; padding: var(--aip-component-dialog-gap) var(--aip-component-dialog-padding); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-dialog__footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--aip-space-3); padding: 0 var(--aip-component-dialog-padding) var(--aip-component-dialog-padding); }
+@media (max-width: 639px) {
+  .aip-dialog { --aip-component-dialog-padding: var(--aip-component-dialog-padding-mobile); }
+  .aip-dialog__footer > .aip-button { flex: 1; }
+}
+
+/* Drawer — 모바일 내비·문서 사이드바. 왼쪽에서 들어오는 <dialog> */
+.aip-drawer {
+  position: fixed; inset: 0 auto 0 0; width: min(85vw, var(--aip-size-layout-drawer)); max-width: none; height: 100dvh; max-height: none; margin: 0;
+  padding: 0; border: 0; border-right: var(--aip-border-width-hairline) solid var(--aip-color-border-default);
+  background: var(--aip-color-surface-raised); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-lg);
+}
+.aip-drawer[open] { display: flex; flex-direction: column; animation: aip-drawer-in var(--aip-motion-duration-slow) var(--aip-motion-easing-enter); }
+.aip-drawer::backdrop { background: var(--aip-color-surface-overlay); }
+@keyframes aip-drawer-in { from { transform: translateX(-100%); } }
+.aip-drawer__header { display: flex; align-items: center; justify-content: space-between; gap: var(--aip-space-3); height: var(--aip-size-layout-header); padding-inline: var(--aip-space-4); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); flex: none; }
+.aip-drawer__body { flex: 1; overflow-y: auto; padding: var(--aip-space-4); overscroll-behavior: contain; }
+
+@media (prefers-reduced-motion: reduce) {
+  .aip-dialog[open], .aip-drawer[open], .aip-menu { animation: none; }
+}
+
+/* ===== content.css ===== */
+/* content — Badge · Version · Card · Callout · Empty state · Table wrap.
+   Callout 의 다섯 종류는 GFM alert 이름 그대로다(note·tip·important·warning·caution). Markdown 의 > [!NOTE] 와 같은 단어라 사람·AI 가 고민할 게 없다. */
+
+/* Badge — 각진 라벨(명세·버전 성격). 상태는 색 + 단어. 숫자 카운트만 둥글다 */
+.aip-badge {
+  --aip-_bg: var(--aip-color-status-neutral-bg); --aip-_fg: var(--aip-color-status-neutral-text); --aip-_border: var(--aip-color-status-neutral-border);
+  display: inline-flex; align-items: center; gap: var(--aip-component-badge-gap); vertical-align: middle;
+  height: var(--aip-component-badge-height); padding-inline: var(--aip-component-badge-padding-x);
+  border: var(--aip-border-width-hairline) solid var(--aip-_border); border-radius: var(--aip-component-badge-radius);
+  background: var(--aip-_bg); color: var(--aip-_fg);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans); white-space: nowrap;
+}
+.aip-badge > .aip-icon { --aip-_icon: var(--aip-size-icon-xs); }
+.aip-badge--info    { --aip-_bg: var(--aip-color-status-info-bg);    --aip-_fg: var(--aip-color-status-info-text);    --aip-_border: var(--aip-color-status-info-border); }
+.aip-badge--success { --aip-_bg: var(--aip-color-status-success-bg); --aip-_fg: var(--aip-color-status-success-text); --aip-_border: var(--aip-color-status-success-border); }
+.aip-badge--warning { --aip-_bg: var(--aip-color-status-warning-bg); --aip-_fg: var(--aip-color-status-warning-text); --aip-_border: var(--aip-color-status-warning-border); }
+.aip-badge--danger  { --aip-_bg: var(--aip-color-status-danger-bg);  --aip-_fg: var(--aip-color-status-danger-text);  --aip-_border: var(--aip-color-status-danger-border); }
+/* 성숙도 — API·기능·문서의 상태. Version 과 나란히 */
+.aip-badge--stable       { --aip-_bg: var(--aip-color-lifecycle-stable-bg);       --aip-_fg: var(--aip-color-lifecycle-stable-text);       --aip-_border: var(--aip-color-lifecycle-stable-border); }
+.aip-badge--beta         { --aip-_bg: var(--aip-color-lifecycle-beta-bg);         --aip-_fg: var(--aip-color-lifecycle-beta-text);         --aip-_border: var(--aip-color-lifecycle-beta-border); }
+.aip-badge--experimental { --aip-_bg: var(--aip-color-lifecycle-experimental-bg); --aip-_fg: var(--aip-color-lifecycle-experimental-text); --aip-_border: var(--aip-color-lifecycle-experimental-border); }
+.aip-badge--deprecated   { --aip-_bg: var(--aip-color-lifecycle-deprecated-bg);   --aip-_fg: var(--aip-color-lifecycle-deprecated-text);   --aip-_border: var(--aip-color-lifecycle-deprecated-border); }
+.aip-badge--count { min-width: var(--aip-component-badge-height); justify-content: center; border-radius: var(--aip-radius-full); font-variant-numeric: tabular-nums; }
+/* Version — 기계값이라 모노. 성숙도 배지 앞에 둔다: [v0.4.0] [beta] */
+.aip-version {
+  display: inline-flex; align-items: center; height: var(--aip-component-badge-height); padding-inline: var(--aip-component-badge-padding-x);
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-component-badge-radius);
+  color: var(--aip-color-text-secondary); background: var(--aip-color-surface-default);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); font-variant-ligatures: none; white-space: nowrap; vertical-align: middle;
+}
+
+/* Card — 테두리가 기본, 그림자는 클릭 가능한 카드 hover 에만. 카드 안에 카드 금지 */
+.aip-card {
+  display: flex; flex-direction: column; gap: var(--aip-component-card-gap); min-width: 0;
+  padding: var(--aip-component-card-padding);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-card-border); border-radius: var(--aip-component-card-radius);
+  background: var(--aip-component-card-bg); color: var(--aip-color-text-primary);
+}
+.aip-card > * { margin: 0; }
+.aip-card--lg { padding: var(--aip-component-card-padding-lg); }
+.aip-card__eyebrow { color: var(--aip-color-text-brand); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-card__title { font: var(--aip-font-weight-semibold) var(--aip-font-size-md) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); color: var(--aip-color-text-primary); }
+.aip-card__body { color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-card__footer { margin-top: auto; padding-top: var(--aip-space-1); }
+/* 클릭 가능한 카드: 카드 전체가 하나의 링크. 안에 다른 버튼을 두지 않는다 */
+a.aip-card, .aip-card--interactive {
+  text-decoration: none; cursor: pointer;
+  transition: border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), box-shadow var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+a.aip-card:hover, .aip-card--interactive:hover { border-color: var(--aip-color-border-strong); box-shadow: var(--aip-component-card-shadow-hover); }
+a.aip-card:hover .aip-card__title { color: var(--aip-color-text-link); }
+
+/* Callout — <aside class="aip-callout aip-callout--warning" role="note">. 아이콘 + 제목 단어가 색 없이도 종류를 말한다 */
+.aip-callout--note      { --aip-_callout-bg: var(--aip-color-status-info-bg);    --aip-_callout-bar: var(--aip-color-status-info-border);    --aip-_callout-icon: var(--aip-color-status-info-icon);    --aip-_callout-title: var(--aip-color-status-info-text); }
+.aip-callout--tip       { --aip-_callout-bg: var(--aip-color-status-success-bg); --aip-_callout-bar: var(--aip-color-status-success-border); --aip-_callout-icon: var(--aip-color-status-success-icon); --aip-_callout-title: var(--aip-color-status-success-text); }
+.aip-callout--important { --aip-_callout-bg: var(--aip-color-highlight-bg);      --aip-_callout-bar: var(--aip-color-highlight-border);      --aip-_callout-icon: var(--aip-color-highlight-icon);      --aip-_callout-title: var(--aip-color-highlight-text); }
+.aip-callout--warning   { --aip-_callout-bg: var(--aip-color-status-warning-bg); --aip-_callout-bar: var(--aip-color-status-warning-border); --aip-_callout-icon: var(--aip-color-status-warning-icon); --aip-_callout-title: var(--aip-color-status-warning-text); }
+.aip-callout--caution   { --aip-_callout-bg: var(--aip-color-status-danger-bg);  --aip-_callout-bar: var(--aip-color-status-danger-border);  --aip-_callout-icon: var(--aip-color-status-danger-icon);  --aip-_callout-title: var(--aip-color-status-danger-text); }
+.aip-callout {
+  display: flex; gap: var(--aip-component-callout-gap);
+  padding: var(--aip-component-callout-padding); border-radius: var(--aip-component-callout-radius);
+  background: var(--aip-_callout-bg, var(--aip-color-status-info-bg));
+  box-shadow: inset var(--aip-component-callout-bar) 0 0 var(--aip-_callout-bar, var(--aip-color-status-info-border));
+  color: var(--aip-color-text-primary); font-size: var(--aip-font-size-md); line-height: var(--aip-font-line-height-prose);
+}
+.aip-callout__icon { --aip-_icon: var(--aip-component-callout-icon); color: var(--aip-_callout-icon, var(--aip-color-status-info-icon)); margin-top: calc((1lh - var(--aip-component-callout-icon)) / 2); }
+.aip-callout__body { flex: 1; min-width: 0; }
+.aip-callout__body > * { margin: 0; }
+.aip-callout__body > * + * { margin-top: var(--aip-space-2); }
+.aip-callout__title { display: block; color: var(--aip-_callout-title, var(--aip-color-status-info-text)); font-weight: var(--aip-font-weight-semibold); }
+.aip-callout__title + * { margin-top: var(--aip-component-callout-title-gap); }
+.aip-callout code { background: color-mix(in srgb, var(--aip-color-surface-default) 65%, transparent); }
+
+/* Empty state — 데이터가 없을 때. 무엇이 없는지 + 다음 행동 하나 */
+.aip-empty {
+  display: flex; flex-direction: column; align-items: center; gap: var(--aip-space-3);
+  padding: var(--aip-space-12) var(--aip-space-6); text-align: center;
+  border: var(--aip-border-width-hairline) dashed var(--aip-color-border-default); border-radius: var(--aip-radius-lg);
+  color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed);
+}
+.aip-empty > .aip-icon { --aip-_icon: var(--aip-size-icon-xl); color: var(--aip-color-text-tertiary); }
+.aip-empty__title { margin: 0; color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-md) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-empty > p { margin: 0; max-width: var(--aip-size-container-sm); }
+
+/* Inline status — 버튼 옆·폼 아래의 한 줄 결과("Copied", "Generated 14 files"). role="status" 와 함께 */
+.aip-status { display: inline-flex; align-items: center; gap: var(--aip-space-1-5); font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); color: var(--aip-color-text-secondary); }
+.aip-status > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-status--success { color: var(--aip-color-text-success); }
+.aip-status--danger { color: var(--aip-color-text-danger); }
+.aip-status--warning { color: var(--aip-color-text-warning); }
+
+/* 표 래퍼 — 좁은 화면에서 표만 가로로 스크롤. role="region" aria-label tabindex="0" 을 함께 건다 */
+.aip-table-wrap { overflow-x: auto; border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); }
+.aip-table-wrap > table { margin: 0; min-width: 100%; }
+.aip-table-wrap th:first-child, .aip-table-wrap td:first-child { padding-left: var(--aip-space-4); }
+.aip-table-wrap th { background: var(--aip-color-surface-subtle); }
+.aip-table-wrap tr:last-child td { border-bottom: 0; }
+
+/* Table — 문서 밖(앱·결과 패널)의 표. 문서 본문 안의 맨 <table> 은 prose.css 가 같은 모양으로 받는다 */
+.aip-table { width: 100%; border-collapse: collapse; font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); color: var(--aip-color-text-primary); }
+.aip-table :is(th, td) { padding: var(--aip-space-2) var(--aip-space-3); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); text-align: left; vertical-align: top; }
+.aip-table th { font-weight: var(--aip-font-weight-medium); color: var(--aip-color-text-secondary); border-bottom-color: var(--aip-color-border-default); white-space: nowrap; }
+.aip-table td.aip-table__num, .aip-table th.aip-table__num { text-align: right; font-variant-numeric: tabular-nums; }
+.aip-table code { font-family: var(--aip-font-family-mono); font-size: var(--aip-component-inline-code-size); font-variant-ligatures: none; }
+
+/* ===== docs.css ===== */
+/* docs — 문서 제품의 셸과 문서 전용 컴포넌트.
+   Docs 셸 · Sidebar · TOC · Pager · Specification · Example · Parameter/Property · Signature · Search.
+   문서는 사람과 AI 에이전트가 같이 읽는다: 구조는 시맨틱 HTML(nav·ol·dl·figure·section)이 말하고, CSS 는 모양만 바꾼다(docs/07 §1). */
+
+/* ---------- Docs 셸: [사이드바 | 본문 | TOC]. 사이드바는 화면 왼쪽에 붙고 본문+TOC 는 남은 폭 가운데 ---------- */
+.aip-docs { display: grid; grid-template-columns: minmax(0, 1fr); min-height: calc(100dvh - var(--aip-size-layout-header-lg)); }
+.aip-docs__sidebar { display: none; }
+@media (min-width: 1024px) {
+  /* 사이드바 면·경계선은 셸 배경으로 그린다 — sticky 사이드바가 짧아도 열 전체가 이어진다 */
+  .aip-docs {
+    grid-template-columns: var(--aip-size-layout-sidebar) minmax(0, 1fr);
+    background: linear-gradient(to right, var(--aip-component-sidebar-bg) calc(var(--aip-size-layout-sidebar) - var(--aip-border-width-hairline)), var(--aip-component-sidebar-border) 0, var(--aip-component-sidebar-border) var(--aip-size-layout-sidebar), transparent 0);
+  }
+  .aip-docs__sidebar {
+    display: block; position: sticky; top: var(--aip-size-layout-header-lg); align-self: start;
+    height: calc(100dvh - var(--aip-size-layout-header-lg)); overflow-y: auto; overscroll-behavior: contain;
+    padding: var(--aip-space-6) var(--aip-component-sidebar-padding);
+    scrollbar-width: thin;
+  }
+}
+.aip-docs__body {
+  display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-size-layout-column-gap);
+  width: 100%; max-width: calc(var(--aip-size-container-prose) + 2 * var(--aip-size-layout-page-gutter));
+  margin-inline: auto; padding: var(--aip-space-6) var(--aip-size-layout-page-gutter) var(--aip-space-16);
+}
+@media (min-width: 768px) { .aip-docs__body { padding-inline: var(--aip-size-layout-page-gutter-md); max-width: calc(var(--aip-size-container-prose) + 2 * var(--aip-size-layout-page-gutter-md)); } }
+@media (min-width: 1024px) { .aip-docs__body { padding: var(--aip-space-10) var(--aip-size-layout-page-gutter-lg) var(--aip-space-16); max-width: calc(var(--aip-size-container-prose) + 2 * var(--aip-size-layout-page-gutter-lg)); } }
+@media (min-width: 1280px) {
+  .aip-docs__body { grid-template-columns: minmax(0, var(--aip-size-container-prose)) var(--aip-size-layout-toc); max-width: calc(var(--aip-size-container-prose) + var(--aip-size-layout-column-gap) + var(--aip-size-layout-toc) + 2 * var(--aip-size-layout-page-gutter-lg)); }
+}
+.aip-docs__main { min-width: 0; }
+.aip-docs__toc { display: none; }
+@media (min-width: 1280px) {
+  .aip-docs__toc { display: block; position: sticky; top: calc(var(--aip-size-layout-header-lg) + var(--aip-space-10)); align-self: start; max-height: calc(100dvh - var(--aip-size-layout-header-lg) - var(--aip-space-16)); overflow-y: auto; }
+  .aip-toc-disclosure { display: none; }
+}
+/* 문서 머리: breadcrumb → 제목 → lead → 메타(버전·성숙도·편집 링크) */
+.aip-docs__head { display: flex; flex-direction: column; gap: var(--aip-space-3); margin-bottom: var(--aip-space-8); padding-bottom: var(--aip-space-6); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-docs__head > * { margin: 0; }
+.aip-docs__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-space-2) var(--aip-space-4); color: var(--aip-color-text-tertiary); font-size: var(--aip-font-size-sm); }
+/* 모바일 문서 바: 메뉴 버튼 + 현재 위치. lg 이상에서는 사이드바가 대신한다 */
+.aip-docs__mobilebar { display: flex; align-items: center; gap: var(--aip-space-2); min-height: var(--aip-size-control-lg); padding-inline: var(--aip-size-layout-page-gutter); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-default); background: var(--aip-color-surface-subtle); position: sticky; top: var(--aip-size-layout-header); z-index: var(--aip-z-index-raised); }
+@media (min-width: 768px) { .aip-docs__mobilebar { padding-inline: var(--aip-size-layout-page-gutter-md); } }
+@media (min-width: 1024px) { .aip-docs__mobilebar { display: none; } }
+
+/* ---------- Sidebar ---------- */
+.aip-sidebar { display: flex; flex-direction: column; gap: var(--aip-component-sidebar-group-gap); font-family: var(--aip-font-family-sans); }
+.aip-sidebar ul { margin: 0; padding: 0; list-style: none; }
+.aip-sidebar__title { margin: 0 0 var(--aip-space-2); padding-inline: var(--aip-component-sidebar-item-padding-x); color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-sidebar__link {
+  position: relative; display: flex; align-items: center; gap: var(--aip-space-2);
+  min-height: var(--aip-component-sidebar-item-height); padding: var(--aip-space-1) var(--aip-component-sidebar-item-padding-x);
+  border-radius: var(--aip-component-sidebar-item-radius);
+  color: var(--aip-color-text-secondary); text-decoration: none; cursor: pointer;
+  font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-regular); line-height: var(--aip-font-line-height-normal);
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-sidebar__link:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-sidebar__link[aria-current="page"] { background: var(--aip-component-sidebar-item-active-bg); color: var(--aip-component-sidebar-item-active-text); font-weight: var(--aip-font-weight-medium); }
+.aip-sidebar__link > .aip-badge { margin-left: auto; }
+/* 접히는 하위 묶음: <details><summary class="aip-sidebar__link"> */
+.aip-sidebar details > summary { list-style: none; }
+.aip-sidebar details > summary::-webkit-details-marker { display: none; }
+.aip-sidebar details > summary::after {
+  content: ""; margin-left: auto; width: var(--aip-size-icon-sm); height: var(--aip-size-icon-sm); flex: none; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  transition: transform var(--aip-motion-duration-normal) var(--aip-motion-easing-standard);
+}
+.aip-sidebar details[open] > summary::after { transform: rotate(90deg); }
+.aip-sidebar details > ul { margin: var(--aip-space-0-5) 0 var(--aip-space-1) var(--aip-component-sidebar-item-padding-x); padding-left: calc(var(--aip-component-sidebar-item-padding-x) - var(--aip-border-width-hairline)); border-left: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+
+/* ---------- TOC (On this page) ---------- */
+.aip-toc { font-family: var(--aip-font-family-sans); }
+.aip-toc__title { margin: 0 0 var(--aip-space-3); color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-toc ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--aip-component-toc-gap); border-left: var(--aip-border-width-hairline) solid var(--aip-component-toc-rail); }
+.aip-toc__link {
+  position: relative; display: block; padding: var(--aip-space-1) 0 var(--aip-space-1) var(--aip-space-3);
+  color: var(--aip-component-toc-text); text-decoration: none; font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-normal);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-toc__link[data-level="3"] { padding-left: calc(var(--aip-space-3) + var(--aip-component-toc-indent)); }
+.aip-toc__link:hover { color: var(--aip-color-text-primary); }
+.aip-toc__link[aria-current="true"] { color: var(--aip-component-toc-text-active); font-weight: var(--aip-font-weight-medium); }
+.aip-toc__link[aria-current="true"]::before { content: ""; position: absolute; left: calc(-1 * (var(--aip-border-width-hairline) + (var(--aip-border-width-accent) - var(--aip-border-width-hairline)) / 2)); top: var(--aip-space-1); bottom: var(--aip-space-1); width: var(--aip-border-width-accent); border-radius: var(--aip-radius-full); background: var(--aip-component-toc-marker); }
+.aip-toc__link:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); border-radius: var(--aip-radius-sm); }
+/* xl 미만: 본문 위 접힘 목록 */
+.aip-toc-disclosure { margin-bottom: var(--aip-space-6); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); }
+.aip-toc-disclosure > summary { display: flex; align-items: center; gap: var(--aip-space-2); min-height: var(--aip-size-control-md); padding-inline: var(--aip-space-4); cursor: pointer; color: var(--aip-color-text-primary); font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans); list-style: none; }
+.aip-toc-disclosure > summary::-webkit-details-marker { display: none; }
+.aip-toc-disclosure > summary::after { content: "+"; margin-left: auto; font-family: var(--aip-font-family-mono); color: var(--aip-color-text-tertiary); }
+.aip-toc-disclosure[open] > summary::after { content: "−"; }
+.aip-toc-disclosure > .aip-toc { padding: 0 var(--aip-space-4) var(--aip-space-4); }
+.aip-toc-disclosure .aip-toc__title { display: none; }
+
+/* ---------- Pager (Previous / Next) ---------- */
+.aip-pager { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-component-pager-gap); margin-top: var(--aip-space-16); }
+@media (min-width: 640px) { .aip-pager { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.aip-pager__link {
+  display: flex; flex-direction: column; gap: var(--aip-space-1); padding: var(--aip-component-pager-padding);
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-component-pager-radius);
+  color: var(--aip-color-text-primary); text-decoration: none;
+  transition: border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-pager__link:hover { border-color: var(--aip-color-border-brand); }
+.aip-pager__link--next { grid-column: -2; text-align: right; }
+.aip-pager__dir { color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-pager__title { color: var(--aip-color-text-link); font-weight: var(--aip-font-weight-medium); }
+
+/* ---------- Specification block ---------- */
+.aip-spec {
+  border: var(--aip-border-width-hairline) solid var(--aip-component-spec-border); border-radius: var(--aip-component-spec-radius);
+  background: var(--aip-component-spec-bg); overflow: hidden;
+  box-shadow: inset 0 var(--aip-border-width-strong) 0 var(--aip-component-spec-rule);
+}
+.aip-spec__header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-space-2) var(--aip-space-3);
+  padding: var(--aip-space-3) var(--aip-component-spec-padding); padding-top: calc(var(--aip-space-3) + var(--aip-border-width-strong));
+  background: var(--aip-component-spec-header-bg); border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-spec-border);
+}
+.aip-spec__kind { color: var(--aip-color-text-brand); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-spec__title { margin: 0; color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-md) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-spec__id { margin-left: auto; color: var(--aip-color-text-secondary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); font-variant-ligatures: none; }
+.aip-spec__fields { margin: 0; }
+.aip-spec__field { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-1); padding: var(--aip-component-spec-row-gap) var(--aip-component-spec-padding); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+.aip-spec__field:last-child { border-bottom: 0; }
+@media (min-width: 640px) { .aip-spec__field { grid-template-columns: minmax(0, 1fr) minmax(0, 2.5fr); gap: var(--aip-space-4); } }
+.aip-spec__field > dt { color: var(--aip-color-text-primary); font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-relaxed) var(--aip-font-family-mono); font-variant-ligatures: none; overflow-wrap: anywhere; }
+.aip-spec__field > dd { margin: 0; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-spec__body { padding: var(--aip-component-spec-padding); font-size: var(--aip-font-size-md); line-height: var(--aip-font-line-height-prose); }
+.aip-spec__body > * { margin: 0; }
+.aip-spec__body > * + * { margin-top: var(--aip-space-3); }
+.aip-spec__fields + .aip-spec__body { border-top: var(--aip-border-width-hairline) solid var(--aip-component-spec-border); }
+/* RFC 2119 규범 단어(MUST·SHOULD·MAY). 색이 아니라 글꼴로 구분한다 */
+.aip-rfc { font-family: var(--aip-font-family-mono); font-size: 0.8125em; font-weight: var(--aip-font-weight-semibold); letter-spacing: var(--aip-font-letter-spacing-wide); color: var(--aip-color-text-primary); }
+
+/* ---------- Example block ---------- */
+.aip-example {
+  margin: 0; border: var(--aip-border-width-hairline) solid var(--aip-component-example-border); border-radius: var(--aip-component-example-radius); overflow: hidden;
+  box-shadow: inset var(--aip-component-example-bar) 0 0 var(--aip-component-example-bar-color);
+}
+.aip-example__label {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--aip-space-1) var(--aip-space-3);
+  padding: var(--aip-space-2) var(--aip-component-example-padding);
+  padding-left: calc(var(--aip-component-example-padding) + var(--aip-component-example-bar));
+  background: var(--aip-component-example-label-bg); color: var(--aip-component-example-label-text);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans);
+  border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-example-border);
+}
+.aip-example__tag { font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-example__body { padding: var(--aip-component-example-padding); padding-left: calc(var(--aip-component-example-padding) + var(--aip-component-example-bar)); }
+.aip-example__body > * { margin: 0; }
+.aip-example__body > * + * { margin-top: var(--aip-space-3); }
+.aip-example__result { padding: var(--aip-component-example-padding); padding-left: calc(var(--aip-component-example-padding) + var(--aip-component-example-bar)); border-top: var(--aip-border-width-hairline) dashed var(--aip-component-example-border); background: var(--aip-color-surface-subtle); }
+.aip-example__result > * { margin: 0; }
+.aip-example__result > * + * { margin-top: var(--aip-space-2); }
+.aip-example__result-label { color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+
+/* ---------- Parameter / Property rows ---------- */
+.aip-params { margin: 0; border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-param { padding-block: var(--aip-component-param-padding-y); border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-param-divider); }
+.aip-param__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--aip-space-1) var(--aip-component-param-gap); scroll-margin-top: var(--aip-size-layout-anchor-offset); }
+.aip-param__name { color: var(--aip-component-param-name); font: var(--aip-font-weight-semibold) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); font-variant-ligatures: none; overflow-wrap: anywhere; }
+.aip-param__type { color: var(--aip-component-param-type); font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); font-variant-ligatures: none; }
+.aip-param__required { color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-param__optional { color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-param__head > .aip-badge { align-self: center; }
+.aip-param__desc { margin: var(--aip-component-param-desc-gap) 0 0; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-param__desc > * { margin: 0; }
+.aip-param__desc > * + * { margin-top: var(--aip-space-2); }
+.aip-param__default { color: var(--aip-color-text-tertiary); font-size: var(--aip-font-size-xs); }
+.aip-param__desc code { font-family: var(--aip-font-family-mono); font-size: var(--aip-component-inline-code-size); padding: 0.1em var(--aip-component-inline-code-padding-x); border-radius: var(--aip-component-inline-code-radius); background: var(--aip-component-inline-code-bg); color: var(--aip-component-inline-code-text); }
+/* 하위 속성: 접힌 상자 안의 같은 목록 */
+.aip-params-nested { margin-top: var(--aip-space-3); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-md); }
+.aip-params-nested > summary { display: flex; align-items: center; gap: var(--aip-space-2); min-height: var(--aip-size-control-sm); padding-inline: var(--aip-space-3); cursor: pointer; color: var(--aip-color-text-secondary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans); list-style: none; }
+.aip-params-nested > summary::-webkit-details-marker { display: none; }
+.aip-params-nested > summary::before { content: "+"; font-family: var(--aip-font-family-mono); }
+.aip-params-nested[open] > summary::before { content: "−"; }
+.aip-params-nested > .aip-params { margin-inline: var(--aip-space-3); border-top-color: var(--aip-color-border-subtle); }
+.aip-params-nested > .aip-params > .aip-param:last-child { border-bottom: 0; }
+
+/* ---------- Signature (API / SDK Reference 항목의 선언) ---------- */
+.aip-signature {
+  display: block; margin: 0; padding: var(--aip-space-3) var(--aip-space-4);
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg);
+  background: var(--aip-color-surface-subtle); color: var(--aip-color-text-primary);
+  font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-relaxed) var(--aip-font-family-mono); font-variant-ligatures: none;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.aip-signature__name { font-weight: var(--aip-font-weight-semibold); }
+.aip-signature__muted { color: var(--aip-color-text-secondary); }
+.aip-ref-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-space-2); }
+.aip-ref-head > :is(h3, h4) { margin: 0; }
+.aip-since { color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); }
+
+/* ---------- Search ---------- */
+.aip-search-trigger {
+  display: inline-flex; align-items: center; gap: var(--aip-space-2);
+  width: var(--aip-component-search-trigger-width); height: var(--aip-size-control-sm); padding: 0 var(--aip-space-1-5) 0 var(--aip-space-3);
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-md);
+  background: var(--aip-color-surface-subtle); color: var(--aip-color-text-tertiary); cursor: pointer;
+  font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / 1 var(--aip-font-family-sans);
+  transition: border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-search-trigger:hover { border-color: var(--aip-color-border-strong); color: var(--aip-color-text-secondary); }
+.aip-search-trigger > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-search-trigger > kbd { margin-left: auto; }
+@media (max-width: 767px) {
+  .aip-search-trigger { width: var(--aip-size-control-sm); justify-content: center; padding: 0; background: transparent; border-color: transparent; color: var(--aip-color-text-primary); }
+  .aip-search-trigger > :not(.aip-icon) { display: none; }
+}
+.aip-search {
+  width: min(calc(100vw - 2 * var(--aip-size-layout-page-gutter)), var(--aip-component-search-dialog-width));
+  margin: var(--aip-component-search-dialog-top) auto auto; padding: 0;
+  border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-xl);
+  background: var(--aip-color-surface-raised); color: var(--aip-color-text-primary); box-shadow: var(--aip-shadow-lg); overflow: hidden;
+}
+.aip-search[open] { display: flex; flex-direction: column; animation: aip-dialog-in var(--aip-motion-duration-normal) var(--aip-motion-easing-enter); }
+.aip-search::backdrop { background: var(--aip-color-surface-overlay); }
+.aip-search__field { display: flex; align-items: center; gap: var(--aip-space-3); padding-inline: var(--aip-space-4); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+.aip-search__field > .aip-icon { color: var(--aip-color-text-tertiary); }
+.aip-search__input { flex: 1; min-width: 0; height: var(--aip-size-control-lg); border: 0; background: none; color: var(--aip-color-text-primary); font: var(--aip-font-weight-regular) var(--aip-font-size-md) / 1 var(--aip-font-family-sans); }
+.aip-search__input:focus-visible { outline: none; }
+.aip-search__input::placeholder { color: var(--aip-color-text-placeholder); }
+.aip-search__results { max-height: var(--aip-component-search-max-height); overflow-y: auto; margin: 0; padding: var(--aip-space-2); list-style: none; }
+.aip-search__group { padding: var(--aip-space-2) var(--aip-space-2) var(--aip-space-1); color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-search__result { display: flex; flex-direction: column; justify-content: center; gap: var(--aip-space-0-5); min-height: var(--aip-component-search-result-height); padding: var(--aip-space-2) var(--aip-space-3); border-radius: var(--aip-radius-md); color: var(--aip-color-text-primary); text-decoration: none; cursor: pointer; }
+.aip-search__result[aria-selected="true"] { background: var(--aip-color-interactive-selected-bg); box-shadow: inset var(--aip-border-width-strong) 0 0 var(--aip-color-interactive-selected-border); }
+.aip-search__result[aria-selected="true"] .aip-search__title { color: var(--aip-color-interactive-selected-text); }
+.aip-search__title { font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-search__path { color: var(--aip-color-text-tertiary); font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); }
+.aip-search__result mark { background: var(--aip-color-highlight-mark); color: var(--aip-color-highlight-mark-text); border-radius: var(--aip-radius-xs); padding-inline: 0.1em; }
+.aip-search__empty { padding: var(--aip-space-8) var(--aip-space-4); text-align: center; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); }
+.aip-search__footer { display: flex; flex-wrap: wrap; gap: var(--aip-space-2) var(--aip-space-4); padding: var(--aip-space-2) var(--aip-space-4); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); background: var(--aip-color-surface-subtle); color: var(--aip-color-text-tertiary); font-size: var(--aip-font-size-xs); }
+.aip-search__footer > span { display: inline-flex; align-items: center; gap: var(--aip-space-1); }
+
+/* ===== code.css ===== */
+/* code — Code Block · Code Tabs · Copy button · Inline Code(UI 용).
+   코드 면은 두 테마 모두 Slate 다. 문서(종이)와 코드(slate)가 한눈에 갈린다.
+   복사는 '보이는 그대로' 가 아니라 '실행할 그대로' 를 복사한다 — 줄 번호·셸 프롬프트($)는 복사에서 빠진다(aip.js). */
+
+.aip-code {
+  --aip-_code-hover: color-mix(in srgb, var(--aip-color-code-text) 10%, transparent);
+  position: relative; margin: 0; min-width: 0;
+  border: var(--aip-border-width-hairline) solid var(--aip-component-code-block-border); border-radius: var(--aip-component-code-block-radius);
+  background: var(--aip-component-code-block-bg); color: var(--aip-color-code-text); overflow: hidden;
+}
+.aip-code__header {
+  display: flex; align-items: center; gap: var(--aip-space-2);
+  min-height: var(--aip-component-code-block-header-height); padding: 0 var(--aip-space-2) 0 var(--aip-component-code-block-padding-x);
+  background: var(--aip-component-code-block-header-bg); border-bottom: var(--aip-border-width-hairline) solid var(--aip-component-code-block-border);
+}
+.aip-code__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--aip-color-code-text); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); font-variant-ligatures: none; }
+.aip-code__lang { color: var(--aip-color-code-text-muted); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); text-transform: lowercase; }
+.aip-code__header > :last-child { margin-left: auto; }
+.aip-code__pre {
+  margin: 0; padding: var(--aip-component-code-block-padding-y) var(--aip-component-code-block-padding-x);
+  overflow-x: auto; tab-size: 2;
+  font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); font-variant-ligatures: none;
+  color: var(--aip-color-code-text); background: transparent;
+}
+.aip-code__pre > code { display: block; min-width: fit-content; font: inherit; background: none; padding: 0; color: inherit; }
+.aip-code__pre:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); }
+/* 헤더가 없을 때 복사 버튼은 오른쪽 위에 떠 있고, hover·포커스에만 보인다(터치 기기에서는 항상) */
+.aip-code > .aip-copy { position: absolute; top: var(--aip-space-2); right: var(--aip-space-2); z-index: var(--aip-z-index-raised); background: var(--aip-component-code-block-bg); opacity: 0; }
+.aip-code:hover > .aip-copy, .aip-code > .aip-copy:focus-visible, .aip-code > .aip-copy[data-copied] { opacity: 1; }
+@media (hover: none) { .aip-code > .aip-copy { opacity: 1; } }
+
+/* 줄 단위 표시: <span class="aip-code__line" data-highlight | data-diff="+"|"-">. 줄 번호는 pre[data-line-numbers] */
+.aip-code__line {
+  /* inline-block: 줄 사이의 실제 개행 문자가 줄바꿈을 맡는다(block 이면 빈 줄이 하나 더 생긴다). 배경은 코드 면 끝까지 */
+  display: inline-block; position: relative; box-sizing: border-box; min-width: calc(100% + 2 * var(--aip-component-code-block-padding-x));
+  margin-inline: calc(-1 * var(--aip-component-code-block-padding-x)); padding-inline: var(--aip-component-code-block-padding-x);
+}
+.aip-code__line[data-highlight] { background: var(--aip-color-code-line-highlight); box-shadow: inset var(--aip-border-width-accent) 0 0 var(--aip-color-code-line-highlight-marker); }
+.aip-code__line[data-diff="+"] { background: var(--aip-color-code-added-bg); }
+.aip-code__line[data-diff="-"] { background: var(--aip-color-code-removed-bg); }
+.aip-code__line[data-diff]::before { position: absolute; left: var(--aip-space-1); user-select: none; font-weight: var(--aip-font-weight-semibold); }
+.aip-code__line[data-diff="+"]::before { content: "+"; color: var(--aip-color-code-added-sign); }
+.aip-code__line[data-diff="-"]::before { content: "−"; color: var(--aip-color-code-removed-sign); }
+.aip-code__pre[data-line-numbers] { counter-reset: aip-line; padding-left: 0; }
+.aip-code__pre[data-line-numbers] .aip-code__line { margin-left: 0; min-width: calc(100% + var(--aip-component-code-block-padding-x)); padding-left: calc(var(--aip-component-code-block-line-number-width) + var(--aip-space-3)); counter-increment: aip-line; }
+.aip-code__pre[data-line-numbers] .aip-code__line::after {
+  content: counter(aip-line); position: absolute; left: 0; width: var(--aip-component-code-block-line-number-width); text-align: right;
+  color: var(--aip-color-code-line-number); user-select: none;
+}
+.aip-code__prompt { color: var(--aip-color-code-comment); user-select: none; }
+.aip-code__prompt::after { content: " "; }
+
+/* 접힘: 긴 코드는 max-height 에서 잘리고 아래에 '모두 보기' */
+.aip-code[data-collapsed] .aip-code__pre { max-height: var(--aip-component-code-block-max-height); overflow-y: hidden; }
+.aip-code__expand {
+  display: none; position: absolute; left: 0; right: 0; bottom: 0; justify-content: center; align-items: flex-end;
+  padding: var(--aip-space-10) 0 var(--aip-space-3);
+  background: linear-gradient(to bottom, transparent, var(--aip-component-code-block-bg) 70%);
+}
+.aip-code[data-collapsed] .aip-code__expand { display: flex; }
+.aip-code__expand > button { border: var(--aip-border-width-hairline) solid color-mix(in srgb, var(--aip-color-code-text) 25%, transparent); border-radius: var(--aip-radius-full); background: var(--aip-component-code-block-header-bg); color: var(--aip-color-code-text); height: var(--aip-size-control-xs); padding-inline: var(--aip-space-3); cursor: pointer; font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans); }
+
+/* Copy button — 코드 면 위의 고스트 버튼. 성공하면 1.6초간 '복사됨' + 체크(aria-live 로도 알린다) */
+.aip-copy {
+  display: inline-flex; align-items: center; gap: var(--aip-space-1-5); flex: none;
+  height: var(--aip-size-control-xs); padding-inline: var(--aip-space-2);
+  border: 0; border-radius: var(--aip-radius-sm); background: transparent; cursor: pointer;
+  color: var(--aip-color-code-text-muted); font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans);
+  transition: background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), opacity var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-copy:hover { background: var(--aip-_code-hover, var(--aip-color-interactive-hover-overlay)); color: var(--aip-color-code-text); }
+.aip-copy > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); }
+.aip-copy__done { display: none; }
+.aip-copy[data-copied] { color: var(--aip-color-code-added-sign); }
+.aip-copy[data-copied] .aip-copy__idle { display: none; }
+.aip-copy[data-copied] .aip-copy__done { display: inline-flex; }
+@media (pointer: coarse) { .aip-copy { position: relative; } .aip-copy::after { content: ""; position: absolute; inset: var(--aip-component-hit-area-inset); } }
+/* 코드 면 밖(밝은 면)에서 쓰는 복사 버튼 */
+.aip-copy--surface { color: var(--aip-color-text-secondary); }
+.aip-copy--surface:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-copy--surface[data-copied] { color: var(--aip-color-text-success); }
+
+/* Code Tabs — 같은 내용을 언어별로(TypeScript · Python). data-aip-sync 로 묶인 탭은 페이지 전체가 함께 바뀌고 선택이 기억된다 */
+.aip-code-tabs__list { display: flex; align-self: stretch; gap: var(--aip-space-1); min-width: 0; overflow-x: auto; scrollbar-width: none; margin-left: calc(-1 * var(--aip-space-2)); }
+.aip-code-tabs__list::-webkit-scrollbar { display: none; }
+.aip-code-tabs__tab {
+  position: relative; flex: none; display: inline-flex; align-items: center; padding-inline: var(--aip-space-2);
+  border: 0; background: none; cursor: pointer; color: var(--aip-color-code-text-muted);
+  font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / 1 var(--aip-font-family-sans);
+  transition: color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-code-tabs__tab:hover { color: var(--aip-color-code-text); }
+.aip-code-tabs__tab[aria-selected="true"] { color: var(--aip-color-code-text); }
+.aip-code-tabs__tab[aria-selected="true"]::after { content: ""; position: absolute; left: var(--aip-space-2); right: var(--aip-space-2); bottom: 0; height: var(--aip-border-width-strong); background: var(--aip-color-code-function); }
+.aip-code-tabs__tab:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); border-radius: var(--aip-radius-sm); }
+.aip-code-tabs [role="tabpanel"]:focus-visible { outline-offset: calc(-1 * var(--aip-focus-ring-width)); }
+.aip-code ::selection { background: var(--aip-color-code-selection); }
+
+/* ===== diagram.css ===== */
+/* diagram — Architecture Diagram Container · Flow(HTML 다이어그램) · SVG 역할 클래스 · Legend.
+   문법: 색 = 개념(data-role), 모양 = 종류, 선 = 흐름(data-edge). 같은 개념은 어느 그림에서도 같은 색이다(docs/12).
+   그림만으로 정보를 전하지 않는다 — 캡션 + 텍스트 설명(details)이 항상 함께 간다. */
+
+/* 역할 → 지역 변수. HTML 노드·SVG 도형·범례 견본이 같은 변수를 읽는다 */
+[data-role="intent"]     { --aip-_fill: var(--aip-color-diagram-intent-fill);     --aip-_stroke: var(--aip-color-diagram-intent-stroke);     --aip-_text: var(--aip-color-diagram-intent-text); }
+[data-role="runtime"]    { --aip-_fill: var(--aip-color-diagram-runtime-fill);    --aip-_stroke: var(--aip-color-diagram-runtime-stroke);    --aip-_text: var(--aip-color-diagram-runtime-text); }
+[data-role="execution"]  { --aip-_fill: var(--aip-color-diagram-execution-fill);  --aip-_stroke: var(--aip-color-diagram-execution-stroke);  --aip-_text: var(--aip-color-diagram-execution-text); }
+[data-role="permission"] { --aip-_fill: var(--aip-color-diagram-permission-fill); --aip-_stroke: var(--aip-color-diagram-permission-stroke); --aip-_text: var(--aip-color-diagram-permission-text); }
+[data-role="frontend"]   { --aip-_fill: var(--aip-color-diagram-frontend-fill);   --aip-_stroke: var(--aip-color-diagram-frontend-stroke);   --aip-_text: var(--aip-color-diagram-frontend-text); }
+[data-role="backend"]    { --aip-_fill: var(--aip-color-diagram-backend-fill);    --aip-_stroke: var(--aip-color-diagram-backend-stroke);    --aip-_text: var(--aip-color-diagram-backend-text); }
+[data-role="data"]       { --aip-_fill: var(--aip-color-diagram-data-fill);       --aip-_stroke: var(--aip-color-diagram-data-stroke);       --aip-_text: var(--aip-color-diagram-data-text); }
+[data-role="external"]   { --aip-_fill: var(--aip-color-diagram-external-fill);   --aip-_stroke: var(--aip-color-diagram-external-stroke);   --aip-_text: var(--aip-color-diagram-external-text); --aip-_dash: dashed; }
+[data-role="note"]       { --aip-_fill: var(--aip-color-diagram-note-fill);       --aip-_stroke: var(--aip-color-diagram-note-stroke);       --aip-_text: var(--aip-color-diagram-note-text); }
+[data-edge]              { --aip-_edge: var(--aip-color-diagram-edge-default); }
+[data-edge="muted"]      { --aip-_edge: var(--aip-color-diagram-edge-muted); }
+[data-edge="emphasis"]   { --aip-_edge: var(--aip-color-diagram-edge-emphasis); }
+[data-edge="allow"]      { --aip-_edge: var(--aip-color-diagram-edge-allow); }
+[data-edge="reject"]     { --aip-_edge: var(--aip-color-diagram-edge-reject); }
+
+/* 컨테이너 */
+.aip-diagram { margin: 0; min-width: 0; }
+.aip-diagram__canvas {
+  position: relative; overflow-x: auto; padding: var(--aip-component-diagram-padding);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-diagram-border); border-radius: var(--aip-component-diagram-radius);
+  background-color: var(--aip-component-diagram-bg);
+  background-image: radial-gradient(circle, var(--aip-color-diagram-grid) var(--aip-pattern-grid-dot), transparent calc(var(--aip-pattern-grid-dot) + var(--aip-space-px)));
+  background-size: var(--aip-pattern-grid-size) var(--aip-pattern-grid-size);
+  background-position: center;
+  font-family: var(--aip-font-family-sans);
+}
+.aip-diagram__canvas > svg { display: block; width: 100%; height: auto; min-width: var(--aip-_min, 0); margin-inline: auto; overflow: visible; }
+.aip-diagram__canvas:focus-visible { outline-offset: var(--aip-focus-ring-offset); }
+.aip-diagram__caption { margin-top: var(--aip-space-2); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-normal); }
+.aip-diagram__caption > b { color: var(--aip-color-text-primary); font-weight: var(--aip-font-weight-semibold); }
+.aip-diagram__legend { display: flex; flex-wrap: wrap; gap: var(--aip-space-2) var(--aip-component-diagram-legend-gap); margin: var(--aip-space-3) 0 0; padding: 0; list-style: none; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-xs); }
+.aip-diagram__legend > li { display: inline-flex; align-items: center; gap: var(--aip-space-1-5); }
+.aip-diagram__swatch { width: var(--aip-size-icon-sm); height: var(--aip-size-icon-xs); flex: none; border-radius: var(--aip-radius-xs); background: var(--aip-_fill); border: var(--aip-border-width-hairline) var(--aip-_dash, solid) var(--aip-_stroke); }
+.aip-diagram__swatch[data-edge] { height: var(--aip-border-width-strong); border: 0; border-radius: 0; background: var(--aip-_edge); }
+.aip-diagram__text { margin-top: var(--aip-space-3); color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-diagram__text > summary { cursor: pointer; color: var(--aip-color-text-link); font-weight: var(--aip-font-weight-medium); width: fit-content; border-radius: var(--aip-radius-xs); }
+.aip-diagram__text > :not(summary) { margin: var(--aip-space-2) 0 0; }
+
+/* SVG 안에서: <g data-role="runtime"><rect/><text/></g>, <path data-edge="reject"/>. 좌표·모양은 그림이, 색·선은 토큰이 */
+.aip-diagram svg [data-role] :is(rect, circle, ellipse, polygon, path:not([data-edge])) { fill: var(--aip-_fill); stroke: var(--aip-_stroke); stroke-width: var(--aip-component-diagram-node-stroke); }
+.aip-diagram svg [data-role="external"] :is(rect, circle, ellipse, polygon, path:not([data-edge])) { stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg [data-role] text { fill: var(--aip-_text); font-family: var(--aip-font-family-sans); font-size: var(--aip-font-size-sm); font-weight: var(--aip-font-weight-medium); }
+.aip-diagram svg [data-role] text.aip-svg-meta { font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); font-weight: var(--aip-font-weight-regular); }
+.aip-diagram svg [data-edge] { fill: none; stroke: var(--aip-_edge); stroke-width: var(--aip-component-diagram-edge-width); stroke-linecap: round; stroke-linejoin: round; }
+.aip-diagram svg [data-edge="emphasis"] { stroke-width: var(--aip-border-width-strong); }
+.aip-diagram svg [data-edge="muted"], .aip-diagram svg [data-edge="reject"] { stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg marker[data-edge] path { fill: var(--aip-_edge); stroke: none; }
+.aip-diagram svg .aip-svg-label { fill: var(--aip-color-diagram-edge-label); font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); }
+.aip-diagram svg .aip-svg-label-bg { fill: var(--aip-component-diagram-bg); }
+.aip-diagram svg .aip-svg-zone { fill: var(--aip-color-diagram-zone-bg); stroke: var(--aip-color-diagram-zone-border); stroke-width: var(--aip-component-diagram-node-stroke); stroke-dasharray: var(--aip-component-diagram-edge-dash); }
+.aip-diagram svg .aip-svg-zone-label { fill: var(--aip-color-text-brand); font-family: var(--aip-font-family-mono); font-size: var(--aip-font-size-xs); font-weight: var(--aip-font-weight-semibold); letter-spacing: var(--aip-font-letter-spacing-wide); }
+
+/* Flow — SVG 없이 HTML 로 그리는 한 줄 흐름. <ol class="aip-flow"><li class="aip-node" data-role> … 순서가 곧 의미라 목록이다 */
+.aip-flow { display: flex; flex-direction: column; align-items: stretch; gap: var(--aip-space-6); margin: 0; padding: 0; list-style: none; counter-reset: aip-flow; }
+@media (min-width: 768px) { .aip-flow { flex-direction: row; align-items: center; justify-content: center; gap: var(--aip-space-8); } }
+.aip-flow > li { position: relative; }
+.aip-flow > li + li::before {
+  content: var(--aip-_arrow, "↓"); position: absolute; left: 50%; top: calc(-1 * var(--aip-space-6)); width: var(--aip-space-6); height: var(--aip-space-6);
+  transform: translateX(-50%); display: grid; place-items: center;
+  color: var(--aip-_edge, var(--aip-color-diagram-edge-default)); font: var(--aip-font-weight-regular) var(--aip-font-size-md) / 1 var(--aip-font-family-mono);
+}
+@media (min-width: 768px) { .aip-flow > li + li::before { --aip-_arrow: "→"; left: calc(-1 * var(--aip-space-8)); top: 50%; width: var(--aip-space-8); transform: translateY(-50%); } }
+.aip-node {
+  display: flex; flex-direction: column; gap: var(--aip-space-0-5);
+  min-width: var(--aip-component-option-card-min-width); padding: var(--aip-component-diagram-node-padding-y) var(--aip-component-diagram-node-padding-x);
+  border: var(--aip-component-diagram-node-stroke) var(--aip-_dash, solid) var(--aip-_stroke, var(--aip-color-border-default)); border-radius: var(--aip-component-diagram-node-radius);
+  background: var(--aip-_fill, var(--aip-color-surface-default)); color: var(--aip-_text, var(--aip-color-text-primary));
+  font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); text-align: center;
+}
+.aip-node__kind { font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; opacity: var(--aip-opacity-muted); }
+.aip-node[data-role="data"] { border-radius: var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) / var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl); }
+
+/* ===== app.css ===== */
+/* app — MakeAIP(프로젝트 생성기)와 Playground 의 셸·조각.
+   별도 디자인 언어가 아니다. 같은 토큰·컴포넌트에 Brand Blue 의 비중(선택된 옵션 면·생성 바)만 조금 올린다(docs/13 §3). */
+
+/* ---------- MakeAIP: [설정 | 미리보기]. lg 미만은 한 열 + 하단 고정 생성 바 ---------- */
+.aip-configurator { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-8); padding-block: var(--aip-space-8) var(--aip-space-24); }
+@media (min-width: 1024px) {
+  .aip-configurator { grid-template-columns: minmax(0, var(--aip-size-layout-config)) minmax(0, 1fr); gap: var(--aip-space-12); padding-bottom: var(--aip-space-16); }
+  .aip-configurator__preview { position: sticky; top: calc(var(--aip-size-layout-header-lg) + var(--aip-space-6)); align-self: start; }
+}
+.aip-configurator__form { display: flex; flex-direction: column; min-width: 0; }
+.aip-config-section { padding-block: var(--aip-space-6); box-shadow: inset 0 var(--aip-border-width-hairline) 0 var(--aip-color-border-default); }
+.aip-config-section:first-child { padding-top: 0; box-shadow: none; }
+.aip-configurator__preview { display: flex; flex-direction: column; gap: var(--aip-space-4); min-width: 0; }
+
+/* Option card — 라디오/체크박스를 감싼 큰 선택지. <label class="aip-option"><input type="radio" …> 내용</label>. 상태는 input 이 정한다 */
+.aip-option {
+  position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: var(--aip-space-1) var(--aip-space-3);
+  padding: var(--aip-component-option-card-padding);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-option-card-border); border-radius: var(--aip-component-option-card-radius);
+  background: var(--aip-color-surface-default); cursor: pointer;
+  transition: border-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), background-color var(--aip-motion-duration-fast) var(--aip-motion-easing-standard), box-shadow var(--aip-motion-duration-fast) var(--aip-motion-easing-standard);
+}
+.aip-option:hover { border-color: var(--aip-component-option-card-border-hover); }
+.aip-option:has(> input:checked) { border-color: var(--aip-component-option-card-border-selected); background: var(--aip-component-option-card-bg-selected); box-shadow: inset 0 0 0 var(--aip-border-width-hairline) var(--aip-component-option-card-border-selected); }
+.aip-option:has(> input:focus-visible) { outline: var(--aip-focus-ring-width) solid var(--aip-color-interactive-focus-ring); outline-offset: var(--aip-focus-ring-offset); }
+.aip-option:has(> input:disabled) { cursor: not-allowed; background: var(--aip-color-surface-subtle); }
+.aip-option:has(> input:disabled) > :not(input) { opacity: var(--aip-opacity-disabled); }
+/* 입력 표시는 오른쪽 위. 모양은 Checkbox/Radio 와 같다 */
+.aip-option > input {
+  grid-column: 2; grid-row: 1; appearance: none; margin: 0; position: relative;
+  width: var(--aip-component-choice-size); height: var(--aip-component-choice-size);
+  border: var(--aip-border-width-hairline) solid var(--aip-component-choice-border); background: var(--aip-color-surface-default); cursor: inherit;
+}
+.aip-option > input[type="radio"] { border-radius: var(--aip-radius-full); }
+.aip-option > input[type="checkbox"] { border-radius: var(--aip-component-choice-radius); }
+.aip-option > input:checked { background: var(--aip-component-choice-bg-checked); border-color: var(--aip-component-choice-bg-checked); }
+.aip-option > input[type="radio"]:checked::before { content: ""; position: absolute; inset: 0; margin: auto; width: 45%; height: 45%; border-radius: var(--aip-radius-full); background: var(--aip-component-choice-mark); }
+.aip-option > input[type="checkbox"]:checked::before { content: ""; position: absolute; inset: 0; margin: auto; width: 70%; height: 70%; background: var(--aip-component-choice-mark); clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); }
+.aip-option > input:focus-visible { outline: none; }
+.aip-option__head { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: var(--aip-space-2); min-width: 0; }
+.aip-option__icon { --aip-_icon: var(--aip-size-icon-md); color: var(--aip-color-text-secondary); }
+.aip-option:has(> input:checked) .aip-option__icon { color: var(--aip-color-text-brand); }
+.aip-option__title { color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-option__desc { grid-column: 1 / -1; margin: 0; color: var(--aip-color-text-secondary); font-size: var(--aip-font-size-sm); line-height: var(--aip-font-line-height-relaxed); }
+.aip-option__meta { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--aip-space-2); margin-top: var(--aip-space-1); }
+.aip-option__meta > .aip-version { background: transparent; }
+
+/* File tree — 생성될 프로젝트 구조. 파일을 고르면 옆 코드 미리보기가 바뀐다(aria-current="true") */
+.aip-tree, .aip-tree ul { margin: 0; padding: 0; list-style: none; }
+.aip-tree ul { padding-left: var(--aip-size-layout-indent); margin-left: var(--aip-space-2); border-left: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+.aip-tree__item {
+  display: flex; align-items: center; gap: var(--aip-space-1-5); width: 100%; min-height: var(--aip-size-control-xs);
+  padding: var(--aip-space-0-5) var(--aip-space-2); border: 0; border-radius: var(--aip-radius-sm); background: none; cursor: pointer;
+  color: var(--aip-color-text-secondary); text-align: left;
+  font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); font-variant-ligatures: none;
+}
+.aip-tree__item > .aip-icon { --aip-_icon: var(--aip-size-icon-sm); color: var(--aip-color-text-tertiary); }
+.aip-tree__item:hover { background: var(--aip-color-interactive-hover-overlay); color: var(--aip-color-text-primary); }
+.aip-tree__item[aria-current="true"] { background: var(--aip-color-interactive-selected-bg); color: var(--aip-color-interactive-selected-text); font-weight: var(--aip-font-weight-medium); }
+.aip-tree__item--folder { cursor: default; color: var(--aip-color-text-primary); }
+.aip-tree__item--folder:hover { background: none; }
+.aip-tree__item mark { background: var(--aip-color-highlight-mark); color: var(--aip-color-highlight-mark-text); border-radius: var(--aip-radius-xs); padding-inline: 0.2em; }
+
+/* Action bar — 생성 요약 + Generate. lg 미만에서 화면 아래 고정 */
+.aip-actionbar {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--aip-space-3) var(--aip-space-4);
+  padding: var(--aip-space-4); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg);
+  background: var(--aip-color-surface-default);
+}
+.aip-actionbar__summary { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: var(--aip-space-0-5); }
+.aip-actionbar__title { color: var(--aip-color-text-primary); font: var(--aip-font-weight-semibold) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); }
+.aip-actionbar__detail { color: var(--aip-color-text-secondary); font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); overflow-wrap: anywhere; }
+@media (max-width: 1023px) {
+  .aip-actionbar--sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--aip-z-index-sticky); border-radius: 0; border-width: var(--aip-border-width-hairline) 0 0; padding: var(--aip-space-3) var(--aip-size-layout-page-gutter) calc(var(--aip-space-3) + env(safe-area-inset-bottom)); box-shadow: var(--aip-shadow-lg); }
+  .aip-actionbar--sticky .aip-actionbar__detail { display: none; }
+}
+
+/* ---------- Playground: [툴바] / [에디터 | 출력] / [상태 바] ---------- */
+.aip-workbench { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: calc(100dvh - var(--aip-size-layout-header)); min-height: calc(var(--aip-size-container-sm) - var(--aip-space-16)); }
+@media (min-width: 1024px) { .aip-workbench { height: calc(100dvh - var(--aip-size-layout-header-lg)); } }
+.aip-toolbar {
+  display: flex; align-items: center; gap: var(--aip-space-2); min-height: var(--aip-size-layout-toolbar);
+  padding-inline: var(--aip-size-layout-page-gutter); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-default);
+  background: var(--aip-color-surface-subtle); overflow-x: auto;
+}
+.aip-toolbar__spacer { flex: 1; }
+.aip-toolbar__divider { width: var(--aip-border-width-hairline); align-self: stretch; margin-block: var(--aip-space-3); background: var(--aip-color-border-default); }
+.aip-panes { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 0; }
+@media (min-width: 1024px) { .aip-panes { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.aip-pane { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+.aip-pane + .aip-pane { border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+@media (min-width: 1024px) { .aip-pane + .aip-pane { border-top: 0; border-left: var(--aip-border-width-hairline) solid var(--aip-color-border-default); } }
+.aip-pane__header { display: flex; align-items: center; gap: var(--aip-space-2); min-height: var(--aip-size-control-md); padding-inline: var(--aip-space-4); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); }
+.aip-pane__title { color: var(--aip-color-text-secondary); font: var(--aip-font-weight-semibold) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; }
+.aip-pane__body { flex: 1; min-height: 0; overflow: auto; }
+.aip-pane__body--code { background: var(--aip-color-code-bg); color: var(--aip-color-code-text); }
+.aip-pane__body--code .aip-code__pre { min-height: 100%; }
+.aip-pane__body--padded { padding: var(--aip-space-4); }
+/* 에디터(textarea 또는 에디터 라이브러리의 루트)는 코드 면 위의 모노 */
+.aip-editor { display: block; width: 100%; height: 100%; min-height: calc(var(--aip-size-control-lg) * 4); margin: 0; padding: var(--aip-component-code-block-padding-y) var(--aip-component-code-block-padding-x); border: 0; resize: none; background: var(--aip-color-code-bg); color: var(--aip-color-code-text); caret-color: var(--aip-color-code-function); font: var(--aip-font-weight-regular) var(--aip-font-size-sm) / var(--aip-font-line-height-relaxed) var(--aip-font-family-mono); font-variant-ligatures: none; tab-size: 2; }
+.aip-editor:focus-visible { outline: var(--aip-focus-ring-width) solid var(--aip-color-interactive-focus-ring); outline-offset: calc(-1 * var(--aip-focus-ring-width)); }
+.aip-editor::selection { background: var(--aip-color-code-selection); }
+.aip-statusbar {
+  display: flex; align-items: center; gap: var(--aip-space-4); min-height: var(--aip-size-control-xs); padding-inline: var(--aip-size-layout-page-gutter);
+  border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); background: var(--aip-color-surface-subtle);
+  color: var(--aip-color-text-secondary); font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / 1 var(--aip-font-family-mono); overflow-x: auto; white-space: nowrap;
+}
+.aip-statusbar > :last-child { margin-left: auto; }
+/* 실행 결과 줄: 상태는 아이콘 + 단어 + 색 */
+.aip-run-log { margin: 0; padding: 0; list-style: none; font: var(--aip-font-weight-regular) var(--aip-font-size-xs) / var(--aip-font-line-height-relaxed) var(--aip-font-family-mono); }
+.aip-run-log > li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--aip-space-3); padding: var(--aip-space-1-5) var(--aip-space-4); border-bottom: var(--aip-border-width-hairline) solid var(--aip-color-border-subtle); color: var(--aip-color-text-secondary); }
+.aip-run-log__time { color: var(--aip-color-text-tertiary); font-variant-numeric: tabular-nums; }
+.aip-run-log [data-level="ok"] { color: var(--aip-color-text-success); }
+.aip-run-log [data-level="denied"] { color: var(--aip-color-text-danger); }
+.aip-run-log [data-level="warn"] { color: var(--aip-color-text-warning); }
+.aip-pane__header > .aip-tablist { align-self: stretch; border-bottom: 0; }
+
+/* ===== utilities.css ===== */
+/* utilities — 마지막에 묶여 같은 명시도의 컴포넌트 규칙을 이긴다. 여기 있는 것 말고는 유틸을 만들지 않는다. */
+
+/* 글자색 유틸 — typography 클래스는 색을 정하지 않으므로 짝지어 쓴다(예: .aip-doc-lead + .aip-text-secondary) */
+.aip-text-primary { color: var(--aip-color-text-primary); }
+.aip-text-secondary { color: var(--aip-color-text-secondary); }
+.aip-text-tertiary { color: var(--aip-color-text-tertiary); }
+.aip-text-brand { color: var(--aip-color-text-brand); }
+
+/* 화면 폭에 따라 숨기기 — 두 단계만. 내용을 숨기기 전에 접기·드로어를 먼저 검토한다 */
+@media (max-width: 767px) { .aip-hide-below-md { display: none; } }
+@media (max-width: 1023px) { .aip-hide-below-lg { display: none; } }
+
+/* ===== 생성: 구문 강조(.aip-code) ===== */
+/* 구문 강조 — 외부 테마 CSS 없이 이 매핑만 쓴다. Prism(.token)·highlight.js(.hljs-)·Shiki(css-variables 테마) */
+.aip-code {
+  --shiki-foreground: var(--aip-color-code-text); --shiki-background: var(--aip-color-code-bg);
+  --shiki-token-keyword: var(--aip-color-code-keyword); --shiki-token-string: var(--aip-color-code-string); --shiki-token-string-expression: var(--aip-color-code-string);
+  --shiki-token-function: var(--aip-color-code-function); --shiki-token-constant: var(--aip-color-code-number); --shiki-token-comment: var(--aip-color-code-comment);
+  --shiki-token-parameter: var(--aip-color-code-text); --shiki-token-punctuation: var(--aip-color-code-punctuation); --shiki-token-link: var(--aip-color-code-keyword);
+}
+.aip-code :is(.token.comment, .token.prolog, .hljs-comment) { color: var(--aip-color-code-comment); font-style: italic; }
+.aip-code :is(.token.keyword, .token.atrule, .token.important, .hljs-keyword, .hljs-built_in, .hljs-literal) { color: var(--aip-color-code-keyword); }
+.aip-code :is(.token.string, .token.char, .token.attr-value, .token.template-string, .hljs-string, .hljs-attr) { color: var(--aip-color-code-string); }
+.aip-code :is(.token.function, .hljs-title) { color: var(--aip-color-code-function); }
+.aip-code :is(.token.number, .token.boolean, .token.constant, .hljs-number) { color: var(--aip-color-code-number); }
+.aip-code :is(.token.class-name, .token.builtin, .hljs-type, .hljs-title.class_) { color: var(--aip-color-code-type); }
+.aip-code :is(.token.punctuation, .token.operator, .hljs-punctuation, .hljs-operator) { color: var(--aip-color-code-punctuation); }

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MakeAIP · Create an AIP project (template)</title>
+  <link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem('aip-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+  <link rel="stylesheet" href="../dist/tokens.css">
+  <link rel="stylesheet" href="../dist/typography.css">
+  <link rel="stylesheet" href="../dist/components.css">
+  <script src="../dist/aip.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="aip-skip-link" href="#main">Skip to content</a>
+<header class="aip-header">
+  <div class="aip-header__inner aip-container">
+    <a class="aip-header__brand" href="home.html" aria-label="AIP home"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span><span class="aip-header__product">MakeAIP</span></a>
+    <nav class="aip-nav" aria-label="Main">
+      <a class="aip-nav__link" href="docs.html">Docs</a>
+      <a class="aip-nav__link" href="makeaip.html" aria-current="page">MakeAIP</a>
+      <a class="aip-nav__link" href="playground.html">Playground</a>
+    </nav>
+    <div class="aip-header__actions">
+      <button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-theme-toggle aria-label="Dark theme" data-aip-tooltip="Toggle theme">
+        <svg class="aip-icon aip-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="aip-icon aip-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <a class="aip-icon-button aip-icon-button--sm aip-hide-below-md" href="#" aria-label="AIP on GitHub"><svg class="aip-icon" aria-hidden="true"><use href="#i-github"/></svg></a>
+      <button class="aip-icon-button aip-icon-button--sm aip-header__menu" type="button" aria-label="Open navigation" data-aip-dialog-open="nav-drawer"><svg class="aip-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="aip-container" tabindex="-1">
+  <form class="aip-configurator" id="config" aria-labelledby="mk-title">
+    <div class="aip-configurator__form">
+      <div class="aip-config-section aip-stack aip-gap-2">
+        <p class="aip-eyebrow aip-text-brand">MakeAIP</p>
+        <h1 class="aip-heading-1" id="mk-title">Create an AIP project</h1>
+        <p class="aip-body-md aip-text-secondary">Pick a runtime and the pieces you need. The project downloads as a zip — no account required.</p>
+      </div>
+
+      <section class="aip-config-section aip-stack aip-gap-4" aria-labelledby="s-project">
+        <h2 class="aip-heading-3" id="s-project">Project</h2>
+        <div class="aip-grid aip-grid--2 aip-gap-4">
+          <div class="aip-field"><label class="aip-label" for="p-name">Name</label><input class="aip-input aip-input--mono" id="p-name" name="name" value="aip-starter" autocomplete="off" aria-describedby="p-name-h"><p class="aip-help" id="p-name-h">Lowercase, numbers, dashes.</p></div>
+          <div class="aip-field"><label class="aip-label" for="p-ver">AIP version</label><span class="aip-select"><select id="p-ver" name="version"><option>0.4.0 (latest)</option><option>0.3.2</option></select></span></div>
+        </div>
+      </section>
+
+      <fieldset class="aip-config-section aip-fieldset" aria-describedby="s-lang-h">
+        <legend class="aip-heading-3">Language</legend>
+        <p class="aip-fieldset__help" id="s-lang-h">Extensions and examples are written in this language.</p>
+        <div class="aip-segmented" role="radiogroup" aria-label="Language">
+          <label><input type="radio" name="lang" value="TypeScript" checked>TypeScript</label>
+          <label><input type="radio" name="lang" value="Python">Python</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="aip-config-section aip-fieldset">
+        <legend class="aip-heading-3">Runtime</legend>
+        <div class="aip-grid aip-grid--auto aip-gap-3">
+          <label class="aip-option"><input type="radio" name="runtime" value="Node.js" checked><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-server"/></svg><span class="aip-option__title">Node.js</span></span><span class="aip-option__desc">Run the AIP server next to your Node app.</span><span class="aip-option__meta"><span class="aip-version">22 LTS</span></span></label>
+          <label class="aip-option"><input type="radio" name="runtime" value="Python"><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-server"/></svg><span class="aip-option__title">Python</span></span><span class="aip-option__desc">ASGI server with Python extensions.</span><span class="aip-option__meta"><span class="aip-version">3.13</span></span></label>
+          <label class="aip-option"><input type="radio" name="runtime" value="Standalone"><span class="aip-option__head"><svg class="aip-icon aip-option__icon" aria-hidden="true"><use href="#i-cpu"/></svg><span class="aip-option__title">Standalone</span></span><span class="aip-option__desc">Single binary, no language runtime.</span><span class="aip-option__meta"><span class="aip-badge aip-badge--experimental">experimental</span></span></label>
+        </div>
+      </fieldset>
+
+      <section class="aip-config-section aip-stack aip-gap-4" aria-labelledby="s-stack">
+        <h2 class="aip-heading-3" id="s-stack">Stack</h2>
+        <div class="aip-grid aip-grid--2 aip-gap-4">
+          <div class="aip-field"><label class="aip-label" for="p-fe">Frontend</label><span class="aip-select"><select id="p-fe" name="frontend"><option>React</option><option>Vue</option><option>Svelte</option><option>None (API only)</option></select></span></div>
+          <div class="aip-field"><label class="aip-label" for="p-db">Database</label><span class="aip-select"><select id="p-db" name="database"><option>PostgreSQL</option><option>MySQL</option><option>SQLite</option></select></span></div>
+        </div>
+        <div class="aip-field"><span class="aip-label" id="p-auth-l">Authentication</span>
+          <div class="aip-choices aip-choices--inline" role="radiogroup" aria-labelledby="p-auth-l">
+            <label class="aip-radio"><input type="radio" name="auth" value="OIDC" checked> OIDC (JWT)</label>
+            <label class="aip-radio"><input type="radio" name="auth" value="Session"> Session cookie</label>
+            <label class="aip-radio"><input type="radio" name="auth" value="None"> None</label>
+          </div>
+        </div>
+      </section>
+
+      <fieldset class="aip-config-section aip-fieldset">
+        <legend class="aip-heading-3">Features</legend>
+        <div class="aip-grid aip-grid--2 aip-gap-3">
+          <label class="aip-option"><input type="checkbox" name="feature" value="examples" checked><span class="aip-option__head"><span class="aip-option__title">Example intents</span></span><span class="aip-option__desc">Orders and users, with policies.</span></label>
+          <label class="aip-option"><input type="checkbox" name="feature" value="audit"><span class="aip-option__head"><span class="aip-option__title">Audit log</span></span><span class="aip-option__desc">Record every executed intent.</span></label>
+          <label class="aip-option"><input type="checkbox" name="feature" value="migrations" checked><span class="aip-option__head"><span class="aip-option__title">Migrations</span></span><span class="aip-option__desc">Schema plan and apply commands.</span></label>
+          <label class="aip-option"><input type="checkbox" name="feature" value="realtime" disabled><span class="aip-option__head"><span class="aip-option__title">Realtime</span></span><span class="aip-option__desc">Not available in 0.4.</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <aside class="aip-configurator__preview" aria-label="Generated project preview">
+      <div class="aip-code">
+        <div class="aip-code__header">
+          <div class="aip-code-tabs__list" role="tablist" aria-label="Preview">
+            <button class="aip-code-tabs__tab" type="button" role="tab" id="pv-t1" aria-controls="pv-p1" aria-selected="true">Files</button>
+            <button class="aip-code-tabs__tab" type="button" role="tab" id="pv-t2" aria-controls="pv-p2" aria-selected="false">aip.config</button>
+          </div>
+          <button class="aip-copy" type="button" data-aip-copy="#pv-config" aria-label="Copy config"><span class="aip-copy__idle"><svg class="aip-icon" aria-hidden="true"><use href="#i-copy"/></svg></span><span class="aip-copy__done"><svg class="aip-icon" aria-hidden="true"><use href="#i-check"/></svg></span><span class="aip-copy__idle">Copy</span><span class="aip-copy__done">Copied</span></button>
+        </div>
+        <div role="tabpanel" id="pv-p1" aria-labelledby="pv-t1">
+<pre class="aip-code__pre" tabindex="0"><code><span class="token comment"># aip-starter</span>
+aip.config.json
+package.json
+src/
+  intents/<span class="token function">orders.intent.ts</span>
+  policies/<span class="token function">orders.policy.ts</span>
+  server.ts
+migrations/
+  0001_init.sql</code></pre>
+        </div>
+        <div role="tabpanel" id="pv-p2" aria-labelledby="pv-t2" hidden>
+<pre class="aip-code__pre" tabindex="0"><code id="pv-config"><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"aip-starter"</span><span class="token punctuation">,</span>
+  <span class="token string">"runtime"</span><span class="token punctuation">:</span> <span class="token string" data-bind="runtime">"Node.js"</span><span class="token punctuation">,</span>
+  <span class="token string">"language"</span><span class="token punctuation">:</span> <span class="token string" data-bind="lang">"TypeScript"</span><span class="token punctuation">,</span>
+  <span class="token string">"database"</span><span class="token punctuation">:</span> <span class="token string" data-bind="database">"PostgreSQL"</span>
+<span class="token punctuation">}</span></code></pre>
+        </div>
+      </div>
+      <div class="aip-actionbar aip-actionbar--sticky">
+        <div class="aip-actionbar__summary">
+          <span class="aip-actionbar__title">aip-starter</span>
+          <span class="aip-actionbar__detail" id="summary">TypeScript · Node.js · PostgreSQL · OIDC</span>
+        </div>
+        <div class="aip-button-group">
+          <button class="aip-button" type="button" data-aip-copy="#summary" data-aip-copied-label="Link copied"><svg class="aip-icon" aria-hidden="true"><use href="#i-link"/></svg>Share</button>
+          <button class="aip-button aip-button--primary aip-button--lg" type="submit"><svg class="aip-icon" aria-hidden="true"><use href="#i-download"/></svg>Generate</button>
+        </div>
+      </div>
+      <p class="aip-status" role="status" id="gen-status"></p>
+    </aside>
+  </form>
+</main>
+<dialog class="aip-drawer" id="nav-drawer" aria-label="Main navigation">
+  <div class="aip-drawer__header"><span class="aip-header__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span>AIP</span></span><button class="aip-icon-button aip-icon-button--sm" type="button" data-aip-dialog-close aria-label="Close navigation"><svg class="aip-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="aip-drawer__body"><nav class="aip-nav aip-nav--vertical" aria-label="Main"><a class="aip-nav__link" href="docs.html">Docs</a><a class="aip-nav__link" href="makeaip.html" aria-current="page">MakeAIP</a><a class="aip-nav__link" href="playground.html">Playground</a></nav></div>
+</dialog>
+<script>
+/* 템플릿 데모 동작: 선택을 미리보기에 반영. 실제 생성 로직은 제품 몫 */
+(function () {
+  const form = document.getElementById('config');
+  const val = (n) => form.querySelector(`[name="${n}"]:checked`)?.value ?? form.elements[n]?.value;
+  const sync = () => {
+    document.getElementById('summary').textContent = [val('lang'), val('runtime'), val('database'), val('auth')].join(' · ');
+    form.querySelectorAll('[data-bind]').forEach((el) => { el.textContent = `"${val(el.dataset.bind)}"`; });
+  };
+  form.addEventListener('change', sync);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const s = document.getElementById('gen-status');
+    s.className = 'aip-status aip-status--success';
+    s.innerHTML = '<svg class="aip-icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Generated aip-starter.zip · 14 files';
+  });
+  sync();
+})();
+</script>
+</body>
+</html>
