@@ -1,5 +1,15 @@
 # Changelog — AIP Design System
 
+## 1.2.0 — 2026-10-07
+
+실제 소개 페이지(AIP 웹사이트)에 조립해 보니 어색했던 프레젠테이션 부품을 고쳤다. 토큰 검사는 통과했지만 구성 품질은 검증된 적이 없던 부분이다.
+
+- Statement: 기본을 면 없는 큰 글자 + 왼쪽 선으로 변경. 형광펜 면은 `aip-statement--highlight` 로 분리.
+- Comparison: 두 쪽을 같은 면으로 통일하고 패딩을 넓힘. 양쪽 예시를 같은 높이에 두는 `aip-comparison__foot` 추가.
+- Chapter: `aip-chapter--stacked` 추가. 본문이 넓은 시각 자료일 때 서론 위·본문 전체 폭.
+- Flow: `aip-flow--focus` + `data-focus` 추가. 강조 노드 하나만 개념 색, 나머지는 중립.
+- docs/12·19 에 언제 어느 쪽을 쓰는지 규칙 추가.
+
 ## 1.1.0 — 2026-10-06
 
 오픈소스 소개와 기술 포트폴리오 프레젠테이션 구성 확장.

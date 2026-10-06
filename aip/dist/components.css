@@ -1079,6 +1079,11 @@ a.aip-card:hover .aip-card__title { color: var(--aip-color-text-link); }
   font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); text-align: center;
 }
 .aip-node__kind { font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; opacity: var(--aip-opacity-muted); }
+/* Focus — 한 줄 흐름에서 말하려는 노드(data-focus)만 개념 색을 쓰고 나머지는 중립으로 둔다.
+   노드마다 다른 색이면 무지개 띠가 되어 범례 없이는 읽히지 않는다. 개념 색 문법은 그대로, 강조할 곳만 켠다(v1.2.0). */
+.aip-flow--focus > .aip-node:not([data-focus]) { --aip-_fill: var(--aip-color-surface-default); --aip-_stroke: var(--aip-color-border-default); --aip-_text: var(--aip-color-text-primary); }
+.aip-flow--focus > li { --aip-_edge: var(--aip-color-diagram-edge-default); }
+.aip-flow--focus .aip-node__kind { opacity: var(--aip-opacity-muted); }
 .aip-node[data-role="data"] { border-radius: var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) / var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl); }
 
 /* ===== app.css ===== */
@@ -1227,14 +1232,25 @@ a.aip-card:hover .aip-card__title { color: var(--aip-color-text-link); }
 .aip-chapter__inner { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-8); }
 .aip-chapter__intro { display: flex; flex-direction: column; gap: var(--aip-space-4); min-width: 0; }
 .aip-chapter__body { min-width: 0; display: flex; flex-direction: column; gap: var(--aip-space-6); }
+/* Stacked: 본문이 넓은 시각 자료(비교·흐름·카드 3열)면 서론을 위에, 본문을 전체 폭으로 둔다.
+   기본 1:2 는 본문이 서론보다 풍부할 때만 맞다 — 본문이 짧으면 양쪽이 비고, 넓으면 2/3 열에서 잘린다(v1.2.0). */
+.aip-chapter--stacked .aip-chapter__intro { max-width: var(--aip-size-container-md); }
 /* 서론 옆의 좁은 본문 열에서도 흐름의 시작과 끝을 한눈에 읽어야 한다. */
 .aip-story .aip-flow > .aip-node { min-width: 0; flex: 1; }
-.aip-statement { margin: 0; padding: var(--aip-space-8); background: var(--aip-color-highlight-bg); border-left: var(--aip-border-width-accent) solid var(--aip-color-highlight-border); }
-.aip-statement p { font-size: var(--aip-font-size-2xl); line-height: var(--aip-font-line-height-snug); font-weight: var(--aip-font-weight-semibold); color: var(--aip-color-highlight-text); }
+/* Statement 은 면이 아니라 글자 크기로 말한다. 면을 깔면 콜아웃(경고)처럼 읽히고 제목보다 시선을 끈다(v1.2.0). */
+.aip-statement { margin: 0; padding-left: var(--aip-space-6); border-left: var(--aip-border-width-accent) solid var(--aip-color-border-strong); max-width: var(--aip-size-container-md); }
+.aip-statement p { font-size: var(--aip-font-size-3xl); line-height: var(--aip-font-line-height-snug); letter-spacing: var(--aip-font-letter-spacing-tight); font-weight: var(--aip-font-weight-semibold); color: var(--aip-color-text-primary); }
+/* 선언된 의도를 인용할 때만 형광펜 면을 쓴다 */
+.aip-statement--highlight { padding: var(--aip-space-8); background: var(--aip-color-highlight-bg); border-left-color: var(--aip-color-highlight-border); max-width: none; }
+.aip-statement--highlight p { font-size: var(--aip-font-size-2xl); color: var(--aip-color-highlight-text); }
 .aip-statement cite { display: block; margin-top: var(--aip-space-4); font-size: var(--aip-font-size-sm); font-style: normal; color: var(--aip-color-text-secondary); }
 .aip-comparison { display: grid; grid-template-columns: minmax(0, 1fr); border: var(--aip-border-width-hairline) solid var(--aip-color-border-default); border-radius: var(--aip-radius-lg); overflow: hidden; }
-.aip-comparison__side { display: flex; flex-direction: column; gap: var(--aip-space-4); padding: var(--aip-space-6); min-width: 0; background: var(--aip-color-surface-subtle); }
-.aip-comparison__side + .aip-comparison__side { background: var(--aip-color-surface-default); border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+/* 두 쪽은 같은 면이다. 면 색을 다르게 하면 한쪽이 '나쁜 쪽'으로 기울어 보이고 무게가 비대칭이 된다. 구분은 라벨과 제목이 한다(v1.2.0). */
+.aip-comparison__side { display: flex; flex-direction: column; gap: var(--aip-space-4); padding: var(--aip-space-8); min-width: 0; background: var(--aip-color-surface-default); }
+.aip-comparison__side + .aip-comparison__side { border-top: var(--aip-border-width-hairline) solid var(--aip-color-border-default); }
+/* 양쪽 맨 아래 예시(코드·결과)는 목록 길이와 무관하게 같은 높이에서 시작한다 */
+/* .aip-story p { margin: 0 } 보다 구체적이어야 auto 가 산다 */
+.aip-comparison .aip-comparison__foot { margin-top: auto; padding-top: var(--aip-space-2); }
 .aip-comparison ul { margin: 0; padding-left: var(--aip-space-5); }
 .aip-comparison li + li { margin-top: var(--aip-space-3); }
 .aip-feature-stage { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-8); align-items: center; }
@@ -1270,6 +1286,7 @@ a.aip-card:hover .aip-card__title { color: var(--aip-color-text-link); }
   .aip-story-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .aip-chapter { padding-block: var(--aip-space-24); }
   .aip-chapter__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: var(--aip-space-12); }
+  .aip-chapter--stacked .aip-chapter__inner { grid-template-columns: minmax(0, 1fr); gap: var(--aip-space-10); }
 }
 
 /* ===== utilities.css ===== */

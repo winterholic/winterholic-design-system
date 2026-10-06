@@ -51,6 +51,16 @@ AIP 의 색은 장식이 아니라 **개념을 가르는 시각 언어**다. 어
 ```
 순서가 의미라 `<ol>` 이다. md 이상 가로(→), 모바일 세로(↓). 노드의 `data-edge` 가 그 노드로 들어오는 화살표 색을 정한다.
 
+**말하려는 노드가 하나면 `aip-flow--focus` + `data-focus` 를 쓴다.** 노드 다섯 개가 모두 다른 개념 색이면 무지개 띠가 되어 범례를 캡션으로 풀어야 읽힌다. Focus 는 `data-focus` 노드만 개념 색을 남기고 나머지 노드와 화살표를 중립으로 둔다. 소개 페이지·프레젠테이션의 흐름은 대부분 이쪽이 맞다. 여러 개념을 구분하는 것 자체가 목적인 아키텍처 그림만 전부 칠한다.
+
+```html
+<ol class="aip-flow aip-flow--focus" aria-label="Request path">
+  <li class="aip-node" data-role="frontend">Screen</li>
+  <li class="aip-node" data-role="permission" data-focus>Contracts &amp; policies</li>
+  <li class="aip-node" data-role="execution">Runtime</li>
+</ol>
+```
+
 ### B. 인라인 SVG: 아키텍처 그림
 ```html
 <div class="aip-diagram__canvas" role="img" aria-labelledby="cap" aria-describedby="desc" tabindex="0">

@@ -73,4 +73,9 @@
   font: var(--aip-font-weight-medium) var(--aip-font-size-sm) / var(--aip-font-line-height-normal) var(--aip-font-family-sans); text-align: center;
 }
 .aip-node__kind { font: var(--aip-font-weight-medium) var(--aip-font-size-xs) / var(--aip-font-line-height-normal) var(--aip-font-family-mono); letter-spacing: var(--aip-font-letter-spacing-wide); text-transform: uppercase; opacity: var(--aip-opacity-muted); }
+/* Focus — 한 줄 흐름에서 말하려는 노드(data-focus)만 개념 색을 쓰고 나머지는 중립으로 둔다.
+   노드마다 다른 색이면 무지개 띠가 되어 범례 없이는 읽히지 않는다. 개념 색 문법은 그대로, 강조할 곳만 켠다(v1.2.0). */
+.aip-flow--focus > .aip-node:not([data-focus]) { --aip-_fill: var(--aip-color-surface-default); --aip-_stroke: var(--aip-color-border-default); --aip-_text: var(--aip-color-text-primary); }
+.aip-flow--focus > li { --aip-_edge: var(--aip-color-diagram-edge-default); }
+.aip-flow--focus .aip-node__kind { opacity: var(--aip-opacity-muted); }
 .aip-node[data-role="data"] { border-radius: var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) var(--aip-radius-lg) / var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl) var(--aip-radius-xl); }
