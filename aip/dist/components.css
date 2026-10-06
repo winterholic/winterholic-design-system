@@ -8,6 +8,14 @@
 :where([class^="aip-"], [class*=" aip-"])::before,
 :where([class^="aip-"], [class*=" aip-"])::after { box-sizing: border-box; }
 
+/* 줄바꿈 — 한글은 keep-all 이라 줄 끝에 낱말 하나만 떨어지기 쉽다.
+   제목은 줄 길이를 고르게(balance), 본문은 마지막 줄에 낱말 하나만 남지 않게(pretty) 한다(v1.2.1). */
+:where(p, li, dd, figcaption, .aip-lead, .aip-doc-lead) { text-wrap: pretty; }
+/* 제목 규칙이 뒤에 와야 p 로 만든 제목(카드 제목·statement)도 balance 를 받는다 */
+:where(h1, h2, h3, h4, blockquote, .aip-display-xl, .aip-display-lg, .aip-display-md, .aip-heading-1, .aip-heading-2, .aip-heading-3, .aip-doc-title, .aip-card__title, .aip-statement p) { text-wrap: balance; }
+/* 일본어는 낱말 중간(リリ/ース)에서 끊기지 않게 구 단위로 끊는다 */
+:where(:lang(ja)) { word-break: auto-phrase; }
+
 /* 화면에는 숨기고 스크린 리더에는 읽힌다 */
 .aip-sr-only {
   position: absolute; width: var(--aip-space-px); height: var(--aip-space-px); padding: 0; margin: calc(-1 * var(--aip-space-px));
