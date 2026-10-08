@@ -1,0 +1,81 @@
+/* base: 모든 컴포넌트가 기대는 최소 규칙. 박스 모델, 줄바꿈, 접근성 유틸, 아이콘, 로딩 표시.
+   값은 전부 var(--tk-…). 이 파일을 포함한 components/*.css 는 빌드가 lint 한다(hex·px·시간·z-index 숫자 금지). */
+
+:where([class^="tk-"], [class*=" tk-"]),
+:where([class^="tk-"], [class*=" tk-"])::before,
+:where([class^="tk-"], [class*=" tk-"])::after { box-sizing: border-box; }
+
+/* 줄바꿈: 한글 keep-all 은 줄 끝에 낱말 하나만 떨어지기 쉽다. 제목은 balance, 본문은 pretty */
+:where(p, li, dd, figcaption) { text-wrap: pretty; }
+:where(h1, h2, h3, h4, .tk-display, .tk-heading-1, .tk-heading-2, .tk-heading-3, .tk-card__title, .tk-empty__title) { text-wrap: balance; }
+:where(:lang(ja)) { word-break: auto-phrase; }
+
+/* 화면에는 숨기고 스크린 리더에는 읽힌다 */
+.tk-sr-only {
+  position: absolute; width: var(--tk-space-px); height: var(--tk-space-px); padding: 0; margin: calc(-1 * var(--tk-space-px));
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* 키보드 첫 Tab 에 나타나는 본문 바로가기. 모든 화면의 첫 요소 */
+.tk-skip-link {
+  position: absolute; left: var(--tk-space-4); top: calc(var(--tk-space-2) + env(safe-area-inset-top));
+  z-index: var(--tk-z-index-tooltip);
+  padding: var(--tk-space-2) var(--tk-space-4);
+  border-radius: var(--tk-radius-md);
+  background: var(--tk-color-surface-inverse); color: var(--tk-color-text-inverse);
+  font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  transform: translateY(-200%);
+  transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-skip-link:focus-visible { transform: none; }
+
+/* 아이콘(Lucide 인라인 SVG). 크기는 부모 컴포넌트가 정하고, 단독이면 md */
+.tk-icon {
+  flex: none; width: var(--tk-_icon, var(--tk-size-icon-md)); height: var(--tk-_icon, var(--tk-size-icon-md));
+  stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; fill: none;
+}
+.tk-icon--xs { --tk-_icon: var(--tk-size-icon-xs); }
+.tk-icon--sm { --tk-_icon: var(--tk-size-icon-sm); }
+.tk-icon--lg { --tk-_icon: var(--tk-size-icon-lg); }
+.tk-icon--xl { --tk-_icon: var(--tk-size-icon-xl); }
+
+/* 터치 영역 확장: 시각 크기가 44 보다 작은 컨트롤에 건다 */
+@media (pointer: coarse) {
+  .tk-hit { position: relative; }
+  .tk-hit::after { content: ""; position: absolute; inset: var(--tk-component-hit-area-inset); }
+}
+
+/* 스피너: 1초 안쪽 대기. 짧은 대기에는 보이지 않게 지연하는 것은 호출부 책임(docs/09 §1) */
+.tk-spinner {
+  display: inline-block; flex: none;
+  width: var(--tk-_icon, var(--tk-size-icon-md)); height: var(--tk-_icon, var(--tk-size-icon-md));
+  border: var(--tk-border-width-strong) solid currentColor; border-right-color: transparent;
+  border-radius: var(--tk-radius-full);
+  animation: tk-spin calc(var(--tk-motion-duration-slow) * 3) var(--tk-motion-easing-linear) infinite;
+}
+.tk-spinner--sm { --tk-_icon: var(--tk-size-icon-sm); }
+.tk-spinner--xs { --tk-_icon: var(--tk-size-icon-xs); border-width: var(--tk-space-px); }
+@keyframes tk-spin { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) {
+  .tk-spinner { animation-duration: var(--tk-motion-duration-feedback); }
+}
+
+/* 스켈레톤: 실제와 같은 개수·모양으로. 정지해 있다(shimmer 없음) */
+.tk-skeleton {
+  display: block; border-radius: var(--tk-radius-sm);
+  background: var(--tk-color-surface-muted);
+}
+.tk-skeleton--text { height: 0.8em; margin-block: 0.45em; }
+.tk-skeleton--text:last-child { width: 60%; }
+.tk-skeleton--block { height: var(--tk-size-control-lg); border-radius: var(--tk-radius-lg); }
+.tk-skeleton--glyph { width: var(--tk-component-artifact-glyph); height: var(--tk-component-artifact-glyph); border-radius: var(--tk-component-artifact-glyph-radius); flex: none; }
+
+/* 구분선 */
+.tk-divider { border: 0; border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); margin-block: var(--tk-space-6); }
+.tk-divider--subtle { border-top-color: var(--tk-color-border-subtle); margin-block: var(--tk-space-4); }
+
+/* 컴포넌트 안 문단 요소의 브라우저 기본 margin 을 끈다. 간격은 컴포넌트의 gap 이 정한다(p 로 짠 메타 줄이 헤더 높이를 넘던 문제) */
+:where(.tk-header__meta, .tk-sidebar__label, .tk-thread__day, .tk-message__meta, .tk-composer__hint, .tk-run__meta, .tk-list__meta, .tk-artifact-card__meta, .tk-message--system > *, .tk-session__meta, .tk-filterbar__count) { margin: 0; }
+
+/* hidden 속성이 컴포넌트의 display 를 이긴다(탭 패널로 쓰는 .tk-viewer 가 display:flex 로 hidden 을 덮던 문제) */
+[class*="tk-"][hidden] { display: none; }

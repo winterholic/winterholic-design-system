@@ -1,0 +1,56 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "고도. 카드·실행 카드·결과물 카드는 선으로 구분하고 그림자는 '떠 있는 것' 에만 쓴다. 그림자 색은 ink 계열. 색 글로우(민트 빛 번짐)는 없다. 다크는 shadow-dark 로 갈아 끼운다.",
+    "xs": { "$value": [{ "color": "#0807050F", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }], "$description": "세그먼트 활성 칸·스위치 손잡이" },
+    "sm": { "$value": [
+      { "color": "#08070514", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" },
+      { "color": "#0807050A", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "-1px" }
+    ], "$description": "클릭 가능한 카드 hover·PDF 페이지·컴포저(띄워진 입력)" },
+    "md": { "$value": [
+      { "color": "#0807051A", "offsetX": "0px", "offsetY": "6px", "blur": "16px", "spread": "-4px" },
+      { "color": "#0807050F", "offsetX": "0px", "offsetY": "2px", "blur": "4px", "spread": "-2px" }
+    ], "$description": "메뉴·팝오버·툴팁·최신으로 이동 버튼" },
+    "lg": { "$value": [
+      { "color": "#08070529", "offsetX": "0px", "offsetY": "16px", "blur": "40px", "spread": "-8px" },
+      { "color": "#0807050F", "offsetX": "0px", "offsetY": "4px", "blur": "8px", "spread": "-4px" }
+    ], "$description": "다이얼로그·바텀 시트·드로어·토스트" }
+  },
+
+  "shadow-dark": {
+    "$type": "shadow",
+    "$description": "다크 그림자. 배경이 어두워 alpha 를 올리고, 면 밝기(raised)가 고도의 주 신호가 된다.",
+    "xs": { "$value": [{ "color": "#00000052", "offsetX": "0px", "offsetY": "1px", "blur": "2px", "spread": "0px" }] },
+    "sm": { "$value": [{ "color": "#00000066", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" }] },
+    "md": { "$value": [{ "color": "#00000080", "offsetX": "0px", "offsetY": "8px", "blur": "20px", "spread": "-4px" }] },
+    "lg": { "$value": [{ "color": "#00000099", "offsetX": "0px", "offsetY": "20px", "blur": "48px", "spread": "-8px" }] }
+  },
+
+  "pattern": {
+    "$description": "배경 패턴은 두 개뿐이다. 투명 이미지 바탕의 체커(뷰어), 로그인·빈 작업 공간의 점 격자(잉크 면 장식).",
+    "checker-size": { "$value": "16px", "$type": "dimension", "$description": "투명 바탕 체커 한 칸" },
+    "grid-size":    { "$value": "24px", "$type": "dimension", "$description": "점 격자 간격 = space.6" },
+    "grid-dot":     { "$value": "1px",  "$type": "dimension", "$description": "점 반지름" }
+  },
+
+  "opacity": {
+    "$type": "number",
+    "disabled": { "$value": 0.45, "$description": "비활성 묶음(아이콘 포함). 색 토큰 action.disabled 가 있으면 그쪽이 먼저" },
+    "muted":    { "$value": 0.65, "$description": "취소된 작업의 단계·접힌 로그 미리보기" }
+  },
+
+  "z-index": {
+    "$type": "number",
+    "$description": "레이어 순서. 임의 z-index(999 등) 금지. 같은 층 안의 순서는 DOM 순서로 해결한다.",
+    "hide":     { "$value": -1 },
+    "base":     { "$value": 0 },
+    "raised":   { "$value": 10,   "$description": "복사 버튼·최신으로 이동 버튼·분할 손잡이" },
+    "sticky":   { "$value": 1000, "$description": "헤더·탭바·컴포저·선택 모드 행동 바·sticky 표 머리" },
+    "dropdown": { "$value": 1100, "$description": "메뉴·셀렉트 목록" },
+    "overlay":  { "$value": 1200, "$description": "스크림" },
+    "modal":    { "$value": 1300, "$description": "다이얼로그·시트·드로어·전체 화면 뷰어" },
+    "popover":  { "$value": 1400, "$description": "다이얼로그·시트 안에서 열리는 메뉴" },
+    "toast":    { "$value": 1500 },
+    "tooltip":  { "$value": 1600 }
+  }
+}

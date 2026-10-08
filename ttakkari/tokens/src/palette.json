@@ -1,0 +1,879 @@
+{
+  "blue": {
+    "50": {
+      "$value": "#F1F8FF",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.07,
+          "onInk": 18.8
+        }
+      }
+    },
+    "100": {
+      "$value": "#E0EFFF",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.06,
+          "onWhite": 1.17,
+          "onInk": 17.22
+        }
+      }
+    },
+    "200": {
+      "$value": "#C2DEFE",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.25,
+          "onWhite": 1.38,
+          "onInk": 14.55
+        }
+      }
+    },
+    "300": {
+      "$value": "#9DC6F5",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.61,
+          "onWhite": 1.78,
+          "onInk": 11.34
+        }
+      }
+    },
+    "400": {
+      "$value": "#79AAE1",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.2,
+          "onWhite": 2.43,
+          "onInk": 8.29
+        }
+      }
+    },
+    "500": {
+      "$value": "#538DCB",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.15,
+          "onWhite": 3.48,
+          "onInk": 5.79
+        }
+      }
+    },
+    "600": {
+      "$value": "#296EB4",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.77,
+          "onWhite": 5.27,
+          "onInk": 3.82
+        }
+      }
+    },
+    "700": {
+      "$value": "#1D5B99",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.32,
+          "onWhite": 6.98,
+          "onInk": 2.88
+        }
+      }
+    },
+    "800": {
+      "$value": "#0E4579",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 8.86,
+          "onWhite": 9.79,
+          "onInk": 2.06
+        }
+      }
+    },
+    "900": {
+      "$value": "#01315C",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 11.92,
+          "onWhite": 13.16,
+          "onInk": 1.53
+        }
+      }
+    },
+    "950": {
+      "$value": "#00203F",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 14.87,
+          "onWhite": 16.43,
+          "onInk": 1.23
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Ttakkari Blue · 사람의 행동: 주 버튼·링크·포커스·선택·사용자 메시지 면. 종이 위 4.77:1, 흰 글자 5.27:1 · 앵커 #296EB4 @600"
+  },
+  "mint": {
+    "50": {
+      "$value": "#E1FFF2",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.04,
+          "onWhite": 1.06,
+          "onInk": 18.97
+        }
+      }
+    },
+    "100": {
+      "$value": "#C7FAE4",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.04,
+          "onWhite": 1.15,
+          "onInk": 17.47
+        }
+      }
+    },
+    "200": {
+      "$value": "#4AFDC4",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.18,
+          "onWhite": 1.3,
+          "onInk": 15.47
+        }
+      }
+    },
+    "300": {
+      "$value": "#00F0B5",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.35,
+          "onWhite": 1.49,
+          "onInk": 13.55
+        }
+      }
+    },
+    "400": {
+      "$value": "#17C293",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.07,
+          "onWhite": 2.29,
+          "onInk": 8.8
+        }
+      }
+    },
+    "500": {
+      "$value": "#1CA079",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.99,
+          "onWhite": 3.31,
+          "onInk": 6.09
+        }
+      }
+    },
+    "600": {
+      "$value": "#1D8363",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.24,
+          "onWhite": 4.69,
+          "onInk": 4.29
+        }
+      }
+    },
+    "700": {
+      "$value": "#1C684F",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.05,
+          "onWhite": 6.68,
+          "onInk": 3.01
+        }
+      }
+    },
+    "800": {
+      "$value": "#194F3C",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 8.54,
+          "onWhite": 9.44,
+          "onInk": 2.13
+        }
+      }
+    },
+    "900": {
+      "$value": "#14382B",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 11.66,
+          "onWhite": 12.88,
+          "onInk": 1.56
+        }
+      }
+    },
+    "950": {
+      "$value": "#0F241C",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 14.74,
+          "onWhite": 16.29,
+          "onInk": 1.24
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Ttakkari Mint · 에이전트 신호: 실행 중·완료·결과물 도착·잉크 면 위 커서. 종이 위 1.35:1 이라 글자 불가, 잉크 위 13.55:1 · 앵커 #00F0B5 @300"
+  },
+  "sage": {
+    "50": {
+      "$value": "#F3F8F6",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.07,
+          "onInk": 18.76
+        }
+      }
+    },
+    "75": {
+      "$value": "#ECF2EF",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.13,
+          "onInk": 17.75
+        }
+      }
+    },
+    "100": {
+      "$value": "#E9EEEC",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.06,
+          "onWhite": 1.17,
+          "onInk": 17.17
+        }
+      }
+    },
+    "200": {
+      "$value": "#D6DCD9",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.26,
+          "onWhite": 1.39,
+          "onInk": 14.48
+        }
+      }
+    },
+    "300": {
+      "$value": "#BDC4C1",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.61,
+          "onWhite": 1.78,
+          "onInk": 11.34
+        }
+      }
+    },
+    "400": {
+      "$value": "#A0A8A4",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.2,
+          "onWhite": 2.43,
+          "onInk": 8.28
+        }
+      }
+    },
+    "500": {
+      "$value": "#828C87",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.14,
+          "onWhite": 3.47,
+          "onInk": 5.8
+        }
+      }
+    },
+    "600": {
+      "$value": "#68736E",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.46,
+          "onWhite": 4.92,
+          "onInk": 4.09
+        }
+      }
+    },
+    "700": {
+      "$value": "#59645F",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 5.57,
+          "onWhite": 6.15,
+          "onInk": 3.27
+        }
+      }
+    },
+    "800": {
+      "$value": "#3D4642",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 8.83,
+          "onWhite": 9.75,
+          "onInk": 2.06
+        }
+      }
+    },
+    "900": {
+      "$value": "#2B322F",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 11.88,
+          "onWhite": 13.12,
+          "onInk": 1.53
+        }
+      }
+    },
+    "950": {
+      "$value": "#1A211E",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 14.85,
+          "onWhite": 16.4,
+          "onInk": 1.23
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Sage · 라이트 중립(글자·선·면). 시드 --text-muted · 앵커 #59645F @700"
+  },
+  "graphite": {
+    "50": {
+      "$value": "#EEF9FC",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.07,
+          "onInk": 18.79
+        }
+      }
+    },
+    "100": {
+      "$value": "#E4EFF2",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.06,
+          "onWhite": 1.17,
+          "onInk": 17.19
+        }
+      }
+    },
+    "200": {
+      "$value": "#D1DDE0",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.26,
+          "onWhite": 1.39,
+          "onInk": 14.51
+        }
+      }
+    },
+    "300": {
+      "$value": "#B8C5C8",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.6,
+          "onWhite": 1.77,
+          "onInk": 11.37
+        }
+      }
+    },
+    "400": {
+      "$value": "#9CA9AC",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.19,
+          "onWhite": 2.42,
+          "onInk": 8.33
+        }
+      }
+    },
+    "500": {
+      "$value": "#808B8E",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.17,
+          "onWhite": 3.5,
+          "onInk": 5.75
+        }
+      }
+    },
+    "600": {
+      "$value": "#687275",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.47,
+          "onWhite": 4.94,
+          "onInk": 4.08
+        }
+      }
+    },
+    "700": {
+      "$value": "#535B5D",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.29,
+          "onWhite": 6.95,
+          "onInk": 2.9
+        }
+      }
+    },
+    "800": {
+      "$value": "#3E4547",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 8.85,
+          "onWhite": 9.78,
+          "onInk": 2.06
+        }
+      }
+    },
+    "900": {
+      "$value": "#30383A",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 10.85,
+          "onWhite": 11.98,
+          "onInk": 1.68
+        }
+      }
+    },
+    "925": {
+      "$value": "#23292A",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 13.37,
+          "onWhite": 14.77,
+          "onInk": 1.36
+        }
+      }
+    },
+    "950": {
+      "$value": "#1B2021",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 14.91,
+          "onWhite": 16.47,
+          "onInk": 1.22
+        }
+      }
+    },
+    "975": {
+      "$value": "#111516",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 16.64,
+          "onWhite": 18.38,
+          "onInk": 1.1
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Graphite · 다크 중립·잉크 면(코드·로그). 시드 dark --border · 앵커 #30383A @900"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFF4F2",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.02,
+          "onWhite": 1.08,
+          "onInk": 18.67
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE7E4",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.07,
+          "onWhite": 1.18,
+          "onInk": 17.03
+        }
+      }
+    },
+    "200": {
+      "$value": "#FCCEC8",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.28,
+          "onWhite": 1.42,
+          "onInk": 14.19
+        }
+      }
+    },
+    "300": {
+      "$value": "#FBABA1",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.66,
+          "onWhite": 1.84,
+          "onInk": 10.97
+        }
+      }
+    },
+    "400": {
+      "$value": "#F28075",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.34,
+          "onWhite": 2.59,
+          "onInk": 7.79
+        }
+      }
+    },
+    "500": {
+      "$value": "#DA5950",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.44,
+          "onWhite": 3.8,
+          "onInk": 5.3
+        }
+      }
+    },
+    "600": {
+      "$value": "#C93A35",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.59,
+          "onWhite": 5.07,
+          "onInk": 3.97
+        }
+      }
+    },
+    "700": {
+      "$value": "#9F2624",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.85,
+          "onWhite": 7.56,
+          "onInk": 2.66
+        }
+      }
+    },
+    "800": {
+      "$value": "#7D1616",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 9.51,
+          "onWhite": 10.51,
+          "onInk": 1.92
+        }
+      }
+    },
+    "900": {
+      "$value": "#5F0609",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 12.53,
+          "onWhite": 13.85,
+          "onInk": 1.45
+        }
+      }
+    },
+    "950": {
+      "$value": "#410304",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 15.34,
+          "onWhite": 16.94,
+          "onInk": 1.19
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Signal Red · 실패·차단·삭제. 흰 글자 5.07:1. 장식 금지 · 앵커 #C93A35 @600"
+  },
+  "amber": {
+    "50": {
+      "$value": "#FFF5E9",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.08,
+          "onInk": 18.69
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE9D1",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.07,
+          "onWhite": 1.18,
+          "onInk": 17.06
+        }
+      }
+    },
+    "200": {
+      "$value": "#FED29D",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.27,
+          "onWhite": 1.41,
+          "onInk": 14.31
+        }
+      }
+    },
+    "300": {
+      "$value": "#F6B45B",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.64,
+          "onWhite": 1.81,
+          "onInk": 11.12
+        }
+      }
+    },
+    "400": {
+      "$value": "#E39B2D",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.11,
+          "onWhite": 2.34,
+          "onInk": 8.62
+        }
+      }
+    },
+    "500": {
+      "$value": "#B67B22",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.25,
+          "onWhite": 3.59,
+          "onInk": 5.6
+        }
+      }
+    },
+    "600": {
+      "$value": "#95651A",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.58,
+          "onWhite": 5.06,
+          "onInk": 3.98
+        }
+      }
+    },
+    "700": {
+      "$value": "#785013",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.43,
+          "onWhite": 7.11,
+          "onInk": 2.83
+        }
+      }
+    },
+    "800": {
+      "$value": "#5C3C0C",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 9.02,
+          "onWhite": 9.97,
+          "onInk": 2.02
+        }
+      }
+    },
+    "900": {
+      "$value": "#432B07",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 11.98,
+          "onWhite": 13.23,
+          "onInk": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#2D1B03",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 14.97,
+          "onWhite": 16.54,
+          "onInk": 1.22
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Signal Amber · 승인 필요·주의·발표 파일. 원색은 면 전용(종이 위 2.11:1) · 앵커 #E39B2D @400"
+  },
+  "plum": {
+    "50": {
+      "$value": "#F8F5FF",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.03,
+          "onWhite": 1.08,
+          "onInk": 18.69
+        }
+      }
+    },
+    "100": {
+      "$value": "#EFE9FE",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.07,
+          "onWhite": 1.18,
+          "onInk": 17.03
+        }
+      }
+    },
+    "200": {
+      "$value": "#E0D3FC",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.28,
+          "onWhite": 1.41,
+          "onInk": 14.28
+        }
+      }
+    },
+    "300": {
+      "$value": "#CCB5F7",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 1.65,
+          "onWhite": 1.82,
+          "onInk": 11.05
+        }
+      }
+    },
+    "400": {
+      "$value": "#B196E2",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 2.28,
+          "onWhite": 2.52,
+          "onInk": 7.99
+        }
+      }
+    },
+    "500": {
+      "$value": "#9675CC",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 3.33,
+          "onWhite": 3.68,
+          "onInk": 5.48
+        }
+      }
+    },
+    "600": {
+      "$value": "#7E57B8",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 4.82,
+          "onWhite": 5.33,
+          "onInk": 3.78
+        }
+      }
+    },
+    "700": {
+      "$value": "#664498",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 6.68,
+          "onWhite": 7.38,
+          "onInk": 2.73
+        }
+      }
+    },
+    "800": {
+      "$value": "#4E3178",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 9.34,
+          "onWhite": 10.32,
+          "onInk": 1.95
+        }
+      }
+    },
+    "900": {
+      "$value": "#39205B",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 12.41,
+          "onWhite": 13.71,
+          "onInk": 1.47
+        }
+      }
+    },
+    "950": {
+      "$value": "#271142",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 15.27,
+          "onWhite": 16.87,
+          "onInk": 1.19
+        }
+      }
+    },
+    "$type": "color",
+    "$description": "Plum · 이미지 파일·별도 정책 범위(민감·회사 자료). 흰 글자 5.33:1 · 앵커 #7E57B8 @600"
+  },
+  "dark-tint": {
+    "$type": "color",
+    "$description": "다크 상태 면. <색>.<단계> 를 다크 기본 면(#171B1C)에 18% 섞은 값. 화면 코드가 직접 쓰지 않고 color.dark.json 의 status·run·policy·agent 면이 참조한다",
+    "blue": {
+      "$value": "#1A2A37",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 13.29,
+          "onInk": 1.37
+        }
+      }
+    },
+    "mint": {
+      "$value": "#18332D",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 12.26,
+          "onInk": 1.49
+        }
+      }
+    },
+    "red": {
+      "$value": "#372121",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 13.56,
+          "onInk": 1.34
+        }
+      }
+    },
+    "amber": {
+      "$value": "#3C321F",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 11.4,
+          "onInk": 1.6
+        }
+      }
+    },
+    "plum": {
+      "$value": "#2A2638",
+      "$extensions": {
+        "tk.contrast": {
+          "onPaper": 13.27,
+          "onInk": 1.37
+        }
+      }
+    }
+  }
+}

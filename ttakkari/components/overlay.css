@@ -1,0 +1,143 @@
+/* overlay: Tooltip · Menu · Dialog · Sheet · Drawer · Toast. 떠 있는 것만 그림자를 갖는다.
+   Dialog·Sheet·Drawer 는 네이티브 <dialog>(showModal)라 포커스 가두기·Esc·배경 inert 를 브라우저가 처리한다. 열고 닫는 연결은 tk.js. */
+
+/* Tooltip: 보충 설명만. 꼭 알아야 하는 정보를 툴팁에 숨기지 않는다(터치 기기에는 hover 가 없다). tk.js 가 [data-tk-tooltip] 에서 만든다 */
+.tk-tooltip {
+  position: fixed; z-index: var(--tk-z-index-tooltip);
+  max-width: var(--tk-component-tooltip-max-width);
+  padding: var(--tk-component-tooltip-padding-y) var(--tk-component-tooltip-padding-x);
+  border-radius: var(--tk-component-tooltip-radius);
+  background: var(--tk-component-tooltip-bg); color: var(--tk-component-tooltip-text);
+  font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  box-shadow: var(--tk-shadow-md); pointer-events: none;
+  opacity: 0; transform: translateY(var(--tk-motion-distance-sm));
+  transition: opacity var(--tk-motion-duration-fast) var(--tk-motion-easing-enter), transform var(--tk-motion-duration-fast) var(--tk-motion-easing-enter);
+}
+.tk-tooltip[data-open] { opacity: 1; transform: none; pointer-events: auto; }
+.tk-tooltip kbd { margin-left: var(--tk-space-2); background: transparent; color: inherit; border-color: color-mix(in srgb, currentColor 35%, transparent); box-shadow: none; }
+
+/* Menu: 트리거(aria-haspopup="menu" aria-controls) + 목록(role="menu"). 값을 고르는 것이면 Select·Segmented 가 먼저 */
+.tk-dropdown { position: relative; display: inline-block; }
+.tk-menu {
+  position: absolute; z-index: var(--tk-z-index-dropdown); top: calc(100% + var(--tk-component-menu-offset)); left: 0;
+  min-width: var(--tk-component-menu-min-width); max-width: min(calc(100vw - 2 * var(--tk-size-layout-page-gutter)), calc(var(--tk-component-menu-min-width) * 1.8));
+  max-height: var(--tk-component-menu-max-height); overflow-y: auto;
+  margin: 0; padding: var(--tk-component-menu-padding); list-style: none;
+  border: var(--tk-border-width-hairline) solid var(--tk-component-menu-border); border-radius: var(--tk-component-menu-radius);
+  background: var(--tk-component-menu-bg); box-shadow: var(--tk-shadow-md);
+  transform-origin: top left; animation: tk-menu-in var(--tk-motion-duration-normal) var(--tk-motion-easing-enter);
+}
+.tk-menu[hidden] { display: none; }
+.tk-menu--end { left: auto; right: 0; transform-origin: top right; }
+.tk-menu--up { top: auto; bottom: calc(100% + var(--tk-component-menu-offset)); transform-origin: bottom left; }
+@keyframes tk-menu-in { from { opacity: 0; transform: translateY(calc(-1 * var(--tk-motion-distance-sm))); } }
+.tk-menu__item {
+  display: flex; align-items: center; gap: var(--tk-space-3); width: 100%;
+  min-height: var(--tk-component-menu-item-height); padding: 0 var(--tk-component-menu-item-padding-x);
+  border: 0; border-radius: var(--tk-component-menu-item-radius); background: none;
+  color: var(--tk-color-text-primary); text-align: left; text-decoration: none; cursor: pointer;
+  font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+}
+.tk-menu__item > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-text-secondary); }
+.tk-menu__item:hover, .tk-menu__item:focus-visible { background: var(--tk-color-interactive-hover-overlay); outline: none; }
+.tk-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--tk-focus-ring-width) var(--tk-color-interactive-focus-ring); }
+.tk-menu__item[aria-checked="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
+.tk-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
+.tk-menu__item--danger, .tk-menu__item--danger > .tk-icon { color: var(--tk-color-text-danger); }
+.tk-menu__item[aria-disabled="true"] { color: var(--tk-color-text-disabled); cursor: not-allowed; }
+.tk-menu__meta { margin-left: auto; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }
+.tk-menu__label { padding: var(--tk-space-2) var(--tk-component-menu-item-padding-x) var(--tk-space-1); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-menu__separator { height: var(--tk-border-width-hairline); margin: var(--tk-space-1) calc(-1 * var(--tk-component-menu-padding)); background: var(--tk-color-border-subtle); border: 0; }
+
+/* Dialog: 가운데 상자. 확인·재인증·승인 상세 */
+.tk-dialog {
+  width: min(calc(100vw - 2 * var(--tk-size-layout-page-gutter)), var(--tk-_w, var(--tk-component-dialog-width-md)));
+  max-height: calc(100dvh - 2 * var(--tk-space-8));
+  padding: 0; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-dialog-radius);
+  background: var(--tk-component-dialog-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
+}
+.tk-dialog[open] { display: flex; flex-direction: column; animation: tk-dialog-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }
+.tk-dialog::backdrop, .tk-sheet::backdrop, .tk-drawer::backdrop { background: var(--tk-color-surface-overlay); }
+.tk-dialog--sm { --tk-_w: var(--tk-component-dialog-width-sm); }
+.tk-dialog--lg { --tk-_w: var(--tk-component-dialog-width-lg); }
+@keyframes tk-dialog-in { from { opacity: 0; transform: translateY(var(--tk-motion-distance-md)); } }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__header { display: flex; align-items: flex-start; gap: var(--tk-space-3); padding: var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)) 0; }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__title { flex: 1; margin: 0; font: var(--tk-font-weight-semibold) var(--tk-font-size-xl) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); letter-spacing: var(--tk-font-letter-spacing-snug); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__header > .tk-icon-button { margin: calc(-1 * var(--tk-space-2)) calc(-1 * var(--tk-space-2)) 0 0; }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--tk-component-dialog-gap) var(--tk-_pad, var(--tk-component-dialog-padding)); color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body > * { margin-block: 0; }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body > * + * { margin-top: var(--tk-space-3); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--tk-space-3); padding: 0 var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)); }
+@media (max-width: 639px) {
+  .tk-dialog { --tk-_pad: var(--tk-component-dialog-padding-mobile); }
+  .tk-dialog .tk-dialog__footer > .tk-button { flex: 1; }
+}
+
+/* Sheet: 모바일 바텀 시트. 엄지가 닿는 아래에서 올라온다(내보내기·결과물 행동·필터). lg 이상에서는 가운데 다이얼로그 */
+.tk-sheet {
+  --tk-_pad: var(--tk-component-sheet-padding);
+  position: fixed; inset: auto 0 0 0; width: 100%; max-width: none; max-height: var(--tk-component-sheet-max-height); margin: 0;
+  padding: 0 0 env(safe-area-inset-bottom); border: 0; border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
+  border-radius: var(--tk-component-sheet-radius) var(--tk-component-sheet-radius) 0 0;
+  background: var(--tk-component-sheet-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
+}
+.tk-sheet[open] { display: flex; flex-direction: column; animation: tk-sheet-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }
+.tk-sheet::before { content: ""; flex: none; align-self: center; width: var(--tk-component-sheet-handle-width); height: var(--tk-component-sheet-handle-height); margin-top: var(--tk-space-2); border-radius: var(--tk-radius-full); background: var(--tk-component-sheet-handle-color); }
+@keyframes tk-sheet-in { from { transform: translateY(100%); } }
+.tk-sheet .tk-dialog__header { padding-top: var(--tk-space-3); }
+.tk-sheet .tk-dialog__footer > .tk-button { flex: 1 1 0; }
+@media (min-width: 1024px) {
+  .tk-sheet {
+    --tk-_pad: var(--tk-component-dialog-padding);
+    inset: 0; width: min(calc(100vw - 2 * var(--tk-size-layout-page-gutter)), var(--tk-component-dialog-width-md)); max-height: calc(100dvh - 2 * var(--tk-space-8)); margin: auto;
+    padding: 0; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-dialog-radius);
+  }
+  .tk-sheet::before { display: none; }
+  .tk-sheet[open] { animation-name: tk-dialog-in; }
+  .tk-sheet .tk-dialog__header { padding-top: var(--tk-component-dialog-padding); }
+  .tk-sheet .tk-dialog__footer > .tk-button { flex: none; }
+}
+/* 시트 안 행동 목록(결과물 더보기): 메뉴 항목과 같은 모양을 큰 손가락 크기로 */
+.tk-sheet__actions { display: flex; flex-direction: column; margin: 0; padding: 0 var(--tk-space-2) var(--tk-space-2); list-style: none; }
+.tk-sheet__actions .tk-menu__item { min-height: var(--tk-size-control-lg); font-size: var(--tk-font-size-md); }
+.tk-sheet__actions .tk-menu__item > .tk-icon { --tk-_icon: var(--tk-size-icon-md); }
+
+/* Drawer: 모바일 세션 목록. 왼쪽에서 들어오는 <dialog> */
+.tk-drawer {
+  position: fixed; inset: 0 auto 0 0; width: min(85vw, var(--tk-size-layout-drawer)); max-width: none; height: 100dvh; max-height: none; margin: 0;
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); border: 0; border-right: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
+  background: var(--tk-component-sidebar-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
+}
+.tk-drawer[open] { display: flex; flex-direction: column; animation: tk-drawer-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }
+@keyframes tk-drawer-in { from { transform: translateX(-100%); } }
+.tk-drawer__header { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-3); height: var(--tk-size-layout-header); padding-inline: var(--tk-space-2) var(--tk-space-2); flex: none; }
+.tk-drawer__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.tk-drawer__body > .tk-sidebar { height: auto; background: transparent; }
+
+/* Toast: 화면 아래에서 잠시. 두 테마 모두 잉크 면이다(기계가 알리는 소식). 다른 화면에 있을 때 끝난 작업·백그라운드 다운로드 알림. 행동은 하나까지(열기·되돌리기) */
+.tk-toast-region {
+  position: fixed; left: 0; right: 0; bottom: calc(var(--tk-_toast-bottom, var(--tk-space-0)) + env(safe-area-inset-bottom) + var(--tk-component-toast-offset)); z-index: var(--tk-z-index-toast);
+  display: flex; flex-direction: column; align-items: center; gap: var(--tk-space-2); padding-inline: var(--tk-size-layout-page-gutter); pointer-events: none;
+}
+.tk-app:has(.tk-tabbar) .tk-toast-region { --tk-_toast-bottom: var(--tk-size-layout-tabbar); }
+@media (min-width: 1024px) { .tk-toast-region { align-items: flex-end; padding-inline: var(--tk-space-6); --tk-_toast-bottom: var(--tk-space-3); } }
+.tk-toast {
+  display: flex; align-items: center; gap: var(--tk-component-toast-gap); width: 100%; max-width: var(--tk-component-toast-max-width);
+  padding: var(--tk-component-toast-padding-y) var(--tk-component-toast-padding-x); border-radius: var(--tk-component-toast-radius);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-toast-border); background: var(--tk-component-toast-bg); color: var(--tk-component-toast-text); box-shadow: var(--tk-shadow-lg); pointer-events: auto;
+  font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  animation: tk-toast-in var(--tk-motion-duration-normal) var(--tk-motion-easing-enter);
+}
+.tk-toast[data-leaving] { opacity: 0; transform: translateY(var(--tk-motion-distance-md)); transition: opacity var(--tk-motion-duration-normal) var(--tk-motion-easing-exit), transform var(--tk-motion-duration-normal) var(--tk-motion-easing-exit); }
+@keyframes tk-toast-in { from { opacity: 0; transform: translateY(var(--tk-motion-distance-md)); } }
+.tk-toast > .tk-icon { --tk-_icon: var(--tk-size-icon-md); }
+.tk-toast__text { flex: 1; min-width: 0; }
+.tk-toast__action { flex: none; height: var(--tk-size-control-sm); padding-inline: var(--tk-space-3); border: 0; border-radius: var(--tk-radius-md); background: transparent; color: inherit; cursor: pointer; font: var(--tk-font-weight-semibold) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans); text-decoration: underline; text-underline-offset: 0.2em; }
+.tk-toast__action:hover { background: color-mix(in srgb, currentColor 12%, transparent); }
+.tk-toast--success > .tk-icon { color: var(--tk-color-ink-log-ok); }
+.tk-toast--danger > .tk-icon { color: var(--tk-color-ink-log-error); }
+.tk-toast--warning > .tk-icon { color: var(--tk-color-ink-log-warn); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-dialog[open], .tk-sheet[open], .tk-drawer[open], .tk-menu, .tk-toast { animation: none; }
+}

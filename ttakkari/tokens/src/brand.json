@@ -1,0 +1,29 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "Ttakkari 브랜드 5색. 사용자가 준 :root 시드의 --background·--foreground·--primary·--accent·--accent-soft 그대로다. 램프(palette.json)의 앵커이자 로고·문서에서 부르는 이름이다. 화면 코드는 이 토큰을 직접 참조하지 않고 시맨틱 토큰(color.*)을 거친다(docs/01).",
+    "paper":     { "$value": "#F4F4ED", "$description": "Paper · 시드 --background(라이트). 라이트 캔버스이자 다크 본문 글자. 따뜻한 미색이라 흰 카드가 그 위에서 한 단계 떠 보인다" },
+    "ink":       { "$value": "#080705", "$description": "Ink · 시드 --foreground(라이트) = --background(다크). 라이트 본문 글자(종이 위 18.23:1)이자 다크 캔버스. 로고 타일 색" },
+    "blue":      { "$value": "#296EB4", "$description": "Ttakkari Blue · 시드 --primary(= blue.600). 사람의 행동(주 버튼·링크·포커스·선택). 흰 글자 5.27:1, 종이 위 4.77:1. 두 테마에서 같은 값" },
+    "mint":      { "$value": "#00F0B5", "$description": "Ttakkari Mint · 시드 --accent(= mint.300). 에이전트 신호(실행 중·완료·도착·커서). 종이 위 1.35:1 이라 밝은 면에서 글자·얇은 선 불가. 잉크 면 위 13.55:1" },
+    "mint-soft": { "$value": "#6DECAF", "$description": "Mint Soft · 시드 --accent-soft. 형광펜 면(문서 검색 히트·보관함 검색 일치). 위 글자는 언제나 ink(13.68:1). 두 테마에서 같은 값" }
+  },
+  "seed": {
+    "$type": "color",
+    "$description": "사용자가 준 :root·.dark 시드의 중립 값 그대로. 시맨틱 토큰이 이 값을 직접 참조해 원래 화면 느낌을 유지한다. 램프(sage·graphite)는 이 사이의 단계(hover·비활성·보조 글자)를 채운다.",
+    "surface":            { "$value": "#FFFFFF", "$description": "--surface(라이트). 카드·입력·패널" },
+    "surface-muted":      { "$value": "#E9ECE8", "$description": "--surface-muted(라이트). 트랙·칩·스켈레톤·인라인 코드" },
+    "border":             { "$value": "#D6DCD7", "$description": "--border(라이트). 카드·구획선(장식 선, 3:1 요구 없음)" },
+    "text-muted":         { "$value": "#59645F", "$description": "--text-muted(라이트) = sage.700. 캡션·타임스탬프. 종이 위 5.57:1" },
+    "dark-surface":       { "$value": "#171B1C", "$description": "--surface(다크). 카드·입력·패널. 라이트 테마의 잉크 면(코드·로그)도 이 값이다" },
+    "dark-surface-muted": { "$value": "#22292A", "$description": "--surface-muted(다크). 떠 있는 면·칩·트랙" },
+    "dark-border":        { "$value": "#30383A", "$description": "--border(다크) = graphite.900" },
+    "dark-text-muted":    { "$value": "#A6B0B8", "$description": "--text-muted(다크). 잉크 캔버스 위 9.13:1" }
+  },
+  "base": {
+    "$type": "color",
+    "white": { "$value": "#FFFFFF" },
+    "black": { "$value": "#000000" },
+    "transparent": { "$value": "transparent" }
+  }
+}

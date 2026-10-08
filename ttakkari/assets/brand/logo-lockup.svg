@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 64" role="img" aria-label="Ttakkari">
+  <rect x="0" y="0" width="64" height="64" rx="14" fill="#080705"/>
+  <path d="M11.5 19 L23.5 19 L23.5 24.5 L17 24.5 L17 39.5 L23.5 39.5 L23.5 45 L11.5 45 Z" fill="#F4F4ED"/>
+  <path d="M26 19 L38 19 L38 24.5 L31.5 24.5 L31.5 39.5 L38 39.5 L38 45 L26 45 Z" fill="#F4F4ED"/>
+  <path d="M41.75 15.5 L47.25 15.5 L47.25 48.5 L41.75 48.5 Z" fill="#F4F4ED"/>
+  <rect x="47.25" y="29.25" width="6.5" height="5.5" rx="0.75" fill="#00F0B5"/>
+  <rect x="82" y="13" width="6" height="31" fill="#080705"/>
+  <rect x="96" y="13" width="6" height="31" fill="#080705"/>
+  <rect x="78" y="22" width="28" height="6" fill="#080705"/>
+  <circle cx="121" cy="33" r="8" fill="none" stroke="#080705" stroke-width="6"/>
+  <rect x="126" y="22" width="6" height="22" fill="#080705"/>
+  <rect x="136" y="10" width="6" height="34" fill="#080705"/>
+  <path d="M142.75 37.44 L158.75 25.94 L155.25 21.06 L139.25 32.56 Z" fill="#080705"/>
+  <path d="M144.74 32.48 L155.24 44.48 L159.76 40.52 L149.26 28.52 Z" fill="#080705"/>
+  <rect x="163" y="10" width="6" height="34" fill="#080705"/>
+  <path d="M169.75 37.44 L185.75 25.94 L182.25 21.06 L166.25 32.56 Z" fill="#080705"/>
+  <path d="M171.74 32.48 L182.24 44.48 L186.76 40.52 L176.26 28.52 Z" fill="#080705"/>
+  <circle cx="201" cy="33" r="8" fill="none" stroke="#080705" stroke-width="6"/>
+  <rect x="206" y="22" width="6" height="22" fill="#080705"/>
+  <rect x="216" y="22" width="6" height="22" fill="#080705"/>
+  <path d="M219 33 A11 11 0 0 1 230 22" fill="none" stroke="#080705" stroke-width="6"/>
+  <rect x="237" y="22" width="6" height="22" fill="#080705"/>
+  <rect x="237" y="10" width="6" height="6" rx="1.5" fill="#080705"/>
+</svg>

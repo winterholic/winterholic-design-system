@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>파일 찾기 · Ttakkari</title>
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/prose.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="examples.css">
+<script src="../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="탐색">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="chat.html"><img src="../assets/brand/logo-mark.svg" alt=""><span>Ttakkari</span></a></div>
+    <nav class="tk-sidebar" aria-label="영역과 폴더">
+      <div class="tk-nav">
+        <a class="tk-nav__link" href="chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+        <a class="tk-nav__link" href="workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간</a>
+        <a class="tk-nav__link" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+        <a class="tk-nav__link" href="files.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일 찾기</a>
+      </div>
+      <div class="tk-sidebar__group">
+        <p class="tk-sidebar__label">허용된 위치</p>
+        <ul class="tk-tree" aria-label="허용된 폴더">
+          <li><a class="tk-tree__item" href="#"><svg class="tk-icon" aria-hidden="true"><use href="#i-hard-drive"/></svg>Mac Studio</a>
+            <ul>
+              <li><a class="tk-tree__item" href="#" aria-current="location"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-open"/></svg>Documents</a></li>
+              <li><a class="tk-tree__item" href="#"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder"/></svg>Downloads</a></li>
+              <li><a class="tk-tree__item" href="#"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder"/></svg>development</a></li>
+              <li><a class="tk-tree__item" href="#"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder"/></svg>회사<span class="tk-policy" data-policy="restricted"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg>별도 정책</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <div class="tk-header__title"><h1>파일 찾기</h1><p class="tk-header__meta"><span class="tk-dot tk-dot--online" aria-hidden="true"></span>Mac Studio · 허용된 위치 4곳</p></div>
+          <div class="tk-header__actions">
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="tk-screen__body" data-tk-select-scope>
+        <div class="tk-container tk-container--md">
+          <div class="tk-filterbar" role="search">
+            <div class="tk-filterbar__row">
+              <span class="tk-input-wrap"><svg class="tk-icon" aria-hidden="true"><use href="#i-search"/></svg><input class="tk-input" type="search" value="지난달 계약서 PDF" aria-label="말로 파일 찾기"><span class="tk-input-wrap__end"><button class="tk-icon-button tk-icon-button--xs" type="button" aria-label="검색어 지우기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></span></span>
+            </div>
+            <nav class="tk-path" aria-label="검색 위치"><ol><li><a href="#">Mac Studio</a></li><li><a href="#">Users</a></li><li><a href="#">winterholic</a></li><li><span aria-current="location">Documents</span></li></ol></nav>
+            <p class="tk-filterbar__count" role="status">4개 찾음 · 이름·내용·수정일(2026.09) 기준</p>
+          </div>
+        </div>
+        <ul class="tk-list tk-container tk-container--md ex-flush" aria-label="검색 결과">
+          <li><label class="tk-list__item tk-artifact tk-list__item--interactive">
+            <span class="tk-checkbox tk-checkbox--bare"><input type="checkbox" data-tk-select aria-label="2026-임대차-계약서.pdf 선택"></span>
+            <span class="tk-glyph" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+            <span class="tk-list__body">
+              <span class="tk-list__title">2026-<mark>임대차</mark>-<mark>계약서</mark>.pdf</span>
+              <span class="tk-list__meta"><span class="tk-mono">~/Documents/집</span><span>3.2 MB</span><span>09.18</span></span>
+              <span class="tk-list__snippet">…본 <mark>계약서</mark>는 임대인과 임차인이 2026년 9월 18일 체결하며 보증금은…</span>
+            </span>
+            <span class="tk-list__end"><span class="tk-policy" data-policy="restricted"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg>민감</span></span>
+          </label></li>
+          <li><label class="tk-list__item tk-artifact tk-list__item--interactive">
+            <span class="tk-checkbox tk-checkbox--bare"><input type="checkbox" data-tk-select checked aria-label="외주-용역-계약서-서명본.pdf 선택"></span>
+            <span class="tk-glyph" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+            <span class="tk-list__body">
+              <span class="tk-list__title">외주-용역-<mark>계약서</mark>-서명본.pdf</span>
+              <span class="tk-list__meta"><span class="tk-mono">~/Documents/일/2026</span><span>820 KB</span><span>09.03</span></span>
+            </span>
+          </label></li>
+          <li><label class="tk-list__item tk-artifact tk-list__item--interactive">
+            <span class="tk-checkbox tk-checkbox--bare"><input type="checkbox" data-tk-select checked aria-label="계약-검토-메모.md 선택"></span>
+            <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span>
+            <span class="tk-list__body">
+              <span class="tk-list__title"><mark>계약</mark>-검토-메모.md</span>
+              <span class="tk-list__meta"><span class="tk-mono">~/Documents/일/2026</span><span>4 KB</span><span>09.04</span></span>
+            </span>
+          </label></li>
+          <li><div class="tk-list__item tk-artifact" aria-disabled="true">
+            <span class="tk-checkbox tk-checkbox--bare"><input type="checkbox" disabled aria-label="고객사-NDA.pdf 선택(별도 정책으로 막힘)"></span>
+            <span class="tk-glyph" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+            <span class="tk-list__body">
+              <span class="tk-list__title">고객사-NDA.pdf</span>
+              <span class="tk-list__meta"><span class="tk-mono">~/회사/법무</span><span>이름만 보여요</span></span>
+            </span>
+            <span class="tk-list__end"><span class="tk-policy" data-policy="blocked"><svg class="tk-icon" aria-hidden="true"><use href="#i-ban"/></svg>회사 자료</span></span>
+          </div></li>
+        </ul>
+        <div class="tk-container tk-container--md">
+          <aside class="tk-callout tk-callout--note" role="note">
+            <svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-info"/></svg>
+            <div class="tk-callout__body"><strong class="tk-callout__title">찾을 수 있는 곳만 찾아요</strong><p>허용된 위치 밖과 인증 정보(키·토큰·.env)는 검색 결과에도 나오지 않아요. 위치는 설정 › 파일 접근에서 바꿀 수 있어요.</p></div>
+          </aside>
+        </div>
+        <div class="tk-selectionbar" data-tk-selectionbar hidden>
+          <span class="tk-selectionbar__count"><span data-tk-select-count>0</span>개 선택</span>
+          <button class="tk-icon-button" type="button" aria-label="다운로드" data-tk-tooltip="다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+          <button class="tk-icon-button" type="button" aria-label="작업 공간에 담기" data-tk-tooltip="작업 공간에 담기"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg></button>
+          <button class="tk-button tk-button--primary tk-button--sm" type="button" data-tk-dialog-open="export-sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-share"/></svg>보내기</button>
+          <button class="tk-icon-button" type="button" data-tk-select-clear aria-label="선택 해제"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역">
+    <a class="tk-tabbar__item" href="chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+    <a class="tk-tabbar__item" href="workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간</a>
+    <a class="tk-tabbar__item" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+    <a class="tk-tabbar__item" href="files.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일</a>
+  </nav>
+</div>
+
+<dialog class="tk-sheet" id="export-sheet" aria-labelledby="ex-title" data-tk-modal>
+  <div class="tk-dialog__header"><h2 class="tk-dialog__title" id="ex-title">파일 2개 보내기</h2><button class="tk-icon-button" type="button" data-tk-dialog-close aria-label="닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <form class="tk-dialog__body" method="dialog">
+    <div class="tk-field">
+      <label class="tk-label" for="ex-to">받는 사람</label>
+      <input class="tk-input" id="ex-to" type="email" value="partner@example.com" aria-describedby="ex-to-help">
+      <p class="tk-help" id="ex-to-help">처음 보내는 주소는 매번 승인이 필요해요.</p>
+    </div>
+    <fieldset class="tk-fieldset">
+      <legend class="tk-label">보내는 방법</legend>
+      <div class="tk-segmented tk-segmented--block tk-segmented--lg" role="radiogroup" aria-label="보내는 방법">
+        <label><input type="radio" name="via" checked><svg class="tk-icon" aria-hidden="true"><use href="#i-mail"/></svg>메일 첨부</label>
+        <label><input type="radio" name="via"><svg class="tk-icon" aria-hidden="true"><use href="#i-external-link"/></svg>만료 링크</label>
+      </div>
+    </fieldset>
+    <div class="tk-field">
+      <label class="tk-label" for="ex-ttl">링크 만료</label>
+      <span class="tk-select"><select id="ex-ttl"><option>10분</option><option selected>1시간</option><option>24시간</option></select></span>
+    </div>
+    <ul class="tk-checks" aria-label="정책 확인 결과">
+      <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span>두 파일 모두 허용된 위치(<code>~/Documents/일</code>)에 있어요</span></li>
+      <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span>민감 정보 패턴이 없어요</span></li>
+      <li data-result="warn"><svg class="tk-icon" aria-hidden="true"><use href="#i-warning"/></svg><span><strong>외부 주소</strong>라 보내기 전에 한 번 더 승인해요</span></li>
+    </ul>
+    <div class="tk-policy-note" data-policy="approval"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield-alert"/></svg><div><p>보낸 기록은 감사 로그에 90일 남고, 링크는 만료되면 다시 열 수 없어요.</p></div></div>
+  </form>
+  <div class="tk-dialog__footer">
+    <button class="tk-button tk-button--lg" type="button" data-tk-dialog-close>취소</button>
+    <button class="tk-button tk-button--lg tk-button--primary" type="button" data-tk-dialog-close>승인 요청하고 보내기</button>
+  </div>
+</dialog>
+</body>
+</html>

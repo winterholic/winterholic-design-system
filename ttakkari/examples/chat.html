@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>채팅 · Ttakkari</title>
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/prose.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="examples.css">
+<script src="../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <!-- 데스크톱 사이드바: 영역 내비 + 세션 목록. lg 미만에서는 같은 내용이 드로어(#nav-drawer)에 들어간다 -->
+  <aside class="tk-app__sidebar" aria-label="탐색">
+    <div class="tk-app__brand">
+      <a class="tk-header__brand" href="chat.html"><img src="../assets/brand/logo-mark.svg" alt=""><span>Ttakkari</span></a>
+      <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="새 세션" data-tk-tooltip="새 세션" data-tk-tooltip-kbd="⌘N"><svg class="tk-icon" aria-hidden="true"><use href="#i-new-chat"/></svg></button>
+    </div>
+    <nav class="tk-sidebar" aria-label="영역과 세션">
+      <div class="tk-nav">
+        <a class="tk-nav__link" href="chat.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+        <a class="tk-nav__link" href="workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간<span class="tk-badge tk-badge--count" aria-label="새 결과물 2개">2</span></a>
+        <a class="tk-nav__link" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+        <a class="tk-nav__link" href="files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일 찾기</a>
+      </div>
+      <div class="tk-sidebar__group">
+        <p class="tk-sidebar__label">오늘</p>
+        <a class="tk-session" href="#" aria-current="page"><span class="tk-session__title">회의록 정리하고 결정 사항 보내기</span><span class="tk-session__time">14:32</span><span class="tk-session__meta"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>실행 중 · 승인 1건 대기</span></a>
+        <a class="tk-session" href="#"><span class="tk-session__title">stock-gosu 테스트 실패 원인</span><span class="tk-session__time">11:05</span><span class="tk-session__meta">완료 · 결과물 3</span></a>
+      </div>
+      <div class="tk-sidebar__group">
+        <p class="tk-sidebar__label">이번 주</p>
+        <a class="tk-session" href="#"><span class="tk-session__title">계약서 PDF 찾아서 이름 정리</span><span class="tk-session__time">화</span><span class="tk-session__meta">완료 · 파일 12개 이동</span></a>
+        <a class="tk-session" href="#"><span class="tk-session__title">발표 자료 초안(PPTX)</span><span class="tk-session__time">월</span><span class="tk-session__meta">실패 · 변환 오류</span></a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <button class="tk-icon-button tk-header__menu" type="button" aria-label="세션 목록 열기" data-tk-dialog-open="nav-drawer"><svg class="tk-icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+          <div class="tk-header__title">
+            <h1>회의록 정리하고 결정 사항 보내기</h1>
+            <p class="tk-header__meta"><span class="tk-dot tk-dot--online" aria-hidden="true"></span>Mac Studio 연결됨 · 승인 1건 대기</p>
+          </div>
+          <div class="tk-header__actions">
+            <a class="tk-icon-button tk-hide-below-lg" href="workspace.html" aria-label="작업 공간 열기" data-tk-tooltip="작업 공간 열기"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg></a>
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+            <div class="tk-dropdown">
+              <button class="tk-icon-button" type="button" aria-label="세션 메뉴" aria-haspopup="menu" aria-controls="session-menu"><svg class="tk-icon" aria-hidden="true"><use href="#i-more-vertical"/></svg></button>
+              <div class="tk-menu tk-menu--end" id="session-menu" role="menu" aria-label="세션 메뉴">
+                <button class="tk-menu__item" role="menuitem" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-pin"/></svg>세션 고정</button>
+                <button class="tk-menu__item" role="menuitem" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>결과물 모두 보관함에 담기</button>
+                <button class="tk-menu__item" role="menuitem" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg>전체 실행 로그</button>
+                <hr class="tk-menu__separator">
+                <button class="tk-menu__item tk-menu__item--danger" role="menuitem" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-trash"/></svg>세션 삭제…</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="tk-thread" data-tk-follow role="log" aria-label="대화" aria-live="polite">
+        <div class="tk-thread__inner">
+          <p class="tk-thread__day">오늘 · 2026.10.09</p>
+
+          <article class="tk-message tk-message--user" data-author="user" aria-label="내 지시">
+            <div class="tk-message__body">지난주 회의록 3개 찾아서 요약하고, 결정 사항만 모아서 PDF로 만들어줘</div>
+            <p class="tk-message__meta"><span class="tk-message__time">14:20</span></p>
+          </article>
+
+          <article class="tk-message tk-message--agent" data-author="agent" aria-label="따까리의 응답">
+            <div class="tk-message__head">
+              <span class="tk-avatar tk-avatar--agent tk-avatar--sm" aria-hidden="true"></span>
+              <span class="tk-message__name">따까리</span>
+              <span class="tk-message__time">14:21</span>
+            </div>
+            <div class="tk-message__body">
+              <div class="tk-prose tk-prose--compact">
+                <p><code>~/Documents/회의록</code>에서 지난주 회의록 3개를 찾았어요. 결정 사항은 <strong>7건</strong>이고, 그중 2건은 담당자가 정해지지 않았어요.</p>
+              </div>
+              <div class="tk-run" data-state="succeeded">
+                <div class="tk-run__head">
+                  <p class="tk-run__title">회의록 요약 · PDF 만들기</p>
+                  <span class="tk-badge" data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-check"/></svg>완료</span>
+                </div>
+                <p class="tk-run__meta"><span class="tk-run__elapsed">1분 42초</span><span>파일 3개 읽음</span><span>결과물 2</span></p>
+                <details class="tk-run__more">
+                  <summary>단계 4개</summary>
+                  <ol class="tk-steps">
+                    <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">회의록 찾기 <span class="tk-step__target">~/Documents/회의록/*.md</span></span><span class="tk-step__time">4초</span></li>
+                    <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">3개 파일 읽기</span><span class="tk-step__time">2초</span></li>
+                    <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">결정 사항 추출·요약</span><span class="tk-step__time">1분 21초</span></li>
+                    <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">PDF 만들기</span><span class="tk-step__time">15초</span></li>
+                  </ol>
+                </details>
+              </div>
+              <div class="tk-artifacts">
+                <div class="tk-artifact-card" data-new>
+                  <a class="tk-artifact-card__open" href="workspace.html">
+                    <span class="tk-glyph tk-glyph--sm" data-type="pdf" data-new><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+                    <span class="tk-artifact-card__body">
+                      <span class="tk-artifact-card__name">결정사항-요약-1009.pdf</span>
+                      <span class="tk-artifact-card__meta"><span class="tk-ext">PDF</span><span>2쪽</span><span>148 KB</span></span>
+                    </span>
+                  </a>
+                  <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="결정사항-요약-1009.pdf 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+                </div>
+                <div class="tk-artifact-card">
+                  <a class="tk-artifact-card__open" href="workspace.html">
+                    <span class="tk-glyph tk-glyph--sm" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span>
+                    <span class="tk-artifact-card__body">
+                      <span class="tk-artifact-card__name">회의록-요약.md</span>
+                      <span class="tk-artifact-card__meta"><span class="tk-ext">MD</span><span>6 KB</span></span>
+                    </span>
+                  </a>
+                  <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="회의록-요약.md 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+                </div>
+              </div>
+              <div class="tk-chips tk-suggestions" aria-label="후속 지시 제안">
+                <button class="tk-chip" type="button" data-tk-suggest="담당자 없는 2건은 누구에게 맡기면 좋을지 제안해줘">담당자 없는 2건 제안받기</button>
+                <button class="tk-chip" type="button" data-tk-suggest="결정 사항 문서를 팀장님께 메일로 보내줘">팀장님께 메일로 보내기</button>
+                <button class="tk-chip" type="button" data-tk-suggest="다음 주 회의 안건 초안도 만들어줘">다음 회의 안건 만들기</button>
+              </div>
+            </div>
+            <div class="tk-message__actions">
+              <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="응답 복사" data-tk-copy data-tk-tooltip="응답 복사"><svg class="tk-icon" aria-hidden="true"><use href="#i-copy"/></svg></button>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="다시 실행" data-tk-tooltip="다시 실행"><svg class="tk-icon" aria-hidden="true"><use href="#i-retry"/></svg></button>
+            </div>
+          </article>
+
+          <article class="tk-message tk-message--user" data-author="user" aria-label="내 지시">
+            <div class="tk-message__body">결정 사항 문서를 팀장님께 메일로 보내줘</div>
+            <p class="tk-message__meta"><span class="tk-message__time">14:31</span></p>
+          </article>
+
+          <article class="tk-message tk-message--agent" data-author="agent" aria-label="따까리의 응답" aria-busy="true">
+            <div class="tk-message__head">
+              <span class="tk-avatar tk-avatar--agent tk-avatar--sm" aria-hidden="true"></span>
+              <span class="tk-message__name">따까리</span>
+              <span class="tk-badge" data-state="waiting"><svg class="tk-icon" aria-hidden="true"><use href="#i-hand"/></svg>승인 대기</span>
+            </div>
+            <div class="tk-message__body">
+              <div class="tk-run" data-state="waiting">
+                <div class="tk-run__head">
+                  <p class="tk-run__title">메일로 보내기</p>
+                  <span class="tk-run__elapsed tk-run__meta">0:47</span>
+                </div>
+                <div class="tk-progress tk-progress--agent" style="--tk-progress: 0.66" role="progressbar" aria-label="진행" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                <ol class="tk-steps">
+                  <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">받는 사람 찾기 <span class="tk-step__target">연락처 · 김팀장</span></span><span class="tk-step__time">3초</span></li>
+                  <li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">본문 쓰기</span><span class="tk-step__time">22초</span></li>
+                  <li data-state="waiting"><svg class="tk-icon" aria-hidden="true"><use href="#i-hand"/></svg><span class="tk-step__name">외부로 보내기 승인<span class="tk-step__detail">파일을 컴퓨터 밖으로 보내는 일은 직접 허락해야 해요</span></span><span class="tk-step__time">대기</span></li>
+                </ol>
+                <div class="tk-log">
+                  <div class="tk-log__header">
+                    <span class="tk-dot tk-dot--live" aria-hidden="true"></span>
+                    <span class="tk-log__title">실행 로그</span>
+                    <div class="tk-button-group">
+                      <button class="tk-icon-button tk-icon-button--xs" type="button" aria-label="로그 따라가기" aria-pressed="true" data-tk-log-follow data-tk-tooltip="로그 따라가기"><svg class="tk-icon" aria-hidden="true"><use href="#i-follow"/></svg></button>
+                      <button class="tk-copy" type="button" data-tk-copy><svg class="tk-icon tk-copy__idle" aria-hidden="true"><use href="#i-copy"/></svg><svg class="tk-icon tk-copy__done" aria-hidden="true"><use href="#i-check"/></svg><span class="tk-copy__idle">복사</span><span class="tk-copy__done">복사됨</span></button>
+                    </div>
+                  </div>
+                  <div class="tk-log__body" tabindex="0" role="region" aria-label="실행 로그">
+                    <ol class="tk-log__lines">
+                      <li data-level="tool"><span class="tk-log__time">14:31:08</span><span class="tk-log__level">tool</span><span class="tk-log__msg">contacts.search("팀장")</span></li>
+                      <li data-level="ok"><span class="tk-log__time">14:31:11</span><span class="tk-log__level">ok</span><span class="tk-log__msg">1명 찾음 · lead@example.com</span></li>
+                      <li data-level="info"><span class="tk-log__time">14:31:33</span><span class="tk-log__level">info</span><span class="tk-log__msg">본문 초안 412자 · 첨부 결정사항-요약-1009.pdf</span></li>
+                      <li data-level="warn" data-live><span class="tk-log__time">14:31:55</span><span class="tk-log__level">wait</span><span class="tk-log__msg">broker: 외부 반출 승인 필요(policy export.external)</span></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
+              <section class="tk-approval" aria-labelledby="ap-title">
+                <div class="tk-approval__head">
+                  <svg class="tk-icon" aria-hidden="true"><use href="#i-shield-alert"/></svg>
+                  <div>
+                    <h2 class="tk-approval__title" id="ap-title">파일 1개를 외부 메일로 보낼까요?</h2>
+                    <p class="tk-approval__lead">컴퓨터 밖으로 나가는 작업이라 직접 승인해야 진행돼요.</p>
+                  </div>
+                </div>
+                <div class="tk-approval__body">
+                  <dl class="tk-meta">
+                    <div><dt>받는 사람</dt><dd>김팀장 &lt;lead@example.com&gt;</dd></div>
+                    <div><dt>보낼 파일</dt><dd class="tk-mono">결정사항-요약-1009.pdf · 148 KB</dd></div>
+                    <div><dt>보내는 수단</dt><dd>Gmail(연결된 계정)</dd></div>
+                  </dl>
+                  <ul class="tk-checks" aria-label="정책 확인 결과">
+                    <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span>개인 작업 영역에서 만든 파일이에요</span></li>
+                    <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span>민감 정보(계정·키·주민번호) 패턴이 없어요</span></li>
+                    <li data-result="warn"><svg class="tk-icon" aria-hidden="true"><use href="#i-warning"/></svg><span><strong>처음 보내는 주소</strong>예요. 보낸 뒤에는 되돌릴 수 없어요</span></li>
+                  </ul>
+                </div>
+                <div class="tk-approval__footer">
+                  <button class="tk-button tk-button--lg" type="button">거부</button>
+                  <button class="tk-button tk-button--lg tk-button--primary" type="button">승인하고 보내기</button>
+                </div>
+              </section>
+            </div>
+          </article>
+
+          <button class="tk-jump" type="button" hidden><span class="tk-dot tk-dot--live" aria-hidden="true"></span>새 메시지<svg class="tk-icon" aria-hidden="true"><use href="#i-arrow-down"/></svg></button>
+        </div>
+      </div>
+
+      <div class="tk-composer-tray">
+        <form class="tk-composer" data-tk-composer action="#" aria-label="따까리에게 지시하기">
+          <div class="tk-chips" aria-label="함께 보낼 문맥">
+            <span class="tk-chip tk-chip--context"><span class="tk-glyph" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span><span>결정사항-요약-1009.pdf</span><button class="tk-icon-button tk-icon-button--xs tk-icon-button--round" type="button" aria-label="문맥에서 빼기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></span>
+          </div>
+          <div class="tk-composer__row">
+            <button class="tk-icon-button" type="button" aria-label="파일 첨부" data-tk-tooltip="파일 첨부"><svg class="tk-icon" aria-hidden="true"><use href="#i-paperclip"/></svg></button>
+            <label class="tk-sr-only" for="composer-input">지시</label>
+            <textarea class="tk-composer__input" id="composer-input" rows="1" placeholder="따까리에게 지시하기"></textarea>
+            <button class="tk-icon-button tk-icon-button--secondary tk-icon-button--round tk-composer__send" type="button" data-tk-stop aria-label="실행 멈추기" data-tk-tooltip="실행 멈추기" data-tk-tooltip-kbd="Esc"><svg class="tk-icon" aria-hidden="true"><use href="#i-stop"/></svg></button>
+          </div>
+          <p class="tk-composer__hint"><span>실행 중에도 다음 지시를 쓸 수 있어요</span><span class="tk-composer__keys"><kbd>↵</kbd> 보내기 · <kbd>⇧</kbd><kbd>↵</kbd> 줄바꿈</span></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역">
+    <a class="tk-tabbar__item" href="chat.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+    <a class="tk-tabbar__item" href="workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간<span class="tk-badge tk-badge--count" aria-label="새 결과물 2개">2</span></a>
+    <a class="tk-tabbar__item" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+    <a class="tk-tabbar__item" href="files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일</a>
+  </nav>
+</div>
+
+<dialog class="tk-drawer" id="nav-drawer" aria-label="세션 목록">
+  <div class="tk-drawer__header">
+    <a class="tk-header__brand" href="chat.html"><img src="../assets/brand/logo-mark.svg" alt=""><span>Ttakkari</span></a>
+    <button class="tk-icon-button" type="button" data-tk-dialog-close aria-label="닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="tk-drawer__body">
+    <nav class="tk-sidebar" aria-label="세션">
+      <a class="tk-button tk-button--block" href="#"><svg class="tk-icon" aria-hidden="true"><use href="#i-new-chat"/></svg>새 세션</a>
+      <div class="tk-sidebar__group">
+        <p class="tk-sidebar__label">오늘</p>
+        <a class="tk-session" href="#" aria-current="page"><span class="tk-session__title">회의록 정리하고 결정 사항 보내기</span><span class="tk-session__time">14:32</span><span class="tk-session__meta"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>실행 중 · 승인 1건 대기</span></a>
+        <a class="tk-session" href="#"><span class="tk-session__title">stock-gosu 테스트 실패 원인</span><span class="tk-session__time">11:05</span><span class="tk-session__meta">완료 · 결과물 3</span></a>
+      </div>
+      <div class="tk-sidebar__group">
+        <p class="tk-sidebar__label">이번 주</p>
+        <a class="tk-session" href="#"><span class="tk-session__title">계약서 PDF 찾아서 이름 정리</span><span class="tk-session__time">화</span><span class="tk-session__meta">완료 · 파일 12개 이동</span></a>
+        <a class="tk-session" href="#"><span class="tk-session__title">발표 자료 초안(PPTX)</span><span class="tk-session__time">월</span><span class="tk-session__meta">실패 · 변환 오류</span></a>
+      </div>
+    </nav>
+  </div>
+</dialog>
+</body>
+</html>

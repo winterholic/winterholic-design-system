@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Ttakkari 디자인 시스템 미리보기</title>
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/prose.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="examples.css">
+<script src="../dist/tokens.global.js"></script>
+<script src="../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="tk-header">
+  <div class="tk-header__inner tk-container">
+    <a class="tk-header__brand" href="#main"><img src="../assets/brand/logo-mark.svg" alt=""><span>Ttakkari</span></a>
+    <div class="tk-header__title"><span class="tk-mono tk-text-tertiary">design system · preview</span></div>
+    <div class="tk-header__actions">
+      <a class="tk-button tk-button--sm tk-button--ghost tk-hide-below-md" href="chat.html">채팅 템플릿</a>
+      <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main class="tk-container ex-page-shell" id="main" tabindex="-1">
+  <div class="ex-head">
+    <p class="tk-eyebrow tk-text-agent">Winterholic Ttakkari</p>
+    <h1 class="tk-heading-1">디자인 시스템 미리보기</h1>
+    <p class="tk-body-md tk-text-secondary">전 토큰과 컴포넌트를 라이트·다크로 확인하는 곳. 제품 화면은 <a class="tk-link" href="chat.html">채팅</a> · <a class="tk-link" href="workspace.html">작업 공간</a> · <a class="tk-link" href="library.html">보관함</a> · <a class="tk-link" href="files.html">파일 찾기</a> · <a class="tk-link" href="auth.html">로그인</a> 템플릿에서 본다.</p>
+  </div>
+  <nav class="ex-toc" aria-label="이 페이지">
+    <a class="tk-chip" href="#brand">브랜드</a><a class="tk-chip" href="#color">색</a><a class="tk-chip" href="#type">글자</a><a class="tk-chip" href="#scale">간격·모양</a><a class="tk-chip" href="#core">기본 컴포넌트</a><a class="tk-chip" href="#chat">채팅</a><a class="tk-chip" href="#run">실행·승인</a><a class="tk-chip" href="#artifact">결과물</a><a class="tk-chip" href="#viewer">뷰어</a><a class="tk-chip" href="#states">앱 상태</a>
+  </nav>
+
+  <!-- ===== 브랜드 ===== -->
+  <section class="ex-section" id="brand" aria-labelledby="h-brand">
+    <h2 class="tk-heading-2" id="h-brand">브랜드</h2>
+    <div class="brand-hero">
+      <img class="brand-hero__img" src="../assets/brand/brand-hero.webp" alt="" width="1600" height="900">
+      <div class="brand-hero__copy">
+        <p class="tk-eyebrow">YOUR MAC, YOUR ERRANDS</p>
+        <p class="tk-display">말하면 움직이는<br>내 컴퓨터의 따까리</p>
+        <p class="brand-hero__lead">어디서든 지시하고, 진행을 보고, 결과물을 바로 연다.</p>
+      </div>
+    </div>
+    <div class="ex-tiles">
+      <figure class="ex-tile"><img src="../assets/brand/logo-mark.svg" alt="Ttakkari 심볼" width="96" height="96"><figcaption>logo-mark.svg</figcaption></figure>
+      <figure class="ex-tile"><img class="ex-mono-mark" src="../assets/brand/logo-mark-mono.svg" alt="Ttakkari 단색 심볼" width="96" height="96"><figcaption>logo-mark-mono.svg</figcaption></figure>
+      <figure class="ex-tile ex-tile--paper"><img src="../assets/brand/logo-lockup.svg" alt="Ttakkari 로고" height="40"><figcaption>logo-lockup.svg</figcaption></figure>
+      <figure class="ex-tile ex-tile--ink"><img src="../assets/brand/logo-lockup-inverse.svg" alt="Ttakkari 어두운 면 로고" height="40"><figcaption>logo-lockup-inverse.svg</figcaption></figure>
+      <figure class="ex-tile"><div class="ex-row"><img src="../assets/brand/favicon-16.png" alt="16px 파비콘" width="16" height="16"><img src="../assets/brand/favicon-32.png" alt="32px 파비콘" width="32" height="32"><img src="../assets/brand/favicon-48.png" alt="48px 파비콘" width="48" height="48"></div><figcaption>favicon-16/32/48.png · favicon.svg · favicon.ico</figcaption></figure>
+      <figure class="ex-tile"><div class="ex-row"><img src="../assets/brand/app-icon-512.png" alt="앱 아이콘" width="64" height="64"><img src="../assets/brand/app-icon-maskable-512.png" alt="maskable 앱 아이콘" width="64" height="64"><img src="../assets/brand/apple-touch-icon-180.png" alt="iOS 홈 화면 아이콘" width="64" height="64"></div><figcaption>app-icon-512.png · maskable · apple-touch</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ===== 색 ===== -->
+  <section class="ex-section" id="color" aria-labelledby="h-color">
+    <h2 class="tk-heading-2" id="h-color">색</h2>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">브랜드 5색(시드)</h3>
+      <div class="ex-swatches" data-ex-swatches="brand"></div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">중립 시드</h3>
+      <p class="tk-body-sm tk-text-secondary">처음 준 <code class="tk-code-inline">--surface</code>·<code class="tk-code-inline">--surface-muted</code>·<code class="tk-code-inline">--border</code>·<code class="tk-code-inline">--text-muted</code>(라이트·다크) 그대로. 시맨틱 토큰이 이 값을 직접 가리킨다.</p>
+      <div class="ex-swatches" data-ex-swatches="seed"></div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">램프 7종</h3>
+      <p class="tk-body-sm tk-text-secondary">점 아래 표시가 앵커(시드 hex 가 그대로 박힌 단계).</p>
+      <div class="ex-ramps" data-ex-ramps></div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">시맨틱(현재 테마)</h3>
+      <div class="tk-stack tk-gap-2" data-ex-semantic></div>
+    </div>
+  </section>
+
+  <!-- ===== 글자 ===== -->
+  <section class="ex-section" id="type" aria-labelledby="h-type">
+    <h2 class="tk-heading-2" id="h-type">글자</h2>
+    <div class="ex-type" data-ex-type></div>
+  </section>
+
+  <!-- ===== 간격·모양 ===== -->
+  <section class="ex-section" id="scale" aria-labelledby="h-scale">
+    <h2 class="tk-heading-2" id="h-scale">간격·모양·깊이</h2>
+    <div class="ex-cols">
+      <div class="ex-block"><h3 class="tk-heading-3">간격(4px)</h3><div class="tk-stack tk-gap-2" data-ex-space></div></div>
+      <div class="ex-block"><h3 class="tk-heading-3">radius</h3><div class="ex-radius" data-ex-radius></div>
+        <h3 class="tk-heading-3">그림자(떠 있는 것만)</h3><div class="ex-shadows ex-panel--canvas"><div class="ex-shadow" style="box-shadow: var(--tk-shadow-xs)">xs</div><div class="ex-shadow" style="box-shadow: var(--tk-shadow-sm)">sm</div><div class="ex-shadow" style="box-shadow: var(--tk-shadow-md)">md</div><div class="ex-shadow" style="box-shadow: var(--tk-shadow-lg)">lg</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 기본 컴포넌트 ===== -->
+  <section class="ex-section" id="core" aria-labelledby="h-core">
+    <h2 class="tk-heading-2" id="h-core">기본 컴포넌트</h2>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Button</h3>
+      <div class="ex-row"><button class="tk-button tk-button--primary" type="button">승인하고 보내기</button><button class="tk-button" type="button">거부</button><button class="tk-button tk-button--ghost" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-copy"/></svg>복사</button><button class="tk-button tk-button--danger" type="button">세션 삭제</button></div>
+      <div class="ex-row"><button class="tk-button tk-button--xs" type="button">xs 24</button><button class="tk-button tk-button--sm" type="button">sm 32</button><button class="tk-button" type="button">md 40</button><button class="tk-button tk-button--lg" type="button">lg 48</button></div>
+      <div class="ex-row"><button class="tk-button" type="button" disabled>disabled</button><button class="tk-button" type="button" aria-disabled="true" data-tk-tooltip="Mac Studio 와 연결이 끊겼어요">aria-disabled + 이유</button><button class="tk-button tk-button--primary" type="button" aria-busy="true" disabled><span>보내는 중</span></button><button class="tk-button tk-button--sm" type="button" aria-pressed="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-wrap"/></svg>줄 바꿈</button></div>
+      <div class="ex-row">
+        <button class="tk-icon-button" type="button" aria-label="첨부" data-tk-tooltip="첨부"><svg class="tk-icon" aria-hidden="true"><use href="#i-paperclip"/></svg></button>
+        <button class="tk-icon-button tk-icon-button--secondary" type="button" aria-label="더보기"><svg class="tk-icon" aria-hidden="true"><use href="#i-more"/></svg></button>
+        <button class="tk-icon-button tk-icon-button--primary tk-icon-button--round" type="button" aria-label="보내기"><svg class="tk-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
+        <button class="tk-icon-button tk-icon-button--secondary tk-icon-button--round" type="button" aria-label="실행 멈추기"><svg class="tk-icon" aria-hidden="true"><use href="#i-stop"/></svg></button>
+        <a class="tk-link" href="#">문장 안 링크</a><a class="tk-link tk-link--standalone" href="#">전체 로그 보기</a>
+      </div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Form</h3>
+      <div class="tk-grid tk-grid--2">
+        <div class="tk-field"><label class="tk-label" for="f1">세션 이름 <span class="tk-label__optional">선택</span></label><input class="tk-input" id="f1" placeholder="예: 주간 보고 정리" aria-describedby="f1h"><p class="tk-help" id="f1h">비우면 첫 지시로 이름을 지어요.</p></div>
+        <div class="tk-field"><label class="tk-label" for="f2">받는 사람</label><input class="tk-input" id="f2" value="lead@" aria-invalid="true" aria-describedby="f2e"><p class="tk-error" id="f2e"><svg class="tk-icon" aria-hidden="true"><use href="#i-caution"/></svg>메일 주소 형식이 아니에요. @ 뒤를 채워 주세요.</p></div>
+        <div class="tk-field"><label class="tk-label" for="f3">허용된 위치</label><input class="tk-input tk-input--mono" id="f3" value="~/Documents" readonly></div>
+        <div class="tk-field"><label class="tk-label" for="f4">보존 기간</label><span class="tk-select"><select id="f4"><option>7일</option><option selected>30일</option><option>90일</option></select></span></div>
+      </div>
+      <div class="ex-row ex-row--start">
+        <fieldset class="tk-fieldset"><legend>자동 승인</legend><div class="tk-choices"><label class="tk-checkbox"><input type="checkbox" checked> 개인 작업 영역 안 파일 이동·복사</label><label class="tk-checkbox"><input type="checkbox"> <span>외부 메일<span class="tk-choice__desc">켜도 처음 보내는 주소는 묻는다</span></span></label></div></fieldset>
+        <fieldset class="tk-fieldset"><legend>다운로드 링크</legend><div class="tk-choices"><label class="tk-radio"><input type="radio" name="ttl" checked> 10분</label><label class="tk-radio"><input type="radio" name="ttl"> 1시간</label></div></fieldset>
+        <div class="tk-stack tk-gap-3"><label class="tk-switch"><input type="checkbox" role="switch" checked> 작업 끝나면 알림</label>
+          <div class="tk-segmented" role="radiogroup" aria-label="보기"><label><input type="radio" name="view" checked><svg class="tk-icon" aria-hidden="true"><use href="#i-list"/></svg>목록</label><label><input type="radio" name="view"><svg class="tk-icon" aria-hidden="true"><use href="#i-grid"/></svg>격자</label></div></div>
+      </div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Badge · Chip · Policy</h3>
+      <div class="ex-row"><span class="tk-badge" data-state="queued"><svg class="tk-icon" aria-hidden="true"><use href="#i-clock"/></svg>대기</span><span class="tk-badge" data-state="running"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>실행 중</span><span class="tk-badge" data-state="waiting"><svg class="tk-icon" aria-hidden="true"><use href="#i-hand"/></svg>승인 대기</span><span class="tk-badge" data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-check"/></svg>완료</span><span class="tk-badge" data-state="failed"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-x"/></svg>실패</span><span class="tk-badge" data-state="cancelled"><svg class="tk-icon" aria-hidden="true"><use href="#i-ban"/></svg>취소됨</span></div>
+      <div class="ex-row"><span class="tk-badge tk-badge--info">정보</span><span class="tk-badge tk-badge--success">성공</span><span class="tk-badge tk-badge--warning">주의</span><span class="tk-badge tk-badge--danger">실패</span><span class="tk-badge">중립</span><span class="tk-badge tk-badge--mono">PDF</span><span class="tk-badge tk-badge--count">3</span><span class="tk-badge tk-badge--count tk-badge--neutral">12</span></div>
+      <div class="ex-row"><span class="tk-policy" data-policy="allowed"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield"/></svg>허용</span><span class="tk-policy" data-policy="approval"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield-alert"/></svg>반출 승인</span><span class="tk-policy" data-policy="blocked"><svg class="tk-icon" aria-hidden="true"><use href="#i-ban"/></svg>반출 차단</span><span class="tk-policy" data-policy="restricted"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg>민감</span><span class="tk-retention"><svg class="tk-icon" aria-hidden="true"><use href="#i-clock"/></svg>30일</span><span class="tk-retention" data-soon><svg class="tk-icon" aria-hidden="true"><use href="#i-clock"/></svg>3일 뒤 정리</span></div>
+      <div class="tk-chips"><button class="tk-chip" type="button" aria-pressed="true">전체</button><button class="tk-chip" type="button" aria-pressed="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg>PDF</button><label class="tk-chip"><input type="checkbox">고정만</label><button class="tk-chip" type="button" data-tk-suggest="다음 회의 안건 만들어줘">다음 회의 안건 만들기</button><span class="tk-chip tk-chip--context"><span class="tk-glyph" data-type="sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span><span>결정사항-담당자.xlsx</span><button class="tk-icon-button tk-icon-button--xs tk-icon-button--round" type="button" aria-label="문맥에서 빼기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></span></div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Callout(GFM 다섯 이름)</h3>
+      <div class="tk-stack tk-gap-3">
+        <aside class="tk-callout tk-callout--note" role="note"><svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-info"/></svg><div class="tk-callout__body"><strong class="tk-callout__title">Note</strong><p>변환 미리보기는 원본과 레이아웃이 다를 수 있어요.</p></div></aside>
+        <aside class="tk-callout tk-callout--tip" role="note"><svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-tip"/></svg><div class="tk-callout__body"><strong class="tk-callout__title">Tip</strong><p>결과물을 연 채로 지시하면 그 파일이 문맥으로 붙어요.</p></div></aside>
+        <aside class="tk-callout tk-callout--important" role="note"><svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-important"/></svg><div class="tk-callout__body"><strong class="tk-callout__title">Important</strong><p>에이전트가 꼭 알려야 하는 것. 민트 면 = 에이전트의 말.</p></div></aside>
+        <aside class="tk-callout tk-callout--warning" role="note"><svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-warning"/></svg><div class="tk-callout__body"><strong class="tk-callout__title">Warning</strong><p>보낸 메일은 되돌릴 수 없어요.</p></div></aside>
+        <aside class="tk-callout tk-callout--caution" role="note"><svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-caution"/></svg><div class="tk-callout__body"><strong class="tk-callout__title">Caution</strong><p>이 작업은 파일 12개를 지워요.</p></div></aside>
+      </div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Card · Empty · Status · Avatar · Presence · Progress</h3>
+      <div class="tk-grid tk-grid--3">
+        <div class="tk-card"><p class="tk-card__title">Mac Studio</p><p class="tk-card__body">macOS 27 · 에이전트 3개 대기 · 디스크 여유 812 GB</p><p class="tk-card__footer"><span class="tk-presence"><span class="tk-dot tk-dot--online" aria-hidden="true"></span>연결됨</span></p></div>
+        <a class="tk-card" href="#"><p class="tk-card__title">결과물 128</p><p class="tk-card__body">이번 주 23 · 고정 6</p></a>
+        <div class="tk-card"><div class="ex-row"><span class="tk-avatar tk-avatar--agent" aria-hidden="true"></span><span class="tk-avatar tk-avatar--agent tk-avatar--lg" aria-hidden="true"><span class="tk-dot tk-dot--live"></span></span><span class="tk-avatar" aria-label="나">W</span><span class="tk-presence"><span class="tk-dot tk-dot--connecting" aria-hidden="true"></span>다시 연결 중</span><span class="tk-presence"><span class="tk-dot tk-dot--offline" aria-hidden="true"></span>오프라인</span></div>
+          <div class="tk-progress" style="--tk-progress: 0.4" role="progressbar" aria-label="업로드" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="tk-progress tk-progress--agent" data-indeterminate role="progressbar" aria-label="에이전트 실행 중"></div></div>
+      </div>
+      <div class="tk-empty tk-empty--boxed"><span class="tk-avatar tk-avatar--agent tk-avatar--lg" aria-hidden="true"></span><p class="tk-empty__title">무엇을 시킬까요?</p><p>Mac Studio에서 할 일을 말로 지시하세요. 결과물은 작업 공간에 모여요.</p><div class="tk-chips tk-chips--wrap"><button class="tk-chip" type="button">오늘 받은 PDF 정리</button><button class="tk-chip" type="button">테스트 돌리고 결과 보고</button></div></div>
+      <div class="ex-row"><span class="tk-status tk-status--success" role="status"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg>3개 파일을 보관함에 담았어요</span><span class="tk-status tk-status--danger"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-x"/></svg>다운로드 링크가 만료됐어요</span><span class="tk-status tk-status--agent"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>파일을 찾는 중</span></div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Tabs · Menu · Dialog · Sheet · Toast · Tooltip</h3>
+      <div class="tk-tablist" role="tablist" aria-label="예시 탭"><button class="tk-tab" role="tab" id="pt1" aria-controls="pp1" aria-selected="true" type="button">정보</button><button class="tk-tab" role="tab" id="pt2" aria-controls="pp2" aria-selected="false" type="button">기록<span class="tk-badge tk-badge--count tk-badge--neutral">3</span></button></div>
+      <div class="tk-tabpanel" role="tabpanel" id="pp1" aria-labelledby="pt1" tabindex="0"><p class="tk-body-sm">화살표 ←→ 로 탭을 바꾼다.</p></div>
+      <div class="tk-tabpanel" role="tabpanel" id="pp2" aria-labelledby="pt2" tabindex="0" hidden><p class="tk-body-sm">기록 패널</p></div>
+      <div class="ex-row">
+        <div class="tk-dropdown"><button class="tk-button" type="button" aria-haspopup="menu" aria-controls="pm1">정렬: <span data-tk-menu-value>최근 순</span><svg class="tk-icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+          <div class="tk-menu" id="pm1" role="menu" aria-label="정렬"><button class="tk-menu__item" role="menuitemradio" aria-checked="true" type="button">최근 순</button><button class="tk-menu__item" role="menuitemradio" aria-checked="false" type="button">이름 순</button><button class="tk-menu__item" role="menuitemradio" aria-checked="false" type="button">크기 순</button></div></div>
+        <button class="tk-button" type="button" data-tk-dialog-open="ex-dialog">재인증 다이얼로그</button>
+        <button class="tk-button" type="button" data-tk-dialog-open="ex-sheet">바텀 시트</button>
+        <button class="tk-button" type="button" id="ex-toast">토스트</button>
+        <button class="tk-icon-button tk-icon-button--secondary" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드" data-tk-tooltip-kbd="⌘S"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+      </div>
+    </div>
+    <div class="ex-block">
+      <h3 class="tk-heading-3">Table · List · Meta · Path</h3>
+      <div class="tk-table-wrap" role="region" aria-label="최근 작업" tabindex="0"><table class="tk-table"><thead><tr><th>작업</th><th>상태</th><th class="tk-table__num">경과</th><th class="tk-table__num">결과물</th></tr></thead><tbody><tr><td>회의록 요약</td><td><span class="tk-badge" data-state="succeeded">완료</span></td><td class="tk-table__num">1:42</td><td class="tk-table__num">2</td></tr><tr><td>메일로 보내기</td><td><span class="tk-badge" data-state="waiting">승인 대기</span></td><td class="tk-table__num">0:47</td><td class="tk-table__num">0</td></tr></tbody></table></div>
+      <nav class="tk-path" aria-label="경로"><ol><li><a href="#">Mac Studio</a></li><li><a href="#">Users</a></li><li><a href="#">winterholic</a></li><li><a href="#">Documents</a></li><li><span aria-current="location">회의록</span></li></ol></nav>
+      <dl class="tk-meta"><div><dt>Artifact ID</dt><dd class="tk-mono">art_01J9X4Q2M7</dd></div><div><dt>SHA-256</dt><dd class="tk-mono">9f2c4b…e71a</dd></div><div><dt>보존</dt><dd>30일(11.08까지)</dd></div></dl>
+    </div>
+  </section>
+
+  <!-- ===== 채팅 ===== -->
+  <section class="ex-section" id="chat" aria-labelledby="h-chat">
+    <h2 class="tk-heading-2" id="h-chat">채팅</h2>
+    <div class="ex-panel ex-panel--canvas">
+      <div class="tk-stack tk-gap-6">
+        <p class="tk-thread__day">오늘</p>
+        <article class="tk-message tk-message--user"><div class="tk-message__body">stock-gosu 테스트 돌리고 실패한 거 원인 찾아줘</div><p class="tk-message__meta"><span class="tk-message__time">11:02</span></p></article>
+        <article class="tk-message tk-message--agent" aria-busy="true"><div class="tk-message__head"><span class="tk-avatar tk-avatar--agent tk-avatar--sm" aria-hidden="true"></span><span class="tk-message__name">따까리</span></div><div class="tk-message__body"><p class="tk-thinking"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>테스트 돌리는 중<span class="tk-thinking__detail">· pytest 214개 중 88</span></p></div></article>
+        <article class="tk-message tk-message--agent"><div class="tk-message__head"><span class="tk-avatar tk-avatar--agent tk-avatar--sm" aria-hidden="true"></span><span class="tk-message__name">따까리</span><span class="tk-message__time">11:04</span></div><div class="tk-message__body"><div class="tk-prose tk-prose--compact"><p>실패 3건은 모두 <code>test_backtest.py</code>에서 났어요. 원인은 휴장일 처리예요<span class="tk-caret" aria-hidden="true"></span></p></div></div></article>
+        <article class="tk-message tk-message--agent"><div class="tk-message__head"><span class="tk-avatar tk-avatar--agent tk-avatar--sm" aria-hidden="true"></span><span class="tk-message__name">따까리</span></div><div class="tk-message__body"><p class="tk-message__error"><svg class="tk-icon" aria-hidden="true"><use href="#i-wifi-off"/></svg>Mac Studio 와 연결이 끊겨 응답을 받지 못했어요.<button class="tk-button tk-button--sm" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-retry"/></svg>다시 시도</button></p></div></article>
+        <p class="tk-message tk-message--system"><span><svg class="tk-icon tk-icon--sm" aria-hidden="true"><use href="#i-history"/></svg>어제 세션을 이어서 시작했어요</span></p>
+      </div>
+    </div>
+    <div class="ex-cols">
+      <form class="tk-composer" data-tk-composer action="#" aria-label="빈 컴포저"><div class="tk-composer__row"><button class="tk-icon-button" type="button" aria-label="파일 첨부"><svg class="tk-icon" aria-hidden="true"><use href="#i-paperclip"/></svg></button><label class="tk-sr-only" for="pc1">지시</label><textarea class="tk-composer__input" id="pc1" rows="1" placeholder="따까리에게 지시하기"></textarea><button class="tk-icon-button tk-icon-button--primary tk-icon-button--round tk-composer__send" type="submit" aria-label="보내기"><svg class="tk-icon" aria-hidden="true"><use href="#i-send"/></svg></button></div></form>
+      <form class="tk-composer" data-tk-composer data-offline action="#" aria-label="오프라인 컴포저"><div class="tk-composer__row"><label class="tk-sr-only" for="pc2">지시</label><textarea class="tk-composer__input" id="pc2" rows="1">연결되면 보낼 초안</textarea><button class="tk-icon-button tk-icon-button--primary tk-icon-button--round tk-composer__send" type="submit" aria-label="보내기(연결 끊김)"><svg class="tk-icon" aria-hidden="true"><use href="#i-send"/></svg></button></div><p class="tk-composer__hint"><span>오프라인 · 초안은 이 기기에 남아 있어요</span></p></form>
+    </div>
+  </section>
+
+  <!-- ===== 실행·승인 ===== -->
+  <section class="ex-section" id="run" aria-labelledby="h-run">
+    <h2 class="tk-heading-2" id="h-run">실행 · 승인</h2>
+    <div class="ex-cols">
+      <div class="tk-run" data-state="running">
+        <div class="tk-run__head"><p class="tk-run__title">테스트 돌리고 원인 찾기</p><span class="tk-badge" data-state="running"><span class="tk-dot tk-dot--live" aria-hidden="true"></span>실행 중</span></div>
+        <div class="tk-progress tk-progress--agent" style="--tk-progress: 0.41" role="progressbar" aria-label="진행" aria-valuenow="41" aria-valuemin="0" aria-valuemax="100"></div>
+        <ol class="tk-steps"><li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">가상환경 준비</span><span class="tk-step__time">6초</span></li><li data-state="running"><span class="tk-spinner tk-spinner--sm" aria-hidden="true"></span><span class="tk-step__name">pytest 실행 <span class="tk-step__target">88 / 214</span></span><span class="tk-step__time">0:31</span></li><li data-state="queued"><span class="tk-step__mark" aria-hidden="true"></span><span class="tk-step__name">실패 원인 분석</span><span class="tk-step__time"></span></li></ol>
+        <div class="tk-run__actions"><button class="tk-button tk-button--sm tk-button--ghost" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg>로그</button><button class="tk-button tk-button--sm" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-stop"/></svg>멈추기</button></div>
+      </div>
+      <div class="tk-run" data-state="failed">
+        <div class="tk-run__head"><p class="tk-run__title">발표 자료 PPTX 만들기</p><span class="tk-badge" data-state="failed"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-x"/></svg>실패</span></div>
+        <p class="tk-run__summary">슬라이드 변환에서 멈췄어요. 만든 6장까지는 남아 있어요.</p>
+        <ol class="tk-steps"><li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">개요 쓰기</span><span class="tk-step__time">40초</span></li><li data-state="failed"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-x"/></svg><span class="tk-step__name">PPTX 저장<span class="tk-step__detail">python-pptx: image too large (8.2 MB &gt; 5 MB)</span></span><span class="tk-step__time">2초</span></li></ol>
+        <div class="tk-run__actions"><button class="tk-button tk-button--sm tk-button--ghost" type="button">로그</button><button class="tk-button tk-button--sm tk-button--primary" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-retry"/></svg>이미지 줄여서 다시</button></div>
+      </div>
+      <div class="tk-run" data-state="queued"><div class="tk-run__head"><p class="tk-run__title">다음 회의 안건 만들기</p><span class="tk-badge" data-state="queued"><svg class="tk-icon" aria-hidden="true"><use href="#i-clock"/></svg>대기 · 1번째</span></div><p class="tk-run__summary">앞 작업이 끝나면 시작해요.</p></div>
+      <div class="tk-run" data-state="cancelled"><div class="tk-run__head"><p class="tk-run__title">Downloads 정리</p><span class="tk-badge" data-state="cancelled"><svg class="tk-icon" aria-hidden="true"><use href="#i-ban"/></svg>취소됨</span></div><ol class="tk-steps"><li data-state="succeeded"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span class="tk-step__name">파일 412개 분류</span><span class="tk-step__time">9초</span></li><li data-state="cancelled"><svg class="tk-icon" aria-hidden="true"><use href="#i-ban"/></svg><span class="tk-step__name">이동(멈춤 · 이동한 파일 없음)</span><span class="tk-step__time"></span></li></ol></div>
+    </div>
+    <div class="tk-log">
+      <div class="tk-log__header"><span class="tk-log__title">pytest · stock-gosu</span><button class="tk-icon-button tk-icon-button--xs" type="button" aria-label="로그 따라가기" aria-pressed="false" data-tk-log-follow><svg class="tk-icon" aria-hidden="true"><use href="#i-follow"/></svg></button></div>
+      <div class="tk-log__body" tabindex="0" role="region" aria-label="pytest 로그"><ol class="tk-log__lines">
+        <li data-level="debug"><span class="tk-log__time">11:02:10</span><span class="tk-log__level">dbg</span><span class="tk-log__msg">collecting ... 214 items</span></li>
+        <li data-level="tool"><span class="tk-log__time">11:02:11</span><span class="tk-log__level">tool</span><span class="tk-log__msg">shell("pytest -q tests/")</span></li>
+        <li data-level="ok"><span class="tk-log__time">11:02:40</span><span class="tk-log__level">ok</span><span class="tk-log__msg">211 passed</span></li>
+        <li data-level="error"><span class="tk-log__time">11:02:40</span><span class="tk-log__level">err</span><span class="tk-log__msg">FAILED tests/test_backtest.py::test_holiday_gap - KeyError: '2026-10-03'</span></li>
+      </ol></div>
+      <button class="tk-log__more" type="button">전체 로그 1,284줄 보기</button>
+    </div>
+    <section class="tk-approval" data-decision="approved" aria-labelledby="ap2">
+      <div class="tk-approval__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield"/></svg><div><h3 class="tk-approval__title" id="ap2">파일 12개를 Archive 로 옮겼어요</h3><p class="tk-approval__lead">14:02 에 승인함 · 이 기기(iPhone)</p></div></div>
+    </section>
+  </section>
+
+  <!-- ===== 결과물 ===== -->
+  <section class="ex-section" id="artifact" aria-labelledby="h-artifact">
+    <h2 class="tk-heading-2" id="h-artifact">결과물</h2>
+    <div class="ex-row">
+      <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span><span class="tk-glyph" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span><span class="tk-glyph" data-type="slide"><svg class="tk-icon" aria-hidden="true"><use href="#i-presentation"/></svg></span><span class="tk-glyph" data-type="sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span><span class="tk-glyph" data-type="image"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg></span><span class="tk-glyph" data-type="code"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg></span><span class="tk-glyph" data-type="other"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-archive"/></svg></span><span class="tk-glyph" data-type="pdf" data-new><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+    </div>
+    <div class="tk-artifacts">
+      <div class="tk-artifact-card" data-new><a class="tk-artifact-card__open" href="workspace.html"><span class="tk-glyph tk-glyph--sm" data-type="sheet" data-new><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span><span class="tk-artifact-card__body"><span class="tk-artifact-card__name">결정사항-담당자.xlsx</span><span class="tk-artifact-card__meta"><span class="tk-ext">XLSX</span><span>18 KB</span><span>방금</span></span></span></a><button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="결정사항-담당자.xlsx 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button></div>
+      <div class="tk-artifact-card"><a class="tk-artifact-card__open" href="workspace.html"><span class="tk-glyph tk-glyph--sm" data-type="slide"><svg class="tk-icon" aria-hidden="true"><use href="#i-presentation"/></svg></span><span class="tk-artifact-card__body"><span class="tk-artifact-card__name">4분기-계획-발표.pptx</span><span class="tk-artifact-card__meta"><span class="tk-ext">PPTX</span><span class="tk-artifact__status"><span class="tk-spinner tk-spinner--xs" aria-hidden="true"></span>미리보기 만드는 중</span></span></span></a><button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="4분기-계획-발표.pptx 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button></div>
+    </div>
+  </section>
+
+  <!-- ===== 뷰어 ===== -->
+  <section class="ex-section" id="viewer" aria-labelledby="h-viewer">
+    <h2 class="tk-heading-2" id="h-viewer">뷰어 상태</h2>
+    <div class="ex-cols">
+      <div class="ex-panel ex-panel--tall"><div class="tk-viewer__state" data-state="converting" role="status"><span class="tk-glyph" data-type="slide"><svg class="tk-icon" aria-hidden="true"><use href="#i-presentation"/></svg></span><p class="tk-viewer__state-title">미리보기를 만드는 중이에요</p><div class="tk-progress" style="--tk-progress: 0.58" role="progressbar" aria-label="변환" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100"></div><p>12장 중 7장 · 원본은 지금 바로 받을 수 있어요</p><div class="tk-button-group"><button class="tk-button" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg>원본 다운로드</button></div></div></div>
+      <div class="ex-panel ex-panel--tall"><div class="tk-viewer__state" data-state="too-large"><span class="tk-glyph" data-type="sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span><p class="tk-viewer__state-title">처음 1,000행만 보여드려요</p><p>원본은 48만 행 · 212 MB 예요. 전체는 다운로드하거나 따까리에게 요약을 시키세요.</p><div class="tk-button-group"><button class="tk-button" type="button">처음 1,000행 보기</button><button class="tk-button tk-button--primary" type="button">요약 시키기</button></div></div></div>
+    </div>
+  </section>
+
+  <!-- ===== 앱 상태 ===== -->
+  <section class="ex-section" id="states" aria-labelledby="h-states">
+    <h2 class="tk-heading-2" id="h-states">앱 상태 띠</h2>
+    <div class="tk-stack tk-gap-2">
+      <p class="tk-banner tk-banner--neutral" role="status"><svg class="tk-icon" aria-hidden="true"><use href="#i-wifi-off"/></svg><span class="tk-banner__text"><strong>오프라인</strong> · 지시는 연결되면 보내요. 결과물은 받아 둔 것만 열려요.</span></p>
+      <p class="tk-banner tk-banner--warning" role="status"><span class="tk-spinner" aria-hidden="true"></span><span class="tk-banner__text"><strong>Mac Studio 다시 연결 중</strong> · 실행 중인 작업은 그대로 진행돼요.</span></p>
+      <p class="tk-banner" role="status"><svg class="tk-icon" aria-hidden="true"><use href="#i-info"/></svg><span class="tk-banner__text">새 버전이 준비됐어요.</span><button class="tk-button" type="button">새로고침</button></p>
+      <p class="tk-banner tk-banner--danger" role="alert"><svg class="tk-icon" aria-hidden="true"><use href="#i-key"/></svg><span class="tk-banner__text"><strong>다시 인증해야 해요</strong> · 30일이 지나 이 기기 인증이 끝났어요.</span><button class="tk-button" type="button" data-tk-dialog-open="ex-dialog">인증</button></p>
+    </div>
+  </section>
+</main>
+
+<dialog class="tk-dialog tk-dialog--sm" id="ex-dialog" aria-labelledby="exd-t" data-tk-modal>
+  <div class="tk-dialog__header"><h2 class="tk-dialog__title" id="exd-t">다시 인증할까요?</h2><button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-dialog-close aria-label="닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="tk-dialog__body"><p>민감 자료를 열려면 최근 5분 안에 인증해야 해요. 패스키로 확인할게요.</p></div>
+  <div class="tk-dialog__footer"><button class="tk-button" type="button" data-tk-dialog-close>나중에</button><button class="tk-button tk-button--primary" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-key"/></svg>패스키로 인증</button></div>
+</dialog>
+<dialog class="tk-sheet" id="ex-sheet" aria-labelledby="exs-t">
+  <div class="tk-dialog__header"><h2 class="tk-dialog__title" id="exs-t">회의록-요약.md</h2><button class="tk-icon-button" type="button" data-tk-dialog-close aria-label="닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <ul class="tk-sheet__actions" role="list"><li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg>원본 다운로드</button></li><li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-share"/></svg>보내기…</button></li><li><button class="tk-menu__item tk-menu__item--danger" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-trash"/></svg>삭제…</button></li></ul>
+</dialog>
+
+<script>
+  // 예제 전용: 색·글자·간격 표를 tokens.global.js 에서 그린다(토큰과 미리보기가 어긋나지 않게).
+  addEventListener('DOMContentLoaded', () => {
+    const T = window.TK_TOKENS;
+    const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+    const swatch = (name, leaf) => { const s = el('div', 'ex-swatch'); const c = el('span', 'ex-swatch__chip'); c.style.background = leaf.var; s.append(c, el('code', 'ex-swatch__name', name), el('span', 'ex-swatch__val', leaf.dark ? `${leaf.value} / ${leaf.dark}` : String(leaf.value))); return s; };
+    const fill = (sel, group, prefix) => { const box = document.querySelector(sel); Object.entries(group).forEach(([k, v]) => { if (v && v.var) box.append(swatch(`${prefix}.${k}`, v)); }); };
+    fill('[data-ex-swatches="brand"]', T.brand, 'brand');
+    fill('[data-ex-swatches="seed"]', T.seed, 'seed');
+    const anchors = { blue: 600, mint: 300, sage: 700, graphite: 900, red: 600, amber: 400, plum: 600 };
+    const ramps = document.querySelector('[data-ex-ramps]');
+    Object.entries(anchors).forEach(([name, anchor]) => {
+      const steps = Object.entries(T[name]).filter(([, v]) => v && v.var);
+      const row = el('div', 'ex-ramp'); row.style.setProperty('--ex-n', steps.length);
+      row.append(el('span', 'ex-ramp__name', name));
+      steps.forEach(([k, v]) => { const s = el('span', 'ex-ramp__step'); s.style.background = v.var; s.title = `${name}.${k} ${v.value}`; if (Number(k) === anchor) s.dataset.anchor = ''; row.append(s); });
+      ramps.append(row);
+    });
+    const sem = document.querySelector('[data-ex-semantic]');
+    const walk = (node, path, out) => { Object.entries(node).forEach(([k, v]) => { if (v && v.var) out.push([[...path, k].join('.'), v]); else if (v && typeof v === 'object') walk(v, [...path, k], out); }); };
+    Object.entries(T.color).forEach(([group, node]) => {
+      const d = el('details', 'ex-group'); d.append(el('summary', null, `color.${group}`));
+      const box = el('div', 'ex-swatches'); const out = []; walk(node, [group], out);
+      out.forEach(([n, v]) => box.append(swatch(n, v))); d.append(box); sem.append(d);
+    });
+    const sample = { display: '말하면 움직인다', 'heading-1': '보관함', 'heading-2': '파일 2개 보내기', 'heading-3': '결과물 상세', 'heading-4': '회의록 요약 · PDF 만들기', 'body-message': '지난주 회의록 3개 찾아서 요약하고 PDF로 만들어줘', 'doc-title': '회의록 요약', 'log-line': '14:31:55 WAIT broker: 외부 반출 승인 필요', 'mono-label': '~/Documents/회의록 · 148 KB', source: 'def extract(path: Path) -> list[str]:', kbd: '⌘ K', eyebrow: 'TODAY', numeric: '1,284' };
+    const type = document.querySelector('[data-ex-type]');
+    Object.entries(T.typography).forEach(([name, t]) => {
+      const v = t.value; const row = el('div', 'ex-type__row');
+      const meta = el('div', 'ex-type__meta', `<span>.tk-${name}</span><span>${parseFloat(v.fontSize) * 16} / ${v.fontWeight} / ${v.lineHeight}</span>`);
+      const p = el('p', `ex-type__sample tk-${name}`); p.textContent = sample[name] ?? '따까리가 결과물을 작업 공간에 담았어요 · Ttakkari 123';
+      row.append(meta, p); type.append(row);
+    });
+    const space = document.querySelector('[data-ex-space]');
+    Object.entries(T.space).forEach(([k, v]) => { if (!v.var || k === 'px') return; const b = el('div', 'ex-bar'); b.append(el('code', null, `space.${k}`)); const f = el('span', 'ex-bar__fill'); f.style.width = v.var; b.append(f, el('span', null, v.value)); space.append(b); });
+    const radius = document.querySelector('[data-ex-radius]');
+    Object.entries(T.radius).forEach(([k, v]) => { const i = el('div', 'ex-radius__item'); const s = el('span'); s.style.borderRadius = v.var; i.append(s, el('span', null, `${k} · ${v.value}`)); radius.append(i); });
+    document.getElementById('ex-toast').addEventListener('click', () => TK.toast({ message: '회의록 요약이 끝났어요 · 결과물 2', tone: 'success', action: { label: '열기', onClick: () => {} } }));
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* code: Code Block · Code Viewer · Copy button · Inline Code(UI 용).
+   코드 면은 두 테마 모두 잉크다. 사람이 읽는 종이와 기계가 내놓는 잉크가 한눈에 갈린다.
+   복사는 '보이는 그대로' 가 아니라 '실행할 그대로' 를 복사한다. 줄 번호·셸 프롬프트·삭제된 diff 줄은 빠진다(tk.js). */
+
+.tk-code {
+  --tk-_code-hover: var(--tk-color-ink-hover);
+  position: relative; display: flex; flex-direction: column; margin: 0; min-width: 0;
+  border: var(--tk-border-width-hairline) solid var(--tk-component-code-block-border); border-radius: var(--tk-component-code-block-radius);
+  background: var(--tk-component-code-block-bg); color: var(--tk-color-ink-text); overflow: hidden;
+}
+.tk-code__header {
+  display: flex; align-items: center; gap: var(--tk-space-2); flex: none;
+  min-height: var(--tk-component-code-block-header-height); padding: 0 var(--tk-space-2) 0 var(--tk-component-code-block-padding-x);
+  background: var(--tk-component-code-block-header-bg); border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-code-block-border);
+}
+.tk-code__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-ligatures: none; }
+.tk-code__lang { color: var(--tk-color-ink-text-muted); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); text-transform: lowercase; }
+.tk-code__header > :last-child { margin-left: auto; }
+.tk-code__header .tk-icon-button { --tk-_fg: var(--tk-color-ink-text-muted); --tk-_bg-hover: var(--tk-color-ink-hover); --tk-_bg-active: var(--tk-color-ink-hover); }
+.tk-code__pre {
+  flex: 1 1 auto; margin: 0; padding: var(--tk-component-code-block-padding-y) var(--tk-component-code-block-padding-x);
+  overflow: auto; tab-size: 2;
+  font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); font-variant-ligatures: none;
+  color: var(--tk-color-ink-text); background: transparent;
+}
+.tk-code__pre > code { display: block; min-width: fit-content; font: inherit; background: none; padding: 0; color: inherit; }
+.tk-code__pre:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+/* 줄 바꿈 토글(aria-pressed): 모바일에서 긴 줄을 읽을 때 */
+.tk-code[data-wrap] .tk-code__pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.tk-code[data-wrap] .tk-code__pre > code { min-width: 0; }
+/* 헤더가 없을 때 복사 버튼은 오른쪽 위, hover·포커스에만(터치 기기는 항상) */
+.tk-code > .tk-copy { position: absolute; top: var(--tk-space-2); right: var(--tk-space-2); z-index: var(--tk-z-index-raised); background: var(--tk-component-code-block-bg); opacity: 0; }
+.tk-code:hover > .tk-copy, .tk-code > .tk-copy:focus-visible, .tk-code > .tk-copy[data-copied] { opacity: 1; }
+@media (hover: none) { .tk-code > .tk-copy { opacity: 1; } }
+
+/* 줄 단위 표시: <span class="tk-code__line" data-highlight | data-diff="+"|"-"> */
+.tk-code__line {
+  display: inline-block; position: relative; box-sizing: border-box; min-width: calc(100% + 2 * var(--tk-component-code-block-padding-x));
+  min-height: 1lh; vertical-align: top; /* 빈 줄도 한 줄 높이를 가진다(줄 번호가 다음 줄과 겹치던 문제) */
+  margin-inline: calc(-1 * var(--tk-component-code-block-padding-x)); padding-inline: var(--tk-component-code-block-padding-x);
+}
+.tk-code__line[data-highlight] { background: var(--tk-color-ink-line-highlight); box-shadow: inset var(--tk-border-width-accent) 0 0 var(--tk-color-ink-line-highlight-marker); }
+.tk-code__line[data-diff="+"] { background: var(--tk-color-ink-added-bg); }
+.tk-code__line[data-diff="-"] { background: var(--tk-color-ink-removed-bg); }
+.tk-code__line[data-diff]::before { position: absolute; left: var(--tk-space-1); user-select: none; font-weight: var(--tk-font-weight-semibold); }
+.tk-code__line[data-diff="+"]::before { content: "+"; color: var(--tk-color-ink-added-sign); }
+.tk-code__line[data-diff="-"]::before { content: "−"; color: var(--tk-color-ink-removed-sign); }
+.tk-code__pre[data-line-numbers] { counter-reset: tk-line var(--tk-_line-start, 0); padding-left: 0; }
+.tk-code__pre[data-line-numbers] .tk-code__line { margin-left: 0; min-width: calc(100% + var(--tk-component-code-block-padding-x)); padding-left: calc(var(--tk-component-code-block-line-number-width) + var(--tk-space-3)); counter-increment: tk-line; }
+.tk-code__pre[data-line-numbers] .tk-code__line::after {
+  content: counter(tk-line); position: absolute; left: 0; width: var(--tk-component-code-block-line-number-width); text-align: right;
+  color: var(--tk-color-ink-line-number); user-select: none;
+}
+.tk-code__prompt { color: var(--tk-color-ink-comment); user-select: none; }
+.tk-code__prompt::after { content: " "; }
+
+/* 접힘: 채팅 안 긴 코드는 max-height 에서 잘리고 아래에 '모두 보기' */
+.tk-code[data-collapsed] .tk-code__pre { max-height: var(--tk-component-code-block-max-height); overflow-y: hidden; }
+.tk-code__expand {
+  display: none; position: absolute; left: 0; right: 0; bottom: 0; justify-content: center; align-items: flex-end;
+  padding: var(--tk-space-10) 0 var(--tk-space-3);
+  background: linear-gradient(to bottom, transparent, var(--tk-component-code-block-bg) 70%);
+}
+.tk-code[data-collapsed] .tk-code__expand { display: flex; }
+.tk-code__expand > button { border: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); border-radius: var(--tk-radius-full); background: var(--tk-component-code-block-header-bg); color: var(--tk-color-ink-text); height: var(--tk-size-control-sm); padding-inline: var(--tk-space-4); cursor: pointer; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans); }
+
+/* Code viewer: 작업 공간의 코드 결과물. 패널 높이를 다 쓰고 테두리·둥근 모서리가 없다(뷰어 셸이 테두리). Monaco 를 붙이면 루트에 .tk-code__monaco */
+.tk-code--viewer { height: 100%; border: 0; border-radius: 0; }
+.tk-code--viewer .tk-code__pre { min-height: 100%; }
+.tk-code__monaco { flex: 1 1 auto; min-height: 0; }
+
+/* Copy button: 잉크 면 위 고스트 버튼. 성공하면 잠시 '복사됨' + 체크(aria-live 로도 알린다) */
+.tk-copy {
+  position: relative; display: inline-flex; align-items: center; gap: var(--tk-space-1-5); flex: none;
+  height: var(--tk-size-control-xs); padding-inline: var(--tk-space-2);
+  border: 0; border-radius: var(--tk-radius-sm); background: transparent; cursor: pointer;
+  color: var(--tk-color-ink-text-muted); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans);
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), opacity var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-copy:hover { background: var(--tk-_code-hover, var(--tk-color-interactive-hover-overlay)); color: var(--tk-color-ink-text); }
+.tk-copy > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
+.tk-copy__done { display: none; }
+.tk-copy[data-copied] { color: var(--tk-color-ink-added-sign); }
+.tk-copy[data-copied] .tk-copy__idle { display: none; }
+.tk-copy[data-copied] .tk-copy__done { display: inline-flex; }
+@media (pointer: coarse) { .tk-copy::after { content: ""; position: absolute; inset: var(--tk-component-hit-area-inset); } }
+/* 종이 면(밝은 면) 위 복사 버튼: 메시지 행동·메타 값 옆 */
+.tk-copy--surface { color: var(--tk-color-text-secondary); }
+.tk-copy--surface:hover { background: var(--tk-color-interactive-hover-overlay); color: var(--tk-color-text-primary); }
+.tk-copy--surface[data-copied] { color: var(--tk-color-text-success); }
+
+.tk-code ::selection { background: var(--tk-color-ink-selection); }

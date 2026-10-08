@@ -1,0 +1,18 @@
+/* utilities: 마지막에 묶여 같은 명시도의 컴포넌트 규칙을 이긴다. 여기 있는 것 말고는 유틸을 만들지 않는다. */
+
+/* 글자색: typography 클래스는 색을 정하지 않으므로 짝지어 쓴다(예: .tk-caption + .tk-text-tertiary) */
+.tk-text-primary { color: var(--tk-color-text-primary); }
+.tk-text-secondary { color: var(--tk-color-text-secondary); }
+.tk-text-tertiary { color: var(--tk-color-text-tertiary); }
+.tk-text-brand { color: var(--tk-color-text-brand); }
+.tk-text-agent { color: var(--tk-color-text-agent); }
+
+/* 기계값 한 조각(경로·해시·용량)을 문장 안에 */
+.tk-mono { font-family: var(--tk-font-family-mono); font-variant-ligatures: none; font-variant-numeric: tabular-nums; }
+/* 한 줄 말줄임. 정보가 잘리면 title 또는 상세에서 전체를 보여준다 */
+.tk-truncate { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* 화면 폭에 따라 숨기기: 두 단계만. 숨기기 전에 접기·시트를 먼저 검토한다 */
+@media (max-width: 767px) { .tk-hide-below-md { display: none; } }
+@media (max-width: 1023px) { .tk-hide-below-lg { display: none; } }
+@media (min-width: 1024px) { .tk-hide-from-lg { display: none; } }

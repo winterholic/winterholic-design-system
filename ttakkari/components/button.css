@@ -1,0 +1,109 @@
+/* button: Button · Icon Button · Link.
+   기본값이 정답이다. .tk-button 하나면 secondary·md. primary 는 화면의 주 목적 하나에만 명시한다.
+   variant 4개(primary·secondary·ghost·danger) × size 4개(xs·sm·md·lg). 상태는 :hover·:active·:focus-visible·disabled·aria-busy·aria-pressed. */
+
+.tk-button, .tk-icon-button {
+  --tk-_h: var(--tk-component-button-md-height);
+  --tk-_px: var(--tk-component-button-md-padding-x);
+  --tk-_icon: var(--tk-component-button-md-icon);
+  --tk-_radius: var(--tk-component-button-md-radius);
+  --tk-_bg: var(--tk-color-action-secondary-bg);
+  --tk-_bg-hover: var(--tk-color-action-secondary-bg-hover);
+  --tk-_bg-active: var(--tk-color-action-secondary-bg-active);
+  --tk-_fg: var(--tk-color-action-secondary-text);
+  --tk-_border: var(--tk-color-action-secondary-border);
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-component-button-gap);
+  height: var(--tk-_h); padding-inline: var(--tk-_px); margin: 0;
+  border: var(--tk-border-width-hairline) solid var(--tk-_border); border-radius: var(--tk-_radius);
+  background: var(--tk-_bg); color: var(--tk-_fg);
+  font-family: var(--tk-font-family-sans); font-size: var(--tk-font-size-sm); font-weight: var(--tk-font-weight-medium); line-height: var(--tk-font-line-height-none);
+  white-space: nowrap; text-decoration: none; cursor: pointer; user-select: none; touch-action: manipulation;
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-button { min-width: var(--tk-component-button-min-width); }
+@media (hover: hover) {
+  .tk-button:hover, .tk-icon-button:hover { background: var(--tk-_bg-hover); }
+}
+.tk-button:active, .tk-icon-button:active { background: var(--tk-_bg-active); }
+.tk-button > .tk-icon, .tk-icon-button > .tk-icon { width: var(--tk-_icon); height: var(--tk-_icon); }
+
+/* variant */
+.tk-button--primary, .tk-icon-button--primary {
+  --tk-_bg: var(--tk-color-action-primary-bg); --tk-_bg-hover: var(--tk-color-action-primary-bg-hover); --tk-_bg-active: var(--tk-color-action-primary-bg-active);
+  --tk-_fg: var(--tk-color-action-primary-text); --tk-_border: var(--tk-color-action-primary-bg);
+}
+.tk-button--ghost, .tk-icon-button {
+  --tk-_bg: var(--tk-color-action-ghost-bg); --tk-_bg-hover: var(--tk-color-action-ghost-bg-hover); --tk-_bg-active: var(--tk-color-action-ghost-bg-active);
+  --tk-_fg: var(--tk-color-action-ghost-text); --tk-_border: transparent;
+}
+.tk-button--danger {
+  --tk-_bg: var(--tk-color-action-danger-bg); --tk-_bg-hover: var(--tk-color-action-danger-bg-hover); --tk-_bg-active: var(--tk-color-action-danger-bg-active);
+  --tk-_fg: var(--tk-color-action-danger-text); --tk-_border: var(--tk-color-action-danger-bg);
+}
+.tk-icon-button--secondary {
+  --tk-_bg: var(--tk-color-action-secondary-bg); --tk-_bg-hover: var(--tk-color-action-secondary-bg-hover); --tk-_bg-active: var(--tk-color-action-secondary-bg-active);
+  --tk-_fg: var(--tk-color-action-secondary-text); --tk-_border: var(--tk-color-action-secondary-border);
+}
+/* 같은 아이콘이 켜짐·꺼짐을 가지는 토글(로그 따라가기·줄 바꿈). 켜짐은 선택 면 */
+:is(.tk-button, .tk-icon-button)[aria-pressed="true"] {
+  --tk-_bg: var(--tk-color-interactive-selected-bg); --tk-_bg-hover: var(--tk-color-interactive-selected-bg); --tk-_fg: var(--tk-color-interactive-selected-text);
+}
+
+/* size */
+.tk-button--xs, .tk-icon-button--xs { --tk-_h: var(--tk-component-button-xs-height); --tk-_px: var(--tk-component-button-xs-padding-x); --tk-_icon: var(--tk-component-button-xs-icon); --tk-_radius: var(--tk-component-button-xs-radius); font-size: var(--tk-font-size-xs); }
+.tk-button--sm, .tk-icon-button--sm { --tk-_h: var(--tk-component-button-sm-height); --tk-_px: var(--tk-component-button-sm-padding-x); --tk-_icon: var(--tk-component-button-sm-icon); --tk-_radius: var(--tk-component-button-sm-radius); }
+.tk-button--lg, .tk-icon-button--lg { --tk-_h: var(--tk-component-button-lg-height); --tk-_px: var(--tk-component-button-lg-padding-x); --tk-_icon: var(--tk-component-button-lg-icon); --tk-_radius: var(--tk-component-button-lg-radius); font-size: var(--tk-font-size-md); }
+.tk-button--xs, .tk-button--sm { min-width: 0; }
+.tk-button--block { display: flex; width: 100%; }
+
+/* Icon Button: 정사각형. aria-label 필수(테스트가 examples 를 검사한다) */
+.tk-icon-button { width: var(--tk-_h); padding: 0; flex: none; }
+.tk-icon-button--round { --tk-_radius: var(--tk-radius-full); }
+@media (pointer: coarse) {
+  .tk-icon-button--xs::after, .tk-icon-button--sm::after, .tk-button--xs::after, .tk-button--sm::after { content: ""; position: absolute; inset: var(--tk-component-hit-area-inset); }
+}
+
+/* 비활성: 네이티브 disabled 또는 aria-disabled(이유를 툴팁으로 보여줘야 할 때, 포커스가 남는다) */
+:is(.tk-button, .tk-icon-button):is(:disabled, [aria-disabled="true"]):not([aria-busy="true"]) {
+  --tk-_bg: var(--tk-color-action-disabled-bg); --tk-_bg-hover: var(--tk-color-action-disabled-bg); --tk-_bg-active: var(--tk-color-action-disabled-bg);
+  --tk-_fg: var(--tk-color-action-disabled-text); --tk-_border: var(--tk-color-action-disabled-border);
+  cursor: not-allowed;
+}
+:is(.tk-button--ghost, .tk-icon-button:not(.tk-icon-button--secondary, .tk-icon-button--primary)):is(:disabled, [aria-disabled="true"]) { --tk-_bg: transparent; --tk-_bg-hover: transparent; --tk-_bg-active: transparent; --tk-_border: transparent; }
+
+/* 로딩: 폭을 유지한 채 라벨 자리에 스피너. aria-busy="true" + disabled 를 함께 건다 */
+:is(.tk-button, .tk-icon-button)[aria-busy="true"] { color: transparent; cursor: progress; }
+:is(.tk-button, .tk-icon-button)[aria-busy="true"]::before {
+  content: ""; position: absolute; inset: 0; margin: auto;
+  width: var(--tk-_icon); height: var(--tk-_icon);
+  border: var(--tk-border-width-strong) solid var(--tk-_fg); border-right-color: transparent; border-radius: var(--tk-radius-full);
+  animation: tk-spin calc(var(--tk-motion-duration-slow) * 3) var(--tk-motion-easing-linear) infinite;
+}
+:is(.tk-button, .tk-icon-button)[aria-busy="true"] > * { visibility: hidden; }
+
+/* 같은 줄 버튼 묶음 */
+.tk-button-group { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-component-button-group-gap); }
+.tk-button-group--end { justify-content: flex-end; }
+/* 모바일 시트·카드 푸터: 버튼이 같은 폭으로 나눠 갖는다 */
+.tk-button-group--fill > :is(.tk-button, a.tk-button) { flex: 1 1 0; }
+
+/* Link: 문장 안 링크(.tk-link)와 단독 링크(--standalone, 화살표 동반) */
+.tk-link {
+  color: var(--tk-color-text-link); text-decoration: underline; text-decoration-thickness: from-font; text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  border-radius: var(--tk-radius-xs);
+  transition: color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), text-decoration-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-link:hover { color: var(--tk-color-text-link-hover); text-decoration-color: currentColor; }
+.tk-link--standalone { display: inline-flex; align-items: center; gap: var(--tk-space-1); font-weight: var(--tk-font-weight-medium); text-decoration: none; }
+.tk-link--standalone::after { content: "→"; transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard); }
+.tk-link--standalone:hover { text-decoration: underline; }
+.tk-link--standalone:hover::after { transform: translateX(var(--tk-space-0-5)); }
+.tk-link[target="_blank"]::after { content: "↗"; margin-left: var(--tk-space-0-5); font-size: 0.875em; text-decoration: none; display: inline-block; }
+
+/* 테마 전환 버튼: 아이콘 두 개를 넣고 aria-pressed(다크=true)로 하나만 보인다 */
+[data-tk-theme-toggle] .tk-theme-toggle__to-light { display: none; }
+[data-tk-theme-toggle][aria-pressed="true"] .tk-theme-toggle__to-light { display: block; }
+[data-tk-theme-toggle][aria-pressed="true"] .tk-theme-toggle__to-dark { display: none; }
+[data-tk-theme-toggle][aria-pressed] { --tk-_bg: var(--tk-color-action-ghost-bg); --tk-_bg-hover: var(--tk-color-action-ghost-bg-hover); --tk-_fg: var(--tk-color-action-ghost-text); }

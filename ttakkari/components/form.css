@@ -1,0 +1,153 @@
+/* form: Field(라벨·도움말·오류) · Input · Textarea · Select · Search · Checkbox · Radio · Switch · Segmented.
+   전부 네이티브 요소 위에 얹는다(접근성·자동완성·모바일 키보드를 공짜로 얻는다). 라벨은 항상 보인다. 플레이스홀더는 라벨이 아니다.
+   입력 글자는 16(md)이다. 그보다 작으면 iOS 가 화면을 확대한다. */
+
+.tk-field { display: flex; flex-direction: column; gap: var(--tk-component-input-label-gap); min-width: 0; }
+.tk-field + .tk-field:not(.tk-grid > *, .tk-cluster > *, .tk-stack > *) { margin-top: var(--tk-component-input-field-gap); }
+.tk-label { color: var(--tk-color-text-primary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-label__optional { margin-left: var(--tk-space-1); color: var(--tk-color-text-tertiary); font-weight: var(--tk-font-weight-regular); }
+.tk-help, .tk-error {
+  display: flex; align-items: flex-start; gap: var(--tk-space-1-5); margin: 0;
+  margin-top: calc(var(--tk-component-input-help-gap) - var(--tk-component-input-label-gap));
+  font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  color: var(--tk-color-text-tertiary);
+}
+.tk-error { color: var(--tk-color-text-danger); }
+.tk-error > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
+
+/* Input · Textarea · Select 공통 상자 */
+.tk-input, .tk-textarea, .tk-select > select {
+  --tk-_h: var(--tk-size-control-md);
+  width: 100%; min-width: 0; height: var(--tk-_h); margin: 0;
+  padding-inline: var(--tk-component-input-padding-x);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-input-border); border-radius: var(--tk-component-input-radius);
+  background: var(--tk-component-input-bg); color: var(--tk-color-text-primary);
+  font-family: var(--tk-font-family-sans); font-size: var(--tk-font-size-md); line-height: var(--tk-font-line-height-normal);
+  transition: border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), box-shadow var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-input::placeholder, .tk-textarea::placeholder { color: var(--tk-color-text-placeholder); opacity: 1; }
+@media (hover: hover) { :is(.tk-input, .tk-textarea, .tk-select > select):hover { border-color: var(--tk-component-input-border-hover); } }
+/* 포커스: 테두리 색 + 안쪽 1 을 더해 2 로 보이게 한다(바깥 링 대신. 입력은 줄지어 놓여 링이 겹친다) */
+:is(.tk-input, .tk-textarea, .tk-select > select):focus-visible {
+  outline: none; border-color: var(--tk-component-input-border-focus);
+  box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-focus);
+}
+:is(.tk-input, .tk-textarea, .tk-select > select)[aria-invalid="true"] { border-color: var(--tk-component-input-border-error); }
+:is(.tk-input, .tk-textarea, .tk-select > select)[aria-invalid="true"]:focus-visible { box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-error); }
+:is(.tk-input, .tk-textarea, .tk-select > select):disabled { background: var(--tk-color-surface-disabled); color: var(--tk-color-text-disabled); border-color: var(--tk-color-action-disabled-border); cursor: not-allowed; }
+:is(.tk-input, .tk-textarea):read-only:not(:disabled) { background: var(--tk-color-surface-subtle); border-style: dashed; }
+.tk-input--sm, .tk-select--sm > select { --tk-_h: var(--tk-size-control-sm); }
+.tk-input--lg, .tk-select--lg > select { --tk-_h: var(--tk-size-control-lg); padding-inline: var(--tk-space-4); }
+.tk-input--mono { font-family: var(--tk-font-family-mono); font-variant-ligatures: none; }
+
+.tk-textarea {
+  height: auto; min-height: var(--tk-component-input-textarea-min-height);
+  padding-block: var(--tk-space-2); line-height: var(--tk-font-line-height-relaxed); resize: vertical;
+}
+
+/* Select: 래퍼(.tk-select) 안에 네이티브 select. 화살표는 currentColor 마스크라 다크에서도 토큰 색 */
+.tk-select { position: relative; display: block; min-width: 0; }
+.tk-select > select { appearance: none; padding-right: calc(var(--tk-component-input-padding-x) + var(--tk-size-icon-sm) + var(--tk-space-2)); cursor: pointer; }
+.tk-select::after {
+  content: ""; position: absolute; top: 50%; right: var(--tk-component-input-padding-x);
+  width: var(--tk-size-icon-sm); height: var(--tk-size-icon-sm); transform: translateY(-50%); pointer-events: none;
+  background: var(--tk-color-text-secondary);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* 앞에 아이콘, 뒤에 지우기 버튼이 붙는 입력(보관함 검색·파일 검색·문서 안 찾기) */
+.tk-input-wrap { position: relative; display: block; min-width: 0; }
+.tk-input-wrap > .tk-icon { position: absolute; top: 50%; left: var(--tk-component-input-padding-x); transform: translateY(-50%); --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-text-tertiary); pointer-events: none; }
+.tk-input-wrap > .tk-input { padding-left: calc(var(--tk-component-input-padding-x) + var(--tk-size-icon-sm) + var(--tk-component-input-affix-gap)); }
+.tk-input-wrap > .tk-input:has(~ .tk-input-wrap__end) { padding-right: calc(var(--tk-size-control-xs) + var(--tk-space-3)); }
+.tk-input-wrap__end { position: absolute; top: 50%; right: var(--tk-space-2); transform: translateY(-50%); display: flex; align-items: center; gap: var(--tk-space-1); }
+.tk-input-wrap > .tk-input[type="search"]::-webkit-search-cancel-button { display: none; }
+
+/* 선택지 묶음: fieldset + legend 가 정답(스크린 리더가 그룹 이름을 읽는다) */
+.tk-fieldset { margin: 0; padding: 0; border: 0; min-width: 0; }
+.tk-fieldset > legend { float: left; width: 100%; padding: 0; margin-bottom: var(--tk-space-3); color: var(--tk-color-text-primary); }
+:where(.tk-fieldset > legend) { font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-fieldset > legend + * { clear: both; }
+.tk-fieldset__help { margin: calc(-1 * var(--tk-space-2)) 0 var(--tk-space-3); color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
+.tk-choices { display: flex; flex-direction: column; gap: var(--tk-component-choice-group-gap); }
+.tk-choices--inline { flex-direction: row; flex-wrap: wrap; gap: var(--tk-space-3) var(--tk-space-6); }
+
+/* Checkbox · Radio · Switch: <label class="tk-checkbox"><input type="checkbox"> 라벨</label>. 라벨 전체가 클릭 영역 */
+.tk-checkbox, .tk-radio, .tk-switch {
+  position: relative; display: inline-flex; align-items: flex-start; gap: var(--tk-component-choice-label-gap);
+  min-height: var(--tk-size-control-xs);
+  color: var(--tk-color-text-primary); font: var(--tk-font-weight-regular) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  cursor: pointer;
+}
+.tk-checkbox > input, .tk-radio > input, .tk-switch > input {
+  appearance: none; flex: none; margin: 0; position: relative;
+  margin-top: calc((var(--tk-font-size-md) * var(--tk-font-line-height-normal) - var(--tk-component-choice-size)) / 2);
+  width: var(--tk-component-choice-size); height: var(--tk-component-choice-size);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-choice-border);
+  background: var(--tk-color-surface-default); cursor: inherit;
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-checkbox > input { border-radius: var(--tk-component-choice-radius); }
+.tk-radio > input { border-radius: var(--tk-radius-full); }
+.tk-checkbox > input::before {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 70%; height: 70%;
+  background: var(--tk-component-choice-mark);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-checkbox > input:indeterminate::before { clip-path: inset(40% 0); }
+.tk-radio > input::before {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 45%; height: 45%; border-radius: var(--tk-radius-full);
+  background: var(--tk-component-choice-mark); transform: scale(0); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+:is(.tk-checkbox, .tk-radio) > input:is(:checked, :indeterminate) { background: var(--tk-component-choice-bg-checked); border-color: var(--tk-component-choice-bg-checked); }
+:is(.tk-checkbox, .tk-radio) > input:is(:checked, :indeterminate)::before { transform: scale(1); }
+:is(.tk-checkbox, .tk-radio, .tk-switch) > input:focus-visible { outline: var(--tk-focus-ring-width) solid var(--tk-color-interactive-focus-ring); outline-offset: var(--tk-focus-ring-offset); }
+:is(.tk-checkbox, .tk-radio, .tk-switch):has(> input:disabled) { color: var(--tk-color-text-disabled); cursor: not-allowed; }
+:is(.tk-checkbox, .tk-radio, .tk-switch) > input:disabled { background: var(--tk-color-surface-disabled); border-color: var(--tk-color-action-disabled-border); }
+.tk-choice__desc { display: block; color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
+/* 체크박스만(라벨 글자 없이) 목록 행 앞에 놓일 때: 보이는 라벨은 행 제목이고 input 에 aria-label */
+.tk-checkbox--bare { min-height: 0; }
+.tk-checkbox--bare > input { margin-top: 0; }
+
+/* Switch: 즉시 반영되는 설정(테마·알림·자동 승인). 제출해야 반영되면 Checkbox. 라벨이 왼쪽, 스위치가 오른쪽(설정 행) */
+.tk-switch > input {
+  width: var(--tk-component-choice-switch-width); height: var(--tk-component-choice-switch-height);
+  margin-top: calc((var(--tk-font-size-md) * var(--tk-font-line-height-normal) - var(--tk-component-choice-switch-height)) / 2);
+  border: 0; border-radius: var(--tk-radius-full); background: var(--tk-component-choice-switch-track);
+}
+.tk-switch > input::before {
+  content: ""; position: absolute; top: 50%; left: calc((var(--tk-component-choice-switch-height) - var(--tk-component-choice-switch-thumb)) / 2);
+  width: var(--tk-component-choice-switch-thumb); height: var(--tk-component-choice-switch-thumb);
+  border-radius: var(--tk-radius-full); background: var(--tk-component-choice-switch-thumb-color); box-shadow: var(--tk-shadow-xs);
+  transform: translateY(-50%); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-switch > input:checked { background: var(--tk-component-choice-bg-checked); }
+.tk-switch > input:checked::before { transform: translate(calc(var(--tk-component-choice-switch-width) - var(--tk-component-choice-switch-height)), -50%); }
+.tk-switch--row { display: flex; justify-content: space-between; width: 100%; }
+.tk-switch--row > input { order: 2; }
+
+/* Segmented: 2~4개의 짧은 상호 배타 옵션(보기 방식·정렬). 네이티브 라디오를 숨겨 키보드 동작을 그대로 쓴다 */
+.tk-segmented {
+  --tk-_h: var(--tk-component-segmented-height);
+  display: inline-flex; align-self: flex-start; width: fit-content; max-width: 100%; gap: var(--tk-space-0-5); padding: var(--tk-component-segmented-padding);
+  border-radius: var(--tk-component-segmented-radius); background: var(--tk-component-segmented-track);
+  border: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle);
+}
+.tk-segmented--lg { --tk-_h: var(--tk-component-segmented-height-lg); }
+.tk-segmented--block { display: flex; width: 100%; align-self: stretch; }
+.tk-segmented--block > label { flex: 1 1 0; }
+.tk-segmented > label {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
+  height: calc(var(--tk-_h) - 2 * var(--tk-component-segmented-padding)); padding-inline: var(--tk-space-3);
+  border-radius: calc(var(--tk-component-segmented-radius) - var(--tk-component-segmented-padding));
+  color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans);
+  cursor: pointer; white-space: nowrap;
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-segmented > label > input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; }
+.tk-segmented > label > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
+.tk-segmented > label:hover { color: var(--tk-color-text-primary); }
+.tk-segmented > label:has(> input:checked) { background: var(--tk-component-segmented-thumb); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-xs); }
+.tk-segmented > label:has(> input:focus-visible) { outline: var(--tk-focus-ring-width) solid var(--tk-color-interactive-focus-ring); outline-offset: var(--tk-space-px); }

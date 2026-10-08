@@ -1,0 +1,87 @@
+{
+  "font": {
+    "family": {
+      "$type": "fontFamily",
+      "sans": {
+        "$value": ["Pretendard Variable", "Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "sans-serif"],
+        "$description": "UI·메시지·문서 본문 전부. 한글과 라틴의 굵기·x-height 가 맞아 한·영 혼용 메시지가 한 서체로 끝난다. CDN: https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+      },
+      "mono": {
+        "$value": ["JetBrains Mono", "JetBrains Mono Variable", "D2Coding", "SFMono-Regular", "Menlo", "Consolas", "Liberation Mono", "monospace"],
+        "$description": "코드·로그·파일 경로·확장자·해시·시간·용량 같은 기계값. 리거처는 끈다(로그의 != 가 ≠ 로 보이면 안 된다). CDN: https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css"
+      }
+    },
+    "weight": {
+      "$type": "fontWeight",
+      "$description": "4단계만.",
+      "regular":  { "$value": 400, "$description": "본문·메시지·코드" },
+      "medium":   { "$value": 500, "$description": "라벨·버튼·파일 이름·세션 제목" },
+      "semibold": { "$value": 600, "$description": "카드 제목·화면 섹션 제목·문서 h2~h4" },
+      "bold":     { "$value": 700, "$description": "화면 제목·문서 제목" }
+    },
+    "size": {
+      "$type": "dimension",
+      "$description": "1rem = 16px. 12px 아래로 내려가지 않는다(xs 가 하한). 입력은 16px(iOS 확대 방지).",
+      "xs":  { "$value": "0.75rem",  "$description": "12px · 캡션·배지·타임스탬프·로그" },
+      "sm":  { "$value": "0.875rem", "$description": "14px · 보조 본문·라벨·목록 메타·코드" },
+      "md":  { "$value": "1rem",     "$description": "16px · 메시지·본문·입력" },
+      "lg":  { "$value": "1.125rem", "$description": "18px · 카드·시트 제목·문서 lead" },
+      "xl":  { "$value": "1.25rem",  "$description": "20px · 모바일 화면 제목·문서 h3" },
+      "2xl": { "$value": "1.5rem",   "$description": "24px · 데스크톱 화면 제목·다이얼로그 제목·문서 h2" },
+      "3xl": { "$value": "1.875rem", "$description": "30px · 문서 제목·로그인 제목(모바일)" },
+      "4xl": { "$value": "2.25rem",  "$description": "36px · 로그인·온보딩 제목" }
+    },
+    "line-height": {
+      "$type": "number",
+      "$description": "단위 없는 배수.",
+      "none":    { "$value": 1,    "$description": "한 줄 라벨·kbd·숫자" },
+      "snug":    { "$value": 1.25, "$description": "제목" },
+      "heading": { "$value": 1.35, "$description": "문서 h2~h4·카드 제목" },
+      "normal":  { "$value": 1.5,  "$description": "라벨·버튼·캡션·짧은 UI 텍스트" },
+      "relaxed": { "$value": 1.6,  "$description": "메시지·UI 본문·코드·로그" },
+      "prose":   { "$value": 1.7,  "$description": "문서 뷰어 본문. 한·영 혼용 긴 글" }
+    },
+    "letter-spacing": {
+      "$type": "dimension",
+      "tight":   { "$value": "-0.02em",  "$description": "화면 제목·문서 제목" },
+      "snug":    { "$value": "-0.01em",  "$description": "카드 제목·h2~h3" },
+      "normal":  { "$value": "0em",      "$description": "본문·라벨·코드" },
+      "wide":    { "$value": "0.06em",   "$description": "eyebrow(대문자 모노)" }
+    }
+  },
+
+  "typography": {
+    "$type": "typography",
+    "$description": "역할별 완성 스타일. 화면의 글자는 이 이름 중 하나로만 놓는다(개별 size·weight 조합 금지). 네 묶음: 화면(display·heading), 메시지·UI(body-message·body·label·caption), 문서 뷰어(doc-*), 기계값(source·log-line·mono-label·eyebrow·kbd·numeric). 컴포넌트 블록 이름(.tk-code·.tk-log·.tk-message)과 겹치지 않게 지었다.",
+
+    "display": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.4xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "로그인·온보딩·설치 안내 한 줄. 앱 안에서는 쓰지 않는다. 모바일 30" },
+
+    "heading-1": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "화면 제목(보관함·설정·파일 탐색). 화면당 1개. 모바일 20" },
+    "heading-2": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "다이얼로그·시트 제목·화면 섹션 제목" },
+    "heading-3": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.lg}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" }, "$description": "카드 묶음 제목·상세 패널 제목" },
+    "heading-4": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "실행 카드·승인 카드·결과물 카드 제목" },
+
+    "body-message": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "채팅 메시지 본문(사용자·에이전트). 16/1.6. 모바일에서 줄이지 않는다" },
+    "body-md":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "UI 본문 기본. 모르면 이것" },
+    "body-sm":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "보조 설명·카드 본문·검색 스니펫·승인 사유" },
+
+    "label-lg": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "lg 버튼·목록 행 제목(파일 이름·세션 제목)" },
+    "label-md": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "md·sm 버튼·폼 라벨·탭·칩·실행 단계 이름. 기본" },
+    "label-sm": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "xs 버튼·배지·탭바 라벨" },
+    "caption":  { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "도움말·메시지 시각·각주. text.tertiary 와 짝" },
+
+    "doc-title":   { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.3xl}", "fontWeight": "{font.weight.bold}", "lineHeight": "{font.line-height.snug}", "letterSpacing": "{font.letter-spacing.tight}" }, "$description": "문서 뷰어 h1. 모바일 24" },
+    "doc-h2":      { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.2xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" } },
+    "doc-h3":      { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.xl}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.heading}", "letterSpacing": "{font.letter-spacing.snug}" } },
+    "doc-h4":      { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" } },
+    "doc-body":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.prose}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "Markdown·DOCX(HTML 변환) 본문. 16/1.7" },
+    "doc-caption": { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" } },
+
+    "eyebrow":    { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.semibold}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.wide}" }, "$description": "분류 라벨(목록 그룹 'TODAY'·확장자 'PDF'). 대문자 모노. 한국어 그룹 이름은 label-sm 을 쓴다" },
+    "source":     { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.sm}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "코드 뷰어·코드 블록. 14/1.6" },
+    "log-line":   { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.regular}", "lineHeight": "{font.line-height.relaxed}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "실행 로그·터미널 출력. 12/1.6. 밀도 우선" },
+    "mono-label": { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.normal}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "기계값: 파일 경로·용량·해시·Artifact ID·경과 시간. text.secondary 또는 tertiary 와 짝" },
+    "kbd":        { "$value": { "fontFamily": "{font.family.mono}", "fontSize": "{font.size.xs}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "단축키(⌘K·⌘↵)" },
+    "numeric":    { "$value": { "fontFamily": "{font.family.sans}", "fontSize": "{font.size.md}", "fontWeight": "{font.weight.medium}", "lineHeight": "{font.line-height.none}", "letterSpacing": "{font.letter-spacing.normal}" }, "$description": "표 수치·통계. tabular-nums 를 함께 건다" }
+  }
+}

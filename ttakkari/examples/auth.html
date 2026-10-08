@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>로그인 · Ttakkari</title>
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="examples.css">
+<script src="../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+<main class="tk-auth tk-dotgrid" id="main" tabindex="-1">
+  <div class="tk-auth__panel">
+    <div class="tk-auth__brand"><img src="../assets/brand/logo-mark.svg" alt=""><span class="tk-heading-3">Ttakkari</span></div>
+    <div class="tk-stack tk-gap-2">
+      <h1 class="tk-display">내 Mac Studio에 연결</h1>
+      <p class="tk-body-md tk-text-secondary">이 기기에서 따까리에게 일을 시키려면 한 번 인증해야 해요. 연결은 이 기기에만 저장돼요.</p>
+    </div>
+    <div class="tk-card tk-card--lg">
+      <div class="tk-stack tk-gap-3">
+        <button class="tk-button tk-button--primary tk-button--lg tk-button--block" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-key"/></svg>패스키로 계속</button>
+        <button class="tk-button tk-button--lg tk-button--block" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-smartphone"/></svg>Mac에서 이 기기 승인하기</button>
+      </div>
+      <p class="tk-presence tk-presence--plain"><span class="tk-dot tk-dot--online" aria-hidden="true"></span>Mac Studio 응답 중 · 지연 42ms</p>
+    </div>
+    <aside class="tk-callout tk-callout--note" role="note">
+      <svg class="tk-icon tk-callout__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+      <div class="tk-callout__body"><strong class="tk-callout__title">파일은 승인 없이 밖으로 나가지 않아요</strong><p>다운로드 링크는 짧게 만료되고, 외부로 보내는 일은 매번 이 기기에서 승인해요.</p></div>
+    </aside>
+    <p class="tk-auth__foot">Winterholic Ttakkari · 개인용 원격 작업 환경</p>
+  </div>
+</main>
+</body>
+</html>

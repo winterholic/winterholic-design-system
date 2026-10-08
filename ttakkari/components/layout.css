@@ -1,0 +1,54 @@
+/* layout: 화면을 짜는 4개의 원시 요소. 앱 셸(헤더·탭바·사이드바·분할)은 app.css 가 이 위에 만든다.
+   container(폭) · stack(세로 간격) · cluster(가로 나열) · grid(반응형 열). 간격은 modifier 로 고르고 임의 값을 넣지 않는다. */
+
+.tk-container {
+  width: 100%; max-width: var(--tk-_max, var(--tk-size-container-xl));
+  margin-inline: auto; padding-inline: var(--tk-size-layout-page-gutter);
+}
+.tk-container--thread { --tk-_max: calc(var(--tk-size-container-thread) + 2 * var(--tk-size-layout-page-gutter)); }
+.tk-container--prose { --tk-_max: calc(var(--tk-size-container-prose) + 2 * var(--tk-size-layout-page-gutter-lg)); }
+.tk-container--sm { --tk-_max: var(--tk-size-container-sm); }
+.tk-container--md { --tk-_max: var(--tk-size-container-md); }
+.tk-container--lg { --tk-_max: var(--tk-size-container-lg); }
+.tk-container--full { --tk-_max: none; }
+@media (min-width: 768px) { .tk-container:not(.tk-container--thread) { padding-inline: var(--tk-size-layout-page-gutter-md); } }
+@media (min-width: 1024px) { .tk-container:not(.tk-container--thread) { padding-inline: var(--tk-size-layout-page-gutter-lg); } }
+
+/* stack: 세로로 쌓고 사이만 띄운다. 기본 space.4 */
+.tk-stack { display: flex; flex-direction: column; gap: var(--tk-_gap, var(--tk-space-4)); min-width: 0; }
+.tk-stack > * { margin-block: 0; }
+
+/* cluster: 가로로 나열, 넘치면 줄바꿈. 기본 space.2 */
+.tk-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-_gap, var(--tk-space-2)); min-width: 0; }
+.tk-cluster--between { justify-content: space-between; }
+.tk-cluster--end { justify-content: flex-end; }
+.tk-cluster--nowrap { flex-wrap: nowrap; }
+.tk-cluster--start { align-items: flex-start; }
+
+/* 간격 modifier: stack·cluster·grid 공통. 이 일곱 단계 밖은 없다 */
+.tk-gap-1 { --tk-_gap: var(--tk-space-1); }
+.tk-gap-2 { --tk-_gap: var(--tk-space-2); }
+.tk-gap-3 { --tk-_gap: var(--tk-space-3); }
+.tk-gap-4 { --tk-_gap: var(--tk-space-4); }
+.tk-gap-6 { --tk-_gap: var(--tk-space-6); }
+.tk-gap-8 { --tk-_gap: var(--tk-space-8); }
+.tk-gap-12 { --tk-_gap: var(--tk-space-12); }
+
+/* grid: 모바일 1열 → md 2열 → lg 지정 열 */
+.tk-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--tk-_gap, var(--tk-component-card-grid-gap)); }
+@media (min-width: 768px) {
+  .tk-grid { gap: var(--tk-_gap, var(--tk-space-4)); }
+  .tk-grid--2, .tk-grid--3, .tk-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .tk-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tk-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+/* 개수가 바뀌는 카드 묶음(보관함 그리드) */
+.tk-grid--auto { grid-template-columns: repeat(auto-fill, minmax(min(100%, calc(var(--tk-space-24) * 2.5)), 1fr)); }
+
+/* 화면 안 섹션 리듬 */
+.tk-section { display: flex; flex-direction: column; gap: var(--tk-space-3); padding-block: var(--tk-space-6); }
+.tk-section + .tk-section { border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle); }
+.tk-section__head { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-3); min-height: var(--tk-size-control-sm); }
+.tk-section__title { margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }

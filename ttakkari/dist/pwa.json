@@ -1,0 +1,25 @@
+{
+  "name": "Winterholic Ttakkari",
+  "short_name": "Ttakkari",
+  "theme_color": "#F4F4ED",
+  "background_color": "#F4F4ED",
+  "theme_color_dark": "#080705",
+  "meta": [
+    "<meta name=\"theme-color\" media=\"(prefers-color-scheme: light)\" content=\"#F4F4ED\">",
+    "<meta name=\"theme-color\" media=\"(prefers-color-scheme: dark)\" content=\"#080705\">"
+  ],
+  "icons": [
+    {
+      "src": "/brand/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/brand/app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

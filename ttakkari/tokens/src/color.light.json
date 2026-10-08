@@ -1,0 +1,239 @@
+{
+  "color": {
+    "$type": "color",
+    "$description": "시맨틱 색 토큰(라이트). 화면 코드는 이 그룹만 참조한다. 범용 그룹(surface·text·border·action·status·interactive) + Ttakkari 도메인 그룹(agent·run·policy·filetype·ink·viewer·highlight·presence) + 장식(accent·chart).",
+
+    "surface": {
+      "$description": "면. 종이(canvas) 위에 흰 카드(default)가 한 단계 뜬다. 기계가 내놓는 면(코드·로그)은 ink 그룹이라 여기 없다.",
+      "canvas":        { "$value": "{brand.paper}",          "$description": "body·채팅 스레드 바탕. 시드 --background" },
+      "subtle":        { "$value": "{sage.75}",              "$description": "띠 면: 데스크톱 사이드바·뷰어 툴바·표 머리·컴포저 트레이. 종이와 한 단계 차이" },
+      "default":       { "$value": "{seed.surface}",         "$description": "카드·입력·패널·실행 카드·결과물 카드. 시드 --surface" },
+      "raised":        { "$value": "{seed.surface}",         "$description": "떠 있는 면(메뉴·다이얼로그·시트·토스트 제외 팝오버). default 와 같은 색, shadow 로 구분" },
+      "sunken":        { "$value": "{seed.surface-muted}",   "$description": "안으로 들어간 면: 세그먼트 트랙·진행 바 트랙·뷰어 책상(PDF 페이지 뒤)" },
+      "muted":         { "$value": "{seed.surface-muted}",   "$description": "채움 면: 칩·중립 배지·스켈레톤·kbd·인라인 코드. 시드 --surface-muted" },
+      "overlay":       { "$value": "#08070580",              "$description": "다이얼로그·시트·드로어 뒤 스크림. ink 50%" },
+      "inverse":       { "$value": "{graphite.950}",         "$description": "반전 면(툴팁·토스트). 위 글자 text.inverse" },
+      "brand":         { "$value": "{brand.blue}",           "$description": "브랜드 면(로그인 CTA·설치 안내 띠). 위 글자 white 5.27:1. 두 테마 같은 값" },
+      "brand-subtle":  { "$value": "{blue.50}",              "$description": "사람의 기운: 사용자 메시지 말풍선·선택된 항목·활성 내비" },
+      "agent-subtle":  { "$value": "{mint.50}",              "$description": "에이전트의 기운: 방금 도착한 결과물 행·실행 중 카드 머리" },
+      "disabled":      { "$value": "{seed.surface-muted}",   "$description": "비활성 컨트롤 배경" }
+    },
+
+    "text": {
+      "$description": "글자색. canvas·default·subtle 위에서 등급이 유지되도록 정했다. muted·sunken 위에는 primary·secondary·tertiary 까지.",
+      "primary":     { "$value": "{brand.ink}",        "$description": "본문·제목·메시지. 종이 위 18.23:1. 시드 --foreground" },
+      "secondary":   { "$value": "{sage.800}",         "$description": "설명·메타·실행 단계 이름·파일 경로" },
+      "tertiary":    { "$value": "{seed.text-muted}",  "$description": "캡션·타임스탬프·용량·보조 메타. 종이 위 5.57:1. 시드 --text-muted" },
+      "placeholder": { "$value": "{seed.text-muted}",  "$description": "입력 플레이스홀더. tertiary 와 같은 값" },
+      "disabled":    { "$value": "{sage.400}",         "$description": "비활성. 대비 예외(WCAG 1.4.3 비활성 제외)" },
+      "inverse":     { "$value": "{brand.paper}",      "$description": "inverse 면 위" },
+      "on-brand":    { "$value": "{base.white}",       "$description": "surface.brand·action.primary 위. 5.27:1" },
+      "brand":       { "$value": "{blue.700}",         "$description": "브랜드색 글자(활성 탭·활성 내비·선택된 필터). 원색 blue.600 은 subtle 위에서 4.5 를 못 지킨다" },
+      "link":        { "$value": "{blue.700}",         "$description": "링크. 본문 안 링크는 밑줄 동반" },
+      "link-hover":  { "$value": "{blue.800}" },
+      "agent":       { "$value": "{mint.700}",         "$description": "에이전트 이름표·'실행 중' 같은 에이전트 상태 문구. 민트 원색은 종이 위 글자 불가(1.35)" },
+      "success":     { "$value": "{mint.700}",         "$description": "완료·허용. 성공은 에이전트가 해낸 일이라 민트 계열이다" },
+      "warning":     { "$value": "{amber.700}",        "$description": "주의·승인 필요. amber 원색은 2.11 로 글자 불가" },
+      "danger":      { "$value": "{red.700}" },
+      "info":        { "$value": "{blue.700}" }
+    },
+
+    "border": {
+      "$description": "테두리. 카드·패널은 선으로 구분한다(그림자보다 선). 굵기는 hairline 하나.",
+      "subtle":  { "$value": "{seed.surface-muted}", "$description": "행 구분(목록·로그·표 행 사이)" },
+      "default": { "$value": "{seed.border}",        "$description": "카드·패널·헤더 하단선·뷰어 경계. 장식 선(3:1 요구 없음). 시드 --border" },
+      "strong":  { "$value": "{sage.500}",           "$description": "입력·체크박스·라디오 외곽. 컴포넌트 경계라 3:1" },
+      "brand":   { "$value": "{brand.blue}",         "$description": "선택·활성 표시(선택된 결과물·활성 탭 밑줄)" },
+      "focus":   { "$value": "{brand.blue}" },
+      "agent":   { "$value": "{mint.500}",           "$description": "에이전트 강조 선(방금 도착한 결과물·실행 중 카드). 3:1" },
+      "danger":  { "$value": "{red.600}",            "$description": "오류 입력" },
+      "inverse": { "$value": "#FFFFFF29",            "$description": "inverse·brand 면 위 구분선. white 16%" }
+    },
+
+    "action": {
+      "$description": "버튼. variant 는 네 개 — primary(화면의 주 목적 1개)·secondary(기본값)·ghost(도구)·danger(파괴). 링크처럼 보이는 버튼은 Link.",
+      "primary": {
+        "bg":        { "$value": "{brand.blue}", "$description": "Ttakkari Blue 그대로. 흰 글자 5.27:1. 두 테마 같은 값" },
+        "bg-hover":  { "$value": "{blue.700}" },
+        "bg-active": { "$value": "{blue.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "secondary": {
+        "bg":        { "$value": "{seed.surface}" },
+        "bg-hover":  { "$value": "{sage.75}" },
+        "bg-active": { "$value": "{seed.surface-muted}" },
+        "border":    { "$value": "{sage.300}" },
+        "text":      { "$value": "{brand.ink}" }
+      },
+      "ghost": {
+        "bg":        { "$value": "{base.transparent}" },
+        "bg-hover":  { "$value": "{sage.100}" },
+        "bg-active": { "$value": "{sage.200}" },
+        "text":      { "$value": "{brand.ink}" }
+      },
+      "danger": {
+        "bg":        { "$value": "{red.600}", "$description": "흰 글자 5.07:1" },
+        "bg-hover":  { "$value": "{red.700}" },
+        "bg-active": { "$value": "{red.800}" },
+        "text":      { "$value": "{base.white}" }
+      },
+      "disabled": {
+        "bg":     { "$value": "{seed.surface-muted}" },
+        "text":   { "$value": "{sage.400}" },
+        "border": { "$value": "{seed.border}" }
+      }
+    },
+
+    "status": {
+      "$description": "상태 피드백 4종 + neutral. bg/border/text/icon 은 배너·콜아웃·인라인, solid/on-solid 는 배지·카운트·점. 색만으로 말하지 않는다 — 아이콘과 문구가 항상 같이 간다.",
+      "info":    { "bg": { "$value": "{blue.50}" },  "border": { "$value": "{blue.200}" },  "text": { "$value": "{blue.700}" },  "icon": { "$value": "{blue.600}" },  "solid": { "$value": "{blue.600}" },  "on-solid": { "$value": "{base.white}" } },
+      "success": { "bg": { "$value": "{mint.50}" },  "border": { "$value": "{mint.400}" },  "text": { "$value": "{mint.700}" },  "icon": { "$value": "{mint.600}" },  "solid": { "$value": "{mint.700}" },  "on-solid": { "$value": "{base.white}" } },
+      "warning": { "bg": { "$value": "{amber.50}" }, "border": { "$value": "{amber.300}" }, "text": { "$value": "{amber.800}" }, "icon": { "$value": "{amber.600}" }, "solid": { "$value": "{amber.400}" }, "on-solid": { "$value": "{brand.ink}" } },
+      "danger":  { "bg": { "$value": "{red.50}" },   "border": { "$value": "{red.200}" },   "text": { "$value": "{red.700}" },   "icon": { "$value": "{red.600}" },   "solid": { "$value": "{red.600}" },   "on-solid": { "$value": "{base.white}" } },
+      "neutral": { "bg": { "$value": "{seed.surface-muted}" }, "border": { "$value": "{seed.border}" }, "text": { "$value": "{sage.800}" }, "icon": { "$value": "{sage.600}" }, "solid": { "$value": "{sage.700}" }, "on-solid": { "$value": "{base.white}" } }
+    },
+
+    "agent": {
+      "$description": "에이전트의 존재감. 민트가 말한다 — '따까리가 지금 일하고 있다·방금 해냈다'. 밝은 면에서는 민트 원색을 점·아바타·잉크 면 위에만 쓰고, 글자·선은 어두운 단계로 내린다.",
+      "live":       { "$value": "{mint.600}",   "$description": "실행 중 점·진행 막대. 종이·띠·칩 면 위 3:1(혼자 놓여도 보인다). mint.500 은 띠 면에서 2.9" },
+      "on-ink":     { "$value": "{brand.mint}", "$description": "잉크 면(로그·코드·아바타·로고) 위의 민트 원색. 커서·실행 줄 표시. 두 테마 같은 값" },
+      "bg":         { "$value": "{mint.50}",    "$description": "실행 중 카드 머리·방금 도착한 결과물 행" },
+      "border":     { "$value": "{mint.500}" },
+      "text":       { "$value": "{mint.700}",   "$description": "에이전트 이름표·상태 문구" },
+      "avatar-bg":  { "$value": "{brand.ink}",  "$description": "에이전트 아바타 타일(로고 심볼과 같은 잉크 타일)" },
+      "avatar-fg":  { "$value": "{brand.paper}" },
+      "avatar-dot": { "$value": "{brand.mint}" }
+    },
+
+    "run": {
+      "$description": "작업(Task) 수명 주기 6상태. 배지·실행 카드 왼쪽 레일·작업 목록의 상태 아이콘. 주의를 끄는 것은 지금 움직이는 것(running)과 사람을 기다리는 것(waiting)뿐이다. 끝난 작업은 조용하다.",
+      "queued":    { "bg": { "$value": "{seed.surface-muted}" }, "border": { "$value": "{seed.border}" }, "text": { "$value": "{sage.800}" }, "icon": { "$value": "{sage.600}" } },
+      "running":   { "bg": { "$value": "{mint.50}" },  "border": { "$value": "{mint.500}" },  "text": { "$value": "{mint.700}" },  "icon": { "$value": "{mint.600}" } },
+      "waiting":   { "bg": { "$value": "{amber.50}" }, "border": { "$value": "{amber.400}" }, "text": { "$value": "{amber.800}" }, "icon": { "$value": "{amber.600}" } },
+      "succeeded": { "bg": { "$value": "{seed.surface-muted}" }, "border": { "$value": "{seed.border}" }, "text": { "$value": "{mint.700}" }, "icon": { "$value": "{mint.600}" } },
+      "failed":    { "bg": { "$value": "{red.50}" },   "border": { "$value": "{red.200}" },   "text": { "$value": "{red.700}" },   "icon": { "$value": "{red.600}" } },
+      "cancelled": { "bg": { "$value": "{seed.surface-muted}" }, "border": { "$value": "{seed.border}" }, "text": { "$value": "{seed.text-muted}" }, "icon": { "$value": "{sage.600}" } }
+    },
+
+    "policy": {
+      "$description": "File Broker 정책. 파일 접근·반출 판정 4종. 허용은 조용하게(중립 면 + 민트 아이콘), 승인 필요는 amber, 차단은 red, 별도 정책 범위(민감·회사 자료)는 plum. 아이콘(잠금·방패)과 단어가 항상 같이 간다.",
+      "allowed":    { "bg": { "$value": "{seed.surface-muted}" }, "border": { "$value": "{seed.border}" }, "text": { "$value": "{sage.800}" }, "icon": { "$value": "{mint.600}" } },
+      "approval":   { "bg": { "$value": "{amber.50}" },  "border": { "$value": "{amber.300}" },  "text": { "$value": "{amber.800}" },  "icon": { "$value": "{amber.600}" } },
+      "blocked":    { "bg": { "$value": "{red.50}" },    "border": { "$value": "{red.200}" },    "text": { "$value": "{red.700}" },    "icon": { "$value": "{red.600}" } },
+      "restricted": { "bg": { "$value": "{plum.50}" },   "border": { "$value": "{plum.200}" },   "text": { "$value": "{plum.700}" },   "icon": { "$value": "{plum.600}" } }
+    },
+
+    "filetype": {
+      "$description": "결과물 파일 계열 7종의 타일(bg)과 글리프·확장자 글자(fg). 색은 보조 신호다 — 아이콘 모양과 확장자 라벨(PDF·PPTX)이 정본. 관례(Word 파랑·PDF 빨강·PowerPoint 주황·Excel 녹색)를 따른다.",
+      "doc":   { "bg": { "$value": "{blue.50}" },              "fg": { "$value": "{blue.700}" },        "$description": "MD·TXT·DOCX·HTML(읽는 문서)" },
+      "pdf":   { "bg": { "$value": "{red.50}" },               "fg": { "$value": "{red.700}" },         "$description": "PDF(고정 레이아웃)" },
+      "slide": { "bg": { "$value": "{amber.50}" },             "fg": { "$value": "{amber.700}" },       "$description": "PPTX·KEY" },
+      "sheet": { "bg": { "$value": "{mint.50}" },              "fg": { "$value": "{mint.700}" },        "$description": "XLSX·CSV·TSV" },
+      "image": { "bg": { "$value": "{plum.50}" },              "fg": { "$value": "{plum.700}" },        "$description": "PNG·JPG·WEBP·GIF·SVG" },
+      "code":  { "bg": { "$value": "{seed.surface-muted}" },   "fg": { "$value": "{sage.800}" },        "$description": "소스코드·JSON·YAML·로그" },
+      "other": { "bg": { "$value": "{seed.surface-muted}" },   "fg": { "$value": "{seed.text-muted}" }, "$description": "ZIP·바이너리·알 수 없는 형식" }
+    },
+
+    "ink": {
+      "$description": "잉크 면 — 기계가 말하는 곳(코드 뷰어·로그·터미널 출력·diff). 두 테마 모두 어둡다. 사람이 읽는 종이와 기계가 내놓는 잉크가 한눈에 갈리는 것이 이 시스템의 첫 번째 시각 규칙이다. 민트·연민트가 여기서 글자로 산다.",
+      "bg":             { "$value": "{seed.dark-surface}",       "$description": "코드 뷰어·로그 패널·코드 블록. 시드 dark --surface" },
+      "bg-header":      { "$value": "{seed.dark-surface-muted}", "$description": "코드·로그 머리(파일명·언어·복사·따라가기)" },
+      "border":         { "$value": "{seed.dark-surface}",       "$description": "라이트에서는 면과 같은 색(경계 없음). 다크에서 카드와 가르는 선" },
+      "text":           { "$value": "{graphite.100}" },
+      "text-muted":     { "$value": "{seed.dark-text-muted}",    "$description": "머리의 파일명·언어·줄 수" },
+      "comment":        { "$value": "{graphite.400}" },
+      "keyword":        { "$value": "{blue.300}" },
+      "string":         { "$value": "{brand.mint-soft}" },
+      "function":       { "$value": "{amber.300}" },
+      "number":         { "$value": "{red.300}" },
+      "type":           { "$value": "{plum.300}" },
+      "punctuation":    { "$value": "{graphite.300}" },
+      "line-number":    { "$value": "{graphite.600}",            "$description": "비텍스트 취급 3:1" },
+      "line-highlight": { "$value": "#296EB42E",                 "$description": "짚은 줄. Blue 18%" },
+      "line-highlight-marker": { "$value": "{blue.400}" },
+      "added-bg":       { "$value": "#1CA07933",                 "$description": "diff 추가 줄. mint.500 20%" },
+      "added-sign":     { "$value": "{brand.mint}" },
+      "removed-bg":     { "$value": "#C93A3533",                 "$description": "diff 삭제 줄. red.600 20%" },
+      "removed-sign":   { "$value": "{red.300}" },
+      "selection":      { "$value": "#79AAE14D",                 "$description": "잉크 면 안 텍스트 선택. blue.400 30%" },
+      "caret":          { "$value": "{brand.mint}",              "$description": "스트리밍 커서·현재 실행 줄 표시. 에이전트가 쓰는 중이라는 표시" },
+      "hover":          { "$value": "#F4F4ED14",                 "$description": "잉크 면 위 행 호버. paper 8%" },
+      "log-time":       { "$value": "{graphite.400}" },
+      "log-info":       { "$value": "{graphite.100}" },
+      "log-debug":      { "$value": "{graphite.400}" },
+      "log-tool":       { "$value": "{blue.300}",                "$description": "도구 호출 줄(read_file·search 등)" },
+      "log-ok":         { "$value": "{brand.mint}" },
+      "log-warn":       { "$value": "{amber.300}" },
+      "log-error":      { "$value": "{red.300}" },
+      "bg-inline":      { "$value": "{seed.surface-muted}",      "$description": "인라인 코드 칩. 종이 흐름 안이라 밝다" },
+      "text-inline":    { "$value": "{brand.ink}" }
+    },
+
+    "viewer": {
+      "$description": "Universal Artifact Viewer. 문서 콘텐츠 자체(PDF 페이지·HTML 미리보기·이미지)는 테마를 따르지 않는다 — 원본이 보이는 그대로가 정답이다. 테마는 그 주변(책상·툴바)만 바꾼다.",
+      "desk":         { "$value": "{seed.surface-muted}", "$description": "PDF·슬라이드 페이지 뒤 책상" },
+      "page":         { "$value": "{base.white}",         "$description": "PDF·변환 미리보기 페이지. 두 테마 모두 흰 종이" },
+      "page-border":  { "$value": "{seed.border}" },
+      "frame-bg":     { "$value": "{base.white}",         "$description": "HTML 격리 미리보기 바탕. HTML 은 흰 바탕을 가정하고 만들어진다" },
+      "checker-a":    { "$value": "{base.white}",         "$description": "투명 이미지 바탕 격자 칸 A" },
+      "checker-b":    { "$value": "{seed.surface-muted}", "$description": "투명 이미지 바탕 격자 칸 B" },
+      "grid-line":    { "$value": "{seed.border}",        "$description": "스프레드시트 셀 선" },
+      "grid-head":    { "$value": "{sage.75}",            "$description": "스프레드시트 행·열 머리" },
+      "grid-head-text": { "$value": "{seed.text-muted}" }
+    },
+
+    "highlight": {
+      "$description": "형광펜 — 연민트(accent-soft). 검색 히트·일치 구간·지금 보고 있는 근거. 상태(성공)가 아니다. 위 글자는 언제나 ink.",
+      "mark":             { "$value": "{brand.mint-soft}", "$description": "문서 검색 히트·보관함 검색 일치. 위 글자 13.68:1" },
+      "mark-text":        { "$value": "{brand.ink}" },
+      "mark-active":      { "$value": "{brand.mint}",      "$description": "지금 위치한 히트(n/m 중 현재). 원색 민트 + ink" },
+      "mark-active-text": { "$value": "{brand.ink}" }
+    },
+
+    "presence": {
+      "$description": "Mac Studio(에이전트 호스트) 연결 상태 점. 점은 보조이고 '연결됨·다시 연결 중·오프라인' 단어가 정본.",
+      "online":     { "$value": "{mint.600}" },
+      "connecting": { "$value": "{amber.500}" },
+      "offline":    { "$value": "{sage.600}" }
+    },
+
+    "interactive": {
+      "$description": "선택·호버·포커스.",
+      "focus-ring":      { "$value": "{brand.blue}" },
+      "selected-bg":     { "$value": "{blue.50}" },
+      "selected-border": { "$value": "{brand.blue}" },
+      "selected-text":   { "$value": "{blue.800}" },
+      "hover-overlay":   { "$value": "#0807050F", "$description": "어떤 면 위에도 얹는 호버 덧칠. ink 6%" },
+      "pressed-overlay": { "$value": "#0807051F", "$description": "ink 12%" },
+      "selection":       { "$value": "{blue.100}", "$description": "본문 텍스트 선택(::selection)" }
+    },
+
+    "accent": {
+      "$description": "장식·브랜드 표현 전용(로그인 화면·빈 상태 일러스트·로고). 글자색·상태색으로 쓰지 않는다.",
+      "blue":      { "$value": "{brand.blue}" },
+      "mint":      { "$value": "{brand.mint}" },
+      "mint-soft": { "$value": "{brand.mint-soft}" },
+      "ink":       { "$value": "{brand.ink}" },
+      "paper":     { "$value": "{brand.paper}" }
+    },
+
+    "chart": {
+      "$description": "데이터 시각화(사용량·작업 통계). categorical 은 순서대로(1→6). 3개 이하면 1·2·3.",
+      "categorical": {
+        "1": { "$value": "{brand.blue}" },
+        "2": { "$value": "{mint.500}" },
+        "3": { "$value": "{amber.400}" },
+        "4": { "$value": "{plum.500}" },
+        "5": { "$value": "{red.500}" },
+        "6": { "$value": "{graphite.500}" }
+      },
+      "sequential": {
+        "1": { "$value": "{blue.100}" }, "2": { "$value": "{blue.200}" }, "3": { "$value": "{blue.300}" }, "4": { "$value": "{blue.400}" },
+        "5": { "$value": "{blue.500}" }, "6": { "$value": "{blue.600}" }, "7": { "$value": "{blue.700}" }
+      },
+      "grid":  { "$value": "{seed.border}" },
+      "axis":  { "$value": "{sage.600}" },
+      "label": { "$value": "{sage.800}" }
+    }
+  }
+}

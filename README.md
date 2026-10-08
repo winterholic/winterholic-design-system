@@ -10,6 +10,7 @@ winterholic 의 디자인 시스템 모음. 시스템 하나가 디렉터리 하
 | [`yeohaenggajya/`](yeohaenggajya/) | 여행가쟈(가챠 여행지 추천). 원본 `tokens.css` 값을 바꾸지 않고 옮긴 기록·참조본. 한지·단청·등급·연출 무대 | v1.0.0 |
 | [`notting/`](notting/) | 개발자용 문서 워크스페이스 notting. Verdigris 주색, periwinkle = AI·근거 전용, 왕복 보고서·Context Pack·이슈·ADR 도메인 토큰, 온보딩·복구 경험 템플릿 | v1.2.1 |
 | [`aip/`](aip/) | AIP(Application Intent Protocol) 생태계 공용(홈페이지·Docs·MakeAIP·Playground·아키텍처 시각화·오픈소스 프레젠테이션). 제도 용지 위 청사진: Blue 행동 · Yellow 형광펜 · Tangerine 경계 · Slate 코드 면. **컴포넌트 CSS·JS 구현 포함**, 대비 312쌍·컴포넌트 lint·Chrome 동작 검사 | v1.2.1 |
+| [`ttakkari/`](ttakkari/) | Winterholic Ttakkari(원격 AI 에이전트 PWA). 시드 13색 그대로 · Blue 사람 · Mint 에이전트 · 잉크 면(코드·로그) · 채팅·실행·승인·결과물·Universal Artifact Viewer 구현 · 대비 510쌍·이름 충돌 검사·Chrome 동작 검사 58개 | v1.0.0 |
 
 새 시스템을 파생하는 법: [`winterholic-base/docs/13-governance.md`](winterholic-base/docs/13-governance.md) §6.
 

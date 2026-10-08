@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>작업 공간 · Ttakkari</title>
+<link rel="icon" href="../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/prose.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="examples.css">
+<script src="../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="탐색">
+    <div class="tk-app__brand">
+      <a class="tk-header__brand" href="chat.html"><img src="../assets/brand/logo-mark.svg" alt=""><span>Ttakkari</span></a>
+    </div>
+    <nav class="tk-sidebar" aria-label="영역">
+      <div class="tk-nav">
+        <a class="tk-nav__link" href="chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+        <a class="tk-nav__link" href="workspace.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간<span class="tk-badge tk-badge--count" aria-label="새 결과물 2개">2</span></a>
+        <a class="tk-nav__link" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+        <a class="tk-nav__link" href="files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일 찾기</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-hide-from-lg" href="chat.html" aria-label="채팅으로 돌아가기"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1>작업 공간</h1>
+            <p class="tk-header__meta">회의록 정리하고 결정 사항 보내기 · 결과물 9</p>
+          </div>
+          <div class="tk-header__actions">
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+
+      <div class="tk-split" data-open>
+        <section class="tk-split__pane tk-split__pane--primary" aria-label="결과물 목록">
+          <div class="tk-screen__body">
+            <div class="tk-list" role="tablist" aria-orientation="vertical" aria-label="결과물">
+              <p class="tk-list__group">방금 · 이 세션</p>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-pdf" aria-controls="v-pdf" aria-selected="true" data-new>
+                <span class="tk-glyph" data-type="pdf" data-new><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">결정사항-요약-1009.pdf</span><span class="tk-list__meta"><span class="tk-ext">PDF</span><span>2쪽</span><span>148 KB</span><span>14:22</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-md" aria-controls="v-md" aria-selected="false">
+                <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">회의록-요약.md</span><span class="tk-list__meta"><span class="tk-ext">MD</span><span>6 KB</span><span>14:22</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-ppt" aria-controls="v-ppt" aria-selected="false">
+                <span class="tk-glyph" data-type="slide"><svg class="tk-icon" aria-hidden="true"><use href="#i-presentation"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">4분기-계획-발표.pptx</span><span class="tk-list__meta"><span class="tk-ext">PPTX</span><span>12장</span><span>변환 미리보기</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-xls" aria-controls="v-xls" aria-selected="false">
+                <span class="tk-glyph" data-type="sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">결정사항-담당자.xlsx</span><span class="tk-list__meta"><span class="tk-ext">XLSX</span><span>시트 2</span><span>18 KB</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-img" aria-controls="v-img" aria-selected="false">
+                <span class="tk-glyph" data-type="image"><img src="../assets/brand/brand-hero.webp" alt=""></span>
+                <span class="tk-list__body"><span class="tk-list__title">대시보드-시안.webp</span><span class="tk-list__meta"><span class="tk-ext">WEBP</span><span>1600×900</span><span>84 KB</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-html" aria-controls="v-html" aria-selected="false">
+                <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-globe"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">주간-리포트.html</span><span class="tk-list__meta"><span class="tk-ext">HTML</span><span>격리 미리보기</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-code" aria-controls="v-code" aria-selected="false">
+                <span class="tk-glyph" data-type="code"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">extract_decisions.py</span><span class="tk-list__meta"><span class="tk-ext">PY</span><span>38줄</span></span></span>
+              </button>
+              <p class="tk-list__group">미리보기 없음</p>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-docx" aria-controls="v-docx" aria-selected="false">
+                <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">회의-녹취록.docx</span><span class="tk-list__meta"><span class="tk-badge tk-badge--danger">변환 실패</span><span>2.1 MB</span></span></span>
+              </button>
+              <button class="tk-list__item tk-artifact" role="tab" id="t-zip" aria-controls="v-zip" aria-selected="false">
+                <span class="tk-glyph" data-type="other"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-archive"/></svg></span>
+                <span class="tk-list__body"><span class="tk-list__title">고객-명단-원본.zip</span><span class="tk-list__meta"><span class="tk-policy" data-policy="restricted"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg>민감</span><span>4.8 MB</span></span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <div class="tk-split__handle" aria-label="목록과 미리보기 폭 조절"></div>
+
+        <section class="tk-split__pane tk-split__pane--secondary" aria-label="미리보기" id="viewer-host">
+          <!-- PDF -->
+          <section class="tk-viewer" role="tabpanel" id="v-pdf" aria-labelledby="t-pdf">
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="pdf"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span><h2 class="tk-viewer__name">결정사항-요약-1009.pdf</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-open aria-label="문서 안 찾기" data-tk-tooltip="찾기" data-tk-tooltip-kbd="⌘F"><svg class="tk-icon" aria-hidden="true"><use href="#i-search"/></svg></button>
+                <span class="tk-viewer__divider tk-viewer__wide" aria-hidden="true"></span>
+                <button class="tk-icon-button tk-icon-button--sm tk-viewer__wide" type="button" data-tk-zoom="out" aria-label="축소"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-out"/></svg></button>
+                <span class="tk-viewer__value tk-viewer__wide" data-tk-zoom-value aria-hidden="true">100%</span>
+                <button class="tk-icon-button tk-icon-button--sm tk-viewer__wide" type="button" data-tk-zoom="in" aria-label="확대"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-in"/></svg></button>
+                <button class="tk-icon-button tk-icon-button--sm tk-viewer__wide" type="button" data-tk-zoom="fit" aria-label="폭에 맞추기" data-tk-tooltip="폭에 맞추기"><svg class="tk-icon" aria-hidden="true"><use href="#i-fit"/></svg></button>
+                <span class="tk-viewer__divider tk-viewer__wide" aria-hidden="true"></span>
+                <span class="tk-viewer__value" aria-label="1쪽, 전체 2쪽">1 / 2</span>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="더보기" data-tk-dialog-open="artifact-actions"><svg class="tk-icon" aria-hidden="true"><use href="#i-more-vertical"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-findbar" hidden>
+              <span class="tk-input-wrap"><svg class="tk-icon" aria-hidden="true"><use href="#i-search"/></svg><input class="tk-input tk-input--sm" type="search" data-tk-find placeholder="문서 안에서 찾기" aria-label="문서 안에서 찾기"></span>
+              <span class="tk-findbar__count" aria-live="polite"></span>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-prev aria-label="이전 결과"><svg class="tk-icon" aria-hidden="true"><use href="#i-chevron-up"/></svg></button>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-next aria-label="다음 결과"><svg class="tk-icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-close aria-label="찾기 닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+            </div>
+            <div class="tk-viewer__body" tabindex="0" role="region" aria-label="PDF 페이지">
+              <div class="tk-desk">
+                <article class="tk-page tk-page--a4" aria-label="1쪽">
+                  <div class="ex-page">
+                    <p class="ex-page__kicker">2026.10.09 · 주간 회의 결정 사항</p>
+                    <h3 class="ex-page__title">지난주 회의 결정 사항 요약</h3>
+                    <p class="ex-page__text">10월 첫째 주 회의 3건(기획 · 개발 · 운영)에서 나온 결정 사항 7건을 모았습니다. 담당자가 정해지지 않은 2건은 표에 따로 표시했습니다.</p>
+                    <ol class="ex-page__list">
+                      <li>모바일 PWA 1차 범위는 채팅과 Markdown·PDF 미리보기까지로 한다.</li>
+                      <li>파일 다운로드는 파일 ID 기반 링크만 쓰고, 링크는 10분 뒤 만료한다.</li>
+                      <li>외부 메일 발송은 매번 승인한다. 자동 승인은 개인 작업 영역 안에서만.</li>
+                      <li>회사 자료 폴더는 이번 분기 연동 범위에서 뺀다.</li>
+                    </ol>
+                  </div>
+                </article>
+                <article class="tk-page tk-page--a4" aria-label="2쪽"><div class="ex-page"><p class="ex-page__text">5. 변환 미리보기(PPTX·DOCX)는 원본과 레이아웃이 다를 수 있다는 안내를 항상 붙인다.</p><p class="ex-page__text">6. 결과물 보존 기간 기본값은 30일, 고정한 결과물은 무기한.</p><p class="ex-page__text">7. 실행 로그는 세션이 끝나도 90일 보관한다.</p></div></article>
+              </div>
+            </div>
+            <div class="tk-viewer__followup">
+              <form class="tk-composer" data-tk-composer action="#" aria-label="이 문서에 대해 지시하기">
+                <div class="tk-composer__row">
+                  <label class="tk-sr-only" for="fu-pdf">이 문서에 대해 지시</label>
+                  <textarea class="tk-composer__input" id="fu-pdf" rows="1" placeholder="이 문서에 대해 지시하기 · 예: 3번을 더 짧게"></textarea>
+                  <button class="tk-icon-button tk-icon-button--primary tk-icon-button--round tk-composer__send" type="submit" aria-label="보내기"><svg class="tk-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- Markdown -->
+          <section class="tk-viewer" role="tabpanel" id="v-md" aria-labelledby="t-md" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span><h2 class="tk-viewer__name">회의록-요약.md</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-open aria-label="문서 안 찾기" data-tk-tooltip="찾기" data-tk-tooltip-kbd="⌘F"><svg class="tk-icon" aria-hidden="true"><use href="#i-search"/></svg></button>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="더보기" data-tk-dialog-open="artifact-actions"><svg class="tk-icon" aria-hidden="true"><use href="#i-more-vertical"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-findbar" hidden>
+              <span class="tk-input-wrap"><svg class="tk-icon" aria-hidden="true"><use href="#i-search"/></svg><input class="tk-input tk-input--sm" type="search" data-tk-find placeholder="문서 안에서 찾기" aria-label="문서 안에서 찾기"></span>
+              <span class="tk-findbar__count" aria-live="polite"></span>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-prev aria-label="이전 결과"><svg class="tk-icon" aria-hidden="true"><use href="#i-chevron-up"/></svg></button>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-next aria-label="다음 결과"><svg class="tk-icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+              <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-find-close aria-label="찾기 닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+            </div>
+            <div class="tk-viewer__body" tabindex="0" role="region" aria-label="문서 본문">
+              <div class="tk-viewer__doc">
+                <article class="tk-prose">
+                  <h1 id="summary">회의록 요약 · 10월 첫째 주</h1>
+                  <p>세 회의에서 공통으로 나온 주제는 <strong>원격 결과물 확인</strong>과 <strong>파일 반출 통제</strong>다. 결정 7건, 미결 2건.</p>
+                  <h2 id="decisions">결정 사항</h2>
+                  <ul>
+                    <li>PWA 1차 범위: 채팅 + Markdown·PDF 미리보기</li>
+                    <li>다운로드는 파일 ID 링크만, <mark>10분 만료</mark></li>
+                    <li>외부 메일은 매번 승인</li>
+                  </ul>
+                  <div class="markdown-alert markdown-alert-warning">
+                    <p class="markdown-alert-title">Warning</p>
+                    <p>회사 자료 폴더는 이번 분기 범위가 아니다. 에이전트가 경로를 찾아도 반출하지 않는다.</p>
+                  </div>
+                  <h2 id="owners">담당자</h2>
+                  <table>
+                    <thead><tr><th>결정</th><th>담당</th><th>기한</th></tr></thead>
+                    <tbody>
+                      <tr><td>다운로드 링크 만료</td><td>백엔드</td><td>10.16</td></tr>
+                      <tr><td>변환 미리보기 안내</td><td>미정</td><td>10.23</td></tr>
+                    </tbody>
+                  </table>
+                  <h2 id="snippet">정책 키</h2>
+                  <pre><code class="language-yaml"><span class="token key">export</span><span class="token punctuation">:</span>
+  <span class="token key">external</span><span class="token punctuation">:</span> <span class="token string">require_approval</span>
+  <span class="token key">link_ttl</span><span class="token punctuation">:</span> <span class="token number">600</span></code></pre>
+                </article>
+              </div>
+            </div>
+            <div class="tk-viewer__followup">
+              <form class="tk-composer" data-tk-composer action="#" aria-label="이 문서에 대해 지시하기">
+                <div class="tk-composer__row">
+                  <label class="tk-sr-only" for="fu-md">이 문서에 대해 지시</label>
+                  <textarea class="tk-composer__input" id="fu-md" rows="1" placeholder="이 문서에 대해 지시하기"></textarea>
+                  <button class="tk-icon-button tk-icon-button--primary tk-icon-button--round tk-composer__send" type="submit" aria-label="보내기"><svg class="tk-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <!-- PPTX: 변환 미리보기 -->
+          <section class="tk-viewer" role="tabpanel" id="v-ppt" aria-labelledby="t-ppt" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="slide"><svg class="tk-icon" aria-hidden="true"><use href="#i-presentation"/></svg></span><h2 class="tk-viewer__name">4분기-계획-발표.pptx</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm tk-viewer__wide" type="button" data-tk-zoom="out" aria-label="축소"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-out"/></svg></button>
+                <span class="tk-viewer__value tk-viewer__wide" data-tk-zoom-value aria-hidden="true">100%</span>
+                <button class="tk-icon-button tk-icon-button--sm tk-viewer__wide" type="button" data-tk-zoom="in" aria-label="확대"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-in"/></svg></button>
+                <span class="tk-viewer__value" aria-label="1장, 전체 12장">1 / 12</span>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-viewer__notice"><svg class="tk-icon" aria-hidden="true"><use href="#i-info"/></svg><p>PDF로 변환한 미리보기예요. 글꼴·애니메이션은 원본과 다를 수 있어요. <a href="#">원본 받기</a></p></div>
+            <div class="tk-viewer__body" tabindex="0" role="region" aria-label="슬라이드">
+              <div class="tk-desk">
+                <article class="tk-page tk-page--slide" aria-label="1장"><div class="ex-slide"><p class="ex-page__kicker">Q4 PLAN</p><p class="ex-slide__title">원격으로 끝내는 작업</p><p class="ex-page__text">지시 · 확인 · 결과물 활용을 휴대폰에서</p></div></article>
+                <article class="tk-page tk-page--slide" aria-label="2장" data-pending></article>
+              </div>
+            </div>
+          </section>
+
+          <!-- XLSX -->
+          <section class="tk-viewer tk-cells-view" role="tabpanel" id="v-xls" aria-labelledby="t-xls" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="sheet"><svg class="tk-icon" aria-hidden="true"><use href="#i-sheet"/></svg></span><h2 class="tk-viewer__name">결정사항-담당자.xlsx</h2></div>
+              <div class="tk-viewer__tools">
+                <span class="tk-viewer__value tk-viewer__wide">7행 · 4열</span>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-viewer__body" tabindex="0" role="region" aria-label="시트 결정사항">
+              <table class="tk-cells">
+                <thead><tr><th scope="col"><span class="tk-sr-only">행</span></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead>
+                <tbody>
+                  <tr class="tk-cells__header"><th scope="row">1</th><td>결정</td><td>담당</td><td>기한</td><td>공수(h)</td></tr>
+                  <tr><th scope="row">2</th><td>PWA 1차 범위 확정</td><td>기획</td><td>10.12</td><td data-type="number">4</td></tr>
+                  <tr><th scope="row">3</th><td>다운로드 링크 만료</td><td>백엔드</td><td>10.16</td><td data-type="number">6.5</td></tr>
+                  <tr><th scope="row">4</th><td>외부 메일 승인 흐름</td><td>백엔드</td><td>10.20</td><td data-type="number">12</td></tr>
+                  <tr><th scope="row">5</th><td>회사 자료 연동 제외</td><td>운영</td><td>10.10</td><td data-type="number">1</td></tr>
+                  <tr><th scope="row">6</th><td>변환 미리보기 안내</td><td data-type="empty">미정</td><td>10.23</td><td data-type="number">3</td></tr>
+                  <tr><th scope="row">7</th><td>로그 90일 보관</td><td data-type="empty">미정</td><td>10.30</td><td data-type="number">2</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tk-cells__tabs" role="tablist" aria-label="시트">
+              <button role="tab" id="s1" aria-controls="v-xls-s1" aria-selected="true" type="button">결정사항</button>
+              <button role="tab" id="s2" aria-controls="v-xls-s2" aria-selected="false" type="button">회의별</button>
+            </div>
+            <div id="v-xls-s1" role="tabpanel" aria-labelledby="s1" class="tk-sr-only">결정사항 시트</div>
+            <div id="v-xls-s2" role="tabpanel" aria-labelledby="s2" class="tk-sr-only" hidden>회의별 시트</div>
+          </section>
+
+          <!-- 이미지 -->
+          <section class="tk-viewer" role="tabpanel" id="v-img" aria-labelledby="t-img" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="image"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg></span><h2 class="tk-viewer__name">대시보드-시안.webp</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-zoom="out" aria-label="축소"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-out"/></svg></button>
+                <span class="tk-viewer__value" data-tk-zoom-value aria-hidden="true">100%</span>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" data-tk-zoom="in" aria-label="확대"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-in"/></svg></button>
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-viewer__body" tabindex="0" role="region" aria-label="이미지">
+              <div class="tk-stage"><img src="../assets/brand/brand-hero.webp" alt="대시보드 시안: 어두운 바탕 위 따 심볼과 지시에서 결과물로 이어지는 흐름" width="1600" height="900"></div>
+            </div>
+          </section>
+
+          <!-- HTML: 격리 -->
+          <section class="tk-viewer" role="tabpanel" id="v-html" aria-labelledby="t-html" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-globe"/></svg></span><h2 class="tk-viewer__name">주간-리포트.html</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-viewer__body">
+              <div class="tk-frame">
+                <p class="tk-frame__bar"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield"/></svg>격리된 미리보기 · 스크립트·외부 요청 꺼짐<button class="tk-button tk-button--xs tk-button--ghost" type="button">스크립트 허용…</button></p>
+                <iframe sandbox="" title="주간-리포트.html 격리 미리보기" srcdoc="<!doctype html><meta charset=utf-8><body style='font-family:system-ui,sans-serif;padding:24px;line-height:1.6'><h1>주간 리포트</h1><p>이 HTML 은 별도 출처의 sandbox iframe 안에서만 렌더된다. 앱의 쿠키·저장소에 닿지 못한다.</p><ul><li>결정 7건</li><li>미결 2건</li></ul></body>"></iframe>
+              </div>
+            </div>
+          </section>
+
+          <!-- 코드 -->
+          <section class="tk-viewer" role="tabpanel" id="v-code" aria-labelledby="t-code" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="code"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg></span><h2 class="tk-viewer__name">extract_decisions.py</h2></div>
+              <div class="tk-viewer__tools">
+                <button class="tk-icon-button tk-icon-button--sm" type="button" aria-label="원본 다운로드" data-tk-tooltip="원본 다운로드"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg></button>
+              </div>
+            </div>
+            <div class="tk-viewer__body">
+              <figure class="tk-code tk-code--viewer">
+                <figcaption class="tk-code__header"><span class="tk-code__lang">python</span><span class="tk-code__title">extract_decisions.py</span><button class="tk-copy" type="button" data-tk-copy><svg class="tk-icon tk-copy__idle" aria-hidden="true"><use href="#i-copy"/></svg><svg class="tk-icon tk-copy__done" aria-hidden="true"><use href="#i-check"/></svg><span class="tk-copy__idle">복사</span><span class="tk-copy__done">복사됨</span></button></figcaption>
+                <pre class="tk-code__pre" data-line-numbers tabindex="0" aria-label="코드"><code><span class="tk-code__line"><span class="token keyword">from</span> pathlib <span class="token keyword">import</span> Path</span>
+<span class="tk-code__line"></span>
+<span class="tk-code__line"><span class="token keyword">def</span> <span class="token function">extract</span><span class="token punctuation">(</span>path<span class="token punctuation">:</span> <span class="token class-name">Path</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token class-name">list</span><span class="token punctuation">[</span><span class="token class-name">str</span><span class="token punctuation">]:</span></span>
+<span class="tk-code__line" data-highlight>    <span class="token comment"># "결정:" 으로 시작하는 줄만 모은다</span></span>
+<span class="tk-code__line">    lines <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">read_text</span><span class="token punctuation">(</span>encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">).</span><span class="token function">splitlines</span><span class="token punctuation">()</span></span>
+<span class="tk-code__line" data-diff="-">    <span class="token keyword">return</span> <span class="token punctuation">[</span>l <span class="token keyword">for</span> l <span class="token keyword">in</span> lines <span class="token keyword">if</span> <span class="token string">"결정"</span> <span class="token keyword">in</span> l<span class="token punctuation">]</span></span>
+<span class="tk-code__line" data-diff="+">    <span class="token keyword">return</span> <span class="token punctuation">[</span>l<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">:].</span><span class="token function">strip</span><span class="token punctuation">()</span> <span class="token keyword">for</span> l <span class="token keyword">in</span> lines <span class="token keyword">if</span> l<span class="token punctuation">.</span><span class="token function">startswith</span><span class="token punctuation">(</span><span class="token string">"결정:"</span><span class="token punctuation">)]</span></span></code></pre>
+              </figure>
+            </div>
+          </section>
+
+          <!-- DOCX: 변환 실패 -->
+          <section class="tk-viewer" role="tabpanel" id="v-docx" aria-labelledby="t-docx" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span><h2 class="tk-viewer__name">회의-녹취록.docx</h2></div>
+            </div>
+            <div class="tk-viewer__body">
+              <div class="tk-viewer__state" data-state="failed" role="status">
+                <span class="tk-glyph" data-type="doc"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span>
+                <p class="tk-viewer__state-title">미리보기를 만들지 못했어요</p>
+                <p>문서 안의 표 서식을 변환하다 멈췄어요. 원본은 그대로 있어요. <code>convert: table nesting depth 6 &gt; 4</code></p>
+                <div class="tk-button-group">
+                  <button class="tk-button" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-retry"/></svg>다시 변환</button>
+                  <button class="tk-button tk-button--primary" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg>원본 다운로드</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ZIP: 미지원 + 민감 정책 -->
+          <section class="tk-viewer" role="tabpanel" id="v-zip" aria-labelledby="t-zip" hidden>
+            <div class="tk-viewer__toolbar">
+              <button class="tk-icon-button tk-hide-from-lg" type="button" data-tk-dialog-close aria-label="목록으로"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></button>
+              <div class="tk-viewer__title"><span class="tk-glyph tk-glyph--sm" data-type="other"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-archive"/></svg></span><h2 class="tk-viewer__name">고객-명단-원본.zip</h2></div>
+            </div>
+            <div class="tk-viewer__body">
+              <div class="tk-viewer__state" data-state="blocked">
+                <span class="tk-glyph" data-type="other"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
+                <p class="tk-viewer__state-title">미리보기를 지원하지 않는 형식이에요</p>
+                <p>이 파일은 <strong>민감 자료</strong>로 분류돼 기본으로 다운로드·반출이 막혀 있어요. 꼭 필요하면 Mac Studio에서 직접 여세요.</p>
+                <span class="tk-policy" data-policy="restricted"><svg class="tk-icon" aria-hidden="true"><use href="#i-lock"/></svg>민감 · 반출 차단</span>
+                <div class="tk-button-group">
+                  <button class="tk-button" type="button" aria-disabled="true" data-tk-tooltip="민감 자료는 원격 다운로드가 막혀 있어요"><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg>원본 다운로드</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역">
+    <a class="tk-tabbar__item" href="chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>채팅</a>
+    <a class="tk-tabbar__item" href="workspace.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg>작업 공간<span class="tk-badge tk-badge--count" aria-label="새 결과물 2개">2</span></a>
+    <a class="tk-tabbar__item" href="library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg>보관함</a>
+    <a class="tk-tabbar__item" href="files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg>파일</a>
+  </nav>
+</div>
+
+<!-- 모바일: 결과물을 고르면 뷰어가 이 전체 화면 대화상자로 옮겨진다 -->
+<dialog class="tk-viewer-dialog" id="viewer-dialog" aria-label="결과물 미리보기"></dialog>
+
+<dialog class="tk-sheet" id="artifact-actions" aria-labelledby="aa-title">
+  <div class="tk-dialog__header"><h2 class="tk-dialog__title" id="aa-title">결정사항-요약-1009.pdf</h2><button class="tk-icon-button" type="button" data-tk-dialog-close aria-label="닫기"><svg class="tk-icon" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <ul class="tk-sheet__actions" role="list">
+    <li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-download"/></svg>원본 다운로드</button></li>
+    <li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-share"/></svg>보내기…</button></li>
+    <li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-pin"/></svg>보관함에 고정</button></li>
+    <li><button class="tk-menu__item" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg>이 결과물로 새 세션</button></li>
+    <li><button class="tk-menu__item tk-menu__item--danger" type="button" data-tk-dialog-close><svg class="tk-icon" aria-hidden="true"><use href="#i-trash"/></svg>삭제…</button></li>
+  </ul>
+</dialog>
+
+<script>
+  // 예제 전용: lg 미만에서 결과물을 고르면 선택된 뷰어를 전체 화면 대화상자로 옮기고, 닫으면 제자리로 돌린다(docs/13 §3).
+  // React 에서는 같은 뷰어 컴포넌트를 분할 패널 또는 전체 화면 대화상자 안에 렌더하면 된다.
+  addEventListener('DOMContentLoaded', () => {
+    const host = document.getElementById('viewer-host');
+    const dialog = document.getElementById('viewer-dialog');
+    const wide = matchMedia('(min-width: 1024px)');
+    document.querySelector('[role="tablist"][aria-orientation="vertical"]').addEventListener('click', (e) => {
+      const tab = e.target.closest('[role="tab"]');
+      if (!tab || wide.matches) return;
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      dialog.append(panel);
+      TK.openDialog(dialog, tab);
+    });
+    dialog.addEventListener('close', () => { [...dialog.children].forEach((p) => host.append(p)); });
+  });
+</script>
+</body>
+</html>

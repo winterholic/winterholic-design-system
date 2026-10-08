@@ -1,0 +1,105 @@
+{
+  "space": {
+    "$type": "dimension",
+    "$description": "간격. 4px 그리드. 이름은 4px 배수(space.4 = 16px). 모든 margin·padding·gap 은 이 값 중 하나다. 13·18·25px 이 나오면 잘못 잡은 것이다.",
+    "0":   { "$value": "0px" },
+    "px":  { "$value": "1px",   "$description": "헤어라인 보정 전용" },
+    "0-5": { "$value": "2px",   "$description": "아이콘↔글자 미세 조정·kbd 사이" },
+    "1":   { "$value": "4px",   "$description": "배지 내부·메시지 메타 줄 요소 사이·세그먼트 트랙 패딩" },
+    "1-5": { "$value": "6px",   "$description": "인풋↔도움말·실행 단계 아이콘↔이름" },
+    "2":   { "$value": "8px",   "$description": "아이콘↔라벨·라벨↔인풋·칩 사이·같은 사람의 연속 메시지 사이" },
+    "3":   { "$value": "12px",  "$description": "sm 컨트롤 좌우·버튼 그룹·목록 행 상하·카드 제목↔본문" },
+    "4":   { "$value": "16px",  "$description": "기본 단위. md 컨트롤 좌우·카드 패딩(모바일)·모바일 좌우 여백·컴포저 패딩" },
+    "5":   { "$value": "20px",  "$description": "카드 패딩(기본)·폼 필드 사이" },
+    "6":   { "$value": "24px",  "$description": "다른 사람으로 바뀌는 메시지 사이·다이얼로그 패딩·태블릿 좌우 여백" },
+    "8":   { "$value": "32px",  "$description": "섹션 내부 그룹 사이·데스크톱 좌우 여백·뷰어 책상 패딩" },
+    "10":  { "$value": "40px",  "$description": "문서 h2 위" },
+    "12":  { "$value": "48px",  "$description": "빈 상태 상하·섹션 사이" },
+    "16":  { "$value": "64px",  "$description": "로그인·온보딩 상하" },
+    "20":  { "$value": "80px" },
+    "24":  { "$value": "96px",  "$description": "로그인 히어로 상하(데스크톱)" }
+  },
+
+  "size": {
+    "$type": "dimension",
+    "$description": "고정 치수. 높이는 control, 아이콘은 icon 스케일을 따른다.",
+    "control": {
+      "$description": "버튼·인풋·셀렉트·탭 등 한 줄 컨트롤의 높이. 같은 줄의 컨트롤은 같은 단계. 모바일 퍼스트라 손가락이 닿는 주 행동은 lg 다.",
+      "xs": { "$value": "24px", "$description": "코드·로그 머리 안 버튼(복사·따라가기)·칩 삭제·표 셀 안 아이콘 버튼" },
+      "sm": { "$value": "32px", "$description": "툴바·필터 칩·뷰어 툴바(데스크톱)·메시지 아래 행동" },
+      "md": { "$value": "40px", "$description": "기본. 폼·다이얼로그 푸터·데스크톱 헤더 버튼" },
+      "lg": { "$value": "48px", "$description": "모바일 주 행동·컴포저 전송·승인/거부·시트 푸터·로그인" }
+    },
+    "icon": {
+      "xs": { "$value": "12px", "$description": "배지·메타 줄 옆" },
+      "sm": { "$value": "16px", "$description": "sm·xs 컨트롤 안·목록 메타·실행 단계" },
+      "md": { "$value": "20px", "$description": "md·lg 컨트롤 안·탭바·콜아웃. 기본" },
+      "lg": { "$value": "24px", "$description": "헤더 로고·결과물 글리프(목록)·탭바(모바일 아이콘)" },
+      "xl": { "$value": "32px", "$description": "빈 상태·미리보기 상태 패널" }
+    },
+    "touch-target-min": { "$value": "44px", "$description": "터치 클릭 영역 최소. 시각 크기가 작으면 의사 요소로 확장한다(component.hit-area)" },
+    "container": {
+      "$description": "콘텐츠 최대 폭.",
+      "sm":    { "$value": "640px",  "$description": "로그인·재인증·오류 페이지·설정 한 열" },
+      "prose": { "$value": "720px",  "$description": "Markdown·DOCX(HTML 변환) 뷰어 본문 열" },
+      "thread":{ "$value": "760px",  "$description": "채팅 스레드·컴포저 열. 사용자 말풍선 + 에이전트 본문이 한 기둥으로 읽히는 폭" },
+      "md":    { "$value": "880px" },
+      "lg":    { "$value": "1120px", "$description": "보관함 그리드" },
+      "xl":    { "$value": "1440px", "$description": "기본 최대" }
+    },
+    "layout": {
+      "$description": "앱 셸 치수. 모바일: 헤더 · 화면 · (컴포저) · 탭바. 데스크톱: 사이드바 · 채팅 · 작업 공간 분할.",
+      "header":         { "$value": "56px",  "$description": "앱 헤더(모바일·데스크톱 공통)" },
+      "tabbar":         { "$value": "56px",  "$description": "모바일 하단 탭바(+ safe-area-inset-bottom)" },
+      "toolbar":        { "$value": "48px",  "$description": "뷰어·보관함 툴바" },
+      "sidebar":        { "$value": "280px", "$description": "데스크톱 세션 사이드바. lg 이상 고정, 그 아래는 드로어" },
+      "pane-min":       { "$value": "360px", "$description": "분할 화면에서 채팅·뷰어 각 열의 최소 폭" },
+      "workspace":      { "$value": "560px", "$description": "분할 화면 작업 공간 열 기본 폭(드래그로 바꾼다)" },
+      "drawer":         { "$value": "320px", "$description": "드로어 폭(최대 85vw)" },
+      "detail":         { "$value": "400px", "$description": "보관함 상세 패널(데스크톱 오른쪽)" },
+      "sheet-max":      { "$value": "88dvh", "$description": "모바일 바텀 시트 최대 높이" },
+      "composer-max":   { "$value": "200px", "$description": "컴포저 입력 최대 높이(약 6줄). 넘으면 안에서 스크롤" },
+      "page-gutter":    { "$value": "16px",  "$description": "모바일 좌우 여백 = space.4" },
+      "page-gutter-md": { "$value": "24px",  "$description": "태블릿 = space.6" },
+      "page-gutter-lg": { "$value": "32px",  "$description": "데스크톱 = space.8" },
+      "indent":         { "$value": "16px",  "$description": "파일 트리·중첩 단계 들여쓰기 한 단계" },
+      "anchor-offset":  { "$value": "72px",  "$description": "문서 뷰어 앵커 이동 scroll-margin-top = header + space.4" }
+    }
+  },
+
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "min-width 기준 모바일 퍼스트. Tailwind 기본과 같다.",
+    "sm":  { "$value": "640px" },
+    "md":  { "$value": "768px",  "$description": "태블릿. 보관함 2열" },
+    "lg":  { "$value": "1024px", "$description": "사이드바 고정·탭바 사라짐·채팅|작업 공간 분할 시작" },
+    "xl":  { "$value": "1280px", "$description": "분할 화면 기본 노출" },
+    "2xl": { "$value": "1536px" }
+  },
+
+  "radius": {
+    "$type": "dimension",
+    "$description": "모서리. 손에 쥐는 앱이라 AIP 보다 한 단계 둥글다. 큰 면일수록 큰 값, 자식은 부모보다 둥글지 않다.",
+    "none": { "$value": "0px" },
+    "xs":   { "$value": "2px",  "$description": "인라인 코드·kbd·mark" },
+    "sm":   { "$value": "4px",  "$description": "체크박스·배지·툴팁·메뉴 항목·xs 컨트롤" },
+    "md":   { "$value": "8px",  "$description": "버튼·인풋·셀렉트·칩·sm 컨트롤. 기본" },
+    "lg":   { "$value": "12px", "$description": "카드·실행 카드·결과물 카드·코드 블록·콜아웃·뷰어 패널" },
+    "xl":   { "$value": "16px", "$description": "다이얼로그·바텀 시트 위 모서리·컴포저·말풍선" },
+    "2xl":  { "$value": "20px", "$description": "로그인 패널·브랜드 히어로" },
+    "full": { "$value": "9999px", "$description": "스위치·상태 점·아바타·카운트 배지·필 칩" }
+  },
+
+  "border-width": {
+    "$type": "dimension",
+    "hairline": { "$value": "1px", "$description": "기본 테두리 전부" },
+    "strong":   { "$value": "2px", "$description": "선택 표시·활성 탭 밑줄·포커스 링" },
+    "accent":   { "$value": "3px", "$description": "콜아웃·실행 카드 상태 레일·승인 카드 왼쪽 바·짚은 줄 마커" }
+  },
+
+  "focus": {
+    "$description": "포커스 링 규격. 모든 포커스 가능한 요소에 동일 적용한다.",
+    "ring-width":  { "$value": "2px", "$type": "dimension" },
+    "ring-offset": { "$value": "2px", "$type": "dimension", "$description": "요소 외곽에서 띄우는 거리. 인풋처럼 안쪽 링은 0" }
+  }
+}

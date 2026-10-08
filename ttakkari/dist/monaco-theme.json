@@ -1,0 +1,151 @@
+{
+  "tk-ink-light": {
+    "base": "vs-dark",
+    "inherit": true,
+    "rules": [
+      {
+        "token": "",
+        "foreground": "E4EFF2",
+        "background": "171B1C"
+      },
+      {
+        "token": "comment",
+        "foreground": "9CA9AC",
+        "fontStyle": "italic"
+      },
+      {
+        "token": "keyword",
+        "foreground": "9DC6F5"
+      },
+      {
+        "token": "string",
+        "foreground": "6DECAF"
+      },
+      {
+        "token": "number",
+        "foreground": "FBABA1"
+      },
+      {
+        "token": "type",
+        "foreground": "CCB5F7"
+      },
+      {
+        "token": "type.identifier",
+        "foreground": "CCB5F7"
+      },
+      {
+        "token": "function",
+        "foreground": "F6B45B"
+      },
+      {
+        "token": "delimiter",
+        "foreground": "B8C5C8"
+      },
+      {
+        "token": "tag",
+        "foreground": "9DC6F5"
+      },
+      {
+        "token": "attribute.name",
+        "foreground": "F6B45B"
+      },
+      {
+        "token": "attribute.value",
+        "foreground": "6DECAF"
+      }
+    ],
+    "colors": {
+      "editor.background": "#171B1C",
+      "editor.foreground": "#E4EFF2",
+      "editorLineNumber.foreground": "#687275",
+      "editorLineNumber.activeForeground": "#A6B0B8",
+      "editorCursor.foreground": "#00F0B5",
+      "editor.selectionBackground": "#79AAE14D",
+      "editor.lineHighlightBackground": "#F4F4ED14",
+      "editor.findMatchBackground": "#00F0B580",
+      "editor.findMatchHighlightBackground": "#6DECAF40",
+      "editorIndentGuide.background1": "#22292A",
+      "editorWidget.background": "#22292A",
+      "editorWidget.border": "#171B1C",
+      "editorGutter.background": "#171B1C",
+      "diffEditor.insertedLineBackground": "#1CA07933",
+      "diffEditor.removedLineBackground": "#C93A3533",
+      "focusBorder": "#296EB4"
+    }
+  },
+  "tk-ink-dark": {
+    "base": "vs-dark",
+    "inherit": true,
+    "rules": [
+      {
+        "token": "",
+        "foreground": "E4EFF2",
+        "background": "111516"
+      },
+      {
+        "token": "comment",
+        "foreground": "9CA9AC",
+        "fontStyle": "italic"
+      },
+      {
+        "token": "keyword",
+        "foreground": "9DC6F5"
+      },
+      {
+        "token": "string",
+        "foreground": "6DECAF"
+      },
+      {
+        "token": "number",
+        "foreground": "FBABA1"
+      },
+      {
+        "token": "type",
+        "foreground": "CCB5F7"
+      },
+      {
+        "token": "type.identifier",
+        "foreground": "CCB5F7"
+      },
+      {
+        "token": "function",
+        "foreground": "F6B45B"
+      },
+      {
+        "token": "delimiter",
+        "foreground": "B8C5C8"
+      },
+      {
+        "token": "tag",
+        "foreground": "9DC6F5"
+      },
+      {
+        "token": "attribute.name",
+        "foreground": "F6B45B"
+      },
+      {
+        "token": "attribute.value",
+        "foreground": "6DECAF"
+      }
+    ],
+    "colors": {
+      "editor.background": "#111516",
+      "editor.foreground": "#E4EFF2",
+      "editorLineNumber.foreground": "#687275",
+      "editorLineNumber.activeForeground": "#A6B0B8",
+      "editorCursor.foreground": "#00F0B5",
+      "editor.selectionBackground": "#79AAE14D",
+      "editor.lineHighlightBackground": "#F4F4ED14",
+      "editor.findMatchBackground": "#00F0B580",
+      "editor.findMatchHighlightBackground": "#6DECAF40",
+      "editorIndentGuide.background1": "#171B1C",
+      "editorWidget.background": "#171B1C",
+      "editorWidget.border": "#30383A",
+      "editorGutter.background": "#111516",
+      "diffEditor.insertedLineBackground": "#1CA0792E",
+      "diffEditor.removedLineBackground": "#C93A352E",
+      "focusBorder": "#79AAE1"
+    }
+  },
+  "usage": "monaco.editor.defineTheme('tk-ink-light', theme['tk-ink-light']); monaco.editor.defineTheme('tk-ink-dark', theme['tk-ink-dark']); 앱 테마가 다크면 tk-ink-dark"
+}

@@ -1,0 +1,111 @@
+/* chat: Thread · Message(사용자·에이전트·시스템) · Thinking · Caret · Jump · Suggestions · Composer.
+   사용자는 오른쪽 말풍선(사람의 지시 = 파랑 기운), 에이전트는 말풍선 없는 전폭 본문(결과가 주인공). 한 화면에 말풍선이 줄지어 서지 않게 한다. */
+
+/* Thread: 스크롤 컨테이너. role="log" aria-live="polite" 로 새 메시지를 알린다(스트리밍 중 글자 단위가 아니라 메시지 단위) */
+.tk-thread { position: relative; display: flex; flex-direction: column; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-padding-bottom: var(--tk-space-6); }
+.tk-thread__inner { display: flex; flex-direction: column; width: 100%; max-width: var(--tk-size-container-thread); margin-inline: auto; padding: var(--tk-space-4) var(--tk-size-layout-page-gutter) var(--tk-space-6); }
+.tk-thread__inner > * + * { margin-top: var(--tk-component-message-gap-turn); }
+.tk-thread__inner > [data-author] + [data-author="same"] { margin-top: var(--tk-component-message-gap-same); }
+/* 날짜·이벤트 구분: 가운데 캡션 + 양옆 선 */
+.tk-thread__day { display: flex; align-items: center; gap: var(--tk-space-3); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-thread__day::before, .tk-thread__day::after { content: ""; flex: 1; height: var(--tk-border-width-hairline); background: var(--tk-color-border-subtle); }
+
+/* Message 공통 */
+.tk-message { display: flex; flex-direction: column; gap: var(--tk-component-message-body-gap); min-width: 0; }
+.tk-message__head { display: flex; align-items: center; gap: var(--tk-component-message-head-gap); min-width: 0; }
+.tk-message__name { color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-message__time { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+.tk-message__body { min-width: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-regular) var(--tk-font-size-md) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); overflow-wrap: anywhere; }
+.tk-message__body > * { margin-block: 0; }
+.tk-message__body > * + * { margin-top: var(--tk-component-message-block-gap); }
+.tk-message__actions { display: flex; align-items: center; gap: var(--tk-space-0-5); margin-left: calc(-1 * var(--tk-space-2)); }
+/* 행동은 hover·포커스에 진해진다. 터치 기기에서는 항상 보인다(hover 가 없다) */
+@media (hover: hover) {
+  .tk-message__actions { opacity: var(--tk-opacity-muted); transition: opacity var(--tk-motion-duration-fast) var(--tk-motion-easing-standard); }
+  .tk-message:hover .tk-message__actions, .tk-message__actions:focus-within { opacity: 1; }
+}
+
+/* 사용자: 오른쪽 말풍선. 첨부·문맥 칩은 말풍선 위 */
+.tk-message--user { align-items: flex-end; }
+.tk-message--user .tk-message__body {
+  max-width: var(--tk-component-message-user-max-width);
+  padding: var(--tk-component-message-user-padding-y) var(--tk-component-message-user-padding-x);
+  border-radius: var(--tk-component-message-user-radius) var(--tk-component-message-user-radius) var(--tk-component-message-user-tail) var(--tk-component-message-user-radius);
+  background: var(--tk-component-message-user-bg); color: var(--tk-component-message-user-text);
+  white-space: pre-wrap;
+}
+.tk-message--user .tk-message__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-message--user .tk-chips { justify-content: flex-end; flex-wrap: wrap; overflow: visible; }
+/* 전송 실패한 지시: 말풍선은 그대로, 아래에 이유 + 다시 보내기 */
+.tk-message--user[data-failed] .tk-message__body { box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-color-border-danger); }
+
+/* 에이전트: 머리(아바타·이름·상태·시각) + 전폭 본문 */
+.tk-message--agent .tk-message__head .tk-badge { margin-left: var(--tk-space-0-5); }
+.tk-message--agent .tk-message__body { padding-left: 0; }
+@media (min-width: 768px) { .tk-message--agent .tk-message__body, .tk-message--agent .tk-message__actions { padding-left: calc(var(--tk-component-avatar-sm) + var(--tk-component-message-head-gap)); } .tk-message--agent .tk-message__actions { margin-left: calc(var(--tk-component-avatar-sm) + var(--tk-component-message-head-gap) - var(--tk-space-2)); padding-left: 0; } }
+/* 에이전트 오류(실행 불가·연결 끊김): 본문 대신 상태 줄 + 다시 시도 */
+.tk-message__error { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-space-2) var(--tk-space-3); padding: var(--tk-space-3) var(--tk-space-4); border-radius: var(--tk-radius-lg); background: var(--tk-color-status-danger-bg); color: var(--tk-color-status-danger-text); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); }
+.tk-message__error > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-status-danger-icon); }
+.tk-message__error > :last-child { margin-left: auto; }
+
+/* 시스템: 가운데 한 줄(세션 재개·모델 변경·연결 복구) */
+.tk-message--system { align-items: center; text-align: center; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-message--system > * { display: inline-flex; align-items: center; gap: var(--tk-space-1-5); }
+
+/* Thinking: 첫 글자가 오기 전. 점 맥박 + 무엇을 하는지 한 줄("파일을 찾는 중"). 말없이 도는 점 세 개를 쓰지 않는다 */
+.tk-thinking { display: inline-flex; align-items: center; gap: var(--tk-space-2); color: var(--tk-color-agent-text); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-thinking__detail { color: var(--tk-color-text-tertiary); font-weight: var(--tk-font-weight-regular); }
+
+/* Caret: 스트리밍 중인 본문 끝의 민트 블록. 깜빡이지 않는다(정지). 끝나면 제거 */
+.tk-caret { display: inline-block; width: 0.5em; height: 1.1em; margin-left: var(--tk-space-0-5); vertical-align: text-bottom; border-radius: var(--tk-radius-xs); background: var(--tk-color-agent-live); }
+
+/* Jump: 위로 스크롤해 읽는 중에 새 메시지가 오면 아래에 뜨는 '최신으로' */
+.tk-jump {
+  position: sticky; bottom: var(--tk-space-3); z-index: var(--tk-z-index-raised); align-self: center;
+  display: inline-flex; align-items: center; gap: var(--tk-space-1-5); height: var(--tk-size-control-sm); padding-inline: var(--tk-space-3);
+  border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-full);
+  background: var(--tk-color-surface-raised); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-md); cursor: pointer;
+  font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans);
+  animation: tk-menu-in var(--tk-motion-duration-normal) var(--tk-motion-easing-enter);
+}
+.tk-jump[hidden] { display: none; }
+.tk-jump > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
+.tk-jump > .tk-dot { --tk-_dot-color: var(--tk-color-agent-live); }
+
+/* Suggestions: 응답 아래 후속 지시 제안. 누르면 컴포저에 채운다(바로 보내지 않는다) */
+.tk-suggestions { margin-top: var(--tk-component-message-block-gap); }
+.tk-suggestions .tk-chip { color: var(--tk-color-text-primary); }
+
+/* Composer: 지시 입력. 문맥 칩 줄 + 입력 + 행동(첨부 · 보내기/멈추기). 실행 중에는 보내기 자리가 멈추기가 된다 */
+.tk-composer-tray {
+  position: sticky; bottom: 0; z-index: var(--tk-z-index-sticky);
+  padding: var(--tk-space-2) var(--tk-size-layout-page-gutter) calc(var(--tk-component-composer-tray-padding) + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, transparent, var(--tk-component-composer-tray-bg) var(--tk-space-3));
+}
+.tk-app:has(.tk-tabbar) .tk-composer-tray { padding-bottom: var(--tk-component-composer-tray-padding); }
+@media (min-width: 1024px) { .tk-app:has(.tk-tabbar) .tk-composer-tray { padding-bottom: calc(var(--tk-component-composer-tray-padding) + env(safe-area-inset-bottom)); } }
+.tk-composer {
+  display: flex; flex-direction: column; gap: var(--tk-space-1); width: 100%; max-width: var(--tk-size-container-thread); margin-inline: auto;
+  padding: var(--tk-component-composer-padding);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-composer-border); border-radius: var(--tk-component-composer-radius);
+  background: var(--tk-component-composer-bg); box-shadow: var(--tk-component-composer-shadow);
+  transition: border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), box-shadow var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-composer:focus-within { border-color: var(--tk-component-composer-border-focus); box-shadow: var(--tk-component-composer-shadow), inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-composer-border-focus); }
+.tk-composer > .tk-chips { padding-inline: var(--tk-space-1); }
+.tk-composer__row { display: flex; align-items: flex-end; gap: var(--tk-space-1); }
+.tk-composer__input {
+  flex: 1 1 auto; min-width: 0; min-height: var(--tk-component-composer-input-min-height); max-height: var(--tk-component-composer-input-max-height);
+  margin: 0; padding: var(--tk-space-2) var(--tk-component-composer-input-padding-x); border: 0; resize: none; overflow-y: auto; field-sizing: content;
+  background: transparent; color: var(--tk-color-text-primary);
+  font: var(--tk-font-weight-regular) var(--tk-font-size-md) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans);
+}
+.tk-composer__input::placeholder { color: var(--tk-color-text-placeholder); opacity: 1; }
+.tk-composer__input:focus-visible { outline: none; }
+.tk-composer__row > .tk-icon-button { --tk-_h: var(--tk-size-control-md); }
+.tk-composer__send:is(:disabled, [aria-disabled="true"]) { --tk-_bg: var(--tk-color-action-disabled-bg); }
+.tk-composer__hint { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-3); padding: 0 var(--tk-space-2) var(--tk-space-0-5); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+/* 단축키 안내는 키보드가 있을 때만. 좁은 화면·터치에서는 안내 문구 한 줄만 남긴다 */
+@media (pointer: coarse), (max-width: 767px) { .tk-composer__hint .tk-composer__keys { display: none; } }
+/* 연결이 끊기면 입력은 살아 있고(초안 보존) 보내기만 막힌다 */
+.tk-composer[data-offline] { border-style: dashed; }

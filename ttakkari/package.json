@@ -1,0 +1,31 @@
+{
+  "name": "ttakkari-design-system",
+  "version": "1.0.0",
+  "description": "Winterholic Ttakkari 디자인 시스템 — DTCG 토큰, CSS 변수, 컴포넌트 CSS·JS(채팅·실행·승인·결과물·뷰어), prose.css, Tailwind 프리셋, Monaco 테마, PWA 색, 시드 별칭, 문서",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node tokens/build.mjs",
+    "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs",
+    "brand": "python3 assets/brand/build-brand-assets.py",
+    "test": "node tokens/build.mjs && node --test ../scripts/ttakkari-design-system.test.mjs && npm run test:brand",
+    "test:brand": "node --test ../scripts/brand-assets.test.mjs",
+    "check:ui": "node ../scripts/ttakkari-interaction.check.mjs"
+  },
+  "exports": {
+    ".": "./dist/tokens.js",
+    "./tokens.css": "./dist/tokens.css",
+    "./typography.css": "./dist/typography.css",
+    "./prose.css": "./dist/prose.css",
+    "./components.css": "./dist/components.css",
+    "./aliases.css": "./dist/aliases.css",
+    "./tk.js": "./dist/tk.js",
+    "./tailwind": "./dist/tailwind.preset.cjs",
+    "./monaco": "./dist/monaco-theme.json",
+    "./pwa": "./dist/pwa.json",
+    "./tokens.json": "./tokens/tokens.json",
+    "./brand/*": "./assets/brand/*"
+  },
+  "files": ["dist", "tokens/tokens.json", "tokens/tokens.dark.json", "assets/brand"],
+  "engines": { "node": ">=18" }
+}

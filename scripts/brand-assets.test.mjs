@@ -7,7 +7,7 @@ import test from "node:test";
 const root = process.cwd();
 const system = basename(root);
 const brandDir = join(root, "assets", "brand");
-const expectedSystems = new Set(["stock-gosu", "memoir", "notting", "aip"]);
+const expectedSystems = new Set(["stock-gosu", "memoir", "notting", "aip", "ttakkari"]);
 // Windows 는 python, macOS·Linux 는 보통 python3 만 있다. Pillow 가 깔린 인터프리터를 PYTHON 으로 지정할 수 있다.
 const python = process.env.PYTHON ?? (process.platform === "win32" ? "python" : "python3");
 const brandDoc = readdirSync(join(root, "docs")).find((name) => /^\d+-brand-assets\.md$/.test(name));
@@ -31,7 +31,7 @@ const requiredAssets = [
   "README.md",
 ];
 
-if (system === "notting" || system === "aip") {
+if (system === "notting" || system === "aip" || system === "ttakkari") {
   requiredAssets.push(
     "apple-touch-icon-180.png",
     "app-icon-maskable-512.png",
@@ -260,6 +260,38 @@ if (system === "aip") {
   });
 }
 
+if (system === "ttakkari") {
+  test("ttakkari: 심볼은 Ink 타일 + Paper '따'(ㄷ 두 개·ㅏ 세로획) + Mint 가로획 기하를 유지한다", () => {
+    const mark = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
+    assert.match(mark, /<rect x="0" y="0" width="512" height="512" rx="112" fill="#080705"\/>/);
+    assert.match(mark, /<path d="M92 152 L188 152 L188 196 L136 196 L136 316 L188 316 L188 360 L92 360 Z" fill="#F4F4ED"\/>/);
+    assert.match(mark, /<path d="M334 124 L378 124 L378 388 L334 388 Z" fill="#F4F4ED"\/>/);
+    assert.match(mark, /<rect x="378" y="234" width="52" height="44" rx="6" fill="#00F0B5"\/>/);
+  });
+
+  test("ttakkari: 워드마크는 글꼴이 아니라 도형이고, 어두운 면 락업은 잉크 타일 없이 그린다", () => {
+    for (const file of ["logo-lockup.svg", "logo-lockup-inverse.svg"]) {
+      assert.doesNotMatch(readFileSync(join(brandDir, file), "utf8"), /<text\b/, `${file}에 text 요소가 있습니다.`);
+    }
+    assert.doesNotMatch(readFileSync(join(brandDir, "logo-lockup-inverse.svg"), "utf8"), /fill="#080705"/, "inverse 락업에 잉크 타일이 있으면 어두운 면에 묻힌다");
+  });
+
+  test("ttakkari: 설치 아이콘은 용도별 크기와 투명도를 지킨다", () => {
+    assert.deepEqual(readPngSize(join(brandDir, "apple-touch-icon-180.png")), { width: 180, height: 180 });
+    assert.deepEqual(readPngSize(join(brandDir, "app-icon-maskable-512.png")), { width: 512, height: 512 });
+    assert.deepEqual(readCornerAlpha(join(brandDir, "app-icon-512.png")), [0, 0, 0, 0]);
+    assert.deepEqual(readCornerAlpha(join(brandDir, "app-icon-maskable-512.png")), [255, 255, 255, 255]);
+  });
+
+  test("ttakkari: 브랜드 자산의 hex 는 tokens/src/brand.json 과 같다", () => {
+    const brand = JSON.parse(readFileSync(join(root, "tokens", "src", "brand.json"), "utf8")).brand;
+    const script = readFileSync(join(brandDir, "build-brand-assets.py"), "utf8");
+    for (const [name, token] of Object.entries(brand).filter(([key]) => !key.startsWith("$"))) {
+      assert.ok(script.includes(`"${token.$value}"`), `build-brand-assets.py 에 brand.${name} ${token.$value} 가 없습니다.`);
+    }
+  });
+}
+
 test(`${system}: 문서와 미리보기가 새 브랜드 자산을 실제로 연결한다`, () => {
   const doc = readFileSync(join(root, "docs", brandDoc), "utf8");
   const preview = readFileSync(join(root, "examples", "preview.html"), "utf8");
@@ -287,6 +319,8 @@ test(`${system}: 브랜드 히어로 글자색은 테마 반전과 독립적이�
       ? /\.brand-hero\s*\{[^}]*color:\s*var\(--mm-brand-ink\)/s
       : system === "aip"
         ? /\.brand-hero\s*\{[^}]*color:\s*var\(--aip-base-white\)/s
+        : system === "ttakkari"
+          ? /\.brand-hero\s*\{[^}]*color:\s*var\(--tk-base-white\)/s
         : /\.hero\s*\{[^}]*color:\s*var\(--nt-color-text-on-brand\)/s;
   assert.match(preview, rule, "브랜드 히어로 글자색이 다크 테마에서 반전될 수 있습니다.");
 });

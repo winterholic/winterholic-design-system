@@ -1,0 +1,122 @@
+/* navigation: Header(앱 상단) · Tabbar(모바일 하단) · Sidebar·Nav(데스크톱) · Tabs · Path(파일 경로).
+   세 영역(채팅·작업 공간·보관함)으로 가는 길은 화면 폭에 따라 하나만 보인다: lg 미만 탭바, lg 이상 사이드바. */
+
+/* Header: 화면 제목 + 앞(뒤로·메뉴) + 뒤(행동). 모바일 노치 아래로 내려간다 */
+.tk-header {
+  position: sticky; top: 0; z-index: var(--tk-z-index-sticky);
+  padding-top: env(safe-area-inset-top);
+  background: var(--tk-component-header-bg);
+  border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-header-border);
+}
+.tk-header__inner {
+  display: flex; align-items: center; gap: var(--tk-component-header-gap);
+  height: var(--tk-component-header-height); padding-inline: var(--tk-space-2);
+}
+@media (min-width: 1024px) { .tk-header__inner { padding-inline: var(--tk-space-4); } }
+.tk-header__brand {
+  display: inline-flex; align-items: center; gap: var(--tk-space-2); flex: none; padding-inline: var(--tk-space-2);
+  color: var(--tk-color-text-primary); text-decoration: none; border-radius: var(--tk-radius-sm);
+  font: var(--tk-font-weight-bold) var(--tk-font-size-md) / 1 var(--tk-font-family-sans); letter-spacing: var(--tk-font-letter-spacing-tight);
+}
+.tk-header__brand > img, .tk-header__brand > svg { width: var(--tk-size-icon-lg); height: var(--tk-size-icon-lg); border-radius: var(--tk-component-avatar-radius); box-shadow: 0 0 0 var(--tk-border-width-hairline) var(--tk-color-border-default); }
+/* 잉크 타일은 다크 캔버스에 묻힌다. 테두리 한 줄이 타일 외곽을 지킨다 */
+/* 제목: 한 줄 + 아래 메타 한 줄(세션 상태·연결). 남는 폭을 전부 쓰고 넘치면 말줄임 */
+.tk-header__title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--tk-space-0-5); padding-inline: var(--tk-space-1); }
+.tk-header__title > :first-child { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); }
+.tk-header__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-header__actions { display: flex; align-items: center; gap: var(--tk-space-1); margin-left: auto; flex: none; }
+.tk-header__menu { display: inline-flex; }
+@media (min-width: 1024px) { .tk-header__menu { display: none; } }
+
+/* Tabbar: 모바일 세 영역. 아이콘 + 라벨이 항상 같이 간다. lg 이상에서는 사이드바가 대신한다 */
+.tk-tabbar {
+  position: sticky; bottom: 0; z-index: var(--tk-z-index-sticky);
+  display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: var(--tk-component-tabbar-bg); border-top: var(--tk-border-width-hairline) solid var(--tk-component-tabbar-border);
+}
+@media (min-width: 1024px) { .tk-tabbar { display: none; } }
+.tk-tabbar__item {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--tk-space-0-5);
+  height: var(--tk-component-tabbar-height); padding: 0; border: 0; background: none; cursor: pointer;
+  color: var(--tk-component-tabbar-text); text-decoration: none;
+  font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans);
+  transition: color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-tabbar__item > .tk-icon { --tk-_icon: var(--tk-component-tabbar-icon); }
+.tk-tabbar__item[aria-current] { color: var(--tk-component-tabbar-text-active); }
+.tk-tabbar__item[aria-current]::before { content: ""; position: absolute; top: 0; left: 30%; right: 30%; height: var(--tk-border-width-strong); border-radius: 0 0 var(--tk-radius-full) var(--tk-radius-full); background: var(--tk-component-tabbar-indicator); }
+.tk-tabbar__item:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+/* 새 결과물 수: 아이콘 오른쪽 위 */
+.tk-tabbar__item > .tk-badge--count { position: absolute; top: var(--tk-space-1); left: calc(50% + var(--tk-space-1)); }
+
+/* Sidebar: 데스크톱 왼쪽 열. 위: 영역 내비, 아래: 세션 목록. lg 미만에서는 드로어 안에 같은 마크업 */
+.tk-sidebar {
+  display: flex; flex-direction: column; gap: var(--tk-component-sidebar-group-gap); min-height: 0; height: 100%;
+  padding: var(--tk-component-sidebar-padding); overflow-y: auto; overscroll-behavior: contain;
+  background: var(--tk-component-sidebar-bg);
+}
+.tk-sidebar__group { display: flex; flex-direction: column; gap: var(--tk-space-0-5); min-width: 0; }
+.tk-sidebar__label { display: flex; align-items: center; justify-content: space-between; min-height: var(--tk-size-control-sm); padding-inline: var(--tk-component-sidebar-item-padding-x); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-nav { display: flex; flex-direction: column; gap: var(--tk-space-0-5); }
+.tk-nav__link {
+  position: relative; display: flex; align-items: center; gap: var(--tk-space-3); min-width: 0;
+  min-height: var(--tk-component-sidebar-item-height); padding-inline: var(--tk-component-sidebar-item-padding-x);
+  border-radius: var(--tk-component-sidebar-item-radius); color: var(--tk-color-text-secondary); text-decoration: none;
+  font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-nav__link > .tk-icon { --tk-_icon: var(--tk-size-icon-md); }
+.tk-nav__link > .tk-badge--count { margin-left: auto; }
+.tk-nav__link:hover { background: var(--tk-color-interactive-hover-overlay); color: var(--tk-color-text-primary); }
+.tk-nav__link[aria-current] { background: var(--tk-component-sidebar-item-active-bg); color: var(--tk-component-sidebar-item-active-text); }
+
+/* Session item: 세션 목록의 행. 제목 한 줄 + 상태·시각 한 줄. 실행 중인 세션은 앞에 live 점 */
+.tk-session {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--tk-space-0-5) var(--tk-space-2);
+  padding: var(--tk-space-2) var(--tk-component-sidebar-item-padding-x); border-radius: var(--tk-component-sidebar-item-radius);
+  color: var(--tk-color-text-primary); text-decoration: none;
+}
+.tk-session:hover { background: var(--tk-color-interactive-hover-overlay); }
+.tk-session[aria-current] { background: var(--tk-component-sidebar-item-active-bg); }
+.tk-session__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-session[aria-current] .tk-session__title { color: var(--tk-component-sidebar-item-active-text); }
+.tk-session__time { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+.tk-session__meta { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+
+/* Tabs: role="tablist"/"tab"/"tabpanel". 같은 화면 안 내용 전환(결과물 상세의 미리보기·정보·기록). 화면 이동이면 Nav */
+.tk-tablist {
+  display: flex; gap: var(--tk-component-tabs-gap);
+  border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-tabs-border);
+  overflow-x: auto; scrollbar-width: none;
+}
+.tk-tablist::-webkit-scrollbar { display: none; }
+.tk-tablist--fill > .tk-tab { flex: 1 1 0; justify-content: center; }
+.tk-tab {
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--tk-space-2);
+  height: var(--tk-component-tabs-height); padding: 0; margin: 0;
+  border: 0; background: none; cursor: pointer; color: var(--tk-component-tabs-text);
+  font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans);
+  transition: color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-tab:hover { color: var(--tk-component-tabs-text-active); }
+.tk-tab[aria-selected="true"] { color: var(--tk-component-tabs-text-active); }
+.tk-tab::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: calc(-1 * var(--tk-border-width-hairline));
+  height: var(--tk-component-tabs-indicator); background: var(--tk-component-tabs-indicator-color);
+  transform: scaleX(0); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-tab[aria-selected="true"]::after { transform: scaleX(1); }
+.tk-tab:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); border-radius: var(--tk-radius-sm); }
+.tk-tabpanel { padding-top: var(--tk-component-tabs-panel-gap); }
+.tk-tabpanel:focus-visible { outline-offset: var(--tk-space-1); border-radius: var(--tk-radius-sm); }
+
+/* Path: 파일 경로. 모노 + '/' 구분. 앞 단계는 접히고 마지막 둘은 남는다. 경로는 정보라서 말줄임 대신 줄바꿈 */
+.tk-path { min-width: 0; }
+.tk-path > ol { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-space-0-5) var(--tk-space-1); margin: 0; padding: 0; list-style: none; }
+.tk-path li { display: inline-flex; align-items: center; gap: var(--tk-space-1); min-width: 0; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-ligatures: none; overflow-wrap: anywhere; }
+.tk-path li + li::before { content: "/"; color: var(--tk-color-text-tertiary); }
+.tk-path a { color: inherit; text-decoration: none; border-radius: var(--tk-radius-xs); }
+.tk-path a:hover { color: var(--tk-color-text-link); text-decoration: underline; text-underline-offset: 0.2em; }
+.tk-path [aria-current="page"], .tk-path [aria-current="location"] { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-medium); }
+@media (max-width: 767px) { .tk-path li:not(:nth-last-child(-n + 2), :first-child) { display: none; } .tk-path li:first-child:not(:nth-last-child(-n + 2))::after { content: "/ …"; margin-left: var(--tk-space-1); color: var(--tk-color-text-tertiary); } }

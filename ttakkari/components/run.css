@@ -1,0 +1,125 @@
+/* run: Run card(작업 실행 카드) · Steps · Log · Approval(승인 요청) · Checks(정책 판정 목록).
+   에이전트가 '무엇을 하고 있는지'를 보여주는 곳이다. 상태는 data-state 하나가 레일·배지·아이콘을 같이 바꾼다.
+   주의를 끄는 것은 running(민트 맥박)과 waiting(amber, 사람을 기다림)뿐이다. 끝난 카드는 조용해진다. */
+
+.tk-run {
+  --tk-_rail: var(--tk-color-run-queued-icon);
+  position: relative; display: flex; flex-direction: column; gap: var(--tk-component-run-gap); min-width: 0;
+  padding: var(--tk-component-run-padding); padding-left: calc(var(--tk-component-run-padding) + var(--tk-component-run-rail));
+  border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-run-radius);
+  background: var(--tk-color-surface-default);
+  box-shadow: inset var(--tk-component-run-rail) 0 0 var(--tk-_rail);
+}
+.tk-run[data-state="running"]   { --tk-_rail: var(--tk-color-run-running-icon); border-color: var(--tk-color-run-running-border); }
+.tk-run[data-state="waiting"]   { --tk-_rail: var(--tk-color-run-waiting-icon); border-color: var(--tk-color-run-waiting-border); }
+.tk-run[data-state="succeeded"] { --tk-_rail: var(--tk-color-run-succeeded-icon); }
+.tk-run[data-state="failed"]    { --tk-_rail: var(--tk-color-run-failed-icon); }
+.tk-run[data-state="cancelled"] { --tk-_rail: var(--tk-color-run-cancelled-icon); }
+.tk-run[data-state="cancelled"] .tk-steps { opacity: var(--tk-opacity-muted); }
+.tk-run__head { display: flex; align-items: flex-start; gap: var(--tk-space-2) var(--tk-space-3); min-width: 0; }
+.tk-run__title { flex: 1 1 auto; min-width: 0; margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-run__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-space-1) var(--tk-space-2); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-run__meta > * + *::before { content: "·"; margin-right: var(--tk-space-2); }
+.tk-run__elapsed { font-family: var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+.tk-run__summary { margin: 0; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); }
+.tk-run__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-space-2); }
+.tk-run__actions > .tk-button--ghost:first-child { margin-left: calc(-1 * var(--tk-space-2)); }
+.tk-run__actions > :last-child:not(:first-child) { margin-left: auto; }
+/* 접힘: <details class="tk-run__more"> 로 단계·로그를 접는다. 끝난 카드는 기본으로 접힌다 */
+.tk-run__more > summary { display: inline-flex; align-items: center; gap: var(--tk-space-1); min-height: var(--tk-size-control-xs); cursor: pointer; list-style: none; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans); border-radius: var(--tk-radius-sm); }
+.tk-run__more > summary::-webkit-details-marker { display: none; }
+.tk-run__more > summary::after { content: ""; width: var(--tk-size-icon-sm); height: var(--tk-size-icon-sm); background: currentColor; transition: transform var(--tk-motion-duration-normal) var(--tk-motion-easing-standard);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat; }
+.tk-run__more[open] > summary::after { transform: rotate(180deg); }
+.tk-run__more[open] > summary { margin-bottom: var(--tk-space-2); }
+.tk-run__more > summary:hover { color: var(--tk-color-text-primary); }
+
+/* Steps: <ol class="tk-steps"><li data-state="succeeded|running|waiting|failed|queued|cancelled"> 아이콘 + 이름 + 경과 */
+.tk-steps { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.tk-steps > li {
+  position: relative; display: grid; grid-template-columns: var(--tk-size-icon-sm) minmax(0, 1fr) auto; align-items: start; gap: var(--tk-component-run-step-gap);
+  min-height: var(--tk-component-run-step-min-height); padding-block: var(--tk-space-1-5);
+  color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+}
+/* 단계 사이 세로 선: 아이콘 중심을 잇는다 */
+.tk-steps > li + li::before { content: ""; position: absolute; left: calc(var(--tk-size-icon-sm) / 2 - var(--tk-border-width-hairline) / 2); top: calc(-1 * var(--tk-space-1-5)); height: calc(var(--tk-space-1-5) * 2); width: var(--tk-border-width-hairline); background: var(--tk-color-border-default); }
+.tk-steps > li > .tk-icon, .tk-steps > li > .tk-spinner, .tk-steps > li > .tk-step__mark { --tk-_icon: var(--tk-size-icon-sm); margin-top: calc((var(--tk-font-size-sm) * var(--tk-font-line-height-normal) - var(--tk-size-icon-sm)) / 2); color: var(--tk-color-run-queued-icon); }
+.tk-step__mark { display: grid; place-items: center; width: var(--tk-size-icon-sm); height: var(--tk-size-icon-sm); }
+.tk-step__mark::before { content: ""; width: 40%; height: 40%; border-radius: var(--tk-radius-full); border: var(--tk-border-width-strong) solid currentColor; }
+.tk-steps > li[data-state="running"] { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-medium); }
+.tk-steps > li[data-state="running"] > :first-child { color: var(--tk-color-run-running-icon); }
+.tk-steps > li[data-state="succeeded"] > :first-child { color: var(--tk-color-run-succeeded-icon); }
+.tk-steps > li[data-state="waiting"] { color: var(--tk-color-text-primary); }
+.tk-steps > li[data-state="waiting"] > :first-child { color: var(--tk-color-run-waiting-icon); }
+.tk-steps > li[data-state="failed"] { color: var(--tk-color-text-primary); }
+.tk-steps > li[data-state="failed"] > :first-child { color: var(--tk-color-run-failed-icon); }
+.tk-steps > li[data-state="cancelled"] > :first-child { color: var(--tk-color-run-cancelled-icon); }
+.tk-step__name { min-width: 0; overflow-wrap: anywhere; }
+.tk-step__name code, .tk-step__target { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; color: var(--tk-color-text-secondary); font-weight: var(--tk-font-weight-regular); }
+.tk-step__detail { display: block; margin-top: var(--tk-space-0-5); color: var(--tk-color-text-tertiary); font-size: var(--tk-font-size-xs); font-weight: var(--tk-font-weight-regular); }
+.tk-step__time { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+
+/* Log: 잉크 면. 시각 · 레벨 · 메시지. 따라가기(자동 스크롤)는 머리의 토글 버튼(aria-pressed) */
+.tk-log {
+  display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+  border: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); border-radius: var(--tk-component-log-radius);
+  background: var(--tk-color-ink-bg); color: var(--tk-color-ink-text);
+}
+.tk-log__header { display: flex; align-items: center; gap: var(--tk-space-2); min-height: var(--tk-size-control-md); padding: 0 var(--tk-space-2) 0 var(--tk-component-log-padding-x); background: var(--tk-color-ink-bg-header); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); }
+.tk-log__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text-muted); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }
+.tk-log__header > .tk-dot { --tk-_dot-color: var(--tk-color-agent-on-ink); }
+.tk-log__header > :is(.tk-button-group, .tk-icon-button, .tk-copy):last-child { margin-left: auto; }
+.tk-log__header .tk-icon-button { --tk-_fg: var(--tk-color-ink-text-muted); --tk-_bg-hover: var(--tk-color-ink-hover); --tk-_bg-active: var(--tk-color-ink-hover); }
+.tk-log__header .tk-icon-button[aria-pressed="true"] { --tk-_bg: var(--tk-color-ink-hover); --tk-_fg: var(--tk-color-agent-on-ink); }
+.tk-log__body { max-height: var(--tk-component-log-max-height); overflow: auto; overscroll-behavior: contain; padding-block: var(--tk-component-log-padding-y); tab-size: 2; }
+.tk-log--full .tk-log__body { max-height: none; flex: 1; min-height: 0; }
+.tk-log__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+.tk-log__lines { margin: 0; padding: 0; list-style: none; font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-relaxed) var(--tk-font-family-mono); font-variant-ligatures: none; }
+.tk-log__lines > li { display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: var(--tk-component-log-line-gap); padding: 0 var(--tk-component-log-padding-x); color: var(--tk-color-ink-log-info); }
+.tk-log__lines > li:hover { background: var(--tk-color-ink-hover); }
+.tk-log__time { color: var(--tk-color-ink-log-time); font-variant-numeric: tabular-nums; user-select: none; }
+.tk-log__level { min-width: 4ch; color: var(--tk-color-ink-log-time); text-transform: uppercase; user-select: none; }
+.tk-log__msg { white-space: pre-wrap; overflow-wrap: anywhere; }
+.tk-log__lines > [data-level="debug"] { color: var(--tk-color-ink-log-debug); }
+.tk-log__lines > [data-level="tool"] .tk-log__level, .tk-log__lines > [data-level="tool"] .tk-log__msg { color: var(--tk-color-ink-log-tool); }
+.tk-log__lines > [data-level="ok"] .tk-log__level, .tk-log__lines > [data-level="ok"] .tk-log__msg { color: var(--tk-color-ink-log-ok); }
+.tk-log__lines > [data-level="warn"] .tk-log__level, .tk-log__lines > [data-level="warn"] .tk-log__msg { color: var(--tk-color-ink-log-warn); }
+.tk-log__lines > [data-level="error"] .tk-log__level, .tk-log__lines > [data-level="error"] .tk-log__msg { color: var(--tk-color-ink-log-error); }
+/* 지금 쓰이고 있는 마지막 줄: 민트 커서 */
+.tk-log__lines > [data-live] .tk-log__msg::after { content: ""; display: inline-block; width: 0.6em; height: 1.1em; margin-left: var(--tk-space-1); vertical-align: text-bottom; background: var(--tk-color-ink-caret); }
+.tk-log__more { display: block; width: 100%; padding: var(--tk-space-2) var(--tk-component-log-padding-x); border: 0; border-top: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); background: transparent; color: var(--tk-color-ink-text-muted); cursor: pointer; text-align: left; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans); }
+.tk-log__more:hover { background: var(--tk-color-ink-hover); color: var(--tk-color-ink-text); }
+
+/* Approval: 고위험 작업 승인. 무엇을(행동) · 어디에(대상) · 왜 막혔나(정책) · 되돌릴 수 있나. 승인은 이 카드에서만, 한 번에 한 건 */
+.tk-approval {
+  display: flex; flex-direction: column; min-width: 0; overflow: hidden;
+  border: var(--tk-border-width-hairline) solid var(--tk-color-run-waiting-border); border-radius: var(--tk-radius-lg);
+  background: var(--tk-color-surface-default);
+  box-shadow: inset var(--tk-component-approval-bar) 0 0 var(--tk-component-approval-bar-color);
+}
+.tk-approval__head { display: flex; align-items: flex-start; gap: var(--tk-space-3); padding: var(--tk-component-approval-padding); padding-left: calc(var(--tk-component-approval-padding) + var(--tk-component-approval-bar)); background: var(--tk-component-approval-head-bg); }
+.tk-approval__head > .tk-icon { --tk-_icon: var(--tk-size-icon-md); color: var(--tk-color-run-waiting-icon); margin-top: calc((var(--tk-font-size-md) * var(--tk-font-line-height-normal) - var(--tk-size-icon-md)) / 2); }
+.tk-approval__title { margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-approval__lead { margin: var(--tk-space-0-5) 0 0; color: var(--tk-color-run-waiting-text); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); }
+.tk-approval__body { display: flex; flex-direction: column; gap: var(--tk-component-approval-gap); padding: var(--tk-component-approval-padding); padding-left: calc(var(--tk-component-approval-padding) + var(--tk-component-approval-bar)); }
+.tk-approval__body > * { margin: 0; }
+.tk-approval__footer { display: flex; flex-wrap: wrap; gap: var(--tk-space-3); padding: 0 var(--tk-component-approval-padding) var(--tk-component-approval-padding); padding-left: calc(var(--tk-component-approval-padding) + var(--tk-component-approval-bar)); }
+.tk-approval__footer > .tk-button { flex: 1 1 0; }
+@media (min-width: 768px) { .tk-approval__footer { justify-content: flex-end; } .tk-approval__footer > .tk-button { flex: none; } }
+/* 결정 뒤: 카드는 남고(기록) 버튼 자리가 결과 한 줄이 된다 */
+.tk-approval[data-decision] { border-color: var(--tk-color-border-default); box-shadow: inset var(--tk-component-approval-bar) 0 0 var(--tk-color-border-default); }
+.tk-approval[data-decision] .tk-approval__head { background: var(--tk-color-surface-subtle); }
+.tk-approval[data-decision] .tk-approval__head > .tk-icon { color: var(--tk-color-text-tertiary); }
+.tk-approval[data-decision] .tk-approval__lead { color: var(--tk-color-text-secondary); }
+
+/* Checks: 정책 판정 목록(File Broker 가 무엇을 확인했는가). 통과·주의·차단을 아이콘 + 단어로 */
+.tk-checks { display: flex; flex-direction: column; gap: var(--tk-space-2); margin: 0; padding: 0; list-style: none; }
+.tk-checks > li { display: grid; grid-template-columns: var(--tk-size-icon-sm) minmax(0, 1fr); gap: var(--tk-space-2); align-items: start; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-checks > li > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); margin-top: calc((var(--tk-font-size-sm) * var(--tk-font-line-height-normal) - var(--tk-size-icon-sm)) / 2); }
+.tk-checks > li[data-result="pass"] > .tk-icon { color: var(--tk-color-policy-allowed-icon); }
+.tk-checks > li[data-result="warn"] > .tk-icon { color: var(--tk-color-policy-approval-icon); }
+.tk-checks > li[data-result="fail"] > .tk-icon { color: var(--tk-color-policy-blocked-icon); }
+.tk-checks > li[data-result="fail"] { color: var(--tk-color-text-primary); }
+.tk-checks strong { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-medium); }
+.tk-checks code { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; overflow-wrap: anywhere; }

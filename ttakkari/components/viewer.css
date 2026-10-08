@@ -1,0 +1,140 @@
+/* viewer: Universal Artifact Viewer. 셸(툴바 · 찾기 · 안내 띠 · 본문 · 후속 지시) + 본문 7종(문서·데스크·이미지·HTML 격리·표·코드) + 상태 패널.
+   문서 콘텐츠 자체(PDF 페이지·HTML·이미지)는 테마를 따르지 않는다. 테마는 그 주변(책상·툴바)만 바꾼다.
+   형식이 달라도 툴바의 자리(제목 · 찾기 · 배율 · 쪽 · 다운로드 · 더보기)는 같다. 없는 기능은 자리를 비우지 않고 버튼을 뺀다. */
+
+.tk-viewer { display: flex; flex-direction: column; min-width: 0; min-height: 0; height: 100%; background: var(--tk-color-surface-default); }
+
+/* Toolbar */
+.tk-viewer__toolbar {
+  display: flex; align-items: center; gap: var(--tk-space-1); flex: none; min-width: 0;
+  min-height: var(--tk-component-viewer-toolbar-height); padding-inline: var(--tk-component-viewer-toolbar-padding-x);
+  background: var(--tk-component-viewer-toolbar-bg); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
+}
+.tk-viewer__title { display: flex; align-items: center; gap: var(--tk-space-2); flex: 1 1 auto; min-width: 0; padding-inline: var(--tk-space-1); }
+.tk-viewer__name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-viewer__tools { display: flex; align-items: center; gap: var(--tk-space-0-5); flex: none; }
+.tk-viewer__divider { width: var(--tk-border-width-hairline); align-self: stretch; margin: var(--tk-space-3) var(--tk-space-1); background: var(--tk-color-border-default); }
+/* 배율·쪽 표시: 기계값이라 모노, 폭이 흔들리지 않게 tabular */
+.tk-viewer__value { min-width: 5ch; padding-inline: var(--tk-space-1); color: var(--tk-color-text-secondary); text-align: center; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 767px) { .tk-viewer__tools > .tk-viewer__wide { display: none; } }
+
+/* Find bar: 문서 안 찾기. n/m 표시 + 이전·다음. Enter 다음, Shift+Enter 이전, Esc 닫기 */
+.tk-findbar { display: flex; align-items: center; gap: var(--tk-space-1); flex: none; padding: var(--tk-space-2); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default); background: var(--tk-color-surface-default); }
+.tk-findbar[hidden] { display: none; }
+.tk-findbar > .tk-input-wrap { flex: 1 1 auto; }
+.tk-findbar__count { min-width: 6ch; text-align: right; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+/* 찾은 곳: 연민트 형광펜, 지금 위치는 원색 민트 */
+:is(.tk-viewer, .tk-prose) mark[data-hit] { background: var(--tk-color-highlight-mark); color: var(--tk-color-highlight-mark-text); border-radius: var(--tk-radius-xs); padding-inline: 0.1em; scroll-margin-block: var(--tk-space-16); }
+:is(.tk-viewer, .tk-prose) mark[data-hit][aria-current] { background: var(--tk-color-highlight-mark-active); color: var(--tk-color-highlight-mark-active-text); box-shadow: 0 0 0 var(--tk-border-width-strong) var(--tk-color-highlight-mark-active); }
+
+/* Notice: 변환 미리보기 안내(PPTX·DOCX → PDF/HTML), 부분 미리보기(큰 파일), 정책 안내. 툴바 바로 아래 한 줄 */
+.tk-viewer__notice {
+  display: flex; align-items: flex-start; gap: var(--tk-space-2); flex: none;
+  padding: var(--tk-component-viewer-notice-padding) var(--tk-space-4); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-status-info-border);
+  background: var(--tk-color-status-info-bg); color: var(--tk-color-status-info-text);
+  font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+}
+.tk-viewer__notice > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-status-info-icon); margin-top: calc((var(--tk-font-size-sm) * var(--tk-font-line-height-normal) - var(--tk-size-icon-sm)) / 2); }
+.tk-viewer__notice > p { flex: 1; margin: 0; min-width: 0; }
+.tk-viewer__notice a { color: inherit; font-weight: var(--tk-font-weight-medium); }
+.tk-viewer__notice--warning { border-bottom-color: var(--tk-color-status-warning-border); background: var(--tk-color-status-warning-bg); color: var(--tk-color-status-warning-text); }
+.tk-viewer__notice--warning > .tk-icon { color: var(--tk-color-status-warning-icon); }
+
+/* Body: 남은 높이를 전부 쓰고 안에서만 스크롤. 포커스 가능(tabindex=0) — 키보드로 스크롤한다 */
+.tk-viewer__body { position: relative; flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+.tk-viewer__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+
+/* 문서(Markdown·DOCX→HTML·TXT): 종이 위 prose */
+.tk-viewer__doc { padding: var(--tk-space-6) var(--tk-size-layout-page-gutter) var(--tk-space-16); }
+.tk-viewer__doc > .tk-prose { margin-inline: auto; }
+@media (min-width: 768px) { .tk-viewer__doc { padding-inline: var(--tk-space-8); } }
+
+/* Desk: PDF·슬라이드(변환 미리보기). 책상 위에 흰 페이지가 쌓인다. 배율은 --tk-zoom(1 = 폭 맞춤) */
+.tk-desk {
+  --tk-zoom: 1; --tk-_pad: var(--tk-component-viewer-desk-padding);
+  display: flex; flex-direction: column; align-items: center; gap: var(--tk-component-viewer-page-gap); min-height: 100%;
+  padding: var(--tk-_pad); background: var(--tk-color-viewer-desk); width: max-content; min-width: 100%;
+}
+@media (min-width: 768px) { .tk-desk { --tk-_pad: var(--tk-space-8); } }
+.tk-page {
+  position: relative; flex: none; width: calc(min(100cqw - 2 * var(--tk-_pad), var(--tk-component-viewer-page-max-width)) * var(--tk-zoom));
+  background: var(--tk-color-viewer-page); color: var(--tk-color-text-primary);
+  border: var(--tk-border-width-hairline) solid var(--tk-color-viewer-page-border); box-shadow: var(--tk-component-viewer-page-shadow);
+}
+.tk-viewer__body:has(> .tk-desk) { container-type: inline-size; }
+.tk-page > :is(canvas, img) { display: block; width: 100%; height: auto; }
+.tk-page--slide { aspect-ratio: 16 / 9; }
+.tk-page--a4 { aspect-ratio: 210 / 297; }
+/* 아직 그려지지 않은 페이지: 같은 크기의 빈 종이(지연 로딩). 높이가 변하지 않아 스크롤이 튀지 않는다 */
+.tk-page[data-pending]::after { content: ""; position: absolute; inset: 0; margin: auto; width: var(--tk-size-icon-md); height: var(--tk-size-icon-md); border: var(--tk-border-width-strong) solid var(--tk-color-border-default); border-right-color: transparent; border-radius: var(--tk-radius-full); animation: tk-spin calc(var(--tk-motion-duration-slow) * 3) var(--tk-motion-easing-linear) infinite; }
+
+/* Stage: 이미지. 투명 영역은 체커 바탕. 배율은 --tk-zoom */
+.tk-stage {
+  --tk-zoom: 1;
+  display: grid; place-items: center; min-height: 100%; padding: var(--tk-space-4); overflow: auto;
+  background-color: var(--tk-color-viewer-checker-a);
+  background-image: linear-gradient(45deg, var(--tk-color-viewer-checker-b) 25%, transparent 25%, transparent 75%, var(--tk-color-viewer-checker-b) 75%), linear-gradient(45deg, var(--tk-color-viewer-checker-b) 25%, transparent 25%, transparent 75%, var(--tk-color-viewer-checker-b) 75%);
+  background-size: var(--tk-pattern-checker-size) var(--tk-pattern-checker-size);
+  background-position: 0 0, calc(var(--tk-pattern-checker-size) / 2) calc(var(--tk-pattern-checker-size) / 2);
+  touch-action: pan-x pan-y pinch-zoom;
+}
+.tk-stage > img { display: block; max-width: calc(100% * var(--tk-zoom)); max-height: calc(100% * var(--tk-zoom)); width: auto; height: auto; box-shadow: var(--tk-shadow-sm); }
+.tk-stage[data-fit="actual"] > img { max-width: none; max-height: none; }
+
+/* Frame: HTML 격리 미리보기. <iframe sandbox> 는 별도 출처(origin)에서. 위 띠가 '격리됨'을 항상 말한다 */
+.tk-frame { display: flex; flex-direction: column; height: 100%; min-height: calc(var(--tk-size-container-sm) * 0.75); }
+.tk-frame__bar { display: flex; align-items: center; gap: var(--tk-space-1-5); flex: none; min-height: var(--tk-size-control-sm); padding-inline: var(--tk-space-3); background: var(--tk-color-surface-subtle); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default); color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-frame__bar > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-policy-allowed-icon); }
+.tk-frame__bar > :last-child:not(:first-child) { margin-left: auto; }
+.tk-frame > iframe { flex: 1 1 auto; width: 100%; min-height: 0; border: 0; background: var(--tk-color-viewer-frame-bg); color-scheme: light; }
+
+/* Cells: 스프레드시트(XLSX·CSV). 머리 행·첫 열 고정, 숫자 오른쪽, 시트 탭은 아래 */
+.tk-cells-view { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.tk-cells-view > .tk-viewer__body { flex: 1 1 auto; }
+.tk-cells { border-collapse: separate; border-spacing: 0; font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); color: var(--tk-color-text-primary); background: var(--tk-color-surface-default); }
+.tk-cells :is(th, td) {
+  height: var(--tk-component-grid-cell-height); min-width: var(--tk-component-grid-col-min-width); max-width: var(--tk-component-grid-col-max-width);
+  padding: 0 var(--tk-component-grid-cell-padding-x); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;
+  border-right: var(--tk-border-width-hairline) solid var(--tk-color-viewer-grid-line); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-viewer-grid-line);
+}
+.tk-cells thead th { position: sticky; top: 0; z-index: var(--tk-z-index-raised); background: var(--tk-color-viewer-grid-head); color: var(--tk-color-viewer-grid-head-text); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); text-align: center; }
+.tk-cells tbody th { position: sticky; left: 0; z-index: var(--tk-z-index-base); min-width: var(--tk-component-grid-row-head-width); width: var(--tk-component-grid-row-head-width); background: var(--tk-color-viewer-grid-head); color: var(--tk-color-viewer-grid-head-text); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); text-align: center; font-variant-numeric: tabular-nums; }
+.tk-cells thead th:first-child { left: 0; z-index: var(--tk-z-index-sticky); min-width: var(--tk-component-grid-row-head-width); width: var(--tk-component-grid-row-head-width); }
+.tk-cells td[data-type="number"] { text-align: right; font-variant-numeric: tabular-nums; }
+.tk-cells td[data-type="empty"] { color: var(--tk-color-text-tertiary); }
+.tk-cells tr.tk-cells__header td { font-weight: var(--tk-font-weight-semibold); background: var(--tk-color-surface-subtle); }
+.tk-cells td:focus-visible, .tk-cells td[aria-selected="true"] { outline: var(--tk-border-width-strong) solid var(--tk-color-interactive-focus-ring); outline-offset: calc(-1 * var(--tk-border-width-strong)); }
+.tk-cells__tabs { display: flex; flex: none; gap: var(--tk-space-0-5); padding: 0 var(--tk-space-2); overflow-x: auto; scrollbar-width: none; border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); background: var(--tk-color-surface-subtle); }
+.tk-cells__tabs > [role="tab"] { flex: none; display: inline-flex; align-items: center; height: var(--tk-size-control-sm); padding-inline: var(--tk-space-3); border: 0; border-top: var(--tk-border-width-strong) solid transparent; background: none; cursor: pointer; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans); }
+.tk-cells__tabs > [role="tab"][aria-selected="true"] { border-top-color: var(--tk-color-border-brand); background: var(--tk-color-surface-default); color: var(--tk-color-text-primary); }
+
+/* State: 미리보기를 보여줄 수 없을 때(대기·변환 중·실패·미지원·차단·너무 큼). 어떤 경우에도 '원본 다운로드' 또는 이유가 있다 */
+.tk-viewer__state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--tk-space-3); min-height: 100%;
+  padding: var(--tk-space-12) var(--tk-space-6); text-align: center; background: var(--tk-color-surface-default);
+  color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans);
+}
+.tk-viewer__state > * { margin: 0; max-width: var(--tk-component-viewer-state-max-width); }
+.tk-viewer__state > .tk-glyph { --tk-_glyph: calc(var(--tk-size-control-lg) + var(--tk-space-4)); --tk-_glyph-icon: var(--tk-size-icon-xl); }
+.tk-viewer__state > .tk-progress { width: min(100%, calc(var(--tk-size-container-sm) * 0.5)); }
+.tk-viewer__state-title { color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-viewer__state > .tk-button-group { justify-content: center; margin-top: var(--tk-space-1); }
+.tk-viewer__state code { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; }
+
+/* Follow-up: 결과물을 보면서 바로 지시. 지금 보는 결과물이 문맥 칩으로 붙은 컴포저 */
+.tk-viewer__followup { flex: none; padding: var(--tk-space-2) var(--tk-space-3) calc(var(--tk-space-2) + env(safe-area-inset-bottom)); border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); background: var(--tk-color-surface-subtle); }
+.tk-viewer__followup > .tk-composer { box-shadow: none; }
+
+/* 전체 화면 뷰어(모바일): <dialog class="tk-viewer-dialog"> 안에 .tk-viewer. 노치·홈 바 안쪽으로 */
+.tk-viewer-dialog {
+  position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: env(safe-area-inset-top) 0 0;
+  border: 0; background: var(--tk-color-surface-default); color: var(--tk-color-text-primary);
+}
+.tk-viewer-dialog[open] { display: flex; flex-direction: column; animation: tk-sheet-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }
+.tk-viewer-dialog::backdrop { background: var(--tk-color-surface-overlay); }
+.tk-viewer-dialog > .tk-viewer { flex: 1; }
+@media (min-width: 1024px) {
+  .tk-viewer-dialog { inset: var(--tk-space-6); width: auto; height: auto; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-xl); overflow: hidden; box-shadow: var(--tk-shadow-lg); padding: 0; }
+  .tk-viewer-dialog[open] { animation-name: tk-dialog-in; }
+}
+@media (prefers-reduced-motion: reduce) { .tk-viewer-dialog[open] { animation: none; } .tk-page[data-pending]::after { animation: none; } }

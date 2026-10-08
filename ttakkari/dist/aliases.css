@@ -1,0 +1,13 @@
+/* Ttakkari seed aliases · 자동 생성. 처음 준 :root·.dark 변수 이름을 토큰에 잇는다(docs/01 §2).
+   새 코드는 --tk-* 를 쓴다. 이 파일은 시드 이름으로 이미 짠 코드를 위한 다리다. tokens.css 다음에 로드한다. */
+:root {
+  --background: var(--tk-color-surface-canvas);
+  --foreground: var(--tk-color-text-primary);
+  --primary: var(--tk-color-action-primary-bg);
+  --accent: var(--tk-color-accent-mint);
+  --accent-soft: var(--tk-color-accent-mint-soft);
+  --surface: var(--tk-color-surface-default);
+  --surface-muted: var(--tk-color-surface-muted);
+  --border: var(--tk-color-border-default);
+  --text-muted: var(--tk-color-text-tertiary);
+}

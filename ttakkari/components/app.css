@@ -1,0 +1,69 @@
+/* app: 앱 셸 · 화면 · 분할(채팅|작업 공간) · 띠(오프라인·업데이트·설치) · 인증 화면.
+   모바일(lg 미만): [헤더] / [화면(스크롤)] / [컴포저] / [탭바]. 데스크톱(lg 이상): [사이드바 | 화면], 화면 안에서 채팅과 작업 공간을 나눈다.
+   화면 높이는 dvh 다. 모바일 브라우저 주소창이 접혀도 컴포저·탭바가 키보드 위에 남는다. */
+
+.tk-app { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; height: 100dvh; min-height: 0; background: var(--tk-color-surface-canvas); }
+.tk-app__sidebar { display: none; }
+.tk-app__main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+@media (min-width: 1024px) {
+  .tk-app { grid-template-columns: var(--tk-size-layout-sidebar) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); }
+  .tk-app__sidebar { display: flex; flex-direction: column; min-height: 0; border-right: var(--tk-border-width-hairline) solid var(--tk-component-sidebar-border); background: var(--tk-component-sidebar-bg); }
+  .tk-app__sidebar > .tk-sidebar { flex: 1; }
+}
+.tk-app > .tk-tabbar { grid-column: 1 / -1; }
+.tk-app__brand { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-2); flex: none; height: var(--tk-size-layout-header); padding-inline: var(--tk-space-3) var(--tk-space-2); border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-sidebar-border); }
+
+/* Screen: 한 화면 = 헤더 + 스크롤 본문(+ 아래 고정 요소). 스크롤은 본문 안에서만 */
+.tk-screen { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; }
+.tk-screen__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.tk-screen__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+.tk-screen__head { display: flex; flex-direction: column; gap: var(--tk-space-1); padding-block: var(--tk-space-5) var(--tk-space-2); }
+.tk-screen__head > * { margin: 0; }
+
+/* Split: 채팅 | 작업 공간. xl 이상 기본 노출, lg 에서는 결과물을 열었을 때만. 손잡이는 role="separator"(키보드 ←→) */
+.tk-split { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; }
+.tk-split__pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.tk-split__pane--primary { flex: 1 1 auto; min-width: var(--tk-size-layout-pane-min); }
+.tk-split__pane--secondary { display: none; }
+.tk-split__handle { display: none; }
+.tk-split__pane > :is(.tk-viewer, .tk-screen__body) { flex: 1 1 auto; }
+@media (min-width: 1024px) {
+  .tk-split[data-open] .tk-split__pane--secondary, .tk-split[data-open] .tk-split__handle { display: flex; }
+  .tk-split__pane--secondary { flex: 0 0 var(--tk-_split, var(--tk-size-layout-workspace)); min-width: var(--tk-size-layout-pane-min); max-width: calc(100% - var(--tk-size-layout-pane-min) - var(--tk-border-width-hairline)); }
+  .tk-split__handle {
+    position: relative; flex: 0 0 var(--tk-border-width-hairline); z-index: var(--tk-z-index-raised);
+    background: var(--tk-color-border-default); cursor: col-resize; touch-action: none;
+  }
+  .tk-split__handle::before { content: ""; position: absolute; inset: 0 calc(-1 * var(--tk-component-split-handle) / 2); }
+  .tk-split__handle:hover, .tk-split__handle:focus-visible, .tk-split__handle[data-dragging] { background: var(--tk-component-split-handle-active); box-shadow: 0 0 0 var(--tk-space-px) var(--tk-component-split-handle-active); outline: none; }
+}
+@media (min-width: 1280px) { .tk-split[data-open="auto"] .tk-split__pane--secondary, .tk-split[data-open="auto"] .tk-split__handle { display: flex; } }
+
+/* Banner: 헤더 바로 아래 전폭 띠. 앱 전체 상태(오프라인·다시 연결 중·업데이트·설치·재인증) 하나만 */
+.tk-banner {
+  --tk-_bg: var(--tk-color-status-info-bg); --tk-_fg: var(--tk-color-status-info-text); --tk-_icon-color: var(--tk-color-status-info-icon); --tk-_border: var(--tk-color-status-info-border);
+  display: flex; align-items: center; gap: var(--tk-component-banner-gap); flex: none; flex-wrap: wrap;
+  padding: var(--tk-component-banner-padding-y) var(--tk-component-banner-padding-x); border-bottom: var(--tk-border-width-hairline) solid var(--tk-_border);
+  background: var(--tk-_bg); color: var(--tk-_fg); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+}
+.tk-banner > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-_icon-color); }
+.tk-banner > .tk-spinner { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-_icon-color); }
+.tk-banner__text { flex: 1 1 auto; min-width: 0; }
+.tk-banner__text strong { font-weight: var(--tk-font-weight-semibold); }
+.tk-banner > .tk-button { --tk-_h: var(--tk-size-control-xs); --tk-_px: var(--tk-space-2); min-width: 0; font-size: var(--tk-font-size-xs); }
+.tk-banner--warning { --tk-_bg: var(--tk-color-status-warning-bg); --tk-_fg: var(--tk-color-status-warning-text); --tk-_icon-color: var(--tk-color-status-warning-icon); --tk-_border: var(--tk-color-status-warning-border); }
+.tk-banner--danger  { --tk-_bg: var(--tk-color-status-danger-bg);  --tk-_fg: var(--tk-color-status-danger-text);  --tk-_icon-color: var(--tk-color-status-danger-icon);  --tk-_border: var(--tk-color-status-danger-border); }
+.tk-banner--neutral { --tk-_bg: var(--tk-color-status-neutral-bg); --tk-_fg: var(--tk-color-status-neutral-text); --tk-_icon-color: var(--tk-color-status-neutral-icon); --tk-_border: var(--tk-color-status-neutral-border); }
+
+/* Auth: 로그인·재인증·기기 승인. 가운데 한 열, 위에 브랜드 */
+.tk-auth { display: grid; place-items: center; min-height: 100dvh; padding: calc(var(--tk-space-12) + env(safe-area-inset-top)) var(--tk-size-layout-page-gutter) calc(var(--tk-space-12) + env(safe-area-inset-bottom)); background: var(--tk-color-surface-canvas); }
+.tk-auth__panel { display: flex; flex-direction: column; gap: var(--tk-space-6); width: 100%; max-width: calc(var(--tk-size-container-sm) * 0.68); }
+.tk-auth__panel > * { margin: 0; }
+.tk-auth__brand { display: flex; align-items: center; gap: var(--tk-space-3); }
+.tk-auth__brand > img { width: var(--tk-size-control-lg); height: var(--tk-size-control-lg); }
+.tk-auth__foot { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); text-align: center; }
+/* 잉크 점 격자 바탕(로그인·빈 작업 공간). 이 둘 말고는 깔지 않는다 */
+.tk-dotgrid {
+  background-image: radial-gradient(circle, var(--tk-color-border-default) var(--tk-pattern-grid-dot), transparent calc(var(--tk-pattern-grid-dot) + var(--tk-space-px)));
+  background-size: var(--tk-pattern-grid-size) var(--tk-pattern-grid-size);
+}

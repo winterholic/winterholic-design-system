@@ -1,0 +1,28 @@
+{
+  "motion": {
+    "$description": "모션은 상태 변화를 설명할 때만 쓴다. 장식 애니메이션·스크롤 연출·반짝임·타이핑 효과는 없다. 유일한 반복 모션은 '실행 중' 점의 맥박(live)이다 — 에이전트가 살아 있다는 정보 자체라서. prefers-reduced-motion 이면 duration 이 0 이 되고 맥박은 멈춘다(tokens.css·components.css 가 처리).",
+    "duration": {
+      "$type": "duration",
+      "instant": { "$value": "0ms",    "$description": "reduced-motion 대체값" },
+      "fast":    { "$value": "120ms",  "$description": "hover 색 변화·체크·스위치·탭 인디케이터" },
+      "normal":  { "$value": "180ms",  "$description": "메뉴·툴팁·실행 단계 펼침·결과물 카드 도착" },
+      "slow":    { "$value": "260ms",  "$description": "다이얼로그·바텀 시트·드로어·전체 화면 뷰어 진입" },
+      "tooltip-delay": { "$value": "400ms",  "$description": "툴팁이 뜨기까지 대기(포커스는 즉시)" },
+      "live":          { "$value": "1600ms", "$description": "실행 중 점 맥박 한 주기" },
+      "feedback":      { "$value": "1600ms", "$description": "'복사됨' 같은 확인 상태가 원래대로 돌아가기까지" },
+      "toast":         { "$value": "5000ms", "$description": "토스트 자동 닫힘. 행동(열기·되돌리기)이 있으면 자동으로 닫지 않는다" }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "standard": { "$value": [0.2, 0, 0, 1], "$description": "화면 안에서 바뀌는 것 전부. 기본" },
+      "enter":    { "$value": [0, 0, 0, 1],   "$description": "들어오는 것(시트·다이얼로그·메뉴·토스트·새 메시지)" },
+      "exit":     { "$value": [0.4, 0, 1, 1], "$description": "나가는 것. 진입보다 짧게(normal 이하)" },
+      "linear":   { "$value": [0, 0, 1, 1],   "$description": "스피너·진행 바·맥박처럼 반복되는 것" }
+    },
+    "distance": {
+      "$type": "dimension",
+      "sm": { "$value": "4px",  "$description": "메뉴·툴팁·새 메시지 fade+slide" },
+      "md": { "$value": "8px",  "$description": "토스트·다이얼로그" }
+    }
+  }
+}

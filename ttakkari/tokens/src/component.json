@@ -1,0 +1,387 @@
+{
+  "component": {
+    "$description": "컴포넌트 토큰(3계층). 시맨틱·스케일 토큰만 참조한다. components/*.css 의 실제 구현이 이 토큰을 쓴다. 여기 없는 컴포넌트는 docs/06 §24 조립 규칙으로 시맨틱 토큰을 직접 조립한다.",
+
+    "button": {
+      "radius":    { "$value": "{radius.md}", "$type": "dimension" },
+      "gap":       { "$value": "{space.2}", "$type": "dimension", "$description": "아이콘↔라벨" },
+      "group-gap": { "$value": "{space.3}", "$type": "dimension", "$description": "같은 그룹 버튼 사이(sm 이하는 space.2)" },
+      "min-width": { "$value": "64px", "$type": "dimension", "$description": "md 이상 텍스트 버튼 최소 폭" },
+      "xs": { "height": { "$value": "{size.control.xs}", "$type": "dimension" }, "padding-x": { "$value": "{space.2}", "$type": "dimension" }, "icon": { "$value": "{size.icon.sm}", "$type": "dimension" }, "radius": { "$value": "{radius.sm}", "$type": "dimension" } },
+      "sm": { "height": { "$value": "{size.control.sm}", "$type": "dimension" }, "padding-x": { "$value": "{space.3}", "$type": "dimension" }, "icon": { "$value": "{size.icon.sm}", "$type": "dimension" }, "radius": { "$value": "{radius.md}", "$type": "dimension" } },
+      "md": { "height": { "$value": "{size.control.md}", "$type": "dimension" }, "padding-x": { "$value": "{space.4}", "$type": "dimension" }, "icon": { "$value": "{size.icon.md}", "$type": "dimension" }, "radius": { "$value": "{radius.md}", "$type": "dimension" } },
+      "lg": { "height": { "$value": "{size.control.lg}", "$type": "dimension" }, "padding-x": { "$value": "{space.5}", "$type": "dimension" }, "icon": { "$value": "{size.icon.md}", "$type": "dimension" }, "radius": { "$value": "{radius.lg}", "$type": "dimension" } }
+    },
+
+    "input": {
+      "radius":       { "$value": "{radius.md}", "$type": "dimension" },
+      "bg":           { "$value": "{color.surface.default}", "$type": "color" },
+      "border":       { "$value": "{color.border.strong}", "$type": "color" },
+      "border-hover": { "$value": "{color.text.tertiary}", "$type": "color" },
+      "border-focus": { "$value": "{color.border.focus}", "$type": "color" },
+      "border-error": { "$value": "{color.border.danger}", "$type": "color" },
+      "padding-x":    { "$value": "{space.3}", "$type": "dimension" },
+      "label-gap":    { "$value": "{space.2}", "$type": "dimension", "$description": "라벨↔인풋" },
+      "help-gap":     { "$value": "{space.1-5}", "$type": "dimension", "$description": "인풋↔도움말·오류" },
+      "field-gap":    { "$value": "{space.5}", "$type": "dimension", "$description": "필드↔다음 필드" },
+      "textarea-min-height": { "$value": "96px", "$type": "dimension", "$description": "본문 3줄" },
+      "affix-gap":    { "$value": "{space.2}", "$type": "dimension", "$description": "앞뒤 아이콘↔입력 글자" }
+    },
+
+    "choice": {
+      "$description": "Checkbox·Radio·Switch. 손가락 기준으로 AIP 보다 한 단계 크다.",
+      "size":        { "$value": "20px", "$type": "dimension", "$description": "체크박스·라디오 시각 크기. 클릭 영역은 라벨 전체 + 44 최소" },
+      "radius":      { "$value": "{radius.sm}", "$type": "dimension" },
+      "border":      { "$value": "{color.border.strong}", "$type": "color" },
+      "bg-checked":  { "$value": "{color.action.primary.bg}", "$type": "color" },
+      "mark":        { "$value": "{color.action.primary.text}", "$type": "color" },
+      "label-gap":   { "$value": "{space.3}", "$type": "dimension" },
+      "group-gap":   { "$value": "{space.3}", "$type": "dimension" },
+      "switch-width":  { "$value": "44px", "$type": "dimension" },
+      "switch-height": { "$value": "24px", "$type": "dimension" },
+      "switch-thumb":  { "$value": "20px", "$type": "dimension" },
+      "switch-track":  { "$value": "{color.border.strong}", "$type": "color", "$description": "꺼짐 트랙. 3:1 경계" },
+      "switch-thumb-color": { "$value": "{base.white}", "$type": "color" }
+    },
+
+    "segmented": {
+      "height":    { "$value": "{size.control.sm}", "$type": "dimension" },
+      "height-lg": { "$value": "{size.control.md}", "$type": "dimension", "$description": "모바일 화면 상단 보기 전환" },
+      "padding":   { "$value": "{space.0-5}", "$type": "dimension" },
+      "track":     { "$value": "{color.surface.sunken}", "$type": "color" },
+      "thumb":     { "$value": "{color.surface.default}", "$type": "color" },
+      "radius":    { "$value": "{radius.md}", "$type": "dimension" }
+    },
+
+    "tabs": {
+      "height":          { "$value": "44px", "$type": "dimension", "$description": "터치 44" },
+      "gap":             { "$value": "{space.5}", "$type": "dimension" },
+      "indicator":       { "$value": "{border-width.strong}", "$type": "dimension" },
+      "indicator-color": { "$value": "{color.border.brand}", "$type": "color" },
+      "border":          { "$value": "{color.border.default}", "$type": "color" },
+      "text":            { "$value": "{color.text.secondary}", "$type": "color" },
+      "text-active":     { "$value": "{color.text.primary}", "$type": "color" },
+      "panel-gap":       { "$value": "{space.4}", "$type": "dimension" }
+    },
+
+    "badge": {
+      "height":    { "$value": "20px", "$type": "dimension" },
+      "padding-x": { "$value": "{space.1-5}", "$type": "dimension" },
+      "radius":    { "$value": "{radius.sm}", "$type": "dimension", "$description": "상태 라벨은 각지게. 숫자 카운트만 full" },
+      "gap":       { "$value": "{space.1}", "$type": "dimension" }
+    },
+
+    "chip": {
+      "$description": "필터 칩·제안 칩·문맥 칩. 둥근 필. 상태는 aria-pressed·:checked 가 정한다.",
+      "height":      { "$value": "{size.control.sm}", "$type": "dimension" },
+      "padding-x":   { "$value": "{space.3}", "$type": "dimension" },
+      "gap":         { "$value": "{space.1-5}", "$type": "dimension" },
+      "radius":      { "$value": "{radius.full}", "$type": "dimension" },
+      "bg":          { "$value": "{color.surface.default}", "$type": "color" },
+      "border":      { "$value": "{color.border.default}", "$type": "color" },
+      "bg-selected": { "$value": "{color.interactive.selected-bg}", "$type": "color" },
+      "border-selected": { "$value": "{color.interactive.selected-border}", "$type": "color" },
+      "text-selected":   { "$value": "{color.interactive.selected-text}", "$type": "color" },
+      "list-gap":    { "$value": "{space.2}", "$type": "dimension" }
+    },
+
+    "card": {
+      "bg":         { "$value": "{color.surface.default}", "$type": "color" },
+      "border":     { "$value": "{color.border.default}", "$type": "color" },
+      "radius":     { "$value": "{radius.lg}", "$type": "dimension" },
+      "padding":    { "$value": "{space.4}", "$type": "dimension", "$description": "모바일 기본. 손가락 폭 화면에서 20 은 본문 폭을 깎는다" },
+      "padding-lg": { "$value": "{space.5}", "$type": "dimension" },
+      "gap":        { "$value": "{space.3}", "$type": "dimension", "$description": "제목↔본문" },
+      "grid-gap":   { "$value": "{space.3}", "$type": "dimension", "$description": "카드 그리드 사이(모바일). md 이상 space.4" },
+      "shadow-hover": { "$value": "{shadow.sm}", "$type": "shadow", "$description": "클릭 가능한 카드 hover 에만" }
+    },
+
+    "callout": {
+      "padding":   { "$value": "{space.4}", "$type": "dimension" },
+      "gap":       { "$value": "{space.3}", "$type": "dimension", "$description": "아이콘↔본문" },
+      "radius":    { "$value": "{radius.lg}", "$type": "dimension" },
+      "bar":       { "$value": "{border-width.accent}", "$type": "dimension", "$description": "왼쪽 강조 바" },
+      "icon":      { "$value": "{size.icon.md}", "$type": "dimension" },
+      "title-gap": { "$value": "{space.1}", "$type": "dimension" }
+    },
+
+    "tooltip": {
+      "bg":        { "$value": "{color.surface.inverse}", "$type": "color" },
+      "text":      { "$value": "{color.text.inverse}", "$type": "color" },
+      "padding-x": { "$value": "{space.2}", "$type": "dimension" },
+      "padding-y": { "$value": "{space.1}", "$type": "dimension" },
+      "radius":    { "$value": "{radius.sm}", "$type": "dimension" },
+      "max-width": { "$value": "280px", "$type": "dimension" },
+      "offset":    { "$value": "{space.2}", "$type": "dimension" }
+    },
+
+    "menu": {
+      "$description": "행동 목록(메시지 더보기·결과물 더보기·정렬).",
+      "bg":         { "$value": "{color.surface.raised}", "$type": "color" },
+      "border":     { "$value": "{color.border.default}", "$type": "color" },
+      "radius":     { "$value": "{radius.lg}", "$type": "dimension" },
+      "padding":    { "$value": "{space.1}", "$type": "dimension" },
+      "item-height":{ "$value": "{size.control.md}", "$type": "dimension", "$description": "손가락 기준 40(데스크톱도 같다)" },
+      "item-padding-x": { "$value": "{space.3}", "$type": "dimension" },
+      "item-radius":{ "$value": "{radius.md}", "$type": "dimension" },
+      "min-width":  { "$value": "200px", "$type": "dimension" },
+      "max-height": { "$value": "360px", "$type": "dimension" },
+      "offset":     { "$value": "{space.1}", "$type": "dimension" }
+    },
+
+    "dialog": {
+      "bg":        { "$value": "{color.surface.raised}", "$type": "color" },
+      "radius":    { "$value": "{radius.xl}", "$type": "dimension" },
+      "padding":   { "$value": "{space.6}", "$type": "dimension" },
+      "padding-mobile": { "$value": "{space.5}", "$type": "dimension" },
+      "gap":       { "$value": "{space.4}", "$type": "dimension" },
+      "width-sm":  { "$value": "400px", "$type": "dimension", "$description": "확인·재인증" },
+      "width-md":  { "$value": "560px", "$type": "dimension", "$description": "기본·승인 상세" },
+      "width-lg":  { "$value": "720px", "$type": "dimension", "$description": "내보내기·정책 상세" }
+    },
+
+    "sheet": {
+      "$description": "모바일 바텀 시트(<dialog>). lg 이상에서는 같은 마크업이 가운데 다이얼로그로 바뀐다.",
+      "bg":         { "$value": "{color.surface.raised}", "$type": "color" },
+      "radius":     { "$value": "{radius.xl}", "$type": "dimension", "$description": "위 두 모서리만" },
+      "padding":    { "$value": "{space.4}", "$type": "dimension" },
+      "gap":        { "$value": "{space.4}", "$type": "dimension" },
+      "handle-width":  { "$value": "36px", "$type": "dimension" },
+      "handle-height": { "$value": "4px", "$type": "dimension" },
+      "handle-color":  { "$value": "{color.border.strong}", "$type": "color" },
+      "max-height": { "$value": "{size.layout.sheet-max}", "$type": "dimension" }
+    },
+
+    "toast": {
+      "$description": "두 테마 모두 잉크 면. 다크에서 inverse(밝은 면)로 뒤집으면 민트 아이콘이 묻힌다.",
+      "bg":        { "$value": "{color.ink.bg-header}", "$type": "color" },
+      "border":    { "$value": "{color.ink.border}", "$type": "color" },
+      "text":      { "$value": "{color.ink.text}", "$type": "color" },
+      "radius":    { "$value": "{radius.lg}", "$type": "dimension" },
+      "padding-x": { "$value": "{space.4}", "$type": "dimension" },
+      "padding-y": { "$value": "{space.3}", "$type": "dimension" },
+      "gap":       { "$value": "{space.3}", "$type": "dimension" },
+      "max-width": { "$value": "440px", "$type": "dimension" },
+      "offset":    { "$value": "{space.3}", "$type": "dimension", "$description": "화면 아래(모바일은 탭바·컴포저 위)에서 띄우는 거리" }
+    },
+
+    "header": {
+      "height":    { "$value": "{size.layout.header}", "$type": "dimension" },
+      "bg":        { "$value": "{color.surface.canvas}", "$type": "color" },
+      "border":    { "$value": "{color.border.default}", "$type": "color" },
+      "gap":       { "$value": "{space.2}", "$type": "dimension" }
+    },
+
+    "tabbar": {
+      "height":    { "$value": "{size.layout.tabbar}", "$type": "dimension" },
+      "bg":        { "$value": "{color.surface.default}", "$type": "color" },
+      "border":    { "$value": "{color.border.default}", "$type": "color" },
+      "icon":      { "$value": "{size.icon.lg}", "$type": "dimension" },
+      "text":      { "$value": "{color.text.tertiary}", "$type": "color" },
+      "text-active": { "$value": "{color.text.brand}", "$type": "color" },
+      "indicator": { "$value": "{color.border.brand}", "$type": "color" }
+    },
+
+    "sidebar": {
+      "bg":          { "$value": "{color.surface.subtle}", "$type": "color" },
+      "border":      { "$value": "{color.border.default}", "$type": "color" },
+      "padding":     { "$value": "{space.3}", "$type": "dimension" },
+      "item-height": { "$value": "{size.control.md}", "$type": "dimension" },
+      "item-padding-x": { "$value": "{space.3}", "$type": "dimension" },
+      "item-radius": { "$value": "{radius.md}", "$type": "dimension" },
+      "group-gap":   { "$value": "{space.5}", "$type": "dimension" },
+      "item-active-bg":   { "$value": "{color.interactive.selected-bg}", "$type": "color" },
+      "item-active-text": { "$value": "{color.interactive.selected-text}", "$type": "color" }
+    },
+
+    "list": {
+      "$description": "세션 목록·결과물 목록·파일 검색 결과·감사 로그의 행.",
+      "row-min-height": { "$value": "56px", "$type": "dimension", "$description": "한 줄 + 메타 한 줄" },
+      "row-padding-x":  { "$value": "{space.4}", "$type": "dimension" },
+      "row-padding-y":  { "$value": "{space.3}", "$type": "dimension" },
+      "row-gap":        { "$value": "{space.3}", "$type": "dimension", "$description": "앞 글리프↔본문↔뒤 행동" },
+      "divider":        { "$value": "{color.border.subtle}", "$type": "color" },
+      "group-height":   { "$value": "{size.control.sm}", "$type": "dimension", "$description": "그룹 머리(오늘·어제·이번 주)" }
+    },
+
+    "avatar": {
+      "sm":     { "$value": "{size.icon.lg}", "$type": "dimension", "$description": "24 · 메시지 머리" },
+      "md":     { "$value": "{size.control.sm}", "$type": "dimension", "$description": "32 · 세션 목록" },
+      "lg":     { "$value": "{size.control.md}", "$type": "dimension", "$description": "40 · 빈 상태·설정" },
+      "radius": { "$value": "26%", "$type": "dimension", "$description": "로고 타일과 같은 비율(22% + 작은 크기 보정)" }
+    },
+
+    "presence": {
+      "dot":   { "$value": "8px", "$type": "dimension" },
+      "ring":  { "$value": "{border-width.strong}", "$type": "dimension", "$description": "아바타 위에 얹을 때 바탕색 테두리" },
+      "pill-height": { "$value": "{size.control.xs}", "$type": "dimension" },
+      "pill-padding-x": { "$value": "{space.2}", "$type": "dimension" }
+    },
+
+    "message": {
+      "$description": "채팅 메시지. 사용자는 오른쪽 말풍선, 에이전트는 말풍선 없는 전폭 본문 + 머리(아바타·이름·시각).",
+      "gap-same":      { "$value": "{space.2}", "$type": "dimension", "$description": "같은 사람의 연속 메시지 사이" },
+      "gap-turn":      { "$value": "{space.6}", "$type": "dimension", "$description": "말하는 사람이 바뀔 때" },
+      "user-bg":       { "$value": "{color.surface.brand-subtle}", "$type": "color" },
+      "user-text":     { "$value": "{color.text.primary}", "$type": "color" },
+      "user-radius":   { "$value": "{radius.xl}", "$type": "dimension" },
+      "user-tail":     { "$value": "{radius.sm}", "$type": "dimension", "$description": "말한 사람 쪽 아래 모서리" },
+      "user-padding-x":{ "$value": "{space.4}", "$type": "dimension" },
+      "user-padding-y":{ "$value": "{space.3}", "$type": "dimension" },
+      "user-max-width":{ "$value": "85%", "$type": "dimension" },
+      "head-gap":      { "$value": "{space.2}", "$type": "dimension", "$description": "아바타↔이름↔시각" },
+      "body-gap":      { "$value": "{space.2}", "$type": "dimension", "$description": "머리↔본문" },
+      "block-gap":     { "$value": "{space.3}", "$type": "dimension", "$description": "에이전트 본문 안 블록(문단↔실행 카드↔결과물 카드)" }
+    },
+
+    "composer": {
+      "bg":          { "$value": "{color.surface.default}", "$type": "color" },
+      "border":      { "$value": "{color.border.default}", "$type": "color" },
+      "border-focus":{ "$value": "{color.border.focus}", "$type": "color" },
+      "radius":      { "$value": "{radius.xl}", "$type": "dimension" },
+      "padding":     { "$value": "{space.2}", "$type": "dimension" },
+      "input-padding-x": { "$value": "{space.2}", "$type": "dimension" },
+      "input-min-height": { "$value": "{size.control.md}", "$type": "dimension" },
+      "input-max-height": { "$value": "{size.layout.composer-max}", "$type": "dimension" },
+      "tray-bg":     { "$value": "{color.surface.canvas}", "$type": "color", "$description": "컴포저가 놓이는 아래 띠. 스레드와 같은 면이라 컴포저만 떠 보인다" },
+      "tray-padding":{ "$value": "{space.3}", "$type": "dimension" },
+      "shadow":      { "$value": "{shadow.sm}", "$type": "shadow" }
+    },
+
+    "run": {
+      "$description": "실행 카드(Task). 상태 레일 + 머리(제목·상태·경과) + 단계 목록 + 진행 + 로그 미리보기 + 행동.",
+      "padding":    { "$value": "{space.4}", "$type": "dimension" },
+      "gap":        { "$value": "{space.3}", "$type": "dimension" },
+      "radius":     { "$value": "{radius.lg}", "$type": "dimension" },
+      "rail":       { "$value": "{border-width.accent}", "$type": "dimension" },
+      "step-min-height": { "$value": "{size.control.sm}", "$type": "dimension" },
+      "step-gap":   { "$value": "{space.2}", "$type": "dimension", "$description": "단계 아이콘↔이름" },
+      "progress-height": { "$value": "4px", "$type": "dimension" },
+      "progress-track":  { "$value": "{color.surface.sunken}", "$type": "color" },
+      "progress-fill":   { "$value": "{color.agent.live}", "$type": "color" }
+    },
+
+    "log": {
+      "padding-x":  { "$value": "{space.4}", "$type": "dimension" },
+      "padding-y":  { "$value": "{space.3}", "$type": "dimension" },
+      "line-gap":   { "$value": "{space.3}", "$type": "dimension", "$description": "시각↔레벨↔메시지" },
+      "max-height": { "$value": "320px", "$type": "dimension", "$description": "채팅 안 미리보기. 전체 로그는 뷰어 패널" },
+      "preview-lines": { "$value": 4, "$type": "number", "$description": "실행 카드 안 로그 미리보기 줄 수" },
+      "radius":     { "$value": "{radius.lg}", "$type": "dimension" }
+    },
+
+    "approval": {
+      "$description": "고위험 작업 승인 요청 카드. amber 레일 + 무엇을·어디에·왜(정책 근거) + 거부·승인.",
+      "padding":    { "$value": "{space.4}", "$type": "dimension" },
+      "gap":        { "$value": "{space.3}", "$type": "dimension" },
+      "bar":        { "$value": "{border-width.accent}", "$type": "dimension" },
+      "bar-color":  { "$value": "{color.run.waiting.border}", "$type": "color" },
+      "head-bg":    { "$value": "{color.run.waiting.bg}", "$type": "color" }
+    },
+
+    "artifact": {
+      "$description": "결과물 행·카드·글리프.",
+      "glyph":        { "$value": "{size.control.md}", "$type": "dimension", "$description": "파일 계열 타일 40" },
+      "glyph-sm":     { "$value": "{size.control.sm}", "$type": "dimension", "$description": "32 · 채팅 안 카드·밀집 목록" },
+      "glyph-radius": { "$value": "{radius.md}", "$type": "dimension" },
+      "card-padding": { "$value": "{space.3}", "$type": "dimension" },
+      "card-radius":  { "$value": "{radius.lg}", "$type": "dimension" },
+      "card-gap":     { "$value": "{space.3}", "$type": "dimension" },
+      "new-ring":     { "$value": "{color.border.agent}", "$type": "color", "$description": "방금 도착한 결과물 테두리" },
+      "meta-gap":     { "$value": "{space.1-5}", "$type": "dimension" }
+    },
+
+    "viewer": {
+      "toolbar-height": { "$value": "{size.layout.toolbar}", "$type": "dimension" },
+      "toolbar-bg":     { "$value": "{color.surface.subtle}", "$type": "color" },
+      "toolbar-padding-x": { "$value": "{space.2}", "$type": "dimension" },
+      "desk-padding":   { "$value": "{space.4}", "$type": "dimension", "$description": "모바일. md 이상 space.8" },
+      "page-gap":       { "$value": "{space.4}", "$type": "dimension" },
+      "page-shadow":    { "$value": "{shadow.sm}", "$type": "shadow" },
+      "page-max-width": { "$value": "{size.container.md}", "$type": "dimension", "$description": "PDF·슬라이드 페이지 폭 맞춤의 상한" },
+      "notice-padding": { "$value": "{space.3}", "$type": "dimension" },
+      "state-max-width":{ "$value": "{size.container.sm}", "$type": "dimension", "$description": "미리보기 상태 패널(변환 중·실패) 글 폭" }
+    },
+
+    "grid": {
+      "$description": "스프레드시트 뷰어(XLSX·CSV).",
+      "cell-height":    { "$value": "{size.control.sm}", "$type": "dimension" },
+      "cell-padding-x": { "$value": "{space.2}", "$type": "dimension" },
+      "row-head-width": { "$value": "48px", "$type": "dimension" },
+      "col-min-width":  { "$value": "96px", "$type": "dimension" },
+      "col-max-width":  { "$value": "320px", "$type": "dimension" }
+    },
+
+    "code-block": {
+      "bg":          { "$value": "{color.ink.bg}", "$type": "color" },
+      "header-bg":   { "$value": "{color.ink.bg-header}", "$type": "color" },
+      "border":      { "$value": "{color.ink.border}", "$type": "color" },
+      "radius":      { "$value": "{radius.lg}", "$type": "dimension" },
+      "padding-x":   { "$value": "{space.4}", "$type": "dimension" },
+      "padding-y":   { "$value": "{space.3}", "$type": "dimension" },
+      "header-height": { "$value": "{size.control.md}", "$type": "dimension" },
+      "line-number-width": { "$value": "48px", "$type": "dimension" },
+      "max-height":  { "$value": "480px", "$type": "dimension", "$description": "채팅 안 코드 블록. 넘으면 '모두 보기'. 코드 뷰어는 패널 높이를 따른다" }
+    },
+
+    "inline-code": {
+      "bg":        { "$value": "{color.ink.bg-inline}", "$type": "color" },
+      "text":      { "$value": "{color.ink.text-inline}", "$type": "color" },
+      "padding-x": { "$value": "0.3em", "$type": "dimension", "$description": "글자 크기에 비례" },
+      "radius":    { "$value": "{radius.xs}", "$type": "dimension" },
+      "size":      { "$value": "0.875em", "$type": "dimension", "$description": "모노가 같은 크기 sans 보다 커 보여서 한 단계 줄인다" }
+    },
+
+    "prose": {
+      "$description": "문서 본문(prose.css) 리듬. 에이전트 메시지 안 Markdown 과 Markdown 뷰어가 같은 규칙을 다른 밀도로 받는다.",
+      "block-gap":  { "$value": "{space.5}", "$type": "dimension", "$description": "문서 뷰어 문단 사이" },
+      "block-gap-compact": { "$value": "{space.3}", "$type": "dimension", "$description": "메시지 안 문단 사이" },
+      "figure-gap": { "$value": "{space.6}", "$type": "dimension" },
+      "h2-gap":     { "$value": "{space.10}", "$type": "dimension" },
+      "h3-gap":     { "$value": "{space.8}", "$type": "dimension" },
+      "h4-gap":     { "$value": "{space.6}", "$type": "dimension" },
+      "heading-after": { "$value": "{space.3}", "$type": "dimension" },
+      "list-indent":{ "$value": "{space.6}", "$type": "dimension" },
+      "list-gap":   { "$value": "{space.1-5}", "$type": "dimension" }
+    },
+
+    "kbd": {
+      "height":    { "$value": "20px", "$type": "dimension" },
+      "padding-x": { "$value": "{space.1-5}", "$type": "dimension" },
+      "radius":    { "$value": "{radius.xs}", "$type": "dimension" },
+      "bg":        { "$value": "{color.surface.default}", "$type": "color" },
+      "border":    { "$value": "{color.border.default}", "$type": "color" },
+      "text":      { "$value": "{color.text.secondary}", "$type": "color" }
+    },
+
+    "split": {
+      "handle":       { "$value": "{space.2}", "$type": "dimension", "$description": "분할 손잡이 히트 폭 8. 보이는 선은 hairline" },
+      "handle-active":{ "$value": "{color.border.brand}", "$type": "color" }
+    },
+
+    "progress": {
+      "height": { "$value": "4px", "$type": "dimension" },
+      "track":  { "$value": "{color.surface.sunken}", "$type": "color" },
+      "fill":   { "$value": "{color.action.primary.bg}", "$type": "color", "$description": "업로드·다운로드·변환 진행. 에이전트 실행 진행은 run.progress-fill(민트)" }
+    },
+
+    "meta-list": {
+      "$description": "결과물 상세 메타데이터(dl). ID·형식·크기·해시·생성·보존·정책.",
+      "term-width": { "$value": "112px", "$type": "dimension" },
+      "row-gap":    { "$value": "{space.2}", "$type": "dimension" },
+      "col-gap":    { "$value": "{space.4}", "$type": "dimension" }
+    },
+
+    "banner": {
+      "$description": "헤더 아래 전폭 띠(오프라인·업데이트·설치 안내·재인증 필요).",
+      "padding-x": { "$value": "{space.4}", "$type": "dimension" },
+      "padding-y": { "$value": "{space.2}", "$type": "dimension" },
+      "gap":       { "$value": "{space.2}", "$type": "dimension" }
+    },
+
+    "hit-area": {
+      "$description": "시각 크기가 44 보다 작은 컨트롤의 터치 영역 확장(::after inset 음수).",
+      "inset": { "$value": "-8px", "$type": "dimension", "$description": "32px 컨트롤 → 48px 영역" }
+    }
+  }
+}
