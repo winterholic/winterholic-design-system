@@ -43,6 +43,10 @@
 .tk-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--tk-focus-ring-width) var(--tk-color-interactive-focus-ring); }
 .tk-menu__item[aria-checked="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
 .tk-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
+/* 커스텀 Select(form.css)의 목록: 트리거 폭을 따라가고, 고른 값은 aria-selected 로 표시한다 */
+.tk-select > .tk-menu { right: 0; max-width: none; }
+.tk-menu__item[role="option"][aria-selected="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
+.tk-menu__item[role="option"][aria-selected="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
 .tk-menu__item--danger, .tk-menu__item--danger > .tk-icon { color: var(--tk-color-text-danger); }
 .tk-menu__item[aria-disabled="true"] { color: var(--tk-color-text-disabled); cursor: not-allowed; }
 .tk-menu__meta { margin-left: auto; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }

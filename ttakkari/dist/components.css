@@ -269,7 +269,7 @@
 .tk-error > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
 
 /* Input · Textarea · Select 공통 상자 */
-.tk-input, .tk-textarea, .tk-select > select {
+.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger {
   --tk-_h: var(--tk-size-control-md);
   width: 100%; min-width: 0; height: var(--tk-_h); margin: 0;
   padding-inline: var(--tk-component-input-padding-x);
@@ -279,18 +279,18 @@
   transition: border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), box-shadow var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
 }
 .tk-input::placeholder, .tk-textarea::placeholder { color: var(--tk-color-text-placeholder); opacity: 1; }
-@media (hover: hover) { :is(.tk-input, .tk-textarea, .tk-select > select):hover { border-color: var(--tk-component-input-border-hover); } }
+@media (hover: hover) { :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):hover { border-color: var(--tk-component-input-border-hover); } }
 /* 포커스: 테두리 색 + 안쪽 1 을 더해 2 로 보이게 한다(바깥 링 대신. 입력은 줄지어 놓여 링이 겹친다) */
-:is(.tk-input, .tk-textarea, .tk-select > select):focus-visible {
+:is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):focus-visible {
   outline: none; border-color: var(--tk-component-input-border-focus);
   box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-focus);
 }
-:is(.tk-input, .tk-textarea, .tk-select > select)[aria-invalid="true"] { border-color: var(--tk-component-input-border-error); }
-:is(.tk-input, .tk-textarea, .tk-select > select)[aria-invalid="true"]:focus-visible { box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-error); }
-:is(.tk-input, .tk-textarea, .tk-select > select):disabled { background: var(--tk-color-surface-disabled); color: var(--tk-color-text-disabled); border-color: var(--tk-color-action-disabled-border); cursor: not-allowed; }
+:is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger)[aria-invalid="true"] { border-color: var(--tk-component-input-border-error); }
+:is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger)[aria-invalid="true"]:focus-visible { box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-error); }
+:is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):disabled { background: var(--tk-color-surface-disabled); color: var(--tk-color-text-disabled); border-color: var(--tk-color-action-disabled-border); cursor: not-allowed; }
 :is(.tk-input, .tk-textarea):read-only:not(:disabled) { background: var(--tk-color-surface-subtle); border-style: dashed; }
-.tk-input--sm, .tk-select--sm > select { --tk-_h: var(--tk-size-control-sm); }
-.tk-input--lg, .tk-select--lg > select { --tk-_h: var(--tk-size-control-lg); padding-inline: var(--tk-space-4); }
+.tk-input--sm, .tk-select--sm > :is(select, .tk-select__trigger) { --tk-_h: var(--tk-size-control-sm); }
+.tk-input--lg, .tk-select--lg > :is(select, .tk-select__trigger) { --tk-_h: var(--tk-size-control-lg); padding-inline: var(--tk-space-4); }
 .tk-input--mono { font-family: var(--tk-font-family-mono); font-variant-ligatures: none; }
 
 .tk-textarea {
@@ -300,7 +300,11 @@
 
 /* Select: 래퍼(.tk-select) 안에 네이티브 select. 화살표는 currentColor 마스크라 다크에서도 토큰 색 */
 .tk-select { position: relative; display: block; min-width: 0; }
-.tk-select > select { appearance: none; padding-right: calc(var(--tk-component-input-padding-x) + var(--tk-size-icon-sm) + var(--tk-space-2)); cursor: pointer; }
+.tk-select > select, .tk-select__trigger { appearance: none; padding-right: calc(var(--tk-component-input-padding-x) + var(--tk-size-icon-sm) + var(--tk-space-2)); cursor: pointer; }
+/* 커스텀 Select: 같은 래퍼 안에 button.tk-select__trigger(role="combobox" aria-haspopup="listbox") + .tk-menu(role="listbox", 항목 role="option" aria-selected).
+   OS 팝업 대신 시스템 메뉴 모양으로 고를 때. 목록은 트리거 폭을 따라간다 */
+.tk-select__trigger { display: flex; align-items: center; text-align: left; }
+.tk-select__value { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tk-select::after {
   content: ""; position: absolute; top: 50%; right: var(--tk-component-input-padding-x);
   width: var(--tk-size-icon-sm); height: var(--tk-size-icon-sm); transform: translateY(-50%); pointer-events: none;
@@ -575,6 +579,10 @@
 .tk-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--tk-focus-ring-width) var(--tk-color-interactive-focus-ring); }
 .tk-menu__item[aria-checked="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
 .tk-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
+/* 커스텀 Select(form.css)의 목록: 트리거 폭을 따라가고, 고른 값은 aria-selected 로 표시한다 */
+.tk-select > .tk-menu { right: 0; max-width: none; }
+.tk-menu__item[role="option"][aria-selected="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
+.tk-menu__item[role="option"][aria-selected="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
 .tk-menu__item--danger, .tk-menu__item--danger > .tk-icon { color: var(--tk-color-text-danger); }
 .tk-menu__item[aria-disabled="true"] { color: var(--tk-color-text-disabled); cursor: not-allowed; }
 .tk-menu__meta { margin-left: auto; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }

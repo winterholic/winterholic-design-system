@@ -73,6 +73,21 @@ prose 안의 맨 `<a>` 는 클래스 없이 같은 모양. 색만으로 링크�
 
 글자는 언제나 16(iOS 확대 방지). `--mono` 는 기계값(경로·ID).
 
+**Select 는 커스텀이 기본이다.** 네이티브 `<select>` 는 OS 팝업(맥 체크 목록·안드로이드 휠)으로 열려 화면 톤이 끊긴다. 같은 `.tk-select` 래퍼에 트리거 버튼 + 목록을 넣는다.
+
+```html
+<span class="tk-select">
+  <button class="tk-select__trigger" id="eng" type="button" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-controls="eng-list">
+    <span class="tk-select__value">Claude Code</span>
+  </button>
+  <div class="tk-menu" id="eng-list" role="listbox" aria-labelledby="eng-label" hidden>
+    <button class="tk-menu__item" role="option" aria-selected="true" type="button" tabindex="-1">Claude Code</button>
+    <button class="tk-menu__item" role="option" aria-selected="false" type="button" tabindex="-1">Codex</button>
+  </div>
+</span>
+```
+상자·크기·포커스·invalid·disabled 는 네이티브와 같다(같은 선택자). 목록은 트리거 폭을 따라가고 고른 항목에 ✓. 키보드: 트리거에서 ↓/↑/Enter/Space 열기(고른 항목에 포커스), 목록에서 ↓/↑/Home/End 이동, Enter·Space 고르기, Esc 닫고 트리거로, Tab 닫기, 글자 점프, 바깥 클릭 닫기. tk.js 는 아직 이 동작을 넣지 않았다(React `ui/Select` 가 구현). 항목이 많아 검색이 필요하면(20개 이상) Select 가 아니라 검색 입력 + List.
+
 | 상태 | 처리 |
 |---|---|
 | focus-visible | 테두리 + 안쪽 1px = 2px 파랑 |

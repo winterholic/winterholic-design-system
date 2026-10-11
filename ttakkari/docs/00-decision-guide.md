@@ -151,6 +151,7 @@
 | 같은 화면 안 내용 전환(정보·기록) | Tabs (`role="tablist"`) | 버튼 여러 개 + 숨김 |
 | 2~4개 짧은 상호 배타 옵션(목록·격자) | Segmented | Tabs |
 | 결과물 형식 거르기 | Filter chip(`aria-pressed`) 줄 | Select |
+| 폼에서 5개 이상 중 하나 고르기(엔진·모델·보존 기간) | 커스텀 Select(`.tk-select__trigger` + `role="listbox"`) | 네이티브 `<select>`(OS 팝업) |
 | 후속 지시 제안 | Suggestion chip(`data-tk-suggest`, 누르면 컴포저에 채움) | 바로 보내는 버튼 |
 | 지금 보는 결과물을 다음 지시에 붙이기 | Context chip(`.tk-chip--context`) | 메시지에 파일명 타이핑 |
 | 에이전트가 하는 일 | Run card + Steps (+ Log 미리보기) | 스피너만 |

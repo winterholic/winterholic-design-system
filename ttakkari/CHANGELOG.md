@@ -1,5 +1,10 @@
 # Changelog — Ttakkari Design System
 
+## 1.1.0 — 2026-10-11
+
+### Components
+- 커스텀 Select: `.tk-select > button.tk-select__trigger[role=combobox]` + `.tk-menu[role=listbox]` > `.tk-menu__item[role=option][aria-selected]`. 네이티브 select 와 같은 상자·크기·상태 선택자를 쓰고, 목록은 트리거 폭을 따라간다. 네이티브 `<select>` 가 OS 팝업으로 열려 화면 톤이 끊기던 문제(docs/06 §4, docs/00 §7). tk.js 동작은 아직 없다.
+
 ## 1.0.0 — 2026-10-09
 
 첫 공개. Winterholic Ttakkari(원격 AI 에이전트 PWA)의 채팅·작업 공간·보관함·파일 찾기가 공유하는 foundation 과 컴포넌트.
