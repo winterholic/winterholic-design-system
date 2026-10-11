@@ -293,7 +293,7 @@ TK.toast({ message: '회의록 요약이 끝났어요 · 결과물 2', tone: 'su
 - **Status**(`.tk-status --success --danger --warning --agent`, `role="status"`): 버튼 옆·화면 안 한 줄 결과.
 - **Spinner**(`.tk-spinner --sm --xs`): 1초 안쪽. 짧은 대기에는 띄우지 않는다(10 §1).
 - **Skeleton**(`.tk-skeleton --text --block --glyph`): 실제와 같은 개수·모양. 정지.
-- **Progress**(`.tk-progress`, `--tk-progress: 0~1` 또는 `data-indeterminate`, `role="progressbar"`): 업로드·다운로드·변환은 파랑, 에이전트 실행은 `--agent`(민트).
+- **Progress**(`.tk-progress`, `--tk-progress: 0~1` 또는 `data-indeterminate`, `role="progressbar"`): 업로드·다운로드·변환은 파랑, 에이전트 실행은 `--agent`(민트). 한도·용량 계기판은 `--warning`(80%↑)·`--danger`(95%↑), 굵게 `--lg`. 색만으로 알리지 않고 퍼센트 글자를 함께 둔다.
 
 ## 23. Avatar · Dot · Presence · Banner · Kbd
 

@@ -213,6 +213,10 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 }
 .tk-progress::before { content: ""; position: absolute; inset: 0; transform-origin: left center; transform: scaleX(var(--tk-progress, 0)); border-radius: inherit; background: var(--tk-_fill, var(--tk-component-progress-fill)); transition: transform var(--tk-motion-duration-normal) var(--tk-motion-easing-standard); }
 .tk-progress--agent { --tk-_fill: var(--tk-component-run-progress-fill); background: var(--tk-component-run-progress-track); }
+/* 한도·용량처럼 "얼마나 찼나"를 보이는 막대: 80% 이상 주의, 95% 이상 위험(사용량 계기판) */
+.tk-progress--warning { --tk-_fill: var(--tk-color-status-warning-icon); }
+.tk-progress--danger { --tk-_fill: var(--tk-color-status-danger-icon); }
+.tk-progress--lg { height: calc(var(--tk-component-progress-height) * 2); }
 .tk-progress[data-indeterminate]::before { width: 40%; transform: none; animation: tk-indeterminate calc(var(--tk-motion-duration-live) * 0.9) var(--tk-motion-easing-standard) infinite; }
 @keyframes tk-indeterminate { from { translate: -100% 0; } to { translate: 250% 0; } }
 @media (prefers-reduced-motion: reduce) { .tk-progress[data-indeterminate]::before { animation: none; width: 100%; opacity: var(--tk-opacity-muted); } }
