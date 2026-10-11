@@ -205,7 +205,7 @@ prose 안의 맨 `<a>` 는 클래스 없이 같은 모양. 색만으로 링크�
   </div>
 </div>
 ```
-행동 목록(데스크톱). 항목 높이 40, 상자 radius 12 + `shadow.md`, `--end` 오른쪽, `--up` 위로(화면 아래쪽 트리거). 값 고르기는 `menuitemradio` + `aria-checked` + 트리거 안 `[data-tk-menu-value]`. tk.js: ↓/↑ 열기, Home·End, 글자 점프, Esc 닫고 트리거로 복귀, Tab 닫기, 바깥 클릭 닫기. **모바일에서 행동이 넷 이상이면 Menu 대신 Sheet**(§15).
+행동 목록(데스크톱). 항목 높이 40, 상자 radius 12 + `shadow.md`, `--end` 오른쪽, `--up` 위로(화면 아래쪽 트리거). 값 고르기는 `menuitemradio` + `aria-checked` + 트리거 안 `[data-tk-menu-value]`. tk.js: ↓/↑ 열기, Home·End, 글자 점프, Esc 닫고 트리거로 복귀, Tab 닫기, 바깥 클릭 닫기. **모바일에서 행동이 넷 이상이면 Menu 대신 Sheet**(§15). 켜고 끄는 항목(테마·알림)은 `role="menuitemcheckbox"` + `aria-checked` + 뒤에 `<span class="tk-menu__switch" aria-hidden="true">`. 눌러도 메뉴를 닫지 않는다(상태가 바로 보이게).
 
 ## 14. Dialog
 

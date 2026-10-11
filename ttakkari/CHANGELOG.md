@@ -4,6 +4,8 @@
 
 ### Components
 - 커스텀 Select: `.tk-select > button.tk-select__trigger[role=combobox]` + `.tk-menu[role=listbox]` > `.tk-menu__item[role=option][aria-selected]`. 네이티브 select 와 같은 상자·크기·상태 선택자를 쓰고, 목록은 트리거 폭을 따라간다. 네이티브 `<select>` 가 OS 팝업으로 열려 화면 톤이 끊기던 문제(docs/06 §4, docs/00 §7). tk.js 동작은 아직 없다.
+- `.tk-presence` 를 `<p>` 로 쓰면 문단 기본 여백이 붙던 것을 0 으로(사이드바 하단 연결 상태가 떠 보였다).
+- Menu 토글 항목: `role="menuitemcheckbox"` + `.tk-menu__switch`. ✓ 대신 Switch 모양(docs/06 §13).
 
 ## 1.0.0 — 2026-10-09
 

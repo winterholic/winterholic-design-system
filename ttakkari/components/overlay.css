@@ -43,6 +43,24 @@
 .tk-menu__item:focus-visible { box-shadow: inset 0 0 0 var(--tk-focus-ring-width) var(--tk-color-interactive-focus-ring); }
 .tk-menu__item[aria-checked="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }
 .tk-menu__item[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--tk-color-text-brand); }
+/* 메뉴 안 즉시 토글(테마·알림 같은 켜고 끄기): role="menuitemcheckbox" + aria-checked + 뒤에 .tk-menu__switch(장식).
+   값 고르기의 ✓ 대신 Switch 모양으로 상태를 보인다 */
+.tk-menu__item[role="menuitemcheckbox"]::after { content: none; }
+.tk-menu__item[role="menuitemcheckbox"][aria-checked="true"] { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-regular); }
+.tk-menu__switch {
+  position: relative; flex: none; margin-left: auto;
+  width: var(--tk-component-choice-switch-width); height: var(--tk-component-choice-switch-height);
+  border-radius: var(--tk-radius-full); background: var(--tk-component-choice-switch-track);
+  transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-menu__switch::before {
+  content: ""; position: absolute; top: 50%; left: calc((var(--tk-component-choice-switch-height) - var(--tk-component-choice-switch-thumb)) / 2);
+  width: var(--tk-component-choice-switch-thumb); height: var(--tk-component-choice-switch-thumb);
+  border-radius: var(--tk-radius-full); background: var(--tk-component-choice-switch-thumb-color); box-shadow: var(--tk-shadow-xs);
+  transform: translateY(-50%); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
+}
+.tk-menu__item[aria-checked="true"] > .tk-menu__switch { background: var(--tk-component-choice-bg-checked); }
+.tk-menu__item[aria-checked="true"] > .tk-menu__switch::before { transform: translate(calc(var(--tk-component-choice-switch-width) - var(--tk-component-choice-switch-height)), -50%); }
 /* 커스텀 Select(form.css)의 목록: 트리거 폭을 따라가고, 고른 값은 aria-selected 로 표시한다 */
 .tk-select > .tk-menu { right: 0; max-width: none; }
 .tk-menu__item[role="option"][aria-selected="true"] { color: var(--tk-color-interactive-selected-text); font-weight: var(--tk-font-weight-medium); }

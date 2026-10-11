@@ -75,7 +75,7 @@
 .tk-divider--subtle { border-top-color: var(--tk-color-border-subtle); margin-block: var(--tk-space-4); }
 
 /* 컴포넌트 안 문단 요소의 브라우저 기본 margin 을 끈다. 간격은 컴포넌트의 gap 이 정한다(p 로 짠 메타 줄이 헤더 높이를 넘던 문제) */
-:where(.tk-header__meta, .tk-sidebar__label, .tk-thread__day, .tk-message__meta, .tk-composer__hint, .tk-run__meta, .tk-list__meta, .tk-artifact-card__meta, .tk-message--system > *, .tk-session__meta, .tk-filterbar__count) { margin: 0; }
+:where(.tk-header__meta, .tk-sidebar__label, .tk-thread__day, .tk-message__meta, .tk-composer__hint, .tk-run__meta, .tk-list__meta, .tk-artifact-card__meta, .tk-message--system > *, .tk-session__meta, .tk-filterbar__count, .tk-presence) { margin: 0; }
 
 /* hidden 속성이 컴포넌트의 display 를 이긴다(탭 패널로 쓰는 .tk-viewer 가 display:flex 로 hidden 을 덮던 문제) */
 [class*="tk-"][hidden] { display: none; }
