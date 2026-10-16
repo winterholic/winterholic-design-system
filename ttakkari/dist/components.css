@@ -909,7 +909,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
   position: relative; display: inline-grid; place-items: center; flex: none;
   width: var(--tk-_size); height: var(--tk-_size); border-radius: var(--tk-component-avatar-radius);
   background: var(--tk-color-surface-muted); color: var(--tk-color-text-secondary);
-  font: var(--tk-font-weight-semibold) calc(var(--tk-_size) * 0.42) / 1 var(--tk-font-family-sans);
+  font: var(--tk-font-weight-semibold) max(var(--tk-font-size-xs), calc(var(--tk-_size) * 0.42)) / 1 var(--tk-font-family-sans); /* 작은 아바타도 글자 12 */
 }
 .tk-avatar--sm { --tk-_size: var(--tk-component-avatar-sm); }
 .tk-avatar--lg { --tk-_size: var(--tk-component-avatar-lg); }
