@@ -201,7 +201,7 @@ const contrastReport = [...checkContrast(L, 'light'), ...checkContrast(D, 'dark'
 
 // 컴포넌트 CSS lint: 값은 전부 var(--tk-…) 로만. 미디어 쿼리 폭만 예외(CSS 변수를 못 쓴다)이고 breakpoint 토큰 값과 같아야 한다.
 const BREAKPOINTS = new Set([...L].filter(([k]) => k.startsWith('breakpoint.')).map(([, t]) => t.resolved));
-const COMPONENT_ORDER = ['base', 'layout', 'button', 'form', 'navigation', 'overlay', 'content', 'chat', 'run', 'artifact', 'viewer', 'code', 'app', 'utilities'];
+const COMPONENT_ORDER = ['base', 'layout', 'button', 'form', 'navigation', 'overlay', 'content', 'chat', 'run', 'artifact', 'viewer', 'code', 'data', 'workbench', 'app', 'utilities'];
 const componentFiles = readdirSync(COMPONENTS).filter((f) => f.endsWith('.css'));
 for (const f of componentFiles) if (!COMPONENT_ORDER.includes(f.replace('.css', ''))) errors.push(`components/${f} 가 COMPONENT_ORDER 에 없음`);
 const componentSources = COMPONENT_ORDER.filter((n) => componentFiles.includes(`${n}.css`)).map((n) => ({ name: n, css: readFileSync(join(COMPONENTS, `${n}.css`), 'utf8') }));
@@ -216,7 +216,7 @@ const LINT = [
   [/!important/, '!important'],
 ];
 // 토큰이 아닌데 컴포넌트가 읽어도 되는 외부 계약 변수. --tk-zoom 은 뷰어 배율(JS·React 가 쓴다).
-const EXTRA_VARS = new Set(['--tk-zoom', '--tk-progress']);
+const EXTRA_VARS = new Set(['--tk-zoom', '--tk-progress', '--tk-pan-x', '--tk-pan-y']);
 const knownVars = new Set([...L.keys()].map((k) => `--${P}-${k.replaceAll('.', '-')}`));
 for (const { name, css } of componentSources) {
   const lines = css.split('\n');
@@ -238,6 +238,29 @@ for (const { name, css } of componentSources) {
       if (!knownVars.has(v) && !EXTRA_VARS.has(v)) errors.push(`components/${name}.css:${i + 1} 없는 토큰 변수 ${v}`);
     }
   });
+}
+
+// 레이아웃 실수 lint(규칙 단위): 같은 규칙 본문 안에서 짝이 맞아야 하는 것들. 이유가 있으면 본문에 /* lint-ok: 이유 */ 를 적는다.
+// 사고 사례와 고치는 법은 docs/22-ui-error-prevention.md. (화면 폭 넘침·터치·간격의 실제 렌더 검사는 scripts/ttakkari-layout.check.mjs)
+for (const { name, css } of componentSources) {
+  for (const m of css.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    const raw = m[2];
+    if (/lint-ok:/.test(raw)) continue;
+    const sel = m[1].replace(/\/\*[\s\S]*?\*\//g, '').trim().replace(/\s+/g, ' ');
+    if (sel.startsWith('@') || /^(from|to|\d+%)/.test(sel)) continue;
+    const body = raw.replace(/\/\*[\s\S]*?\*\//g, '');
+    const at = (label) => errors.push(`components/${name}.css 레이아웃 lint [${label}] ${sel.slice(0, 90)}`);
+    // 1) nowrap 은 넘칠 때 갈 곳이 있어야 한다: 말줄임·가로 스크롤·줄지 않는 요소(flex: none)
+    if (/white-space:\s*nowrap/.test(body) && !/text-overflow|overflow(-x)?:\s*(hidden|auto|clip|scroll)|flex:\s*none|flex:\s*0 0|flex-shrink:\s*0/.test(body)) at('nowrap 에 말줄임·스크롤·flex:none 이 없다');
+    // 2) 화면 가장자리에 붙는 고정 요소는 safe-area 를 알아야 한다
+    if (/position:\s*fixed/.test(body) && /(?<![-\w])bottom:|inset:\s*[^;]*\b0\b/.test(body) && !/safe-area-inset-bottom/.test(body)) at('position: fixed 가 아래에 붙는데 safe-area-inset-bottom 이 없다');
+    // 3) vh 는 모바일 주소창에 따라 틀어진다: dvh·svh
+    if (/(?<![\w-])\d*\.?\d+vh\b/.test(body)) at('vh 대신 dvh/svh');
+    // 4) 100vw 는 세로 스크롤바·safe-area 를 포함해 넘친다: 폭은 %·dvw·container 로 (min()/calc() 안의 뺄셈은 허용)
+    if (/(?<![-\w(])100vw\s*;/.test(body) || /width:\s*100vw\b/.test(body)) at('width: 100vw 직접값');
+    // 5) 자식 margin 으로 간격을 만들지 않는다: 부모 gap 이 정한다(margin-top 양수 직접값. auto·0·음수·calc 보정은 허용)
+    if (/(?<![\w-])margin(-top|-block-start)?:\s*var\(--tk-space-(?!0\b)[\w-]+\)\s*(;|$)/.test(body) && !/(^|;)\s*margin-bottom/.test(body) && /^\.tk-[a-z0-9-]+__[a-z0-9-]+$/.test(sel) && !/last-child|first-child/.test(sel)) at('부모 gap 대신 자식 margin-top');
+  }
 }
 
 // 이름 충돌 검사: (1) 글자 역할 클래스(.tk-<typography>)가 컴포넌트 블록과 같은 이름이면 안 된다(.tk-code 가 코드 블록과 글자 스타일 둘을 뜻하던 문제).

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>원격 조종 · Ttakkari 아키타입</title>
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../../dist/tokens.css">
+<link rel="stylesheet" href="../../dist/typography.css">
+<link rel="stylesheet" href="../../dist/prose.css">
+<link rel="stylesheet" href="../../dist/components.css">
+<link rel="stylesheet" href="../examples.css">
+<script src="../../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="../icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="아키타입">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="index.html"><img src="../../assets/brand/logo-mark.svg" alt=""><span>Archetypes</span></a></div>
+    <nav class="tk-sidebar" aria-label="아키타입 목록"><div class="tk-nav"><a class="tk-nav__link" href="repo-browser.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-branch"/></svg>저장소 열람</a><a class="tk-nav__link" href="pull-request.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-pull-request"/></svg>PR · diff</a><a class="tk-nav__link" href="notebook.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-book-open"/></svg>자료 노트</a><a class="tk-nav__link" href="research.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-flask"/></svg>연구 지표</a><a class="tk-nav__link" href="editor.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-pencil"/></svg>글쓰기</a><a class="tk-nav__link" href="graph.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>구조 그래프</a><a class="tk-nav__link" href="market.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chart-line"/></svg>시장 대시보드</a><a class="tk-nav__link" href="creative.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-palette"/></svg>창작 작업대</a><a class="tk-nav__link" href="remote.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-monitor"/></svg>원격 조종</a><a class="tk-nav__link" href="gallery.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg>결과 갤러리·비교</a></div></nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-header__menu" href="index.html" aria-label="아키타입 목록"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1 title="원격 조종">원격 조종</h1>
+            <p class="tk-header__meta" title="&lt;span class=&quot;tk-dot tk-dot--online&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;&lt;span&gt;Mac Studio · VPN&lt;/span&gt;"><span class="tk-dot tk-dot--online" aria-hidden="true"></span><span>Mac Studio · VPN</span></p>
+          </div>
+          <div class="tk-header__actions">
+            
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-pressed="false" aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+
+      <p class="tk-banner" role="status"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield"/></svg><span class="tk-banner__text">같은 VPN 안에서만 연결돼요. 이 조종은 Mac Studio 에서 승인된 기기만 할 수 있어요.</span></p>
+      <div class="tk-screen__body">
+        <div class="tk-container tk-container--lg tk-stack ex-pad">
+          <div class="tk-cluster tk-cluster--between"><span class="tk-presence"><span class="tk-dot tk-dot--online" aria-hidden="true"></span>Mac Studio · 연결됨</span><span class="tk-text-tertiary tk-caption tk-truncate" title="VPN 192.168.0.10 · 지연 18 ms">VPN 192.168.0.10 · 지연 18 ms</span></div>
+
+          <section class="tk-stream" data-state="live" aria-label="원격 화면 · 연결됨">
+            <div class="tk-stream__view" tabindex="0" aria-label="원격 화면. 누르면 마우스 클릭으로 전달돼요">
+              <div class="ex-desktop" aria-hidden="true"><div class="ex-desktop__win"></div><div class="ex-desktop__win ex-desktop__win--b"></div></div>
+              <div class="tk-stream__hud"><span data-quality="good">18 ms</span><span>30 fps</span><span>1080p</span></div>
+              <div class="tk-stream__status" role="status"></div>
+            </div>
+            <div class="tk-stream__bar" role="toolbar" aria-label="원격 제어">
+              <button class="tk-icon-button" type="button" aria-label="키보드 열기" aria-pressed="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-keyboard"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="마우스 모드" aria-pressed="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-mouse-pointer"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="화질"><svg class="tk-icon" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="전체 화면"><svg class="tk-icon" aria-hidden="true"><use href="#i-maximize"/></svg></button>
+              <span class="tk-stream__spacer"></span>
+              <button class="tk-button tk-button--sm tk-button--danger" type="button">연결 끊기</button>
+            </div>
+          </section>
+          <div class="tk-keybar" role="group" aria-label="특수 키"><button class="tk-keybar__key" type="button">Esc</button><button class="tk-keybar__key" type="button">Tab</button><button class="tk-keybar__key" type="button" aria-pressed="false">Ctrl</button><button class="tk-keybar__key" type="button" aria-pressed="false">Alt</button><button class="tk-keybar__key" type="button" aria-pressed="false">⌘</button><button class="tk-keybar__key" type="button" aria-pressed="false">Shift</button><button class="tk-keybar__key" type="button">←</button><button class="tk-keybar__key" type="button">↑</button><button class="tk-keybar__key" type="button">↓</button><button class="tk-keybar__key" type="button">→</button><button class="tk-keybar__key" type="button">Del</button></div>
+          <h2 class="tk-caption">연결 상태 견본</h2>
+          <div class="ex-states__grid">
+
+          <section class="tk-stream" data-state="connecting" aria-label="원격 화면 · 연결 중">
+            <div class="tk-stream__view" tabindex="0" aria-label="원격 화면. 누르면 마우스 클릭으로 전달돼요">
+              <div class="ex-desktop" aria-hidden="true"><div class="ex-desktop__win"></div><div class="ex-desktop__win ex-desktop__win--b"></div></div>
+              <div class="tk-stream__hud"><span data-quality="good">18 ms</span><span>30 fps</span><span>1080p</span></div>
+              <div class="tk-stream__status" role="status"><span class="tk-spinner" aria-hidden="true"></span><span>Mac Studio 에 연결하는 중이에요</span></div>
+            </div>
+            <div class="tk-stream__bar" role="toolbar" aria-label="원격 제어">
+              <button class="tk-icon-button" type="button" aria-label="키보드 열기" aria-pressed="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-keyboard"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="마우스 모드" aria-pressed="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-mouse-pointer"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="화질"><svg class="tk-icon" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="전체 화면"><svg class="tk-icon" aria-hidden="true"><use href="#i-maximize"/></svg></button>
+              <span class="tk-stream__spacer"></span>
+              <button class="tk-button tk-button--sm tk-button--danger" type="button">연결 끊기</button>
+            </div>
+          </section>
+
+          <section class="tk-stream" data-state="lost" aria-label="원격 화면 · 끊김">
+            <div class="tk-stream__view" tabindex="0" aria-label="원격 화면. 누르면 마우스 클릭으로 전달돼요">
+              <div class="ex-desktop" aria-hidden="true"><div class="ex-desktop__win"></div><div class="ex-desktop__win ex-desktop__win--b"></div></div>
+              <div class="tk-stream__hud"><span data-quality="good">18 ms</span><span>30 fps</span><span>1080p</span></div>
+              <div class="tk-stream__status" role="status"><span>연결이 끊겼어요. 같은 VPN 인지 확인해 주세요.</span><button class="tk-button tk-button--sm tk-button--primary" type="button">다시 연결</button></div>
+            </div>
+            <div class="tk-stream__bar" role="toolbar" aria-label="원격 제어">
+              <button class="tk-icon-button" type="button" aria-label="키보드 열기" aria-pressed="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-keyboard"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="마우스 모드" aria-pressed="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-mouse-pointer"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="화질"><svg class="tk-icon" aria-hidden="true"><use href="#i-sliders"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="전체 화면"><svg class="tk-icon" aria-hidden="true"><use href="#i-maximize"/></svg></button>
+              <span class="tk-stream__spacer"></span>
+              <button class="tk-button tk-button--sm tk-button--danger" type="button">연결 끊기</button>
+            </div>
+          </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역"><a class="tk-tabbar__item" href="../chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>채팅</span></a><a class="tk-tabbar__item" href="../workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg><span>작업 공간</span></a><a class="tk-tabbar__item" href="../library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg><span>보관함</span></a><a class="tk-tabbar__item" href="../files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg><span>파일</span></a></nav>
+</div>
+
+</body>
+</html>

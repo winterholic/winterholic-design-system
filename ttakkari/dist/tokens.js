@@ -2786,6 +2786,13 @@ export const tokens = {
         "value": "#3D4642",
         "dark": "#D1DDE0"
       }
+    },
+    "art": {
+      "halo": {
+        "var": "var(--tk-color-art-halo)",
+        "value": "#F4F4ED00",
+        "dark": "#F4F4ED"
+      }
     }
   },
   "component": {

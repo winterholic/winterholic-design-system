@@ -4,9 +4,10 @@
 
 ## 시작할 때
 1. `docs/00-decision-guide.md` 를 읽는다. 상황별 토큰·클래스가 표로 있다. 애매하면 `docs/17-situations.md`.
-2. 화면이 어느 영역인지 정하고 `examples/` 의 가장 가까운 템플릿(chat·workspace·library·files·auth)을 기준으로 시작한다. 셸은 `docs/14-page-patterns.md`.
+2. 새 화면이면 **`docs/21-page-archetypes.md` 에서 아키타입을 먼저 고르고** `examples/archetypes/` 의 예제를 복사해서 시작한다(저장소·PR·자료 노트·연구 지표·글쓰기·그래프·시장·창작·원격 조종·갤러리). 기본 영역 5종(chat·workspace·library·files·auth)과 셸은 `docs/14-page-patterns.md`.
 3. 마크업은 `docs/06-components.md`(core) · `07-chat.md` · `08-run-approval.md` · `09-artifact-viewer.md` 의 계약을 그대로 쓴다.
 4. React 로 만들면 `docs/19-react-integration.md`. tk.js 는 React 트리에서 쓰지 않고 같은 동작 계약을 구현한다.
+5. 데이터·도구 화면 부품(표·차트·diff·캔버스·에디터·원격 화면)은 `docs/24-data-workbench-components.md`, 화면이 깨질 때와 새 화면 전에는 `docs/22-ui-error-prevention.md`, 그림 자리는 `docs/23-illustration-assets.md`.
 
 ## 반드시
 - 값은 **토큰만**: `var(--tk-…)`, 컴포넌트 클래스(`.tk-*`), Tailwind 프리셋, 또는 `tokens.js` 의 `.var`.
@@ -20,7 +21,11 @@
 - 결과물은 Artifact ID 로 연다. 에이전트가 준 경로로 URL·다운로드를 만들지 않는다. 정책 표시는 서버 판정 그대로.
 - 다운로드는 언제나 원본("원본 다운로드"). 미리보기를 못 만들면 상태 패널 + 원본 다운로드.
 - 아이콘 버튼에 `aria-label`, 이미지에 `alt`, iframe 에 `sandbox`·`title`. 포커스 링 유지. 터치 44px, 모바일 주 행동 48. 툴팁에만 있는 정보 금지(터치에서 안 뜬다).
-- 모바일 퍼스트: lg 미만은 탭바·바텀 시트·전체 화면 뷰어, `viewport-fit=cover`.
+- 모바일 퍼스트: lg 미만은 탭바·가운데 모달(`.tk-dialog`)·전체 화면 뷰어, `viewport-fit=cover`. 앱은 바텀 시트를 쓰지 않는다(2026-10-13 결정).
+- **간격은 부모가 정한다**: `.tk-stack`·`.tk-cluster`·`.tk-grid` 의 `gap`. 자식에 `margin-top` 으로 간격을 만들지 않는다(이중 간격).
+- **폭은 안쪽에서 정하지 않는다**: flex·grid 자식은 `min-width: 0`, 데이터가 들어가는 버튼·칩·배지의 라벨은 `<span>` 으로 감싼다(말줄임), 넘치는 표·코드·그래프는 그 상자만 가로 스크롤, 말줄임에는 `title`.
+- 터치 컨트롤은 44(히트 영역 포함), 입력은 16, 글자는 12 이상. 화면 끝에 닿는 고정 요소는 safe-area(위·아래·**가로 모드 좌우**)를 안다.
+- 그래프·차트·캔버스는 같은 화면 안에 목록·표 대안을 둔다. 색만으로 상태·증감을 말하지 않는다.
 - 다크 분기(`dark:`·`prefers-color-scheme`)를 컴포넌트에 쓰지 않는다. 토큰이 처리한다.
 
 ## 하지 않는다
@@ -32,12 +37,13 @@
 - 사용자 시드 13색(`brand.*`·`seed.*`) 변경.
 
 ## 토큰·컴포넌트를 고칠 때
-`tokens/src/*.json` 또는 `components/*.css`·`tk.js` 편집 → `node tokens/build.mjs`(실패 메시지를 **값으로** 해결) → `docs/00` 표와 해당 문서 → `examples/preview.html` → `npm test` → 화면이면 `npm run check:ui` → `CHANGELOG.md`.
+`tokens/src/*.json` 또는 `components/*.css`·`tk.js` 편집 → `node tokens/build.mjs`(실패 메시지를 **값으로** 해결. 레이아웃 lint 예외는 규칙 본문에 `/* lint-ok: 이유 */`) → `docs/00` 표와 해당 문서(24) → `examples/preview.html` 또는 `examples/archetypes/` → `npm test` → 화면이면 `npm run check:ui` 와 `npm run check:layout`(위반 0) → `CHANGELOG.md`.
 `tokens/src/palette.json`·`tokens/tokens*.json`·`dist/` 는 생성물이라 직접 고치지 않는다.
 
 ## 완료 전 확인
 ```bash
 node tokens/build.mjs                                                            # ok · … (all pass) · … lint clean
+npm run check:layout                                                              # 레이아웃 검사 … ok · 위반 0
 grep -rnE "#[0-9a-fA-F]{3,8}\b" src --include=*.{css,scss,tsx,ts,jsx}             # 0건(소비 프로젝트)
 grep -rn "dark:" src                                                             # 0건
 ```

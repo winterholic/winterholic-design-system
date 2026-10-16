@@ -125,13 +125,14 @@ await check('다이얼로그·시트: Esc·닫기로 닫히고 연 버튼으로 
     await p.click(`[data-tk-dialog-open="${id}"]`);
     assert.equal(await p.evaluate((i) => document.getElementById(i).open, id), true, `${id} 열림`);
     await p.keyboard.press('Escape');
-    await p.waitForTimeout(50);
+    await p.waitForTimeout(300);
     assert.equal(await p.evaluate((i) => document.getElementById(i).open, id), false, `${id} 닫힘`);
     assert.equal(await p.evaluate(() => document.activeElement.dataset.tkDialogOpen), id);
   }
   // 바텀 시트는 화면 아래에 붙는다(모바일)
   await p.click('[data-tk-dialog-open="ex-sheet"]');
-  await p.waitForTimeout(400); // 진입 애니메이션(translateY) 이 끝난 뒤에 잰다
+  await p.evaluate(() => Promise.all(document.getElementById('ex-sheet').getAnimations().map((a) => a.finished.catch(() => {})))); // 진입 애니메이션(translateY) 이 끝난 뒤에 잰다
+  await p.waitForTimeout(60);
   const gap = await p.evaluate(() => innerHeight - document.getElementById('ex-sheet').getBoundingClientRect().bottom);
   assert.ok(Math.abs(gap) <= 1, `시트가 바닥에서 ${gap}px 떠 있다`);
   await ctx.close();
@@ -227,7 +228,7 @@ await check('작업 공간: 결과물을 고르면 그 뷰어만 보이고, 모�
   assert.equal(await p.evaluate(() => document.getElementById('viewer-dialog').open), true);
   assert.equal(await p.isVisible('#viewer-dialog #v-xls'), true);
   await p.click('#viewer-dialog #v-xls [data-tk-dialog-close]');
-  await p.waitForTimeout(50); // close 이벤트는 다음 작업에서 온다
+  await p.waitForTimeout(300); // close 이벤트는 다음 작업에서 온다
   assert.equal(await p.evaluate(() => document.getElementById('viewer-dialog').open), false);
   assert.equal(await p.evaluate(() => document.getElementById('viewer-host').contains(document.getElementById('v-xls'))), true, '뷰어가 제자리로 돌아오지 않았다');
   await ctx.close();
@@ -297,7 +298,7 @@ await check('툴팁: 키보드 포커스에 즉시 뜨고 Esc 로 닫힌다', as
   assert.equal(label, '원본 다운로드');
   await p.waitForSelector('.tk-tooltip[data-open]', { timeout: 1000 });
   await p.keyboard.press('Escape');
-  await p.waitForTimeout(50);
+  await p.waitForTimeout(300);
   assert.equal(await p.locator('.tk-tooltip[data-open]').count(), 0);
   await ctx.close();
 });

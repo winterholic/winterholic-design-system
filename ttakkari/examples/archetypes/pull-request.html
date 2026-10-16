@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>#128 모바일에서도 diff 를 읽을 수 있게 한다 · Ttakkari 아키타입</title>
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../../dist/tokens.css">
+<link rel="stylesheet" href="../../dist/typography.css">
+<link rel="stylesheet" href="../../dist/prose.css">
+<link rel="stylesheet" href="../../dist/components.css">
+<link rel="stylesheet" href="../examples.css">
+<script src="../../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="../icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="아키타입">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="index.html"><img src="../../assets/brand/logo-mark.svg" alt=""><span>Archetypes</span></a></div>
+    <nav class="tk-sidebar" aria-label="아키타입 목록"><div class="tk-nav"><a class="tk-nav__link" href="repo-browser.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-branch"/></svg>저장소 열람</a><a class="tk-nav__link" href="pull-request.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-pull-request"/></svg>PR · diff</a><a class="tk-nav__link" href="notebook.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-book-open"/></svg>자료 노트</a><a class="tk-nav__link" href="research.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-flask"/></svg>연구 지표</a><a class="tk-nav__link" href="editor.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-pencil"/></svg>글쓰기</a><a class="tk-nav__link" href="graph.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>구조 그래프</a><a class="tk-nav__link" href="market.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chart-line"/></svg>시장 대시보드</a><a class="tk-nav__link" href="creative.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-palette"/></svg>창작 작업대</a><a class="tk-nav__link" href="remote.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-monitor"/></svg>원격 조종</a><a class="tk-nav__link" href="gallery.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg>결과 갤러리·비교</a></div></nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-header__menu" href="index.html" aria-label="아키타입 목록"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1 title="#128 모바일에서도 diff 를 읽을 수 있게 한다">#128 모바일에서도 diff 를 읽을 수 있게 한다</h1>
+            <p class="tk-header__meta" title="&lt;span class=&quot;tk-badge tk-badge--success&quot;&gt;&lt;span&gt;열림&lt;/span&gt;&lt;/span&gt;&lt;span&gt;winterholic → main&lt;/span&gt;"><span class="tk-badge tk-badge--success"><span>열림</span></span><span>winterholic → main</span></p>
+          </div>
+          <div class="tk-header__actions">
+            
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-pressed="false" aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+      <div class="tk-screen__body ex-fill">
+      <div class="tk-panes tk-panes--tabs" data-tk-panes>
+        <div class="tk-panes__tabs tk-tablist tk-tablist--fill" role="tablist" aria-label="영역"><button class="tk-tab" type="button" role="tab" id="t-p-conv" aria-controls="p-conv" aria-selected="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-message-square"/></svg>대화</button><button class="tk-tab" type="button" role="tab" id="t-p-commits" aria-controls="p-commits" aria-selected="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-commit"/></svg>커밋 3</button><button class="tk-tab" type="button" role="tab" id="t-p-files" aria-controls="p-files" aria-selected="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-diff"/></svg>변경 파일 12</button></div>
+        <div class="tk-panes__body"><section class="tk-panes__pane " id="p-conv" aria-labelledby="t-p-conv" data-active>
+          <div class="tk-panes__scroll">
+            <div class="tk-container tk-container--md tk-stack ex-pad">
+              <article class="tk-card">
+                <h2 class="tk-card__title">모바일에서도 diff 를 읽을 수 있게 한다</h2>
+                <div class="tk-card__body tk-prose tk-prose--compact"><p>파일 헤더를 접고 펼 수 있고, 줄 번호 칸은 가로 스크롤에서도 따라온다. <code>wrap</code> 으로 긴 줄을 접어 읽을 수 있다.</p><ul><li>변경 파일 12개</li><li>테스트 18개 추가</li></ul></div>
+              </article>
+              <ul class="tk-checks" aria-label="검사 결과">
+                <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span><strong>lint</strong> · 통과</span></li>
+                <li data-result="pass"><svg class="tk-icon" aria-hidden="true"><use href="#i-circle-check"/></svg><span><strong>vitest</strong> · 312 통과</span></li>
+                <li data-result="warn"><svg class="tk-icon" aria-hidden="true"><use href="#i-warning"/></svg><span><strong>build</strong> · 번들 크기 +4.1 KB(경고)</span></li>
+              </ul>
+              <ol class="tk-timeline" aria-label="활동">
+                <li data-state="succeeded"><span class="tk-timeline__node"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-commit"/></svg></span><div class="tk-timeline__body"><span class="tk-timeline__title">커밋 3개를 올렸어요</span><span class="tk-timeline__meta">winterholic · 2시간 전</span></div></li>
+                <li data-state="waiting"><span class="tk-timeline__node"><svg class="tk-icon" aria-hidden="true"><use href="#i-eye"/></svg></span><div class="tk-timeline__body"><span class="tk-timeline__title">리뷰를 기다리고 있어요</span><span class="tk-timeline__meta">리뷰어 1명 · very-long-reviewer-account-name@example.com 님에게 요청</span></div></li>
+              </ol>
+              <section class="tk-approval" aria-label="병합 승인">
+                <header class="tk-approval__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-hand"/></svg><div><h3 class="tk-approval__title">main 에 병합할까요?</h3><p class="tk-approval__lead">병합은 되돌리기 어려워서 에이전트가 직접 하지 않아요.</p></div></header>
+                <footer class="tk-approval__footer"><button class="tk-button tk-button--lg" type="button">나중에</button><button class="tk-button tk-button--lg tk-button--primary" type="button">병합 승인</button></footer>
+              </section>
+            </div>
+          </div></section><section class="tk-panes__pane " id="p-commits" aria-labelledby="t-p-commits">
+          <div class="tk-panes__scroll"><ul class="tk-list">
+            <li><a class="tk-list__item" href="#"><span class="tk-glyph" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-commit"/></svg></span><span class="tk-list__body"><span class="tk-list__title tk-list__title--wrap">diff 파일 헤더를 접고 펼 수 있게 한다</span><span class="tk-list__meta"><span class="tk-mono">a1b2c3d</span><span>2시간 전</span></span></span></a></li>
+            <li><a class="tk-list__item" href="#"><span class="tk-glyph" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-commit"/></svg></span><span class="tk-list__body"><span class="tk-list__title tk-list__title--wrap">줄 번호 칸을 가로 스크롤에서 고정</span><span class="tk-list__meta"><span class="tk-mono">e4f5a6b</span><span>3시간 전</span></span></span></a></li>
+          </ul></div></section><section class="tk-panes__pane " id="p-files" aria-labelledby="t-p-files">
+          <div class="tk-toolbar" role="toolbar" aria-label="변경 파일 도구">
+            <span class="tk-toolbar__title">파일 12개 중 2개 보는 중</span><span class="tk-toolbar__spacer"></span>
+            <button class="tk-button tk-button--sm" type="button" aria-pressed="false" data-tk-diff-wrap><svg class="tk-icon" aria-hidden="true"><use href="#i-wrap"/></svg><span>줄 바꿈</span></button>
+          </div>
+          <div class="tk-panes__scroll"><div class="tk-container tk-container--lg tk-stack ex-pad">
+            <section class="tk-diff" aria-label="FileDiff.tsx 변경">
+              <header class="tk-diff__file"><button type="button" aria-expanded="true"><span class="tk-diff__path"><span class="tk-diff__dir">front/src/features/viewer/</span><b class="tk-diff__name">FileDiff.tsx</b></span></button><span class="tk-diff__stat"><span>+12</span><span>−3</span></span></header>
+              <div class="tk-diff__body" tabindex="0" role="region" aria-label="FileDiff.tsx 코드"><table class="tk-diff__table"><tbody><tr class="tk-diff__hunk"><td colspan="4">@@ -10,6 +10,14 @@ export function FileDiff</td></tr><tr><td class="tk-diff__no">10</td><td class="tk-diff__no">10</td><td class="tk-diff__sign"></td><td class="tk-diff__code">const hunks = useMemo(() =&gt; splitHunks(file.patch), [file.patch]);</td></tr><tr data-diff="-"><td class="tk-diff__no">11</td><td class="tk-diff__no"></td><td class="tk-diff__sign">−</td><td class="tk-diff__code">return &lt;pre&gt;{file.patch}&lt;/pre&gt;;</td></tr><tr data-diff="+"><td class="tk-diff__no"></td><td class="tk-diff__no">11</td><td class="tk-diff__sign">+</td><td class="tk-diff__code">return (&lt;Diff.File path={file.path} stat={[file.additions, file.deletions]} wrap={wrap}&gt;{hunks.map((h) =&gt; &lt;Diff.Hunk key={h.header} hunk={h} /&gt;)}&lt;/Diff.File&gt;);</td></tr><tr><td class="tk-diff__no">12</td><td class="tk-diff__no">12</td><td class="tk-diff__sign"></td><td class="tk-diff__code">}</td></tr></tbody></table></div>
+            </section>
+            <section class="tk-diff" aria-label="useViewerState.ts 변경">
+              <header class="tk-diff__file"><button type="button" aria-expanded="false"><span class="tk-diff__path"><span class="tk-diff__dir">front/src/features/viewer/hooks/</span><b class="tk-diff__name">useViewerState.ts</b></span></button><span class="tk-diff__stat"><span>+4</span><span>−0</span></span></header>
+              <div class="tk-diff__body" tabindex="0" role="region" aria-label="useViewerState.ts 코드"><table class="tk-diff__table"><tbody><tr class="tk-diff__hunk"><td colspan="4">@@ -1,3 +1,7 @@</td></tr><tr data-diff="+"><td class="tk-diff__no"></td><td class="tk-diff__no">1</td><td class="tk-diff__sign">+</td><td class="tk-diff__code">export function useViewerState(id: string) {</td></tr><tr data-diff="+"><td class="tk-diff__no"></td><td class="tk-diff__no">2</td><td class="tk-diff__sign">+</td><td class="tk-diff__code">  return useQuery({ queryKey: ["viewer", id], queryFn: () =&gt; getArtifact(id) });</td></tr><tr data-diff="+"><td class="tk-diff__no"></td><td class="tk-diff__no">3</td><td class="tk-diff__sign">+</td><td class="tk-diff__code">}</td></tr></tbody></table></div>
+            </section>
+            <aside class="tk-callout tk-callout--note" role="note"><span class="tk-callout__icon"><svg class="tk-icon" aria-hidden="true"><use href="#i-info"/></svg></span><div class="tk-callout__body"><p>나머지 10개 파일은 접혀 있어요. 큰 변경(1,000줄 이상)은 파일 단위로 불러와요.</p></div></aside>
+          </div></div></section></div>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역"><a class="tk-tabbar__item" href="../chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>채팅</span></a><a class="tk-tabbar__item" href="../workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg><span>작업 공간</span></a><a class="tk-tabbar__item" href="../library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg><span>보관함</span></a><a class="tk-tabbar__item" href="../files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg><span>파일</span></a></nav>
+</div>
+
+</body>
+</html>

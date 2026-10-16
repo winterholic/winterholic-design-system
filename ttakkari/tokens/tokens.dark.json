@@ -778,6 +778,11 @@
       "label": {
         "$value": "{graphite.200}"
       }
+    },
+    "art": {
+      "halo": {
+        "$value": "{brand.paper}"
+      }
     }
   }
 }

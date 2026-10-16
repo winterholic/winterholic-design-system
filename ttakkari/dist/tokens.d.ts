@@ -638,6 +638,9 @@ export declare const tokens: {
       axis: { var: string; value: string; dark?: unknown };
       label: { var: string; value: string; dark?: unknown };
     };
+    art: {
+      halo: { var: string; value: string; dark?: unknown };
+    };
   };
   component: {
     button: {

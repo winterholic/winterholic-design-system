@@ -142,7 +142,7 @@
 .tk-segmented--lg { --tk-_h: var(--tk-component-segmented-height-lg); }
 .tk-segmented--block { display: flex; width: 100%; align-self: stretch; }
 .tk-segmented--block > label { flex: 1 1 0; }
-.tk-segmented > label {
+.tk-segmented > label { /* lint-ok: 짧은 선택지 라벨. 줄바꿈하면 높이가 달라진다 */
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
   height: calc(var(--tk-_h) - 2 * var(--tk-component-segmented-padding)); padding-inline: var(--tk-space-3);
   border-radius: calc(var(--tk-component-segmented-radius) - var(--tk-component-segmented-padding));
@@ -151,6 +151,11 @@
   transition: background-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
 }
 .tk-segmented > label > input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; }
+/* 터치: 라벨(보이는 높이 28~36)을 투명 ::after 로 44 까지 넓히고, 짧은 글자도 44 폭은 된다 */
+@media (pointer: coarse) {
+  .tk-segmented > label { min-width: var(--tk-size-touch-target-min); }
+  .tk-segmented > label::after { content: ""; position: absolute; inset: calc(max(var(--tk-space-0), var(--tk-size-touch-target-min) - (var(--tk-_h) - 2 * var(--tk-component-segmented-padding))) / -2) 0; }
+}
 .tk-segmented > label > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
 .tk-segmented > label:hover { color: var(--tk-color-text-primary); }
 .tk-segmented > label:has(> input:checked) { background: var(--tk-component-segmented-thumb); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-xs); }

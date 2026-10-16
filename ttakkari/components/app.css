@@ -2,7 +2,7 @@
    모바일(lg 미만): [헤더] / [화면(스크롤)] / [컴포저] / [탭바]. 데스크톱(lg 이상): [사이드바 | 화면], 화면 안에서 채팅과 작업 공간을 나눈다.
    화면 높이는 dvh 다. 모바일 브라우저 주소창이 접혀도 컴포저·탭바가 키보드 위에 남는다. */
 
-.tk-app { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; height: 100dvh; min-height: 0; background: var(--tk-color-surface-canvas); }
+.tk-app { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; height: 100dvh; min-height: 0; background: var(--tk-color-surface-canvas); padding-inline: env(safe-area-inset-left) env(safe-area-inset-right); /* 가로 모드 노치 */ }
 .tk-app__sidebar { display: none; }
 .tk-app__main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 @media (min-width: 1024px) {
@@ -11,6 +11,8 @@
   .tk-app__sidebar > .tk-sidebar { flex: 1; }
 }
 .tk-app > .tk-tabbar { grid-column: 1 / -1; }
+/* 사이드바가 없는 화면(설정 전용·예제)은 본문이 폭 전체를 쓴다. 열 하나를 비워 둔 채 본문이 좁은 열에 갇히던 문제 */
+@media (min-width: 1024px) { .tk-app:not(:has(> .tk-app__sidebar)) { grid-template-columns: minmax(0, 1fr); } }
 .tk-app__brand { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-2); flex: none; height: var(--tk-size-layout-header); padding-inline: var(--tk-space-3) var(--tk-space-2); border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-sidebar-border); }
 
 /* Screen: 한 화면 = 헤더 + 스크롤 본문(+ 아래 고정 요소). 스크롤은 본문 안에서만 */
@@ -56,7 +58,7 @@
 .tk-banner--neutral { --tk-_bg: var(--tk-color-status-neutral-bg); --tk-_fg: var(--tk-color-status-neutral-text); --tk-_icon-color: var(--tk-color-status-neutral-icon); --tk-_border: var(--tk-color-status-neutral-border); }
 
 /* Auth: 로그인·재인증·기기 승인. 가운데 한 열, 위에 브랜드 */
-.tk-auth { display: grid; place-items: center; min-height: 100dvh; padding: calc(var(--tk-space-12) + env(safe-area-inset-top)) var(--tk-size-layout-page-gutter) calc(var(--tk-space-12) + env(safe-area-inset-bottom)); background: var(--tk-color-surface-canvas); }
+.tk-auth { display: grid; place-items: center; min-height: 100dvh; padding: calc(var(--tk-space-12) + env(safe-area-inset-top)) calc(var(--tk-size-layout-page-gutter) + env(safe-area-inset-right)) calc(var(--tk-space-12) + env(safe-area-inset-bottom)) calc(var(--tk-size-layout-page-gutter) + env(safe-area-inset-left)); background: var(--tk-color-surface-canvas); }
 .tk-auth__panel { display: flex; flex-direction: column; gap: var(--tk-space-6); width: 100%; max-width: calc(var(--tk-size-container-sm) * 0.68); }
 .tk-auth__panel > * { margin: 0; }
 .tk-auth__brand { display: flex; align-items: center; gap: var(--tk-space-3); }

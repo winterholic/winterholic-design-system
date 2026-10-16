@@ -218,6 +218,9 @@
       "grid":  { "$value": "{seed.dark-border}" },
       "axis":  { "$value": "{graphite.400}" },
       "label": { "$value": "{graphite.200}" }
+    },
+    "art": {
+      "halo": { "$value": "{brand.paper}" }
     }
   }
 }

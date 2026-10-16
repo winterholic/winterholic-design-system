@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>시장 대시보드 · Ttakkari 아키타입</title>
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../../dist/tokens.css">
+<link rel="stylesheet" href="../../dist/typography.css">
+<link rel="stylesheet" href="../../dist/prose.css">
+<link rel="stylesheet" href="../../dist/components.css">
+<link rel="stylesheet" href="../examples.css">
+<script src="../../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="../icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="아키타입">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="index.html"><img src="../../assets/brand/logo-mark.svg" alt=""><span>Archetypes</span></a></div>
+    <nav class="tk-sidebar" aria-label="아키타입 목록"><div class="tk-nav"><a class="tk-nav__link" href="repo-browser.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-branch"/></svg>저장소 열람</a><a class="tk-nav__link" href="pull-request.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-pull-request"/></svg>PR · diff</a><a class="tk-nav__link" href="notebook.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-book-open"/></svg>자료 노트</a><a class="tk-nav__link" href="research.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-flask"/></svg>연구 지표</a><a class="tk-nav__link" href="editor.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-pencil"/></svg>글쓰기</a><a class="tk-nav__link" href="graph.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>구조 그래프</a><a class="tk-nav__link" href="market.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-chart-line"/></svg>시장 대시보드</a><a class="tk-nav__link" href="creative.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-palette"/></svg>창작 작업대</a><a class="tk-nav__link" href="remote.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-monitor"/></svg>원격 조종</a><a class="tk-nav__link" href="gallery.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg>결과 갤러리·비교</a></div></nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-header__menu" href="index.html" aria-label="아키타입 목록"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1 title="시장 대시보드">시장 대시보드</h1>
+            <p class="tk-header__meta" title="&lt;span&gt;장 마감 · 15분 지연&lt;/span&gt;"><span>장 마감 · 15분 지연</span></p>
+          </div>
+          <div class="tk-header__actions">
+            
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-pressed="false" aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+<p class="tk-banner tk-banner--warning" role="status"><svg class="tk-icon" aria-hidden="true"><use href="#i-clock"/></svg><span class="tk-banner__text">장이 끝났어요. 마지막 체결 기준이에요(15:30).</span></p>
+      <div class="tk-screen__body">
+        <div class="tk-container tk-container--lg tk-stack ex-pad">
+          <div class="tk-stats" aria-label="시장 지표"><div class="tk-stat"><span class="tk-stat__label">코스피</span><span class="tk-stat__value">2,741.3<span class="tk-stat__unit"></span></span><span class="tk-stat__delta" data-tone="negative">▲ 0.82% (+22.1)</span><svg class="tk-spark tk-chart" viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="최근 추세"><path class="tk-chart__line" data-series="1" d="M0.0 26.0 L14.3 21.2 L28.6 26.0 L42.9 16.4 L57.1 11.6 L71.4 16.4 L85.7 6.8 L100.0 2.0"/></svg></div><div class="tk-stat"><span class="tk-stat__label">원/달러</span><span class="tk-stat__value">1,402.5<span class="tk-stat__unit">원</span></span><span class="tk-stat__delta" data-tone="positive">▼ 0.31%</span><svg class="tk-spark tk-chart" viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="최근 추세"><path class="tk-chart__line" data-series="1" d="M0.0 2.0 L14.3 10.0 L28.6 10.0 L42.9 18.0 L57.1 18.0 L71.4 26.0 L85.7 18.0 L100.0 26.0"/></svg></div><div class="tk-stat"><span class="tk-stat__label">관심 종목 평가손익</span><span class="tk-stat__value">+4,812,300<span class="tk-stat__unit">원</span></span><span class="tk-stat__delta" data-tone="negative">▲ 3.4%</span><svg class="tk-spark tk-chart" viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="최근 추세"><path class="tk-chart__line" data-series="1" d="M0.0 26.0 L14.3 22.6 L28.6 22.6 L42.9 19.1 L57.1 12.3 L71.4 15.7 L85.7 8.9 L100.0 2.0"/></svg></div><div class="tk-stat"><span class="tk-stat__label">오늘 거래대금</span><span class="tk-stat__value">12.4<span class="tk-stat__unit">조원</span></span><span class="tk-stat__delta" data-tone="neutral">― 전일 비슷</span><svg class="tk-spark tk-chart" viewBox="0 0 100 28" preserveAspectRatio="none" role="img" aria-label="최근 추세"><path class="tk-chart__line" data-series="1" d="M0.0 26.0 L14.3 26.0 L28.6 2.0 L42.9 26.0 L57.1 26.0 L71.4 2.0 L85.7 26.0 L100.0 26.0"/></svg></div></div>
+
+        <figure class="tk-chart tk-chart--wide" aria-labelledby="mk1">
+          <div class="tk-chart__head"><div><h3 class="tk-chart__title" id="mk1">삼성전자 005930</h3><p class="tk-chart__sub">15분 지연 시세 · 단위 원</p></div>
+            <div class="tk-segmented" role="radiogroup" aria-label="기간"><label><input type="radio" name="per" checked>1일</label><label><input type="radio" name="per">1주</label><label><input type="radio" name="per">1개월</label><label><input type="radio" name="per">1년</label></div></div>
+          <div class="tk-chart__plot" role="img" aria-label="오늘 삼성전자는 71,200원에서 72,900원까지 올라 72,400원에 마감했어요."><svg viewBox="0 0 320 160" preserveAspectRatio="none"><line class="tk-chart__grid" x1="0" x2="320" y1="32.0" y2="32.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="64.0" y2="64.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="96.0" y2="96.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="128.0" y2="128.0"/><line class="tk-chart__axis" x1="0" x2="320" y1="159" y2="159"/><path class="tk-chart__area" data-series="1" d="M0.0 104.4 L40.0 97.6 L80.0 100.3 L120.0 84.0 L160.0 77.2 L200.0 81.3 L240.0 62.2 L280.0 56.8 L320.0 59.5 L320 159 L0 159 Z"/><path class="tk-chart__line" data-series="1" d="M0.0 104.4 L40.0 97.6 L80.0 100.3 L120.0 84.0 L160.0 77.2 L200.0 81.3 L240.0 62.2 L280.0 56.8 L320.0 59.5"/></svg></div>
+          <p class="tk-chart__readout" role="status">15:20 · 72,400원 · 거래량 8,120,433</p>
+        </figure>
+
+        <section class="tk-datatable tk-datatable--sticky-col" aria-label="관심 종목">
+          <div class="tk-datatable__bar"><span>관심 종목 3</span><span>상승 빨강 · 하락 파랑(국내 관례)</span></div>
+          <div class="tk-datatable__scroll" tabindex="0" role="region" aria-label="관심 종목 표(가로로 스크롤)"><table>
+            <thead><tr><th scope="col">종목</th><th scope="col">코드</th><th scope="col" class="tk-datatable__num">현재가</th><th scope="col" class="tk-datatable__num">등락</th><th scope="col" class="tk-datatable__num">거래량</th></tr></thead><tbody><tr><th scope="row" class="tk-datatable__clip" title="삼성전자">삼성전자</th><td class="tk-datatable__mono">005930</td><td class="tk-datatable__num">72,400</td><td class="tk-datatable__num"><span class="tk-stat__delta" data-tone="negative">▲ 1.27%</span></td><td class="tk-datatable__num">8,120,433</td></tr><tr><th scope="row" class="tk-datatable__clip" title="SK하이닉스">SK하이닉스</th><td class="tk-datatable__mono">000660</td><td class="tk-datatable__num">187,000</td><td class="tk-datatable__num"><span class="tk-stat__delta" data-tone="positive">▼ 0.53%</span></td><td class="tk-datatable__num">2,044,120</td></tr><tr><th scope="row" class="tk-datatable__clip" title="아주 긴 이름의 종목 우선주 (예시용 VeryLongNameCorp Preferred)">아주 긴 이름의 종목 우선주 (예시용 VeryLongNameCorp Preferred)</th><td class="tk-datatable__mono">123456</td><td class="tk-datatable__num">4,215</td><td class="tk-datatable__num"><span class="tk-stat__delta" data-tone="negative">▲ 4.80%</span></td><td class="tk-datatable__num">311,908</td></tr></tbody></table></div>
+        </section>
+
+        <section class="tk-section" aria-labelledby="mk-news"><div class="tk-section__head"><h2 class="tk-section__title" id="mk-news">리포트·공시</h2></div>
+          <ul class="tk-list tk-list--inset">
+            <li><a class="tk-list__item" href="#"><span class="tk-glyph tk-glyph--sm" data-type="pdf" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-pdf"/></svg></span><span class="tk-list__body"><span class="tk-list__title tk-list__title--wrap">삼성전자 3분기 잠정 실적 — 메모리 가격 반등이 영업이익을 끌어올림</span><span class="tk-list__meta"><span>증권사 리포트</span><span>1시간 전</span></span></span></a></li>
+            <li><a class="tk-list__item" href="#"><span class="tk-glyph tk-glyph--sm" data-type="doc" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-text"/></svg></span><span class="tk-list__body"><span class="tk-list__title tk-list__title--wrap">주요사항보고서(자기주식취득결정)</span><span class="tk-list__meta"><span>공시</span><span>오늘 09:12</span></span></span></a></li>
+          </ul></section>
+
+      <section class="ex-states" aria-label="상태 견본">
+        <h2 class="tk-caption">상태 견본(빈 · 로딩 · 오류)</h2>
+        <div class="ex-states__grid">
+          <div class="tk-empty tk-empty--boxed">
+            <figure class="tk-art tk-art--sm" data-pending data-art="empty-stock-analysis"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg></figure>
+            <p class="tk-empty__title">관심 종목이 없어요</p>
+            <p>종목을 추가하면 시세와 리포트를 한 곳에서 봐요.</p>
+          </div>
+          <div class="tk-card" aria-busy="true" aria-label="불러오는 중">
+            <span class="tk-skeleton tk-skeleton--text"></span><span class="tk-skeleton tk-skeleton--text"></span><span class="tk-skeleton tk-skeleton--block"></span>
+          </div>
+          <aside class="tk-callout tk-callout--caution" role="alert">
+            <span class="tk-callout__icon"><svg class="tk-icon" aria-hidden="true"><use href="#i-caution"/></svg></span>
+            <div class="tk-callout__body"><strong class="tk-callout__title">불러오지 못했어요</strong><p>시세 서버가 응답하지 않아요. 마지막으로 받은 값을 보여 주고 있어요.</p><div class="tk-button-group"><button class="tk-button tk-button--sm" type="button">다시 시도</button></div></div>
+          </aside>
+        </div>
+      </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역"><a class="tk-tabbar__item" href="../chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>채팅</span></a><a class="tk-tabbar__item" href="../workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg><span>작업 공간</span></a><a class="tk-tabbar__item" href="../library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg><span>보관함</span></a><a class="tk-tabbar__item" href="../files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg><span>파일</span></a></nav>
+</div>
+
+</body>
+</html>

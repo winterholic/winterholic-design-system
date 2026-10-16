@@ -1,5 +1,33 @@
 # Changelog — Ttakkari Design System
 
+## 1.2.0 — 2026-10-17
+
+앞으로 늘어날 페이지의 정답지(페이지 아키타입)와 실제 앱에서 반복된 UI 실수를 시스템 차원에서 막는 검사. 시드 13색·Blue 사람·Mint 에이전트·잉크 면 규칙은 그대로다.
+
+### 검사 (새로 막는 것)
+- `scripts/ttakkari-layout.check.mjs`(`npm run check:layout`): 페이지를 6폭(320·390·768·1024·1440 + 가로 모드 844×390) × 평소/긴 글자 주입 × 라이트/다크로 열어 가로 넘침·화면 밖 요소·조용한 잘림·말줄임 title·gap+margin 이중 간격·터치 44(히트 영역 포함)·입력 16·글자 12·safe-area(위·아래·좌우)·본문 바로가기 노출·모달 크기(화면 안·여백·본문 스크롤·자식 넘침)를 잰다. `--url` 로 실제 앱에도 쓴다.
+- 빌드 레이아웃 lint 5종: nowrap 짝(말줄임·스크롤·flex:none), 아래 고정 + safe-area, `vh`, `100vw`, 자식 `margin-top`. 예외는 규칙 본문 `/* lint-ok: 이유 */`.
+- 정적 테스트: 예제를 하위 폴더까지 검사, 아키타입 예제와 docs/21 의 짝, 검사 규칙과 docs/22 의 짝.
+
+### 고친 오류(기존 컴포넌트)
+- 터치: 아이콘 버튼(40)·버튼·칩·세그먼트·경로 링크가 보이는 크기는 그대로 두고 `::after` 로 44 까지. 칩은 짧아도 폭 44.
+- 넘침: Button·Badge·Dropdown `max-width: 100%`, 라벨 `<span>` 말줄임. 칩은 flex 줄에서 줄어든다(`flex: 0 1 auto`). `.tk-empty` 자식이 `max-content` 로 커져 양쪽으로 새던 것(칩 줄)을 막았다. 헤더 메타 줄 말줄임. 로그 머리 행동이 줄어들지 않게. 글자를 담는 상자(카드·콜아웃·메시지·승인·실행·토스트·다이얼로그)는 `overflow-wrap: anywhere`.
+- 모달: `.tk-dialog` 가 safe-area(위·아래·좌우)와 모바일 좌우 12 여백을 직접 계산한다. 헤더·푸터 고정, 본문 스크롤. 제목 줄바꿈.
+- safe-area: 본문 바로가기가 노치 기기에서 화면 위에 걸려 보이던 것, 가로 모드에서 앱 좌우가 노치 아래로 들어가던 것(`.tk-app` 좌우 inset), 전체 화면 뷰어의 아래·좌우, 드로어 왼쪽.
+- 사이드바 없는 `.tk-app`(≥1024)이 본문을 280 열에 가두던 것.
+- 예제: 헤더 제목·메타에 `title`.
+
+### 새 컴포넌트 (토큰은 `color.art.halo` 하나만 추가)
+- Data(`components/data.css`): `.tk-datatable`(스크롤 상자·머리 고정·첫 열 고정·정렬·`--stack` 카드화·상태 행) · `.tk-stats`/`.tk-stat`(`data-tone`) · `.tk-chart`(래퍼·`data-series` 1~6·범례·읽기 줄·데이터 표·상태) · `.tk-spark` · `.tk-diff`(통합·나란히·줄 바꿈·줄 번호 고정·접기·리뷰 댓글) · `.tk-timeline`.
+- Workbench(`components/workbench.css`): `.tk-toolbar` · `.tk-panes`(컨테이너 폭으로 칸 수, 좁으면 탭, `--tabs`) · `.tk-editor` · `.tk-canvas`/`.tk-node`/`.tk-edge`(`--tk-pan-x/y`·`--tk-zoom`) · `.tk-stream`(`data-state`) · `.tk-keybar` · `.tk-pad`.
+- Art: `.tk-art`(일러스트 자리, `data-pending`, 다크 윤곽 띠).
+- tk.js: `initPanes` · `initCanvas`(끌기·핀치·휠·키보드·`tk:canvaschange`) · `initDiffs` · 말줄임 title.
+
+### 문서·예제·자산
+- docs 21 페이지 아키타입(10종: 저장소·PR·자료 노트·연구 지표·글쓰기·그래프·시장·창작·원격 조종·갤러리), 22 UI 실수 방지, 23 일러스트 자산 명세, 24 데이터·작업대 컴포넌트. 00·14·15·README·CLAUDE.md 갱신. 00 의 모바일 선택 행을 앱 결정(바텀 시트 폐지)에 맞췄다.
+- examples/archetypes/ 10종 + index, examples/art.html. icons.js 에 아이콘 65개 추가.
+- assets/art/: 마스코트 일러스트 19컷의 WebP 파생본(480·960, 예산 60·180 KB) + `build-art.py`. 원본은 `brand/generated/`(별도 세션 산출물)이고 이 시스템은 이미지를 만들지 않는다.
+
 ## 1.1.0 — 2026-10-11
 
 ### Components

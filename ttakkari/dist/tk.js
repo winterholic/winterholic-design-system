@@ -631,6 +631,139 @@
     });
   }
 
+  // ---------- 작업대 칸: [data-tk-panes] 의 탭이 data-active 칸을 바꾼다(좁은 컨테이너). 넓으면 CSS 가 전부 보여 준다 ----------
+  function initPanes(root) {
+    root.querySelectorAll('[data-tk-panes]').forEach((panes) => {
+      if (!once(panes, 'Panes')) return;
+      const list = panes.querySelector('[role="tablist"]');
+      const sync = () => {
+        const selected = list && list.querySelector('[role="tab"][aria-selected="true"]');
+        const target = selected && document.getElementById(selected.getAttribute('aria-controls'));
+        // 탭 동작(selectTab)이 hidden 을 걸어 두므로 걷어낸다: 보임 여부는 data-active 와 컨테이너 폭이 정한다
+        panes.querySelectorAll('.tk-panes__pane').forEach((p) => { p.hidden = false; p.toggleAttribute('data-active', p === target); });
+      };
+      if (list) list.addEventListener('tk:tabchange', sync);
+      sync();
+    });
+  }
+
+  // ---------- 캔버스: [data-tk-canvas] 끌어서 이동 · 휠/핀치/버튼으로 확대 · 키보드. 상태는 --tk-pan-x/y · --tk-zoom 하나 ----------
+  function initCanvas(root) {
+    root.querySelectorAll('[data-tk-canvas]').forEach((canvas) => {
+      if (!once(canvas, 'Canvas')) return;
+      const stage = canvas.querySelector('.tk-canvas__stage');
+      if (!stage) return;
+      const min = parseFloat(canvas.dataset.tkMin) || 0.2;
+      const max = parseFloat(canvas.dataset.tkMax) || 2.5;
+      const view = { x: 0, y: 0, z: 1 };
+      const clamp = (z) => Math.min(max, Math.max(min, z));
+      const apply = () => {
+        canvas.style.setProperty('--tk-pan-x', `${view.x}px`);
+        canvas.style.setProperty('--tk-pan-y', `${view.y}px`);
+        canvas.style.setProperty('--tk-zoom', String(view.z));
+        canvas.dispatchEvent(new CustomEvent('tk:canvaschange', { detail: { ...view } }));
+      };
+      const zoomAt = (factor, cx, cy) => {
+        const z = clamp(view.z * factor);
+        const k = z / view.z;
+        view.x = cx - (cx - view.x) * k;
+        view.y = cy - (cy - view.y) * k;
+        view.z = z;
+        apply();
+      };
+      const center = () => { const r = canvas.getBoundingClientRect(); return [r.width / 2, r.height / 2]; };
+      // 노드가 전부 보이도록 맞춘다(너무 확대하지 않는다)
+      const fit = () => {
+        const nodes = [...stage.querySelectorAll('[data-tk-node]')];
+        if (!nodes.length) { view.x = 0; view.y = 0; view.z = 1; apply(); return; }
+        const box = nodes.reduce((b, n) => ({
+          l: Math.min(b.l, n.offsetLeft), t: Math.min(b.t, n.offsetTop),
+          r: Math.max(b.r, n.offsetLeft + n.offsetWidth), b: Math.max(b.b, n.offsetTop + n.offsetHeight),
+        }), { l: Infinity, t: Infinity, r: -Infinity, b: -Infinity });
+        const { width, height } = canvas.getBoundingClientRect();
+        const pad = 32;
+        const z = clamp(Math.min((width - pad) / (box.r - box.l), (height - pad) / (box.b - box.t), 1.2));
+        view.z = z;
+        view.x = (width - (box.r - box.l) * z) / 2 - box.l * z;
+        view.y = (height - (box.b - box.t) * z) / 2 - box.t * z;
+        apply();
+      };
+      const reset = () => { view.x = 0; view.y = 0; view.z = 1; apply(); };
+      // 포인터: 한 손가락은 이동, 두 손가락은 핀치. 노드·버튼 위에서 시작한 입력은 건드리지 않는다
+      const pointers = new Map();
+      let pinch = 0;
+      canvas.addEventListener('pointerdown', (e) => {
+        if (e.target.closest('[data-tk-node],button,a,input,textarea,select,.tk-canvas__controls,.tk-canvas__minimap')) return;
+        canvas.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        canvas.setAttribute('data-grabbing', '');
+        if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinch = Math.hypot(a.x - b.x, a.y - b.y); }
+      });
+      canvas.addEventListener('pointermove', (e) => {
+        const p = pointers.get(e.pointerId);
+        if (!p) return;
+        if (pointers.size === 1) { view.x += e.clientX - p.x; view.y += e.clientY - p.y; p.x = e.clientX; p.y = e.clientY; apply(); return; }
+        p.x = e.clientX; p.y = e.clientY;
+        const [a, b] = [...pointers.values()];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        const r = canvas.getBoundingClientRect();
+        if (pinch) zoomAt(d / pinch, (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+        pinch = d;
+      });
+      const release = (e) => {
+        pointers.delete(e.pointerId);
+        pinch = 0;
+        if (!pointers.size) canvas.removeAttribute('data-grabbing');
+      };
+      canvas.addEventListener('pointerup', release);
+      canvas.addEventListener('pointercancel', release);
+      canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const r = canvas.getBoundingClientRect();
+        zoomAt(Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)), e.clientX - r.left, e.clientY - r.top);
+      }, { passive: false });
+      canvas.addEventListener('keydown', (e) => {
+        if (e.target !== canvas) return;
+        const step = e.shiftKey ? 160 : 40;
+        const [cx, cy] = center();
+        const act = { ArrowLeft: () => { view.x += step; apply(); }, ArrowRight: () => { view.x -= step; apply(); }, ArrowUp: () => { view.y += step; apply(); }, ArrowDown: () => { view.y -= step; apply(); },
+          '+': () => zoomAt(1.2, cx, cy), '=': () => zoomAt(1.2, cx, cy), '-': () => zoomAt(1 / 1.2, cx, cy), '0': fit }[e.key];
+        if (act) { e.preventDefault(); act(); }
+      });
+      canvas.querySelectorAll('[data-tk-canvas-action]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const [cx, cy] = center();
+          ({ in: () => zoomAt(1.25, cx, cy), out: () => zoomAt(1 / 1.25, cx, cy), fit, reset })[btn.dataset.tkCanvasAction]?.();
+        });
+      });
+      canvas.tkCanvas = { fit, reset, view };
+      if (canvas.hasAttribute('data-tk-fit')) requestAnimationFrame(fit); else apply();
+    });
+  }
+
+  // ---------- Diff: 파일 머리 버튼이 접고 펴며, [data-tk-diff-wrap] 버튼이 줄 바꿈을 켠다 ----------
+  function initDiffs(root) {
+    root.querySelectorAll('.tk-diff').forEach((diff) => {
+      if (!once(diff, 'Diff')) return;
+      diff.querySelectorAll('.tk-diff__file > button').forEach((btn) => {
+        btn.addEventListener('click', () => btn.setAttribute('aria-expanded', String(btn.getAttribute('aria-expanded') === 'false')));
+      });
+      diff.querySelectorAll('[data-tk-diff-wrap]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const on = diff.toggleAttribute('data-wrap');
+          btn.setAttribute('aria-pressed', String(on));
+        });
+      });
+    });
+  }
+
+  // ---------- 말줄임에 전체 글자: 마우스를 올리면 잘린 요소에만 title 을 달아 준다(터치에는 hover 가 없으니 상세에서 보여 준다) ----------
+  const TRUNCATED = '.tk-truncate, .tk-list__title, .tk-session__title, .tk-header__title > *, .tk-node__title, .tk-diff__dir, .tk-diff__name, .tk-datatable__clip, .tk-stat__label, .tk-legend__item > span';
+  document.addEventListener('pointerover', (e) => {
+    const el = e.target instanceof Element && e.target.closest(TRUNCATED);
+    if (el && !el.hasAttribute('title') && el.scrollWidth > el.clientWidth + 1) el.setAttribute('title', el.textContent.trim());
+  });
+
   function init(root = document) {
     initTheme(root);
     initTabs(root);
@@ -646,6 +779,9 @@
     initZoom(root);
     initFind(root);
     initSelection(root);
+    initPanes(root);
+    initCanvas(root);
+    initDiffs(root);
   }
 
   // 저장된 테마는 가능한 한 일찍(깜빡임 방지 스니펫은 docs/11 §3)

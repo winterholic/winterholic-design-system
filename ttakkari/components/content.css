@@ -35,8 +35,8 @@
 .tk-badge--mono { font-family: var(--tk-font-family-mono); font-variant-ligatures: none; text-transform: uppercase; letter-spacing: var(--tk-font-letter-spacing-normal); }
 
 /* Chip: 필터(토글)·제안(후속 지시)·문맥(지금 보고 있는 문서). 둥근 필 */
-.tk-chip {
-  position: relative; display: inline-flex; align-items: center; gap: var(--tk-component-chip-gap); flex: none; max-width: 100%;
+.tk-chip { /* lint-ok: 라벨(span)이 말줄임. overflow 는 터치 ::after 때문에 걸지 않는다 */
+  position: relative; display: inline-flex; align-items: center; gap: var(--tk-component-chip-gap); flex: 0 1 auto; min-width: 0; max-width: 100%;
   height: var(--tk-component-chip-height); padding-inline: var(--tk-component-chip-padding-x); margin: 0;
   border: var(--tk-border-width-hairline) solid var(--tk-component-chip-border); border-radius: var(--tk-component-chip-radius);
   background: var(--tk-component-chip-bg); color: var(--tk-color-text-secondary); cursor: pointer; text-decoration: none;
@@ -58,7 +58,9 @@
 /* 칩 줄: 넘치면 가로 스크롤(제안 칩·필터). 줄바꿈하면 화면 위쪽이 길어진다 */
 .tk-chips { display: flex; gap: var(--tk-component-chip-list-gap); min-width: 0; overflow-x: auto; scrollbar-width: none; padding-block: var(--tk-space-0-5); }
 .tk-chips::-webkit-scrollbar { display: none; }
+.tk-chips > .tk-chip { flex: none; }
 .tk-chips--wrap { flex-wrap: wrap; overflow: visible; }
+.tk-chips--wrap > .tk-chip { flex: 0 1 auto; }
 
 /* Card: 테두리가 기본, 그림자는 클릭 가능한 카드 hover 에만. 카드 안에 카드 금지 */
 .tk-card {
@@ -111,6 +113,24 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-empty > * { max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
 .tk-empty > .tk-button-group, .tk-empty > .tk-chips { padding-top: var(--tk-space-2); justify-content: center; }
 
+/* Art: 일러스트 자리. 빈 상태·오류·온보딩에서 글 위에 얹는 그림 한 장(장식이라 alt 는 빈 문자열, 뜻은 옆 글이 말한다).
+   <figure class="tk-art tk-art--md" data-art="state-empty"><img src="…" alt="" width="480" height="480" loading="lazy" decoding="async"></figure>
+   그림이 아직 없거나 못 불러오면 data-pending 으로 자리만 남긴다: <figure class="tk-art tk-art--md" data-pending data-art="state-empty"><svg class="tk-icon"/></figure>
+   정사각 상자 안에 비율대로 들어가고(contain) 상자를 넘지 않는다. 다크에서는 윤곽 띠(color.art.halo)가 Ink 외곽선을 띄운다. 스켈레톤·아바타 자리에 쓰지 않는다. */
+.tk-art { --tk-_art: calc(var(--tk-space-24) * 1.6); display: block; flex: none; width: var(--tk-_art); max-width: 100%; aspect-ratio: 1 / 1; margin: 0; }
+.tk-art--sm { --tk-_art: var(--tk-space-24); }
+.tk-art--md { --tk-_art: calc(var(--tk-space-24) * 1.6); }
+.tk-art--lg { --tk-_art: calc(var(--tk-space-24) * 2.4); }
+.tk-art > img {
+  display: block; width: 100%; height: 100%; object-fit: contain; user-select: none; -webkit-user-drag: none;
+  filter: drop-shadow(var(--tk-space-px) 0 0 var(--tk-color-art-halo)) drop-shadow(calc(-1 * var(--tk-space-px)) 0 0 var(--tk-color-art-halo)) drop-shadow(0 var(--tk-space-px) 0 var(--tk-color-art-halo)) drop-shadow(0 calc(-1 * var(--tk-space-px)) 0 var(--tk-color-art-halo));
+}
+.tk-art[data-pending] { display: grid; place-items: center; border: var(--tk-border-width-hairline) dashed var(--tk-color-border-default); border-radius: var(--tk-radius-xl); background: var(--tk-color-surface-subtle); color: var(--tk-color-text-tertiary); }
+.tk-art[data-pending] > .tk-icon { --tk-_icon: var(--tk-size-icon-xl); }
+.tk-empty > .tk-art { margin-bottom: var(--tk-space-1); }
+/* 좁은 높이(가로 모드 폰)에서는 그림을 줄여 글과 행동이 한 화면에 남는다 */
+@media (orientation: landscape) and (pointer: coarse) and (max-width: 1023px) { .tk-art { --tk-_art: var(--tk-space-16); } .tk-art--sm { --tk-_art: var(--tk-space-12); } }
+
 /* Inline status: 버튼 옆·폼 아래의 한 줄 결과("복사됨", "3개 파일을 보관함에 담았어요"). role="status" 와 함께 */
 .tk-status { display: inline-flex; align-items: center; gap: var(--tk-space-1-5); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); color: var(--tk-color-text-secondary); }
 .tk-status > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
@@ -127,7 +147,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-table-wrap tr:last-child td { border-bottom: 0; }
 .tk-table { width: 100%; border-collapse: collapse; font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); color: var(--tk-color-text-primary); }
 .tk-table :is(th, td) { padding: var(--tk-space-2) var(--tk-space-3); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle); text-align: left; vertical-align: top; }
-.tk-table th { font-weight: var(--tk-font-weight-medium); color: var(--tk-color-text-secondary); border-bottom-color: var(--tk-color-border-default); white-space: nowrap; }
+.tk-table th { /* lint-ok: 머리 칸은 줄바꿈하지 않고 .tk-table-wrap 이 가로 스크롤 */ font-weight: var(--tk-font-weight-medium); color: var(--tk-color-text-secondary); border-bottom-color: var(--tk-color-border-default); white-space: nowrap; }
 .tk-table :is(td, th).tk-table__num { text-align: right; font-variant-numeric: tabular-nums; }
 .tk-table code, .tk-table .tk-mono { font-family: var(--tk-font-family-mono); font-size: var(--tk-component-inline-code-size); font-variant-ligatures: none; }
 

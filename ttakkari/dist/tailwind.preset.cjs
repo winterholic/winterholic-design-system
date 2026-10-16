@@ -315,6 +315,9 @@ module.exports = {
           "grid": "var(--tk-color-chart-grid)",
           "axis": "var(--tk-color-chart-axis)",
           "label": "var(--tk-color-chart-label)"
+        },
+        "art": {
+          "halo": "var(--tk-color-art-halo)"
         }
       },
       "spacing": {

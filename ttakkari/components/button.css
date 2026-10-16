@@ -2,7 +2,7 @@
    기본값이 정답이다. .tk-button 하나면 secondary·md. primary 는 화면의 주 목적 하나에만 명시한다.
    variant 4개(primary·secondary·ghost·danger) × size 4개(xs·sm·md·lg). 상태는 :hover·:active·:focus-visible·disabled·aria-busy·aria-pressed. */
 
-.tk-button, .tk-icon-button {
+.tk-button, .tk-icon-button { /* lint-ok: 라벨(span)이 말줄임, 아이콘 버튼은 줄지 않는다. overflow 는 터치 ::after 때문에 걸지 않는다 */
   --tk-_h: var(--tk-component-button-md-height);
   --tk-_px: var(--tk-component-button-md-padding-x);
   --tk-_icon: var(--tk-component-button-md-icon);

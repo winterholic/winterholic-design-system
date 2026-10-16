@@ -1,0 +1,146 @@
+/* workbench: Toolbar · Panes · Editor · Canvas(노드 그래프) · Node · Edge · Stream(원격 화면) · Keybar.
+   "도구가 있는 화면"(코드 열람·글쓰기·그래프·원격 조종)의 뼈대다. 모바일에서는 한 번에 한 칸(탭으로 전환), 넓은 컨테이너에서는 나란히.
+   칸 수는 화면 폭이 아니라 이 컨테이너의 폭이 정한다(사이드바가 폭을 먹는 데스크톱에서도 맞는다). 컨테이너 쿼리 폭은 breakpoint 토큰(lg=64rem)과 같다. */
+
+/* ---------- Toolbar: 한 줄 도구 모음. 넘치면 이 줄만 가로 스크롤(줄바꿈하면 화면 위쪽이 길어진다) ----------
+   <div class="tk-toolbar" role="toolbar" aria-label="서식"><div class="tk-toolbar__group">…</div><span class="tk-toolbar__spacer"></span>…</div> */
+.tk-toolbar {
+  display: flex; align-items: center; gap: var(--tk-space-1); flex: none; min-width: 0; min-height: var(--tk-size-layout-toolbar);
+  padding: var(--tk-space-1) var(--tk-space-2); overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+  background: var(--tk-component-viewer-toolbar-bg); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
+}
+.tk-toolbar::-webkit-scrollbar { display: none; }
+.tk-toolbar__group { display: flex; align-items: center; gap: var(--tk-space-1); flex: none; }
+.tk-toolbar__group + .tk-toolbar__group { padding-left: var(--tk-space-2); border-left: var(--tk-border-width-hairline) solid var(--tk-color-border-default); }
+.tk-toolbar__spacer { flex: 1 1 auto; min-width: var(--tk-space-2); }
+.tk-toolbar__title { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-primary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-toolbar .tk-icon-button { --tk-_h: var(--tk-size-control-sm); }
+/* 도구 버튼의 켜짐(굵게·기울임)은 aria-pressed. 아래 고정형은 모바일 키보드 바로 위 */
+.tk-toolbar--bottom { order: 99; border-bottom: 0; border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); padding-bottom: calc(var(--tk-space-1) + env(safe-area-inset-bottom)); }
+
+/* ---------- Panes: 2~3 칸 작업대 ----------
+   <div class="tk-panes" data-tk-panes>
+     <div class="tk-panes__tabs tk-segmented" role="tablist">…<button role="tab" aria-controls="p-main" aria-selected="true">…</button></div>
+     <div class="tk-panes__body"><section class="tk-panes__pane tk-panes__pane--start" id="p-start">…</section><section class="… --main" id="p-main" data-active>…</section><section class="… --end" id="p-end">…</section></div></div>
+   컨테이너가 lg(64rem) 미만이면 data-active 인 칸 하나만, 이상이면 전부 나란히(시작 280 · 가운데 · 끝 360). 한 칸을 접으려면 data-collapsed. */
+.tk-panes { container: tk-panes / inline-size; display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; }
+.tk-panes__tabs { flex: none; padding-inline: var(--tk-space-3); }
+.tk-panes__body { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; }
+.tk-panes__pane { display: none; flex: 1 1 auto; flex-direction: column; min-width: 0; min-height: 0; }
+.tk-panes__pane[data-active] { display: flex; }
+.tk-panes__head { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-2); flex: none; min-width: 0; min-height: var(--tk-size-layout-toolbar); padding: var(--tk-space-1) var(--tk-space-3); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default); color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-panes__head > :first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tk-panes__scroll { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; }
+/* --tabs: 폭과 무관하게 언제나 한 칸씩 탭으로(PR 의 대화·커밋·변경 파일처럼 같은 대상의 다른 보기) */
+@container tk-panes (min-width: 64rem) {
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__tabs { display: none; }
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__pane { display: flex; }
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__pane--start { flex: 0 0 var(--tk-size-layout-sidebar); border-right: var(--tk-border-width-hairline) solid var(--tk-color-border-default); }
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__pane--main { flex: 1 1 auto; min-width: var(--tk-size-layout-pane-min); }
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__pane--end { flex: 0 0 var(--tk-size-layout-pane-min); border-left: var(--tk-border-width-hairline) solid var(--tk-color-border-default); }
+  .tk-panes:not(.tk-panes--tabs) .tk-panes__pane[data-collapsed] { display: none; }
+}
+@container tk-panes (min-width: 80rem) { .tk-panes:not(.tk-panes--tabs) .tk-panes__pane--end { flex-basis: var(--tk-size-layout-detail); } }
+
+/* ---------- Editor: 글쓰기 ----------
+   <div class="tk-editor"><div class="tk-toolbar tk-editor__toolbar">…</div><div class="tk-editor__scroll"><div class="tk-editor__surface tk-prose" contenteditable data-placeholder="…"></div></div><div class="tk-editor__status">…</div></div>
+   본문 열은 읽기 폭(720)이고, 입력은 16(iOS 확대 방지), 마지막 줄이 키보드·상태 줄에 가리지 않게 아래 여백을 둔다. */
+.tk-editor { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; background: var(--tk-color-surface-default); }
+.tk-editor__toolbar { position: sticky; top: 0; z-index: var(--tk-z-index-sticky); }
+.tk-editor__scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-padding-block-end: calc(var(--tk-size-layout-toolbar) * 3); }
+.tk-editor__surface {
+  box-sizing: border-box; width: 100%; max-width: calc(var(--tk-size-container-prose) + 2 * var(--tk-size-layout-page-gutter-lg)); min-height: 100%; margin-inline: auto; outline: none;
+  padding: var(--tk-space-6) var(--tk-size-layout-page-gutter) calc(var(--tk-space-24) + env(safe-area-inset-bottom)); caret-color: var(--tk-color-text-brand);
+  font-size: var(--tk-font-size-md); overflow-wrap: anywhere;
+}
+@media (min-width: 768px) { .tk-editor__surface { padding-inline: var(--tk-size-layout-page-gutter-lg); } }
+.tk-editor__surface:empty::before, .tk-editor__surface[data-empty]::before { content: attr(data-placeholder); color: var(--tk-color-text-placeholder); pointer-events: none; }
+.tk-editor__surface ::selection { background: var(--tk-color-highlight-mark); color: var(--tk-color-highlight-mark-text); }
+/* 마크다운 원문 모드: 모노 글꼴 입력칸 */
+.tk-editor__source { box-sizing: border-box; flex: 1 1 auto; width: 100%; min-height: 0; margin: 0; padding: var(--tk-space-4) var(--tk-size-layout-page-gutter); resize: none; border: 0; outline: none; background: transparent; color: var(--tk-color-text-primary); caret-color: var(--tk-color-text-brand); font: var(--tk-font-weight-regular) var(--tk-font-size-md) / var(--tk-font-line-height-prose) var(--tk-font-family-mono); font-variant-ligatures: none; tab-size: 2; }
+.tk-editor__status { display: flex; align-items: center; justify-content: space-between; gap: var(--tk-space-3); flex: none; min-width: 0; padding: var(--tk-space-1-5) var(--tk-size-layout-page-gutter); padding-bottom: calc(var(--tk-space-1-5) + env(safe-area-inset-bottom)); border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-editor__status > * { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tk-editor__status [data-save="saving"]::before { content: "…"; margin-right: var(--tk-space-1); }
+
+/* ---------- Canvas: 끌고 확대하는 그래프 면(하네스 구조·작업 흐름·노드 에디터) ----------
+   <div class="tk-canvas" data-tk-canvas tabindex="0" role="application" aria-label="구조 그래프">
+     <div class="tk-canvas__stage"><svg class="tk-canvas__edges">…<path class="tk-edge"/></svg><div class="tk-node" style="left:…;top:…" data-tk-node>…</div></div>
+     <div class="tk-canvas__controls">…줌 버튼…</div></div>
+   이동·확대는 --tk-pan-x · --tk-pan-y · --tk-zoom 하나로 한다(tk.js 가 쓴다). 노드 좌표는 stage 안 절대 위치다. */
+.tk-canvas {
+  position: relative; flex: 1 1 auto; min-width: 0; min-height: calc(var(--tk-space-16) * 5); overflow: hidden; touch-action: none; cursor: grab; overscroll-behavior: contain;
+  background-color: var(--tk-color-surface-sunken);
+  background-image: radial-gradient(circle, var(--tk-color-border-default) var(--tk-pattern-grid-dot), transparent calc(var(--tk-pattern-grid-dot) + var(--tk-space-px)));
+  background-size: var(--tk-pattern-grid-size) var(--tk-pattern-grid-size);
+}
+.tk-canvas[data-grabbing] { cursor: grabbing; }
+.tk-canvas:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+.tk-canvas__stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; translate: var(--tk-pan-x, var(--tk-space-0)) var(--tk-pan-y, var(--tk-space-0)); scale: var(--tk-zoom, 1); will-change: translate, scale; }
+.tk-canvas__edges { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.tk-canvas__controls { position: absolute; right: calc(var(--tk-space-3) + env(safe-area-inset-right)); bottom: calc(var(--tk-space-3) + env(safe-area-inset-bottom)); z-index: var(--tk-z-index-raised); display: flex; flex-direction: column; gap: var(--tk-space-1); padding: var(--tk-space-1); border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); box-shadow: var(--tk-shadow-sm); }
+.tk-canvas__controls .tk-icon-button { --tk-_h: var(--tk-size-control-md); }
+/* 작은 지도: 넓은 화면에서만. 좁은 화면에서는 '전체 보기' 버튼이 그 일을 한다 */
+.tk-canvas__minimap { display: none; position: absolute; left: var(--tk-space-3); bottom: var(--tk-space-3); z-index: var(--tk-z-index-raised); width: calc(var(--tk-space-24) * 1.5); aspect-ratio: 4 / 3; overflow: hidden; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-md); background: var(--tk-color-surface-default); box-shadow: var(--tk-shadow-sm); }
+@media (min-width: 768px) { .tk-canvas__minimap { display: block; } }
+.tk-canvas__hint { position: absolute; left: 50%; top: var(--tk-space-3); z-index: var(--tk-z-index-raised); max-width: calc(100% - 2 * var(--tk-space-3)); padding: var(--tk-space-1) var(--tk-space-3); transform: translateX(-50%); border-radius: var(--tk-radius-full); background: var(--tk-color-surface-inverse); color: var(--tk-color-text-inverse); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); pointer-events: none; text-align: center; overflow-wrap: anywhere; }
+
+/* Node: 그래프의 카드. 제목은 한 줄 말줄임, 종류는 아이콘+글자(색은 보조), 상태는 data-state */
+.tk-node {
+  --tk-_rail: var(--tk-color-border-strong);
+  position: absolute; display: flex; flex-direction: column; gap: var(--tk-space-1); box-sizing: border-box; width: var(--tk-_w, calc(var(--tk-space-24) * 2)); max-width: calc(var(--tk-space-24) * 3);
+  padding: var(--tk-space-2) var(--tk-space-3); border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg);
+  background: var(--tk-color-surface-default); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-xs), inset var(--tk-border-width-accent) 0 0 var(--tk-_rail); cursor: pointer; touch-action: manipulation;
+}
+.tk-node[data-kind="agent"] { --tk-_rail: var(--tk-color-agent-live); }
+.tk-node[data-kind="human"] { --tk-_rail: var(--tk-color-action-primary-bg); }
+.tk-node[data-kind="hook"] { --tk-_rail: var(--tk-color-run-waiting-icon); }
+.tk-node[data-state="running"] { border-color: var(--tk-color-run-running-border); }
+.tk-node[data-state="failed"] { border-color: var(--tk-color-run-failed-border); }
+.tk-node[aria-selected="true"], .tk-node[aria-pressed="true"] { border-color: var(--tk-color-border-focus); box-shadow: var(--tk-shadow-sm), 0 0 0 var(--tk-focus-ring-width) var(--tk-color-border-focus), inset var(--tk-border-width-accent) 0 0 var(--tk-_rail); }
+.tk-node:focus-visible { outline: var(--tk-focus-ring-width) solid var(--tk-color-interactive-focus-ring); outline-offset: var(--tk-focus-ring-offset); }
+.tk-node__head { display: flex; align-items: center; gap: var(--tk-space-2); min-width: 0; }
+.tk-node__head > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); color: var(--tk-color-text-secondary); }
+.tk-node__title { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: var(--tk-font-weight-semibold) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-node__meta { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+/* 연결점: 노드 가장자리의 점. 선은 이 점의 중심에서 시작한다 */
+.tk-node__port { position: absolute; top: 50%; width: var(--tk-space-2); height: var(--tk-space-2); margin-top: calc(var(--tk-space-1) * -1); border: var(--tk-border-width-strong) solid var(--tk-color-border-strong); border-radius: var(--tk-radius-full); background: var(--tk-color-surface-default); }
+.tk-node__port[data-side="in"] { left: calc(var(--tk-space-1) * -1 - var(--tk-border-width-hairline)); }
+.tk-node__port[data-side="out"] { right: calc(var(--tk-space-1) * -1 - var(--tk-border-width-hairline)); }
+/* Edge: SVG path. 방향은 marker, 활성 경로는 두껍게+에이전트 색 */
+.tk-edge { fill: none; stroke: var(--tk-color-border-strong); stroke-width: calc(var(--tk-border-width-hairline) * 1.5); stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.tk-edge[data-active] { stroke: var(--tk-color-agent-live); stroke-width: var(--tk-border-width-strong); }
+.tk-edge[data-dash] { stroke-dasharray: 6 4; }
+
+/* ---------- Stream: 원격 화면 보기·조종(VPN 동일망) ----------
+   <section class="tk-stream" data-state="connecting|live|degraded|lost">
+     <div class="tk-stream__view"><video|canvas|img/><div class="tk-stream__hud">…지연·프레임…</div><div class="tk-stream__status" role="status">…</div></div>
+     <div class="tk-stream__bar" role="toolbar">…</div></section>
+   영상은 늘어나지 않고(contain) 화면 안에 비율대로 들어온다. 연결이 live 가 아니면 상태 막이 영상 위를 덮고 입력을 막는다. */
+.tk-stream { position: relative; display: flex; flex-direction: column; min-width: 0; max-width: 100%; overflow: hidden; border-radius: var(--tk-component-code-block-radius); background: var(--tk-color-ink-bg); color: var(--tk-color-ink-text); }
+.tk-stream__view { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: var(--tk-_ratio, 16 / 10); max-height: calc(100dvh - var(--tk-size-layout-header) - var(--tk-size-layout-tabbar)); background: var(--tk-color-ink-bg); touch-action: none; user-select: none; }
+.tk-stream__view > :is(video, canvas, img) { display: block; width: 100%; height: 100%; object-fit: contain; }
+.tk-stream__view:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+.tk-stream__hud { position: absolute; left: var(--tk-space-2); top: var(--tk-space-2); display: flex; flex-wrap: wrap; gap: var(--tk-space-1); max-width: calc(100% - 2 * var(--tk-space-2)); pointer-events: none; }
+.tk-stream__hud > * { /* lint-ok: 짧은 수치 알약. HUD 가 줄바꿈(flex-wrap)해 넘치지 않는다 */ padding: var(--tk-space-0-5) var(--tk-space-2); border-radius: var(--tk-radius-full); background: color-mix(in srgb, var(--tk-color-ink-bg) 72%, transparent); color: var(--tk-color-ink-text); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tk-stream__hud > [data-quality="good"] { color: var(--tk-color-ink-log-ok); }
+.tk-stream__hud > [data-quality="poor"] { color: var(--tk-color-ink-log-warn); }
+.tk-stream__status { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--tk-space-3); padding: var(--tk-space-4); text-align: center; background: color-mix(in srgb, var(--tk-color-ink-bg) 78%, transparent); color: var(--tk-color-ink-text); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); overflow-wrap: anywhere; }
+.tk-stream[data-state="live"] .tk-stream__status { display: none; }
+.tk-stream[data-state="degraded"] .tk-stream__status { inset: auto 0 0 0; padding: var(--tk-space-2); background: var(--tk-color-ink-bg-header); color: var(--tk-color-ink-log-warn); }
+.tk-stream__bar { display: flex; align-items: center; gap: var(--tk-space-1); flex: none; min-width: 0; padding: var(--tk-space-2); padding-bottom: calc(var(--tk-space-2) + env(safe-area-inset-bottom)); overflow-x: auto; scrollbar-width: none; background: var(--tk-color-ink-bg-header); border-top: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); }
+.tk-stream__bar::-webkit-scrollbar { display: none; }
+.tk-stream__bar .tk-icon-button { --tk-_fg: var(--tk-color-ink-text); --tk-_bg-hover: var(--tk-color-ink-hover); --tk-_bg-active: var(--tk-color-ink-hover); flex: none; }
+.tk-stream__bar .tk-icon-button[aria-pressed="true"] { --tk-_bg: var(--tk-color-ink-hover); --tk-_fg: var(--tk-color-agent-on-ink); }
+.tk-stream__bar > .tk-stream__spacer { flex: 1 1 auto; }
+.tk-stream[data-fullscreen], .tk-stream:fullscreen { /* lint-ok: 아래 safe-area 는 .tk-stream__bar 의 padding-bottom 이 맡는다 */ position: fixed; inset: 0; z-index: var(--tk-z-index-modal); border-radius: 0; }
+.tk-stream[data-fullscreen] .tk-stream__view, .tk-stream:fullscreen .tk-stream__view { flex: 1 1 auto; aspect-ratio: auto; max-height: none; }
+.tk-stream[data-fullscreen] { padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left); }
+
+/* Keybar: 폰에 없는 키(Esc·Tab·Ctrl·방향). 한 줄, 넘치면 가로 스크롤. 수식 키는 aria-pressed 로 눌림 유지 */
+.tk-keybar { display: flex; gap: var(--tk-space-1); min-width: 0; padding: var(--tk-space-1) var(--tk-space-2); overflow-x: auto; scrollbar-width: none; background: var(--tk-color-ink-bg-header); }
+.tk-keybar::-webkit-scrollbar { display: none; }
+.tk-keybar__key { flex: none; min-width: var(--tk-size-touch-target-min); min-height: var(--tk-size-touch-target-min); padding: 0 var(--tk-space-2); border: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); border-radius: var(--tk-radius-md); background: var(--tk-color-ink-bg); color: var(--tk-color-ink-text); cursor: pointer; touch-action: manipulation; font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-mono); }
+.tk-keybar__key[aria-pressed="true"] { background: var(--tk-color-ink-hover); border-color: var(--tk-color-agent-on-ink); color: var(--tk-color-agent-on-ink); }
+.tk-keybar__key:active { background: var(--tk-color-ink-hover); }
+/* 가상 트랙패드: 손가락으로 커서를 옮기는 면(원격 포인터가 상대 좌표일 때) */
+.tk-pad { display: grid; place-items: center; width: 100%; aspect-ratio: 3 / 2; min-height: calc(var(--tk-space-16) * 2); border: var(--tk-border-width-hairline) dashed var(--tk-color-ink-border); border-radius: var(--tk-radius-lg); background: var(--tk-color-ink-bg); color: var(--tk-color-ink-text-muted); touch-action: none; user-select: none; font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }

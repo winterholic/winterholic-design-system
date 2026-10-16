@@ -1,0 +1,506 @@
+[
+ {
+  "page": "chat.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "ellipsis-without-full-text",
+  "sig": "div.tk-header__inner > div.tk-header__title > h1",
+  "detail": "말줄임이 생겼는데 title/상세에서 전체를 볼 방법이 없다"
+ },
+ {
+  "page": "chat.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "ellipsis-without-full-text",
+  "sig": "div.tk-header__inner > div.tk-header__title > p.tk-header__meta",
+  "detail": "말줄임이 생겼는데 title/상세에서 전체를 볼 방법이 없다"
+ },
+ {
+  "page": "chat.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 832 > 상자 249, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 677 > 상자 286, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 868 > 상자 319, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 730 > 상자 356, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 868 > 상자 319, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 730 > 상자 356, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 1037 > 상자 657, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 815 > 상자 694, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 1024,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 1021 > 상자 641, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 1024,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 807 > 상자 678, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 1440,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "div.tk-message__body > div.tk-run > div.tk-log",
+  "detail": "내용 1029 > 상자 657, 말줄임 없음"
+ },
+ {
+  "page": "chat.html",
+  "width": 1440,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "article.tk-message.tk-message--agent > div.tk-message__body > section.tk-approval",
+  "detail": "내용 815 > 상자 694, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "ellipsis-without-full-text",
+  "sig": "div.tk-header__inner.tk-container > div.tk-header__title > span.tk-mono.tk-text-tertiary",
+  "detail": "말줄임이 생겼는데 title/상세에서 전체를 볼 방법이 없다"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "main.tk-container.ex-page-shell#main > nav.ex-toc > a.tk-chip",
+  "detail": "38×40 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "24×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "52×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "page-overflow-x",
+  "sig": "html > body",
+  "detail": "scrollWidth 914 > 320"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "753×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "679×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-block > div.ex-row > div.tk-dropdown",
+  "detail": "x 16..883 (화면 320)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-row > div.tk-dropdown > button.tk-button",
+  "detail": "x 16..883 (화면 320)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.tk-dropdown > button.tk-button > span",
+  "detail": "x 69..838 (화면 320)"
+ },
+ {
+  "page": "preview.html",
+  "width": 320,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 559 > 상자 286, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "main.tk-container.ex-page-shell#main > nav.ex-toc > a.tk-chip",
+  "detail": "38×40 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "24×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "52×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "page-overflow-x",
+  "sig": "html > body",
+  "detail": "scrollWidth 914 > 390"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "753×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "679×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-block > div.ex-row > div.tk-dropdown",
+  "detail": "x 16..883 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-row > div.tk-dropdown > button.tk-button",
+  "detail": "x 16..883 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.tk-dropdown > button.tk-button > span",
+  "detail": "x 69..838 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 594 > 상자 356, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "page-overflow-x",
+  "sig": "html > body",
+  "detail": "scrollWidth 914 > 390"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "753×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "679×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-block > div.ex-row > div.tk-dropdown",
+  "detail": "x 16..883 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-row > div.tk-dropdown > button.tk-button",
+  "detail": "x 16..883 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "escapes-viewport",
+  "sig": "div.tk-dropdown > button.tk-button > span",
+  "detail": "x 69..838 (화면 390)"
+ },
+ {
+  "page": "preview.html",
+  "width": 390,
+  "mode": "stress",
+  "scheme": "dark",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 594 > 상자 356, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "main.tk-container.ex-page-shell#main > nav.ex-toc > a.tk-chip",
+  "detail": "38×40 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "24×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "52×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "page-overflow-x",
+  "sig": "html > body",
+  "detail": "scrollWidth 922 > 768"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt1",
+  "detail": "753×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "touch-target-under-44",
+  "sig": "div.ex-block > div.tk-tablist > button.tk-tab#pt2",
+  "detail": "679×2 (히트 영역 포함)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-block > div.ex-row > div.tk-dropdown",
+  "detail": "x 24..891 (화면 768)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.ex-row > div.tk-dropdown > button.tk-button",
+  "detail": "x 24..891 (화면 768)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "escapes-viewport",
+  "sig": "div.tk-dropdown > button.tk-button > span",
+  "detail": "x 77..846 (화면 768)"
+ },
+ {
+  "page": "preview.html",
+  "width": 768,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 775 > 상자 718, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 1024,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "page-overflow-x",
+  "sig": "html > body",
+  "detail": "scrollWidth 1126 > 1024"
+ },
+ {
+  "page": "preview.html",
+  "width": 1024,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 651 > 상자 470, 말줄임 없음"
+ },
+ {
+  "page": "preview.html",
+  "width": 1440,
+  "mode": "stress",
+  "scheme": "light",
+  "rule": "silent-clip",
+  "sig": "section.ex-section#viewer > div.ex-cols > div.ex-panel.ex-panel--tall",
+  "detail": "내용 755 > 상자 678, 말줄임 없음"
+ },
+ {
+  "page": "workspace.html",
+  "width": 320,
+  "mode": "normal",
+  "scheme": "light",
+  "rule": "ellipsis-without-full-text",
+  "sig": "div.tk-header__inner > div.tk-header__title > p.tk-header__meta",
+  "detail": "말줄임이 생겼는데 title/상세에서 전체를 볼 방법이 없다"
+ }
+]

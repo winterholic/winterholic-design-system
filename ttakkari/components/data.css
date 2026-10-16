@@ -1,0 +1,239 @@
+/* data: Data table · Stat · Chart(래퍼·범례·SVG 클래스) · Spark · Diff · Timeline.
+   "숫자와 줄이 많은 화면"(GitHub diff·ML 지표·주식·로그 표)을 모바일 320 에서도 터지지 않게 담는 부품이다.
+   원칙: 넘치는 것은 그 상자만 가로 스크롤하고, 페이지는 밀리지 않는다. 숫자는 mono·tabular, 오른쪽 정렬. 색만으로 뜻을 전하지 않는다(기호·글자 동반). */
+
+/* ---------- Data table ----------
+   <div class="tk-datatable">
+     <div class="tk-datatable__bar">…검색·필터·건수…</div>                      (선택)
+     <div class="tk-datatable__scroll" role="region" aria-label="…" tabindex="0"><table>…</table></div>
+     <div class="tk-datatable__foot">…쪽 이동·합계…</div>                       (선택)
+   </div>
+   틀(.tk-datatable)은 넘침을 자르고, 안쪽 스크롤 상자(__scroll)만 가로·세로로 스크롤한다. 머리 행은 세로 스크롤에서 고정된다. */
+.tk-datatable {
+  display: flex; flex-direction: column; min-width: 0; max-width: 100%; overflow: hidden;
+  border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg);
+  background: var(--tk-color-surface-default); color: var(--tk-color-text-primary);
+}
+.tk-datatable__bar, .tk-datatable__foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--tk-space-2) var(--tk-space-3); flex: none;
+  padding: var(--tk-space-2) var(--tk-space-3); background: var(--tk-color-surface-subtle);
+  color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
+}
+.tk-datatable__bar { border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-default); }
+.tk-datatable__foot { border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); padding-bottom: calc(var(--tk-space-2) + env(safe-area-inset-bottom)); }
+.tk-datatable__scroll { flex: 1 1 auto; min-height: 0; max-height: var(--tk-_max-h, none); overflow: auto; overscroll-behavior: contain; }
+.tk-datatable__scroll:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+/* 높이를 제한하면 머리 행이 고정된 채 본문만 세로로 스크롤한다 */
+.tk-datatable--scroll-y { --tk-_max-h: calc(var(--tk-space-16) * 6); }
+/* 부모가 높이를 정하면(flex 열) 남는 높이를 다 쓴다 */
+.tk-datatable--fill { flex: 1 1 auto; min-height: 0; }
+.tk-datatable table { width: 100%; border-collapse: separate; border-spacing: 0; font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); font-variant-numeric: tabular-nums; }
+.tk-datatable :is(th, td) {
+  height: var(--tk-size-control-md); padding: var(--tk-space-2) var(--tk-space-3); text-align: left; vertical-align: middle;
+  border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle);
+  /* 한 칸이 표를 밀어내지 못한다: 일반 칸은 이 폭에서 줄을 바꾼다 */
+  max-width: calc(var(--tk-space-24) * 3); overflow-wrap: anywhere;
+}
+.tk-datatable thead th { /* lint-ok: 머리 칸은 한 줄, 표 상자가 가로 스크롤 */
+  position: sticky; top: 0; z-index: var(--tk-z-index-raised); white-space: nowrap;
+  background: var(--tk-color-surface-subtle); color: var(--tk-color-text-secondary); font-weight: var(--tk-font-weight-medium);
+  border-bottom-color: var(--tk-color-border-default);
+}
+.tk-datatable tbody tr:last-child > :is(th, td) { border-bottom: 0; }
+.tk-datatable tbody th { font-weight: var(--tk-font-weight-medium); text-align: left; }
+@media (hover: hover) { .tk-datatable tbody tr:hover > :is(th, td) { background: var(--tk-color-interactive-hover-overlay); } }
+.tk-datatable tbody tr[aria-selected="true"] > :is(th, td) { background: var(--tk-color-interactive-selected-bg); }
+.tk-datatable--compact :is(th, td) { height: var(--tk-size-control-sm); padding-block: var(--tk-space-1); }
+/* 터치에서는 누르는 행이 44 보다 낮지 않다 */
+@media (pointer: coarse) { .tk-datatable :is(tr[data-href], tr[aria-selected], tr[tabindex]) > :is(th, td) { height: var(--tk-size-touch-target-min); } }
+/* 숫자 칸: 오른쪽 정렬. 머리도 같이 */
+.tk-datatable :is(th, td).tk-datatable__num { /* lint-ok: 숫자는 줄바꿈하지 않고 표 상자가 가로 스크롤 */ text-align: right; white-space: nowrap; }
+/* 한 줄로 자르는 칸(경로·제목): 폭 제한 + 말줄임. 전체는 title 이나 상세에서 */
+.tk-datatable :is(th, td).tk-datatable__clip { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tk-datatable :is(th, td).tk-datatable__mono { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; }
+/* 첫 열 고정: 가로로 스크롤해도 무엇의 줄인지 보인다 */
+.tk-datatable--sticky-col :is(th, td):first-child { position: sticky; left: 0; z-index: var(--tk-z-index-raised); background: var(--tk-color-surface-default); box-shadow: var(--tk-border-width-hairline) 0 0 var(--tk-color-border-subtle); }
+.tk-datatable--sticky-col thead th:first-child { z-index: calc(var(--tk-z-index-raised) + 1); background: var(--tk-color-surface-subtle); }
+/* 정렬 머리: <th aria-sort="ascending|descending|none"><button class="tk-datatable__sort">이름</button></th> */
+.tk-datatable__sort { /* lint-ok: 머리 버튼은 한 줄, 표 상자가 가로 스크롤 */
+  display: inline-flex; align-items: center; gap: var(--tk-space-1); max-width: 100%; min-height: var(--tk-size-control-sm); margin: calc(-1 * var(--tk-space-1)) calc(-1 * var(--tk-space-2)); padding: 0 var(--tk-space-2);
+  border: 0; border-radius: var(--tk-radius-sm); background: none; color: inherit; cursor: pointer; font: inherit; white-space: nowrap;
+}
+.tk-datatable__sort::after { content: "↕"; color: var(--tk-color-text-tertiary); }
+th[aria-sort="ascending"] > .tk-datatable__sort::after { content: "↑"; color: var(--tk-color-text-brand); }
+th[aria-sort="descending"] > .tk-datatable__sort::after { content: "↓"; color: var(--tk-color-text-brand); }
+.tk-datatable__sort:hover { color: var(--tk-color-text-primary); background: var(--tk-color-interactive-hover-overlay); }
+@media (pointer: coarse) { .tk-datatable__sort { min-height: var(--tk-size-touch-target-min); } }
+/* 빈·오류 상태는 표 안의 한 행: <tr class="tk-datatable__state"><td colspan="n"><div class="tk-empty">…</div></td></tr> */
+.tk-datatable__state > td { max-width: none; height: auto; padding: 0; }
+.tk-datatable__state:hover > td { background: none; }
+
+/* 좁은 화면에서 행을 카드로: <table> 에 data-label 이 달린 칸. 가로 스크롤보다 읽기 쉬운 표(열 5개 이하)에만 쓴다 */
+@media (max-width: 767px) {
+  .tk-datatable--stack { border: 0; border-radius: 0; background: none; overflow: visible; }
+  .tk-datatable--stack .tk-datatable__scroll { overflow: visible; }
+  .tk-datatable--stack :is(table, tbody, tr, td, th) { display: block; }
+  .tk-datatable--stack thead { position: absolute; width: var(--tk-space-px); height: var(--tk-space-px); overflow: hidden; clip: rect(0 0 0 0); }
+  .tk-datatable--stack tbody { display: grid; gap: var(--tk-space-3); }
+  .tk-datatable--stack tbody tr { border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); overflow: hidden; }
+  .tk-datatable--stack :is(td, th) { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--tk-space-3); height: auto; max-width: none; text-align: left; }
+  .tk-datatable--stack td::before { content: attr(data-label); color: var(--tk-color-text-tertiary); font-size: var(--tk-font-size-xs); }
+  .tk-datatable--stack :is(th, td).tk-datatable__num { text-align: left; }
+}
+
+/* ---------- Stat: 숫자 하나가 주인공인 타일(대시보드·지표) ----------
+   <div class="tk-stats"><div class="tk-stat"><span class="tk-stat__label">…</span><span class="tk-stat__value">…</span><span class="tk-stat__delta" data-tone="positive|negative|neutral">▲ 1.2%</span></div>…</div> */
+.tk-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--tk-space-24) * 1.5)), 1fr)); gap: var(--tk-space-3); min-width: 0; }
+.tk-stat {
+  display: flex; flex-direction: column; gap: var(--tk-space-1); min-width: 0; padding: var(--tk-component-card-padding);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-card-border); border-radius: var(--tk-component-card-radius); background: var(--tk-component-card-bg);
+}
+.tk-stat__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-stat__value { min-width: 0; overflow-wrap: anywhere; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-2xl) / var(--tk-font-line-height-snug) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; font-variant-ligatures: none; letter-spacing: var(--tk-font-letter-spacing-tight); }
+.tk-stat__unit { margin-left: var(--tk-space-1); color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans); letter-spacing: var(--tk-font-letter-spacing-normal); }
+.tk-stat__delta { color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+/* 좋고 나쁨은 방향이 아니라 뜻이다(주식은 상승이 빨강인 관례가 있어 페이지가 tone 을 고른다). 화살표·부호가 색 없이도 방향을 말한다 */
+.tk-stat__delta[data-tone="positive"] { color: var(--tk-color-text-success); }
+.tk-stat__delta[data-tone="negative"] { color: var(--tk-color-text-danger); }
+.tk-stat__delta[data-tone="warning"] { color: var(--tk-color-text-warning); }
+.tk-stat > .tk-spark { margin-top: var(--tk-space-1); }
+
+/* ---------- Chart: 차트 라이브러리·SVG 를 담는 틀 ----------
+   <figure class="tk-chart" aria-labelledby="t1"><div class="tk-chart__head"><h3 id="t1" class="tk-chart__title">…</h3><ul class="tk-legend">…</ul></div>
+     <div class="tk-chart__plot" role="img" aria-label="한 줄 요약(추세·최대·최소)"><svg viewBox="…">…</svg></div>
+     <details class="tk-chart__data"><summary>데이터 표로 보기</summary>…</details></figure>
+   plot 은 폭을 따라 줄고(aspect-ratio), 넘치는 것은 자른다. 터치에서 읽을 수 없는 정보(호버 툴팁)는 요약과 표가 대신한다. */
+.tk-chart {
+  display: flex; flex-direction: column; gap: var(--tk-space-3); min-width: 0; margin: 0; padding: var(--tk-component-card-padding);
+  border: var(--tk-border-width-hairline) solid var(--tk-component-card-border); border-radius: var(--tk-component-card-radius); background: var(--tk-component-card-bg);
+}
+.tk-chart__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--tk-space-2) var(--tk-space-3); min-width: 0; }
+.tk-chart__title { min-width: 0; margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); overflow-wrap: anywhere; }
+.tk-chart__sub { margin: 0; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-chart__plot { position: relative; min-width: 0; aspect-ratio: var(--tk-_ratio, 16 / 9); min-height: calc(var(--tk-space-16) * 3); overflow: hidden; }
+.tk-chart--tall .tk-chart__plot { --tk-_ratio: 4 / 3; }
+.tk-chart--wide .tk-chart__plot { --tk-_ratio: 21 / 9; }
+.tk-chart--square .tk-chart__plot { --tk-_ratio: 1 / 1; }
+.tk-chart__plot > :is(svg, canvas) { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+/* SVG 안 요소 클래스: 값은 토큰 색 하나로. 시리즈는 data-series 1~6 이 색을 정하고 data-dash 가 선 모양을 더한다(색맹·흑백 인쇄) */
+.tk-chart [data-series="1"] { --tk-_series: var(--tk-color-chart-categorical-1); }
+.tk-chart [data-series="2"] { --tk-_series: var(--tk-color-chart-categorical-2); }
+.tk-chart [data-series="3"] { --tk-_series: var(--tk-color-chart-categorical-3); }
+.tk-chart [data-series="4"] { --tk-_series: var(--tk-color-chart-categorical-4); }
+.tk-chart [data-series="5"] { --tk-_series: var(--tk-color-chart-categorical-5); }
+.tk-chart [data-series="6"] { --tk-_series: var(--tk-color-chart-categorical-6); }
+.tk-chart__line { fill: none; stroke: var(--tk-_series, var(--tk-color-chart-categorical-1)); stroke-width: var(--tk-border-width-strong); stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.tk-chart__line[data-dash="1"] { stroke-dasharray: 6 4; }
+.tk-chart__line[data-dash="2"] { stroke-dasharray: 2 4; }
+.tk-chart__area { fill: color-mix(in srgb, var(--tk-_series, var(--tk-color-chart-categorical-1)) 16%, transparent); stroke: none; }
+.tk-chart__bar { fill: var(--tk-_series, var(--tk-color-chart-categorical-1)); }
+.tk-chart__dot { fill: var(--tk-color-surface-default); stroke: var(--tk-_series, var(--tk-color-chart-categorical-1)); stroke-width: var(--tk-border-width-strong); vector-effect: non-scaling-stroke; }
+.tk-chart__grid { stroke: var(--tk-color-chart-grid); stroke-width: var(--tk-border-width-hairline); vector-effect: non-scaling-stroke; }
+.tk-chart__axis { stroke: var(--tk-color-chart-axis); stroke-width: var(--tk-border-width-hairline); vector-effect: non-scaling-stroke; }
+.tk-chart__tick { fill: var(--tk-color-chart-label); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+/* 값 읽는 선(크로스헤어)·툴팁: 포인터가 있을 때만. 터치는 점을 누르면 아래 요약 줄이 바뀐다(__readout) */
+.tk-chart__cursor { stroke: var(--tk-color-border-strong); stroke-width: var(--tk-border-width-hairline); vector-effect: non-scaling-stroke; pointer-events: none; }
+.tk-chart__tip {
+  position: absolute; z-index: var(--tk-z-index-popover); max-width: calc(var(--tk-space-24) * 2); padding: var(--tk-space-1-5) var(--tk-space-2); pointer-events: none;
+  border-radius: var(--tk-component-tooltip-radius); background: var(--tk-component-tooltip-bg); color: var(--tk-component-tooltip-text); box-shadow: var(--tk-shadow-md);
+  font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); overflow-wrap: anywhere;
+}
+.tk-chart__readout { min-height: var(--tk-size-control-sm); margin: 0; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+/* 상태: 로딩(스켈레톤 면)·빈·오류는 plot 위에 한 겹 */
+.tk-chart__state { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--tk-space-2); padding: var(--tk-space-4); text-align: center; background: var(--tk-color-surface-default); color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); }
+.tk-chart[aria-busy="true"] .tk-chart__plot { background: var(--tk-color-surface-muted); border-radius: var(--tk-radius-md); }
+.tk-chart[aria-busy="true"] .tk-chart__plot > :is(svg, canvas) { visibility: hidden; }
+.tk-chart__data > summary { display: inline-flex; align-items: center; min-height: var(--tk-size-control-sm); cursor: pointer; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans); }
+@media (pointer: coarse) { .tk-chart__data > summary { min-height: var(--tk-size-touch-target-min); } }
+.tk-chart__data[open] > summary { margin-bottom: var(--tk-space-2); }
+
+/* 범례: 켜고 끄는 버튼(aria-pressed). 색 견본 + 이름 + (값) */
+.tk-legend { display: flex; flex-wrap: wrap; gap: var(--tk-space-1) var(--tk-space-3); min-width: 0; margin: 0; padding: 0; list-style: none; }
+.tk-legend__item { display: inline-flex; align-items: center; gap: var(--tk-space-1-5); max-width: 100%; min-height: var(--tk-size-control-sm); padding: 0; border: 0; background: none; color: var(--tk-color-text-secondary); cursor: pointer; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans); }
+.tk-legend__item::before { content: ""; flex: none; width: var(--tk-size-icon-xs); height: var(--tk-border-width-accent); border-radius: var(--tk-radius-full); background: var(--tk-_series, var(--tk-color-chart-categorical-1)); }
+.tk-legend__item > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tk-legend__item[aria-pressed="false"] { color: var(--tk-color-text-tertiary); text-decoration: line-through; }
+.tk-legend__item[aria-pressed="false"]::before { opacity: var(--tk-opacity-disabled); }
+@media (pointer: coarse) { .tk-legend__item { min-height: var(--tk-size-touch-target-min); } }
+.tk-legend [data-series="1"] { --tk-_series: var(--tk-color-chart-categorical-1); }
+.tk-legend [data-series="2"] { --tk-_series: var(--tk-color-chart-categorical-2); }
+.tk-legend [data-series="3"] { --tk-_series: var(--tk-color-chart-categorical-3); }
+.tk-legend [data-series="4"] { --tk-_series: var(--tk-color-chart-categorical-4); }
+.tk-legend [data-series="5"] { --tk-_series: var(--tk-color-chart-categorical-5); }
+.tk-legend [data-series="6"] { --tk-_series: var(--tk-color-chart-categorical-6); }
+
+/* Spark: 글자 옆·타일 안의 작은 추세선. 축·범례 없이 선 하나. <svg class="tk-spark" role="img" aria-label="최근 7일 상승"><path class="tk-chart__line"/></svg> */
+.tk-spark { display: block; width: 100%; height: var(--tk-size-control-sm); overflow: visible; }
+
+/* ---------- Diff: 파일 단위 변경 보기(PR·커밋) ----------
+   잉크 면. 줄 번호 두 칸(이전·이후) + 기호 + 코드. 가로로 넘치면 이 상자만 스크롤하고 줄 번호 칸은 따라온다.
+   <section class="tk-diff"><header class="tk-diff__file"><button aria-expanded>…</button></header>
+     <div class="tk-diff__body" tabindex="0" role="region" aria-label="파일 변경"><table class="tk-diff__table">
+       <tr class="tk-diff__hunk"><td colspan="4">@@ -10,6 +10,8 @@ function</td></tr>
+       <tr data-diff="+"><td class="tk-diff__no"></td><td class="tk-diff__no">12</td><td class="tk-diff__sign">+</td><td class="tk-diff__code">…</td></tr></table></div></section> */
+.tk-diff {
+  min-width: 0; max-width: 100%; overflow: hidden;
+  border: var(--tk-border-width-hairline) solid var(--tk-component-code-block-border); border-radius: var(--tk-component-code-block-radius);
+  background: var(--tk-component-code-block-bg); color: var(--tk-color-ink-text);
+}
+.tk-diff__file { display: flex; align-items: center; gap: var(--tk-space-2); min-width: 0; min-height: var(--tk-component-code-block-header-height); padding: 0 var(--tk-space-2) 0 var(--tk-component-code-block-padding-x); background: var(--tk-component-code-block-header-bg); border-bottom: var(--tk-border-width-hairline) solid var(--tk-component-code-block-border); }
+.tk-diff__file > button { display: flex; align-items: center; gap: var(--tk-space-2); flex: 1 1 auto; min-width: 0; min-height: var(--tk-size-control-md); margin: 0; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; text-align: left; font: inherit; }
+.tk-diff__file > button::before { content: "▾"; flex: none; color: var(--tk-color-ink-text-muted); transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard); }
+.tk-diff__file > button[aria-expanded="false"]::before { transform: rotate(-90deg); }
+.tk-diff__file > button:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+/* 경로: 폴더는 줄어들고(말줄임) 파일 이름은 끝까지 남는다 */
+.tk-diff__path { display: flex; min-width: 0; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-ligatures: none; }
+.tk-diff__dir { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text-muted); }
+.tk-diff__name { flex: none; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text); font-weight: var(--tk-font-weight-semibold); }
+.tk-diff__stat { display: inline-flex; gap: var(--tk-space-1-5); flex: none; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }
+.tk-diff__stat > :first-child { color: var(--tk-color-ink-added-sign); }
+.tk-diff__stat > :last-child { color: var(--tk-color-ink-removed-sign); }
+.tk-diff__file:has(> button[aria-expanded="false"]) + .tk-diff__body { display: none; }
+.tk-diff__body { container-type: inline-size; overflow-x: auto; overscroll-behavior-x: contain; }
+.tk-diff__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
+.tk-diff__table { width: 100%; min-width: max-content; border-collapse: collapse; font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-relaxed) var(--tk-font-family-mono); font-variant-ligatures: none; tab-size: 2; }
+.tk-diff__table :is(td, th) { padding: 0; vertical-align: top; }
+.tk-diff__no {
+  position: sticky; left: 0; z-index: var(--tk-z-index-raised); min-width: calc(var(--tk-space-8) + var(--tk-space-2)); padding-inline: var(--tk-space-2); text-align: right; user-select: none;
+  background: var(--tk-color-ink-bg); color: var(--tk-color-ink-line-number);
+}
+/* 이전·이후 두 번호 칸 중 둘째는 첫째 옆에 붙어 같이 고정된다 */
+.tk-diff__no + .tk-diff__no { left: calc(var(--tk-space-8) + var(--tk-space-2)); }
+.tk-diff__sign { width: var(--tk-space-4); min-width: var(--tk-space-4); text-align: center; user-select: none; color: var(--tk-color-ink-text-muted); }
+.tk-diff__code { padding-right: var(--tk-space-4); white-space: pre; color: var(--tk-color-ink-text); }
+.tk-diff tr[data-diff="+"] { background: var(--tk-color-ink-added-bg); }
+.tk-diff tr[data-diff="-"] { background: var(--tk-color-ink-removed-bg); }
+.tk-diff tr[data-diff="+"] > .tk-diff__sign { color: var(--tk-color-ink-added-sign); }
+.tk-diff tr[data-diff="-"] > .tk-diff__sign { color: var(--tk-color-ink-removed-sign); }
+.tk-diff tr[data-diff="+"] > .tk-diff__no { background-image: linear-gradient(var(--tk-color-ink-added-bg), var(--tk-color-ink-added-bg)); }
+.tk-diff tr[data-diff="-"] > .tk-diff__no { background-image: linear-gradient(var(--tk-color-ink-removed-bg), var(--tk-color-ink-removed-bg)); }
+.tk-diff__hunk > td { padding: var(--tk-space-1) var(--tk-space-3); background: var(--tk-color-ink-bg-header); color: var(--tk-color-ink-text-muted); white-space: pre; }
+/* 줄 바꿈 보기: 모바일에서 긴 줄을 가로 스크롤 없이 읽는다 */
+.tk-diff[data-wrap] .tk-diff__code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.tk-diff[data-wrap] .tk-diff__table { min-width: 100%; }
+/* 나란히 보기(md 이상에서 호출부가 고른다): 이전 | 이후 두 열. 한 행 = 번호·기호·코드 × 2 */
+.tk-diff[data-view="split"] .tk-diff__code { width: 50%; }
+.tk-diff[data-view="split"] .tk-diff__table { table-layout: fixed; min-width: calc(var(--tk-space-24) * 6); }
+.tk-diff[data-view="split"] td[data-diff="+"] { background: var(--tk-color-ink-added-bg); }
+.tk-diff[data-view="split"] td[data-diff="-"] { background: var(--tk-color-ink-removed-bg); }
+/* 줄에 붙은 리뷰 댓글: 종이 면 카드가 잉크 위에 놓인다. 가로로 스크롤해도 화면 안에 머문다 */
+.tk-diff__thread > td { padding: var(--tk-space-2) var(--tk-space-3); background: var(--tk-color-ink-bg-header); }
+.tk-diff__thread > td > * { position: sticky; left: var(--tk-space-3); width: calc(100cqw - 2 * var(--tk-space-3)); max-width: calc(var(--tk-size-container-sm)); padding: var(--tk-space-3); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); color: var(--tk-color-text-primary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-relaxed) var(--tk-font-family-sans); white-space: normal; overflow-wrap: anywhere; }
+.tk-diff ::selection { background: var(--tk-color-ink-selection); }
+
+/* ---------- Timeline: 커밋·PR 활동·실험 기록·작업 이력 ----------
+   <ol class="tk-timeline"><li data-state="succeeded"><span class="tk-timeline__node"><svg class="tk-icon"/></span><div class="tk-timeline__body">…</div></li></ol> */
+.tk-timeline { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.tk-timeline > li { position: relative; display: grid; grid-template-columns: var(--tk-size-icon-lg) minmax(0, 1fr); gap: var(--tk-space-3); padding-bottom: var(--tk-space-4); }
+.tk-timeline > li:last-child { padding-bottom: 0; }
+.tk-timeline > li:not(:last-child)::before { content: ""; position: absolute; left: calc(var(--tk-size-icon-lg) / 2 - var(--tk-border-width-hairline) / 2); top: var(--tk-size-icon-lg); bottom: 0; width: var(--tk-border-width-hairline); background: var(--tk-color-border-default); }
+.tk-timeline__node { display: grid; place-items: center; width: var(--tk-size-icon-lg); height: var(--tk-size-icon-lg); border-radius: var(--tk-radius-full); background: var(--tk-color-surface-muted); color: var(--tk-color-text-secondary); }
+.tk-timeline__node > .tk-icon { --tk-_icon: var(--tk-size-icon-xs); }
+.tk-timeline > li[data-state="succeeded"] > .tk-timeline__node { background: var(--tk-color-run-succeeded-bg); color: var(--tk-color-run-succeeded-icon); }
+.tk-timeline > li[data-state="running"] > .tk-timeline__node { background: var(--tk-color-run-running-bg); color: var(--tk-color-run-running-icon); }
+.tk-timeline > li[data-state="waiting"] > .tk-timeline__node { background: var(--tk-color-run-waiting-bg); color: var(--tk-color-run-waiting-icon); }
+.tk-timeline > li[data-state="failed"] > .tk-timeline__node { background: var(--tk-color-run-failed-bg); color: var(--tk-color-run-failed-icon); }
+.tk-timeline__body { display: flex; flex-direction: column; gap: var(--tk-space-1); min-width: 0; padding-top: var(--tk-space-0-5); overflow-wrap: anywhere; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-timeline__body > * { margin: 0; }
+.tk-timeline__title { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-medium); }
+.tk-timeline__meta { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }

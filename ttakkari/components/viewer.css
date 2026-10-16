@@ -15,7 +15,7 @@
 .tk-viewer__tools { display: flex; align-items: center; gap: var(--tk-space-0-5); flex: none; }
 .tk-viewer__divider { width: var(--tk-border-width-hairline); align-self: stretch; margin: var(--tk-space-3) var(--tk-space-1); background: var(--tk-color-border-default); }
 /* 배율·쪽 표시: 기계값이라 모노, 폭이 흔들리지 않게 tabular */
-.tk-viewer__value { min-width: 5ch; padding-inline: var(--tk-space-1); color: var(--tk-color-text-secondary); text-align: center; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tk-viewer__value { /* lint-ok: 배율 숫자. 툴바가 가로 스크롤 */ min-width: 5ch; padding-inline: var(--tk-space-1); color: var(--tk-color-text-secondary); text-align: center; font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
 @media (max-width: 767px) { .tk-viewer__tools > .tk-viewer__wide { display: none; } }
 
 /* Find bar: 문서 안 찾기. n/m 표시 + 이전·다음. Enter 다음, Shift+Enter 이전, Esc 닫기 */
@@ -122,12 +122,12 @@
 .tk-viewer__state code { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; }
 
 /* Follow-up: 결과물을 보면서 바로 지시. 지금 보는 결과물이 문맥 칩으로 붙은 컴포저 */
-.tk-viewer__followup { flex: none; padding: var(--tk-space-2) var(--tk-space-3) calc(var(--tk-space-2) + env(safe-area-inset-bottom)); border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); background: var(--tk-color-surface-subtle); }
+.tk-viewer__followup { flex: none; padding: var(--tk-space-2) var(--tk-space-3) var(--tk-space-2); border-top: var(--tk-border-width-hairline) solid var(--tk-color-border-default); background: var(--tk-color-surface-subtle); }
 .tk-viewer__followup > .tk-composer { box-shadow: none; }
 
 /* 전체 화면 뷰어(모바일): <dialog class="tk-viewer-dialog"> 안에 .tk-viewer. 노치·홈 바 안쪽으로 */
 .tk-viewer-dialog {
-  position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: env(safe-area-inset-top) 0 0;
+  position: fixed; inset: 0; width: 100%; max-width: none; height: 100dvh; max-height: none; margin: 0; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   border: 0; background: var(--tk-color-surface-default); color: var(--tk-color-text-primary);
 }
 .tk-viewer-dialog[open] { display: flex; flex-direction: column; animation: tk-sheet-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }

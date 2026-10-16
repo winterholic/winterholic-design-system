@@ -446,6 +446,7 @@
   --tk-color-chart-grid: #D6DCD7;
   --tk-color-chart-axis: #68736E;
   --tk-color-chart-label: #3D4642;
+  --tk-color-art-halo: #F4F4ED00;
   --tk-component-button-radius: 8px;
   --tk-component-button-gap: 8px;
   --tk-component-button-group-gap: 12px;
@@ -885,6 +886,7 @@
     --tk-color-chart-grid: #30383A;
     --tk-color-chart-axis: #9CA9AC;
     --tk-color-chart-label: #D1DDE0;
+    --tk-color-art-halo: #F4F4ED;
     --tk-component-input-bg: #171B1C;
     --tk-component-input-border: #808B8E;
     --tk-component-input-border-hover: #A6B0B8;
@@ -1122,6 +1124,7 @@
   --tk-color-chart-grid: #30383A;
   --tk-color-chart-axis: #9CA9AC;
   --tk-color-chart-label: #D1DDE0;
+  --tk-color-art-halo: #F4F4ED;
   --tk-component-input-bg: #171B1C;
   --tk-component-input-border: #808B8E;
   --tk-component-input-border-hover: #A6B0B8;

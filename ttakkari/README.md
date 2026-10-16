@@ -16,11 +16,11 @@ Winterholic Ttakkari(내 Mac Studio 에서 도는 AI 에이전트에게 어디�
 | 스케일 | 4px 간격 · 글자 12~36(하한 12, 입력 16) · 컨트롤 24/32/40/48 · radius 2/4/8/12/16/20 · 채팅 열 760 · 문서 열 720 |
 | 셸 | 모바일: 헤더 56 · 화면 · 컴포저 · 탭바 56(+safe-area) / lg 이상: 사이드바 280 · 채팅 \| 작업 공간 분할 |
 | 다크 | 시드 `.dark` 값 그대로. `prefers-color-scheme` · `data-theme="dark"` · `.dark` 셋 다 지원. 컴포넌트에 `dark:` 없음 |
-| 컴포넌트 | **구현 포함**: `dist/components.css` + `dist/tk.js`. core 25 + 채팅(스레드·메시지·컴포저) + 실행·승인(Run·Steps·Log·Approval·Checks) + 결과물(Glyph·Card·Policy·Retention·Detail) + Universal Artifact Viewer(본문 7종·상태 7종) |
-| 검사 | 대비 510쌍(라이트·다크), 컴포넌트 lint(hex·px·시간·z-index·없는 변수), 이름 충돌 검사, 정적 테스트, Chrome 동작 검사 58개(6폭 가로 넘침·키보드·한글 조합 Enter·분할·뷰어) |
+| 컴포넌트 | **구현 포함**: `dist/components.css` + `dist/tk.js`. core 25 + 채팅(스레드·메시지·컴포저) + 실행·승인(Run·Steps·Log·Approval·Checks) + 결과물(Glyph·Card·Policy·Retention·Detail) + Universal Artifact Viewer(본문 7종·상태 7종) + 데이터(Data table·Stat·Chart·Diff·Timeline) + 작업대(Toolbar·Panes·Editor·Canvas·Stream) + 일러스트 자리(Art) |
+| 검사 | 대비 510쌍(라이트·다크), 컴포넌트 lint(hex·px·시간·z-index·없는 변수 + 레이아웃 5종), 이름 충돌 검사, 정적 테스트, Chrome 동작 검사 58개(6폭 가로 넘침·키보드·한글 조합 Enter·분할·뷰어), 레이아웃 검사(긴 글자 주입·터치·safe-area·모달) |
 | 연동 | React+Vite+TS 계약([19](docs/19-react-integration.md)), Tailwind 프리셋, Monaco 테마, PWA 색, 시드 별칭 |
 
-미리보기: [`examples/preview.html`](examples/preview.html)(전 토큰·컴포넌트, 라이트·다크). 템플릿: [`chat`](examples/chat.html) · [`workspace`](examples/workspace.html) · [`library`](examples/library.html) · [`files`](examples/files.html) · [`auth`](examples/auth.html).
+미리보기: [`examples/preview.html`](examples/preview.html)(전 토큰·컴포넌트, 라이트·다크). 템플릿: [`chat`](examples/chat.html) · [`workspace`](examples/workspace.html) · [`library`](examples/library.html) · [`files`](examples/files.html) · [`auth`](examples/auth.html). 페이지 아키타입 10종: [`archetypes/`](examples/archetypes/index.html). 일러스트 자리: [`art`](examples/art.html).
 
 ## 설치
 
@@ -88,6 +88,10 @@ tokens.color.ink.bg.value       // '#171B1C' (라이트) · .dark '#111516'
 | [18 제품 매핑](docs/18-product-mapping.md) | 요구사항의 약속·개념·Phase → 화면, 화면이 하지 않는 것 | 요구사항이 화면에서 뭐가 되나 |
 | [19 React 연동](docs/19-react-integration.md) | import 순서, 컴포넌트 계약, 컴포저 규칙, 렌더러, 라우팅, PWA | 프론트 구현 |
 | [20 설계 검토](docs/20-design-review.md) | 결정·대안·렌더 검토에서 고친 것 | 왜 이렇게 됐나 |
+| [21 페이지 아키타입](docs/21-page-archetypes.md) | 저장소·PR·자료 노트·연구 지표·글쓰기·그래프·주식·창작·원격 조종·갤러리 10종의 폭별 배치·부품·상태·금지 | **새 화면을 만들 때 첫 번째** |
+| [22 UI 실수 방지](docs/22-ui-error-prevention.md) | 넘침·간격·모달·safe-area·터치 사고 분류, 검사 규칙, 체크리스트 | 화면이 이상하게 깨질 때·새 화면 전 |
+| [23 일러스트 자산](docs/23-illustration-assets.md) | 마스코트·빈 상태·온보딩 일러스트 목록·규격·자리(`.tk-art`) | 그림을 넣을 때 |
+| [24 데이터·작업대 컴포넌트](docs/24-data-workbench-components.md) | 표·지표·차트·diff·타임라인·도구줄·칸·에디터·캔버스·원격 화면 계약 | 데이터·도구 화면 부품 |
 | [CLAUDE.md](CLAUDE.md) | AI 에이전트 규칙 요약 | AI 로 UI 를 만들 때 |
 
 ## 빌드·검사
@@ -96,6 +100,7 @@ tokens.color.ink.bg.value       // '#171B1C' (라이트) · .dark '#111516'
 npm run build      # = node tokens/build.mjs. 참조·라이트/다크·대비 510쌍·lint·이름 충돌 실패 시 중단
 npm test           # 빌드 + 정적 검사 + 브랜드 자산 검사(Python+Pillow 필요)
 npm run check:ui   # 실제 Chrome 으로 6폭 가로 넘침·키보드·컴포저·분할·뷰어 검사(playwright-core 필요)
+npm run check:layout  # 예제 전부를 6폭 + 가로 모드 × 평소/긴 글자 × 라이트/다크로 열어 넘침·잘림·이중 간격·터치 44·입력 16·safe-area·모달 크기 검사(22)
 npm run brand      # 브랜드 자산 재생성(Python+Pillow)
 ```
 

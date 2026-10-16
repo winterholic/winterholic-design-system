@@ -98,7 +98,7 @@ const inPage = (opts) => {
 
   // 긴 글자 주입: 자식 요소가 없는 글자 요소 끝에 붙인다(실제 앱의 긴 파일명·계정·프로젝트 이름을 흉내)
   if (stress) {
-    const skip = 'script,style,svg,option,kbd,code,pre,[data-stress-skip],.tk-sr-only,.tk-tabbar *,.tk-skip-link,.tk-header__brand *,.tk-header__actions *,.tk-viewer__tools *,.tk-tabs [role=tab],.tk-segmented *,.tk-nav__link,.tk-pagination *,.tk-copy *,.tk-menu__item';
+    const skip = 'script,style,svg,option,kbd,code,pre,[data-stress-skip],.tk-sr-only,.tk-tabbar *,.tk-skip-link,.tk-header__brand *,.tk-header__actions *,.tk-viewer__tools *,.tk-tabs [role=tab],.tk-segmented *,.tk-nav__link,.tk-pagination *,.tk-copy *,.tk-menu__item,.tk-stream__hud *,.tk-keybar *';
     // 버튼·칩·배지의 맨 글자는 정해진 이름(승인·다운로드·완료)이다. 데이터가 들어가면 라벨을 <span> 으로 감싸는 것이 계약이라 그 span 만 주입한다. --stress-raw 는 맨 글자에도 주입한다(실제 앱에서 데이터 라벨 찾기).
     const staticLabel = (el) => !opts.raw && el.matches('.tk-button,.tk-icon-button,.tk-tab,.tk-segmented__item,.tk-toast__action,.tk-chip,.tk-badge');
     for (const el of document.querySelectorAll('body *')) {
@@ -147,7 +147,7 @@ const inPage = (opts) => {
     if (s.overflowX !== 'visible' && s.overflowX !== 'auto' && s.overflowX !== 'scroll' && el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) {
       const text = el.innerText?.trim();
       const ellipsis = s.textOverflow === 'ellipsis' || s.webkitLineClamp !== 'none' && s.display.includes('box');
-      if (text && !ellipsis && !el.matches('.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar') && !el.closest('.tk-sr-only,svg')) {
+      if (text && !ellipsis && !el.matches('.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar,.tk-canvas') && !el.closest('.tk-sr-only,svg')) {
         add('silent-clip', el, `내용 ${el.scrollWidth} > 상자 ${el.clientWidth}, 말줄임 없음`);
       }
     }
@@ -170,6 +170,14 @@ const inPage = (opts) => {
       if (p.classList.contains('tk-stack') && (px('top') > 0 || px('bottom') > 0)) add('gap-plus-margin', el, `tk-stack 자식 margin ${s.marginTop}/${s.marginBottom}`);
     }
 
+    // 가로 모드 노치: 눌리는 요소가 좌우 safe-area 안쪽에 있어야 한다(스크롤 상자 안은 제외)
+    if (insets && (insets.left || insets.right) && document.querySelector('.tk-app, .tk-auth') && el.matches('a[href],button,input:not([type=hidden]),select,textarea,[role=tab]') && !clippers(el) && !el.closest('dialog:not([open])')) {
+      if ((r.left < insets.left - 1 && r.right > 0) || (r.right > vw - insets.right + 1 && r.left < vw)) add('safe-area-side', el, `x ${Math.round(r.left)}..${Math.round(r.right)} 가 좌우 노치 ${insets.left}/${insets.right} 와 겹침`);
+    }
+
+    // 본문 바로가기는 포커스 전에는 화면 밖에 있어야 한다(노치 기기에서 top 이 밀려 걸려 보이던 문제)
+    if (el.matches('.tk-skip-link') && document.activeElement !== el && r.bottom > 1 && r.top < vh) add('skip-link-visible', el, `포커스 없이 화면 안에 보인다 (${Math.round(r.top)}..${Math.round(r.bottom)})`);
+
     // 입력 글자 크기: iOS 는 16px 미만 입력에 포커스하면 화면을 확대한다
     if (touch && el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]):not([type=file]),textarea,select') && parseFloat(s.fontSize) < 16 && s.opacity !== '0') {
       add('input-font-under-16', el, `font-size ${s.fontSize}`);
@@ -181,13 +189,15 @@ const inPage = (opts) => {
 
     // 터치 타깃: 보이는 크기 + ::after 히트 영역
     if (touch && el.matches('a[href],button,[role=button],[role=tab],[role=menuitem],[role=menuitemradio],[role=menuitemcheckbox],[role=option],[role=switch],input:not([type=hidden]),select,summary,[tabindex="0"]') && !el.matches('[disabled],[aria-disabled=true]') && !el.closest('p,li > p,.tk-prose,.tk-callout__body')) {
-      let w = r.width, h = r.height;
-      if (el.matches('input[type=checkbox],input[type=radio]') && el.closest('label')) { const lr = el.closest('label').getBoundingClientRect(); w = lr.width; h = lr.height; }
-      const a = getComputedStyle(el, '::after');
+      // 라벨 안의 체크·라디오는 라벨이 눌리는 영역이다
+      const host = el.matches('input[type=checkbox],input[type=radio]') && el.closest('label') ? el.closest('label') : el;
+      const hr = host.getBoundingClientRect();
+      let w = hr.width, h = hr.height;
+      const a = getComputedStyle(host, '::after');
       if (a.content !== 'none' && a.position === 'absolute') {
         const t = parseFloat(a.top), b = parseFloat(a.bottom), l = parseFloat(a.left), rr = parseFloat(a.right);
-        if (t <= 0 && b <= 0) h = r.height - t - b;
-        if (l <= 0 && rr <= 0) w = r.width - l - rr;
+        if (t <= 0 && b <= 0) h = hr.height - t - b;
+        if (l <= 0 && rr <= 0) w = hr.width - l - rr;
       }
       // 부모가 같은 행동의 큰 영역이면(라벨 안 입력, 행 전체가 링크) 건너뛴다
       if ((w < 43.5 || h < 43.5) && !el.closest('label.tk-chip,.tk-switch,.tk-checkbox,.tk-radio,.tk-field--inline')) {
@@ -241,12 +251,16 @@ const modes = [
   { name: 'normal', stress: false }, { name: 'stress', stress: true },
 ];
 for (const t of targets) {
-  for (const width of WIDTHS) {
+  // 세로 폭들 + 가로 모드 폰(844×390, 노치 좌우 47 · 홈 바 21)
+  const variants = [...WIDTHS.map((w) => ({ width: w, height: w <= 390 ? 700 : 800, label: String(w) })), ...(args['no-landscape'] ? [] : [{ width: 844, height: 390, landscape: true, label: '844L' }])];
+  for (const variant of variants) {
+    const { width } = variant;
     for (const mode of modes) {
+      if (variant.landscape && mode.stress) continue;
       for (const scheme of (width === 390 && mode.stress ? ['light', 'dark'] : ['light'])) {
-        const touch = width <= 768;
-        const insets = touch ? { top: 47, bottom: 34, left: 0, right: 0 } : null;
-        const ctx = await browser.newContext({ viewport: { width, height: width <= 390 ? 700 : 800 }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
+        const touch = width <= 844;
+        const insets = variant.landscape ? { top: 0, bottom: 21, left: 47, right: 47 } : touch ? { top: 47, bottom: 34, left: 0, right: 0 } : null;
+        const ctx = await browser.newContext({ viewport: { width, height: variant.height }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
         const page = await ctx.newPage();
         const errors = [];
         page.on('pageerror', (e) => errors.push(String(e)));
@@ -275,7 +289,7 @@ for (const t of targets) {
         // 같은 규칙·같은 서명은 한 번만
         const uniq = new Map();
         for (const f of found) { const k = f.rule + '|' + f.sig; if (!uniq.has(k)) uniq.set(k, f); }
-        for (const f of uniq.values()) results.push({ page: t.name, width, mode: mode.name, scheme, ...f });
+        for (const f of uniq.values()) results.push({ page: t.name, width: variant.label, mode: mode.name, scheme, ...f });
         await ctx.close();
       }
     }
@@ -288,7 +302,7 @@ server?.close();
 const byRule = new Map();
 for (const r of results) { if (!byRule.has(r.rule)) byRule.set(r.rule, []); byRule.get(r.rule).push(r); }
 const total = targets.length * WIDTHS.length;
-console.log(`레이아웃 검사 · 페이지 ${targets.length} × 폭 ${WIDTHS.join('/')} × (평소|긴 글자) = ${total * 2}+ 상태`);
+console.log(`레이아웃 검사 · 페이지 ${targets.length} × 폭 ${WIDTHS.join('/')}(+가로 모드 844×390) × (평소|긴 글자) = ${total * 2}+ 상태`);
 if (!results.length) console.log('ok · 위반 0');
 for (const [rule, list] of byRule) {
   console.log(`\n[${rule}] ${list.length}건`);

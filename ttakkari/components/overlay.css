@@ -128,7 +128,7 @@
 /* Drawer: 모바일 세션 목록. 왼쪽에서 들어오는 <dialog> */
 .tk-drawer {
   position: fixed; inset: 0 auto 0 0; width: min(85vw, var(--tk-size-layout-drawer)); max-width: none; height: 100dvh; max-height: none; margin: 0;
-  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom); border: 0; border-right: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) env(safe-area-inset-left); border: 0; border-right: var(--tk-border-width-hairline) solid var(--tk-color-border-default);
   background: var(--tk-component-sidebar-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
 }
 .tk-drawer[open] { display: flex; flex-direction: column; animation: tk-drawer-in var(--tk-motion-duration-slow) var(--tk-motion-easing-enter); }

@@ -22,13 +22,14 @@
 
 /* 키보드 첫 Tab 에 나타나는 본문 바로가기. 모든 화면의 첫 요소 */
 .tk-skip-link {
-  position: absolute; left: var(--tk-space-4); top: calc(var(--tk-space-2) + env(safe-area-inset-top));
+  position: absolute; left: calc(var(--tk-space-4) + env(safe-area-inset-left)); top: calc(var(--tk-space-2) + env(safe-area-inset-top));
   z-index: var(--tk-z-index-tooltip);
   padding: var(--tk-space-2) var(--tk-space-4);
   border-radius: var(--tk-radius-md);
   background: var(--tk-color-surface-inverse); color: var(--tk-color-text-inverse);
   font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
-  transform: translateY(-200%);
+  /* 노치가 있으면 top 이 safe-area 만큼 내려와 -200% 로는 화면 안에 걸린다. 자기 높이 + top 값만큼 위로 보낸다 */
+  transform: translateY(calc(-100% - var(--tk-space-2) - env(safe-area-inset-top)));
   transition: transform var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
 }
 .tk-skip-link:focus-visible { transform: none; }

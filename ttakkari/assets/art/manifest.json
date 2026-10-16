@@ -1,0 +1,154 @@
+{
+  "state-approval-wait": {
+    "group": "states",
+    "source": "brand/generated/states/state-approval-wait.png",
+    "files": {
+      "480": 31126,
+      "960": 74364
+    }
+  },
+  "state-complete": {
+    "group": "states",
+    "source": "brand/generated/states/state-complete.png",
+    "files": {
+      "480": 34666,
+      "960": 84308
+    }
+  },
+  "state-empty": {
+    "group": "states",
+    "source": "brand/generated/states/state-empty.png",
+    "files": {
+      "480": 28872,
+      "960": 69902
+    }
+  },
+  "state-error": {
+    "group": "states",
+    "source": "brand/generated/states/state-error.png",
+    "files": {
+      "480": 31816,
+      "960": 77552
+    }
+  },
+  "state-offline": {
+    "group": "states",
+    "source": "brand/generated/states/state-offline.png",
+    "files": {
+      "480": 33386,
+      "960": 80528
+    }
+  },
+  "state-usage-limit": {
+    "group": "states",
+    "source": "brand/generated/states/state-usage-limit.png",
+    "files": {
+      "480": 27632,
+      "960": 65696
+    }
+  },
+  "state-working": {
+    "group": "states",
+    "source": "brand/generated/states/state-working.png",
+    "files": {
+      "480": 28986,
+      "960": 69888
+    }
+  },
+  "onboarding-01-intro": {
+    "group": "onboarding",
+    "source": "brand/generated/onboarding/onboarding-01-intro.png",
+    "files": {
+      "480": 33862,
+      "960": 80128
+    }
+  },
+  "onboarding-02-task": {
+    "group": "onboarding",
+    "source": "brand/generated/onboarding/onboarding-02-task.png",
+    "files": {
+      "480": 31938,
+      "960": 77010
+    }
+  },
+  "onboarding-03-result": {
+    "group": "onboarding",
+    "source": "brand/generated/onboarding/onboarding-03-result.png",
+    "files": {
+      "480": 35464,
+      "960": 83204
+    }
+  },
+  "empty-blog": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-blog.png",
+    "files": {
+      "480": 23076,
+      "960": 53718
+    }
+  },
+  "empty-game-creation": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-game-creation.png",
+    "files": {
+      "480": 21906,
+      "960": 51626
+    }
+  },
+  "empty-github-project": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-github-project.png",
+    "files": {
+      "480": 24328,
+      "960": 60400
+    }
+  },
+  "empty-harness-visualization": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-harness-visualization.png",
+    "files": {
+      "480": 31572,
+      "960": 79280
+    }
+  },
+  "empty-ml-research": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-ml-research.png",
+    "files": {
+      "480": 30000,
+      "960": 74100
+    }
+  },
+  "empty-notebook-library": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-notebook-library.png",
+    "files": {
+      "480": 28108,
+      "960": 67350
+    }
+  },
+  "empty-remote-control": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-remote-control.png",
+    "files": {
+      "480": 22354,
+      "960": 54096
+    }
+  },
+  "empty-stock-analysis": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-stock-analysis.png",
+    "files": {
+      "480": 24728,
+      "960": 56868
+    }
+  },
+  "empty-work-visualization": {
+    "group": "domain-empty",
+    "source": "brand/generated/domain-empty/empty-work-visualization.png",
+    "files": {
+      "480": 16776,
+      "960": 40394
+    }
+  }
+}

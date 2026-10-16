@@ -10,7 +10,9 @@ const root = process.cwd();
 assert.equal(basename(root), 'ttakkari', 'ttakkari 디렉터리에서 실행해야 한다');
 const read = (p) => readFileSync(join(root, p), 'utf8');
 const dist = (f) => read(join('dist', f));
-const examples = readdirSync(join(root, 'examples')).filter((f) => f.endsWith('.html'));
+// examples/ 와 그 하위(archetypes/)의 모든 html. 이름은 examples/ 기준 상대 경로다
+const walkExamples = (dir = '') => readdirSync(join(root, 'examples', dir), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walkExamples(join(dir, e.name)) : e.name.endsWith('.html') ? [join(dir, e.name)] : []));
+const examples = walkExamples();
 const docs = readdirSync(join(root, 'docs')).filter((f) => f.endsWith('.md'));
 const allCss = ['tokens.css', 'typography.css', 'prose.css', 'components.css'].map(dist).join('\n') + read('examples/examples.css');
 const tokenVars = new Set(dist('tokens.css').match(/--tk-[a-z0-9-]+(?=:)/g));
@@ -91,7 +93,7 @@ test('예제가 쓰는 tk- 클래스는 전부 CSS 에 정의돼 있다', () => 
 
 test('예제·인라인 스타일의 var(--tk-*) 는 실제 토큰이다', () => {
   const missing = [];
-  const extra = new Set(['--tk-zoom', '--tk-progress']);
+  const extra = new Set(['--tk-zoom', '--tk-progress', '--tk-pan-x', '--tk-pan-y']);
   const sources = [['examples/examples.css', read('examples/examples.css')], ...examples.map((f) => [f, read(join('examples', f))])];
   for (const [name, text] of sources) {
     for (const m of text.matchAll(/var\((--tk-[a-z0-9-]+)/g)) if (!tokenVars.has(m[1]) && !extra.has(m[1])) missing.push(`${name}: ${m[1]}`);
@@ -135,6 +137,25 @@ test('접근성 이름: 아이콘 버튼 aria-label, 이미지 alt, 탭은 패�
     assert.match(html, /<main\b/, `${f}: main 없음`);
     assert.match(html, /viewport-fit=cover/, `${f}: 노치 안전 영역을 쓰려면 viewport-fit=cover`);
   }
+});
+
+test('아키타입 예제는 전부 docs/21 에 적혀 있고, 아키타입마다 모바일·태블릿·데스크톱 배치와 상태·금지 절이 있다', () => {
+  const doc = read('docs/21-page-archetypes.md');
+  const pages = examples.filter((f) => f.startsWith('archetypes/') && f !== 'archetypes/index.html');
+  assert.ok(pages.length >= 10, `아키타입 예제가 적다: ${pages.length}`);
+  for (const f of pages) assert.ok(doc.includes(f), `docs/21 에 ${f} 없음`);
+  for (const h of ['모바일 320·390', '태블릿 768', '데스크톱 1024+', '컴포넌트', '상태', '금지']) {
+    const n = doc.split(h).length - 1;
+    assert.ok(n >= pages.length, `docs/21: '${h}' 가 아키타입 수(${pages.length})보다 적다(${n})`);
+  }
+});
+
+test('docs/22 는 검사 규칙 이름을 전부 설명한다(검사가 늘면 문서도 는다)', () => {
+  const doc = read('docs/22-ui-error-prevention.md');
+  const check = read('../scripts/ttakkari-layout.check.mjs');
+  const rules = [...new Set([...check.matchAll(/add\('([a-z0-9-]+)'/g)].map((m) => m[1]))];
+  assert.ok(rules.length >= 12, `검사 규칙 수: ${rules.length}`);
+  for (const r of rules) assert.ok(doc.includes('`' + r + '`'), `docs/22 에 규칙 \`${r}\` 설명 없음`);
 });
 
 test('앱 템플릿은 모바일 탭바와 데스크톱 사이드바를 함께 가진다(같은 영역 이름)', () => {

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>llama-ft-ko-v7 · Ttakkari 아키타입</title>
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../../dist/tokens.css">
+<link rel="stylesheet" href="../../dist/typography.css">
+<link rel="stylesheet" href="../../dist/prose.css">
+<link rel="stylesheet" href="../../dist/components.css">
+<link rel="stylesheet" href="../examples.css">
+<script src="../../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="../icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="아키타입">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="index.html"><img src="../../assets/brand/logo-mark.svg" alt=""><span>Archetypes</span></a></div>
+    <nav class="tk-sidebar" aria-label="아키타입 목록"><div class="tk-nav"><a class="tk-nav__link" href="repo-browser.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-branch"/></svg>저장소 열람</a><a class="tk-nav__link" href="pull-request.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-pull-request"/></svg>PR · diff</a><a class="tk-nav__link" href="notebook.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-book-open"/></svg>자료 노트</a><a class="tk-nav__link" href="research.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-flask"/></svg>연구 지표</a><a class="tk-nav__link" href="editor.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-pencil"/></svg>글쓰기</a><a class="tk-nav__link" href="graph.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>구조 그래프</a><a class="tk-nav__link" href="market.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chart-line"/></svg>시장 대시보드</a><a class="tk-nav__link" href="creative.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-palette"/></svg>창작 작업대</a><a class="tk-nav__link" href="remote.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-monitor"/></svg>원격 조종</a><a class="tk-nav__link" href="gallery.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg>결과 갤러리·비교</a></div></nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-header__menu" href="index.html" aria-label="아키타입 목록"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1 title="llama-ft-ko-v7">llama-ft-ko-v7</h1>
+            <p class="tk-header__meta" title="&lt;span class=&quot;tk-badge&quot; data-state=&quot;succeeded&quot;&gt;&lt;span&gt;완료&lt;/span&gt;&lt;/span&gt;&lt;span&gt;6시간 12분&lt;/span&gt;"><span class="tk-badge" data-state="succeeded"><span>완료</span></span><span>6시간 12분</span></p>
+          </div>
+          <div class="tk-header__actions">
+            
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-pressed="false" aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+      <div class="tk-screen__body">
+        <div class="tk-container tk-container--lg tk-stack ex-pad">
+          <div class="tk-cluster tk-cluster--between"><div class="tk-segmented" role="radiogroup" aria-label="기간"><label><input type="radio" name="rng" checked>6시간</label><label><input type="radio" name="rng">24시간</label><label><input type="radio" name="rng">전체</label></div><button class="tk-button tk-button--sm" type="button"><svg class="tk-icon" aria-hidden="true"><use href="#i-refresh"/></svg><span>새로고침</span></button></div>
+
+        <div class="tk-stats" aria-label="핵심 지표">
+          <div class="tk-stat"><span class="tk-stat__label">검증 손실</span><span class="tk-stat__value">1.482</span><span class="tk-stat__delta" data-tone="positive">▼ 0.031 (직전 대비)</span></div>
+          <div class="tk-stat"><span class="tk-stat__label">KMMLU 정확도</span><span class="tk-stat__value">58.3<span class="tk-stat__unit">%</span></span><span class="tk-stat__delta" data-tone="positive">▲ 1.2%p</span></div>
+          <div class="tk-stat"><span class="tk-stat__label">처리량</span><span class="tk-stat__value">3,420<span class="tk-stat__unit">tok/s</span></span><span class="tk-stat__delta" data-tone="neutral">― 변화 없음</span></div>
+          <div class="tk-stat"><span class="tk-stat__label">GPU 메모리</span><span class="tk-stat__value">71.4<span class="tk-stat__unit">GB</span></span><span class="tk-stat__delta" data-tone="warning">▲ 한도의 93%</span></div>
+        </div>
+
+        <figure class="tk-chart" aria-labelledby="ch1">
+          <div class="tk-chart__head">
+            <h3 class="tk-chart__title" id="ch1">학습 손실 · 검증 손실</h3>
+            <ul class="tk-legend" aria-label="범례"><li><button class="tk-legend__item" type="button" data-series="1" aria-pressed="true"><span>train loss</span></button></li><li><button class="tk-legend__item" type="button" data-series="2" aria-pressed="true"><span>eval loss (llama-ft-ko-v7-with-a-long-run-name)</span></button></li></ul>
+          </div>
+          <div class="tk-chart__plot" role="img" aria-label="학습 손실은 0.92 에서 0.31 로 꾸준히 내려가고, 검증 손실은 3,000 스텝 이후 0.40 근처에서 평평해요."><svg viewBox="0 0 320 180" preserveAspectRatio="none"><line class="tk-chart__grid" x1="0" x2="320" y1="36.0" y2="36.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="72.0" y2="72.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="108.0" y2="108.0"/><line class="tk-chart__grid" x1="0" x2="320" y1="144.0" y2="144.0"/><line class="tk-chart__axis" x1="0" x2="320" y1="179" y2="179"/><path class="tk-chart__area" data-series="1" d="M0.0 28.5 L40.0 47.2 L80.0 69.0 L120.0 86.2 L160.0 98.7 L200.0 108.0 L240.0 115.8 L280.0 120.5 L320.0 123.6 L320 179 L0 179 Z"/><path class="tk-chart__line" data-series="1" d="M0.0 28.5 L40.0 47.2 L80.0 69.0 L120.0 86.2 L160.0 98.7 L200.0 108.0 L240.0 115.8 L280.0 120.5 L320.0 123.6"/><path class="tk-chart__area" data-series="2" d="M0.0 23.8 L40.0 41.0 L80.0 62.8 L120.0 78.4 L160.0 90.9 L200.0 98.7 L240.0 103.4 L280.0 104.9 L320.0 104.9 L320 179 L0 179 Z"/><path class="tk-chart__line" data-series="2" data-dash="1" d="M0.0 23.8 L40.0 41.0 L80.0 62.8 L120.0 78.4 L160.0 90.9 L200.0 98.7 L240.0 103.4 L280.0 104.9 L320.0 104.9"/></svg></div>
+          <p class="tk-chart__readout" role="status">스텝 4,000 · train 0.36 · eval 0.44</p>
+          <details class="tk-chart__data"><summary>데이터 표로 보기</summary>
+            <div class="tk-datatable tk-datatable--compact"><div class="tk-datatable__scroll" tabindex="0" role="region" aria-label="손실 데이터"><table><thead><tr><th scope="col" class="tk-datatable__num">스텝</th><th scope="col" class="tk-datatable__num">train</th><th scope="col" class="tk-datatable__num">eval</th></tr></thead><tbody><tr><td class="tk-datatable__num">0</td><td class="tk-datatable__num">0.92</td><td class="tk-datatable__num">0.95</td></tr><tr><td class="tk-datatable__num">4,000</td><td class="tk-datatable__num">0.36</td><td class="tk-datatable__num">0.44</td></tr></tbody></table></div></div>
+          </details>
+        </figure>
+
+        <section class="tk-datatable tk-datatable--sticky-col" aria-label="실험 실행 목록">
+          <div class="tk-datatable__bar"><span>실행 4개 · 2개 비교 중</span><button class="tk-button tk-button--sm tk-button--primary" type="button">비교 보기</button></div>
+          <div class="tk-datatable__scroll" tabindex="0" role="region" aria-label="실행 표(가로로 스크롤)">
+            <table>
+              <thead><tr><th scope="col"><span class="tk-sr-only">선택</span></th><th scope="col" aria-sort="ascending"><button class="tk-datatable__sort" type="button">이름</button></th><th scope="col">상태</th><th scope="col" class="tk-datatable__num"><button class="tk-datatable__sort" type="button">eval loss</button></th><th scope="col" class="tk-datatable__num">KMMLU %</th><th scope="col" class="tk-datatable__num">tok/s</th><th scope="col" class="tk-datatable__num">시간</th></tr></thead>
+              <tbody><tr aria-selected="true"><td><label class="tk-checkbox"><input type="checkbox" checked aria-label="llama-ft-ko-v7 비교에 포함"></label></td><th scope="row" class="tk-datatable__clip tk-datatable__mono" title="llama-ft-ko-v7">llama-ft-ko-v7</th><td><span class="tk-badge" data-state="succeeded"><span>완료</span></span></td><td class="tk-datatable__num">1.482</td><td class="tk-datatable__num">58.3</td><td class="tk-datatable__num">3,420</td><td class="tk-datatable__num">6시간 12분</td></tr><tr aria-selected="true"><td><label class="tk-checkbox"><input type="checkbox" checked aria-label="llama-ft-ko-v6-lr-sweep- 비교에 포함"></label></td><th scope="row" class="tk-datatable__clip tk-datatable__mono" title="llama-ft-ko-v6-lr-sweep-0.0002-warmup-500-with-very-long-experiment-name">llama-ft-ko-v6-lr-sweep-0.0002-warmup-500-with-very-long-experiment-name</th><td><span class="tk-badge" data-state="succeeded"><span>완료</span></span></td><td class="tk-datatable__num">1.513</td><td class="tk-datatable__num">57.1</td><td class="tk-datatable__num">3,401</td><td class="tk-datatable__num">6시간 08분</td></tr><tr aria-selected="false"><td><label class="tk-checkbox"><input type="checkbox" aria-label="qwen-lora-r16 비교에 포함"></label></td><th scope="row" class="tk-datatable__clip tk-datatable__mono" title="qwen-lora-r16">qwen-lora-r16</th><td><span class="tk-badge" data-state="running"><span class="tk-dot tk-dot--live" aria-hidden="true"></span><span>실행 중</span></span></td><td class="tk-datatable__num">1.620</td><td class="tk-datatable__num">—</td><td class="tk-datatable__num">2,980</td><td class="tk-datatable__num">1시간 40분째</td></tr><tr aria-selected="false"><td><label class="tk-checkbox"><input type="checkbox" aria-label="qwen-lora-r64 비교에 포함"></label></td><th scope="row" class="tk-datatable__clip tk-datatable__mono" title="qwen-lora-r64">qwen-lora-r64</th><td><span class="tk-badge" data-state="failed"><span>실패</span></span></td><td class="tk-datatable__num">—</td><td class="tk-datatable__num">—</td><td class="tk-datatable__num">—</td><td class="tk-datatable__num">OOM · 12분</td></tr></tbody>
+            </table>
+          </div>
+          <div class="tk-datatable__foot"><span>1–4 / 4</span><span>마지막 갱신 30초 전</span></div>
+        </section>
+
+      <section class="ex-states" aria-label="상태 견본">
+        <h2 class="tk-caption">상태 견본(빈 · 로딩 · 오류)</h2>
+        <div class="ex-states__grid">
+          <div class="tk-empty tk-empty--boxed">
+            <figure class="tk-art tk-art--sm" data-pending data-art="empty-ml-research"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg></figure>
+            <p class="tk-empty__title">아직 실험이 없어요</p>
+            <p>학습을 시작하면 지표가 여기 쌓여요.</p>
+          </div>
+          <div class="tk-card" aria-busy="true" aria-label="불러오는 중">
+            <span class="tk-skeleton tk-skeleton--text"></span><span class="tk-skeleton tk-skeleton--text"></span><span class="tk-skeleton tk-skeleton--block"></span>
+          </div>
+          <aside class="tk-callout tk-callout--caution" role="alert">
+            <span class="tk-callout__icon"><svg class="tk-icon" aria-hidden="true"><use href="#i-caution"/></svg></span>
+            <div class="tk-callout__body"><strong class="tk-callout__title">불러오지 못했어요</strong><p>지표 서버에 연결하지 못했어요. 네트워크를 확인하고 다시 시도해 주세요.</p><div class="tk-button-group"><button class="tk-button tk-button--sm" type="button">다시 시도</button></div></div>
+          </aside>
+        </div>
+      </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역"><a class="tk-tabbar__item" href="../chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>채팅</span></a><a class="tk-tabbar__item" href="../workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg><span>작업 공간</span></a><a class="tk-tabbar__item" href="../library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg><span>보관함</span></a><a class="tk-tabbar__item" href="../files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg><span>파일</span></a></nav>
+</div>
+
+</body>
+</html>

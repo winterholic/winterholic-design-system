@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>try{var t=localStorage.getItem('tk-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>하네스 구조 · Ttakkari 아키타입</title>
+<link rel="icon" href="../../assets/brand/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5/index.min.css">
+<link rel="stylesheet" href="../../dist/tokens.css">
+<link rel="stylesheet" href="../../dist/typography.css">
+<link rel="stylesheet" href="../../dist/prose.css">
+<link rel="stylesheet" href="../../dist/components.css">
+<link rel="stylesheet" href="../examples.css">
+<script src="../../dist/tk.js" defer></script>
+</head>
+<body>
+<script src="../icons.js"></script>
+<a class="tk-skip-link" href="#main">본문으로 건너뛰기</a>
+
+<div class="tk-app">
+  <aside class="tk-app__sidebar" aria-label="아키타입">
+    <div class="tk-app__brand"><a class="tk-header__brand" href="index.html"><img src="../../assets/brand/logo-mark.svg" alt=""><span>Archetypes</span></a></div>
+    <nav class="tk-sidebar" aria-label="아키타입 목록"><div class="tk-nav"><a class="tk-nav__link" href="repo-browser.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-branch"/></svg>저장소 열람</a><a class="tk-nav__link" href="pull-request.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-git-pull-request"/></svg>PR · diff</a><a class="tk-nav__link" href="notebook.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-book-open"/></svg>자료 노트</a><a class="tk-nav__link" href="research.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-flask"/></svg>연구 지표</a><a class="tk-nav__link" href="editor.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-pencil"/></svg>글쓰기</a><a class="tk-nav__link" href="graph.html" aria-current="page"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>구조 그래프</a><a class="tk-nav__link" href="market.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chart-line"/></svg>시장 대시보드</a><a class="tk-nav__link" href="creative.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-palette"/></svg>창작 작업대</a><a class="tk-nav__link" href="remote.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-monitor"/></svg>원격 조종</a><a class="tk-nav__link" href="gallery.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-image"/></svg>결과 갤러리·비교</a></div></nav>
+  </aside>
+
+  <main class="tk-app__main" id="main" tabindex="-1">
+    <div class="tk-screen">
+      <header class="tk-header">
+        <div class="tk-header__inner">
+          <a class="tk-icon-button tk-header__menu" href="index.html" aria-label="아키타입 목록"><svg class="tk-icon" aria-hidden="true"><use href="#i-back"/></svg></a>
+          <div class="tk-header__title">
+            <h1 title="하네스 구조">하네스 구조</h1>
+            <p class="tk-header__meta" title="&lt;span&gt;스킬 2 · 훅 1 · 도구 2&lt;/span&gt;"><span>스킬 2 · 훅 1 · 도구 2</span></p>
+          </div>
+          <div class="tk-header__actions">
+            
+            <button class="tk-icon-button" type="button" data-tk-theme-toggle aria-pressed="false" aria-label="다크 모드 전환"><svg class="tk-icon tk-theme-toggle__to-dark" aria-hidden="true"><use href="#i-moon"/></svg><svg class="tk-icon tk-theme-toggle__to-light" aria-hidden="true"><use href="#i-sun"/></svg></button>
+          </div>
+        </div>
+      </header>
+      <div class="tk-screen__body ex-fill">
+      <div class="tk-panes" data-tk-panes>
+        <div class="tk-panes__tabs tk-tablist tk-tablist--fill" role="tablist" aria-label="영역"><button class="tk-tab" type="button" role="tab" id="t-p-g" aria-controls="p-g" aria-selected="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-network"/></svg>그래프</button><button class="tk-tab" type="button" role="tab" id="t-p-l" aria-controls="p-l" aria-selected="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-list"/></svg>목록</button><button class="tk-tab" type="button" role="tab" id="t-p-d" aria-controls="p-d" aria-selected="false"><svg class="tk-icon" aria-hidden="true"><use href="#i-info"/></svg>상세</button></div>
+        <div class="tk-panes__body"><section class="tk-panes__pane tk-panes__pane--start" id="p-l" aria-labelledby="t-p-l">
+          <header class="tk-panes__head"><span>노드 6 · 연결 6</span></header>
+          <div class="tk-panes__scroll"><ul class="tk-list"><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-user"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="오케스트레이터">오케스트레이터</span><span class="tk-list__meta"><span>접수 · 기획 · 작업</span></span></span></button></li><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="dev-experts/SKILL.md">dev-experts/SKILL.md</span><span class="tk-list__meta"><span>스킬 · 개발 지식</span></span></span></button></li><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="ui-refine-loop">ui-refine-loop</span><span class="tk-list__meta"><span>스킬 · 화면 개선</span></span></span></button></li><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield-alert"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="PreToolUse: ttakkari-guard">PreToolUse: ttakkari-guard</span><span class="tk-list__meta"><span>훅 · 위험 명령 차단</span></span></span></button></li><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="Bash">Bash</span><span class="tk-list__meta"><span>도구 · 쉘 실행</span></span></span></button></li><li><button class="tk-list__item" type="button"><span class="tk-glyph tk-glyph--sm" data-type="code" aria-hidden="true"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg></span><span class="tk-list__body"><span class="tk-list__title" title="mcp__ttakkari__recall (아주 긴 도구 이름이 노드 안에서 잘리는지 확인)">mcp__ttakkari__recall (아주 긴 도구 이름이 노드 안에서 잘리는지 확인)</span><span class="tk-list__meta"><span>도구 · MCP</span></span></span></button></li></ul></div></section><section class="tk-panes__pane tk-panes__pane--main" id="p-g" aria-labelledby="t-p-g" data-active>
+          <div class="tk-toolbar" role="toolbar" aria-label="그래프 필터">
+            <div class="tk-chips tk-chips--wrap" aria-label="종류">
+              <button class="tk-chip" type="button" aria-pressed="true"><span>에이전트 1</span></button>
+              <button class="tk-chip" type="button" aria-pressed="true"><span>스킬 2</span></button>
+              <button class="tk-chip" type="button" aria-pressed="true"><span>훅 1</span></button>
+              <button class="tk-chip" type="button" aria-pressed="true"><span>도구 2</span></button>
+            </div>
+          </div>
+          <div class="tk-canvas" data-tk-canvas data-tk-fit tabindex="0" role="application" aria-label="하네스 구조 그래프. 방향키로 이동, 더하기·빼기로 확대, 0 으로 전체 보기">
+            <div class="tk-canvas__stage"><svg class="tk-canvas__edges" width="800" height="320" viewBox="0 0 800 320" aria-hidden="true"><path class="tk-edge" data-active d="M230 150 C265 150 265 50 300 50"/><path class="tk-edge" d="M230 150 C265 150 265 150 300 150"/><path class="tk-edge" data-active d="M230 150 C265 150 265 250 300 250"/><path class="tk-edge" d="M490 50 C525 50 525 100 560 100"/><path class="tk-edge" d="M490 150 C525 150 525 100 560 100"/><path class="tk-edge" data-active d="M490 250 C525 250 525 200 560 200"/></svg><div class="tk-node" data-tk-node data-kind="agent" data-state="running" role="button" tabindex="0" id="n-orchestrator" aria-label="오케스트레이터 · 접수 · 기획 · 작업" style="left:40px;top:120px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-user"/></svg><span class="tk-node__title" title="오케스트레이터">오케스트레이터</span></div><span class="tk-node__meta">접수 · 기획 · 작업</span></div><div class="tk-node" data-tk-node data-kind="skill" role="button" tabindex="0" id="n-dev-experts" aria-label="dev-experts/SKILL.md · 스킬 · 개발 지식" style="left:300px;top:20px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg><span class="tk-node__title" title="dev-experts/SKILL.md">dev-experts/SKILL.md</span></div><span class="tk-node__meta">스킬 · 개발 지식</span></div><div class="tk-node" data-tk-node data-kind="skill" role="button" tabindex="0" id="n-design" aria-label="ui-refine-loop · 스킬 · 화면 개선" style="left:300px;top:120px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-file-code"/></svg><span class="tk-node__title" title="ui-refine-loop">ui-refine-loop</span></div><span class="tk-node__meta">스킬 · 화면 개선</span></div><div class="tk-node" data-tk-node data-kind="hook" data-state="waiting" role="button" tabindex="0" id="n-hook-guard" aria-label="PreToolUse: ttakkari-guard · 훅 · 위험 명령 차단" style="left:300px;top:220px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-shield-alert"/></svg><span class="tk-node__title" title="PreToolUse: ttakkari-guard">PreToolUse: ttakkari-guard</span></div><span class="tk-node__meta">훅 · 위험 명령 차단</span></div><div class="tk-node" data-tk-node data-kind="tool" role="button" tabindex="0" id="n-bash" aria-label="Bash · 도구 · 쉘 실행" style="left:560px;top:70px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span class="tk-node__title" title="Bash">Bash</span></div><span class="tk-node__meta">도구 · 쉘 실행</span></div><div class="tk-node" data-tk-node data-kind="tool" data-state="failed" role="button" tabindex="0" id="n-mcp" aria-label="mcp__ttakkari__recall (아주 긴 도구 이름이 노드 안에서 잘리는지 확인) · 도구 · MCP" style="left:560px;top:170px"><span class="tk-node__port" data-side="in"></span><span class="tk-node__port" data-side="out"></span><div class="tk-node__head"><svg class="tk-icon" aria-hidden="true"><use href="#i-terminal"/></svg><span class="tk-node__title" title="mcp__ttakkari__recall (아주 긴 도구 이름이 노드 안에서 잘리는지 확인)">mcp__ttakkari__recall (아주 긴 도구 이름이 노드 안에서 잘리는지 확인)</span></div><span class="tk-node__meta">도구 · MCP</span></div></div>
+            <div class="tk-canvas__controls" role="group" aria-label="보기">
+              <button class="tk-icon-button" type="button" aria-label="확대" data-tk-canvas-action="in"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-in"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="축소" data-tk-canvas-action="out"><svg class="tk-icon" aria-hidden="true"><use href="#i-zoom-out"/></svg></button>
+              <button class="tk-icon-button" type="button" aria-label="전체 보기" data-tk-canvas-action="fit"><svg class="tk-icon" aria-hidden="true"><use href="#i-fit"/></svg></button>
+            </div>
+          </div></section><section class="tk-panes__pane tk-panes__pane--end" id="p-d" aria-labelledby="t-p-d">
+          <header class="tk-panes__head"><span>선택한 노드</span></header>
+          <div class="tk-panes__scroll"><div class="tk-container tk-stack ex-pad">
+            <div class="tk-cluster"><span class="tk-badge" data-state="waiting"><span>확인 필요</span></span><span class="tk-badge tk-badge--info"><span>훅</span></span></div>
+            <h2 class="tk-heading-3" style="overflow-wrap:anywhere">PreToolUse: ttakkari-guard</h2>
+            <dl class="tk-meta"><div><dt>실행 시점</dt><dd>도구를 부르기 직전</dd></div><div><dt>경로</dt><dd class="tk-mono">~/.claude/hooks/ttakkari-guard.sh</dd></div><div><dt>최근 차단</dt><dd>3회 · 마지막 12분 전</dd></div></dl>
+            <div class="tk-button-group"><button class="tk-button tk-button--sm" type="button">원문 열기</button></div>
+          </div></div></section></div>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tk-tabbar" aria-label="영역"><a class="tk-tabbar__item" href="../chat.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-chat"/></svg><span>채팅</span></a><a class="tk-tabbar__item" href="../workspace.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-workspace"/></svg><span>작업 공간</span></a><a class="tk-tabbar__item" href="../library.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-library"/></svg><span>보관함</span></a><a class="tk-tabbar__item" href="../files.html"><svg class="tk-icon" aria-hidden="true"><use href="#i-folder-search"/></svg><span>파일</span></a></nav>
+</div>
+
+</body>
+</html>

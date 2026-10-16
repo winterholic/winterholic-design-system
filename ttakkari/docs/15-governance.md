@@ -19,14 +19,16 @@ ttakkari/
 │  ├─ scripts/ramp.mjs · palette-from-anchors.mjs
 │  ├─ build.mjs               src + components → tokens.json + dist/*
 │  └─ tokens.json · tokens.dark.json (생성물)
-├─ components/                ★ 구현(CSS 14 + tk.js). 빌드가 lint·충돌 검사 후 dist 로 묶는다
+├─ components/                ★ 구현(CSS 16 + tk.js). 빌드가 lint·레이아웃 lint·충돌 검사 후 dist 로 묶는다
 ├─ dist/                      생성물. 소비 앱은 여기만 가져간다
 │  tokens.css · typography.css · prose.css · components.css · aliases.css · tk.js
 │  tokens.js · tokens.d.ts · tokens.global.js · tailwind.preset.cjs · tokens.scss · tokens.figma.json
 │  monaco-theme.json · pwa.json · contrast-report.json
-├─ docs/ 00~20                정답지
-├─ examples/                  preview + 앱 템플릿 5종 + icons.js + examples.css
-└─ assets/brand/              로고·파비콘·앱 아이콘·히어로 + 생성 스크립트
+├─ docs/ 00~24                정답지(21 아키타입 · 22 UI 실수 방지 · 23 일러스트 · 24 데이터·작업대 부품)
+├─ examples/                  preview + 앱 템플릿 5종 + archetypes/(10종) + art.html + icons.js + examples.css
+├─ assets/brand/              로고·파비콘·앱 아이콘·히어로 + 생성 스크립트
+├─ assets/art/                일러스트 웹 파생본(WebP 480·960) + build-art.py + manifest.json
+└─ brand/generated/           일러스트 원본(생성 세션이 넣는다). 앱이 직접 쓰지 않는다
 ```
 
 ## 2. 바꾸는 절차
@@ -37,7 +39,7 @@ ttakkari/
 4. 새 글자-면 조합이면 `build.mjs` 의 `PAIRS` 에 넣는다.
 5. `docs/00` 표에 행, 해당 상세 문서 갱신.
 6. `examples/preview.html`(또는 템플릿)에 보이게 한다.
-7. `npm test`(정적 검사 + 브랜드 자산), 화면을 바꿨으면 `npm run check:ui`(Chrome).
+7. `npm test`(정적 검사 + 브랜드 자산), 화면을 바꿨으면 `npm run check:ui` 와 `npm run check:layout`(Chrome. 새 컴포넌트는 예제에 넣고 긴 글자 주입을 통과해야 한다).
 8. `CHANGELOG.md`, 버전(§4).
 
 ### 시드 색
