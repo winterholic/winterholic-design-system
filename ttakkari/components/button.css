@@ -13,7 +13,7 @@
   --tk-_fg: var(--tk-color-action-secondary-text);
   --tk-_border: var(--tk-color-action-secondary-border);
   position: relative;
-  display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-component-button-gap);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-component-button-gap); max-width: 100%;
   height: var(--tk-_h); padding-inline: var(--tk-_px); margin: 0;
   border: var(--tk-border-width-hairline) solid var(--tk-_border); border-radius: var(--tk-_radius);
   background: var(--tk-_bg); color: var(--tk-_fg);
@@ -27,6 +27,8 @@
 }
 .tk-button:active, .tk-icon-button:active { background: var(--tk-_bg-active); }
 .tk-button > .tk-icon, .tk-icon-button > .tk-icon { width: var(--tk-_icon); height: var(--tk-_icon); }
+/* 라벨이 데이터(계정 이름·파일명)일 수 있으면 <span> 으로 감싼다. 감싼 라벨은 버튼 폭 안에서 말줄임이 된다(맨 글자는 flex 안에서 말줄임이 안 된다) */
+.tk-button > span:not([class*="tk-"]) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 
 /* variant */
 .tk-button--primary, .tk-icon-button--primary {
@@ -60,8 +62,11 @@
 /* Icon Button: 정사각형. aria-label 필수(테스트가 examples 를 검사한다) */
 .tk-icon-button { width: var(--tk-_h); padding: 0; flex: none; }
 .tk-icon-button--round { --tk-_radius: var(--tk-radius-full); }
+/* 터치: 보이는 크기는 그대로 두고 투명한 ::after 로 누를 수 있는 영역을 44 까지 넓힌다. 40 짜리 아이콘 버튼(헤더·컴포저)도 44 가 된다.
+   버튼에 overflow 를 걸지 않는다(::after 가 잘려 눌리지 않는다). 라벨 말줄임은 위의 span 규칙이 한다 */
 @media (pointer: coarse) {
-  .tk-icon-button--xs::after, .tk-icon-button--sm::after, .tk-button--xs::after, .tk-button--sm::after { content: ""; position: absolute; inset: var(--tk-component-hit-area-inset); }
+  .tk-button::after { content: ""; position: absolute; inset: calc(max(var(--tk-space-0), var(--tk-size-touch-target-min) - var(--tk-_h)) / -2) 0; }
+  .tk-icon-button::after { content: ""; position: absolute; inset: calc(max(var(--tk-space-0), var(--tk-size-touch-target-min) - var(--tk-_h)) / -2); }
 }
 
 /* 비활성: 네이티브 disabled 또는 aria-disabled(이유를 툴팁으로 보여줘야 할 때, 포커스가 남는다) */

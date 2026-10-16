@@ -13,6 +13,10 @@
 :where(h1, h2, h3, h4, .tk-display, .tk-heading-1, .tk-heading-2, .tk-heading-3, .tk-card__title, .tk-empty__title) { text-wrap: balance; }
 :where(:lang(ja)) { word-break: auto-phrase; }
 
+/* 긴 한 덩어리(파일명·경로·계정·해시)가 상자를 밀어내지 못하게: 글자를 담는 상자는 어디서든 줄을 바꾼다.
+   anywhere 는 min-content 도 줄여 줘서 flex·grid 자식이 min-width: 0 을 빼먹어도 덜 터진다. 말줄임이 필요한 곳(.tk-truncate·제목)은 자기 규칙이 우선한다. */
+:where(.tk-card, .tk-callout, .tk-message, .tk-approval, .tk-run, .tk-toast, .tk-banner, .tk-dialog, .tk-sheet, .tk-drawer, .tk-viewer__notice, .tk-viewer__state) { overflow-wrap: anywhere; }
+
 /* 화면에는 숨기고 스크린 리더에는 읽힌다 */
 .tk-sr-only {
   position: absolute; width: var(--tk-space-px); height: var(--tk-space-px); padding: 0; margin: calc(-1 * var(--tk-space-px));
@@ -155,7 +159,7 @@
   --tk-_fg: var(--tk-color-action-secondary-text);
   --tk-_border: var(--tk-color-action-secondary-border);
   position: relative;
-  display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-component-button-gap);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-component-button-gap); max-width: 100%;
   height: var(--tk-_h); padding-inline: var(--tk-_px); margin: 0;
   border: var(--tk-border-width-hairline) solid var(--tk-_border); border-radius: var(--tk-_radius);
   background: var(--tk-_bg); color: var(--tk-_fg);
@@ -169,6 +173,8 @@
 }
 .tk-button:active, .tk-icon-button:active { background: var(--tk-_bg-active); }
 .tk-button > .tk-icon, .tk-icon-button > .tk-icon { width: var(--tk-_icon); height: var(--tk-_icon); }
+/* 라벨이 데이터(계정 이름·파일명)일 수 있으면 <span> 으로 감싼다. 감싼 라벨은 버튼 폭 안에서 말줄임이 된다(맨 글자는 flex 안에서 말줄임이 안 된다) */
+.tk-button > span:not([class*="tk-"]) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 
 /* variant */
 .tk-button--primary, .tk-icon-button--primary {
@@ -202,8 +208,11 @@
 /* Icon Button: 정사각형. aria-label 필수(테스트가 examples 를 검사한다) */
 .tk-icon-button { width: var(--tk-_h); padding: 0; flex: none; }
 .tk-icon-button--round { --tk-_radius: var(--tk-radius-full); }
+/* 터치: 보이는 크기는 그대로 두고 투명한 ::after 로 누를 수 있는 영역을 44 까지 넓힌다. 40 짜리 아이콘 버튼(헤더·컴포저)도 44 가 된다.
+   버튼에 overflow 를 걸지 않는다(::after 가 잘려 눌리지 않는다). 라벨 말줄임은 위의 span 규칙이 한다 */
 @media (pointer: coarse) {
-  .tk-icon-button--xs::after, .tk-icon-button--sm::after, .tk-button--xs::after, .tk-button--sm::after { content: ""; position: absolute; inset: var(--tk-component-hit-area-inset); }
+  .tk-button::after { content: ""; position: absolute; inset: calc(max(var(--tk-space-0), var(--tk-size-touch-target-min) - var(--tk-_h)) / -2) 0; }
+  .tk-icon-button::after { content: ""; position: absolute; inset: calc(max(var(--tk-space-0), var(--tk-size-touch-target-min) - var(--tk-_h)) / -2); }
 }
 
 /* 비활성: 네이티브 disabled 또는 aria-disabled(이유를 툴팁으로 보여줘야 할 때, 포커스가 남는다) */
@@ -435,7 +444,7 @@
 /* 제목: 한 줄 + 아래 메타 한 줄(세션 상태·연결). 남는 폭을 전부 쓰고 넘치면 말줄임 */
 .tk-header__title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--tk-space-0-5); padding-inline: var(--tk-space-1); }
 .tk-header__title > :first-child { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); }
-.tk-header__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+.tk-header__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
 .tk-header__actions { display: flex; align-items: center; gap: var(--tk-space-1); margin-left: auto; flex: none; }
 .tk-header__menu { display: inline-flex; }
 @media (min-width: 1024px) { .tk-header__menu { display: none; } }
@@ -528,7 +537,8 @@
 .tk-path > ol { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tk-space-0-5) var(--tk-space-1); margin: 0; padding: 0; list-style: none; }
 .tk-path li { display: inline-flex; align-items: center; gap: var(--tk-space-1); min-width: 0; color: var(--tk-color-text-secondary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-ligatures: none; overflow-wrap: anywhere; }
 .tk-path li + li::before { content: "/"; color: var(--tk-color-text-tertiary); }
-.tk-path a { color: inherit; text-decoration: none; border-radius: var(--tk-radius-xs); }
+.tk-path a { position: relative; color: inherit; text-decoration: none; border-radius: var(--tk-radius-xs); }
+@media (pointer: coarse) { .tk-path a::after { content: ""; position: absolute; inset: calc((var(--tk-size-touch-target-min) - 1lh) / -2) calc(-1 * var(--tk-space-1)); } }
 .tk-path a:hover { color: var(--tk-color-text-link); text-decoration: underline; text-underline-offset: 0.2em; }
 .tk-path [aria-current="page"], .tk-path [aria-current="location"] { color: var(--tk-color-text-primary); font-weight: var(--tk-font-weight-medium); }
 @media (max-width: 767px) { .tk-path li:not(:nth-last-child(-n + 2), :first-child) { display: none; } .tk-path li:first-child:not(:nth-last-child(-n + 2))::after { content: "/ …"; margin-left: var(--tk-space-1); color: var(--tk-color-text-tertiary); } }
@@ -553,7 +563,7 @@
 .tk-tooltip kbd { margin-left: var(--tk-space-2); background: transparent; color: inherit; border-color: color-mix(in srgb, currentColor 35%, transparent); box-shadow: none; }
 
 /* Menu: 트리거(aria-haspopup="menu" aria-controls) + 목록(role="menu"). 값을 고르는 것이면 Select·Segmented 가 먼저 */
-.tk-dropdown { position: relative; display: inline-block; }
+.tk-dropdown { position: relative; display: inline-block; max-width: 100%; vertical-align: middle; }
 .tk-menu {
   position: absolute; z-index: var(--tk-z-index-dropdown); top: calc(100% + var(--tk-component-menu-offset)); left: 0;
   min-width: var(--tk-component-menu-min-width); max-width: min(calc(100vw - 2 * var(--tk-size-layout-page-gutter)), calc(var(--tk-component-menu-min-width) * 1.8));
@@ -609,8 +619,9 @@
 
 /* Dialog: 가운데 상자. 확인·재인증·승인 상세 */
 .tk-dialog {
-  width: min(calc(100vw - 2 * var(--tk-size-layout-page-gutter)), var(--tk-_w, var(--tk-component-dialog-width-md)));
-  max-height: calc(100dvh - 2 * var(--tk-space-8));
+  --tk-_inset-x: var(--tk-size-layout-page-gutter); --tk-_inset-y: var(--tk-space-8);
+  width: min(calc(100vw - 2 * var(--tk-_inset-x) - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--tk-_w, var(--tk-component-dialog-width-md)));
+  max-width: none; max-height: calc(100dvh - 2 * var(--tk-_inset-y) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   padding: 0; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-dialog-radius);
   background: var(--tk-component-dialog-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
 }
@@ -619,15 +630,15 @@
 .tk-dialog--sm { --tk-_w: var(--tk-component-dialog-width-sm); }
 .tk-dialog--lg { --tk-_w: var(--tk-component-dialog-width-lg); }
 @keyframes tk-dialog-in { from { opacity: 0; transform: translateY(var(--tk-motion-distance-md)); } }
-:is(.tk-dialog, .tk-sheet) .tk-dialog__header { display: flex; align-items: flex-start; gap: var(--tk-space-3); padding: var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)) 0; }
-:is(.tk-dialog, .tk-sheet) .tk-dialog__title { flex: 1; margin: 0; font: var(--tk-font-weight-semibold) var(--tk-font-size-xl) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); letter-spacing: var(--tk-font-letter-spacing-snug); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__header { flex: none; display: flex; align-items: flex-start; gap: var(--tk-space-3); padding: var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)) 0; }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__title { flex: 1; min-width: 0; overflow-wrap: anywhere; margin: 0; font: var(--tk-font-weight-semibold) var(--tk-font-size-xl) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); letter-spacing: var(--tk-font-letter-spacing-snug); }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__header > .tk-icon-button { margin: calc(-1 * var(--tk-space-2)) calc(-1 * var(--tk-space-2)) 0 0; }
-:is(.tk-dialog, .tk-sheet) .tk-dialog__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--tk-component-dialog-gap) var(--tk-_pad, var(--tk-component-dialog-padding)); color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body { flex: 1 1 auto; min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: var(--tk-component-dialog-gap) var(--tk-_pad, var(--tk-component-dialog-padding)); color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * { margin-block: 0; }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * + * { margin-top: var(--tk-space-3); }
-:is(.tk-dialog, .tk-sheet) .tk-dialog__footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--tk-space-3); padding: 0 var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__footer { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--tk-space-3); padding: 0 var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)); }
 @media (max-width: 639px) {
-  .tk-dialog { --tk-_pad: var(--tk-component-dialog-padding-mobile); }
+  .tk-dialog { --tk-_pad: var(--tk-component-dialog-padding-mobile); --tk-_inset-x: var(--tk-space-3); --tk-_inset-y: var(--tk-space-4); }
   .tk-dialog .tk-dialog__footer > .tk-button { flex: 1; }
 }
 
@@ -707,13 +718,15 @@
 /* Badge: 짧은 상태 라벨. 상태는 색 + 단어. 숫자 카운트만 둥글다 */
 .tk-badge {
   --tk-_bg: var(--tk-color-status-neutral-bg); --tk-_fg: var(--tk-color-status-neutral-text); --tk-_border: var(--tk-color-status-neutral-border);
-  display: inline-flex; align-items: center; gap: var(--tk-component-badge-gap); vertical-align: middle; flex: none;
+  display: inline-flex; align-items: center; gap: var(--tk-component-badge-gap); vertical-align: middle; flex: none; max-width: 100%;
   height: var(--tk-component-badge-height); padding-inline: var(--tk-component-badge-padding-x);
   border: var(--tk-border-width-hairline) solid var(--tk-_border); border-radius: var(--tk-component-badge-radius);
   background: var(--tk-_bg); color: var(--tk-_fg);
   font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-sans); white-space: nowrap;
 }
 .tk-badge > .tk-icon { --tk-_icon: var(--tk-size-icon-xs); }
+/* 값이 데이터(계정·프로젝트 이름)면 글자를 <span> 으로 감싼다. 감싼 글자는 배지 폭 안에서 말줄임이 된다 */
+.tk-badge > span:not([class*="tk-"]) { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .tk-badge > .tk-dot { --tk-_dot: var(--tk-space-1-5); }
 .tk-badge--info    { --tk-_bg: var(--tk-color-status-info-bg);    --tk-_fg: var(--tk-color-status-info-text);    --tk-_border: var(--tk-color-status-info-border); }
 .tk-badge--success { --tk-_bg: var(--tk-color-status-success-bg); --tk-_fg: var(--tk-color-status-success-text); --tk-_border: var(--tk-color-status-success-border); }
@@ -747,7 +760,7 @@
 .tk-chip > .tk-icon { --tk-_icon: var(--tk-size-icon-sm); }
 .tk-chip > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 @media (hover: hover) { .tk-chip:hover { border-color: var(--tk-color-border-strong); color: var(--tk-color-text-primary); } }
-@media (pointer: coarse) { .tk-chip::after { content: ""; position: absolute; inset: calc(var(--tk-component-hit-area-inset) / 2) 0; } }
+@media (pointer: coarse) { .tk-chip { min-width: var(--tk-size-touch-target-min); justify-content: center; } .tk-chip::after { content: ""; position: absolute; inset: calc(var(--tk-component-hit-area-inset) / 2) 0; } }
 /* 필터 칩: <button aria-pressed> 또는 <label class="tk-chip"><input type="checkbox"> */
 .tk-chip[aria-pressed="true"], .tk-chip:has(> input:checked) { background: var(--tk-component-chip-bg-selected); border-color: var(--tk-component-chip-border-selected); color: var(--tk-component-chip-text-selected); }
 .tk-chip > input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: inherit; }
@@ -808,7 +821,9 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-empty > .tk-avatar { margin-bottom: var(--tk-space-1); }
 .tk-empty__title { margin: 0; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
 .tk-empty > p { margin: 0; max-width: calc(var(--tk-size-container-sm) * 0.7); }
-.tk-empty > .tk-button-group, .tk-empty > .tk-chips { margin-top: var(--tk-space-2); justify-content: center; }
+/* 가운데 정렬 열의 자식은 자기 폭이 부모를 넘지 못한다(칩 줄이 max-content 로 커져 양쪽으로 새던 문제) */
+.tk-empty > * { max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
+.tk-empty > .tk-button-group, .tk-empty > .tk-chips { padding-top: var(--tk-space-2); justify-content: center; }
 
 /* Inline status: 버튼 옆·폼 아래의 한 줄 결과("복사됨", "3개 파일을 보관함에 담았어요"). role="status" 와 함께 */
 .tk-status { display: inline-flex; align-items: center; gap: var(--tk-space-1-5); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); color: var(--tk-color-text-secondary); }
@@ -819,7 +834,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-status--agent { color: var(--tk-color-agent-text); }
 
 /* Table */
-.tk-table-wrap { overflow-x: auto; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); }
+.tk-table-wrap { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); }
 .tk-table-wrap > table { margin: 0; min-width: 100%; }
 .tk-table-wrap th:first-child, .tk-table-wrap td:first-child { padding-left: var(--tk-space-4); }
 .tk-table-wrap th { background: var(--tk-color-surface-subtle); }
@@ -1122,6 +1137,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-log__header { display: flex; align-items: center; gap: var(--tk-space-2); min-height: var(--tk-size-control-md); padding: 0 var(--tk-space-2) 0 var(--tk-component-log-padding-x); background: var(--tk-color-ink-bg-header); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); }
 .tk-log__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text-muted); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }
 .tk-log__header > .tk-dot { --tk-_dot-color: var(--tk-color-agent-on-ink); }
+.tk-log__header > :is(.tk-button-group, .tk-icon-button, .tk-copy) { flex: none; }
 .tk-log__header > :is(.tk-button-group, .tk-icon-button, .tk-copy):last-child { margin-left: auto; }
 .tk-log__header .tk-icon-button { --tk-_fg: var(--tk-color-ink-text-muted); --tk-_bg-hover: var(--tk-color-ink-hover); --tk-_bg-active: var(--tk-color-ink-hover); }
 .tk-log__header .tk-icon-button[aria-pressed="true"] { --tk-_bg: var(--tk-color-ink-hover); --tk-_fg: var(--tk-color-agent-on-ink); }

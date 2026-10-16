@@ -1,0 +1,303 @@
+// Ttakkari 레이아웃 오류 검사: 가로 넘침, 화면 밖으로 새는 요소, 조용히 잘리는 글자, 이중 간격, 터치 타깃, 입력 글자 크기, safe-area, 모달 크기.
+// 예제(기본) 또는 실제 앱(--url)을 6폭 × (평소 | 긴 글자 주입) 으로 연다. 규칙의 이유와 고치는 법은 docs/22-ui-error-prevention.md.
+//
+//   cd ttakkari && node ../scripts/ttakkari-layout.check.mjs                 # examples/*.html 전부, 실패가 있으면 종료 코드 1
+//   node ../scripts/ttakkari-layout.check.mjs --pages archetypes/github-pr.html,chat.html
+//   node ../scripts/ttakkari-layout.check.mjs --url http://127.0.0.1:5173 --routes /memos,/settings --stub ./stub.mjs --out /tmp/report.json
+//   TK_SHOTS=<폴더> 를 주면 폭마다 스크린샷을 남긴다.
+// 필요: 설치된 Chrome + playwright-core(PLAYWRIGHT_CORE=<경로>/index.mjs 로 지정 가능).
+// 예외: 요소에 data-layout-ok="이유" 를 달면 그 요소와 자손은 건너뛴다(이유 없이 달지 않는다). 긴 글자 주입은 data-stress-skip 로 뺀다.
+import { createServer } from 'node:http';
+import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
+import { join, extname, basename, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+
+const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split(/=(.*)/s)).map(([k, v]) => [k, v ?? true]));
+const WIDTHS = (args.widths ? String(args.widths).split(',').map(Number) : [320, 390, 768, 1024, 1440]);
+const LONG = ' 아주긴이름의프로젝트와파일_VeryLongUnbrokenIdentifier_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_final.tsx';
+
+let chromium;
+try { ({ chromium } = await import(process.env.PLAYWRIGHT_CORE ?? 'playwright-core')); } catch {
+  console.error('playwright-core 를 찾지 못했다. PLAYWRIGHT_CORE=<경로>/index.mjs 로 지정한다.'); process.exit(2);
+}
+
+// ---------- 대상 ----------
+let server, base, targets = [];
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json', '.ico': 'image/x-icon' };
+if (args.url) {
+  base = String(args.url).replace(/\/$/, '');
+  targets = String(args.routes ?? '/').split(',').map((r) => ({ name: r, url: base + r }));
+} else {
+  const root = process.cwd();
+  if (basename(root) !== 'ttakkari') { console.error('ttakkari 디렉터리에서 실행해야 한다'); process.exit(2); }
+  server = createServer(async (req, res) => {
+    try {
+      const path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+      const body = await readFile(join(root, path));
+      res.writeHead(200, { 'content-type': types[extname(path)] ?? 'application/octet-stream' }).end(body);
+    } catch { res.writeHead(404).end(); }
+  });
+  await new Promise((r) => server.listen(0, '127.0.0.1', r));
+  base = `http://127.0.0.1:${server.address().port}/examples/`;
+  const walk = async (dir, prefix = '') => {
+    const out = [];
+    for (const e of await readdir(join(root, 'examples', dir), { withFileTypes: true })) {
+      if (e.isDirectory()) out.push(...await walk(join(dir, e.name), prefix + e.name + '/'));
+      else if (e.name.endsWith('.html')) out.push(prefix + e.name);
+    }
+    return out;
+  };
+  const pages = args.pages ? String(args.pages).split(',') : await walk('');
+  targets = pages.map((p) => ({ name: p, url: base + p }));
+}
+const stub = args.stub ? (await import(pathToFileURL(resolve(String(args.stub))).href)).default : null;
+
+// ---------- 페이지 안에서 도는 검사 ----------
+const inPage = (opts) => {
+  const { stress, long, touch, insets } = opts;
+  const vw = innerWidth, vh = innerHeight;
+  const out = [];
+  const sig = (el) => {
+    const parts = [];
+    for (let n = el, i = 0; n && n.nodeType === 1 && i < 3; n = n.parentElement, i++) {
+      const cls = [...n.classList].filter((c) => !/^(is|has)-/.test(c)).slice(0, 2).map((c) => '.' + c).join('');
+      parts.push(n.tagName.toLowerCase() + cls + (n.id ? '#' + n.id : ''));
+    }
+    return parts.reverse().join(' > ');
+  };
+  const skipped = (el) => !!el.closest('[data-layout-ok]');
+  const shown = (el) => {
+    if (el.closest('[hidden], dialog:not([open]), template, script, style, [inert]')) return false;
+    const s = getComputedStyle(el);
+    if (s.display === 'none' || s.visibility === 'hidden') return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  };
+  const add = (rule, el, detail) => out.push({ rule, sig: sig(el), detail });
+  // 저작된 margin: 규칙에 적힌 값(auto 는 사용값으로 바뀌어 computed 로는 구분할 수 없다)
+  const sheets = [];
+  for (const sh of document.styleSheets) { try { sheets.push(...sh.cssRules); } catch { /* cross-origin 글꼴 CSS */ } }
+  const flat = (rules) => rules.flatMap((r) => (r.cssRules && r.media ? (matchMedia(r.media.mediaText).matches ? flat([...r.cssRules]) : []) : r.cssRules && r.type === CSSRule.SUPPORTS_RULE ? flat([...r.cssRules]) : [r]));
+  const rules = flat(sheets).filter((r) => r.style && r.selectorText);
+  const authoredMargin = (el, side) => {
+    let v = null;
+    for (const r of rules) {
+      let hit = false; try { hit = el.matches(r.selectorText); } catch { /* 지원하지 않는 선택자 */ }
+      if (!hit) continue;
+      const long = r.style.getPropertyValue('margin-' + side);
+      if (long) v = long;
+      else if (r.style.getPropertyValue('margin')) {
+        const parts = r.style.getPropertyValue('margin').trim().split(/\s+(?![^(]*\))/);
+        const [a, b = a, c = a, d = b] = parts;
+        v = { top: a, right: b, bottom: c, left: d }[side];
+      }
+    }
+    const inl = el.style.getPropertyValue('margin-' + side) || el.style.getPropertyValue('margin');
+    return inl || v;
+  };
+
+  // 긴 글자 주입: 자식 요소가 없는 글자 요소 끝에 붙인다(실제 앱의 긴 파일명·계정·프로젝트 이름을 흉내)
+  if (stress) {
+    const skip = 'script,style,svg,option,kbd,code,pre,[data-stress-skip],.tk-sr-only,.tk-tabbar *,.tk-skip-link,.tk-header__brand *,.tk-header__actions *,.tk-viewer__tools *,.tk-tabs [role=tab],.tk-segmented *,.tk-nav__link,.tk-pagination *,.tk-copy *,.tk-menu__item';
+    // 버튼·칩·배지의 맨 글자는 정해진 이름(승인·다운로드·완료)이다. 데이터가 들어가면 라벨을 <span> 으로 감싸는 것이 계약이라 그 span 만 주입한다. --stress-raw 는 맨 글자에도 주입한다(실제 앱에서 데이터 라벨 찾기).
+    const staticLabel = (el) => !opts.raw && el.matches('.tk-button,.tk-icon-button,.tk-tab,.tk-segmented__item,.tk-toast__action,.tk-chip,.tk-badge');
+    for (const el of document.querySelectorAll('body *')) {
+      if (el.children.length || el.matches(skip) || staticLabel(el) || el.closest('[data-stress-skip]') || !shown(el)) continue;
+      const t = el.textContent.trim();
+      if (!t || t.length > 120) continue;
+      if (el.matches('input,textarea,select')) continue;
+      el.append(long);
+    }
+  }
+
+  const doc = document.documentElement;
+  if (doc.scrollWidth > vw + 0.5) {
+    // 범인 찾기: 화면 오른쪽을 넘는 가장 안쪽 요소(가로 스크롤 상자 안은 제외)
+    let culprit = null;
+    for (const el of document.querySelectorAll('body *')) {
+      if (!shown(el) || getComputedStyle(el).position === 'fixed') continue;
+      const r = el.getBoundingClientRect();
+      if (r.right > vw + 1 && !(() => { for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) if (getComputedStyle(n).overflowX !== 'visible') return true; return false; })()) culprit = el;
+    }
+    add('page-overflow-x', culprit ?? document.body, `scrollWidth ${doc.scrollWidth} > ${vw}` + (culprit ? ` · 범인 ${Math.round(culprit.getBoundingClientRect().right)}` : ''));
+  }
+  if (document.body.scrollWidth > vw + 0.5 && doc.scrollWidth <= vw + 0.5) add('page-overflow-x', document.body, `body.scrollWidth ${document.body.scrollWidth} > ${vw}`);
+
+  const all = [...document.querySelectorAll('body *')];
+  const clippers = (el) => {
+    for (let n = el.parentElement; n && n !== document.body; n = n.parentElement) {
+      const s = getComputedStyle(n);
+      if (s.overflowX !== 'visible') { const r = n.getBoundingClientRect(); if (r.left >= -1 && r.right <= vw + 1) return n; }
+    }
+    return null;
+  };
+  const seen = new Set();
+  for (const el of all) {
+    if (skipped(el) || !shown(el)) continue;
+    const s = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+
+    // 화면 밖으로 새는 요소: 오른쪽·왼쪽이 화면을 벗어나는데 가로 스크롤 상자 안도 아니다
+    if ((r.right > vw + 1 || r.left < -1) && s.position !== 'fixed' && !el.closest('svg') && !el.closest('.tk-sr-only,.tk-skip-link') && !clippers(el)) {
+      const key = sig(el.parentElement ?? el);
+      if (!seen.has(key)) { seen.add(key); add('escapes-viewport', el, `x ${Math.round(r.left)}..${Math.round(r.right)} (화면 ${vw})`); }
+    }
+
+    // 조용히 잘리는 글자: overflow 가 숨김인데 말줄임도 아니고 내용이 더 크다
+    if (s.overflowX !== 'visible' && s.overflowX !== 'auto' && s.overflowX !== 'scroll' && el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) {
+      const text = el.innerText?.trim();
+      const ellipsis = s.textOverflow === 'ellipsis' || s.webkitLineClamp !== 'none' && s.display.includes('box');
+      if (text && !ellipsis && !el.matches('.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar') && !el.closest('.tk-sr-only,svg')) {
+        add('silent-clip', el, `내용 ${el.scrollWidth} > 상자 ${el.clientWidth}, 말줄임 없음`);
+      }
+    }
+    if (s.textOverflow === 'ellipsis' && s.whiteSpace === 'nowrap' && el.scrollWidth > el.clientWidth + 1) {
+      if (!el.hasAttribute('title') && !el.closest('[title],[aria-label]') && !stress) add('ellipsis-without-full-text', el, '말줄임이 생겼는데 title/상세에서 전체를 볼 방법이 없다');
+    }
+
+    // 이중 간격: 부모가 gap 으로 간격을 주는데 자식에도 margin(6px 이하의 아이콘·점 정렬 보정은 제외)
+    const p = el.parentElement;
+    if (p && p !== document.body) {
+      const ps = getComputedStyle(p);
+      const gapped = (ps.display.includes('flex') || ps.display.includes('grid')) && (parseFloat(ps.rowGap) > 0 || parseFloat(ps.columnGap) > 0);
+      const px = (side) => { const a = authoredMargin(el, side); return a && !/auto/.test(a) ? parseFloat(s['margin' + side[0].toUpperCase() + side.slice(1)]) : 0; };
+      if (gapped && s.position !== 'absolute' && !el.matches('.tk-sr-only')) {
+        const col = ps.display.includes('grid') || ps.flexDirection.startsWith('column');
+        const sides = ps.display.includes('grid') ? ['top', 'bottom', 'left', 'right'] : col ? ['top', 'bottom'] : ['left', 'right'];
+        const big = sides.map((side) => [side, px(side)]).filter(([, v]) => v > 6);
+        if (big.length) add('gap-plus-margin', el, `부모 gap ${ps.rowGap}/${ps.columnGap} 에 자식 margin ${big.map(([k, v]) => k + ' ' + v + 'px').join(', ')}`);
+      }
+      if (p.classList.contains('tk-stack') && (px('top') > 0 || px('bottom') > 0)) add('gap-plus-margin', el, `tk-stack 자식 margin ${s.marginTop}/${s.marginBottom}`);
+    }
+
+    // 입력 글자 크기: iOS 는 16px 미만 입력에 포커스하면 화면을 확대한다
+    if (touch && el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]):not([type=file]),textarea,select') && parseFloat(s.fontSize) < 16 && s.opacity !== '0') {
+      add('input-font-under-16', el, `font-size ${s.fontSize}`);
+    }
+    // 12px 미만 글자
+    if (el.childNodes.length && [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) && parseFloat(s.fontSize) < 12 && !el.closest('svg')) {
+      add('font-under-12', el, `font-size ${s.fontSize}`);
+    }
+
+    // 터치 타깃: 보이는 크기 + ::after 히트 영역
+    if (touch && el.matches('a[href],button,[role=button],[role=tab],[role=menuitem],[role=menuitemradio],[role=menuitemcheckbox],[role=option],[role=switch],input:not([type=hidden]),select,summary,[tabindex="0"]') && !el.matches('[disabled],[aria-disabled=true]') && !el.closest('p,li > p,.tk-prose,.tk-callout__body')) {
+      let w = r.width, h = r.height;
+      if (el.matches('input[type=checkbox],input[type=radio]') && el.closest('label')) { const lr = el.closest('label').getBoundingClientRect(); w = lr.width; h = lr.height; }
+      const a = getComputedStyle(el, '::after');
+      if (a.content !== 'none' && a.position === 'absolute') {
+        const t = parseFloat(a.top), b = parseFloat(a.bottom), l = parseFloat(a.left), rr = parseFloat(a.right);
+        if (t <= 0 && b <= 0) h = r.height - t - b;
+        if (l <= 0 && rr <= 0) w = r.width - l - rr;
+      }
+      // 부모가 같은 행동의 큰 영역이면(라벨 안 입력, 행 전체가 링크) 건너뛴다
+      if ((w < 43.5 || h < 43.5) && !el.closest('label.tk-chip,.tk-switch,.tk-checkbox,.tk-radio,.tk-field--inline')) {
+        if (!(w >= 43.5 && h >= 24) && !(h >= 43.5 && w >= 24)) add('touch-target-under-44', el, `${Math.round(w)}×${Math.round(h)} (히트 영역 포함)`);
+      }
+    }
+
+    // safe-area: 화면 가장자리에 붙은 고정 요소 안의 행동이 홈 인디케이터·노치에 겹친다
+    if (insets && (s.position === 'fixed' || s.position === 'sticky') && el.matches('.tk-tabbar,.tk-header,.tk-composer,.tk-dialog,.tk-drawer,.tk-sheet,[class*="toast"]')) {
+      const kids = [...el.querySelectorAll('a[href],button,input,textarea,[role=tab]')].filter(shown);
+      if (r.bottom >= vh - 1) for (const k of kids) { const kr = k.getBoundingClientRect(); if (kr.bottom > vh - insets.bottom / 2 + 1) add('safe-area-bottom', k, `행동 아래 ${Math.round(vh - kr.bottom)}px < 홈 바 ${insets.bottom}px 의 절반`); }
+      if (r.top <= 1) for (const k of kids) { const kr = k.getBoundingClientRect(); if (kr.top < insets.top - 1) add('safe-area-top', k, `행동 위 ${Math.round(kr.top)}px < 노치 ${insets.top}px`); }
+    }
+  }
+
+  return out;
+};
+
+
+// 모달 하나를 열어 잰다(열리는 애니메이션이 끝난 뒤 호출)
+const inDialog = ({ index, insets }) => {
+  const vw = innerWidth, vh = innerHeight, out = [];
+  const d = document.querySelectorAll('dialog')[index];
+  const sig = (el) => { const parts = []; for (let n = el, i = 0; n && n.nodeType === 1 && i < 3; n = n.parentElement, i++) parts.push(n.tagName.toLowerCase() + [...n.classList].slice(0, 2).map((c) => '.' + c).join('') + (n.id ? '#' + n.id : '')); return parts.reverse().join(' > '); };
+  const add = (rule, el, detail) => out.push({ rule, sig: sig(el), detail });
+  const r = d.getBoundingClientRect();
+  const kind = d.matches('.tk-viewer-dialog,.tk-drawer,.tk-sheet') ? 'edge' : 'box';
+  const my = insets ? insets.top + insets.bottom : 0;
+  if (r.left < -1 || r.right > vw + 2 || r.top < -2 || r.bottom > vh + 2) add('dialog-outside-viewport', d, `${Math.round(r.left)},${Math.round(r.top)} → ${Math.round(r.right)},${Math.round(r.bottom)} (화면 ${vw}×${vh})`);
+  else if (kind === 'box') {
+    if (r.height > vh - my - 1 && vh > 300) add('dialog-fills-viewport', d, `높이 ${Math.round(r.height)} ≥ 화면 ${vh}${my ? ' − safe-area ' + my : ''}: 위아래 여백이 없다`);
+    if (r.width > vw - 2 && vw > 360) add('dialog-edge-to-edge', d, `폭 ${Math.round(r.width)} = 화면 ${vw}`);
+  }
+  const body = d.querySelector('.tk-dialog__body, .tk-sheet__body, .tk-drawer__body');
+  if (kind === 'box' && body && body.scrollHeight > body.clientHeight + 1 && !/(auto|scroll)/.test(getComputedStyle(body).overflowY)) add('dialog-body-not-scrollable', body, `내용 ${body.scrollHeight} > 본문 ${body.clientHeight}인데 overflow-y 가 스크롤이 아니다`);
+  if (d.scrollWidth > d.clientWidth + 1 && getComputedStyle(d).overflowX === 'visible') add('dialog-overflow-x', d, `scrollWidth ${d.scrollWidth} > ${d.clientWidth}`);
+  const scroller = (el) => { for (let n = el.parentElement; n && n !== d; n = n.parentElement) { if (getComputedStyle(n).overflowX !== 'visible') { const nr = n.getBoundingClientRect(); if (nr.right <= r.right + 1 && nr.left >= r.left - 1) return true; } } return false; };
+  for (const el of d.querySelectorAll('*')) {
+    const er = el.getBoundingClientRect();
+    if (er.width && (er.right > r.right + 1 || er.left < r.left - 1) && getComputedStyle(el).visibility !== 'hidden' && !scroller(el) && !el.closest('svg,.tk-sr-only,[hidden]')) { add('dialog-child-escapes', el, `자식 ${Math.round(er.right)} > 모달 ${Math.round(r.right)}`); break; }
+  }
+  return out;
+};
+
+// ---------- 실행 ----------
+const browser = await chromium.launch({ channel: 'chrome' });
+const results = [];
+const shotsDir = process.env.TK_SHOTS;
+if (shotsDir) await mkdir(shotsDir, { recursive: true });
+const modes = [
+  { name: 'normal', stress: false }, { name: 'stress', stress: true },
+];
+for (const t of targets) {
+  for (const width of WIDTHS) {
+    for (const mode of modes) {
+      for (const scheme of (width === 390 && mode.stress ? ['light', 'dark'] : ['light'])) {
+        const touch = width <= 768;
+        const insets = touch ? { top: 47, bottom: 34, left: 0, right: 0 } : null;
+        const ctx = await browser.newContext({ viewport: { width, height: width <= 390 ? 700 : 800 }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
+        const page = await ctx.newPage();
+        const errors = [];
+        page.on('pageerror', (e) => errors.push(String(e)));
+        if (stub) await stub(ctx, page, base);
+        if (insets) {
+          try { const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setSafeAreaInsetsOverride', { insets }); } catch { /* 지원하지 않는 Chrome */ }
+        }
+        let found = [];
+        try {
+          await page.goto(t.url, { waitUntil: args.url ? 'networkidle' : 'load', timeout: 30000 });
+          await page.evaluate(() => document.fonts.ready);
+          await page.waitForTimeout(args.url ? 400 : 150);
+          found = await page.evaluate(inPage, { stress: mode.stress, long: LONG, touch, insets, raw: !!args['stress-raw'] });
+          const count = await page.evaluate(() => document.querySelectorAll('dialog').length);
+          for (let i = 0; i < count; i++) {
+            const ok = await page.evaluate((n) => { const d = document.querySelectorAll('dialog')[n]; if (d.open) return false; try { d.showModal(); return true; } catch { return false; } }, i);
+            if (!ok) continue;
+            await page.evaluate((n) => Promise.all(document.querySelectorAll('dialog')[n].getAnimations().map((a) => a.finished.catch(() => {}))), i);
+            await page.waitForTimeout(60);
+            found.push(...await page.evaluate(inDialog, { index: i, insets }));
+            await page.evaluate((n) => document.querySelectorAll('dialog')[n].close(), i);
+          }
+          if (shotsDir) await page.screenshot({ path: join(shotsDir, `${t.name.replace(/[^\w.-]+/g, '_')}-${width}-${mode.name}-${scheme}.png`), fullPage: false });
+        } catch (e) { found = [{ rule: 'load-error', sig: t.name, detail: String(e.message).split('\n')[0] }]; }
+        for (const e of errors) found.push({ rule: 'page-error', sig: t.name, detail: e });
+        // 같은 규칙·같은 서명은 한 번만
+        const uniq = new Map();
+        for (const f of found) { const k = f.rule + '|' + f.sig; if (!uniq.has(k)) uniq.set(k, f); }
+        for (const f of uniq.values()) results.push({ page: t.name, width, mode: mode.name, scheme, ...f });
+        await ctx.close();
+      }
+    }
+  }
+}
+await browser.close();
+server?.close();
+
+// ---------- 보고 ----------
+const byRule = new Map();
+for (const r of results) { if (!byRule.has(r.rule)) byRule.set(r.rule, []); byRule.get(r.rule).push(r); }
+const total = targets.length * WIDTHS.length;
+console.log(`레이아웃 검사 · 페이지 ${targets.length} × 폭 ${WIDTHS.join('/')} × (평소|긴 글자) = ${total * 2}+ 상태`);
+if (!results.length) console.log('ok · 위반 0');
+for (const [rule, list] of byRule) {
+  console.log(`\n[${rule}] ${list.length}건`);
+  const groups = new Map();
+  for (const r of list) { const k = r.sig; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); }
+  for (const [sig, g] of [...groups].slice(0, args.limit ? Number(args.limit) : 25)) {
+    console.log(`  - ${sig}\n      ${g[0].detail} · ${[...new Set(g.map((x) => `${x.page}@${x.width}${x.mode === 'stress' ? 's' : ''}`))].slice(0, 4).join(', ')}${g.length > 4 ? ` 외 ${g.length - 4}` : ''}`);
+  }
+  if (groups.size > (args.limit ? Number(args.limit) : 25)) console.log(`  … ${groups.size - (args.limit ? Number(args.limit) : 25)}개 더`);
+}
+if (args.out) await writeFile(String(args.out), JSON.stringify(results, null, 1));
+process.exit(results.length && !args['no-fail'] ? 1 : 0);

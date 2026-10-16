@@ -69,6 +69,7 @@
 .tk-log__header { display: flex; align-items: center; gap: var(--tk-space-2); min-height: var(--tk-size-control-md); padding: 0 var(--tk-space-2) 0 var(--tk-component-log-padding-x); background: var(--tk-color-ink-bg-header); border-bottom: var(--tk-border-width-hairline) solid var(--tk-color-ink-border); }
 .tk-log__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-ink-text-muted); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / 1 var(--tk-font-family-mono); }
 .tk-log__header > .tk-dot { --tk-_dot-color: var(--tk-color-agent-on-ink); }
+.tk-log__header > :is(.tk-button-group, .tk-icon-button, .tk-copy) { flex: none; }
 .tk-log__header > :is(.tk-button-group, .tk-icon-button, .tk-copy):last-child { margin-left: auto; }
 .tk-log__header .tk-icon-button { --tk-_fg: var(--tk-color-ink-text-muted); --tk-_bg-hover: var(--tk-color-ink-hover); --tk-_bg-active: var(--tk-color-ink-hover); }
 .tk-log__header .tk-icon-button[aria-pressed="true"] { --tk-_bg: var(--tk-color-ink-hover); --tk-_fg: var(--tk-color-agent-on-ink); }

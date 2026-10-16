@@ -10,6 +10,10 @@
 :where(h1, h2, h3, h4, .tk-display, .tk-heading-1, .tk-heading-2, .tk-heading-3, .tk-card__title, .tk-empty__title) { text-wrap: balance; }
 :where(:lang(ja)) { word-break: auto-phrase; }
 
+/* 긴 한 덩어리(파일명·경로·계정·해시)가 상자를 밀어내지 못하게: 글자를 담는 상자는 어디서든 줄을 바꾼다.
+   anywhere 는 min-content 도 줄여 줘서 flex·grid 자식이 min-width: 0 을 빼먹어도 덜 터진다. 말줄임이 필요한 곳(.tk-truncate·제목)은 자기 규칙이 우선한다. */
+:where(.tk-card, .tk-callout, .tk-message, .tk-approval, .tk-run, .tk-toast, .tk-banner, .tk-dialog, .tk-sheet, .tk-drawer, .tk-viewer__notice, .tk-viewer__state) { overflow-wrap: anywhere; }
+
 /* 화면에는 숨기고 스크린 리더에는 읽힌다 */
 .tk-sr-only {
   position: absolute; width: var(--tk-space-px); height: var(--tk-space-px); padding: 0; margin: calc(-1 * var(--tk-space-px));
