@@ -330,3 +330,7 @@ TK.toast({ message: '회의록 요약이 끝났어요 · 결과물 2', tone: 'su
 7. 키보드만으로 쓸 수 있고, 포커스가 보이고, 터치 44px, 툴팁에만 의존하지 않는다.
 8. 블록 이름이 기존 블록·글자 역할과 겹치지 않는지 확인한다. 빌드가 막는다(`.tk-grid` 사고).
 9. `components/<묶음>.css` 에 넣으면 빌드가 lint 한다. 토큰이 필요하면 `component.json` 에 등록하고 이 문서(또는 07·08·09)에 절을 추가한다(15).
+
+## 데이터·작업대 컴포넌트
+
+표(`tk-datatable`)·지표 타일(`tk-stat`)·차트(`tk-chart`)·diff(`tk-diff`)·타임라인·도구줄(`tk-toolbar`)·칸 나누기(`tk-panes`)·에디터·캔버스·원격 화면·일러스트 자리(`tk-art`)는 [24](24-data-workbench-components.md) 에 마크업 계약이 있다.

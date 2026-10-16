@@ -160,7 +160,10 @@ const inPage = (opts) => {
     if (p && p !== document.body) {
       const ps = getComputedStyle(p);
       const gapped = (ps.display.includes('flex') || ps.display.includes('grid')) && (parseFloat(ps.rowGap) > 0 || parseFloat(ps.columnGap) > 0);
-      const px = (side) => { const a = authoredMargin(el, side); return a && !/auto/.test(a) ? parseFloat(s['margin' + side[0].toUpperCase() + side.slice(1)]) : 0; };
+      const px = (side) => { const a = authoredMargin(el, side); if (!a || /auto/.test(a)) return 0;
+      // 저작된 값이 0 인데 계산값이 크면 다른(더 구체적인) 규칙의 auto 가 이긴 것이다
+      const used = parseFloat(s['margin' + side[0].toUpperCase() + side.slice(1)]);
+      return /^0(px)?$/.test(a.trim()) ? 0 : used; };
       if (gapped && s.position !== 'absolute' && !el.matches('.tk-sr-only')) {
         const col = ps.display.includes('grid') || ps.flexDirection.startsWith('column');
         const sides = ps.display.includes('grid') ? ['top', 'bottom', 'left', 'right'] : col ? ['top', 'bottom'] : ['left', 'right'];
