@@ -121,7 +121,7 @@
 | `silent-clip` | `overflow: hidden` 인데 말줄임이 아니고 내용이 더 크다(조용히 잘림). 검사기는 클래스명 대신 1px 이하 absolute/fixed 상자와 실제 clip 조합으로 시각 숨김을 판별한다. `role=tabpanel` 은 `data-active=false` 인 경우에만 이 숨김을 인정한다. |
 | `ellipsis-without-full-text` | 말줄임이 생겼는데 `title`·`aria-label` 로 전체를 볼 방법이 없다 |
 | `gap-plus-margin` | 부모가 gap 으로 간격을 주는데 자식에 6 초과 margin 이 있다. 저작된 값을 읽으므로 `auto` 는 걸리지 않는다 |
-| `touch-target-under-44` | 터치 기기에서 누르는 영역(`::after` 포함)이 44 미만 |
+| `touch-target-under-44` | 터치 기기에서 컨트롤의 실제 히트 영역이 44×44 미만. 아이콘의 시각 크기와 `::before`·`::after` 확장 영역을 따로 재고, 위치·크기를 함께 출력한다 |
 | `input-font-under-16` | 입력류 글자가 16 미만(iOS 확대) |
 | `font-under-12` | 글자가 12 미만 |
 | `safe-area-bottom` | 화면 아래에 붙은 고정 요소의 행동이 홈 바(34)의 절반보다 가깝다 |
@@ -131,8 +131,10 @@
 | `scroller-overflow-x` | `.tk-screen__body` 의 `scrollWidth` 가 `clientWidth` 보다 크다. 문서 `scrollWidth` 에는 안 잡히는 넘침(본문만 옆으로 밀림)이며 범인 요소를 알려 준다. 긴 글자 주입은 고정 라벨에도 글자를 붙여 오탐이 많아 평소 모드에서만 본다 |
 | `date-input-overflow` | 날짜·시각 입력의 오른쪽이 부모 상자(또는 화면)를 넘는다 |
 | `file-input-hidden` | `input[type=file]` 이 상자가 없다(`display: none`·`hidden`). iOS 선택 메뉴가 엉뚱한 곳에 뜬다 |
+| `file-input-hitbox-mismatch` | `.tk-file-slot` 안 버튼과 투명 파일 입력의 위치·크기가 다르다 |
+| `table-outside-viewport` | 표가 화면 밖으로 나간다. 화면 안의 `overflow-x: auto/scroll` 상자 안에서 표만 가로로 넘치는 것은 허용한다 |
 | `ellipsis-on-flex-text` | flex 상자의 맨 글자에 `text-overflow: ellipsis` 를 걸었는데 말줄임이 안 먹고 잘린다. 글자를 span 에 담는다 |
-| `dialog-outside-viewport` | 연 모달·시트가 화면 밖으로 나간다(열리는 애니메이션이 끝난 뒤 잰다) |
+| `dialog-outside-viewport` | 연 모달·시트가 화면 밖으로 나간다(열림 뒤 프레임 간 기하가 안정된 경우만 잰다) |
 | `dialog-fills-viewport` | 모달이 화면을 꽉 채워 위아래 여백이 없다(전체 화면 뷰어·시트·드로어 제외) |
 | `dialog-edge-to-edge` | 모달이 360 넘는 화면의 좌우 끝까지 닿는다 |
 | `dialog-body-not-scrollable` | 모달 본문이 넘치는데 스크롤이 아니다 |
@@ -140,7 +142,7 @@
 | `dialog-child-escapes` | 모달 안의 자식이 모달 폭을 넘는다 |
 | (앱) `modals.mjs` | 대표 모달·메뉴를 직접 열어 `gap-plus-margin`(이중 간격) · `dialog-width`(선언 폭 초과) · `confirm-not-sm` · `label-style` · `native-checkbox` · `body-air`(본문 위아래 24 초과 빈 공간) · `menu-clipped` 를 본다. 위 DS 검사는 조건부로 그려지는 모달을 열지 못해 B9 이후의 실수를 놓쳤다 |
 | (앱) `ui-lint` `undefined-token` | 앱 코드가 쓰는 `var(--tk-*)` 가 vendor CSS 에 선언돼 있는지 본다. 없는 토큰은 조용히 무효가 된다(B13) |
-| `load-error` · `page-error` | 페이지가 안 열리거나 스크립트 오류 |
+| `target-error` · `page-error` · `checker-error` | 경로 누락·HTTP 실패·0 target은 `target-error / unmeasured`, 앱 실행 예외는 `page-error / render-error`, 대상 제거·dialog 기하 불안정·측정 예외는 `checker-error / unmeasured`. 미측정을 통과로 계산하지 않는다 |
 
 검사가 못 하는 것: 실제 iOS Safari 의 주소창·키보드·홈 바 동작(Chrome 의 safe-area 에뮬레이션과 다르다), **iOS 만의 네이티브 컨트롤**(날짜 입력의 자체 폭, 파일 선택 메뉴가 뜨는 위치. 데스크톱 맥의 WebKit 은 이 컨트롤을 다르게 그려 재현되지 않는다), 한글 IME, 실제 데이터의 길이 분포, 시각적 위계. 이 항목은 기기 확인이 필요하다(확인 필요). 그래서 위 규칙은 원인(숨은 file input, appearance 기본값)을 코드 수준에서 막는 쪽으로 둔다.
 

@@ -13,7 +13,11 @@ import { createServer } from 'node:http';
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { join, extname, basename, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { findSilentClip, inspectDynamicTargets, navigationError, pageErrorFinding, validateTargets } from './ttakkari-layout.rules.mjs';
+import {
+  dialogClosedError, dialogMeasurementError, fileButtonMismatch, findSilentClip,
+  inspectDynamicTargets, navigationError, pageErrorFinding, tableViewportFinding,
+  touchTargetFinding, validateTargets,
+} from './ttakkari-layout.rules.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split(/=(.*)/s)).map(([k, v]) => [k, v ?? true]));
 const WIDTHS = (args.widths ? String(args.widths).split(',').map(Number) : [320, 390, 768, 1024, 1440]);
@@ -85,6 +89,21 @@ const inPage = (opts) => {
     return r.width > 0 && r.height > 0;
   };
   const add = (rule, el, detail) => out.push({ rule, sig: sig(el), detail });
+  const rect = (r) => ({ x: r.left, y: r.top, left: r.left, top: r.top, right: r.right, bottom: r.bottom, width: r.width, height: r.height });
+  const hitRect = (el) => {
+    const base = rect(el.getBoundingClientRect());
+    let left = base.left, right = base.right, top = base.top, bottom = base.bottom;
+    for (const pseudo of ['::before', '::after']) {
+      const p = getComputedStyle(el, pseudo);
+      if (p.content === 'none' || p.position !== 'absolute' || p.pointerEvents === 'none') continue;
+      const n = (v) => Number.parseFloat(v);
+      const t = n(p.top), r = n(p.right), b = n(p.bottom), l = n(p.left);
+      if ([t, r, b, l].some(Number.isNaN)) continue;
+      left = Math.min(left, base.left + l); right = Math.max(right, base.right - r);
+      top = Math.min(top, base.top + t); bottom = Math.max(bottom, base.bottom - b);
+    }
+    return { x: left, y: top, left, top, right, bottom, width: right - left, height: bottom - top };
+  };
   // 저작된 margin: 규칙에 적힌 값(auto 는 사용값으로 바뀌어 computed 로는 구분할 수 없다)
   const sheets = [];
   for (const sh of document.styleSheets) { try { sheets.push(...sh.cssRules); } catch { /* cross-origin 글꼴 CSS */ } }
@@ -202,8 +221,9 @@ const inPage = (opts) => {
     if (el.matches('.tk-skip-link') && document.activeElement !== el && r.bottom > 1 && r.top < vh) add('skip-link-visible', el, `포커스 없이 화면 안에 보인다 (${Math.round(r.top)}..${Math.round(r.bottom)})`);
 
     // 입력 글자 크기: iOS 는 16px 미만 입력에 포커스하면 화면을 확대한다
-    if (touch && el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]):not([type=file]),textarea,select') && parseFloat(s.fontSize) < 16 && s.opacity !== '0') {
-      add('input-font-under-16', el, `font-size ${s.fontSize}`);
+    if (touch && el.matches('input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=hidden]):not([type=file]),textarea,select') && s.opacity !== '0') {
+      const finding = touchTargetFinding({ kind: 'input-font', sig: sig(el), fontSize: parseFloat(s.fontSize) });
+      if (finding) out.push(finding);
     }
     // 12px 미만 글자
     if (el.childNodes.length && [...el.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim()) && parseFloat(s.fontSize) < 12 && !el.closest('svg')) {
@@ -214,18 +234,10 @@ const inPage = (opts) => {
     if (touch && s.pointerEvents !== 'none' && el.matches('a[href],button,[role=button],[role=tab],[role=menuitem],[role=menuitemradio],[role=menuitemcheckbox],[role=option],[role=switch],input:not([type=hidden]),select,summary,[tabindex="0"]') && !el.matches('[disabled],[aria-disabled=true]') && !el.closest('p,li > p,.tk-prose,.tk-callout__body')) {
       // 라벨 안의 체크·라디오는 라벨이 눌리는 영역이다
       const host = el.matches('input[type=checkbox],input[type=radio]') && el.closest('label') ? el.closest('label') : el;
-      const hr = host.getBoundingClientRect();
-      let w = hr.width, h = hr.height;
-      const a = getComputedStyle(host, '::after');
-      if (a.content !== 'none' && a.position === 'absolute') {
-        const t = parseFloat(a.top), b = parseFloat(a.bottom), l = parseFloat(a.left), rr = parseFloat(a.right);
-        if (t <= 0 && b <= 0) h = hr.height - t - b;
-        if (l <= 0 && rr <= 0) w = hr.width - l - rr;
-      }
-      // 부모가 같은 행동의 큰 영역이면(라벨 안 입력, 행 전체가 링크) 건너뛴다
-      if ((w < 43.5 || h < 43.5) && !el.closest('label.tk-chip,.tk-switch,.tk-checkbox,.tk-radio,.tk-field--inline')) {
-        if (!(w >= 43.5 && h >= 24) && !(h >= 43.5 && w >= 24)) add('touch-target-under-44', el, `${Math.round(w)}×${Math.round(h)} (히트 영역 포함)`);
-      }
+      const hr = rect(host.getBoundingClientRect());
+      const vr = host.querySelector('svg,.tk-icon,img')?.getBoundingClientRect() ?? host.getBoundingClientRect();
+      const finding = touchTargetFinding({ sig: sig(el), hit: hitRect(host), visual: rect(vr) });
+      if (finding && !el.closest('label.tk-chip,.tk-switch,.tk-checkbox,.tk-radio,.tk-field--inline')) out.push(finding);
     }
 
     // safe-area: 화면 가장자리에 붙은 고정 요소 안의 행동이 홈 인디케이터·노치에 겹친다
@@ -265,6 +277,29 @@ const inPage = (opts) => {
     if (skipped(input) || input.closest('dialog:not([open]), template')) continue;
     const rr = input.getBoundingClientRect();
     if (rr.width === 0 || rr.height === 0) add('file-input-hidden', input, 'input[type=file] 에 hidden/display:none 금지. iOS 선택 메뉴가 엉뚱한 곳에 뜬다. 버튼 위에 투명하게 겹친다');
+    const slot = input.closest('.tk-file-slot');
+    const button = slot?.querySelector(':scope > button');
+    if (button && shown(button) && shown(input)) {
+      const finding = fileButtonMismatch(rect(button.getBoundingClientRect()), rect(input.getBoundingClientRect()), sig(button));
+      if (finding) out.push(finding);
+    }
+  }
+
+  // 표 자체가 화면 밖으로 나간 경우만 보고한다. 표 내부의 스크롤은 상자가 화면 안에 있을 때 허용한다.
+  for (const table of document.querySelectorAll('table')) {
+    if (skipped(table) || !shown(table)) continue;
+    let scroller = null;
+    for (let n = table.parentElement; n && n !== document.body; n = n.parentElement) {
+      if (['auto', 'scroll'].includes(getComputedStyle(n).overflowX)) { scroller = n; break; }
+    }
+    const finding = tableViewportFinding({
+      sig: sig(table), table: rect(table.getBoundingClientRect()), viewport: { left: 0, right: vw },
+      scroller: scroller ? rect(scroller.getBoundingClientRect()) : null,
+      overflowX: scroller ? getComputedStyle(scroller).overflowX : 'visible',
+      scrollWidth: scroller?.scrollWidth ?? table.scrollWidth,
+      clientWidth: scroller?.clientWidth ?? table.clientWidth,
+    });
+    if (finding) out.push(finding);
   }
 
   return out;
@@ -359,12 +394,24 @@ for (const t of targets) {
                   return true;
                 });
                 await dialog.evaluate((d) => Promise.all(d.getAnimations().map((a) => a.finished.catch(() => {}))));
-                await page.waitForTimeout(60);
+                const samples = await dialog.evaluate(async (d) => {
+                  const sample = () => ({ open: d.open, rect: (() => { const r = d.getBoundingClientRect(); return { x: r.x, y: r.y, width: r.width, height: r.height }; })() });
+                  const frames = [sample()];
+                  await new Promise(requestAnimationFrame);
+                  frames.push(sample());
+                  await new Promise(requestAnimationFrame);
+                  frames.push(sample());
+                  return frames;
+                });
+                const unstable = dialogMeasurementError(samples);
+                if (unstable) throw new Error(unstable);
                 return await dialog.evaluate(inDialog, { insets });
               } finally {
                 if (openedByChecker) await dialog.evaluate((d) => {
                   if (!d.isConnected) throw new Error('dialog target was removed before closing');
                   if (d.open) d.close();
+                  const failure = dialogClosedError(d.open);
+                  if (failure) throw new Error(failure);
                 });
               }
             }, (dialog) => dialog.evaluate((d) => d.isConnected));
