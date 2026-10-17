@@ -110,7 +110,7 @@
 |---|---|
 | `page-overflow-x` | 문서가 화면보다 넓다. 범인 요소를 함께 알려 준다 |
 | `escapes-viewport` | 가로 스크롤 상자 밖에서 요소가 화면 좌우를 넘는다 |
-| `silent-clip` | `overflow: hidden` 인데 말줄임이 아니고 내용이 더 크다(조용히 잘림) |
+| `silent-clip` | `overflow: hidden` 인데 말줄임이 아니고 내용이 더 크다(조용히 잘림). 검사기는 클래스명 대신 1px 이하 absolute/fixed 상자와 실제 clip 조합으로 시각 숨김을 판별한다. `role=tabpanel` 은 `data-active=false` 인 경우에만 이 숨김을 인정한다. |
 | `ellipsis-without-full-text` | 말줄임이 생겼는데 `title`·`aria-label` 로 전체를 볼 방법이 없다 |
 | `gap-plus-margin` | 부모가 gap 으로 간격을 주는데 자식에 6 초과 margin 이 있다. 저작된 값을 읽으므로 `auto` 는 걸리지 않는다 |
 | `touch-target-under-44` | 터치 기기에서 누르는 영역(`::after` 포함)이 44 미만 |
