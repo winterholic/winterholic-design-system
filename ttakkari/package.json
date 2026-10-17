@@ -8,7 +8,7 @@
     "build": "node tokens/build.mjs",
     "palette": "node tokens/scripts/palette-from-anchors.mjs > tokens/src/palette.json && node tokens/build.mjs",
     "brand": "python3 assets/brand/build-brand-assets.py",
-    "test": "node tokens/build.mjs && node --test ../scripts/ttakkari-design-system.test.mjs && npm run test:brand",
+    "test": "node tokens/build.mjs && node --test ../scripts/ttakkari-design-system.test.mjs ../scripts/ttakkari-layout.check.test.mjs && npm run test:brand",
     "test:brand": "node --test ../scripts/brand-assets.test.mjs",
     "check:ui": "node ../scripts/ttakkari-interaction.check.mjs",
     "check:layout": "node ../scripts/ttakkari-layout.check.mjs",

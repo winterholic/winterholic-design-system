@@ -13,6 +13,7 @@ import { createServer } from 'node:http';
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
 import { join, extname, basename, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { findSilentClip, inspectDynamicTargets, navigationError, pageErrorFinding, validateTargets } from './ttakkari-layout.rules.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/, '').split(/=(.*)/s)).map(([k, v]) => [k, v ?? true]));
 const WIDTHS = (args.widths ? String(args.widths).split(',').map(Number) : [320, 390, 768, 1024, 1440]);
@@ -29,7 +30,7 @@ let server, base, targets = [];
 const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.json': 'application/json', '.ico': 'image/x-icon' };
 if (args.url) {
   base = String(args.url).replace(/\/$/, '');
-  targets = String(args.routes ?? '/').split(',').map((r) => ({ name: r, url: base + r }));
+  targets = String(args.routes ?? '/').split(',').map((r) => r.trim()).filter(Boolean).map((r) => ({ name: r, url: base + r }));
 } else {
   const root = process.cwd();
   if (basename(root) !== 'ttakkari') { console.error('ttakkari 디렉터리에서 실행해야 한다'); process.exit(2); }
@@ -53,11 +54,18 @@ if (args.url) {
   const pages = args.pages ? String(args.pages).split(',') : await walk('');
   targets = pages.map((p) => ({ name: p, url: base + p }));
 }
+const targetValidationError = validateTargets(targets);
+if (targetValidationError) {
+  console.error(`[${targetValidationError.rule}] ${targetValidationError.detail} · 미측정`);
+  process.exit(2);
+}
 const stub = args.stub ? (await import(pathToFileURL(resolve(String(args.stub))).href)).default : null;
 
 // ---------- 페이지 안에서 도는 검사 ----------
 const inPage = (opts) => {
   const { stress, long, touch, insets } = opts;
+  const findSilentClip = window.__ttakkariLayoutFindSilentClip;
+  if (typeof findSilentClip !== 'function') throw new Error('layout checker silent-clip policy was not installed');
   const vw = innerWidth, vh = innerHeight;
   const out = [];
   const sig = (el) => {
@@ -149,9 +157,18 @@ const inPage = (opts) => {
     // 조용히 잘리는 글자: overflow 가 숨김인데 말줄임도 아니고 내용이 더 크다
     if (s.overflowX !== 'visible' && s.overflowX !== 'auto' && s.overflowX !== 'scroll' && el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) {
       const text = el.innerText?.trim();
-      const ellipsis = s.textOverflow === 'ellipsis' || s.webkitLineClamp !== 'none' && s.display.includes('box');
-      if (text && !ellipsis && !el.matches('.tk-screen__body,.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar,.tk-canvas') && !el.closest('.tk-sr-only,svg')) {
-        add('silent-clip', el, `내용 ${el.scrollWidth} > 상자 ${el.clientWidth}, 말줄임 없음`);
+      if (text && !el.matches('.tk-screen__body,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar,.tk-canvas') && !el.closest('svg')) {
+        const finding = findSilentClip({
+          sig: sig(el), text, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth,
+          style: {
+            position: s.position, width: s.width, height: s.height,
+            paddingTop: s.paddingTop, paddingRight: s.paddingRight, paddingBottom: s.paddingBottom, paddingLeft: s.paddingLeft,
+            overflowX: s.overflowX, overflowY: s.overflowY, clip: s.clip, clipPath: s.clipPath,
+            textOverflow: s.textOverflow, webkitLineClamp: s.webkitLineClamp, display: s.display,
+          },
+          role: el.getAttribute('role'), dataActive: el.getAttribute('data-active'),
+        });
+        if (finding) out.push(finding);
       }
     }
     if (s.textOverflow === 'ellipsis' && s.whiteSpace === 'nowrap' && el.scrollWidth > el.clientWidth + 1) {
@@ -255,9 +272,9 @@ const inPage = (opts) => {
 
 
 // 모달 하나를 열어 잰다(열리는 애니메이션이 끝난 뒤 호출)
-const inDialog = ({ index, insets }) => {
+const inDialog = (d, { insets }) => {
+  if (!d?.isConnected) throw new Error('dialog target was removed before measurement');
   const vw = innerWidth, vh = innerHeight, out = [];
-  const d = document.querySelectorAll('dialog')[index];
   const sig = (el) => { const parts = []; for (let n = el, i = 0; n && n.nodeType === 1 && i < 3; n = n.parentElement, i++) parts.push(n.tagName.toLowerCase() + [...n.classList].slice(0, 2).map((c) => '.' + c).join('') + (n.id ? '#' + n.id : '')); return parts.reverse().join(' > '); };
   const add = (rule, el, detail) => out.push({ rule, sig: sig(el), detail });
   const r = d.getBoundingClientRect();
@@ -310,6 +327,7 @@ for (const t of targets) {
         const ctx = await browser.newContext({ ...preset, viewport: { width, height: variant.height }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
         if (BROWSER === 'webkit' && insets) await rewriteSafeArea(ctx, insets);
         const page = await ctx.newPage();
+        await page.addInitScript({ content: `window.__ttakkariLayoutFindSilentClip = ${findSilentClip.toString()};` });
         const errors = [];
         page.on('pageerror', (e) => errors.push(String(e)));
         if (stub) await stub(ctx, page, base);
@@ -317,23 +335,46 @@ for (const t of targets) {
           try { const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setSafeAreaInsetsOverride', { insets }); } catch { /* 지원하지 않는 Chrome */ }
         }
         let found = [];
+        let response;
         try {
-          await page.goto(t.url, { waitUntil: args.url ? 'networkidle' : 'load', timeout: 30000 });
-          await page.evaluate(() => document.fonts.ready);
-          await page.waitForTimeout(args.url ? 400 : 150);
-          found = await page.evaluate(inPage, { stress: mode.stress, long: LONG, touch, insets, raw: !!args['stress-raw'] });
-          const count = await page.evaluate(() => document.querySelectorAll('dialog').length);
-          for (let i = 0; i < count; i++) {
-            const ok = await page.evaluate((n) => { const d = document.querySelectorAll('dialog')[n]; if (d.open) return false; try { d.showModal(); return true; } catch { return false; } }, i);
-            if (!ok) continue;
-            await page.evaluate((n) => Promise.all(document.querySelectorAll('dialog')[n].getAnimations().map((a) => a.finished.catch(() => {}))), i);
-            await page.waitForTimeout(60);
-            found.push(...await page.evaluate(inDialog, { index: i, insets }));
-            await page.evaluate((n) => document.querySelectorAll('dialog')[n].close(), i);
+          response = await page.goto(t.url, { waitUntil: args.url ? 'networkidle' : 'load', timeout: 30000 });
+          const failure = navigationError(t.name, t.url, response?.status());
+          if (failure) found.push(failure);
+        } catch (e) {
+          found.push(navigationError(t.name, t.url, null));
+        }
+        if (response?.ok()) {
+          try {
+            await page.evaluate(() => document.fonts.ready);
+            await page.waitForTimeout(args.url ? 400 : 150);
+            found.push(...await page.evaluate(inPage, { stress: mode.stress, long: LONG, touch, insets, raw: !!args['stress-raw'] }));
+            const dialogHandles = await page.locator('dialog').elementHandles();
+            const dialogReport = await inspectDynamicTargets(dialogHandles, async (dialog) => {
+              let openedByChecker = false;
+              try {
+                openedByChecker = await dialog.evaluate((d) => {
+                  if (!d.isConnected) throw new Error('dialog target was removed before opening');
+                  if (d.open) return false;
+                  d.showModal();
+                  return true;
+                });
+                await dialog.evaluate((d) => Promise.all(d.getAnimations().map((a) => a.finished.catch(() => {}))));
+                await page.waitForTimeout(60);
+                return await dialog.evaluate(inDialog, { insets });
+              } finally {
+                if (openedByChecker) await dialog.evaluate((d) => {
+                  if (!d.isConnected) throw new Error('dialog target was removed before closing');
+                  if (d.open) d.close();
+                });
+              }
+            }, (dialog) => dialog.evaluate((d) => d.isConnected));
+            found.push(...dialogReport.findings, ...dialogReport.errors);
+            if (shotsDir) await page.screenshot({ path: join(shotsDir, `${t.name.replace(/[^\w.-]+/g, '_')}-${width}-${mode.name}-${scheme}.png`), fullPage: false });
+          } catch (e) {
+            found.push({ rule: 'checker-error', status: 'unmeasured', sig: t.name, detail: String(e.message).split('\n')[0] });
           }
-          if (shotsDir) await page.screenshot({ path: join(shotsDir, `${t.name.replace(/[^\w.-]+/g, '_')}-${width}-${mode.name}-${scheme}.png`), fullPage: false });
-        } catch (e) { found = [{ rule: 'load-error', sig: t.name, detail: String(e.message).split('\n')[0] }]; }
-        for (const e of errors) found.push({ rule: 'page-error', sig: t.name, detail: e });
+        }
+        for (const e of errors) found.push(pageErrorFinding(t.name, e));
         // 같은 규칙·같은 서명은 한 번만
         const uniq = new Map();
         for (const f of found) { const k = f.rule + '|' + f.sig; if (!uniq.has(k)) uniq.set(k, f); }
@@ -357,7 +398,7 @@ for (const [rule, list] of byRule) {
   const groups = new Map();
   for (const r of list) { const k = r.sig; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); }
   for (const [sig, g] of [...groups].slice(0, args.limit ? Number(args.limit) : 25)) {
-    console.log(`  - ${sig}\n      ${g[0].detail} · ${[...new Set(g.map((x) => `${x.page}@${x.width}${x.mode === 'stress' ? 's' : ''}`))].slice(0, 4).join(', ')}${g.length > 4 ? ` 외 ${g.length - 4}` : ''}`);
+    console.log(`  - ${sig}\n      ${g[0].status ? `[${g[0].status}] ` : ''}${g[0].detail} · ${[...new Set(g.map((x) => `${x.page}@${x.width}${x.mode === 'stress' ? 's' : ''}`))].slice(0, 4).join(', ')}${g.length > 4 ? ` 외 ${g.length - 4}` : ''}`);
   }
   if (groups.size > (args.limit ? Number(args.limit) : 25)) console.log(`  … ${groups.size - (args.limit ? Number(args.limit) : 25)}개 더`);
 }
