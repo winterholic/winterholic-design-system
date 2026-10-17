@@ -93,6 +93,8 @@
 | 문서 뷰어 본문 열 | `size.container.prose` | 720 | 09 |
 | 헤더 / 탭바 / 툴바 | `size.layout.header` · `tabbar` · `toolbar` | 56 / 56 / 48 | 03 |
 | 데스크톱 사이드바 | `size.layout.sidebar` | 280 | 03 |
+| 셸이 세로 중간에서 끝남 | 셸·루트·창 좌표와 스크롤 소유자 확인 | 높이 변경 전후 측정. 단위 하나로 원인 단정 금지 | 03 §5·22 §2 F |
+| 서버 리소스의 넓은 본문 | 차트·요약 + 상세 목록 | 본문 가용 폭 기준 1열/2열, 패널마다 gap 소유 | 21 §6 |
 | 분할 화면 작업 공간 열 · 각 열 최소 | `size.layout.workspace` · `pane-min` | 560 · 360 | 03 |
 | 컨트롤 높이 툴바 / 기본 / 모바일 주 행동 | `size.control.sm` / `md` / `lg` | 32 / 40 / 48 | 06 |
 | 터치 영역 최소 | `size.touch-target-min` | 44 (`hit-area.inset` −8) | 11 |

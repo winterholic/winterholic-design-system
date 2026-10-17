@@ -63,8 +63,15 @@ min-width, 모바일 퍼스트. sm 640 · md 768 · **lg 1024** · xl 1280 · 2x
 
 - `<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">` 가 있어야 `env(safe-area-inset-*)` 가 값을 갖는다(예제 테스트가 확인한다).
 - 이미 처리한 곳: 헤더 위(노치), 탭바 아래(홈 바), 컴포저 트레이(탭바가 없을 때), 시트·드로어·전체 화면 뷰어, skip link.
-- 앱 높이는 `100dvh`. 주소창이 접히거나 키보드가 올라와도 컴포저가 키보드 위에 남는다. iOS 에서 `interactive-widget=resizes-content` 가 필요한지는 기기 확인이 필요하다(19 §6, 확인 필요).
+- 기본 셸 높이는 `100dvh` 로 주소창 변화에 대응한다. **키보드가 올라왔을 때 컴포저가 보인다는 보장은 아니다.** 키보드가 Visual Viewport 만 줄이면 viewport 단위와 Layout Viewport 는 그대로일 수 있다. 입력 캐럿·컴포저가 실제로 보이는지 확인하고, 필요할 때 `visualViewport` 를 이용한 처리를 적용한다(19 §6). `interactive-widget=resizes-content` 도 모든 브라우저의 보장으로 취급하지 않는다.
+- 근거: [CSS Values §6.1.2](https://www.w3.org/TR/css-values-4/#viewport-relative-lengths) · [Chrome viewport resize 동작](https://developer.chrome.com/blog/viewport-resize-behavior). 주소창 대응과 키보드 대응을 따로 검증한다.
 - 스크롤은 화면 본문 안에서만 일어난다(`.tk-screen__body`·`.tk-thread`·`.tk-viewer__body`). 페이지 전체가 스크롤되면 헤더·탭바가 같이 밀린다.
+
+### 데스크톱 셸 높이 확인
+
+전체 창을 쓰는 앱은 `.tk-app` 의 위·아래 좌표와 `innerHeight`, 문서의 `clientHeight`, `visualViewport.height/offsetTop` 을 함께 기록한다. 창의 높이를 줄였다가 늘린 뒤에도 셸이 창 아래까지 이어지고, 본문 안에서만 스크롤되는지 본다. 가로 넘침 0 만으로 세로 높이가 맞는 것은 아니다.
+
+소비 앱이 데스크톱에서 `height: 100%` 를 선택하면 `html → body → React 루트 → .tk-app` 사이 모든 래퍼의 높이 기준을 명시한다. 높이가 auto 인 부모 밑에 100% 만 넣지 않는다. 이 방식은 전체 창을 소유하는 앱에 한정하며, 문서 안에 삽입한 예제·위젯에 전역 높이를 강제하지 않는다. 기본 DS 의 `100dvh` 를 오류로 단정하거나, 잘못된 높이를 주입한 시뮬레이션을 사용자 환경의 원인 재현이라고 보고하지 않는다(22 §2 F).
 
 ## 6. 정렬 규칙
 
@@ -83,7 +90,7 @@ min-width, 모바일 퍼스트. sm 640 · md 768 · **lg 1024** · xl 1280 · 2x
 | 모바일에서 사이드바를 아이콘 레일로 | 탭바 + 세션 드로어 |
 | `position: fixed` 탭바 + 본문 padding 땜질 | `.tk-app` 그리드가 자리를 만든다(탭바는 sticky) |
 | 모바일에서 결과물을 새 탭으로 | 전체 화면 뷰어(같은 앱 안, 뒤로 가기로 돌아온다) |
-| 키보드가 컴포저를 가린다 | `100dvh` 셸 + 스크롤은 스레드 안에서만 |
+| 키보드가 컴포저를 가린다 | `visualViewport` 와 캐럿·컴포저 좌표를 실기기에서 확인(§5). 본문만 스크롤 |
 
 ## 8. 모달 안쪽 여백
 

@@ -1,6 +1,6 @@
 /* app: 앱 셸 · 화면 · 분할(채팅|작업 공간) · 띠(오프라인·업데이트·설치) · 인증 화면.
    모바일(lg 미만): [헤더] / [화면(스크롤)] / [컴포저] / [탭바]. 데스크톱(lg 이상): [사이드바 | 화면], 화면 안에서 채팅과 작업 공간을 나눈다.
-   화면 높이는 dvh 다. 모바일 브라우저 주소창이 접혀도 컴포저·탭바가 키보드 위에 남는다. */
+   기본 높이는 dvh 로 주소창 변화에 대응한다. 키보드 위 컴포저 위치는 별도 검증이 필요하다(docs/03 §5·19 §6). */
 
 .tk-app { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; height: 100dvh; min-height: 0; background: var(--tk-color-surface-canvas); padding-inline: env(safe-area-inset-left) env(safe-area-inset-right); /* 가로 모드 노치 */ }
 .tk-app__sidebar { display: none; }

@@ -105,7 +105,7 @@ function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
 - manifest: `dist/pwa.json` 의 `name`·`short_name`·`theme_color`·`background_color`·`icons`(any + maskable)를 그대로. `display: "standalone"`, `start_url: "/chat"`.
 - `<meta name="theme-color">` 두 줄(light #F4F4ED · dark #080705)은 `pwa.json` 의 `meta`.
 - iOS: `apple-touch-icon-180.png`, `<meta name="apple-mobile-web-app-status-bar-style" content="default">`(확인 필요: black-translucent 는 safe-area 처리를 바꾼다).
-- 키보드: 셸은 `100dvh`. iOS standalone 에서 키보드가 올라올 때 컴포저 위치는 기기 확인이 필요하다(확인 필요). 필요하면 `visualViewport` 높이로 `--tk-_vh` 를 갱신한다.
+- 키보드: 기본 셸은 `100dvh` 이지만, 키보드가 Visual Viewport 만 줄이는 환경에서는 이것만으로 컴포저 위치를 보장하지 않는다(03 §5). 일반 탭·standalone 에서 키보드 열기/닫기와 캐럿·컴포저 위치를 각각 확인한다. `visualViewport` 보정이 필요하면 resize/scroll 을 구독하고 높이·offset 을 실제 셸 스타일에 연결한다. CSS 변수를 갱신하기만 하고 셸이 그 변수를 쓰지 않으면 효과가 없다. 데스크톱의 100% 높이 연결은 03 §5 를 따른다.
 - 서비스 워커: 셸·CSS·글꼴·아이콘은 precache, 결과물 원본은 캐시하지 않는다(민감 자료가 기기에 남는다). 미리보기 캐시는 사용자가 고른 것만.
 
 ## 7. 확인 명령(소비 앱)
