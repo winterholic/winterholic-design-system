@@ -1,5 +1,26 @@
 # Changelog — Ttakkari Design System
 
+## 1.3.3 — 2026-10-17
+
+디자인 전수 검수(모든 페이지 + 모달·메뉴 약 30종을 320·390·1440 / 라이트·다크로 캡처). 계정 추가 모달의 "여백이 하마 같다"에서 시작해, 같은 원인(이중 간격)과 모달 일관성 문제를 정본과 앱에서 함께 고쳤다. 기존 검사가 조건부로 그려지는 모달을 열지 못해 놓쳤던 것들이다.
+
+### 고친 오류
+- `.tk-dialog`: 기본 폭 `--tk-_w` 를 자기 선택자에 선언했다. 사용자 정의 속성은 상속돼서 큰 모달 안의 확인 모달이 부모의 720 을 물려받았다(메모 지우기).
+- `.tk-dialog__body > .tk-empty`: padding 을 `8 0` 으로. `.tk-empty` 의 48 이 본문 padding 16 에 더해져 온보딩 모달 위가 64 비었다.
+- `.tk-choices > .tk-fieldset__help`: margin 0. `-8 0 12` 보정이 `.tk-choices` gap 에 겹쳤다(푸시 알림 모달).
+- `.tk-segmented > label`: `box-sizing: border-box`. 터치용 `min-width: 44` + padding 24 가 content-box 로 계산돼 320 에서 4칸 세그먼트가 안쪽 폭을 넘었다.
+- `.tk-field > .tk-segmented`: 높이를 입력과 같은 40(`control-md`)으로. 34 라 같은 줄의 날짜 입력과 아래가 안 맞았다(PMS 프로젝트 모달에서만 앱이 따로 맞춰 둠).
+- `.tk-step__target`: 왼쪽 6. "명령 실행ls -la" 처럼 이름과 대상이 붙었다.
+- `.tk-input:read-only` 의 점선·회색에서 `select` 제외(1.3.2 변경분이 커밋에서 빠져 있어 함께 반영).
+
+### 문서
+- 22: A10~A11 · B9~B17 · C8~C14, 검사 규칙표에 앱 `modals.mjs`·`undefined-token` 추가, 체크리스트 14~16.
+- 03 §8 "모달 안쪽 여백"(padding 24/20 · 제목↔본문 16 · 필드 16 · 라벨↔입력 8 · 확인 400 …), 폼 필드 간격은 모달 16 · 페이지 20 으로 구분.
+- 06 §14 Dialog: 크기 선택과 푸터 규칙.
+
+### 앱(front)에서 같이 고친 것(정본 규칙 적용)
+폼 컨테이너를 `.tk-stack` 으로(계정·일정·PMS 작업·이슈·임시 순서·회의 공유), 라벨 `.tk-label`, 확인 모달 `sm`, 푸터 버튼 통일, 사용자 메뉴 높이, 서버 리소스 탭 간격, 없는 토큰 2개, 공유 체크박스, WBS·캘린더 정렬. 앱에 `scripts/ui-sweep/modals.mjs`(모달 실제 열기 검사)와 ui-lint `undefined-token` 을 추가했다.
+
 ## 1.3.2 — 2026-10-17
 
 실기기(iPhone, iOS Safari PWA) 스크린샷으로 확인된 결함을 정본에서 고쳤다. 이전 검증이 Chrome 에뮬레이션·합성 3건 데이터로만 "통과"해 놓친 것들이다.
@@ -10,6 +31,7 @@
 - `.tk-header__inner`: 폭 1023 이하의 높이를 56 에서 48 로 줄였다. 상태바 영역(safe-area)과 합쳐 상단이 115 로 휑했다. safe-area 는 `.tk-header` 한 곳에서만 더한다(중복 아님, 확인).
 - `.tk-input` 날짜·시각류: `appearance: none; display: block; min-width: 0; max-width: 100%` 와 `::-webkit-date-and-time-value` 정렬. iOS Safari 에서 날짜 입력이 부모를 넘어 화면 밖으로 나가던 것을 막는 방어다(실기기 확인 필요, 데스크톱 WebKit 에서는 재현되지 않는다). 우선순위는 `:where()` 로 낮춰 앱 규칙이 폭을 정할 수 있다.
 - `.tk-split__pane--primary`: `min-width` 를 `min(pane-min, 100%)` 로. 320 폭에서 360 이 화면을 넘어 WebKit 에서 문서가 가로로 밀렸다(library·workspace 예제, `--browser=webkit` 이 발견). 날짜 입력은 `display: flex; align-items: center` 로 글자를 세로 가운데에 둔다(appearance 를 끄면 글자가 상자 위로 쏠렸다).
+- `.tk-input:read-only` 의 점선·회색에서 `select` 를 뺐다. select 는 항상 read-only 로 맞아 맥락 도서관 "검토 상태" 선택이 편집 불가처럼 보였다.
 - 예제 5개(art·library·files·chat·workspace)의 헤더 메타 글자를 `.tk-header__meta-text` 에 담았다.
 - `.tk-screen__body`: `overflow-x: hidden`. 자식 하나가 폭을 넘겨도 본문 전체가 옆으로 밀려 제목·탭이 잘려 보이지 않는다(안전망. 원인은 컴포넌트에서 고친다).
 

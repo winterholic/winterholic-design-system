@@ -304,7 +304,7 @@
 :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger)[aria-invalid="true"] { border-color: var(--tk-component-input-border-error); }
 :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger)[aria-invalid="true"]:focus-visible { box-shadow: inset 0 0 0 var(--tk-border-width-hairline) var(--tk-component-input-border-error); }
 :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):disabled { background: var(--tk-color-surface-disabled); color: var(--tk-color-text-disabled); border-color: var(--tk-color-action-disabled-border); cursor: not-allowed; }
-:is(.tk-input, .tk-textarea):read-only:not(:disabled) { background: var(--tk-color-surface-subtle); border-style: dashed; }
+:is(.tk-input, .tk-textarea):read-only:not(:disabled, select) { /* select 는 항상 read-only 로 맞아 점선·회색이 되던 것을 뺀다(맥락 도서관 검토 상태) */ background: var(--tk-color-surface-subtle); border-style: dashed; }
 .tk-input--sm, .tk-select--sm > :is(select, .tk-select__trigger) { --tk-_h: var(--tk-size-control-sm); }
 .tk-input--lg, .tk-select--lg > :is(select, .tk-select__trigger) { --tk-_h: var(--tk-size-control-lg); padding-inline: var(--tk-space-4); }
 .tk-input--mono { font-family: var(--tk-font-family-mono); font-variant-ligatures: none; }
@@ -344,6 +344,7 @@
 .tk-fieldset > legend + * { clear: both; }
 .tk-section > .tk-fieldset__help { margin: 0; } /* 섹션 gap 이 간격을 정한다(음수·양수 margin 보정이 gap 과 겹치던 문제) */
 .tk-fieldset__help { margin: calc(-1 * var(--tk-space-2)) 0 var(--tk-space-3); color: var(--tk-color-text-secondary); font-size: var(--tk-font-size-sm); line-height: var(--tk-font-line-height-relaxed); }
+.tk-choices > .tk-fieldset__help { margin: 0; } /* gap 이 간격을 정한다. 음수(-8)·양수(12) 보정이 gap 에 겹쳐 도움말이 위는 붙고 아래는 24 가 비었다(푸시 알림 모달) */
 .tk-choices { display: flex; flex-direction: column; gap: var(--tk-component-choice-group-gap); }
 .tk-choices--inline { flex-direction: row; flex-wrap: wrap; gap: var(--tk-space-3) var(--tk-space-6); }
 
@@ -410,6 +411,9 @@
   border: var(--tk-border-width-hairline) solid var(--tk-color-border-subtle);
 }
 .tk-segmented--lg { --tk-_h: var(--tk-component-segmented-height-lg); }
+/* 폼 안(.tk-field)의 세그먼트는 옆 입력(40)과 높이를 맞춘다. 34 로 남으면 새 회의록의 "범위"·"회의 날짜" 처럼 같은 줄에서 아래가 안 맞는다 */
+.tk-field > .tk-segmented { box-sizing: border-box; height: var(--tk-size-control-md); align-items: stretch; }
+.tk-field > .tk-segmented > label { height: auto; }
 .tk-segmented--block { display: flex; width: 100%; align-self: stretch; }
 .tk-segmented--block > label { flex: 1 1 0; }
 /* 선택지가 폭보다 많을 때(6개 탭): 상자 안에서 가로로 스크롤한다. 라벨이 상자 밖으로 새어 화면을 밀지 않는다 */
@@ -421,7 +425,7 @@
 .tk-segmented--scroll[data-fade~="start"][data-fade~="end"] { -webkit-mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); }
 .tk-segmented--block.tk-segmented--scroll > label { flex: 1 0 auto; }
 .tk-segmented > label { /* lint-ok: 짧은 선택지 라벨. 줄바꿈하면 높이가 달라진다 */
-  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
+  box-sizing: border-box; position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
   height: calc(var(--tk-_h) - 2 * var(--tk-component-segmented-padding)); padding-inline: var(--tk-space-3);
   border-radius: calc(var(--tk-component-segmented-radius) - var(--tk-component-segmented-padding));
   color: var(--tk-color-text-secondary); font: var(--tk-font-weight-medium) var(--tk-font-size-sm) / 1 var(--tk-font-family-sans);
@@ -644,8 +648,10 @@
 
 /* Dialog: 가운데 상자. 확인·재인증·승인 상세 */
 .tk-dialog {
+  /* 폭 기본값을 자기 자신에 둔다. 사용자 정의 속성은 상속되므로, 큰(lg) 모달 안에 중첩된 확인 모달이 부모의 720 을 물려받았다(메모 지우기 확인) */
+  --tk-_w: var(--tk-component-dialog-width-md);
   --tk-_inset-x: var(--tk-size-layout-page-gutter); --tk-_inset-y: var(--tk-space-8);
-  width: min(calc(100vw - 2 * var(--tk-_inset-x) - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--tk-_w, var(--tk-component-dialog-width-md)));
+  width: min(calc(100vw - 2 * var(--tk-_inset-x) - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--tk-_w));
   max-width: none; max-height: calc(100dvh - 2 * var(--tk-_inset-y) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   padding: 0; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-dialog-radius);
   background: var(--tk-component-dialog-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
@@ -662,6 +668,7 @@
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * { margin-block: 0; }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * + * { margin-top: var(--tk-space-3); }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__footer { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--tk-space-3); padding: 0 var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body > .tk-empty { padding: var(--tk-space-2) 0; }
 @media (max-width: 639px) {
   .tk-dialog { --tk-_pad: var(--tk-component-dialog-padding-mobile); --tk-_inset-x: var(--tk-space-3); --tk-_inset-y: var(--tk-space-4); }
   .tk-dialog .tk-dialog__footer > .tk-button { flex: 1; }
@@ -1170,6 +1177,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-steps > li[data-state="failed"] > :first-child { color: var(--tk-color-run-failed-icon); }
 .tk-steps > li[data-state="cancelled"] > :first-child { color: var(--tk-color-run-cancelled-icon); }
 .tk-step__name { min-width: 0; overflow-wrap: anywhere; }
+.tk-step__target { margin-inline-start: var(--tk-space-1-5); }
 .tk-step__name code, .tk-step__target { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; color: var(--tk-color-text-secondary); font-weight: var(--tk-font-weight-regular); }
 .tk-step__detail { display: block; margin-top: var(--tk-space-0-5); color: var(--tk-color-text-tertiary); font-size: var(--tk-font-size-xs); font-weight: var(--tk-font-weight-regular); }
 .tk-step__time { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }

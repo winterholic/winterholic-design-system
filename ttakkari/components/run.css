@@ -56,6 +56,7 @@
 .tk-steps > li[data-state="failed"] > :first-child { color: var(--tk-color-run-failed-icon); }
 .tk-steps > li[data-state="cancelled"] > :first-child { color: var(--tk-color-run-cancelled-icon); }
 .tk-step__name { min-width: 0; overflow-wrap: anywhere; }
+.tk-step__target { margin-inline-start: var(--tk-space-1-5); }
 .tk-step__name code, .tk-step__target { font-family: var(--tk-font-family-mono); font-size: var(--tk-font-size-xs); font-variant-ligatures: none; color: var(--tk-color-text-secondary); font-weight: var(--tk-font-weight-regular); }
 .tk-step__detail { display: block; margin-top: var(--tk-space-0-5); color: var(--tk-color-text-tertiary); font-size: var(--tk-font-size-xs); font-weight: var(--tk-font-weight-regular); }
 .tk-step__time { color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-mono); font-variant-numeric: tabular-nums; }

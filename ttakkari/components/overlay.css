@@ -73,8 +73,10 @@
 
 /* Dialog: 가운데 상자. 확인·재인증·승인 상세 */
 .tk-dialog {
+  /* 폭 기본값을 자기 자신에 둔다. 사용자 정의 속성은 상속되므로, 큰(lg) 모달 안에 중첩된 확인 모달이 부모의 720 을 물려받았다(메모 지우기 확인) */
+  --tk-_w: var(--tk-component-dialog-width-md);
   --tk-_inset-x: var(--tk-size-layout-page-gutter); --tk-_inset-y: var(--tk-space-8);
-  width: min(calc(100vw - 2 * var(--tk-_inset-x) - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--tk-_w, var(--tk-component-dialog-width-md)));
+  width: min(calc(100vw - 2 * var(--tk-_inset-x) - env(safe-area-inset-left) - env(safe-area-inset-right)), var(--tk-_w));
   max-width: none; max-height: calc(100dvh - 2 * var(--tk-_inset-y) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
   padding: 0; border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-component-dialog-radius);
   background: var(--tk-component-dialog-bg); color: var(--tk-color-text-primary); box-shadow: var(--tk-shadow-lg);
@@ -91,6 +93,7 @@
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * { margin-block: 0; }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__body > * + * { margin-top: var(--tk-space-3); }
 :is(.tk-dialog, .tk-sheet) .tk-dialog__footer { flex: none; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--tk-space-3); padding: 0 var(--tk-_pad, var(--tk-component-dialog-padding)) var(--tk-_pad, var(--tk-component-dialog-padding)); }
+:is(.tk-dialog, .tk-sheet) .tk-dialog__body > .tk-empty { padding: var(--tk-space-2) 0; }
 @media (max-width: 639px) {
   .tk-dialog { --tk-_pad: var(--tk-component-dialog-padding-mobile); --tk-_inset-x: var(--tk-space-3); --tk-_inset-y: var(--tk-space-4); }
   .tk-dialog .tk-dialog__footer > .tk-button { flex: 1; }

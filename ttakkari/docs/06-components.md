@@ -217,7 +217,7 @@ prose 안의 맨 `<a>` 는 클래스 없이 같은 모양. 색만으로 링크�
   <div class="tk-dialog__footer"><button class="tk-button" data-tk-dialog-close>취소</button><button class="tk-button tk-button--danger">세션 삭제</button></div>
 </dialog>
 ```
-네이티브 `<dialog>` + `showModal()`: 포커스 가두기·Esc·배경 inert 는 브라우저가 한다. 닫히면 연 버튼으로 포커스. 폭 `--sm` 400 · 기본 560 · `--lg` 720. 스크림 클릭은 닫는다. 결정·입력을 잃을 수 있으면 `data-tk-modal`(스크림 클릭 무시), Esc 까지 막으려면 `data-tk-modal="strict"`(재인증 진행 중처럼 정말 필요한 때만). 버튼 문구는 동작 이름, 제목은 질문형, 주 버튼 오른쪽. 모바일에서는 푸터 버튼이 폭을 나눠 갖는다.
+네이티브 `<dialog>` + `showModal()`: 포커스 가두기·Esc·배경 inert 는 브라우저가 한다. 닫히면 연 버튼으로 포커스. 폭 `--sm` 400 · 기본 560 · `--lg` 720. 스크림 클릭은 닫는다. 결정·입력을 잃을 수 있으면 `data-tk-modal`(스크림 클릭 무시), Esc 까지 막으려면 `data-tk-modal="strict"`(재인증 진행 중처럼 정말 필요한 때만). 버튼 문구는 동작 이름, 제목은 질문형, 주 버튼 오른쪽. 모바일에서는 푸터 버튼이 폭을 나눠 갖는다. **크기 선택**: 입력이 없는 확인 질문은 `--sm`, 입력 폼은 기본, 긴 폼·목록은 `--lg`. **푸터**: 취소(윤곽 버튼, ghost 아님) · 주 버튼 순서로 버튼만 넣는다(`.tk-button-group` 래퍼 없이). 폼 안에 행동 줄을 따로 두면 모바일에서 버튼이 폭을 나눠 가지게 한다. 안쪽 여백 수치는 03 §8.
 
 ## 15. Sheet (바텀 시트)
 

@@ -23,6 +23,8 @@
 | A7 | 헤더 메타 줄이 조용히 잘림(검사에서 발견) | `overflow: hidden` 인데 `text-overflow` 가 없음 | 검사 `silent-clip` | 말줄임 + `title`. 정보가 중요하면 줄바꿈 |
 | A8 | 알림 헤더 부제가 "확" 에서 말줄임 없이 뚝 잘림(실기기 iOS, 2026-10-17) | `.tk-header__meta` 는 `display: flex` 라 맨 글자(익명 flex 항목)에는 `text-overflow` 가 먹지 않는다 | 검사 `ellipsis-on-flex-text` | 글자는 `<span class="tk-header__meta-text">` 에 담는다(`PageHeader` 가 문자열이면 자동). flex 상자에 말줄임을 걸 때는 항상 글자를 span 에 |
 | A9 | 맥락 도서관 탭 6개가 폭을 넘어 본문 전체가 왼쪽으로 밀리고 가로 스크롤바가 생김(실기기, 2026-10-17) | `.tk-segmented--block` 라벨이 `nowrap` 이라 상자 밖으로 나가고, 그 폭이 `.tk-screen__body`(스크롤 상자)를 넓힘. **문서 `scrollWidth` 는 그대로라** 기존 검사에 안 잡혔다 | 검사 `scroller-overflow-x` · `.tk-screen__body { overflow-x: hidden }` 안전망 | 선택지가 4개를 넘거나 한글 라벨이 길면 `.tk-segmented--scroll`(상자 안 스크롤, 잘린 쪽은 `data-fade` 로 흐림). 안전망은 증상만 가리므로 원인 컴포넌트를 고친다 |
+| A10 | 320 폭 PMS 작업 모달에서 상태 세그먼트 마지막 칸이 잘림(전수 검수, 2026-10-17) | `.tk-segmented > label` 이 content-box 라 `min-width: 44`(터치) + padding 24 = 68 이 4개(272)로 계산돼 안쪽 폭 254 를 넘음 | 렌더 수치(320 모달) | 라벨에 `box-sizing: border-box`(DS 1.3.3). 칸이 넷 이상인 세그먼트는 320 에서 수치로 확인한다 |
+| A11 | 320 폭 일정 모달에서 시각 입력의 시계 아이콘이 잘리고, 진행률 빠른 선택 칩이 가로로 밀려 `100%` 가 안 보임 | 날짜·시각을 한 줄에 `flex: 1 1 0` 으로 억지로 넣음 / `.tk-chips` 기본은 가로 스크롤인데 힌트가 없음 | 렌더 수치 | 짝 입력은 `flex-wrap` + `flex: 1 1 9rem`(좁으면 두 줄), 칩이 폭을 넘을 만하면 `.tk-chips--wrap` |
 
 글자가 상자에 안 들어갈 때의 선택은 이 순서다. ① 줄바꿈(제목·설명·이름: `overflow-wrap: anywhere`) ② 한 줄 말줄임 + `title`(목록 행·헤더) ③ 가로 스크롤(표·코드). 글자를 줄여 맞추지 않는다.
 
@@ -38,6 +40,15 @@
 | B6 | 상단바가 휑함: 상태바 영역(safe-area 59) 아래에 헤더 56 이 더 얹혀 115 가 됨(실기기, 2026-10-17) | 데스크톱 높이(56)를 폰에도 그대로 씀. safe-area 는 `.tk-header` 한 곳에서만 더하고 있었다(중복 아님) | 규칙: 헤더 안쪽 높이 | 폭 1023 이하는 `--tk-component-header-height - space-2`(48). 제목+메타 두 줄(약 41)과 터치 타깃 44 가 들어간다. 헤더 위에 `padding-top: env(safe-area-inset-top)` 를 다른 요소가 또 더하지 않는다 |
 | B7 | 보관함에서 개수·"오늘" 머리·첫 항목 사이가 위아래로 과하게 벌어짐(실기기, 2026-10-17) | `<p class="tk-list__group">` 에 브라우저 기본 위아래 margin(1em = 12)이 남음. 필터 아래 padding 과도 겹쳐 쌓임 | 검사 규칙은 아님(`gap-plus-margin` 은 gap 부모만 봄) — 렌더 수치로 확인 | `<p>`·`<h*>` 를 쓰는 컴포넌트 클래스는 `margin: 0` 을 스스로 적는다. 새 컴포넌트를 만들면 사용 태그의 기본 margin 부터 지운다 |
 | B8 | 메모 편집 화면의 도구 줄만 흰 띠로 떠서 오류처럼 보임(실기기, 2026-10-17) | 페이지 바탕(`surface-canvas`) 위의 sticky 줄에 `surface-default`(흰색) 배경을 줌 | 규칙 | sticky·fixed 줄이 본문 위에 얹힐 때 배경은 **놓인 바탕과 같은 면**(페이지는 canvas, 모달은 default)으로 하고, 좌우 gutter 만큼 밖으로 펴 스크롤될 때 글자가 옆으로 비치지 않게 한다 |
+| B9 | 모달 안 폼 필드 사이가 36(계정 추가·일정)·32(PMS 작업·이슈)로 벌어지고, 같은 모달 안에서도 32/12 로 들쭉날쭉함(전수 검수, 2026-10-17. "여백이 하마같이") | 폼 컨테이너를 앱 클래스(`display: flex; gap: 12~16`)로 만들고, 안쪽 `.tk-field` 의 DS 규칙 `.tk-field + .tk-field`(margin-top 20)가 gap 에 그대로 더해짐. B1 처방(`.tk-stack`)을 폼마다 적용하지 않았고, 검사는 열려 있는 모달만 보는데 **조건부로 그려지는 모달은 한 번도 열리지 않아** 통과해 왔다 | 앱 `scripts/ui-sweep/modals.mjs` 의 `gap-plus-margin` | 모달 폼은 `.tk-stack`(gap 16)에 두고 자체 flex+gap 클래스를 만들지 않는다. 짝 필드 `grid` 도 둘째 칸 margin 을 0 으로(`.pms-form__pair`). 새 모달은 `modals.mjs` 장면에 한 줄 추가 |
+| B10 | 푸시 알림 모달에서 도움말이 스위치에 붙고 버튼 위만 24 가 빔 | `.tk-fieldset__help` 의 `margin: -8 0 12` 보정이 `.tk-choices` 의 gap 에 겹침 | `gap-plus-margin` | `.tk-choices > .tk-fieldset__help { margin: 0 }`(DS 1.3.3). 음수 margin 보정은 B2 와 같은 이유로 만들지 않는다 |
+| B11 | 서버 리소스 탭 안에서 카드와 "CPU 코어별" 제목이 2px 로 붙어 쌓임 | 탭 패널(`<section role="tabpanel">`)에 레이아웃 규칙이 없어 바깥 `.res` 의 gap 이 닿지 않음 | 렌더 수치 | 패널도 `display: flex; flex-direction: column; gap` 을 갖는다. 내용을 넣는 상자마다 간격 규칙의 소유자를 정한다 |
+| B12 | 체크리스트 삭제 확인에서 두 문단이 30 떨어짐 | `<p>` 기본 margin 14 + 부모 gap 16 | `gap-plus-margin` | `<p>` 를 flex 부모 안에 두면 `margin: 0`(B7 과 같은 유형) |
+| B13 | 날씨 빈 상태의 위아래 padding 이 사라지고, 달력 날짜 줄간격이 상속값으로 풀림 | 없는 토큰 `--tk-space-7`·`--tk-font-line-height-tight` 를 씀. 없는 `var(--tk-*)` 는 에러 없이 조용히 무효가 된다 | lint `undefined-token`(앱 ui-lint, 새로 늘면 실패) | 있는 토큰만 쓴다(space 는 4 배수 단계, line-height 는 snug/normal/relaxed) |
+| B14 | 캘린더 "음력" 스위치 라벨이 스위치보다 위로 떠 보임 | `.tk-switch > input` 의 위 여백이 본문(md) 글자 기준인데 라벨만 xs 로 줄임 | 눈 확인(렌더 좌표) | 라벨 글자 크기를 바꿀 때는 `align-items: center; input { margin-top: 0 }` 를 함께 준다 |
+| B15 | 모바일 WBS 에서 작업 제목만 오른쪽으로 27 들어가 아래 요약·막대 줄과 왼쪽 선이 안 맞음 | 제목 앞의 접기 칸(twisty)만큼 제목 줄만 밀림 | 눈 확인 | 같은 행의 줄들은 한 왼쪽 선을 쓴다(요약·막대에 같은 들임) |
+| B16 | 채팅 실행 단계가 "명령 실행ls -la" 처럼 이름과 대상이 붙음 | JSX 에서 이름 뒤에 공백 없이 `<span class="tk-step__target">` 가 이어짐 | 눈 확인 | `.tk-step__target { margin-inline-start: 6 }`(DS 1.3.3). 글자 사이 간격을 JSX 공백에 맡기지 않는다 |
+| B17 | 새 회의록에서 같은 줄의 "범위" 세그먼트(34)가 "회의 날짜" 입력(40)보다 6 낮아 아래가 안 맞음 | 세그먼트 기본 높이(32+테두리)와 입력 `control-md`(40)가 다른데 폼 안에서 같은 줄에 놓임. PMS 프로젝트 모달만 앱에서 따로 맞춰 둠 | 렌더 수치 | `.tk-field > .tk-segmented` 가 입력과 같은 40 이 된다(DS 1.3.3). 앱이 폼마다 높이를 덮어쓰지 않는다 |
 
 ### C. 모달·시트·안전 영역
 
@@ -50,6 +61,13 @@
 | C5 | 가로 모드 폰에서 앱 좌우가 노치 아래로 들어감 | 좌우 inset 을 아무도 안 더함 | 검사 `safe-area-side`(844×390) | `.tk-app` 이 좌우 inset 을 가진다. 앱 셸 밖 전체 화면 요소는 직접 더한다 |
 | C6 | 아래에 붙는 고정 요소가 홈 바에 눌림 | `env(safe-area-inset-bottom)` 없음 | lint(fixed 아래) · `safe-area-bottom` | 아래에 붙는 요소가 한 번만 더한다. 탭바 아래 여백은 inset 의 절반까지 허용(사용자 결정, front `36eafbf`) |
 | C7 | 키보드가 올라오면 탭바가 입력을 가림 | 탭바가 `sticky` 로 남음 | 규칙(19 §6) | 키보드 열림 동안 탭바 숨김(`html[data-kbd]`), 입력 캐럿은 `visualViewport` 안으로 |
+| C8 | 메모 지우기 확인 모달이 720 폭(내용은 한 줄)(전수 검수, 2026-10-17) | 사용자 정의 속성 `--tk-_w` 는 **상속된다**. 큰(lg) 모달 안에 렌더된 확인 모달이 부모의 720 을 물려받음 | `modals.mjs` `dialog-width` | `.tk-dialog` 가 자기 기본 폭을 직접 선언한다(DS 1.3.3). 중첩 컴포넌트에 쓰는 지역 변수는 자기 선택자에서 초기값을 준다 |
+| C9 | 확인 질문("…지울까요?") 모달이 560 폭이라 한 줄 내용에 비해 큼 | 크기를 안 정해 기본(md 560) | `confirm-not-sm` | 제목이 질문이고 입력이 없으면 `size="sm"`(400). 입력 폼은 기본·`lg` |
+| C10 | 모달마다 라벨 서체가 다름(일정·PMS 는 본문 글자, 계정은 medium) | `.tk-field` 첫 자식 `<label>`·`<span>` 에 `.tk-label` 이 없음 | `label-style` | 라벨과 의사 라벨(select 의 `<span id>`)에 모두 `.tk-label` |
+| C11 | 모달 푸터 버튼 모양이 모달마다 다름(전체 폭 반씩 / 오른쪽 작은 둘 / 글자만 있는 ghost 취소 / size sm) | 푸터 대신 폼 안에 버튼 줄, 푸터에 `.tk-button-group` 래퍼, `variant="ghost"` 취소, `size="sm"` | 눈 확인(전후 캡처) | 확인류는 `Dialog footer` 에 **버튼만**(래퍼 없이), 취소는 윤곽 버튼·기본 크기. 폼 안 행동 줄은 모바일에서 버튼이 `flex: 1 1 0` 으로 폭을 나눠 가진다 |
+| C12 | 회의 공유·다운로드 모달의 체크박스가 13px(옆 모달은 20px) | 네이티브 `<input type=checkbox>` + `accent-color` | `native-checkbox` | `<label class="tk-checkbox">`(20) |
+| C13 | 온보딩 모달 그림 위가 64 비어 보임 | `.tk-empty` 의 위아래 padding 48 이 모달 본문 padding 16 에 더해짐 | `body-air` | `.tk-dialog__body > .tk-empty { padding: 8 0 }`(DS 1.3.3). 이미 padding 이 있는 상자 안에 padding 이 있는 컴포넌트를 넣지 않는다 |
+| C14 | 사용자 메뉴에서 "로그아웃"이 스크롤 뒤에 숨음(데스크톱·모바일 공통) | 항목 10개 + 구분선이 `.tk-menu` 기본 `max-height: 360` 을 넘음 | `modals.mjs` `menu-clipped` | 항목이 8개를 넘는 메뉴는 높이 제한을 화면 높이 기준으로 올린다. 가장 중요한 행동을 스크롤 뒤에 두지 않는다 |
 
 ### D. 터치·입력
 
@@ -112,6 +130,8 @@
 | `dialog-body-not-scrollable` | 모달 본문이 넘치는데 스크롤이 아니다 |
 | `dialog-overflow-x` | 모달 자체가 가로로 넘친다 |
 | `dialog-child-escapes` | 모달 안의 자식이 모달 폭을 넘는다 |
+| (앱) `modals.mjs` | 대표 모달·메뉴를 직접 열어 `gap-plus-margin`(이중 간격) · `dialog-width`(선언 폭 초과) · `confirm-not-sm` · `label-style` · `native-checkbox` · `body-air`(본문 위아래 24 초과 빈 공간) · `menu-clipped` 를 본다. 위 DS 검사는 조건부로 그려지는 모달을 열지 못해 B9 이후의 실수를 놓쳤다 |
+| (앱) `ui-lint` `undefined-token` | 앱 코드가 쓰는 `var(--tk-*)` 가 vendor CSS 에 선언돼 있는지 본다. 없는 토큰은 조용히 무효가 된다(B13) |
 | `load-error` · `page-error` | 페이지가 안 열리거나 스크립트 오류 |
 
 검사가 못 하는 것: 실제 iOS Safari 의 주소창·키보드·홈 바 동작(Chrome 의 safe-area 에뮬레이션과 다르다), **iOS 만의 네이티브 컨트롤**(날짜 입력의 자체 폭, 파일 선택 메뉴가 뜨는 위치. 데스크톱 맥의 WebKit 은 이 컨트롤을 다르게 그려 재현되지 않는다), 한글 IME, 실제 데이터의 길이 분포, 시각적 위계. 이 항목은 기기 확인이 필요하다(확인 필요). 그래서 위 규칙은 원인(숨은 file input, appearance 기본값)을 코드 수준에서 막는 쪽으로 둔다.
@@ -151,3 +171,6 @@
 11. 날짜·시각 입력은 `.tk-input`(appearance 규칙 포함)을 쓰고, 파일 고르기는 `input[type=file]` 에 `hidden` 을 주지 않고 버튼 위에 투명하게 겹친다(D7·D8).
 12. 선택지가 4개를 넘거나 라벨이 긴 세그먼트는 `.tk-segmented--scroll` 이다. `<p>`·`<h*>` 로 만든 컴포넌트는 `margin: 0` 을 스스로 적었다(B7). sticky 줄의 배경은 놓인 바탕과 같은 면이다(B8).
 13. 앱은 Chrome 만이 아니라 `--browser=webkit`(iPhone 프리셋) 로도 통과했고, 실데이터 규모(알림 100+·목록 30+)로 간격을 수치로 봤다. iOS 네이티브 컨트롤은 실기기에서 한 번 확인한다.
+14. 폼은 `.tk-stack`(모달 gap 16 · 페이지 20)에 둔다. `display: flex; gap` 을 가진 자체 폼 클래스를 만들지 않는다(B9). 라벨은 모두 `.tk-label`(C10).
+15. 확인류 모달은 `size="sm"`, 푸터는 `Dialog footer` 안 버튼만(C9·C11). 체크박스는 `.tk-checkbox`(C12). 새 모달·메뉴는 앱 `scripts/ui-sweep/modals.mjs` 장면에 한 줄 추가한다.
+16. 조건부로 그려지는 UI(모달·메뉴·탭 패널·상세 화면)는 페이지 검사가 열지 않는다. 열어서 320·390·1440 수치를 본다. 같은 상자 안에서 padding·margin·gap 이 겹치는지(이중 간격) 먼저 의심한다.
