@@ -300,7 +300,7 @@
       if (trigger.getAttribute('aria-label') !== trigger.dataset.tkTooltip) {
         trigger.setAttribute('aria-describedby', [trigger.getAttribute('aria-describedby'), tip.id].filter(Boolean).join(' '));
       }
-      let showTimer, hideTimer;
+      let showTimer, hideTimer, frame;
       const place = () => {
         const r = trigger.getBoundingClientRect();
         const t = tip.getBoundingClientRect();
@@ -314,13 +314,15 @@
       const show = (delay) => {
         clearTimeout(hideTimer); clearTimeout(showTimer);
         showTimer = setTimeout(() => {
+          showTimer = undefined;
           tip.hidden = false; place();
-          requestAnimationFrame(() => { tip.dataset.open = ''; });
+          // 프레임이 타이머보다 늦게 오면 그 사이에 hide 가 지나갔을 수 있다. 숨은 툴팁에 data-open 이 남지 않게 확인하고, hide 가 취소한다
+          frame = requestAnimationFrame(() => { if (!tip.hidden) tip.dataset.open = ''; });
         }, delay);
       };
       const hide = (now = false) => {
         clearTimeout(showTimer);
-        hideTimer = setTimeout(() => { delete tip.dataset.open; tip.hidden = true; }, now ? 0 : 100);
+        hideTimer = setTimeout(() => { cancelAnimationFrame(frame); delete tip.dataset.open; tip.hidden = true; }, now ? 0 : 100);
       };
       // 터치에서는 툴팁을 띄우지 않는다(누르는 순간 동작이 일어난다). 그래서 툴팁에만 있는 정보가 있으면 안 된다
       trigger.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') show(cssMs('--tk-motion-duration-tooltip-delay', 400)); });
@@ -330,7 +332,8 @@
       trigger.addEventListener('click', () => hide(true));
       tip.addEventListener('pointerenter', () => clearTimeout(hideTimer));
       tip.addEventListener('pointerleave', () => hide());
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !tip.hidden) hide(true); });
+      // 포커스 직후 아직 뜨기 전(showTimer 대기)에 Esc 를 눌러도 취소된다(뜬 뒤에 Esc 가 무시되던 틈)
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && (!tip.hidden || showTimer)) hide(true); });
     });
   }
 

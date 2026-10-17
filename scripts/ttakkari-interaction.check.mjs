@@ -296,7 +296,8 @@ await check('툴팁: 키보드 포커스에 즉시 뜨고 Esc 로 닫힌다', as
   await p.keyboard.press('Shift+Tab'); await p.keyboard.press('Tab');
   const label = await target.getAttribute('aria-label');
   assert.equal(label, '원본 다운로드');
-  await p.waitForSelector('.tk-tooltip[data-open]', { timeout: 1000 });
+  // 숨은 툴팁에 남은 data-open 에 속지 않게 실제로 보이는 것만 기다린다
+  await p.waitForSelector('.tk-tooltip[data-open]:not([hidden])', { timeout: 1000 });
   await p.keyboard.press('Escape');
   await p.waitForTimeout(300);
   assert.equal(await p.locator('.tk-tooltip[data-open]').count(), 0);
