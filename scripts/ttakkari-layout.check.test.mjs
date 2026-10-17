@@ -71,6 +71,10 @@ test('아이콘은 작아도 모바일 히트 영역이 44×44면 정상이고, 
     sig: 'button.icon', visual: { x: 12, y: 12, width: 20, height: 20 },
     hit: { x: 0, y: 0, width: 44, height: 44 },
   }), null);
+  assert.equal(touchTargetFinding({
+    sig: 'button.icon', visual: { x: 10, y: 14, width: 20, height: 20 },
+    hit: { x: 0, y: 0, width: 40, height: 48 },
+  })?.rule, 'touch-target-under-44');
   assert.deepEqual(touchTargetFinding({
     sig: 'button.icon', visual: { x: 12, y: 12, width: 20, height: 20 },
     hit: { x: 4, y: 5, width: 36, height: 38 },
