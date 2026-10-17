@@ -1,5 +1,24 @@
 # Changelog — Ttakkari Design System
 
+## 1.3.0 — 2026-10-17
+
+토끼 마스코트 확정(사용자 결정)에 따라 브랜드 얼굴을 '따' 글리프에서 마스코트로 바꾸고, 새로 납품된 상태 컷 10종과 작은 크기 아이콘 세트를 연결했다. 토큰·컴포넌트 규칙은 그대로다.
+
+### 브랜드
+- 로고 심볼 · 파비콘 · 앱 아이콘(512·192) · maskable · apple-touch: 이미지 생성 세션의 작은 크기 전용 아이콘(`brand/generated/icons/icon-mascot-*`, Blue 타일 + 얼굴·귀)에서 파생. `build-brand-assets.py` 는 모서리 깎기·포맷·크기 선택만 한다(Pillow + numpy).
+- ICO 는 16·32·48 손질본을 그대로 담는다. maskable 은 원본의 귀 끝이 안전 영역(가운데 80% 원)을 약 2% 넘어 가장자리 색을 늘려 한 번 더 줄였다.
+- 어두운 면 락업은 Blue 타일을 그대로 둔다. 히어로는 마스코트 전신(Paper 띠). 단색 심볼은 얼굴 실루엣(한 덩어리, 알려진 한계).
+- `dist/pwa.json` 에 192 아이콘 추가. 옛 '따' 는 에이전트 아바타(`.tk-avatar--agent`, CSS)에만 남는다 — 브랜드 얼굴과 정보 표지는 층이 다르다.
+- 나머지 시안 3종(참새·떡·후드)은 `brand/generated/characters/` 에 보존만 한다.
+
+### 일러스트
+- 상태 컷 10종 추가(`state-not-found` `state-no-results` `state-forbidden` `state-session-expired` `state-update-available` `state-unsupported-preview` `state-link-expired` `state-notifications-empty` `state-vpn-required` `state-diff-clean`). 웹 파생본 29키 × 2, 예산 통과. 미리보기 `examples/art.html` 에 추가.
+- 문서: 16(컨셉·파일 지도·재생성), 20, 23(확정 반영·컷 목록·아이콘 결정과 한계·작업 상태).
+
+### 검사
+- 브랜드 테스트를 마스코트 계약으로 교체: 이미지 심볼, 옛 글리프 없음, 원본 존재, 192 크기, maskable 안전 영역(반지름 40%).
+- 코드 규칙·토큰은 변경 없음.
+
 ## 1.2.0 — 2026-10-17
 
 앞으로 늘어날 페이지의 정답지(페이지 아키타입)와 실제 앱에서 반복된 UI 실수를 시스템 차원에서 막는 검사. 시드 13색·Blue 사람·Mint 에이전트·잉크 면 규칙은 그대로다.

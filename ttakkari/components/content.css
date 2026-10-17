@@ -193,7 +193,7 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-avatar--sm { --tk-_size: var(--tk-component-avatar-sm); }
 .tk-avatar--lg { --tk-_size: var(--tk-component-avatar-lg); }
 .tk-avatar > img, .tk-avatar > svg { width: 100%; height: 100%; display: block; border-radius: inherit; }
-/* 에이전트 아바타: 로고 심볼(따)을 CSS 로. 글자는 마스크, 민트 획은 ::after. 이미지(logo-mark.svg)를 넣어도 같은 모양이다 */
+/* 에이전트 아바타: 옛 로고 글리프(따)를 CSS 로. 글자는 마스크, 민트 획은 ::after. 브랜드 로고는 마스코트로 바뀌었고 이 아바타는 정보 표지로 남는다(docs/16) */
 .tk-avatar--agent { background: var(--tk-color-agent-avatar-bg); color: var(--tk-color-agent-avatar-fg); }
 .tk-avatar--agent:empty::before {
   content: ""; position: absolute; inset: 0; background: var(--tk-color-agent-avatar-fg);

@@ -15,6 +15,14 @@
       "960": 84308
     }
   },
+  "state-diff-clean": {
+    "group": "states",
+    "source": "brand/generated/states/state-diff-clean.png",
+    "files": {
+      "480": 25210,
+      "960": 61548
+    }
+  },
   "state-empty": {
     "group": "states",
     "source": "brand/generated/states/state-empty.png",
@@ -31,6 +39,46 @@
       "960": 77552
     }
   },
+  "state-forbidden": {
+    "group": "states",
+    "source": "brand/generated/states/state-forbidden.png",
+    "files": {
+      "480": 29570,
+      "960": 68818
+    }
+  },
+  "state-link-expired": {
+    "group": "states",
+    "source": "brand/generated/states/state-link-expired.png",
+    "files": {
+      "480": 26658,
+      "960": 64002
+    }
+  },
+  "state-no-results": {
+    "group": "states",
+    "source": "brand/generated/states/state-no-results.png",
+    "files": {
+      "480": 26872,
+      "960": 66158
+    }
+  },
+  "state-not-found": {
+    "group": "states",
+    "source": "brand/generated/states/state-not-found.png",
+    "files": {
+      "480": 31782,
+      "960": 74696
+    }
+  },
+  "state-notifications-empty": {
+    "group": "states",
+    "source": "brand/generated/states/state-notifications-empty.png",
+    "files": {
+      "480": 26606,
+      "960": 65180
+    }
+  },
   "state-offline": {
     "group": "states",
     "source": "brand/generated/states/state-offline.png",
@@ -39,12 +87,44 @@
       "960": 80528
     }
   },
+  "state-session-expired": {
+    "group": "states",
+    "source": "brand/generated/states/state-session-expired.png",
+    "files": {
+      "480": 32222,
+      "960": 79130
+    }
+  },
+  "state-unsupported-preview": {
+    "group": "states",
+    "source": "brand/generated/states/state-unsupported-preview.png",
+    "files": {
+      "480": 24442,
+      "960": 59600
+    }
+  },
+  "state-update-available": {
+    "group": "states",
+    "source": "brand/generated/states/state-update-available.png",
+    "files": {
+      "480": 29396,
+      "960": 69500
+    }
+  },
   "state-usage-limit": {
     "group": "states",
     "source": "brand/generated/states/state-usage-limit.png",
     "files": {
       "480": 27632,
       "960": 65696
+    }
+  },
+  "state-vpn-required": {
+    "group": "states",
+    "source": "brand/generated/states/state-vpn-required.png",
+    "files": {
+      "480": 20476,
+      "960": 51300
     }
   },
   "state-working": {

@@ -261,12 +261,20 @@ if (system === "aip") {
 }
 
 if (system === "ttakkari") {
-  test("ttakkari: 심볼은 Ink 타일 + Paper '따'(ㄷ 두 개·ㅏ 세로획) + Mint 가로획 기하를 유지한다", () => {
+  test("ttakkari: 심볼은 Blue 타일 + 마스코트 얼굴 이미지(생성 세션의 작은 크기 전용 아이콘)이고 옛 '따' 글리프가 남지 않는다", () => {
     const mark = readFileSync(join(brandDir, "logo-mark.svg"), "utf8");
-    assert.match(mark, /<rect x="0" y="0" width="512" height="512" rx="112" fill="#080705"\/>/);
-    assert.match(mark, /<path d="M92 152 L188 152 L188 196 L136 196 L136 316 L188 316 L188 360 L92 360 Z" fill="#F4F4ED"\/>/);
-    assert.match(mark, /<path d="M334 124 L378 124 L378 388 L334 388 Z" fill="#F4F4ED"\/>/);
-    assert.match(mark, /<rect x="378" y="234" width="52" height="44" rx="6" fill="#00F0B5"\/>/);
+    assert.match(mark, /<image [^>]*href="data:image\/png;base64,[^"]+"/, "마스코트 얼굴 이미지가 없습니다.");
+    assert.doesNotMatch(mark, /M92 152 L188 152/, "옛 '따' 글리프가 남아 있습니다.");
+    for (const file of ["favicon.svg", "logo-lockup.svg"]) {
+      assert.match(readFileSync(join(brandDir, file), "utf8"), /<image [^>]*href="data:image\/png;base64,/, `${file}에 마스코트가 없습니다.`);
+    }
+  });
+
+  test("ttakkari: 단색 심볼은 컬러 심볼과 같은 얼굴을 쓰고 currentColor 로 채운다", () => {
+    const mono = readFileSync(join(brandDir, "logo-mark-mono.svg"), "utf8");
+    assert.match(mono, /flood-color="currentColor"/, "단색 심볼의 color 지정이 동작하지 않습니다.");
+    assert.match(mono, /<svg[^>]+color="#080705"/, "외부 이미지로 표시할 때 사용할 기본 색이 없습니다.");
+    assert.doesNotMatch(mono, /fill="#080705"/, "단색 심볼에 타일이 있습니다.");
   });
 
   test("ttakkari: 워드마크는 글꼴이 아니라 도형이고, 어두운 면 락업은 잉크 타일 없이 그린다", () => {
@@ -274,6 +282,28 @@ if (system === "ttakkari") {
       assert.doesNotMatch(readFileSync(join(brandDir, file), "utf8"), /<text\b/, `${file}에 text 요소가 있습니다.`);
     }
     assert.doesNotMatch(readFileSync(join(brandDir, "logo-lockup-inverse.svg"), "utf8"), /fill="#080705"/, "inverse 락업에 잉크 타일이 있으면 어두운 면에 묻힌다");
+  });
+
+  test("ttakkari: 마스코트 원본은 brand/generated 에 있고 아이콘은 그 파생이다", () => {
+    for (const file of ["mascot/rabbit-identity-master-1254.png", "icons/favicon-simple-transparent.png", "icons/icon-mascot-512.png", "icons/icon-mascot-maskable-512.png", "icons/icon-mascot-16.png"]) {
+      assert.ok(existsSync(join(root, "brand", "generated", file)), `원본이 없습니다: ${file}`);
+    }
+    assert.deepEqual(readPngSize(join(brandDir, "app-icon-192.png")), { width: 192, height: 192 });
+  });
+
+  test("ttakkari: maskable 아이콘의 얼굴은 안전 영역(가운데 80% 원) 안에 든다", () => {
+    const script = [
+      "from PIL import Image",
+      "import json, sys",
+      "im=Image.open(sys.argv[1]).convert('RGB')",
+      "bg=im.getpixel((0,0))",
+      "w=im.width",
+      "r=max((((i%w)+.5-w/2)**2+((i//w)+.5-w/2)**2)**.5 for i,p in enumerate(im.getdata()) if max(abs(p[k]-bg[k]) for k in range(3))>24)",
+      "print(json.dumps({'r':r/w}))",
+    ].join(";");
+    const result = spawnSync(python, ["-c", script, join(brandDir, "app-icon-maskable-512.png")], { encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    assert.ok(JSON.parse(result.stdout).r <= 0.4, `maskable 안전 영역(반지름 40%)을 넘습니다: ${result.stdout}`);
   });
 
   test("ttakkari: 설치 아이콘은 용도별 크기와 투명도를 지킨다", () => {
