@@ -1,5 +1,26 @@
 # Changelog — Ttakkari Design System
 
+## 1.3.2 — 2026-10-17
+
+실기기(iPhone, iOS Safari PWA) 스크린샷으로 확인된 결함을 정본에서 고쳤다. 이전 검증이 Chrome 에뮬레이션·합성 3건 데이터로만 "통과"해 놓친 것들이다.
+
+### 고친 오류
+- `.tk-list__group`: `<p>` 로 쓰면 브라우저 기본 위아래 margin(12)이 남아 묶음 머리 위아래가 벌어졌다(보관함). `margin: 0`.
+- `.tk-header__meta`: flex 상자의 맨 글자에는 `text-overflow` 가 먹지 않아 부제가 말줄임 없이 잘렸다(알림). 글자를 담는 `.tk-header__meta-text` 를 추가했다.
+- `.tk-header__inner`: 폭 1023 이하의 높이를 56 에서 48 로 줄였다. 상태바 영역(safe-area)과 합쳐 상단이 115 로 휑했다. safe-area 는 `.tk-header` 한 곳에서만 더한다(중복 아님, 확인).
+- `.tk-input` 날짜·시각류: `appearance: none; display: block; min-width: 0; max-width: 100%` 와 `::-webkit-date-and-time-value` 정렬. iOS Safari 에서 날짜 입력이 부모를 넘어 화면 밖으로 나가던 것을 막는 방어다(실기기 확인 필요, 데스크톱 WebKit 에서는 재현되지 않는다). 우선순위는 `:where()` 로 낮춰 앱 규칙이 폭을 정할 수 있다.
+- `.tk-split__pane--primary`: `min-width` 를 `min(pane-min, 100%)` 로. 320 폭에서 360 이 화면을 넘어 WebKit 에서 문서가 가로로 밀렸다(library·workspace 예제, `--browser=webkit` 이 발견). 날짜 입력은 `display: flex; align-items: center` 로 글자를 세로 가운데에 둔다(appearance 를 끄면 글자가 상자 위로 쏠렸다).
+- 예제 5개(art·library·files·chat·workspace)의 헤더 메타 글자를 `.tk-header__meta-text` 에 담았다.
+- `.tk-screen__body`: `overflow-x: hidden`. 자식 하나가 폭을 넘겨도 본문 전체가 옆으로 밀려 제목·탭이 잘려 보이지 않는다(안전망. 원인은 컴포넌트에서 고친다).
+
+### 추가
+- `.tk-segmented--scroll`(+ `data-fade="start end"`): 선택지가 폭보다 길 때 상자 안에서만 가로 스크롤하고, 잘린 쪽 가장자리를 흐린다.
+
+### 검사
+- `check:layout` 이 `--browser=webkit`(iPhone SE 320 · iPhone 14 390 프리셋, `env(safe-area-inset-*)` 를 px 로 치환)을 지원한다.
+- 규칙 4종 추가: `scroller-overflow-x`(문서 scrollWidth 에 안 잡히는 본문 넘침, 범인 표시) · `date-input-overflow` · `file-input-hidden` · `ellipsis-on-flex-text`. `touch-target-under-44` 는 `pointer-events: none` 요소를 건너뛴다.
+- 문서 22: 실수 유형 A8·A9·B6~B8·D7~D9, 검사 규칙·한계(iOS 네이티브 컨트롤은 데스크톱 WebKit 으로 재현되지 않음), 체크리스트 11~13.
+
 ## 1.3.1 — 2026-10-17
 
 ### 고친 오류 (tk.js 툴팁)

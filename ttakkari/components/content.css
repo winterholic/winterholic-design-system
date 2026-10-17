@@ -156,7 +156,8 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-list > li + li > .tk-list__item, .tk-list > .tk-list__item + .tk-list__item { border-top: var(--tk-border-width-hairline) solid var(--tk-component-list-divider); }
 .tk-list--inset { border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); overflow: hidden; }
 .tk-list__group {
-  position: sticky; top: 0; z-index: var(--tk-z-index-raised);
+  /* <p> 로 쓰면 브라우저 기본 위아래 margin(1em)이 붙어 묶음 머리 위아래가 벌어졌다(실기기 보관함) */
+  margin: 0; position: sticky; top: 0; z-index: var(--tk-z-index-raised);
   display: flex; align-items: center; justify-content: space-between; min-height: var(--tk-component-list-group-height);
   padding-inline: var(--tk-component-list-row-padding-x); background: var(--tk-color-surface-canvas);
   color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);

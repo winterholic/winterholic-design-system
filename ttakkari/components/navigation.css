@@ -12,6 +12,8 @@
   display: flex; align-items: center; gap: var(--tk-component-header-gap);
   height: var(--tk-component-header-height); padding-inline: var(--tk-space-2);
 }
+/* 모바일은 상태바(safe-area) 아래에 48 만 쓴다. 56 이면 상태바 영역 59 와 합쳐 상단이 115 가 되어 휑하다(터치 타깃 44 는 그대로 들어간다) */
+@media (max-width: 1023px) { .tk-header__inner { height: calc(var(--tk-component-header-height) - var(--tk-space-2)); } }
 @media (min-width: 1024px) { .tk-header__inner { padding-inline: var(--tk-space-4); } }
 .tk-header__brand {
   display: inline-flex; align-items: center; gap: var(--tk-space-2); flex: none; padding-inline: var(--tk-space-2);
@@ -24,6 +26,8 @@
 .tk-header__title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--tk-space-0-5); padding-inline: var(--tk-space-1); }
 .tk-header__title > :first-child { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); }
 .tk-header__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+/* 메타가 글자 하나일 때: flex 상자 자체에는 text-overflow 가 먹지 않아(WebKit) 말줄임 없이 잘린다. 글자는 이 span 에 담는다 */
+.tk-header__meta > .tk-header__meta-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tk-header__actions { display: flex; align-items: center; gap: var(--tk-space-1); margin-left: auto; flex: none; }
 .tk-header__menu { display: inline-flex; }
 @media (min-width: 1024px) { .tk-header__menu { display: none; } }

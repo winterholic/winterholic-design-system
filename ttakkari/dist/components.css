@@ -289,6 +289,12 @@
   transition: border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), box-shadow var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
 }
 .tk-input::placeholder, .tk-textarea::placeholder { color: var(--tk-color-text-placeholder); opacity: 1; }
+/* iOS Safari 의 날짜·시각 입력은 기본 appearance 에서 자체 폭을 가져 width:100% 를 넘어 부모 밖으로 튀어나간다(실기기 확인). appearance 를 끄고 폭을 부모에 묶는다 */
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"]) {
+  -webkit-appearance: none; appearance: none; display: flex; align-items: center; box-sizing: border-box; min-width: 0; max-width: 100%; text-align: left;
+}
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"])::-webkit-date-and-time-value { min-width: 0; margin: 0; text-align: left; }
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"])::-webkit-datetime-edit { padding: 0; }
 @media (hover: hover) { :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):hover { border-color: var(--tk-component-input-border-hover); } }
 /* 포커스: 테두리 색 + 안쪽 1 을 더해 2 로 보이게 한다(바깥 링 대신. 입력은 줄지어 놓여 링이 겹친다) */
 :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):focus-visible {
@@ -406,6 +412,14 @@
 .tk-segmented--lg { --tk-_h: var(--tk-component-segmented-height-lg); }
 .tk-segmented--block { display: flex; width: 100%; align-self: stretch; }
 .tk-segmented--block > label { flex: 1 1 0; }
+/* 선택지가 폭보다 많을 때(6개 탭): 상자 안에서 가로로 스크롤한다. 라벨이 상자 밖으로 새어 화면을 밀지 않는다 */
+.tk-segmented--scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.tk-segmented--scroll::-webkit-scrollbar { display: none; }
+/* 잘린 쪽 가장자리를 흐려 옆에 더 있다는 단서를 준다. data-fade="start end" 는 앱이 스크롤 위치에 따라 붙인다 */
+.tk-segmented--scroll[data-fade~="end"] { -webkit-mask-image: linear-gradient(to right, currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to right, currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--scroll[data-fade~="start"] { -webkit-mask-image: linear-gradient(to left, currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to left, currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--scroll[data-fade~="start"][data-fade~="end"] { -webkit-mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--block.tk-segmented--scroll > label { flex: 1 0 auto; }
 .tk-segmented > label { /* lint-ok: 짧은 선택지 라벨. 줄바꿈하면 높이가 달라진다 */
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
   height: calc(var(--tk-_h) - 2 * var(--tk-component-segmented-padding)); padding-inline: var(--tk-space-3);
@@ -440,6 +454,8 @@
   display: flex; align-items: center; gap: var(--tk-component-header-gap);
   height: var(--tk-component-header-height); padding-inline: var(--tk-space-2);
 }
+/* 모바일은 상태바(safe-area) 아래에 48 만 쓴다. 56 이면 상태바 영역 59 와 합쳐 상단이 115 가 되어 휑하다(터치 타깃 44 는 그대로 들어간다) */
+@media (max-width: 1023px) { .tk-header__inner { height: calc(var(--tk-component-header-height) - var(--tk-space-2)); } }
 @media (min-width: 1024px) { .tk-header__inner { padding-inline: var(--tk-space-4); } }
 .tk-header__brand {
   display: inline-flex; align-items: center; gap: var(--tk-space-2); flex: none; padding-inline: var(--tk-space-2);
@@ -452,6 +468,8 @@
 .tk-header__title { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--tk-space-0-5); padding-inline: var(--tk-space-1); }
 .tk-header__title > :first-child { margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-primary); font: var(--tk-font-weight-semibold) var(--tk-font-size-md) / var(--tk-font-line-height-snug) var(--tk-font-family-sans); }
 .tk-header__meta { display: flex; align-items: center; gap: var(--tk-space-1-5); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-regular) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans); }
+/* 메타가 글자 하나일 때: flex 상자 자체에는 text-overflow 가 먹지 않아(WebKit) 말줄임 없이 잘린다. 글자는 이 span 에 담는다 */
+.tk-header__meta > .tk-header__meta-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tk-header__actions { display: flex; align-items: center; gap: var(--tk-space-1); margin-left: auto; flex: none; }
 .tk-header__menu { display: inline-flex; }
 @media (min-width: 1024px) { .tk-header__menu { display: none; } }
@@ -877,7 +895,8 @@ a.tk-card, .tk-card--interactive { text-decoration: none; cursor: pointer; trans
 .tk-list > li + li > .tk-list__item, .tk-list > .tk-list__item + .tk-list__item { border-top: var(--tk-border-width-hairline) solid var(--tk-component-list-divider); }
 .tk-list--inset { border: var(--tk-border-width-hairline) solid var(--tk-color-border-default); border-radius: var(--tk-radius-lg); background: var(--tk-color-surface-default); overflow: hidden; }
 .tk-list__group {
-  position: sticky; top: 0; z-index: var(--tk-z-index-raised);
+  /* <p> 로 쓰면 브라우저 기본 위아래 margin(1em)이 붙어 묶음 머리 위아래가 벌어졌다(실기기 보관함) */
+  margin: 0; position: sticky; top: 0; z-index: var(--tk-z-index-raised);
   display: flex; align-items: center; justify-content: space-between; min-height: var(--tk-component-list-group-height);
   padding-inline: var(--tk-component-list-row-padding-x); background: var(--tk-color-surface-canvas);
   color: var(--tk-color-text-tertiary); font: var(--tk-font-weight-medium) var(--tk-font-size-xs) / var(--tk-font-line-height-normal) var(--tk-font-family-sans);
@@ -1988,7 +2007,8 @@ th[aria-sort="descending"] > .tk-datatable__sort::after { content: "↓"; color:
 
 /* Screen: 한 화면 = 헤더 + 스크롤 본문(+ 아래 고정 요소). 스크롤은 본문 안에서만 */
 .tk-screen { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; }
-.tk-screen__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+/* 가로는 숨긴다: 어떤 자식이 폭을 넘겨도 본문 전체가 옆으로 밀려 제목·탭이 잘려 보이지 않게(실기기 맥락 도서관). 넘침의 원인은 해당 컴포넌트에서 고친다 */
+.tk-screen__body { flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
 .tk-screen__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
 .tk-screen__head { display: flex; flex-direction: column; gap: var(--tk-space-1); padding-block: var(--tk-space-5) var(--tk-space-2); }
 .tk-screen__head > * { margin: 0; }
@@ -1996,7 +2016,8 @@ th[aria-sort="descending"] > .tk-datatable__sort::after { content: "↓"; color:
 /* Split: 채팅 | 작업 공간. xl 이상 기본 노출, lg 에서는 결과물을 열었을 때만. 손잡이는 role="separator"(키보드 ←→) */
 .tk-split { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; }
 .tk-split__pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-.tk-split__pane--primary { flex: 1 1 auto; min-width: var(--tk-size-layout-pane-min); }
+/* 320 폭 폰(SE)에서 pane-min(360)이 화면을 넘어 WebKit 에서 가로로 밀렸다(check:layout --browser=webkit) */
+.tk-split__pane--primary { flex: 1 1 auto; min-width: min(var(--tk-size-layout-pane-min), 100%); }
 .tk-split__pane--secondary { display: none; }
 .tk-split__handle { display: none; }
 .tk-split__pane > :is(.tk-viewer, .tk-screen__body) { flex: 1 1 auto; }

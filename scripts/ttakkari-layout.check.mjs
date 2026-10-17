@@ -5,7 +5,9 @@
 //   node ../scripts/ttakkari-layout.check.mjs --pages archetypes/github-pr.html,chat.html
 //   node ../scripts/ttakkari-layout.check.mjs --url http://127.0.0.1:5173 --routes /memos,/settings --stub ./stub.mjs --out /tmp/report.json
 //   TK_SHOTS=<폴더> 를 주면 폭마다 스크린샷을 남긴다.
-// 필요: 설치된 Chrome + playwright-core(PLAYWRIGHT_CORE=<경로>/index.mjs 로 지정 가능).
+//   --browser=webkit 이면 WebKit(= iOS Safari 와 같은 엔진)에 iPhone 프리셋으로 연다. Chrome 에뮬레이션만으로 통과한 화면이 실기기 Safari 에서 깨진 적이 있다(date 입력 폭, 파일 선택 메뉴 위치).
+//     WebKit 에는 safe-area inset 에뮬레이션이 없어 CSS·JS 응답의 env(safe-area-inset-*) 를 고정 px 로 바꿔 흉내 낸다.
+// 필요: 설치된 Chrome(WebKit 은 `npx playwright install webkit`) + playwright-core(PLAYWRIGHT_CORE=<경로>/index.mjs 로 지정 가능).
 // 예외: 요소에 data-layout-ok="이유" 를 달면 그 요소와 자손은 건너뛴다(이유 없이 달지 않는다). 긴 글자 주입은 data-stress-skip 로 뺀다.
 import { createServer } from 'node:http';
 import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
@@ -16,8 +18,9 @@ const args = Object.fromEntries(process.argv.slice(2).map((a) => a.replace(/^--/
 const WIDTHS = (args.widths ? String(args.widths).split(',').map(Number) : [320, 390, 768, 1024, 1440]);
 const LONG = ' 아주긴이름의프로젝트와파일_VeryLongUnbrokenIdentifier_ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_final.tsx';
 
-let chromium;
-try { ({ chromium } = await import(process.env.PLAYWRIGHT_CORE ?? 'playwright-core')); } catch {
+const BROWSER = args.browser === 'webkit' ? 'webkit' : 'chrome';
+let chromium, webkit, devices;
+try { ({ chromium, webkit, devices } = await import(process.env.PLAYWRIGHT_CORE ?? 'playwright-core')); } catch {
   console.error('playwright-core 를 찾지 못했다. PLAYWRIGHT_CORE=<경로>/index.mjs 로 지정한다.'); process.exit(2);
 }
 
@@ -147,7 +150,7 @@ const inPage = (opts) => {
     if (s.overflowX !== 'visible' && s.overflowX !== 'auto' && s.overflowX !== 'scroll' && el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) {
       const text = el.innerText?.trim();
       const ellipsis = s.textOverflow === 'ellipsis' || s.webkitLineClamp !== 'none' && s.display.includes('box');
-      if (text && !ellipsis && !el.matches('.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar,.tk-canvas') && !el.closest('.tk-sr-only,svg')) {
+      if (text && !ellipsis && !el.matches('.tk-screen__body,.tk-sr-only,.tk-progress,.tk-skeleton,.tk-code,.tk-avatar,.tk-canvas') && !el.closest('.tk-sr-only,svg')) {
         add('silent-clip', el, `내용 ${el.scrollWidth} > 상자 ${el.clientWidth}, 말줄임 없음`);
       }
     }
@@ -191,7 +194,7 @@ const inPage = (opts) => {
     }
 
     // 터치 타깃: 보이는 크기 + ::after 히트 영역
-    if (touch && el.matches('a[href],button,[role=button],[role=tab],[role=menuitem],[role=menuitemradio],[role=menuitemcheckbox],[role=option],[role=switch],input:not([type=hidden]),select,summary,[tabindex="0"]') && !el.matches('[disabled],[aria-disabled=true]') && !el.closest('p,li > p,.tk-prose,.tk-callout__body')) {
+    if (touch && s.pointerEvents !== 'none' && el.matches('a[href],button,[role=button],[role=tab],[role=menuitem],[role=menuitemradio],[role=menuitemcheckbox],[role=option],[role=switch],input:not([type=hidden]),select,summary,[tabindex="0"]') && !el.matches('[disabled],[aria-disabled=true]') && !el.closest('p,li > p,.tk-prose,.tk-callout__body')) {
       // 라벨 안의 체크·라디오는 라벨이 눌리는 영역이다
       const host = el.matches('input[type=checkbox],input[type=radio]') && el.closest('label') ? el.closest('label') : el;
       const hr = host.getBoundingClientRect();
@@ -214,6 +217,37 @@ const inPage = (opts) => {
       if (r.bottom >= vh - 1) for (const k of kids) { const kr = k.getBoundingClientRect(); if (kr.bottom > vh - insets.bottom / 2 + 1) add('safe-area-bottom', k, `행동 아래 ${Math.round(vh - kr.bottom)}px < 홈 바 ${insets.bottom}px 의 절반`); }
       if (r.top <= 1) for (const k of kids) { const kr = k.getBoundingClientRect(); if (kr.top < insets.top - 1) add('safe-area-top', k, `행동 위 ${Math.round(kr.top)}px < 노치 ${insets.top}px`); }
     }
+
+    // 화면 본문(스크롤 상자)이 옆으로 넘친다: 자식 하나가 폭을 넘기면 본문 전체가 옆으로 밀려 제목·탭이 잘려 보인다(실기기 맥락 도서관). 문서 scrollWidth 에는 안 잡힌다. 긴 글자 주입(stress)은 고정 라벨에도 글자를 붙여 오탐이 많아 평소 모드에서만 본다.
+    if (!stress && el.matches('.tk-screen__body') && el.scrollWidth > el.clientWidth + 1) {
+      // 범인: 본문 오른쪽을 넘는 가장 안쪽 요소(가로 스크롤 상자 안쪽은 제외)
+      const bx = el.getBoundingClientRect().right;
+      let culprit = null;
+      for (const k of el.querySelectorAll('*')) {
+        if (!shown(k) || getComputedStyle(k).position === 'fixed') continue;
+        if (k.getBoundingClientRect().right <= bx + 0.5) continue;
+        let inScroller = false;
+        for (let n = k.parentElement; n && n !== el; n = n.parentElement) if (getComputedStyle(n).overflowX !== 'visible') { inScroller = true; break; }
+        if (!inScroller) culprit = k;
+      }
+      add('scroller-overflow-x', culprit ?? el, `본문 scrollWidth ${el.scrollWidth} > ${el.clientWidth}${culprit ? ' · 범인 오른쪽 ' + Math.round(culprit.getBoundingClientRect().right) : ''}: 폭을 넘기는 자식을 찾아 고친다`);
+    }
+
+    // iOS Safari 의 날짜·시각 입력은 appearance 기본값에서 자체 폭을 가져 부모 밖으로 튀어나간다. 부모 상자 안에 있어야 한다.
+    if (el.matches('input[type=date],input[type=time],input[type=datetime-local],input[type=month],input[type=week]')) {
+      const box = (el.closest('.tk-field,.tk-grid,.tk-cluster,.tk-stack') ?? el.parentElement).getBoundingClientRect();
+      if (r.right > box.right + 1 || r.right > vw + 1) add('date-input-overflow', el, `입력 오른쪽 ${Math.round(r.right)} > 부모 ${Math.round(box.right)} (화면 ${vw}). .tk-input 의 appearance:none; max-width:100% 규칙을 쓴다`);
+    }
+
+    // flex 상자인 글자 하나짜리 요소의 text-overflow: ellipsis 는 먹지 않아 말줄임 없이 잘린다(WebKit). 글자를 span 에 담는다.
+    if (s.display.includes('flex') && s.textOverflow === 'ellipsis' && el.scrollWidth > el.clientWidth + 1 && el.children.length === 0 && el.textContent.trim()) add('ellipsis-on-flex-text', el, `flex 상자의 맨 글자는 말줄임이 안 된다(내용 ${el.scrollWidth} > ${el.clientWidth}). 글자를 span 에 담는다`);
+  }
+
+  // 파일 입력은 display:none(hidden)이면 iOS 가 선택 메뉴를 붙일 상자를 못 찾아 화면 중간 같은 엉뚱한 곳에 띄운다. 눌리는 버튼 위에 투명하게 겹쳐 둔다.
+  for (const input of document.querySelectorAll('input[type=file]')) {
+    if (skipped(input) || input.closest('dialog:not([open]), template')) continue;
+    const rr = input.getBoundingClientRect();
+    if (rr.width === 0 || rr.height === 0) add('file-input-hidden', input, 'input[type=file] 에 hidden/display:none 금지. iOS 선택 메뉴가 엉뚱한 곳에 뜬다. 버튼 위에 투명하게 겹친다');
   }
 
   return out;
@@ -245,8 +279,16 @@ const inDialog = ({ index, insets }) => {
   return out;
 };
 
+// WebKit: env(safe-area-inset-*) 를 px 로 치환한다(CSS 와, CSS 를 문자열로 내보내는 개발 서버의 JS 모듈 모두)
+const rewriteSafeArea = (ctx, insets) => ctx.route((u) => /\.(css|tsx?|jsx?|mjs)(\?|$)/.test(u.pathname) || u.pathname.includes('/@') || u.pathname.includes('/node_modules/'), async (route) => {
+  const res = await route.fetch();
+  if (!/css|javascript/.test(res.headers()['content-type'] ?? '')) return route.fulfill({ response: res });
+  const text = (await res.text()).replaceAll('env(safe-area-inset-top)', insets.top + 'px').replaceAll('env(safe-area-inset-bottom)', insets.bottom + 'px').replaceAll('env(safe-area-inset-left)', insets.left + 'px').replaceAll('env(safe-area-inset-right)', insets.right + 'px');
+  return route.fulfill({ response: res, body: text });
+});
+
 // ---------- 실행 ----------
-const browser = await chromium.launch({ channel: 'chrome' });
+const browser = BROWSER === 'webkit' ? await webkit.launch() : await chromium.launch({ channel: 'chrome' });
 const results = [];
 const shotsDir = process.env.TK_SHOTS;
 if (shotsDir) await mkdir(shotsDir, { recursive: true });
@@ -263,12 +305,15 @@ for (const t of targets) {
       for (const scheme of (width === 390 && mode.stress ? ['light', 'dark'] : ['light'])) {
         const touch = width <= 844;
         const insets = variant.landscape ? { top: 0, bottom: 21, left: 47, right: 47 } : touch ? { top: 47, bottom: 34, left: 0, right: 0 } : null;
-        const ctx = await browser.newContext({ viewport: { width, height: variant.height }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
+        // WebKit 은 폰 폭에서 iPhone 프리셋(UA·배율·터치)을 쓴다. 320 은 SE, 그 밖의 폰 폭은 iPhone 14.
+        const preset = BROWSER === 'webkit' && touch ? (width <= 320 ? devices['iPhone SE'] : devices['iPhone 14']) : {};
+        const ctx = await browser.newContext({ ...preset, viewport: { width, height: variant.height }, colorScheme: scheme, hasTouch: touch, isMobile: touch, serviceWorkers: 'block' });
+        if (BROWSER === 'webkit' && insets) await rewriteSafeArea(ctx, insets);
         const page = await ctx.newPage();
         const errors = [];
         page.on('pageerror', (e) => errors.push(String(e)));
         if (stub) await stub(ctx, page, base);
-        if (insets) {
+        if (insets && BROWSER !== 'webkit') {
           try { const cdp = await ctx.newCDPSession(page); await cdp.send('Emulation.setSafeAreaInsetsOverride', { insets }); } catch { /* 지원하지 않는 Chrome */ }
         }
         let found = [];
@@ -305,7 +350,7 @@ server?.close();
 const byRule = new Map();
 for (const r of results) { if (!byRule.has(r.rule)) byRule.set(r.rule, []); byRule.get(r.rule).push(r); }
 const total = targets.length * WIDTHS.length;
-console.log(`레이아웃 검사 · 페이지 ${targets.length} × 폭 ${WIDTHS.join('/')}(+가로 모드 844×390) × (평소|긴 글자) = ${total * 2}+ 상태`);
+console.log(`[${BROWSER}] 레이아웃 검사 · 페이지 ${targets.length} × 폭 ${WIDTHS.join('/')}(+가로 모드 844×390) × (평소|긴 글자) = ${total * 2}+ 상태`);
 if (!results.length) console.log('ok · 위반 0');
 for (const [rule, list] of byRule) {
   console.log(`\n[${rule}] ${list.length}건`);

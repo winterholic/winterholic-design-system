@@ -17,7 +17,8 @@
 
 /* Screen: 한 화면 = 헤더 + 스크롤 본문(+ 아래 고정 요소). 스크롤은 본문 안에서만 */
 .tk-screen { display: flex; flex-direction: column; flex: 1 1 auto; min-width: 0; min-height: 0; }
-.tk-screen__body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+/* 가로는 숨긴다: 어떤 자식이 폭을 넘겨도 본문 전체가 옆으로 밀려 제목·탭이 잘려 보이지 않게(실기기 맥락 도서관). 넘침의 원인은 해당 컴포넌트에서 고친다 */
+.tk-screen__body { flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
 .tk-screen__body:focus-visible { outline-offset: calc(-1 * var(--tk-focus-ring-width)); }
 .tk-screen__head { display: flex; flex-direction: column; gap: var(--tk-space-1); padding-block: var(--tk-space-5) var(--tk-space-2); }
 .tk-screen__head > * { margin: 0; }
@@ -25,7 +26,8 @@
 /* Split: 채팅 | 작업 공간. xl 이상 기본 노출, lg 에서는 결과물을 열었을 때만. 손잡이는 role="separator"(키보드 ←→) */
 .tk-split { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; }
 .tk-split__pane { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
-.tk-split__pane--primary { flex: 1 1 auto; min-width: var(--tk-size-layout-pane-min); }
+/* 320 폭 폰(SE)에서 pane-min(360)이 화면을 넘어 WebKit 에서 가로로 밀렸다(check:layout --browser=webkit) */
+.tk-split__pane--primary { flex: 1 1 auto; min-width: min(var(--tk-size-layout-pane-min), 100%); }
 .tk-split__pane--secondary { display: none; }
 .tk-split__handle { display: none; }
 .tk-split__pane > :is(.tk-viewer, .tk-screen__body) { flex: 1 1 auto; }

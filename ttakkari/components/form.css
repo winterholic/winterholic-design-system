@@ -26,6 +26,12 @@
   transition: border-color var(--tk-motion-duration-fast) var(--tk-motion-easing-standard), box-shadow var(--tk-motion-duration-fast) var(--tk-motion-easing-standard);
 }
 .tk-input::placeholder, .tk-textarea::placeholder { color: var(--tk-color-text-placeholder); opacity: 1; }
+/* iOS Safari 의 날짜·시각 입력은 기본 appearance 에서 자체 폭을 가져 width:100% 를 넘어 부모 밖으로 튀어나간다(실기기 확인). appearance 를 끄고 폭을 부모에 묶는다 */
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"]) {
+  -webkit-appearance: none; appearance: none; display: flex; align-items: center; box-sizing: border-box; min-width: 0; max-width: 100%; text-align: left;
+}
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"])::-webkit-date-and-time-value { min-width: 0; margin: 0; text-align: left; }
+.tk-input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"], [type="week"])::-webkit-datetime-edit { padding: 0; }
 @media (hover: hover) { :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):hover { border-color: var(--tk-component-input-border-hover); } }
 /* 포커스: 테두리 색 + 안쪽 1 을 더해 2 로 보이게 한다(바깥 링 대신. 입력은 줄지어 놓여 링이 겹친다) */
 :is(.tk-input, .tk-textarea, .tk-select > select, .tk-select__trigger):focus-visible {
@@ -143,6 +149,14 @@
 .tk-segmented--lg { --tk-_h: var(--tk-component-segmented-height-lg); }
 .tk-segmented--block { display: flex; width: 100%; align-self: stretch; }
 .tk-segmented--block > label { flex: 1 1 0; }
+/* 선택지가 폭보다 많을 때(6개 탭): 상자 안에서 가로로 스크롤한다. 라벨이 상자 밖으로 새어 화면을 밀지 않는다 */
+.tk-segmented--scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+.tk-segmented--scroll::-webkit-scrollbar { display: none; }
+/* 잘린 쪽 가장자리를 흐려 옆에 더 있다는 단서를 준다. data-fade="start end" 는 앱이 스크롤 위치에 따라 붙인다 */
+.tk-segmented--scroll[data-fade~="end"] { -webkit-mask-image: linear-gradient(to right, currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to right, currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--scroll[data-fade~="start"] { -webkit-mask-image: linear-gradient(to left, currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to left, currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--scroll[data-fade~="start"][data-fade~="end"] { -webkit-mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); mask-image: linear-gradient(to right, transparent, currentColor var(--tk-space-8), currentColor calc(100% - var(--tk-space-8)), transparent); }
+.tk-segmented--block.tk-segmented--scroll > label { flex: 1 0 auto; }
 .tk-segmented > label { /* lint-ok: 짧은 선택지 라벨. 줄바꿈하면 높이가 달라진다 */
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--tk-space-1-5); min-width: 0;
   height: calc(var(--tk-_h) - 2 * var(--tk-component-segmented-padding)); padding-inline: var(--tk-space-3);

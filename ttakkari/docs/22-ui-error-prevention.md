@@ -21,6 +21,8 @@
 | A5 | `.tk-dropdown` · Badge · Button 이 긴 라벨에 부모를 밀어냄(검사에서 발견, 1.2.0) | 인라인 요소에 `max-width` 없음 | 검사 `page-overflow-x` | 컴포넌트에 `max-width: 100%`, 라벨 span 말줄임(기본 포함) |
 | A6 | 표·코드·로그가 페이지를 밀어냄 | 상자 없이 표를 그대로 | 03 §6 · 검사 | `.tk-datatable__scroll` / `.tk-table-wrap` / `.tk-code__pre` 가 스크롤 |
 | A7 | 헤더 메타 줄이 조용히 잘림(검사에서 발견) | `overflow: hidden` 인데 `text-overflow` 가 없음 | 검사 `silent-clip` | 말줄임 + `title`. 정보가 중요하면 줄바꿈 |
+| A8 | 알림 헤더 부제가 "확" 에서 말줄임 없이 뚝 잘림(실기기 iOS, 2026-10-17) | `.tk-header__meta` 는 `display: flex` 라 맨 글자(익명 flex 항목)에는 `text-overflow` 가 먹지 않는다 | 검사 `ellipsis-on-flex-text` | 글자는 `<span class="tk-header__meta-text">` 에 담는다(`PageHeader` 가 문자열이면 자동). flex 상자에 말줄임을 걸 때는 항상 글자를 span 에 |
+| A9 | 맥락 도서관 탭 6개가 폭을 넘어 본문 전체가 왼쪽으로 밀리고 가로 스크롤바가 생김(실기기, 2026-10-17) | `.tk-segmented--block` 라벨이 `nowrap` 이라 상자 밖으로 나가고, 그 폭이 `.tk-screen__body`(스크롤 상자)를 넓힘. **문서 `scrollWidth` 는 그대로라** 기존 검사에 안 잡혔다 | 검사 `scroller-overflow-x` · `.tk-screen__body { overflow-x: hidden }` 안전망 | 선택지가 4개를 넘거나 한글 라벨이 길면 `.tk-segmented--scroll`(상자 안 스크롤, 잘린 쪽은 `data-fade` 로 흐림). 안전망은 증상만 가리므로 원인 컴포넌트를 고친다 |
 
 글자가 상자에 안 들어갈 때의 선택은 이 순서다. ① 줄바꿈(제목·설명·이름: `overflow-wrap: anywhere`) ② 한 줄 말줄임 + `title`(목록 행·헤더) ③ 가로 스크롤(표·코드). 글자를 줄여 맞추지 않는다.
 
@@ -33,6 +35,9 @@
 | B3 | 아이콘이 글자 첫 줄과 안 맞음 | 임의 `margin-top: 3px` | lint · 05 정렬 | `margin-top: calc((1lh - 아이콘)/2)` 한 번(컴포넌트가 이미 계산) |
 | B4 | 탭바 아래가 휑하거나 드로어 하단이 두 번 비워짐(front `36eafbf`) | safe-area 를 두 요소가 각각 더함 | 규칙: safe-area 는 화면 끝에 닿는 한 요소만 | 탭바는 `padding-bottom: env()`, 그 안의 자식은 더하지 않는다 |
 | B5 | 새 요소가 이름이 달라 간격 토큰을 우회 | `13px` `18px` | lint(px 직접값) | 4 배수 토큰(`space.*`) |
+| B6 | 상단바가 휑함: 상태바 영역(safe-area 59) 아래에 헤더 56 이 더 얹혀 115 가 됨(실기기, 2026-10-17) | 데스크톱 높이(56)를 폰에도 그대로 씀. safe-area 는 `.tk-header` 한 곳에서만 더하고 있었다(중복 아님) | 규칙: 헤더 안쪽 높이 | 폭 1023 이하는 `--tk-component-header-height - space-2`(48). 제목+메타 두 줄(약 41)과 터치 타깃 44 가 들어간다. 헤더 위에 `padding-top: env(safe-area-inset-top)` 를 다른 요소가 또 더하지 않는다 |
+| B7 | 보관함에서 개수·"오늘" 머리·첫 항목 사이가 위아래로 과하게 벌어짐(실기기, 2026-10-17) | `<p class="tk-list__group">` 에 브라우저 기본 위아래 margin(1em = 12)이 남음. 필터 아래 padding 과도 겹쳐 쌓임 | 검사 규칙은 아님(`gap-plus-margin` 은 gap 부모만 봄) — 렌더 수치로 확인 | `<p>`·`<h*>` 를 쓰는 컴포넌트 클래스는 `margin: 0` 을 스스로 적는다. 새 컴포넌트를 만들면 사용 태그의 기본 margin 부터 지운다 |
+| B8 | 메모 편집 화면의 도구 줄만 흰 띠로 떠서 오류처럼 보임(실기기, 2026-10-17) | 페이지 바탕(`surface-canvas`) 위의 sticky 줄에 `surface-default`(흰색) 배경을 줌 | 규칙 | sticky·fixed 줄이 본문 위에 얹힐 때 배경은 **놓인 바탕과 같은 면**(페이지는 canvas, 모달은 default)으로 하고, 좌우 gutter 만큼 밖으로 펴 스크롤될 때 글자가 옆으로 비치지 않게 한다 |
 
 ### C. 모달·시트·안전 영역
 
@@ -56,6 +61,9 @@
 | D4 | 글자가 11px 이하 | 임의 값 | `font-under-12` · lint | 최소 12(`font.size.xs`) |
 | D5 | 한글 조합 중 Enter 가 전송됨 | `isComposing` 무시 | 정적 테스트 | 19 §3 |
 | D6 | 툴팁에만 있는 정보 | 터치에는 hover 가 없다 | 규칙 | 상세·읽기 줄·`title` 보조 |
+| D7 | 새 회의록의 "회의 날짜" 입력이 다른 입력보다 넓어 오른쪽 화면 밖으로 튀어나감(실기기 iOS Safari, 2026-10-17. 이전에 Chrome 에서 "재현 안 됨" 으로 닫혔던 건) | iOS Safari 의 `input[type=date\|time\|datetime-local\|month\|week]` 는 기본 `appearance` 에서 자체 폭을 가져 `width: 100%` 를 넘는다. Chrome·데스크톱 WebKit 에서는 재현되지 않는다(**실기기 확인 필요**) | 검사 `date-input-overflow`(재현되는 환경에서만 잡힘) · 규칙 | `.tk-input` 의 날짜류 규칙: `appearance: none; display: block; box-sizing: border-box; min-width: 0; max-width: 100%`, `::-webkit-date-and-time-value` 정렬. 날짜 입력을 flex 행에 둘 때는 부모에 `min-width: 0` |
+| D8 | 채팅 첨부(클립)를 누르면 iOS 파일 선택 메뉴가 버튼이 아니라 화면 중간에 뜸(실기기, 2026-10-17) | 숨은 `input[type=file]` 에 `hidden`(display:none)을 주면 iOS 가 메뉴를 붙일 상자를 찾지 못한다 | 검사 `file-input-hidden` | `input[type=file]` 에 `hidden`·`display:none` 금지. 투명(`opacity: 0`)한 input 을 눌리는 버튼 위에 같은 크기로 겹친다(앱의 `FileButton`, `.tk-file-slot`). 눌림은 버튼이 받아 `input.click()` 으로 넘긴다 |
+| D9 | 모바일 칸반이 열을 가로로 늘어놓아 옆 열이 잘려 보임(실기기, 2026-10-17) | 데스크톱 4열을 폰에서 가로 스크롤로 | 규칙 | 767 이하는 상태 탭(개수 표시)으로 한 열씩. 끌기 대신 카드 메뉴로 상태 변경. 데스크톱 칸반은 그대로 |
 
 ### E. 구조·정보
 
@@ -71,7 +79,7 @@
 | 검사 | 무엇을 | 실행 |
 |---|---|---|
 | `node tokens/build.mjs` | 하드코딩(hex·px·ms·z-index·`!important`)·없는 토큰·이름 충돌·**레이아웃 lint 5종**: nowrap 짝, 아래 고정+safe-area, `vh`, `100vw`, 자식 margin-top. 예외는 규칙 본문에 `/* lint-ok: 이유 */` | `npm test` 에 포함 |
-| `scripts/ttakkari-layout.check.mjs` | 실제 Chrome 에서 페이지를 6폭(320·390·768·1024·1440 + 가로 모드 844×390) × 평소/긴 글자 주입 × 라이트/다크로 열어 아래 규칙을 잰다 | `npm run check:layout` |
+| `scripts/ttakkari-layout.check.mjs` | 실제 Chrome 에서 페이지를 6폭(320·390·768·1024·1440 + 가로 모드 844×390) × 평소/긴 글자 주입 × 라이트/다크로 열어 아래 규칙을 잰다. **`--browser=webkit`** 이면 WebKit(iOS Safari 와 같은 엔진)에 iPhone 프리셋(SE 320·14 390)으로 연다. WebKit 에는 safe-area 에뮬레이션이 없어 `env(safe-area-inset-*)` 를 px 로 치환해 흉내 낸다. Chrome 에뮬레이션만으로 "통과"한 화면이 실기기에서 깨진 일이 반복돼 앱 `check:layout` 은 두 엔진을 모두 돈다 | `npm run check:layout` · `-- --browser=webkit` |
 | `scripts/ttakkari-interaction.check.mjs` | 키보드·포커스·컴포저·분할·뷰어 동작과 6폭 가로 넘침 | `npm run check:ui` |
 | front `scripts/ui-sweep/run.sh` | 같은 검사기로 **실제 앱**의 25개 경로를 합성 데이터(긴 이름·긴 제목)로 연다 | `pnpm check:layout` |
 | front `scripts/ui-lint.mjs` | 앱 CSS 의 하드코딩·`100vw`·`vh`·고정 폭·자식 margin-top 을 기준선(baseline)과 비교한다. 새로 늘면 실패 | `pnpm lint` 에 포함 |
@@ -94,6 +102,10 @@
 | `safe-area-top` | 화면 위에 붙은 고정 요소의 행동이 노치(47) 아래로 내려오지 않았다 |
 | `safe-area-side` | 가로 모드에서 눌리는 요소가 좌우 노치(47)와 겹친다 |
 | `skip-link-visible` | 포커스 없이 본문 바로가기가 화면 안에 보인다 |
+| `scroller-overflow-x` | `.tk-screen__body` 의 `scrollWidth` 가 `clientWidth` 보다 크다. 문서 `scrollWidth` 에는 안 잡히는 넘침(본문만 옆으로 밀림)이며 범인 요소를 알려 준다. 긴 글자 주입은 고정 라벨에도 글자를 붙여 오탐이 많아 평소 모드에서만 본다 |
+| `date-input-overflow` | 날짜·시각 입력의 오른쪽이 부모 상자(또는 화면)를 넘는다 |
+| `file-input-hidden` | `input[type=file]` 이 상자가 없다(`display: none`·`hidden`). iOS 선택 메뉴가 엉뚱한 곳에 뜬다 |
+| `ellipsis-on-flex-text` | flex 상자의 맨 글자에 `text-overflow: ellipsis` 를 걸었는데 말줄임이 안 먹고 잘린다. 글자를 span 에 담는다 |
 | `dialog-outside-viewport` | 연 모달·시트가 화면 밖으로 나간다(열리는 애니메이션이 끝난 뒤 잰다) |
 | `dialog-fills-viewport` | 모달이 화면을 꽉 채워 위아래 여백이 없다(전체 화면 뷰어·시트·드로어 제외) |
 | `dialog-edge-to-edge` | 모달이 360 넘는 화면의 좌우 끝까지 닿는다 |
@@ -102,7 +114,9 @@
 | `dialog-child-escapes` | 모달 안의 자식이 모달 폭을 넘는다 |
 | `load-error` · `page-error` | 페이지가 안 열리거나 스크립트 오류 |
 
-검사가 못 하는 것: 실제 iOS Safari 의 주소창·키보드·홈 바 동작(Chrome 의 safe-area 에뮬레이션과 다르다), 한글 IME, 실제 데이터의 길이 분포, 시각적 위계. 이 항목은 기기 확인이 필요하다(확인 필요).
+검사가 못 하는 것: 실제 iOS Safari 의 주소창·키보드·홈 바 동작(Chrome 의 safe-area 에뮬레이션과 다르다), **iOS 만의 네이티브 컨트롤**(날짜 입력의 자체 폭, 파일 선택 메뉴가 뜨는 위치. 데스크톱 맥의 WebKit 은 이 컨트롤을 다르게 그려 재현되지 않는다), 한글 IME, 실제 데이터의 길이 분포, 시각적 위계. 이 항목은 기기 확인이 필요하다(확인 필요). 그래서 위 규칙은 원인(숨은 file input, appearance 기본값)을 코드 수준에서 막는 쪽으로 둔다.
+
+**실데이터 규모로 본다.** 합성 데이터가 3건짜리면 목록 머리·개수·첫 항목 사이 간격, 100건 넘는 알림의 날짜 묶음, 6개 탭 같은 문제가 안 보인다. 앱 스텁은 알림 148건·보관함 30건 가득·PMS 14작업·도서관 실제 수치로 채워 둔다.
 
 ## 4. 레시피
 
@@ -134,3 +148,6 @@
 8. 호버에만 있는 정보가 없다. 색만으로 말하는 상태가 없다.
 9. `npm run check:layout`(예제) 또는 `pnpm check:layout`(앱)이 위반 0 이다.
 10. 하드코딩이 없다(`node tokens/build.mjs` · `pnpm lint`).
+11. 날짜·시각 입력은 `.tk-input`(appearance 규칙 포함)을 쓰고, 파일 고르기는 `input[type=file]` 에 `hidden` 을 주지 않고 버튼 위에 투명하게 겹친다(D7·D8).
+12. 선택지가 4개를 넘거나 라벨이 긴 세그먼트는 `.tk-segmented--scroll` 이다. `<p>`·`<h*>` 로 만든 컴포넌트는 `margin: 0` 을 스스로 적었다(B7). sticky 줄의 배경은 놓인 바탕과 같은 면이다(B8).
+13. 앱은 Chrome 만이 아니라 `--browser=webkit`(iPhone 프리셋) 로도 통과했고, 실데이터 규모(알림 100+·목록 30+)로 간격을 수치로 봤다. iOS 네이티브 컨트롤은 실기기에서 한 번 확인한다.
