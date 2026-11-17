@@ -1,0 +1,818 @@
+{
+  "burgundy": {
+    "50": {
+      "$value": "#FEF4F4",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.46
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE6E6",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.19,
+          "onBlack": 17.68
+        }
+      }
+    },
+    "200": {
+      "$value": "#F5D1D1",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.41,
+          "onBlack": 14.92
+        }
+      }
+    },
+    "300": {
+      "$value": "#E3B5B6",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.82,
+          "onBlack": 11.55
+        }
+      }
+    },
+    "400": {
+      "$value": "#CE9596",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.51,
+          "onBlack": 8.36
+        }
+      }
+    },
+    "500": {
+      "$value": "#B77476",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.64,
+          "onBlack": 5.77
+        }
+      }
+    },
+    "600": {
+      "$value": "#A2575A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 5.19,
+          "onBlack": 4.05
+        }
+      }
+    },
+    "700": {
+      "$value": "#8D3B41",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.41,
+          "onBlack": 2.83
+        }
+      }
+    },
+    "800": {
+      "$value": "#7A1F2B",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 10.2,
+          "onBlack": 2.06
+        }
+      }
+    },
+    "900": {
+      "$value": "#5C0C1A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.79,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#40040E",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.91,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Burgundy · 주 행동·브랜드 심색 · 앵커 #7A1F2B @800"
+  },
+  "gold": {
+    "50": {
+      "$value": "#FFF6E6",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.58
+        }
+      }
+    },
+    "100": {
+      "$value": "#FFEAC5",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.83
+        }
+      }
+    },
+    "200": {
+      "$value": "#F7D698",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15.03
+        }
+      }
+    },
+    "300": {
+      "$value": "#D9B36A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.98,
+          "onBlack": 10.61
+        }
+      }
+    },
+    "400": {
+      "$value": "#C3A15F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.45,
+          "onBlack": 8.58
+        }
+      }
+    },
+    "500": {
+      "$value": "#A1854E",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.51,
+          "onBlack": 5.98
+        }
+      }
+    },
+    "600": {
+      "$value": "#846C40",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 5,
+          "onBlack": 4.2
+        }
+      }
+    },
+    "700": {
+      "$value": "#695632",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.05,
+          "onBlack": 2.98
+        }
+      }
+    },
+    "800": {
+      "$value": "#504126",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.88,
+          "onBlack": 2.13
+        }
+      }
+    },
+    "900": {
+      "$value": "#392F1A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.16,
+          "onBlack": 1.6
+        }
+      }
+    },
+    "950": {
+      "$value": "#261E10",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.46,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Champagne Gold · 프레임·강조·다크 모드 주색 · 앵커 #D9B36A @300"
+  },
+  "sand": {
+    "50": {
+      "$value": "#FEF5EC",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.49
+        }
+      }
+    },
+    "100": {
+      "$value": "#F4EBE1",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.82
+        }
+      }
+    },
+    "200": {
+      "$value": "#E1D9CF",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 15.03
+        }
+      }
+    },
+    "300": {
+      "$value": "#C9C1B7",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.78,
+          "onBlack": 11.8
+        }
+      }
+    },
+    "400": {
+      "$value": "#ADA59B",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.43,
+          "onBlack": 8.63
+        }
+      }
+    },
+    "500": {
+      "$value": "#90887E",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.49,
+          "onBlack": 6.01
+        }
+      }
+    },
+    "600": {
+      "$value": "#8A7A66",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 4.15,
+          "onBlack": 5.06
+        }
+      }
+    },
+    "700": {
+      "$value": "#5F584F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.01,
+          "onBlack": 3
+        }
+      }
+    },
+    "800": {
+      "$value": "#49423A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.89,
+          "onBlack": 2.12
+        }
+      }
+    },
+    "900": {
+      "$value": "#352F27",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.23,
+          "onBlack": 1.59
+        }
+      }
+    },
+    "950": {
+      "$value": "#241E17",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.5,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Warm Paper Ink · 글자·테두리·표면(따뜻한 중립) · 앵커 #8A7A66 @600"
+  },
+  "fir": {
+    "50": {
+      "$value": "#F1FAEF",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.66
+        }
+      }
+    },
+    "100": {
+      "$value": "#E6F0E4",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.17,
+          "onBlack": 17.95
+        }
+      }
+    },
+    "200": {
+      "$value": "#D2DFD0",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.38,
+          "onBlack": 15.21
+        }
+      }
+    },
+    "300": {
+      "$value": "#B8C8B5",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.75,
+          "onBlack": 11.97
+        }
+      }
+    },
+    "400": {
+      "$value": "#9AAD96",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.39,
+          "onBlack": 8.79
+        }
+      }
+    },
+    "500": {
+      "$value": "#7A9176",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.42,
+          "onBlack": 6.14
+        }
+      }
+    },
+    "600": {
+      "$value": "#5F785B",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 4.86,
+          "onBlack": 4.32
+        }
+      }
+    },
+    "700": {
+      "$value": "#3F5B3A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.58,
+          "onBlack": 2.77
+        }
+      }
+    },
+    "800": {
+      "$value": "#324B2E",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.63,
+          "onBlack": 2.18
+        }
+      }
+    },
+    "900": {
+      "$value": "#21371E",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 12.88,
+          "onBlack": 1.63
+        }
+      }
+    },
+    "950": {
+      "$value": "#12250F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.19,
+          "onBlack": 1.3
+        }
+      }
+    },
+    "$description": "Fir Green · 성공·숲·전나무 · 앵커 #3F5B3A @700"
+  },
+  "indigo": {
+    "50": {
+      "$value": "#F4F6FF",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.47
+        }
+      }
+    },
+    "100": {
+      "$value": "#EAECF5",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.82
+        }
+      }
+    },
+    "200": {
+      "$value": "#D8DAE3",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.06
+        }
+      }
+    },
+    "300": {
+      "$value": "#BFC2CE",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.78,
+          "onBlack": 11.82
+        }
+      }
+    },
+    "400": {
+      "$value": "#A1A5B7",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.45,
+          "onBlack": 8.58
+        }
+      }
+    },
+    "500": {
+      "$value": "#82889F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.52,
+          "onBlack": 5.97
+        }
+      }
+    },
+    "600": {
+      "$value": "#686F89",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 4.97,
+          "onBlack": 4.22
+        }
+      }
+    },
+    "700": {
+      "$value": "#515875",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 6.99,
+          "onBlack": 3
+        }
+      }
+    },
+    "800": {
+      "$value": "#3A4162",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.94,
+          "onBlack": 2.11
+        }
+      }
+    },
+    "900": {
+      "$value": "#1D2347",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 15.18,
+          "onBlack": 1.38
+        }
+      }
+    },
+    "950": {
+      "$value": "#161C3D",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.57,
+          "onBlack": 1.27
+        }
+      }
+    },
+    "$description": "Night Indigo · 다크 표면·밤하늘 · 앵커 #1D2347 @900"
+  },
+  "sky": {
+    "50": {
+      "$value": "#F1F7FF",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.49
+        }
+      }
+    },
+    "100": {
+      "$value": "#E1EEFE",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.86
+        }
+      }
+    },
+    "200": {
+      "$value": "#C7DDF8",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.39,
+          "onBlack": 15.13
+        }
+      }
+    },
+    "300": {
+      "$value": "#ABC5E4",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.77,
+          "onBlack": 11.84
+        }
+      }
+    },
+    "400": {
+      "$value": "#8BA9CC",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.43,
+          "onBlack": 8.64
+        }
+      }
+    },
+    "500": {
+      "$value": "#5C7FA8",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 4.15,
+          "onBlack": 5.06
+        }
+      }
+    },
+    "600": {
+      "$value": "#527399",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 4.92,
+          "onBlack": 4.27
+        }
+      }
+    },
+    "700": {
+      "$value": "#405B7C",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 6.99,
+          "onBlack": 3.01
+        }
+      }
+    },
+    "800": {
+      "$value": "#2E4560",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.83,
+          "onBlack": 2.14
+        }
+      }
+    },
+    "900": {
+      "$value": "#1F3248",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.06,
+          "onBlack": 1.61
+        }
+      }
+    },
+    "950": {
+      "$value": "#112032",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.45,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Snow Blue · 정보·눈·차가운 보조 · 앵커 #5C7FA8 @500"
+  },
+  "red": {
+    "50": {
+      "$value": "#FFF4F3",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.08,
+          "onBlack": 19.49
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEE7E4",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.76
+        }
+      }
+    },
+    "200": {
+      "$value": "#FECDC9",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.42,
+          "onBlack": 14.79
+        }
+      }
+    },
+    "300": {
+      "$value": "#FDA9A2",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.85,
+          "onBlack": 11.37
+        }
+      }
+    },
+    "400": {
+      "$value": "#E88780",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.56,
+          "onBlack": 8.21
+        }
+      }
+    },
+    "500": {
+      "$value": "#D1625D",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.74,
+          "onBlack": 5.62
+        }
+      }
+    },
+    "600": {
+      "$value": "#B83A3A",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 5.67,
+          "onBlack": 3.7
+        }
+      }
+    },
+    "700": {
+      "$value": "#9B2C2D",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.52,
+          "onBlack": 2.79
+        }
+      }
+    },
+    "800": {
+      "$value": "#7A1B1D",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 10.49,
+          "onBlack": 2
+        }
+      }
+    },
+    "900": {
+      "$value": "#5D0B10",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.81,
+          "onBlack": 1.52
+        }
+      }
+    },
+    "950": {
+      "$value": "#400508",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.89,
+          "onBlack": 1.24
+        }
+      }
+    },
+    "$description": "Holly Red · 위험·오류 · 앵커 #B83A3A @600"
+  },
+  "amber": {
+    "50": {
+      "$value": "#FFF6E6",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.07,
+          "onBlack": 19.58
+        }
+      }
+    },
+    "100": {
+      "$value": "#FEEAC9",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.18,
+          "onBlack": 17.83
+        }
+      }
+    },
+    "200": {
+      "$value": "#FCD48F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.4,
+          "onBlack": 14.95
+        }
+      }
+    },
+    "300": {
+      "$value": "#EFB84F",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 1.8,
+          "onBlack": 11.64
+        }
+      }
+    },
+    "400": {
+      "$value": "#E0A526",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 2.19,
+          "onBlack": 9.58
+        }
+      }
+    },
+    "500": {
+      "$value": "#AF801D",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 3.54,
+          "onBlack": 5.93
+        }
+      }
+    },
+    "600": {
+      "$value": "#8F6916",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 5,
+          "onBlack": 4.2
+        }
+      }
+    },
+    "700": {
+      "$value": "#735311",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 7.06,
+          "onBlack": 2.97
+        }
+      }
+    },
+    "800": {
+      "$value": "#583F0B",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 9.86,
+          "onBlack": 2.13
+        }
+      }
+    },
+    "900": {
+      "$value": "#3F2D07",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 13.21,
+          "onBlack": 1.59
+        }
+      }
+    },
+    "950": {
+      "$value": "#2A1D04",
+      "$extensions": {
+        "mv.contrast": {
+          "onWhite": 16.46,
+          "onBlack": 1.28
+        }
+      }
+    },
+    "$description": "Candle Amber · 경고·촛불 · 앵커 #E0A526 @400"
+  }
+}

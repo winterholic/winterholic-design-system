@@ -1,0 +1,227 @@
+{
+  "space": {
+    "0": {
+      "$value": "0px"
+    },
+    "1": {
+      "$value": "4px"
+    },
+    "2": {
+      "$value": "8px"
+    },
+    "3": {
+      "$value": "12px"
+    },
+    "4": {
+      "$value": "16px"
+    },
+    "5": {
+      "$value": "20px"
+    },
+    "6": {
+      "$value": "24px"
+    },
+    "8": {
+      "$value": "32px"
+    },
+    "10": {
+      "$value": "40px"
+    },
+    "12": {
+      "$value": "48px"
+    },
+    "16": {
+      "$value": "64px"
+    },
+    "20": {
+      "$value": "80px"
+    },
+    "$type": "dimension",
+    "$description": "4px 그리드. 모든 margin·padding·gap 은 이 값 중 하나.",
+    "px": {
+      "$value": "1px"
+    },
+    "0-5": {
+      "$value": "2px"
+    },
+    "1-5": {
+      "$value": "6px"
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "control": {
+      "$description": "모바일 터치 기준. 같은 줄의 컨트롤은 같은 단계.",
+      "xs": {
+        "$value": "28px"
+      },
+      "sm": {
+        "$value": "36px"
+      },
+      "md": {
+        "$value": "44px"
+      },
+      "lg": {
+        "$value": "52px"
+      },
+      "xl": {
+        "$value": "60px"
+      }
+    },
+    "icon": {
+      "xs": {
+        "$value": "12px"
+      },
+      "sm": {
+        "$value": "16px"
+      },
+      "md": {
+        "$value": "20px"
+      },
+      "lg": {
+        "$value": "24px"
+      },
+      "xl": {
+        "$value": "32px"
+      },
+      "2xl": {
+        "$value": "48px"
+      }
+    },
+    "avatar": {
+      "sm": {
+        "$value": "32px"
+      },
+      "md": {
+        "$value": "40px"
+      },
+      "lg": {
+        "$value": "56px"
+      },
+      "xl": {
+        "$value": "80px"
+      }
+    },
+    "touch-target-min": {
+      "$value": "44px"
+    },
+    "container": {
+      "$description": "콘텐츠 최대 폭. 장면은 이 폭 안에서 9:16 으로 놓인다.",
+      "phone": {
+        "$value": "430px"
+      },
+      "tablet": {
+        "$value": "600px"
+      },
+      "tablet-l": {
+        "$value": "820px"
+      }
+    },
+    "layout": {
+      "page-gutter": {
+        "$value": "16px"
+      },
+      "page-gutter-md": {
+        "$value": "24px"
+      },
+      "page-gutter-lg": {
+        "$value": "32px"
+      },
+      "sheet-handle-w": {
+        "$value": "40px"
+      },
+      "sheet-handle-h": {
+        "$value": "4px"
+      },
+      "scene-ratio-w": {
+        "$value": "9"
+      },
+      "scene-ratio-h": {
+        "$value": "16"
+      }
+    },
+    "scene": {
+      "$description": "장면 논리 좌표. 모든 에셋 좌표는 0~1 정규화 값이며 렌더러가 이 기준 크기로 환산한다.",
+      "w": {
+        "$value": "1080px"
+      },
+      "h": {
+        "$value": "1920px"
+      }
+    },
+    "ornament": {
+      "$description": "트리 폭 대비 장식 한 개의 기본 폭은 ornament manifest 가 정한다. 이 값은 화면에서 줄일 수 있는 최소 크기(CSS px).",
+      "min-render": {
+        "$value": "18px"
+      },
+      "tap-min": {
+        "$value": "44px"
+      }
+    }
+  },
+  "breakpoint": {
+    "$type": "dimension",
+    "$description": "min-width. 320~374 / 375~430 / 431~599 / 600~1024 대응. 기본 스타일이 320 기준.",
+    "sm": {
+      "$value": "375px"
+    },
+    "md": {
+      "$value": "431px"
+    },
+    "lg": {
+      "$value": "600px"
+    },
+    "xl": {
+      "$value": "1025px"
+    }
+  },
+  "radius": {
+    "$type": "dimension",
+    "$description": "동화책 카드처럼 둥글다. 부모 radius − padding ≈ 자식 radius.",
+    "none": {
+      "$value": "0px"
+    },
+    "xs": {
+      "$value": "4px"
+    },
+    "sm": {
+      "$value": "8px"
+    },
+    "md": {
+      "$value": "12px"
+    },
+    "lg": {
+      "$value": "16px"
+    },
+    "xl": {
+      "$value": "24px"
+    },
+    "2xl": {
+      "$value": "32px"
+    },
+    "full": {
+      "$value": "9999px"
+    }
+  },
+  "border-width": {
+    "$type": "dimension",
+    "hairline": {
+      "$value": "1px"
+    },
+    "focus": {
+      "$value": "2px"
+    },
+    "frame": {
+      "$value": "3px"
+    }
+  },
+  "focus": {
+    "$type": "dimension",
+    "ring-width": {
+      "$value": "2px"
+    },
+    "ring-offset": {
+      "$value": "2px"
+    }
+  }
+}

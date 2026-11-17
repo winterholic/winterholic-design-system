@@ -1,0 +1,18 @@
+/* ornament · 장식 선택기(그리드)와 트리 위 오버레이 칩 */
+.mv-orn-picker { display: grid; grid-template-columns: repeat(var(--mv-component-ornament-picker-columns), minmax(0, 1fr)); gap: var(--mv-component-ornament-picker-gap); margin: 0; padding: 0; list-style: none; }
+.mv-orn-item { position: relative; display: flex; flex-direction: column; align-items: center; gap: var(--mv-space-1); min-width: 0; padding: var(--mv-space-2) var(--mv-space-1); border: var(--mv-border-width-hairline) solid var(--mv-component-ornament-picker-border); border-radius: var(--mv-component-ornament-picker-radius); background: var(--mv-component-ornament-picker-bg); cursor: pointer; transition: transform var(--mv-motion-duration-fast) var(--mv-motion-easing-spring), box-shadow var(--mv-motion-duration-normal) var(--mv-motion-easing-standard), border-color var(--mv-motion-duration-normal) var(--mv-motion-easing-standard); }
+.mv-orn-item__input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.mv-orn-item__img { width: var(--mv-component-ornament-picker-item-size); height: var(--mv-component-ornament-picker-item-size); max-width: 100%; object-fit: contain; pointer-events: none; }
+.mv-orn-item__label { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: var(--mv-font-size-xs); line-height: var(--mv-font-line-height-normal); color: var(--mv-color-text-secondary); }
+@media (hover: hover) { .mv-orn-item:hover { border-color: var(--mv-color-border-strong); } }
+.mv-orn-item:active { transform: scale(var(--mv-motion-scale-press)); }
+.mv-orn-item:has(.mv-orn-item__input:checked), .mv-orn-item[data-selected] { border-color: var(--mv-component-ornament-picker-ring-selected); border-width: var(--mv-border-width-focus); box-shadow: var(--mv-component-ornament-picker-glow); background: var(--mv-color-interactive-selected-bg); transform: scale(var(--mv-motion-scale-pop)); }
+.mv-orn-item:has(.mv-orn-item__input:focus-visible) { outline: var(--mv-focus-ring-width) solid var(--mv-color-interactive-focus-ring); outline-offset: var(--mv-focus-ring-offset); }
+.mv-orn-item:has(.mv-orn-item__input:disabled) { opacity: var(--mv-opacity-disabled); cursor: not-allowed; }
+.mv-orn-picker__more { grid-column: 1 / -1; justify-self: center; }
+/* 트리 위 오버레이: 장식을 누르면 뜨는 보낸 사람·점수 칩 */
+.mv-tree-chip { position: absolute; z-index: var(--mv-z-index-ui); display: inline-flex; align-items: center; gap: var(--mv-space-2); min-height: var(--mv-component-tree-overlay-hit-min); padding: 0 var(--mv-component-tree-overlay-chip-padding-x); border-radius: var(--mv-component-tree-overlay-chip-radius); background: var(--mv-component-tree-overlay-chip-bg); box-shadow: var(--mv-component-tree-overlay-chip-shadow); border: var(--mv-border-width-hairline) solid var(--mv-color-border-gold); font-size: var(--mv-font-size-sm); font-weight: var(--mv-font-weight-semibold); color: var(--mv-color-text-primary); transform: translate(-50%, -100%); max-width: 70%; white-space: nowrap; animation: mv-chip-in var(--mv-motion-duration-normal) var(--mv-motion-easing-spring) both; }
+.mv-tree-chip__text { overflow: hidden; text-overflow: ellipsis; }
+.mv-tree-chip__score { font-variant-numeric: tabular-nums; color: var(--mv-color-text-brand); }
+@keyframes mv-chip-in { from { opacity: 0; scale: var(--mv-motion-scale-enter); } to { opacity: 1; scale: 1; } }
+@media (prefers-reduced-motion: reduce) { .mv-orn-item, .mv-tree-chip { transition: none; animation: none; } .mv-orn-item:active { transform: none; } }

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ornament.schema.json",
+  "title": "Ornament",
+  "description": "트리에 다는 독립 장식 에셋. 크기는 트리 폭 대비 비율. 호환 규칙과 배치 방식을 함께 가진다.",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "tier",
+    "worlds",
+    "file",
+    "width",
+    "height",
+    "aspect",
+    "anchor",
+    "baseWidth",
+    "placements",
+    "version",
+    "license"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "hang",
+        "perch",
+        "ground",
+        "topper"
+      ]
+    },
+    "tier": {
+      "enum": [
+        "common",
+        "world"
+      ]
+    },
+    "worlds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "description": "['*'] 이면 모든 세계관"
+    },
+    "file": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "height": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "aspect": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "anchor": {
+      "type": "object",
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false,
+      "description": "스프라이트에서 트리와 닿는 점(걸이 고리). 0~1"
+    },
+    "groundAnchor": {
+      "type": "object",
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "baseWidth": {
+      "type": "number",
+      "minimum": 0.03,
+      "maximum": 0.4,
+      "description": "트리 폭 대비 기본 폭"
+    },
+    "placements": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "hang",
+          "ground",
+          "topper"
+        ]
+      },
+      "minItems": 1
+    },
+    "layer": {
+      "const": "ornaments"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requiresTreeTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "excludesTreeTags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "license": {
+      "type": "string"
+    }
+  }
+}

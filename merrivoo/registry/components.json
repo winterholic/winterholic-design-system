@@ -1,0 +1,394 @@
+{
+  "$description": "컴포넌트 레지스트리. build 가 class·parts·variants 가 components.css 에 실제로 있는지, tokens 가 실제 토큰인지 검증한다.",
+  "components": [
+    {
+      "name": "Button",
+      "class": "mv-btn",
+      "react": "Button",
+      "parts": [
+        "mv-btn__icon"
+      ],
+      "variants": {
+        "variant": [
+          "mv-btn--secondary",
+          "mv-btn--ghost",
+          "mv-btn--danger"
+        ],
+        "size": [
+          "mv-btn--sm",
+          "mv-btn--lg",
+          "mv-btn--xl"
+        ],
+        "layout": [
+          "mv-btn--block",
+          "mv-btn--icon"
+        ]
+      },
+      "states": [
+        "default",
+        "hover(hover:hover 기기만)",
+        "pressed",
+        "focus-visible",
+        "disabled",
+        "loading(aria-busy)"
+      ],
+      "tokens": [
+        "component.button.radius",
+        "component.button.lg.height",
+        "color.action.primary.bg",
+        "motion.duration.fast"
+      ],
+      "usage": "주 행동은 lg 이상(52px+). 한 화면에 primary 하나. 같은 줄 버튼은 같은 크기. 로딩 중 중복 제출은 aria-busy 로 막는다.",
+      "a11y": "터치 44px 이상, 아이콘 버튼은 aria-label, 로딩은 aria-busy."
+    },
+    {
+      "name": "Choice Card",
+      "class": "mv-choice",
+      "react": "ChoiceCard",
+      "parts": [
+        "mv-choice__input",
+        "mv-choice__icon",
+        "mv-choice__body",
+        "mv-choice__title",
+        "mv-choice__sub",
+        "mv-choice__check",
+        "mv-choice-list"
+      ],
+      "variants": {},
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "focus-visible(focus-within)",
+        "disabled",
+        "selected(체크 아이콘+두꺼운 테두리, 색만으로 구분하지 않는다)"
+      ],
+      "tokens": [
+        "component.choice.min-height",
+        "component.choice.radius",
+        "component.choice.bg-selected",
+        "component.choice.shadow-selected"
+      ],
+      "usage": "질문당 3~4개. 제목 최대 3줄, 부제 2줄. 모바일 한 열. 선택하면 즉시 다음으로 넘기지 말고 380ms 머문다(선택 확인).",
+      "a11y": "실제 radio input 을 감싼 label. fieldset+legend 로 그룹."
+    },
+    {
+      "name": "Question Panel",
+      "class": "mv-question",
+      "react": "QuestionPanel",
+      "parts": [
+        "mv-question__index",
+        "mv-question__text",
+        "mv-question__hint"
+      ],
+      "variants": {},
+      "states": [
+        "default"
+      ],
+      "tokens": [
+        "component.question.bg",
+        "component.question.border",
+        "component.question.padding",
+        "typography.question"
+      ],
+      "usage": "질문 문장은 최대 4줄, keep-all. 패널 안에 선택 카드를 넣지 않는다(카드 안 카드 금지, 선택지는 형제).",
+      "a11y": "section + aria-labelledby, 제목은 화면 전환 시 포커스를 받는다."
+    },
+    {
+      "name": "Progress Indicator",
+      "class": "mv-progress",
+      "react": "Progress",
+      "parts": [
+        "mv-progress__dot",
+        "mv-progress__fill"
+      ],
+      "variants": {
+        "shape": [
+          "mv-progress--bar"
+        ]
+      },
+      "states": [
+        "todo",
+        "current",
+        "done"
+      ],
+      "tokens": [
+        "component.progress.dot-active-width",
+        "component.progress.fill"
+      ],
+      "usage": "질문 7개 이하는 점, 그 이상은 막대.",
+      "a11y": "role=progressbar, aria-valuenow."
+    },
+    {
+      "name": "Bottom Sheet",
+      "class": "mv-sheet",
+      "react": "BottomSheet",
+      "parts": [
+        "mv-backdrop",
+        "mv-sheet__handle",
+        "mv-sheet__title",
+        "mv-sheet__body",
+        "mv-sheet__footer"
+      ],
+      "variants": {},
+      "states": [
+        "closed",
+        "open"
+      ],
+      "tokens": [
+        "component.sheet.radius",
+        "component.sheet.max-height",
+        "z-index.sheet"
+      ],
+      "usage": "모바일의 기본 보조 화면. 최대 높이 86dvh, 본문만 스크롤. 하단 safe-area 보호.",
+      "a11y": "role=dialog aria-modal, 포커스 가두기·ESC·복귀, 닫힌 상태는 inert."
+    },
+    {
+      "name": "Modal",
+      "class": "mv-modal",
+      "react": "Modal",
+      "parts": [],
+      "variants": {},
+      "states": [
+        "closed",
+        "open"
+      ],
+      "tokens": [
+        "component.modal.radius",
+        "component.modal.max-width",
+        "z-index.modal"
+      ],
+      "usage": "짧은 확인·공유 결정에만. 긴 내용은 시트.",
+      "a11y": "BottomSheet 와 동일."
+    },
+    {
+      "name": "Ornament Selector",
+      "class": "mv-orn-picker",
+      "react": "OrnamentPicker",
+      "parts": [
+        "mv-orn-item",
+        "mv-orn-item__input",
+        "mv-orn-item__img",
+        "mv-orn-item__label"
+      ],
+      "variants": {},
+      "states": [
+        "default",
+        "hover",
+        "pressed",
+        "focus-visible",
+        "disabled",
+        "selected(금빛 후광+팝)"
+      ],
+      "tokens": [
+        "component.ornament-picker.columns",
+        "component.ornament-picker.ring-selected",
+        "shadow.gold"
+      ],
+      "usage": "4열 그리드. 8개를 먼저 보이고 \"전체 보기\"는 시트에서.",
+      "a11y": "radio 그룹, 라벨은 장식 이름."
+    },
+    {
+      "name": "Nickname Input",
+      "class": "mv-field",
+      "react": "NicknameField",
+      "parts": [
+        "mv-field__label",
+        "mv-field__input",
+        "mv-field__help",
+        "mv-field__counter"
+      ],
+      "variants": {
+        "state": [
+          "mv-field--error"
+        ]
+      },
+      "states": [
+        "default",
+        "focus-visible",
+        "disabled",
+        "error"
+      ],
+      "tokens": [
+        "component.field.height",
+        "component.field.border-focus",
+        "component.field.border-error"
+      ],
+      "usage": "입력 글자 16px 이상(iOS 확대 방지). 최대 12자, 글자 수 표시.",
+      "a11y": "label 연결, aria-invalid, aria-describedby."
+    },
+    {
+      "name": "Anonymous Toggle",
+      "class": "mv-toggle",
+      "react": "AnonymousToggle",
+      "parts": [
+        "mv-toggle__text",
+        "mv-toggle__title",
+        "mv-toggle__sub",
+        "mv-toggle__input",
+        "mv-toggle__track"
+      ],
+      "variants": {},
+      "states": [
+        "off",
+        "on",
+        "focus-visible",
+        "disabled"
+      ],
+      "tokens": [
+        "component.toggle.track-on",
+        "component.toggle.width"
+      ],
+      "usage": "켜면 닉네임 입력을 비활성화한다. 결과는 즉시 반영.",
+      "a11y": "checkbox role=switch, 터치 영역 44px 이상."
+    },
+    {
+      "name": "Compatibility Result",
+      "class": "mv-score",
+      "react": "ScoreMeter",
+      "parts": [
+        "mv-score__ring",
+        "mv-score__value",
+        "mv-score__label"
+      ],
+      "variants": {},
+      "states": [
+        "animating",
+        "settled"
+      ],
+      "tokens": [
+        "component.score.ring-size",
+        "component.score.fill",
+        "typography.score"
+      ],
+      "usage": "0→점수 카운트업 1.1초. reduced-motion 이면 즉시 최종 값.",
+      "a11y": "role=img + aria-label \"궁합 점수 N점\"."
+    },
+    {
+      "name": "Universe Information Card",
+      "class": "mv-universe-card",
+      "react": "UniverseCard",
+      "parts": [
+        "mv-universe-card__eyebrow",
+        "mv-universe-card__title",
+        "mv-universe-card__body",
+        "mv-universe-card__meta"
+      ],
+      "variants": {},
+      "states": [
+        "default"
+      ],
+      "tokens": [
+        "component.universe-card.padding",
+        "typography.display-md",
+        "typography.body-lg"
+      ],
+      "usage": "제목 2줄, 본문 6줄까지. 칩은 세계관·트리 이름.",
+      "a11y": "article."
+    },
+    {
+      "name": "Tree Interaction Overlay",
+      "class": "mv-scene__layer",
+      "react": "SceneView(interactive)",
+      "parts": [
+        "mv-tree-chip",
+        "mv-tree-chip__text",
+        "mv-tree-chip__score"
+      ],
+      "variants": {},
+      "states": [
+        "default",
+        "focus-visible",
+        "selected(금빛 후광)",
+        "dimmed(선택 중 나머지)"
+      ],
+      "tokens": [
+        "component.tree-overlay.hit-min",
+        "color.scene.hit-ring",
+        "opacity.ornament-dim"
+      ],
+      "usage": "장식은 button. 보이는 크기가 작아도 터치 영역은 44px. 빽빽한 트리는 목록 시트가 대체 경로.",
+      "a11y": "장식마다 aria-label \"보낸 사람의 장식, 궁합 N점\"."
+    },
+    {
+      "name": "Share Card",
+      "class": "mv-share-card",
+      "react": "ShareCard",
+      "parts": [
+        "mv-share-card__scene",
+        "mv-share-card__top",
+        "mv-share-card__bottom",
+        "mv-share-card__title",
+        "mv-share-card__meta",
+        "mv-share-card__brand"
+      ],
+      "variants": {},
+      "states": [
+        "default"
+      ],
+      "tokens": [
+        "component.share-card.safe-top",
+        "component.share-card.safe-bottom"
+      ],
+      "usage": "9:16. 위 12%·아래 18% 는 인스타그램 스토리 UI 가 덮으므로 글자를 두지 않는다.",
+      "a11y": "이미지에는 alt 로 제목을 준다."
+    },
+    {
+      "name": "Toast",
+      "class": "mv-toast",
+      "react": "Toast",
+      "parts": [],
+      "variants": {
+        "tone": []
+      },
+      "states": [
+        "default",
+        "danger"
+      ],
+      "tokens": [
+        "component.toast.bg",
+        "component.toast.duration-default"
+      ],
+      "usage": "3.2초. 오류는 role=alert. 하단 safe-area 위.",
+      "a11y": "role=status/alert, aria-live."
+    },
+    {
+      "name": "State View",
+      "class": "mv-state",
+      "react": "StateView",
+      "parts": [
+        "mv-state__icon",
+        "mv-state__title",
+        "mv-state__body",
+        "mv-spinner",
+        "mv-skeleton"
+      ],
+      "variants": {},
+      "states": [
+        "loading",
+        "error",
+        "empty"
+      ],
+      "tokens": [
+        "component.state.padding",
+        "component.state.gap"
+      ],
+      "usage": "모든 화면에 로딩·오류·빈 상태를 함께 만든다. 오류에는 다시 시도 행동.",
+      "a11y": "role=status/alert."
+    }
+  ],
+  "rules": [
+    "색·간격·글자·그림자·시간·z-index 는 토큰(--mv-*)만 쓴다. hex·임의 px·z-index 숫자·transition: all 금지.",
+    "글자는 typography 스타일 클래스(.mv-display-*, .mv-heading-*, .mv-question, .mv-body-*, .mv-label-*) 중 하나.",
+    "모든 컴포넌트는 상태(default·hover·pressed·focus-visible·disabled·loading·selected)를 구현한다. hover 는 @media (hover:hover) 안에서만.",
+    "터치 대상은 44px 이상(size.touch-target-min). 인접 대상 간격 8px 이상.",
+    "화면 전환 시 새 화면의 제목에 포커스를 옮긴다. 포커스 링을 지우지 않는다.",
+    "선택·상태는 색만으로 전달하지 않는다(체크 아이콘, 테두리 두께, 텍스트).",
+    "장면은 composeScene 이 만든 데이터를 렌더러(React/DOM/Canvas)가 그린다. 렌더러에서 좌표를 다시 계산하지 않는다.",
+    "세계관 테마(data-world)는 color.scene.* 와 border.gold 만 바꾼다. 글자·버튼·상태 색은 모든 세계관에서 같다.",
+    "장식 배치는 placeOrnaments 한 곳에서만 한다. 점수 → 위치 규칙(prominence)을 화면에서 따로 구현하지 않는다.",
+    "에셋은 manifest(schema/*.schema.json) 없이 카탈로그에 넣지 않는다. validateCatalog 가 통과해야 한다.",
+    "prefers-reduced-motion 이면 연출(드롭·트윙클·카운트업)을 정지 상태로 바로 보여 준다.",
+    "캔버스 포스터에서는 ctx.filter 를 쓰지 않는다(사파리·인앱 브라우저). 색 보정은 multiply 오버레이."
+  ]
+}

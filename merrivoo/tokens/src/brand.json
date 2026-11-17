@@ -1,0 +1,50 @@
+{
+  "brand": {
+    "$type": "color",
+    "$description": "동화책 시드 색. 램프의 앵커이자 문서에서 부르는 이름. 화면 코드는 시맨틱 토큰만 쓴다.",
+    "paper": {
+      "$value": "#FBF5E8",
+      "$description": "종이 바탕(라이트 캔버스)"
+    },
+    "cream": {
+      "$value": "#FFFBF0",
+      "$description": "카드·시트 면"
+    },
+    "ivory": {
+      "$value": "#F6EBD6",
+      "$description": "장면 속 상아색"
+    },
+    "burgundy": {
+      "$value": "#7A1F2B",
+      "$description": "주 행동"
+    },
+    "gold": {
+      "$value": "#D9B36A",
+      "$description": "샴페인 골드 프레임"
+    },
+    "fir": {
+      "$value": "#3F5B3A"
+    },
+    "indigo": {
+      "$value": "#1D2347"
+    },
+    "snow": {
+      "$value": "#DCE6F2"
+    },
+    "ink": {
+      "$value": "#2A1F1A"
+    }
+  },
+  "base": {
+    "$type": "color",
+    "white": {
+      "$value": "#FFFFFF"
+    },
+    "black": {
+      "$value": "#000000"
+    },
+    "transparent": {
+      "$value": "transparent"
+    }
+  }
+}

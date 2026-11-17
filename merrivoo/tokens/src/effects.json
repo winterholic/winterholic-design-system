@@ -1,0 +1,329 @@
+{
+  "shadow": {
+    "$type": "shadow",
+    "$description": "따뜻한 갈색 그림자. 종이가 살짝 뜬 느낌.",
+    "xs": {
+      "$value": [
+        {
+          "color": "#3A22140D",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "sm": {
+      "$value": [
+        {
+          "color": "#3A221412",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0px"
+        },
+        {
+          "color": "#3A22140A",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "md": {
+      "$value": [
+        {
+          "color": "#3A221418",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "10px",
+          "spread": "-2px"
+        },
+        {
+          "color": "#3A22140A",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "lg": {
+      "$value": [
+        {
+          "color": "#3A221420",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "28px",
+          "spread": "-4px"
+        },
+        {
+          "color": "#3A22140A",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "xl": {
+      "$value": [
+        {
+          "color": "#3A22142B",
+          "offsetX": "0px",
+          "offsetY": "24px",
+          "blur": "56px",
+          "spread": "-8px"
+        }
+      ]
+    },
+    "inner": {
+      "$value": [
+        {
+          "color": "#3A22141A",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "inset": true
+        }
+      ]
+    },
+    "gold": {
+      "$value": [
+        {
+          "color": "#D9B36A66",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "20px",
+          "spread": "-2px"
+        }
+      ],
+      "$description": "선택·강조 후광(장식 선택, 점수 공개)"
+    }
+  },
+  "shadow-dark": {
+    "$type": "shadow",
+    "xs": {
+      "$value": [
+        {
+          "color": "#00000033",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "sm": {
+      "$value": [
+        {
+          "color": "#0000004D",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "3px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "md": {
+      "$value": [
+        {
+          "color": "#00000066",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "12px",
+          "spread": "-2px"
+        }
+      ]
+    },
+    "lg": {
+      "$value": [
+        {
+          "color": "#00000080",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-4px"
+        }
+      ]
+    },
+    "xl": {
+      "$value": [
+        {
+          "color": "#00000099",
+          "offsetX": "0px",
+          "offsetY": "24px",
+          "blur": "56px",
+          "spread": "-8px"
+        }
+      ]
+    },
+    "inner": {
+      "$value": [
+        {
+          "color": "#00000066",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px",
+          "inset": true
+        }
+      ]
+    },
+    "gold": {
+      "$value": [
+        {
+          "color": "#D9B36A80",
+          "offsetX": "0px",
+          "offsetY": "0px",
+          "blur": "24px",
+          "spread": "-2px"
+        }
+      ]
+    }
+  },
+  "gradient": {
+    "$type": "gradient",
+    "$description": "장면 위 글자 가독성(스크림)과 금박 광택에만 쓴다. 버튼 배경에는 쓰지 않는다.",
+    "scrim-top": {
+      "$value": [
+        {
+          "color": "#FBF5E8E6",
+          "position": 0
+        },
+        {
+          "color": "#FBF5E800",
+          "position": 1
+        }
+      ]
+    },
+    "scrim-bottom": {
+      "$value": [
+        {
+          "color": "#FBF5E800",
+          "position": 0
+        },
+        {
+          "color": "#FBF5E8F2",
+          "position": 1
+        }
+      ]
+    },
+    "gold-sheen": {
+      "$value": [
+        {
+          "color": "{gold.200}",
+          "position": 0
+        },
+        {
+          "color": "{gold.300}",
+          "position": 0.5
+        },
+        {
+          "color": "{gold.500}",
+          "position": 1
+        }
+      ]
+    }
+  },
+  "gradient-angle": {
+    "$type": "number",
+    "default": {
+      "$value": 135
+    },
+    "scrim": {
+      "$value": 180
+    }
+  },
+  "opacity": {
+    "$type": "number",
+    "disabled": {
+      "$value": 0.4
+    },
+    "hover": {
+      "$value": 0.06
+    },
+    "pressed": {
+      "$value": 0.1
+    },
+    "scrim": {
+      "$value": 0.5
+    },
+    "skeleton": {
+      "$value": 0.6
+    },
+    "ornament-dim": {
+      "$value": 0.35,
+      "$description": "선택 중 선택되지 않은 장식"
+    }
+  },
+  "blur": {
+    "$type": "dimension",
+    "sm": {
+      "$value": "4px"
+    },
+    "md": {
+      "$value": "12px"
+    },
+    "lg": {
+      "$value": "24px"
+    },
+    "glass": {
+      "$value": "16px"
+    }
+  },
+  "z-index": {
+    "$type": "number",
+    "$description": "장면 레이어는 0~99, UI 는 100 이상.",
+    "hide": {
+      "$value": -1
+    },
+    "base": {
+      "$value": 0
+    },
+    "scene-background": {
+      "$value": 0
+    },
+    "scene-environment": {
+      "$value": 10
+    },
+    "scene-atmosphere": {
+      "$value": 20
+    },
+    "scene-tree": {
+      "$value": 30
+    },
+    "scene-lighting": {
+      "$value": 40
+    },
+    "scene-ornaments": {
+      "$value": 50
+    },
+    "scene-foreground": {
+      "$value": 60
+    },
+    "scene-fx-top": {
+      "$value": 70
+    },
+    "ui": {
+      "$value": 100
+    },
+    "sticky": {
+      "$value": 110
+    },
+    "sheet": {
+      "$value": 200
+    },
+    "modal": {
+      "$value": 300
+    },
+    "toast": {
+      "$value": 400
+    },
+    "tooltip": {
+      "$value": 500
+    }
+  }
+}

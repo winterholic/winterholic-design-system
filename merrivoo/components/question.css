@@ -1,0 +1,12 @@
+/* question · 질문 패널과 진행 표시 */
+.mv-question { display: flex; flex-direction: column; gap: var(--mv-component-question-gap); padding: var(--mv-component-question-padding); border: var(--mv-border-width-frame) solid var(--mv-component-question-border); border-radius: var(--mv-component-question-radius); background: var(--mv-component-question-bg); box-shadow: var(--mv-component-question-shadow); -webkit-backdrop-filter: blur(var(--mv-blur-glass)); backdrop-filter: blur(var(--mv-blur-glass)); }
+.mv-question__index { font-size: var(--mv-font-size-xs); font-weight: var(--mv-font-weight-semibold); letter-spacing: var(--mv-font-letter-spacing-wide); color: var(--mv-color-text-brand); text-transform: uppercase; }
+.mv-question__text { margin: 0; font-family: var(--mv-font-family-sans); font-size: var(--mv-font-size-xl); font-weight: var(--mv-font-weight-semibold); line-height: var(--mv-font-line-height-snug); letter-spacing: var(--mv-font-letter-spacing-tight); word-break: keep-all; overflow-wrap: anywhere; text-wrap: balance; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
+.mv-question__hint { margin: 0; font-size: var(--mv-font-size-sm); color: var(--mv-color-text-secondary); }
+.mv-progress { display: flex; align-items: center; gap: var(--mv-component-progress-gap); }
+.mv-progress__dot { height: var(--mv-component-progress-dot-size); width: var(--mv-component-progress-dot-size); border-radius: var(--mv-component-progress-radius); background: var(--mv-component-progress-track); transition: width var(--mv-motion-duration-slow) var(--mv-motion-easing-soft-out), background-color var(--mv-motion-duration-normal) var(--mv-motion-easing-standard); }
+.mv-progress__dot[data-state="done"] { background: var(--mv-color-border-strong); }
+.mv-progress__dot[data-state="current"] { width: var(--mv-component-progress-dot-active-width); background: var(--mv-component-progress-fill); }
+.mv-progress--bar { display: block; height: var(--mv-component-progress-bar-height); border-radius: var(--mv-component-progress-radius); background: var(--mv-component-progress-track); overflow: hidden; }
+.mv-progress__fill { display: block; height: 100%; width: calc(var(--mv-progress, 0) * 1%); border-radius: inherit; background: var(--mv-component-progress-fill); transition: width var(--mv-motion-duration-slow) var(--mv-motion-easing-soft-out); }
+@media (prefers-reduced-motion: reduce) { .mv-progress__dot, .mv-progress__fill { transition: none; } }

@@ -1,0 +1,43 @@
+/* scene · 장면 컨테이너와 레이어. 모든 좌표는 JS 가 % 로 넣는다. 크기는 장면 폭 기준이라 어떤 화면 폭에서도 비율이 같다 */
+.mv-stage { position: fixed; inset: 0; overflow: hidden; background: var(--mv-color-surface-sunken); }
+.mv-stage__fill { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(var(--mv-blur-lg)) saturate(1.1); transform: scale(1.1); opacity: var(--mv-opacity-scrim); }
+.mv-stage__frame { position: absolute; top: 0; bottom: 0; overflow: hidden; }
+.mv-scene { position: relative; width: 100%; aspect-ratio: 9 / 16; overflow: hidden; isolation: isolate; background: var(--mv-color-surface-sunken); contain: layout paint; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.mv-scene__layer { position: absolute; margin: 0; padding: 0; border: 0; pointer-events: none; display: block; max-width: none; }
+.mv-scene__layer[data-type="image"] { object-fit: fill; image-rendering: auto; }
+.mv-scene__layer[data-layer="background"] { z-index: var(--mv-z-index-scene-background); }
+.mv-scene__layer[data-layer="environment"] { z-index: var(--mv-z-index-scene-environment); }
+.mv-scene__layer[data-layer="atmosphere"] { z-index: var(--mv-z-index-scene-atmosphere); }
+.mv-scene__layer[data-layer="shadow"] { z-index: calc(var(--mv-z-index-scene-tree) - 1); border-radius: var(--mv-radius-full); background: radial-gradient(closest-side, var(--mv-color-scene-ground-shadow), transparent); transform-origin: center; }
+.mv-scene__layer[data-layer="tree"] { z-index: var(--mv-z-index-scene-tree); }
+.mv-scene__layer[data-layer="lighting"] { inset: 0; z-index: var(--mv-z-index-scene-lighting); mix-blend-mode: screen; }
+.mv-scene__layer[data-layer="foreground"] { z-index: var(--mv-z-index-scene-foreground); }
+.mv-scene__layer[data-layer="grade"] { inset: 0; width: 100%; height: 100%; z-index: calc(var(--mv-z-index-scene-foreground) + 5); }
+.mv-scene__layer[data-layer="fx-top"] { z-index: var(--mv-z-index-scene-fx-top); }
+.mv-scene__layer[data-type="image"][data-layer="atmosphere"], .mv-scene__layer[data-type="image"][data-layer="fx-top"] { mix-blend-mode: screen; }
+/* 전구: 장식이 아니라 트리 조명 레이어. 위치는 트리 실루엣 따라 엔진이 만든다 */
+.mv-scene__layer[data-type="lights"] i { position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: var(--mv-radius-full); background: radial-gradient(closest-side, var(--mv-light, var(--mv-color-scene-glow)), transparent); animation: mv-twinkle var(--mv-motion-duration-twinkle) var(--mv-motion-easing-linear) infinite; animation-delay: calc(var(--mv-phase, 0) * var(--mv-motion-duration-twinkle) * -1); }
+.mv-scene__layer[data-type="lights"] i[data-tone="1"] { filter: saturate(0.6) brightness(1.15); }
+@keyframes mv-twinkle { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+/* 장식: 터치 대상. 보이는 크기가 작아도 ::after 로 터치 영역 44px 를 확보한다 */
+.mv-scene__layer[data-ornament-id] { z-index: var(--mv-z-index-scene-ornaments); display: block; pointer-events: none; background: none; cursor: pointer; transform-box: fill-box; }
+button.mv-scene__layer[data-ornament-id] { pointer-events: auto; appearance: none; -webkit-appearance: none; }
+.mv-scene__layer[data-ornament-id] img { display: block; width: 100%; height: auto; pointer-events: none; filter: drop-shadow(0 0 0 transparent); }
+button.mv-scene__layer[data-ornament-id]::after { content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: var(--mv-size-touch-target-min); min-height: var(--mv-size-touch-target-min); }
+.mv-scene__layer[data-ornament-id][data-zone="hang"] { animation: mv-sway calc(var(--mv-motion-duration-twinkle) * 1.6) var(--mv-motion-easing-standard) infinite alternate; }
+@keyframes mv-sway { from { rotate: -1.5deg; } to { rotate: 1.5deg; } }
+.mv-scene__layer[data-hero]::before { content: ""; position: absolute; inset: -30%; z-index: var(--mv-z-index-hide); border-radius: var(--mv-radius-full); background: radial-gradient(closest-side, var(--mv-color-scene-glow), transparent); opacity: 0.55; pointer-events: none; }
+button.mv-scene__layer[data-ornament-id]:focus-visible { outline: var(--mv-focus-ring-width) solid var(--mv-color-interactive-focus-ring); outline-offset: var(--mv-focus-ring-offset); border-radius: var(--mv-radius-sm); }
+.mv-scene[data-selecting] .mv-scene__layer[data-ornament-id]:not([data-selected]) { opacity: var(--mv-opacity-ornament-dim); }
+.mv-scene__layer[data-ornament-id][data-selected] { filter: drop-shadow(0 0 var(--mv-blur-md) var(--mv-color-scene-hit-ring)); }
+/* 등장 연출: 장식이 위에서 떨어져 안착. 지연은 --mv-delay 로 순서를 준다 */
+.mv-scene[data-enter] .mv-scene__layer[data-layer="tree"] { animation: mv-tree-in var(--mv-motion-duration-scene-reveal) var(--mv-motion-easing-soft-out) both; }
+.mv-scene[data-enter] .mv-scene__layer[data-ornament-id] { animation: mv-drop var(--mv-motion-duration-scene-enter) var(--mv-motion-easing-spring) both; animation-delay: calc(var(--mv-motion-duration-scene-reveal) + var(--mv-delay, 0ms)); }
+@keyframes mv-tree-in { from { opacity: 0; transform: translateY(var(--mv-motion-distance-lg)) scale(var(--mv-motion-scale-enter)); } to { opacity: 1; transform: none; } }
+@keyframes mv-drop { from { opacity: 0; translate: 0 calc(var(--mv-motion-distance-drop) * -1); } to { opacity: 1; translate: 0 0; } }
+.mv-scene-ui { position: absolute; inset: 0; z-index: var(--mv-z-index-ui); pointer-events: none; }
+.mv-scene-ui > * { pointer-events: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .mv-scene__layer[data-type="lights"] i { animation: none; opacity: 0.85; }
+  .mv-scene__layer[data-ornament-id][data-zone="hang"], .mv-scene[data-enter] .mv-scene__layer { animation: none; }
+}

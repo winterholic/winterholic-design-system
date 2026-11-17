@@ -1,0 +1,26 @@
+/* form · 닉네임 입력, 익명 토글, 칩. 입력 글자는 16px 이상(iOS 확대 방지) */
+.mv-field { display: flex; flex-direction: column; gap: var(--mv-component-field-label-gap); }
+.mv-field__label { font-size: var(--mv-font-size-sm); font-weight: var(--mv-font-weight-semibold); line-height: var(--mv-font-line-height-normal); color: var(--mv-color-text-secondary); }
+.mv-field__input { width: 100%; min-height: var(--mv-component-field-height); padding: 0 var(--mv-component-field-padding-x); border: var(--mv-border-width-hairline) solid var(--mv-component-field-border); border-radius: var(--mv-component-field-radius); background: var(--mv-component-field-bg); color: var(--mv-color-text-primary); font-family: var(--mv-font-family-sans); font-size: var(--mv-font-size-md); line-height: var(--mv-font-line-height-normal); transition: border-color var(--mv-motion-duration-fast) var(--mv-motion-easing-standard), box-shadow var(--mv-motion-duration-normal) var(--mv-motion-easing-standard); }
+.mv-field__input::placeholder { color: var(--mv-color-text-placeholder); }
+.mv-field__input:focus-visible { outline: none; border-color: var(--mv-component-field-border-focus); box-shadow: 0 0 0 var(--mv-border-width-focus) var(--mv-component-field-border-focus); }
+.mv-field__input:disabled { background: var(--mv-color-surface-disabled); color: var(--mv-color-text-disabled); cursor: not-allowed; }
+.mv-field--error .mv-field__input { border-color: var(--mv-component-field-border-error); }
+.mv-field__help { font-size: var(--mv-font-size-xs); line-height: var(--mv-font-line-height-normal); color: var(--mv-color-text-tertiary); margin-top: calc(var(--mv-component-field-help-gap) - var(--mv-component-field-label-gap)); }
+.mv-field--error .mv-field__help { color: var(--mv-color-text-danger); }
+.mv-field__counter { align-self: flex-end; font-size: var(--mv-font-size-xs); color: var(--mv-color-text-tertiary); font-variant-numeric: tabular-nums; }
+/* 토글(스위치): <label class="mv-toggle"><input type="checkbox" role="switch"> … */
+.mv-toggle { display: flex; align-items: center; justify-content: space-between; gap: var(--mv-space-3); min-height: var(--mv-size-touch-target-min); cursor: pointer; }
+.mv-toggle__text { display: flex; flex-direction: column; gap: var(--mv-space-0-5); }
+.mv-toggle__title { font-size: var(--mv-font-size-md); font-weight: var(--mv-font-weight-semibold); }
+.mv-toggle__sub { font-size: var(--mv-font-size-sm); color: var(--mv-color-text-secondary); }
+.mv-toggle__input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.mv-toggle__track { position: relative; flex: none; width: var(--mv-component-toggle-width); height: var(--mv-component-toggle-height); padding: var(--mv-component-toggle-padding); border-radius: var(--mv-radius-full); background: var(--mv-component-toggle-track-off); transition: background-color var(--mv-motion-duration-normal) var(--mv-motion-easing-standard); }
+.mv-toggle__track::after { content: ""; display: block; width: var(--mv-component-toggle-thumb); height: var(--mv-component-toggle-thumb); border-radius: var(--mv-radius-full); background: var(--mv-component-toggle-thumb-color); box-shadow: var(--mv-shadow-sm); transition: transform var(--mv-motion-duration-normal) var(--mv-motion-easing-spring); }
+.mv-toggle__input:checked + .mv-toggle__track { background: var(--mv-component-toggle-track-on); }
+.mv-toggle__input:checked + .mv-toggle__track::after { transform: translateX(calc(var(--mv-component-toggle-width) - var(--mv-component-toggle-thumb) - var(--mv-component-toggle-padding) * 2)); }
+.mv-toggle__input:focus-visible + .mv-toggle__track { outline: var(--mv-focus-ring-width) solid var(--mv-color-interactive-focus-ring); outline-offset: var(--mv-focus-ring-offset); }
+.mv-toggle__input:disabled + .mv-toggle__track { opacity: var(--mv-opacity-disabled); }
+.mv-chip { display: inline-flex; align-items: center; gap: var(--mv-space-1); min-height: var(--mv-size-control-sm); padding: 0 var(--mv-space-3); border-radius: var(--mv-radius-full); border: var(--mv-border-width-hairline) solid var(--mv-color-border-default); background: var(--mv-color-surface-default); font-size: var(--mv-font-size-sm); font-weight: var(--mv-font-weight-semibold); color: var(--mv-color-text-secondary); }
+.mv-chip[aria-pressed="true"] { background: var(--mv-color-interactive-selected-bg); border-color: var(--mv-color-interactive-selected-border); color: var(--mv-color-interactive-selected-text); }
+@media (prefers-reduced-motion: reduce) { .mv-toggle__track::after { transition: none; } }

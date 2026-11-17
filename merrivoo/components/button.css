@@ -1,0 +1,27 @@
+/* button · 주 행동은 lg(52) 이상. 같은 줄 버튼은 같은 크기. 주 버튼 두 개 나란히 금지 */
+.mv-btn { --mv-btn-bg: var(--mv-color-action-primary-bg); --mv-btn-bg-hover: var(--mv-color-action-primary-bg-hover); --mv-btn-bg-active: var(--mv-color-action-primary-bg-active); --mv-btn-fg: var(--mv-color-action-primary-text); --mv-btn-border: transparent;
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: var(--mv-component-button-gap);
+  min-height: var(--mv-component-button-md-height); min-width: var(--mv-size-touch-target-min); padding: 0 var(--mv-component-button-md-padding-x);
+  border: var(--mv-border-width-hairline) solid var(--mv-btn-border); border-radius: var(--mv-component-button-radius);
+  background: var(--mv-btn-bg); color: var(--mv-btn-fg); box-shadow: var(--mv-component-button-shadow);
+  font-family: var(--mv-font-family-sans); font-size: var(--mv-font-size-md); font-weight: var(--mv-font-weight-semibold); line-height: var(--mv-font-line-height-normal);
+  text-decoration: none; white-space: nowrap; cursor: pointer; user-select: none; -webkit-user-select: none;
+  transition: background-color var(--mv-motion-duration-fast) var(--mv-motion-easing-standard), transform var(--mv-motion-duration-fast) var(--mv-motion-easing-spring), box-shadow var(--mv-motion-duration-normal) var(--mv-motion-easing-standard); }
+@media (hover: hover) { .mv-btn:hover:not(:disabled):not([aria-busy="true"]) { background: var(--mv-btn-bg-hover); } }
+.mv-btn:active:not(:disabled) { background: var(--mv-btn-bg-active); transform: scale(var(--mv-motion-scale-press)); }
+.mv-btn:focus-visible { outline: var(--mv-focus-ring-width) solid var(--mv-color-interactive-focus-ring); outline-offset: var(--mv-focus-ring-offset); }
+.mv-btn--secondary { --mv-btn-bg: var(--mv-color-action-secondary-bg); --mv-btn-bg-hover: var(--mv-color-action-secondary-bg-hover); --mv-btn-bg-active: var(--mv-color-action-secondary-bg-active); --mv-btn-fg: var(--mv-color-action-secondary-text); --mv-btn-border: var(--mv-color-action-secondary-border); }
+.mv-btn--ghost { --mv-btn-bg: var(--mv-color-action-ghost-bg); --mv-btn-bg-hover: var(--mv-color-action-ghost-bg-hover); --mv-btn-bg-active: var(--mv-color-action-ghost-bg-active); --mv-btn-fg: var(--mv-color-action-ghost-text); box-shadow: none; }
+.mv-btn--danger { --mv-btn-bg: var(--mv-color-action-danger-bg); --mv-btn-bg-hover: var(--mv-color-action-danger-bg-hover); --mv-btn-bg-active: var(--mv-color-action-danger-bg-active); --mv-btn-fg: var(--mv-color-action-danger-text); }
+.mv-btn--sm { min-height: var(--mv-component-button-sm-height); padding: 0 var(--mv-component-button-sm-padding-x); font-size: var(--mv-font-size-sm); }
+.mv-btn--lg { min-height: var(--mv-component-button-lg-height); padding: 0 var(--mv-component-button-lg-padding-x); font-size: var(--mv-font-size-lg); }
+.mv-btn--xl { min-height: var(--mv-component-button-xl-height); padding: 0 var(--mv-component-button-xl-padding-x); font-size: var(--mv-font-size-lg); border-radius: var(--mv-component-button-radius-pill); }
+.mv-btn--block { display: flex; width: 100%; }
+.mv-btn--icon { padding: 0; width: var(--mv-size-touch-target-min); }
+.mv-btn__icon { width: var(--mv-component-button-md-icon); height: var(--mv-component-button-md-icon); flex: none; }
+.mv-btn:disabled, .mv-btn[aria-disabled="true"] { --mv-btn-bg: var(--mv-color-action-disabled-bg); --mv-btn-fg: var(--mv-color-action-disabled-text); --mv-btn-border: var(--mv-color-action-disabled-border); box-shadow: none; cursor: not-allowed; }
+/* 로딩: 글자는 유지하고 앞에 스피너. 중복 제출은 aria-busy 로 막는다 */
+.mv-btn[aria-busy="true"] { cursor: progress; pointer-events: none; }
+.mv-btn[aria-busy="true"]::before { content: ""; width: var(--mv-size-icon-sm); height: var(--mv-size-icon-sm); border-radius: var(--mv-radius-full); border: var(--mv-border-width-focus) solid currentcolor; border-right-color: transparent; animation: mv-spin var(--mv-motion-duration-slower) var(--mv-motion-easing-linear) infinite; }
+@keyframes mv-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .mv-btn[aria-busy="true"]::before { animation: none; border-right-color: currentcolor; opacity: var(--mv-opacity-skeleton); } .mv-btn:active:not(:disabled) { transform: none; } }

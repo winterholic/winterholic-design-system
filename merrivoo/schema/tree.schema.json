@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tree.schema.json",
+  "title": "Tree",
+  "description": "조립 가능한 트리 한 종. mask 는 알파에서 뽑은 실루엣(행 문자열 0/1)이며 장식 배치 가능 영역을 정한다.",
+  "type": "object",
+  "required": [
+    "id",
+    "file",
+    "width",
+    "height",
+    "aspect",
+    "mask",
+    "tags",
+    "compat",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "file": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "aspect": {
+      "type": "number"
+    },
+    "heightFrac": {
+      "type": "number",
+      "minimum": 0.15,
+      "maximum": 0.7,
+      "description": "장면 높이 대비 목표 높이(기본 0.46)"
+    },
+    "baseAnchor": {
+      "type": "object",
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "topAnchor": {
+      "type": "object",
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "mask": {
+      "type": "object",
+      "required": [
+        "cols",
+        "rows",
+        "data"
+      ],
+      "properties": {
+        "cols": {
+          "type": "integer",
+          "minimum": 9
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 9
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[01]+$"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "compat": {
+      "type": "object",
+      "required": [
+        "worlds"
+      ],
+      "properties": {
+        "worlds": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "native",
+              "allowed",
+              "forbidden"
+            ]
+          }
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "license": {
+      "type": "string"
+    }
+  }
+}

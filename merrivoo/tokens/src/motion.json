@@ -1,0 +1,121 @@
+{
+  "motion": {
+    "$description": "모션은 상태 변화와 장면 등장 연출을 설명할 때만 쓴다. 터치 피드백은 fast, 장면 연출은 scene-*. reduced-motion 이면 연출은 정지 상태로 바로 전환.",
+    "duration": {
+      "$type": "duration",
+      "instant": {
+        "$value": "0ms"
+      },
+      "fast": {
+        "$value": "120ms",
+        "$description": "눌림·토글"
+      },
+      "normal": {
+        "$value": "220ms",
+        "$description": "카드 선택·툴팁"
+      },
+      "slow": {
+        "$value": "360ms",
+        "$description": "시트·화면 전환"
+      },
+      "slower": {
+        "$value": "560ms"
+      },
+      "scene-enter": {
+        "$value": "900ms",
+        "$description": "트리 등장·장식 안착"
+      },
+      "scene-reveal": {
+        "$value": "1400ms",
+        "$description": "세계관 공개"
+      },
+      "twinkle": {
+        "$value": "2400ms",
+        "$description": "전구·반짝임 한 주기"
+      },
+      "skeleton-cycle": {
+        "$value": "1500ms"
+      }
+    },
+    "easing": {
+      "$type": "cubicBezier",
+      "standard": {
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ]
+      },
+      "decelerate": {
+        "$value": [
+          0,
+          0,
+          0,
+          1
+        ]
+      },
+      "accelerate": {
+        "$value": [
+          0.3,
+          0,
+          1,
+          1
+        ]
+      },
+      "spring": {
+        "$value": [
+          0.34,
+          1.56,
+          0.64,
+          1
+        ]
+      },
+      "soft-out": {
+        "$value": [
+          0.22,
+          1,
+          0.36,
+          1
+        ]
+      },
+      "linear": {
+        "$value": [
+          0,
+          0,
+          1,
+          1
+        ]
+      }
+    },
+    "distance": {
+      "$type": "dimension",
+      "sm": {
+        "$value": "4px"
+      },
+      "md": {
+        "$value": "8px"
+      },
+      "lg": {
+        "$value": "16px"
+      },
+      "drop": {
+        "$value": "48px",
+        "$description": "장식이 위에서 떨어져 안착하는 거리"
+      }
+    },
+    "scale": {
+      "$type": "number",
+      "enter": {
+        "$value": 0.96
+      },
+      "press": {
+        "$value": 0.97
+      },
+      "pop": {
+        "$value": 1.08,
+        "$description": "선택된 카드·장식 팝"
+      }
+    }
+  }
+}

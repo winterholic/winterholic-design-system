@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "world.schema.json",
+  "title": "World",
+  "description": "세계관 한 종: 배경, 트리가 서는 자리, 조명·색 보정, 호환 트리 목록(목록이 곧 계약).",
+  "type": "object",
+  "required": [
+    "id",
+    "background",
+    "treeAnchor",
+    "treeWidth",
+    "compat",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "background": {
+      "type": "object",
+      "required": [
+        "file",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      }
+    },
+    "treeAnchor": {
+      "type": "object",
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false,
+      "description": "트리 밑동 중앙 위치(장면 0~1)"
+    },
+    "treeWidth": {
+      "type": "number",
+      "minimum": 0.3,
+      "maximum": 0.95,
+      "description": "트리 최대 폭(장면 폭 대비)"
+    },
+    "groundShadow": {
+      "type": "object"
+    },
+    "light": {
+      "type": "object",
+      "properties": {
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "grade": {
+      "type": "object",
+      "properties": {
+        "tint": {
+          "type": "string"
+        },
+        "blend": {
+          "const": "multiply"
+        }
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "theme": {
+      "type": "string",
+      "description": "data-world 테마 이름"
+    },
+    "compat": {
+      "type": "object",
+      "required": [
+        "trees"
+      ],
+      "properties": {
+        "trees": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "native",
+              "allowed",
+              "forbidden"
+            ]
+          }
+        }
+      }
+    },
+    "environment": {
+      "type": "array"
+    },
+    "foreground": {
+      "type": "array"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "license": {
+      "type": "string"
+    }
+  }
+}

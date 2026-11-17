@@ -1,0 +1,19 @@
+/* base · 앱 셸·레이아웃 유틸. 모바일 우선(320px 기준), 태블릿은 breakpoint.lg(600px) 이상에서 보강 */
+.mv-app { min-height: 100dvh; background: var(--mv-color-surface-canvas); color: var(--mv-color-text-primary); font-family: var(--mv-font-family-sans); -webkit-tap-highlight-color: transparent; }
+.mv-app *, .mv-app *::before, .mv-app *::after { box-sizing: border-box; }
+.mv-app :where(button, input, textarea) { font: inherit; color: inherit; }
+.mv-app :where(button) { touch-action: manipulation; }
+.mv-vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.mv-stack { display: flex; flex-direction: column; gap: var(--mv-space-3); }
+.mv-stack--lg { gap: var(--mv-space-5); }
+.mv-row { display: flex; align-items: center; gap: var(--mv-space-3); }
+.mv-gutter { padding-inline: max(var(--mv-size-layout-page-gutter), env(safe-area-inset-left)) max(var(--mv-size-layout-page-gutter), env(safe-area-inset-right)); }
+@media (min-width: 600px) { .mv-gutter { padding-inline: var(--mv-size-layout-page-gutter-md); } }
+/* 장면 위에 얹는 화면: 위·아래 UI 영역을 safe-area 로 보호하고 가운데는 장면이 보이게 비운다 */
+.mv-screen { position: relative; min-height: 100dvh; display: flex; flex-direction: column; }
+.mv-screen__top { padding-top: max(var(--mv-space-4), env(safe-area-inset-top)); }
+.mv-screen__bottom { margin-top: auto; padding-bottom: max(var(--mv-space-4), env(safe-area-inset-bottom)); }
+.mv-screen__center { flex: 1; min-height: 0; }
+/* 태블릿 이상: UI 열 폭을 제한해 늘어진 카드를 막는다 */
+.mv-column { width: 100%; max-width: var(--mv-size-container-tablet); margin-inline: auto; }
+@media (prefers-reduced-motion: reduce) { .mv-app * { scroll-behavior: auto !important; } }

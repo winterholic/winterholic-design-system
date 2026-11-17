@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "catalog.schema.json",
+  "title": "Catalog",
+  "type": "object",
+  "required": [
+    "version",
+    "assetBase",
+    "worlds",
+    "trees",
+    "ornaments"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "assetBase": {
+      "type": "string"
+    },
+    "worlds": {
+      "type": "array",
+      "items": {
+        "$ref": "world.schema.json"
+      }
+    },
+    "trees": {
+      "type": "array",
+      "items": {
+        "$ref": "tree.schema.json"
+      }
+    },
+    "ornaments": {
+      "type": "array",
+      "items": {
+        "$ref": "ornament.schema.json"
+      }
+    },
+    "effects": {
+      "type": "array"
+    },
+    "props": {
+      "type": "array"
+    }
+  }
+}

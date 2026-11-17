@@ -1,0 +1,48 @@
+{
+  "world": {
+    "$type": "color",
+    "$description": "세계관 테마. 장면 쪽 토큰(color.scene.*)과 프레임 금박만 바꾼다. 글자·버튼·상태 색은 바꾸지 않아 모든 세계관에서 UI 가 같은 얼굴을 유지한다.",
+    "snow-village": {
+      "scene.glow": {
+        "$value": "{gold.300}"
+      },
+      "scene.ground-shadow": {
+        "$value": "#3A22141F"
+      },
+      "scene.tint": {
+        "$value": "#FFE9C61A"
+      },
+      "border.gold": {
+        "$value": "{gold.400}"
+      }
+    },
+    "star-colony": {
+      "scene.glow": {
+        "$value": "{gold.200}"
+      },
+      "scene.ground-shadow": {
+        "$value": "#0C122E66"
+      },
+      "scene.tint": {
+        "$value": "#2A3A8A1F"
+      },
+      "border.gold": {
+        "$value": "{gold.300}"
+      }
+    },
+    "night-office": {
+      "scene.glow": {
+        "$value": "{amber.300}"
+      },
+      "scene.ground-shadow": {
+        "$value": "#0A12285C"
+      },
+      "scene.tint": {
+        "$value": "#10204014"
+      },
+      "border.gold": {
+        "$value": "{amber.400}"
+      }
+    }
+  }
+}
