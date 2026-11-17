@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko" data-world="snow-village">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Merrivoo Design System · 미리보기</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../dist/tokens.css">
+<link rel="stylesheet" href="../dist/typography.css">
+<link rel="stylesheet" href="../dist/components.css">
+<link rel="stylesheet" href="preview.css">
+</head>
+<body class="mv-app">
+<main class="pv">
+  <header class="pv-head">
+    <h1 class="mv-display-md">Merrivoo Design System</h1>
+    <p class="mv-body-md">토큰·컴포넌트·장면 조립 미리보기. 데모 에셋은 CC0 SVG 입니다.</p>
+    <div class="pv-controls" role="group" aria-label="미리보기 옵션">
+      <button class="mv-chip" id="theme" aria-pressed="false" type="button">다크</button>
+      <label class="mv-chip">세계관 <select id="world"><option value="demo-meadow">demo-meadow</option><option value="demo-night">demo-night</option></select></label>
+      <label class="mv-chip">트리 <select id="tree"></select></label>
+      <label class="mv-chip">장식 <input id="count" type="range" min="0" max="50" value="12"> <output id="countOut">12</output></label>
+    </div>
+  </header>
+
+  <section class="pv-sec" aria-labelledby="s-scene">
+    <h2 id="s-scene" class="mv-heading-2">장면 조립 (엔진 + DOM 렌더러)</h2>
+    <div class="pv-scene"><div id="scene"></div><pre id="diag" class="mv-caption"></pre></div>
+  </section>
+
+  <section class="pv-sec" aria-labelledby="s-color">
+    <h2 id="s-color" class="mv-heading-2">시맨틱 색</h2>
+    <div class="pv-swatches" id="swatches"></div>
+  </section>
+
+  <section class="pv-sec" aria-labelledby="s-type">
+    <h2 id="s-type" class="mv-heading-2">타이포그래피</h2>
+    <p class="mv-display-lg">나만의 크리스마스</p>
+    <p class="mv-display-sm">눈송이 마을의 전나무</p>
+    <p class="mv-question">크리스마스 이브 저녁, 가장 가고 싶은 곳은?</p>
+    <p class="mv-body-lg">본문 큰 글씨. 질문과 결과 문구에 쓰고 한 줄 최대 28자 안팎으로 끊는다.</p>
+    <p class="mv-body-sm">보조 설명 14px. <span class="mv-numeric">91점</span> · <span class="mv-score" style="font-size:inherit">92</span></p>
+  </section>
+
+  <section class="pv-sec" aria-labelledby="s-comp">
+    <h2 id="s-comp" class="mv-heading-2">컴포넌트</h2>
+    <div class="pv-row">
+      <button class="mv-btn mv-btn--lg" type="button">주 버튼</button>
+      <button class="mv-btn mv-btn--lg mv-btn--secondary" type="button">보조 버튼</button>
+      <button class="mv-btn mv-btn--lg mv-btn--ghost" type="button">고스트</button>
+      <button class="mv-btn mv-btn--lg" type="button" aria-busy="true">불러오는 중</button>
+      <button class="mv-btn mv-btn--lg" type="button" disabled>비활성</button>
+    </div>
+    <fieldset class="mv-choice-list"><legend class="mv-vh">선택</legend>
+      <label class="mv-choice"><input class="mv-choice__input" type="radio" name="c" checked><span class="mv-choice__body"><span class="mv-choice__title">눈 쌓인 마을의 따뜻한 집</span><span class="mv-choice__sub">창문마다 불이 켜진 곳</span></span><span class="mv-choice__check" aria-hidden="true">✓</span></label>
+      <label class="mv-choice"><input class="mv-choice__input" type="radio" name="c"><span class="mv-choice__body"><span class="mv-choice__title">불 꺼지지 않는 사무실</span></span><span class="mv-choice__check" aria-hidden="true">✓</span></label>
+    </fieldset>
+    <div class="mv-field"><label class="mv-field__label" for="nick">닉네임</label><input class="mv-field__input" id="nick" value="붕어빵" maxlength="12"><span class="mv-field__help">주인에게 보여요. 최대 12자</span></div>
+    <label class="mv-toggle"><span class="mv-toggle__text"><span class="mv-toggle__title">익명으로 남기기</span><span class="mv-toggle__sub">닉네임 없이 보여요</span></span><input class="mv-toggle__input" type="checkbox" role="switch"><span class="mv-toggle__track" aria-hidden="true"></span></label>
+    <div class="mv-progress" role="progressbar" aria-valuenow="3" aria-valuemax="7" aria-label="진행"><span class="mv-progress__dot" data-state="done"></span><span class="mv-progress__dot" data-state="done"></span><span class="mv-progress__dot" data-state="current"></span><span class="mv-progress__dot"></span><span class="mv-progress__dot"></span></div>
+    <div class="mv-score" role="img" aria-label="궁합 점수 91점"><div class="mv-score__ring" style="--mv-score:91"><span class="mv-score__value">91</span></div><span class="mv-score__label">궁합 점수</span></div>
+    <article class="mv-universe-card"><span class="mv-universe-card__eyebrow">평행우주가 열렸어요</span><h3 class="mv-universe-card__title">편의점 제국의 컵라면 트리</h3><p class="mv-universe-card__body">편의점 선반 가장 아래부터 쌓아 올린, 따뜻한 국물의 트리예요.</p><div class="mv-universe-card__meta"><span class="mv-chip">편의점 제국</span><span class="mv-chip">컵라면 트리</span></div></article>
+    <div class="mv-state" role="status"><div class="mv-state__icon" aria-hidden="true">✦</div><h3 class="mv-state__title">아직 장식이 없어요</h3><p class="mv-state__body">링크를 공유해 친구를 초대해 보세요.</p></div>
+  </section>
+</main>
+<script type="module">
+import { composeScene, renderSceneDOM, availableTrees } from '../engine/index.mjs';
+const cat = await (await fetch('../assets/demo/catalog.json')).json();
+cat.assetBase = '../assets/demo/';
+const $ = (id) => document.getElementById(id);
+const world = $('world'), tree = $('tree'), count = $('count');
+function fillTrees() { const w = cat.worlds.find((x) => x.id === world.value); tree.replaceChildren(...availableTrees(cat, w).map((t) => new Option(t.id, t.id))); }
+function draw() {
+  const w = cat.worlds.find((x) => x.id === world.value);
+  document.documentElement.dataset.world = w.theme;
+  const n = +count.value; $('countOut').textContent = n;
+  const ornaments = Array.from({ length: n }, (_, i) => ({ id: 'o' + i, ornamentId: cat.ornaments[(i * 3 + 1) % cat.ornaments.length].id, score: Math.max(5, 98 - Math.round((i * 93) / Math.max(1, n - 1))) }));
+  const s = composeScene(cat, { worldId: w.id, treeId: tree.value, ornaments, treePx: 260 });
+  renderSceneDOM($('scene'), s);
+  const d = s.diagnostics;
+  $('diag').textContent = `배치 ${d.placed}/${d.requested} · 초과 ${d.overflow} · 최대 겹침 ${Math.round(d.maxOverlap * 100)}% · 이탈 ${d.outsideSilhouette} · 최소 ${d.minOrnamentPx}px · ${d.pass ? 'PASS' : 'FAIL'}`;
+}
+world.onchange = () => { fillTrees(); draw(); }; tree.onchange = draw; count.oninput = draw;
+$('theme').onclick = (e) => { const dark = e.currentTarget.getAttribute('aria-pressed') !== 'true'; e.currentTarget.setAttribute('aria-pressed', dark); document.documentElement.dataset.theme = dark ? 'dark' : 'light'; };
+fillTrees(); draw();
+const names = ['surface-canvas', 'surface-default', 'surface-glass', 'text-primary', 'text-brand', 'border-gold', 'action-primary-bg', 'status-success-solid', 'status-danger-solid', 'scene-glow'];
+$('swatches').replaceChildren(...names.map((n) => { const d = document.createElement('div'); d.className = 'pv-sw'; d.innerHTML = `<i style="background:var(--mv-color-${n})"></i><code>color.${n.replace('-', '.')}</code>`; return d; }));
+</script>
+</body>
+</html>
