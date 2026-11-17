@@ -164,7 +164,7 @@ button.mv-scene__layer[data-ornament-id]:focus-visible { outline: var(--mv-focus
 @keyframes mv-tree-in { from { opacity: 0; transform: translateY(var(--mv-motion-distance-lg)) scale(var(--mv-motion-scale-enter)); } to { opacity: 1; transform: none; } }
 @keyframes mv-drop { from { opacity: 0; translate: 0 calc(var(--mv-motion-distance-drop) * -1); } to { opacity: 1; translate: 0 0; } }
 .mv-scene-ui { position: absolute; inset: 0; z-index: var(--mv-z-index-ui); pointer-events: none; }
-.mv-scene-ui > * { pointer-events: auto; }
+.mv-scene-ui > :where(:not(.mv-backdrop)) { pointer-events: auto; }
 @media (prefers-reduced-motion: reduce) {
   .mv-scene__layer[data-type="lights"] i { animation: none; opacity: 0.85; }
   .mv-scene__layer[data-ornament-id][data-zone="hang"], .mv-scene[data-enter] .mv-scene__layer { animation: none; }

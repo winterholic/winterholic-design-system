@@ -232,5 +232,6 @@ export function Stage({ scene, bgSrc, children, focus, sceneProps }) {
   return h('div', { className: 'mv-stage', 'data-fit': fit.mode, style: { height: vp.h } },
     fit.mode === 'stage' && bgSrc ? h('div', { className: 'mv-stage__fill', style: { backgroundImage: `url(${bgSrc})` }, 'aria-hidden': 'true' }) : null,
     h('div', { className: 'mv-stage__frame', style: { left: fit.offsetX, width: fit.stageW, top: fit.offsetY, height: fit.stageH, bottom: 'auto' } }, h(SceneView, { scene, ...sceneProps })),
-    h('div', { className: 'mv-scene-ui', style: { height: vp.h } }, children));
+    // 넓은 화면(stage)에서는 UI 도 장면 열 안에 둬서 카드가 옆으로 퍼지지 않게 한다
+    h('div', { className: 'mv-scene-ui', style: fit.mode === 'stage' ? { height: vp.h, left: fit.offsetX, width: fit.stageW, right: 'auto' } : { height: vp.h } }, children));
 }

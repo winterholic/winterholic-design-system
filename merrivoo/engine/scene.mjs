@@ -37,9 +37,9 @@ export function generateLights(tree, density = 'full', seed = 'lights') {
 }
 
 /** 장면 폭·높이 대비 트리 크기(0~1). composeScene 과 화면 쪽 px 계산이 같은 값을 쓴다 */
-export function treeSize(world, tree) {
+export function treeSize(world, tree, scale = 1) {
   const { w: W, h: H } = SCENE_SIZE;
-  const wPx = Math.min((tree.heightFrac ?? 0.46) * H * tree.aspect, world.treeWidth * W);
+  const wPx = Math.min((tree.heightFrac ?? 0.46) * H * tree.aspect, world.treeWidth * W) * scale;
   return { w: wPx / W, h: wPx / tree.aspect / H };
 }
 
@@ -72,7 +72,7 @@ export function composeScene(catalog, state, options = {}) {
 
   // 트리: 밑동 중앙이 world.treeAnchor
   // 트리 크기: 목표 높이(heightFrac, 장면 높이 대비)를 따르되 폭은 world.treeWidth(장면 폭 대비) 를 넘지 않는다
-  const ts = treeSize(world, tree);
+  const ts = treeSize(world, tree, state.treeScale ?? 1);
   const treeWpx = ts.w * W;
   const treeHpx = ts.h * H;
   const baseY = tree.baseAnchor?.y ?? 1;

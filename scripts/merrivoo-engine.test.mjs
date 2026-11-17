@@ -11,6 +11,7 @@ assert.equal(basename(root), 'merrivoo', 'merrivoo 디렉터리에서 실행해�
 const cat = JSON.parse(readFileSync(join(root, 'assets/demo/catalog.json'), 'utf8'));
 const world = (id) => cat.worlds.find((w) => w.id === id);
 const tree = (id) => cat.trees.find((t) => t.id === id);
+const asState = (list) => list.map((i) => ({ id: i.id, ornamentId: i.ornament.id, score: i.score }));
 const items = (n, pool = cat.ornaments) => Array.from({ length: n }, (_, i) => ({ id: `i${i}`, ornament: pool[(i * 3 + 1) % pool.length], score: Math.max(5, 98 - Math.round((i * 93) / Math.max(1, n - 1))) }));
 
 test('데모 카탈로그가 스키마 규칙과 교차 참조 검증을 통과한다', () => {
@@ -60,12 +61,17 @@ test('배치는 결정적이다: 같은 입력·seed 는 같은 결과, seed 가
   assert.deepEqual(a, b);
   assert.notDeepEqual(a.placements, c.placements);
 });
-test('궁합 점수가 높을수록 위쪽에 놓인다(점수 상관이 음수, 최고점은 가장 높은 자리군)', () => {
+test('궁합 점수가 높을수록 더 소중한 자리(prominence)에 놓이고, 점수와 높이는 강한 음의 상관을 갖는다', () => {
   const t = tree('demo-pine');
   const list = [95, 80, 60, 40, 15].map((score, i) => ({ id: `p${i}`, ornament: cat.ornaments[i + 1], score }));
   const r = E.placeOrnaments(t, list);
-  const v = Object.fromEntries(r.placements.map((p) => [p.score, p.v]));
-  for (const [hi, lo] of [[95, 80], [80, 60], [60, 40], [40, 15]]) assert.ok(v[hi] < v[lo], `${hi}점(${v[hi]})이 ${lo}점(${v[lo]})보다 위여야 한다`);
+  const by = Object.fromEntries(r.placements.map((p) => [p.score, p]));
+  for (const [hi, lo] of [[95, 80], [80, 60], [60, 40], [40, 15]]) assert.ok(by[hi].P > by[lo].P, `${hi}점 P(${by[hi].P}) > ${lo}점 P(${by[lo].P})`);
+  // 점수와 v(아래로 갈수록 큼)의 피어슨 상관
+  const xs = r.placements.map((p) => p.score), ys = r.placements.map((p) => p.v);
+  const mx = xs.reduce((a, b) => a + b) / xs.length, my = ys.reduce((a, b) => a + b) / ys.length;
+  const cov = xs.reduce((a, x, i) => a + (x - mx) * (ys[i] - my), 0), sx = Math.sqrt(xs.reduce((a, x) => a + (x - mx) ** 2, 0)), sy = Math.sqrt(ys.reduce((a, y) => a + (y - my) ** 2, 0));
+  assert.ok(cov / (sx * sy) < -0.8, `상관 ${(cov / (sx * sy)).toFixed(2)}`);
 });
 test('토퍼는 점수 85 이상 중 허용하는 장식 하나만 차지하고 트리 꼭대기에 놓인다', () => {
   const t = tree('demo-pine');
@@ -84,7 +90,7 @@ test('용량을 넘으면 장식을 지우지 않고 overflow 로 돌려준다',
   assert.equal(r.diagnostics.overlapPairsOver25pct, 0);
 });
 test('트리 정규화 좌표가 장면 좌표로 올바르게 변환된다(밑동 중앙 = treeAnchor)', () => {
-  const s = E.composeScene(cat, { worldId: 'demo-meadow', treeId: 'demo-pine', ornaments: items(5), lights: 'off' });
+  const s = E.composeScene(cat, { worldId: 'demo-meadow', treeId: 'demo-pine', ornaments: asState(items(5)), lights: 'off' });
   const t = s.layers.find((l) => l.key === 'tree');
   assert.ok(Math.abs(t.x + t.w / 2 - 0.5) < 1e-6);
   assert.ok(Math.abs(t.y + t.h - 0.82) < 1e-6);
@@ -109,7 +115,7 @@ test('캔버스 렌더러는 모든 레이어를 순서대로 그린다(모의 �
   const calls = [];
   const grad = { addColorStop() {} };
   const ctx = new Proxy({}, { get: (_, k) => (k === 'createRadialGradient' ? () => grad : (...a) => calls.push([k, a.length])), set: () => true });
-  const s = E.composeScene(cat, { worldId: 'demo-meadow', treeId: 'demo-pine', ornaments: items(5), effectIds: [] });
+  const s = E.composeScene(cat, { worldId: 'demo-meadow', treeId: 'demo-pine', ornaments: asState(items(5)), effectIds: [] });
   const imgs = new Map(E.collectImageSrcs(s).map((src) => [src, {}]));
   E.drawScene(ctx, s, imgs, { width: 1080, height: 1920 });
   assert.ok(calls.filter(([k]) => k === 'drawImage').length >= 1 + 1 + 5);

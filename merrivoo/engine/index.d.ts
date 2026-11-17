@@ -33,7 +33,7 @@ export interface Diagnostics { requested: number; placed: number; overflow: numb
 export interface PlacementResult { placements: Placement[]; overflow: { id: string; ornamentId: string; score: number }[]; densityFactor: number; diagnostics: Diagnostics }
 export interface PlacementOptions { treePx?: number; minRenderPx?: number; maxOverlap?: number; relaxedOverlap?: number; minInside?: number; seed?: string; baseWidth?: number; densityStep?: number; gridU?: number }
 
-export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number }
+export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number; treeScale?: number }
 export type SceneLayer = {
   key: string; layer: string; z: number; type: 'image' | 'shadow' | 'lights' | 'ornament' | 'particles' | 'grade';
   src?: string; x?: number; y?: number; w?: number; h?: number; blend?: string; opacity?: number;
@@ -50,7 +50,7 @@ export const SCENE_SIZE: { w: number; h: number };
 export const LAYER_Z: Record<string, number>;
 export const LAYER_ORDER: string[];
 export function composeScene(catalog: Catalog, state: SceneState, options?: { treePx?: number }): ComposedScene;
-export function treeSize(world: World, tree: Tree): { w: number; h: number };
+export function treeSize(world: World, tree: Tree, scale?: number): { w: number; h: number };
 export function generateLights(tree: Tree, density?: 'off' | 'soft' | 'full', seed?: string): { u: number; v: number; phase: number; tone: number }[];
 export function placeOrnaments(tree: Tree, items: PlacementItem[], options?: PlacementOptions): PlacementResult;
 export function diagnose(tree: Tree, items: PlacementItem[], result: Pick<PlacementResult, 'placements' | 'overflow'>, options?: PlacementOptions): Diagnostics;
