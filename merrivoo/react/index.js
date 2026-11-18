@@ -84,10 +84,11 @@ export function AnonymousToggle({ checked, onChange, title = '익명으로 남�
     h('span', { className: 'mv-toggle__track', 'aria-hidden': 'true' }));
 }
 
-export function OrnamentPicker({ items, value, onChange, name = 'ornament', legend = '장식 고르기', className }) {
+export function OrnamentPicker({ items, value, onChange, name = 'ornament', legend = '장식 고르기', className, layout = 'grid' }) {
+  // layout='strip': 한 줄 가로 스크롤. 장면을 가리지 않아야 하는 좁은 하단 영역용
   return h('fieldset', { className: 'mv-choice-list' }, h('legend', { className: 'mv-vh' }, legend),
-    h('div', { className: cx('mv-orn-picker', className), role: 'presentation' }, items.map((it) =>
-      h('label', { key: it.id, className: 'mv-orn-item', 'data-selected': value === it.id ? '' : undefined },
+    h('div', { className: cx('mv-orn-picker', layout === 'strip' && 'mv-orn-picker--strip', className), role: 'presentation' }, items.map((it) =>
+      h('label', { key: it.id, className: 'mv-orn-item', 'data-selected': value === it.id ? '' : undefined, 'data-badge': it.badge || undefined },
         h('input', { className: 'mv-orn-item__input', type: 'radio', name, value: it.id, checked: value === it.id, disabled: it.disabled, onChange: () => onChange?.(it.id) }),
         h('img', { className: 'mv-orn-item__img', src: it.src, alt: '', draggable: false, loading: 'lazy', decoding: 'async' }),
         h('span', { className: 'mv-orn-item__label' }, it.label)))));
@@ -277,7 +278,7 @@ export function Signboard({ src, width, height, textBox, ink = '#2B1D14', glow =
     '--mv-sign-ink': ink, '--mv-sign-glow': glow, '--mv-sign-fs': String(titleSize * fit.scale), '--mv-sign-track': String(tracking), ...style };
   const Tag = headingLevel ? `h${headingLevel}` : 'p';
   return h('div', { ref, className: cx('mv-signboard', className), style: vars, 'data-fit': fit.done ? 'done' : 'pending', 'data-wrap': fit.wrap ? 'true' : 'false' },
-    h('img', { className: 'mv-signboard__img', src, width, height, alt, decoding: 'async', loading: priority ? 'eager' : 'lazy', fetchpriority: priority ? 'high' : undefined, draggable: false }),
+    h('img', { className: 'mv-signboard__img', src, width, height, alt, decoding: 'async', loading: priority ? 'eager' : 'lazy', fetchPriority: priority ? 'high' : undefined, draggable: false }),
     h('div', { className: 'mv-signboard__plate' },
       h(Tag, { ref: titleRef, className: 'mv-signboard__title' }, title),
       subtitle ? h('p', { className: 'mv-signboard__sub' }, subtitle) : null));

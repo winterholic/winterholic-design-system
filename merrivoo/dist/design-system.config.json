@@ -1,7 +1,7 @@
 {
   "$schema": "https://github.com/winterholic/winterholic-design-system/merrivoo/schema/design-system.config.schema.json",
   "name": "merrivoo-design-system",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "prefix": "mv",
   "kind": "mobile-first scene design system",
   "read_first": [
@@ -595,7 +595,18 @@
         "mv-signboard__sub"
       ],
       "variants": {},
-      "tokens": []
+      "tokens": [],
+      "states": {
+        "fit": [
+          "data-fit=pending",
+          "data-fit=done"
+        ],
+        "wrap": [
+          "data-wrap=true"
+        ]
+      },
+      "usage": "세계관 간판. 이미지 본체(투명 배경) 위 textBox 자리에 HTML 제목을 얹는다. 제목은 한 줄 우선, 넘치면 축소 후 두 줄. 이미지 안에 글자를 넣지 않는다.",
+      "a11y": "제목은 실제 텍스트(headingLevel 로 h1~h3). 이미지는 장식이라 alt 빈 값. 버튼은 간판 밖 HTML 버튼으로 둔다."
     }
   ],
   "rules": [

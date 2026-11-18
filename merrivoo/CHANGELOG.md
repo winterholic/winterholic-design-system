@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1 — 2026-11-19
+- 컴포넌트: `OrnamentPicker` 에 `layout="strip"`(한 줄 가로 스크롤·스냅). 장면을 가리지 않는 얇은 하단 트레이용. 항목 `badge`(예: 희귀) 표시.
+- 장면: 선택 강조(`data-selecting`) 중에도 꼭대기 장식(`data-zone="topper"`)은 흐리게 하지 않는다(트리의 일부로 읽힘).
+- 수정: `Signboard` 의 `fetchpriority` → `fetchPriority`(React 19 경고).
+
 ## 0.3.0 — 2026-11-18
 - 엔진: `placeIncremental` — 저장된 장식 자리는 고정하고 새 장식만 빈 자리에 넣는다. `composeScene` 의 `state.placed`(저장 자리)·`state.background`·`state.environment`·`state.foreground`(개인별 변형).
 - 컴포넌트: `Signboard`(세계관 간판). 이미지 본체 + HTML 제목, 한 줄 우선·자동 축소·두 줄 대체, textBox·잉크 색 규격.

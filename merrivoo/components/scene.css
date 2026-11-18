@@ -28,7 +28,7 @@ button.mv-scene__layer[data-ornament-id]::after { content: ""; position: absolut
 @keyframes mv-sway { from { rotate: -1.5deg; } to { rotate: 1.5deg; } }
 .mv-scene__layer[data-hero]::before { content: ""; position: absolute; inset: -30%; z-index: var(--mv-z-index-hide); border-radius: var(--mv-radius-full); background: radial-gradient(closest-side, var(--mv-color-scene-glow), transparent); opacity: 0.55; pointer-events: none; }
 button.mv-scene__layer[data-ornament-id]:focus-visible { outline: var(--mv-focus-ring-width) solid var(--mv-color-interactive-focus-ring); outline-offset: var(--mv-focus-ring-offset); border-radius: var(--mv-radius-sm); }
-.mv-scene[data-selecting] .mv-scene__layer[data-ornament-id]:not([data-selected]) { opacity: var(--mv-opacity-ornament-dim); }
+.mv-scene[data-selecting] .mv-scene__layer[data-ornament-id]:not([data-selected]):not([data-zone="topper"]) { opacity: var(--mv-opacity-ornament-dim); }
 .mv-scene__layer[data-ornament-id][data-selected] { filter: drop-shadow(0 0 var(--mv-blur-md) var(--mv-color-scene-hit-ring)); }
 /* 등장 연출: 장식이 위에서 떨어져 안착. 지연은 --mv-delay 로 순서를 준다 */
 .mv-scene[data-enter] .mv-scene__layer[data-layer="tree"] { animation: mv-tree-in var(--mv-motion-duration-scene-reveal) var(--mv-motion-easing-soft-out) both; }

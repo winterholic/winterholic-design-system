@@ -10,7 +10,7 @@ export function QuestionPanel(p: { index?: number; total?: number; text: ReactNo
 export function Progress(p: { total: number; current: number; variant?: 'dots' | 'bar'; label?: string }): ReactElement;
 export function NicknameField(p: { value: string; onChange?: (v: string) => void; max?: number; error?: string; disabled?: boolean; label?: string; placeholder?: string; help?: string }): ReactElement;
 export function AnonymousToggle(p: { checked?: boolean; onChange?: (v: boolean) => void; title?: string; sub?: string }): ReactElement;
-export function OrnamentPicker(p: { items: { id: string; src: string; label: string; disabled?: boolean }[]; value?: string; onChange?: (id: string) => void; name?: string; legend?: string; className?: string }): ReactElement;
+export function OrnamentPicker(p: { items: { id: string; src: string; label: string; disabled?: boolean; badge?: string }[]; value?: string; onChange?: (id: string) => void; name?: string; legend?: string; className?: string; layout?: 'grid' | 'strip' }): ReactElement;
 export function ScoreMeter(p: { score: number; label?: string; duration?: number }): ReactElement;
 export function UniverseCard(p: { eyebrow?: ReactNode; title: ReactNode; body?: ReactNode; chips?: string[] }): ReactElement;
 export function ShareCard(p: C & { title?: ReactNode; meta?: ReactNode; brand?: string }): ReactElement;
