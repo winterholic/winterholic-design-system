@@ -256,12 +256,12 @@ export function Signboard({ src, width, height, textBox, ink = '#2B1D14', glow =
       let scale = need > avail && need > 0 ? avail / need : 1, wrap = false;
       if (scale < minScale) { scale = Math.max(minScale, 0.72); wrap = true; el.dataset.wrap = 'true'; }
       // 세로: 제목·부제가 글자 자리 높이를 넘으면 그 비율만큼 더 줄인다(부제도 같은 변수로 함께 줄어든다)
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 6; i++) {
         el.style.setProperty('--mv-sign-fs', String(titleSize * scale));
         t.style.removeProperty('--mv-sign-fs');
         const over = plate.scrollHeight / Math.max(1, plate.clientHeight);
         if (over <= 1.01) break;
-        scale *= 0.97 / over;
+        scale *= 0.95 / over;
       }
       el.style.setProperty('--mv-sign-fs', String(titleSize * scale)); // React 가 같은 값이면 다시 쓰지 않으므로 최종값을 남겨 둔다
       setFit({ scale, wrap, done: true });
