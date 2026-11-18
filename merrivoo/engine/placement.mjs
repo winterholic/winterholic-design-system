@@ -181,7 +181,8 @@ export function placeIncremental(tree, fixed, items, options = {}) {
   const placedFps = fixed.map((p) => footprint(p.ornament, p.u, p.v, p.w, TA, p.anchor));
   const groundUsed = new Set(fixed.filter((p) => p.zone === 'ground').map((p) => GROUND_SLOTS.findIndex(([u, v]) => Math.abs(u - p.u) < 1e-3 && Math.abs(v - p.v) < 1e-3)));
   const total = fixed.length + items.length;
-  const f0 = Math.min(1.15, Math.max(1, 1.2 - 0.01 * total));
+  // 저장 자리는 다시 줄지 않으므로 먼저 온 장식을 크게 두면 나중 자리가 모자란다. 0.95배에서 시작해 친구가 늘수록 0.75배까지 줄인다(100개 기준 트리 위 장식 약 44→58개)
+  const f0 = Math.max(0.75, 0.95 - 0.004 * total);
   const minW = o.minRenderPx / o.treePx;
   const sorted = [...items].sort((a, b) => b.score - a.score || (a.id < b.id ? -1 : 1));
   const placements = [], overflow = [];
