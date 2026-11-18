@@ -3,6 +3,7 @@
 ## 0.3.1 — 2026-11-19
 - 컴포넌트: `OrnamentPicker` 에 `layout="strip"`(한 줄 가로 스크롤·스냅). 장면을 가리지 않는 얇은 하단 트레이용. 항목 `badge`(예: 희귀) 표시.
 - 장면: 선택 강조(`data-selecting`) 중에도 꼭대기 장식(`data-zone="topper"`)은 흐리게 하지 않는다(트리의 일부로 읽힘).
+- 엔진: 토퍼(꼭대기 장식) 가로 위치가 항상 0.5 였던 문제 — 트리 manifest `topAnchor.x` 를 따른다(꼭대기가 한쪽으로 휜 트리에서 별이 허공에 뜨던 문제).
 - 수정: `Signboard` 의 `fetchpriority` → `fetchPriority`(React 19 경고).
 
 ## 0.3.0 — 2026-11-18

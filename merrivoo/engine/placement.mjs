@@ -96,8 +96,9 @@ export function placeOrnaments(tree, items, options = {}) {
       const orn = topperItem.ornament;
       // 꼭대기 별은 f(밀도 배율)를 곱하지 않는다: 친구 수가 바뀌어도 별 크기는 그대로
       const w = round((orn.baseWidth ?? o.baseWidth) * sizeMultiplier(topperItem.score) * 1.45), a = { x: 0.5, y: 1 };
-      const v = round(treeTopV + 0.02);
-      placed.push({ it: topperItem, u: 0.5, v, w, anchor: a, zone: 'topper', P: 1, fp: footprint(orn, 0.5, v, w, TA, a) });
+      // 꼭대기가 가운데가 아닌 트리(휘어진 나뭇가지 등)는 manifest 의 topAnchor.x 를 따른다
+      const v = round(treeTopV + 0.02), u = round(tree.topAnchor?.x ?? 0.5);
+      placed.push({ it: topperItem, u, v, w, anchor: a, zone: 'topper', P: 1, fp: footprint(orn, u, v, w, TA, a) });
     }
     for (const it of sorted) {
       if (it === topperItem) continue;

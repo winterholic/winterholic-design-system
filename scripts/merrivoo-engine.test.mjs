@@ -191,3 +191,11 @@ test('composeScene: placed 를 주면 그 자리를 그대로 쓰고 새 장식�
   assert.ok(Math.abs(a2.ax - (s.tree.x + 0.5 * s.tree.w)) < 1e-6, '저장된 u 가 그대로 쓰인다');
   assert.equal(s.diagnostics.overlapPairsOver25pct, 0);
 });
+
+test('토퍼는 트리 manifest 의 topAnchor.x 를 따른다(꼭대기가 가운데가 아닌 트리)', () => {
+  const t = { ...tree(cat.trees[0].id), id: 'off-center', topAnchor: { x: 0.37, y: 0.03 } };
+  const star = cat.ornaments.find((o) => o.placements?.includes('topper'));
+  const r = E.placeOrnaments(t, [{ id: 's', ornament: star, score: 100 }]);
+  assert.equal(r.placements[0].zone, 'topper');
+  assert.equal(r.placements[0].u, 0.37);
+});
