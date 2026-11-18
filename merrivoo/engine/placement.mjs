@@ -77,7 +77,8 @@ export function placeOrnaments(tree, items, options = {}) {
   const GU = o.gridU, GV = Math.round(GU * TA);
   const cands = [];
   for (let gy = 0; gy < GV; gy++) for (let gx = 0; gx < GU; gx++) {
-    const u = (gx + 0.5) / GU, v = (gy + 0.5) / GV;
+    // 판정과 저장이 같은 값을 쓰도록 미리 반올림한다(경계에 걸린 표본 줄이 반올림으로 바깥으로 넘어가는 것을 막는다)
+    const u = round((gx + 0.5) / GU), v = round((gy + 0.5) / GV);
     if (!maskAt(mask, u, v)) continue;
     cands.push({ u, v, P: prominence(g, u, v) });
   }
@@ -94,21 +95,21 @@ export function placeOrnaments(tree, items, options = {}) {
     if (topperItem) {
       const orn = topperItem.ornament;
       // 꼭대기 별은 f(밀도 배율)를 곱하지 않는다: 친구 수가 바뀌어도 별 크기는 그대로
-      const w = (orn.baseWidth ?? o.baseWidth) * sizeMultiplier(topperItem.score) * 1.45, a = { x: 0.5, y: 1 };
-      const v = treeTopV + 0.02;
+      const w = round((orn.baseWidth ?? o.baseWidth) * sizeMultiplier(topperItem.score) * 1.45), a = { x: 0.5, y: 1 };
+      const v = round(treeTopV + 0.02);
       placed.push({ it: topperItem, u: 0.5, v, w, anchor: a, zone: 'topper', P: 1, fp: footprint(orn, 0.5, v, w, TA, a) });
     }
     for (const it of sorted) {
       if (it === topperItem) continue;
       const orn = it.ornament;
-      const base = (orn.baseWidth ?? o.baseWidth) * f * sizeMultiplier(it.score);
+      const base = round((orn.baseWidth ?? o.baseWidth) * f * sizeMultiplier(it.score));
       let best = null;
       // 2) 바닥(구석): 낮은 점수이면서 바닥 배치를 허용하는 장식
       if (!best && it.score < 35 && orn.placements?.includes('ground')) {
         for (let gi = 0; gi < GROUND_SLOTS.length; gi++) {
           if (groundUsed.has(gi)) continue;
           const [u, v] = GROUND_SLOTS[gi];
-          const w = base * 1.05, a = orn.groundAnchor ?? { x: 0.5, y: 1 };
+          const w = round(base * 1.05), a = orn.groundAnchor ?? { x: 0.5, y: 1 };
           const fp = footprint(orn, u, v, w, TA, a);
           if (placed.some((p) => overlapRatio(fp, p.fp) > maxOverlap)) continue;
           groundUsed.add(gi);
@@ -173,7 +174,8 @@ export function placeIncremental(tree, fixed, items, options = {}) {
   const GU = o.gridU, GV = Math.round(GU * TA);
   const cands = [];
   for (let gy = 0; gy < GV; gy++) for (let gx = 0; gx < GU; gx++) {
-    const u = (gx + 0.5) / GU, v = (gy + 0.5) / GV;
+    // 판정과 저장이 같은 값을 쓰도록 미리 반올림한다(경계에 걸린 표본 줄이 반올림으로 바깥으로 넘어가는 것을 막는다)
+    const u = round((gx + 0.5) / GU), v = round((gy + 0.5) / GV);
     if (maskAt(mask, u, v)) cands.push({ u, v, P: prominence(g, u, v) });
   }
   const placedFps = fixed.map((p) => footprint(p.ornament, p.u, p.v, p.w, TA, p.anchor));
@@ -191,12 +193,12 @@ export function placeIncremental(tree, fixed, items, options = {}) {
     const fMin = Math.min(f0, Math.max(0.3, minW / (unit * longSide)));
     let best = null;
     const tryAt = (f, maxOverlap) => {
-      const base = unit * f;
+      const base = round(unit * f);
       if (it.score < 35 && orn.placements?.includes('ground')) {
         for (let gi = 0; gi < GROUND_SLOTS.length; gi++) {
           if (groundUsed.has(gi)) continue;
           const [u, v] = GROUND_SLOTS[gi];
-          const w = base * 1.05, a = orn.groundAnchor ?? { x: 0.5, y: 1 };
+          const w = round(base * 1.05), a = orn.groundAnchor ?? { x: 0.5, y: 1 };
           const fp = footprint(orn, u, v, w, TA, a);
           if (placedFps.some((q) => overlapRatio(fp, q) > maxOverlap)) continue;
           groundUsed.add(gi);
