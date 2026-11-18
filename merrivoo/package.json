@@ -1,6 +1,6 @@
 {
   "name": "merrivoo-design-system",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Merrivoo(메리부) 디자인 시스템 — DTCG 토큰, 세계관 테마, 컴포넌트 CSS, Scene·Tree·Ornament 조립 엔진, React 바인딩, 에셋 가공 도구",
   "type": "module",
   "private": true,

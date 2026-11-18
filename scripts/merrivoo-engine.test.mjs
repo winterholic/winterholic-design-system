@@ -159,3 +159,35 @@ test('쇼케이스: 낮은 점수 장식도 보이는 크기를 유지하고 점
   assert.ok(ay.s95 < ay.s60 && ay.s60 < ay.s15, JSON.stringify(ay));
   assert.ok(s.diagnostics.minOrnamentPx >= 40, `최소 ${s.diagnostics.minOrnamentPx}px`);
 });
+
+test('증분 배치: 기존 장식 자리는 그대로이고 새 장식만 겹침 없이 추가된다(1→100개)', () => {
+  const t = cat.trees[0], w = cat.worlds.find((x) => x.compat.trees[t.id] && x.compat.trees[t.id] !== 'forbidden');
+  const pool = E.availableOrnaments(cat, w, t);
+  let placed = [];
+  const firstSpots = new Map();
+  let overflowTotal = 0;
+  for (let n = 0; n < 100; n++) {
+    const it = { id: `v${n}`, ornament: pool[(n * 7) % pool.length], score: 5 + ((n * 37) % 94) };
+    const fixed = placed.map((p) => ({ ...p, ornament: cat.ornaments.find((o) => o.id === p.ornamentId) }));
+    const r = E.placeIncremental(t, fixed, [it], { seed: 's', treePx: 300 });
+    overflowTotal += r.overflow.length;
+    placed = [...placed, ...r.placements];
+    for (const p of placed) { const prev = firstSpots.get(p.id); if (prev) assert.deepEqual([p.u, p.v, p.w], prev); else firstSpots.set(p.id, [p.u, p.v, p.w]); }
+  }
+  assert.equal(placed.length + overflowTotal, 100, '장식은 사라지지 않는다(배치 + overflow = 요청)');
+  const d = E.diagnose(t, placed.map((p) => ({ id: p.id, ornament: cat.ornaments.find((o) => o.id === p.ornamentId), score: p.score })), { placements: placed, overflow: [] }, { treePx: 300 });
+  assert.equal(d.outsideSilhouette, 0); assert.equal(d.outOfTreeBox, 0);
+  assert.ok(d.maxOverlap <= 0.2 + 1e-6, `겹침 ${d.maxOverlap}`);
+});
+test('composeScene: placed 를 주면 그 자리를 그대로 쓰고 새 장식만 배치한다', () => {
+  const t = cat.trees[0], w = cat.worlds.find((x) => x.compat.trees[t.id] && x.compat.trees[t.id] !== 'forbidden');
+  const pool = E.availableOrnaments(cat, w, t);
+  const base = E.composeScene(cat, { worldId: w.id, treeId: t.id, ornaments: [{ id: 'a', ornamentId: pool[0].id, score: 80 }], seed: 'x' });
+  const a = base.layers.find((l) => l.id === 'a');
+  const placed = [{ id: 'a', ornamentId: pool[0].id, u: 0.5, v: 0.5, w: 0.12, zone: 'hang', score: 80 }];
+  const s = E.composeScene(cat, { worldId: w.id, treeId: t.id, placed, ornaments: [{ id: 'b', ornamentId: pool[1].id, score: 40 }], seed: 'x' });
+  const a2 = s.layers.find((l) => l.id === 'a'), b = s.layers.find((l) => l.id === 'b');
+  assert.ok(a && a2 && b);
+  assert.ok(Math.abs(a2.ax - (s.tree.x + 0.5 * s.tree.w)) < 1e-6, '저장된 u 가 그대로 쓰인다');
+  assert.equal(s.diagnostics.overlapPairsOver25pct, 0);
+});

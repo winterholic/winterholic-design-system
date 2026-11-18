@@ -583,6 +583,19 @@
       ],
       "usage": "모든 화면에 로딩·오류·빈 상태를 함께 만든다. 오류에는 다시 시도 행동.",
       "a11y": "role=status/alert."
+    },
+    {
+      "name": "Signboard",
+      "class": "mv-signboard",
+      "react": "Signboard",
+      "parts": [
+        "mv-signboard__img",
+        "mv-signboard__plate",
+        "mv-signboard__title",
+        "mv-signboard__sub"
+      ],
+      "variants": {},
+      "tokens": []
     }
   ],
   "rules": [

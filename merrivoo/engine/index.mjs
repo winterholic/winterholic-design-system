@@ -1,5 +1,5 @@
 export { SCENE_SIZE, LAYER_Z, LAYER_ORDER, composeScene, generateLights, treeSize } from './scene.mjs';
-export { placeOrnaments, diagnose, prominence, targetProminence, sizeMultiplier, footprint, PLACEMENT_DEFAULTS } from './placement.mjs';
+export { placeOrnaments, placeIncremental, diagnose, prominence, targetProminence, sizeMultiplier, footprint, PLACEMENT_DEFAULTS } from './placement.mjs';
 export { treeCompat, ornamentCompat, availableTrees, availableOrnaments } from './compat.mjs';
 export { decodeMask, maskAt, rowSpans, insideFraction } from './mask.mjs';
 export { validateCatalog, validateWorld, validateTree, validateOrnament } from './validate.mjs';

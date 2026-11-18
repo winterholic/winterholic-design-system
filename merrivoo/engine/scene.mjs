@@ -1,6 +1,6 @@
 // Scene Composition: 카탈로그 + 상태 → 순수 데이터(레이어 목록). DOM·React·Canvas 렌더러가 같은 결과를 그린다.
 import { treeCompat, ornamentCompat } from './compat.mjs';
-import { placeOrnaments } from './placement.mjs';
+import { placeOrnaments, placeIncremental, diagnose } from './placement.mjs';
 import { decodeMask, maskAt, rowSpans } from './mask.mjs';
 import { mulberry32, hashString } from './prng.mjs';
 
@@ -59,8 +59,9 @@ export function composeScene(catalog, state, options = {}) {
   const layers = [];
   const push = (l) => layers.push(l);
 
-  push({ key: 'bg', layer: 'background', type: 'image', src: url(catalog, world.background.file), x: 0, y: 0, w: 1, h: 1, z: 0 });
-  for (const [i, p] of (world.environment ?? []).entries()) push(propLayer(catalog, p, 'environment', i, W, H));
+  // state.background·environment·foreground: 같은 세계관 안의 개인별 변형(배경 변형·소품 선택)
+  push({ key: 'bg', layer: 'background', type: 'image', src: url(catalog, (state.background ?? world.background).file), x: 0, y: 0, w: 1, h: 1, z: 0 });
+  for (const [i, p] of (state.environment ?? world.environment ?? []).entries()) push(propLayer(catalog, p, 'environment', i, W, H));
 
   for (const id of state.effectIds ?? world.effects ?? []) {
     const fx = (catalog.effects ?? []).find((e) => e.id === id);
@@ -102,7 +103,23 @@ export function composeScene(catalog, state, options = {}) {
     if (!c.ok) { rejected.push({ id: it.id, why: c.why }); continue; }
     items.push({ id: it.id, ornament: orn, score: it.score });
   }
-  const placement = placeOrnaments(tree, items, { seed: state.seed ?? 'merrivoo', treePx: state.treePx ?? options.treePx ?? 260 });
+  const popts = { seed: state.seed ?? 'merrivoo', treePx: state.treePx ?? options.treePx ?? 260 };
+  // state.placed: 저장된 자리. 있으면 그대로 쓰고 state.ornaments 는 남은 빈 자리에만 넣는다(기존 장식 위치 고정)
+  const fixed = [];
+  for (const p of state.placed ?? []) {
+    const orn = byId.get(p.ornamentId);
+    if (!orn) { rejected.push({ id: p.id, why: 'unknown-ornament' }); continue; }
+    fixed.push({ ...p, ornament: orn, anchor: p.anchor ?? (p.zone === 'topper' ? { x: 0.5, y: 1 } : p.zone === 'ground' ? (orn.groundAnchor ?? { x: 0.5, y: 1 }) : orn.anchor), rotate: p.rotate ?? 0,
+      z: p.z ?? (p.zone === 'topper' ? 9999 : Math.round(p.v * 1000)), hero: p.hero ?? (p.score >= 90) });
+  }
+  let placement;
+  if (fixed.length) {
+    const inc = placeIncremental(tree, fixed, items, popts);
+    const all = [...fixed.map(({ ornament, ...p }) => p), ...inc.placements];
+    const allItems = [...fixed.map((p) => ({ id: p.id, ornament: p.ornament, score: p.score })), ...items];
+    placement = { placements: all, overflow: inc.overflow, densityFactor: 1 };
+    placement.diagnostics = diagnose(tree, allItems, placement, popts);
+  } else placement = placeOrnaments(tree, items, popts);
   for (const p of placement.placements) {
     const orn = byId.get(p.ornamentId);
     const wPx = p.w * treeWpx, hPx = wPx / orn.aspect;
@@ -110,7 +127,7 @@ export function composeScene(catalog, state, options = {}) {
       ax: tx(p.u) / W, ay: ty(p.v) / H, w: wPx / W, h: hPx / H, anchor: p.anchor, rotate: p.rotate, hero: p.hero, zone: p.zone, score: p.score, z: p.z });
   }
 
-  for (const [i, p] of (world.foreground ?? []).entries()) push(propLayer(catalog, p, 'foreground', i, W, H));
+  for (const [i, p] of (state.foreground ?? world.foreground ?? []).entries()) push(propLayer(catalog, p, 'foreground', i, W, H));
   if (world.grade?.tint) push({ key: 'grade', layer: 'grade', type: 'grade', color: world.grade.tint, blend: world.grade.blend ?? 'multiply', z: 0 });
 
   layers.sort((a, b) => LAYER_Z[a.layer] - LAYER_Z[b.layer] || a.z - b.z);

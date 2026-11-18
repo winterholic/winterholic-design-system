@@ -375,6 +375,30 @@
       ],
       "usage": "모든 화면에 로딩·오류·빈 상태를 함께 만든다. 오류에는 다시 시도 행동.",
       "a11y": "role=status/alert."
+    },
+    {
+      "name": "Signboard",
+      "class": "mv-signboard",
+      "react": "Signboard",
+      "parts": [
+        "mv-signboard__img",
+        "mv-signboard__plate",
+        "mv-signboard__title",
+        "mv-signboard__sub"
+      ],
+      "variants": {},
+      "tokens": [],
+      "states": {
+        "fit": [
+          "data-fit=pending",
+          "data-fit=done"
+        ],
+        "wrap": [
+          "data-wrap=true"
+        ]
+      },
+      "usage": "세계관 간판. 이미지 본체(투명 배경) 위 textBox 자리에 HTML 제목을 얹는다. 제목은 한 줄 우선, 넘치면 축소 후 두 줄. 이미지 안에 글자를 넣지 않는다.",
+      "a11y": "제목은 실제 텍스트(headingLevel 로 h1~h3). 이미지는 장식이라 alt 빈 값. 버튼은 간판 밖 HTML 버튼으로 둔다."
     }
   ],
   "rules": [

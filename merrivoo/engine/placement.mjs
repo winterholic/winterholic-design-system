@@ -160,6 +160,75 @@ export function placeOrnaments(tree, items, options = {}) {
   return out;
 }
 const round = (x, d = 4) => Math.round(x * 10 ** d) / 10 ** d;
+/**
+ * 증분 배치: 이미 저장된 자리(fixed)는 움직이지 않고 새 장식(items)만 남은 빈 자리에 넣는다.
+ * 친구가 늘어도 먼저 단 친구의 장식이 옮겨 다니지 않게 하려는 것. 새 장식 크기는 전체 개수 기준 밀도로 정하고,
+ * 자리가 없으면 최소 크기까지 줄인 뒤 겹침을 완화하고, 그래도 없으면 overflow 로 돌린다(지우지 않는다).
+ * @param fixed [{id, ornament, u, v, w, anchor?, zone, score}]
+ */
+export function placeIncremental(tree, fixed, items, options = {}) {
+  const o = { ...PLACEMENT_DEFAULTS, ...options };
+  const g = treeGeom(tree);
+  const { mask, TA } = g;
+  const GU = o.gridU, GV = Math.round(GU * TA);
+  const cands = [];
+  for (let gy = 0; gy < GV; gy++) for (let gx = 0; gx < GU; gx++) {
+    const u = (gx + 0.5) / GU, v = (gy + 0.5) / GV;
+    if (maskAt(mask, u, v)) cands.push({ u, v, P: prominence(g, u, v) });
+  }
+  const placedFps = fixed.map((p) => footprint(p.ornament, p.u, p.v, p.w, TA, p.anchor));
+  const groundUsed = new Set(fixed.filter((p) => p.zone === 'ground').map((p) => GROUND_SLOTS.findIndex(([u, v]) => Math.abs(u - p.u) < 1e-3 && Math.abs(v - p.v) < 1e-3)));
+  const total = fixed.length + items.length;
+  const f0 = Math.min(1.15, Math.max(1, 1.2 - 0.01 * total));
+  const minW = o.minRenderPx / o.treePx;
+  const sorted = [...items].sort((a, b) => b.score - a.score || (a.id < b.id ? -1 : 1));
+  const placements = [], overflow = [];
+  for (const it of sorted) {
+    const orn = it.ornament;
+    const rng = mulberry32(hashString(`${o.seed}:${tree.id}:${it.id}`));
+    const longSide = Math.max(1, 1 / orn.aspect);
+    const unit = (orn.baseWidth ?? o.baseWidth) * sizeMultiplier(it.score);
+    const fMin = Math.min(f0, Math.max(0.3, minW / (unit * longSide)));
+    let best = null;
+    const tryAt = (f, maxOverlap) => {
+      const base = unit * f;
+      if (it.score < 35 && orn.placements?.includes('ground')) {
+        for (let gi = 0; gi < GROUND_SLOTS.length; gi++) {
+          if (groundUsed.has(gi)) continue;
+          const [u, v] = GROUND_SLOTS[gi];
+          const w = base * 1.05, a = orn.groundAnchor ?? { x: 0.5, y: 1 };
+          const fp = footprint(orn, u, v, w, TA, a);
+          if (placedFps.some((q) => overlapRatio(fp, q) > maxOverlap)) continue;
+          groundUsed.add(gi);
+          return { u, v, w, anchor: a, zone: 'ground', P: 0, fp };
+        }
+      }
+      const Pt = targetProminence(it.score);
+      let pick = null, bestCost = Infinity;
+      for (const c of cands) {
+        const fp = footprint(orn, c.u, c.v, base, TA);
+        if (fp.x0 < -0.06 || fp.x1 > 1.06) continue;
+        if (insideFraction(mask, fp.x0, fp.y0, fp.x1, fp.y1, 7) < o.minInside) continue;
+        let ov = 0;
+        for (const q of placedFps) { const r = overlapRatio(fp, q); if (r > ov) ov = r; if (ov > maxOverlap) break; }
+        if (ov > maxOverlap) continue;
+        const cost = Math.abs(c.P - Pt) * 3 + ov * 4 + rng() * 0.07;
+        if (cost < bestCost) { bestCost = cost; pick = { u: c.u, v: c.v, w: base, anchor: orn.anchor ?? { x: 0.5, y: 0.04 }, zone: 'hang', P: c.P, fp }; }
+      }
+      return pick;
+    };
+    for (let f = f0; !best && f >= fMin - 1e-9; f *= o.densityStep) best = tryAt(f, o.maxOverlap);
+    if (!best) best = tryAt(fMin, o.relaxedOverlap);
+    if (!best) { overflow.push({ id: it.id, ornamentId: orn.id, score: it.score }); continue; }
+    placedFps.push(best.fp);
+    placements.push({
+      id: it.id, ornamentId: orn.id, u: round(best.u), v: round(best.v), w: round(best.w), anchor: best.anchor,
+      rotate: best.zone === 'hang' ? round((rng() - 0.5) * 12, 1) : 0, z: Math.round(best.v * 1000), zone: best.zone, P: round(best.P), score: it.score, hero: it.score >= 90,
+    });
+  }
+  return { placements, overflow };
+}
+
 
 /** 배치 품질 측정: 겹침·실루엣 이탈·최소 크기. 테스트와 검증 화면이 같이 쓴다 */
 export function diagnose(tree, items, result, options = {}) {

@@ -33,7 +33,9 @@ export interface Diagnostics { requested: number; placed: number; overflow: numb
 export interface PlacementResult { placements: Placement[]; overflow: { id: string; ornamentId: string; score: number }[]; densityFactor: number; diagnostics: Diagnostics }
 export interface PlacementOptions { treePx?: number; minRenderPx?: number; maxOverlap?: number; relaxedOverlap?: number; minInside?: number; seed?: string; baseWidth?: number; densityStep?: number; gridU?: number }
 
-export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number; treeScale?: number; treeLift?: number }
+export interface FixedPlacement { id: string; ornamentId: string; u: number; v: number; w: number; zone: 'hang' | 'ground' | 'topper'; score: number; anchor?: Anchor; rotate?: number; z?: number; hero?: boolean }
+export interface PropPlacement { propId: string; x: number; y: number; w: number; z?: number }
+export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; placed?: FixedPlacement[]; background?: { file: string }; environment?: PropPlacement[]; foreground?: PropPlacement[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number; treeScale?: number; treeLift?: number }
 export type SceneLayer = {
   key: string; layer: string; z: number; type: 'image' | 'shadow' | 'lights' | 'ornament' | 'particles' | 'grade';
   src?: string; x?: number; y?: number; w?: number; h?: number; blend?: string; opacity?: number;
@@ -53,6 +55,7 @@ export function composeScene(catalog: Catalog, state: SceneState, options?: { tr
 export function treeSize(world: World, tree: Tree, scale?: number): { w: number; h: number };
 export function generateLights(tree: Tree, density?: 'off' | 'soft' | 'full', seed?: string): { u: number; v: number; phase: number; tone: number }[];
 export function placeOrnaments(tree: Tree, items: PlacementItem[], options?: PlacementOptions): PlacementResult;
+export function placeIncremental(tree: Tree, fixed: (FixedPlacement & { ornament: Ornament })[], items: PlacementItem[], options?: PlacementOptions): { placements: Placement[]; overflow: PlacementResult['overflow'] };
 export function diagnose(tree: Tree, items: PlacementItem[], result: Pick<PlacementResult, 'placements' | 'overflow'>, options?: PlacementOptions): Diagnostics;
 export function prominence(g: unknown, u: number, v: number): number;
 export function targetProminence(score: number): number;

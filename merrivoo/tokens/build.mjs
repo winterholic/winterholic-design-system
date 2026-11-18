@@ -311,9 +311,9 @@ writeFileSync(join(DIST, 'contrast-report.json'), JSON.stringify(contrastReport,
 // ---------- 5. components.css: components/*.css 를 순서대로 묶고 lint 한다 ----------
 import { existsSync } from 'node:fs';
 const COMPONENTS = join(ROOT, '..', 'components');
-const COMPONENT_ORDER = ['base', 'button', 'form', 'choice', 'question', 'sheet', 'scene', 'ornament', 'result', 'feedback'];
+const COMPONENT_ORDER = ['base', 'button', 'form', 'choice', 'question', 'sheet', 'scene', 'ornament', 'result', 'feedback', 'signboard'];
 // 렌더러가 인라인 스타일로 넣는 변수. 컴포넌트 CSS 는 읽기만 한다
-const RUNTIME_VARS = new Set(['--mv-progress', '--mv-score', '--mv-light', '--mv-phase', '--mv-delay']);
+const RUNTIME_VARS = new Set(['--mv-progress', '--mv-score', '--mv-light', '--mv-phase', '--mv-delay', '--mv-sign-aspect', '--mv-sign-x', '--mv-sign-y', '--mv-sign-w', '--mv-sign-h', '--mv-sign-ink', '--mv-sign-glow', '--mv-sign-fs', '--mv-sign-track']);
 const knownVars = new Set([...L.values()].map((t) => varName(t.path)));
 for (const wid of worldIds) for (const k of WORLD_ALLOWED) if (read('theme.worlds.json').world[wid]?.[k]) knownVars.add(`--${PREFIX}-color-${k.replace(/\./g, '-')}`);
 let cssBundle = `/* merrivoo components · 자동 생성. components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: ${COMPONENT_ORDER.join(' → ')} */\n`;

@@ -1,4 +1,4 @@
-/* merrivoo components · 자동 생성. components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: base → button → form → choice → question → sheet → scene → ornament → result → feedback */
+/* merrivoo components · 자동 생성. components/*.css 를 고친 뒤 node tokens/build.mjs. 순서: base → button → form → choice → question → sheet → scene → ornament → result → feedback → signboard */
 
 /* ── base ── */
 /* base · 앱 셸·레이아웃 유틸. 모바일 우선(320px 기준), 태블릿은 breakpoint.lg(600px) 이상에서 보강 */
@@ -225,3 +225,15 @@ button.mv-scene__layer[data-ornament-id]:focus-visible { outline: var(--mv-focus
 .mv-skeleton { border-radius: var(--mv-radius-sm); background: var(--mv-color-surface-sunken); opacity: var(--mv-opacity-skeleton); animation: mv-pulse var(--mv-motion-duration-skeleton-cycle) var(--mv-motion-easing-standard) infinite alternate; }
 @keyframes mv-pulse { from { opacity: var(--mv-opacity-skeleton); } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .mv-toast, .mv-spinner, .mv-skeleton { animation: none; } }
+
+/* ── signboard ── */
+/* 세계관 간판(World Signboard): 이미지 본체 + HTML 제목.
+   글자 자리(textBox)·잉크 색은 간판 이미지마다 달라 렌더러가 --mv-sign-* 로 넣는다. 제목 크기는 간판 폭(cqi) 기준이라 화면 크기와 무관하게 비율이 같다 */
+.mv-signboard { position: relative; display: block; inline-size: 100%; aspect-ratio: var(--mv-sign-aspect); container-type: inline-size; margin-inline: auto; }
+.mv-signboard__img { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: contain; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+.mv-signboard__plate { position: absolute; left: var(--mv-sign-x); top: var(--mv-sign-y); inline-size: var(--mv-sign-w); block-size: var(--mv-sign-h); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6cqi; text-align: center; color: var(--mv-sign-ink); overflow: hidden; }
+.mv-signboard__title { margin: 0; max-inline-size: 100%; font-family: var(--mv-font-family-display); font-weight: var(--mv-font-weight-bold); font-size: calc(var(--mv-sign-fs) * 1cqi); line-height: var(--mv-font-line-height-tight); letter-spacing: calc(var(--mv-sign-track) * 1em); white-space: nowrap; word-break: keep-all; text-shadow: 0 0.05em 0 var(--mv-sign-glow); opacity: 0; }
+.mv-signboard[data-fit="done"] .mv-signboard__title { opacity: 1; transition: opacity var(--mv-motion-duration-fast) var(--mv-motion-easing-standard); }
+.mv-signboard[data-wrap="true"] .mv-signboard__title { white-space: normal; text-wrap: balance; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
+.mv-signboard__sub { margin: 0; max-inline-size: 100%; font-family: var(--mv-font-family-sans); font-weight: var(--mv-font-weight-semibold); font-size: calc(var(--mv-sign-fs) * 0.42cqi); line-height: var(--mv-font-line-height-snug); letter-spacing: var(--mv-font-letter-spacing-wide); opacity: 0.82; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (prefers-reduced-motion: reduce) { .mv-signboard[data-fit="done"] .mv-signboard__title { transition: none; } }

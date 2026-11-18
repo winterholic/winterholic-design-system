@@ -235,3 +235,42 @@ export function Stage({ scene, bgSrc, children, focus, sceneProps }) {
     // 넓은 화면(stage)에서는 UI 도 장면 열 안에 둬서 카드가 옆으로 퍼지지 않게 한다
     h('div', { className: 'mv-scene-ui', style: fit.mode === 'stage' ? { height: vp.h, left: fit.offsetX, width: fit.stageW, right: 'auto' } : { height: vp.h } }, children));
 }
+
+/* ───────── 세계관 간판 ───────── */
+/**
+ * 이미지 간판 위에 HTML 제목을 얹는다. 제목은 한 줄을 우선하고, 글자 자리를 넘으면 크기를 minScale 까지 줄인 뒤 그래도 넘으면 두 줄로 바꾼다.
+ * textBox 는 이미지 기준 0~1 비율. size 는 간판 폭 대비 제목 크기(cqi) 기본값.
+ */
+export function Signboard({ src, width, height, textBox, ink = '#2B1D14', glow = 'rgba(255,248,232,0.55)', title, subtitle, titleSize = 8.6, tracking = -0.01, minScale = 0.6, headingLevel, className, style, alt = '', priority }) {
+  const ref = useRef(null);
+  const titleRef = useRef(null);
+  const [fit, setFit] = useState({ scale: 1, wrap: false, done: false });
+  useEffect(() => {
+    const el = ref.current, t = titleRef.current;
+    if (!el || !t) return undefined;
+    const measure = () => {
+      const plate = t.parentElement;
+      t.style.setProperty('--mv-sign-fs', String(titleSize));
+      el.dataset.wrap = 'false';
+      const need = t.scrollWidth, avail = plate.clientWidth * 0.94;
+      let scale = need > avail && need > 0 ? avail / need : 1, wrap = false;
+      if (scale < minScale) { scale = Math.max(minScale, 0.72); wrap = true; }
+      t.style.removeProperty('--mv-sign-fs');
+      setFit({ scale, wrap, done: true });
+    };
+    measure();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
+    ro?.observe(el);
+    document.fonts?.ready?.then(measure).catch(() => undefined);
+    return () => ro?.disconnect();
+  }, [title, titleSize, minScale]);
+  const b = textBox ?? { x: 0.18, y: 0.3, w: 0.64, h: 0.4 };
+  const vars = { '--mv-sign-aspect': `${width} / ${height}`, '--mv-sign-x': pct(b.x), '--mv-sign-y': pct(b.y), '--mv-sign-w': pct(b.w), '--mv-sign-h': pct(b.h),
+    '--mv-sign-ink': ink, '--mv-sign-glow': glow, '--mv-sign-fs': String(titleSize * fit.scale), '--mv-sign-track': String(tracking), ...style };
+  const Tag = headingLevel ? `h${headingLevel}` : 'p';
+  return h('div', { ref, className: cx('mv-signboard', className), style: vars, 'data-fit': fit.done ? 'done' : 'pending', 'data-wrap': fit.wrap ? 'true' : 'false' },
+    h('img', { className: 'mv-signboard__img', src, width, height, alt, decoding: 'async', loading: priority ? 'eager' : 'lazy', fetchpriority: priority ? 'high' : undefined, draggable: false }),
+    h('div', { className: 'mv-signboard__plate' },
+      h(Tag, { ref: titleRef, className: 'mv-signboard__title' }, title),
+      subtitle ? h('p', { className: 'mv-signboard__sub' }, subtitle) : null));
+}
