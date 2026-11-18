@@ -93,7 +93,8 @@ export function placeOrnaments(tree, items, options = {}) {
     const topperItem = sorted.find((it) => it.score >= 85 && it.ornament.placements?.includes('topper'));
     if (topperItem) {
       const orn = topperItem.ornament;
-      const w = (orn.baseWidth ?? o.baseWidth) * f * sizeMultiplier(topperItem.score) * 1.45, a = { x: 0.5, y: 1 };
+      // 꼭대기 별은 f(밀도 배율)를 곱하지 않는다: 친구 수가 바뀌어도 별 크기는 그대로
+      const w = (orn.baseWidth ?? o.baseWidth) * sizeMultiplier(topperItem.score) * 1.45, a = { x: 0.5, y: 1 };
       const v = treeTopV + 0.02;
       placed.push({ it: topperItem, u: 0.5, v, w, anchor: a, zone: 'topper', P: 1, fp: footprint(orn, 0.5, v, w, TA, a) });
     }
@@ -140,7 +141,7 @@ export function placeOrnaments(tree, items, options = {}) {
   // 최소 크기는 가늘고 긴 장식(고드름·열쇠)을 위해 폭이 아니라 긴 변으로 잰다. 최소 크기에서도 안 들어가면 겹침 완화 → 그래도 안 되면 overflow
   const longSide = (orn) => Math.max(1, 1 / orn.aspect);
   const fLimit = Math.min(1, Math.max(0.3, ...items.map((i) => minW / ((i.ornament.baseWidth ?? o.baseWidth) * sizeMultiplier(i.score) * longSide(i.ornament)))));
-  const f0 = Math.min(1.5, Math.max(1, 1.7 - 0.04 * items.length));
+  const f0 = Math.min(1.15, Math.max(1, 1.2 - 0.01 * items.length)); // 장식이 적어도 1.15배까지만 키운다(크기 급변 방지)
   let f = f0, res = attempt(f, o.maxOverlap);
   while (res.left.length && f * o.densityStep >= fLimit) { f *= o.densityStep; res = attempt(f, o.maxOverlap); }
   if (res.left.length) res = attempt(f, o.relaxedOverlap);

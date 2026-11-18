@@ -73,12 +73,12 @@ for (const s of WORLD_ORN) add(s.world, 'world', [s.world]);
 
 const trees = TREES.map((t) => {
   const m = JSON.parse(readFileSync(join(OUT, 'trees', `${t.id}.mask.json`), 'utf8'));
-  return { id: t.id, name: t.name, version: VERSION, style: 'storybook', file: `trees/${t.id}.webp`, width: m.width, height: m.height, aspect: m.aspect, heightFrac: 0.46,
+  return { id: t.id, name: t.name, version: VERSION, style: 'storybook', file: `trees/${t.id}.webp`, width: m.width, height: m.height, aspect: m.aspect, heightFrac: 0.54,
     baseAnchor: { x: 0.5, y: 1 }, topAnchor: { x: 0.5, y: 0.03 }, mask: m.mask, tags: t.tags, compat: { worlds: Object.fromEntries(WORLDS.map((w) => [w.id, w.trees[t.id]])) }, license: LICENSE };
 });
 const worlds = WORLDS.map((w) => {
   const [bw, bh] = size(join(OUT, 'worlds', `${w.id}.webp`));
-  return { id: w.id, name: w.name, version: VERSION, style: 'storybook', background: { file: `worlds/${w.id}.webp`, width: bw, height: bh }, treeAnchor: { x: 0.5, y: 0.82 }, treeWidth: 0.7,
+  return { id: w.id, name: w.name, version: VERSION, style: 'storybook', background: { file: `worlds/${w.id}.webp`, width: bw, height: bh }, treeAnchor: { x: 0.5, y: 0.82 }, treeWidth: 0.87,
     groundShadow: { rx: 0.5, ry: 0.05, opacity: 1 }, light: { color: w.light }, grade: { tint: w.tint, blend: 'multiply' }, effects: w.effects, theme: w.theme, compat: { trees: w.trees }, environment: [], foreground: [], license: LICENSE };
 });
 const effects = FX.map((f) => (f.type === 'image' ? { id: f.id, name: f.name, type: 'image', file: `fx/${f.id}.webp`, blend: f.blend, opacity: f.opacity, layer: f.layer } : { id: f.id, name: f.name, type: 'particles', kind: f.kind, count: f.count, opacity: f.opacity, layer: f.layer }));
