@@ -1,0 +1,1 @@
+이 디렉터리의 이미지·catalog.json 은 winterholic-design-system 용도로 생성한 범용 일러스트다. 이 저장소 안에서의 사용·재배포를 허용한다. 서비스 전용 에셋이 아니다.

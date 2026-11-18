@@ -131,3 +131,31 @@ test('treeLift: 밑동·그림자가 올라가고 장식이 트리를 따라가�
   orn(a).forEach((y, i) => assert.ok(Math.abs(y - orn(b)[i] - 0.1) < 1e-6));
   assert.equal(E.composeScene(cat, { ...base, treeLift: 9 }).tree.anchorY, a.tree.anchorY - 0.3);
 });
+
+// ---- 쇼케이스 카탈로그(assets/showcase, 생성 일러스트). 미리보기 페이지가 쓰는 범용 에셋이다 ----
+const show = JSON.parse(readFileSync(join(root, 'assets/showcase/catalog.json'), 'utf8'));
+test('쇼케이스 카탈로그가 스키마·교차 참조·파일 존재 검증을 통과한다', () => {
+  assert.deepEqual(E.validateCatalog(show, { fileExists: (f) => readFileSync(join(root, 'assets/showcase', f)).length > 0 }), []);
+  assert.equal(show.worlds.length, 3); assert.equal(show.trees.length, 3); assert.ok(show.ornaments.length >= 30);
+});
+test('쇼케이스: 트리 3종 × 호환 세계관 × 장식 0·5·20·50 조립이 겹침·이탈 없이 통과한다', () => {
+  for (const w of show.worlds) for (const t of E.availableTrees(show, w)) for (const n of [0, 5, 20, 50]) {
+    const pool = E.availableOrnaments(show, w, t);
+    const orn = Array.from({ length: n }, (_, i) => ({ id: `i${i}`, ornamentId: pool[(i * 5 + 3) % pool.length].id, score: Math.max(8, 99 - Math.round((i * 91) / Math.max(1, n - 1))) }));
+    const treePx = Math.round(390 * 1.2175 * E.treeSize(w, t).w);
+    const s = E.composeScene(show, { worldId: w.id, treeId: t.id, ornaments: orn, treePx });
+    assert.equal(s.diagnostics.outsideSilhouette, 0, `${w.id}×${t.id}×${n} 실루엣 이탈`);
+    assert.ok(s.diagnostics.maxOverlap <= 0.2, `${w.id}×${t.id}×${n} 겹침 ${s.diagnostics.maxOverlap}`);
+    if (n <= 20) assert.equal(s.overflow.length, 0, `${w.id}×${t.id}×${n} 초과 ${s.overflow.length}`);
+    if (n > 0) assert.ok(s.diagnostics.minOrnamentPx >= 18, `${w.id}×${t.id}×${n} 최소 ${s.diagnostics.minOrnamentPx}px`);
+  }
+});
+test('쇼케이스: 낮은 점수 장식도 보이는 크기를 유지하고 점수가 높을수록 위에 걸린다', () => {
+  const w = show.worlds[0], t = show.trees.find((x) => x.id === 'fir');
+  const pool = E.availableOrnaments(show, w, t).filter((o) => o.kind === 'hang' && o.id !== 'star');
+  const orn = [95, 80, 60, 40, 15].map((score, i) => ({ id: `s${score}`, ornamentId: pool[i].id, score }));
+  const s = E.composeScene(show, { worldId: w.id, treeId: t.id, ornaments: orn, treePx: Math.round(390 * 1.2175 * E.treeSize(w, t).w) });
+  const ay = Object.fromEntries(s.layers.filter((l) => l.type === 'ornament').map((l) => [l.id, l.ay]));
+  assert.ok(ay.s95 < ay.s60 && ay.s60 < ay.s15, JSON.stringify(ay));
+  assert.ok(s.diagnostics.minOrnamentPx >= 40, `최소 ${s.diagnostics.minOrnamentPx}px`);
+});

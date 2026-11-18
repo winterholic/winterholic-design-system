@@ -15,7 +15,8 @@
 | 컴포넌트 | CSS `dist/components.css` + React `react/index.js`. 레지스트리 15종(`registry/components.json`) |
 | 조립 엔진 | `engine/` 의존성 없는 ESM. composeScene · placeOrnaments(궁합 점수 → 위치) · 호환성 · 검증기 · DOM/Canvas 렌더러 |
 | 기계 판독 | `dist/design-system.config.json`, `schema/*.schema.json`, `registry/components.json` |
-| 데모 에셋 | `assets/demo/` CC0 SVG(세계 2 · 트리 3 · 장식 10). 서비스용 일러스트는 이 저장소에 없다 |
+| 데모 에셋 | `assets/demo/` CC0 SVG(세계 2 · 트리 3 · 장식 10, 테스트용) |
+| 쇼케이스 에셋 | `assets/showcase/` 이 저장소용으로 새로 생성한 범용 동화책 일러스트(세계관 3 · 트리 3 · 장식 30 · 효과 5). 미리보기가 쓴다. 서비스 전용 세계관·콘텐츠·상용 에셋은 이 저장소에 없다 |
 | 도구 | `tools/process_assets.py` 이미지 생성 결과 → 투명 PNG/WebP·분할·트리 마스크 |
 
 ## 시작
@@ -24,6 +25,7 @@
 node tokens/build.mjs          # 토큰·CSS 빌드 + lint + 레지스트리 검증
 npm test                       # 빌드 + 엔진·정적 테스트
 node assets/demo/build-demo.mjs   # 데모 카탈로그 재생성
+node assets/showcase/build-showcase.mjs <원본 디렉터리> --python <venv python>   # 쇼케이스 가공(원본 PNG 는 저장소에 없음)
 ```
 
 ```html
