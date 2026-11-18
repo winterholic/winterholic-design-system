@@ -33,7 +33,7 @@ export interface Diagnostics { requested: number; placed: number; overflow: numb
 export interface PlacementResult { placements: Placement[]; overflow: { id: string; ornamentId: string; score: number }[]; densityFactor: number; diagnostics: Diagnostics }
 export interface PlacementOptions { treePx?: number; minRenderPx?: number; maxOverlap?: number; relaxedOverlap?: number; minInside?: number; seed?: string; baseWidth?: number; densityStep?: number; gridU?: number }
 
-export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number; treeScale?: number }
+export interface SceneState { worldId: string; treeId: string; ornaments?: { id: string; ornamentId: string; score: number }[]; effectIds?: string[]; lights?: 'off' | 'soft' | 'full'; seed?: string; treePx?: number; treeScale?: number; treeLift?: number }
 export type SceneLayer = {
   key: string; layer: string; z: number; type: 'image' | 'shadow' | 'lights' | 'ornament' | 'particles' | 'grade';
   src?: string; x?: number; y?: number; w?: number; h?: number; blend?: string; opacity?: number;

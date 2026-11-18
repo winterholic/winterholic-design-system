@@ -120,3 +120,14 @@ test('캔버스 렌더러는 모든 레이어를 순서대로 그린다(모의 �
   E.drawScene(ctx, s, imgs, { width: 1080, height: 1920 });
   assert.ok(calls.filter(([k]) => k === 'drawImage').length >= 1 + 1 + 5);
 });
+test('treeLift: 밑동·그림자가 올라가고 장식이 트리를 따라가며 0 은 기존과 같다', () => {
+  const base = { worldId: 'demo-meadow', treeId: 'demo-pine', ornaments: asState(items(8)), effectIds: [] };
+  const a = E.composeScene(cat, base), b = E.composeScene(cat, { ...base, treeLift: 0.1 }), z = E.composeScene(cat, { ...base, treeLift: 0 });
+  assert.deepEqual(z.layers, a.layers);
+  assert.ok(Math.abs(a.tree.anchorY - b.tree.anchorY - 0.1) < 1e-9 && Math.abs(a.tree.y - b.tree.y - 0.1) < 1e-9);
+  const sh = (s) => s.layers.find((l) => l.type === 'shadow').cy;
+  assert.ok(Math.abs(sh(a) - sh(b) - 0.1) < 1e-9);
+  const orn = (s) => s.layers.filter((l) => l.type === 'ornament').map((l) => l.ay);
+  orn(a).forEach((y, i) => assert.ok(Math.abs(y - orn(b)[i] - 0.1) < 1e-6));
+  assert.equal(E.composeScene(cat, { ...base, treeLift: 9 }).tree.anchorY, a.tree.anchorY - 0.3);
+});

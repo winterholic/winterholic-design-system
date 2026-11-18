@@ -76,11 +76,13 @@ export function composeScene(catalog, state, options = {}) {
   const treeWpx = ts.w * W;
   const treeHpx = ts.h * H;
   const baseY = tree.baseAnchor?.y ?? 1;
+  // treeLift: 화면 하단 UI 나 글자 자리를 비우려고 트리 밑동을 장면 높이 대비 이만큼 위로 올린다(0~0.3)
+  const anchorY = world.treeAnchor.y - Math.min(0.3, Math.max(0, state.treeLift ?? 0));
   const treeLeft = world.treeAnchor.x * W - treeWpx / 2;
-  const treeTop = world.treeAnchor.y * H - treeHpx * baseY;
+  const treeTop = anchorY * H - treeHpx * baseY;
   const tx = (u) => treeLeft + u * treeWpx, ty = (v) => treeTop + v * treeHpx;
   const sh = world.groundShadow ?? { rx: 0.5, ry: 0.05, opacity: 1 };
-  push({ key: 'tree-shadow', layer: 'shadow', type: 'shadow', cx: world.treeAnchor.x, cy: world.treeAnchor.y + 0.004, rx: (treeWpx * sh.rx) / W, ry: (treeWpx * sh.ry) / H, opacity: sh.opacity ?? 1, z: 0 });
+  push({ key: 'tree-shadow', layer: 'shadow', type: 'shadow', cx: world.treeAnchor.x, cy: anchorY + 0.004, rx: (treeWpx * sh.rx) / W, ry: (treeWpx * sh.ry) / H, opacity: sh.opacity ?? 1, z: 0 });
   push({ key: 'tree', layer: 'tree', type: 'image', src: url(catalog, tree.file), x: treeLeft / W, y: treeTop / H, w: treeWpx / W, h: treeHpx / H, z: 0 });
 
   const lightsMode = state.lights ?? 'full';
@@ -115,7 +117,7 @@ export function composeScene(catalog, state, options = {}) {
   return {
     size: SCENE_SIZE, worldId: world.id, treeId: tree.id, compat, theme: world.theme ?? world.id, layers,
     overflow: placement.overflow, rejected, densityFactor: placement.densityFactor, diagnostics: placement.diagnostics,
-    tree: { x: treeLeft / W, y: treeTop / H, w: treeWpx / W, h: treeHpx / H, anchorX: world.treeAnchor.x, anchorY: world.treeAnchor.y },
+    tree: { x: treeLeft / W, y: treeTop / H, w: treeWpx / W, h: treeHpx / H, anchorX: world.treeAnchor.x, anchorY },
   };
 }
 
