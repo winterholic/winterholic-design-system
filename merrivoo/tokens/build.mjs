@@ -58,7 +58,14 @@ function resolveValue(value, map, seen = new Set()) {
 function resolveAll(tree) {
   const map = flatten(tree);
   const resolved = new Map();
-  for (const [k, t] of map) resolved.set(k, { ...t, resolved: resolveValue(t.$value, map) });
+  // DTCG: $type 이 없는 별칭 토큰({shadow.sm} 등)은 참조 대상의 타입을 따른다. 빠뜨리면 복합 값이 '[object Object]' 로 직렬화된다
+  const typeOf = (t, seen = new Set()) => {
+    if (t.$type) return t.$type;
+    const m = typeof t.$value === 'string' ? t.$value.match(REF) : null;
+    const target = m && !seen.has(m[1]) ? map.get(m[1]) : null;
+    return target ? typeOf(target, new Set([...seen, m[1]])) : undefined;
+  };
+  for (const [k, t] of map) resolved.set(k, { ...t, $type: typeOf(t), resolved: resolveValue(t.$value, map) });
   return resolved;
 }
 const L = resolveAll(light);
